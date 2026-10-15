@@ -33,12 +33,15 @@
     },
     "aspect": { "type": "string" },
     "question_image": {
-      "$ref": "#/$defs/imageRef",
-      "description": "查询图。送入模型时固定在第 1 位。"
+      "description": "查询图。送入模型时固定在第 1 位。**失败记录允许为 null**，以免失败行被校验拒绝而丢失（失败不得删题）。",
+      "oneOf": [
+        { "$ref": "#/$defs/imageRef" },
+        { "type": "null" }
+      ]
     },
     "evidence_order": {
       "type": "array",
-      "description": "实际送入模型的证据顺序（不含查询图）。顺序是变量，必须记录。",
+      "description": "实际送入模型的证据顺序（不含查询图）。顺序是变量，必须记录。**失败记录允许为空数组。**",
       "items": { "$ref": "#/$defs/evidenceRef" }
     },
     "num_evidence": {
@@ -54,6 +57,11 @@
     "pool_leakage_rate": {
       "type": ["number", "null"],
       "description": "该池中已含 GT 正确证据的题目比例（0-1）。官方池实测 0.559。null 表示未测。",
+      "minimum": 0
+    },
+    "pool_gt_exact_match_rate": {
+      "type": ["number", "null"],
+      "description": "该池的 GT 图像字节级精确匹配命中率（池级统计，非逐题标签）。命名刻意不使用 leakage 措辞，因为精确匹配无法区分『检索器独立命中』与『候选生成使用 GT 标注』。计算脚本与分母见 a-side/data/gt_match_rate_audit.json。单题清单中通常为 null，以免被误读为逐题标注。",
       "minimum": 0
     },
     "is_oracle": {
@@ -82,10 +90,39 @@
       "type": ["integer", "null"],
       "description": "提示模板中的图片占位符数量。官方模板写死为 6（查询图+5 证据）/ Incomplete 为 2。改用其它 top-k 必须同步修改此值，否则与官方不可比。"
     },
+    "scenario_rule_applied": {
+      "type": ["string", "null"],
+      "description": "本题考查的场景规则。official_incomplete_truncate_to_first 表示按官方规则只取首张（证据数=1，占位符=2）；official_use_all_candidates 表示使用全部候选。",
+      "enum": [null, "official_incomplete_truncate_to_first", "official_use_all_candidates",
+               "protocol_fixed_top3"]
+    },
+    "available_evidence_untruncated": {
+      "type": ["object", "null"],
+      "description": "Incomplete 场景下被官方规则截断而未使用的候选与 GT 数量。仅供分析，不得用于 proto_official_v1 的提示组装。非 Incomplete 场景为 null。",
+      "additionalProperties": true,
+      "properties": {
+        "note": { "type": ["string", "null"] },
+        "retrieved_count": { "type": ["integer", "null"] },
+        "gt_count": { "type": ["integer", "null"] }
+      }
+    },
     "status": {
       "type": "string",
       "enum": ["ok", "missing_image", "corrupt_image", "retrieval_failed", "excluded"],
-      "description": "失败题目必须保留在清单中，不得静默删除。统计时需同时报告含失败与不含失败两个分母。"
+      "description": "失败题目必须保留在清单中，不得静默删除。主准确率使用固定题单分母；成功子集指标仅作补充并须给出覆盖率。"
+    },
+    "failure": {
+      "type": ["object", "null"],
+      "description": "失败记录的结构化原因。允许在 question_image 为 null、evidence_order 为空时仍能保存该行。",
+      "additionalProperties": false,
+      "properties": {
+        "reason": { "type": ["string", "null"] },
+        "stage": {
+          "type": ["string", "null"],
+          "enum": [null, "retrieval", "image_fetch", "image_decode", "selection", "routing"]
+        },
+        "detail": { "type": ["string", "null"] }
+      }
     },
     "notes": {
       "type": ["string", "null"],
@@ -127,6 +164,16 @@
         "gt_evidence_ids": {
           "type": ["array", "null"],
           "description": "GT 证据的稳定 ID 列表。用于命中判定与 Oracle 条件。",
+          "items": { "type": "string" }
+        },
+        "gt_evidence_refs": {
+          "type": ["array", "null"],
+          "description": "GT 证据的完整图片引用（含 path 与 sha256）。B 侧据此可直接跑 S2（GT 证据条件），无需另取文件。与 gt_evidence_ids 一一对应；数量须与数据集中该题的真实 GT 数量一致，不得复制或补图凑数。",
+          "items": { "$ref": "#/$defs/imageRef" }
+        },
+        "gt_evidence_ids_all": {
+          "type": ["array", "null"],
+          "description": "该题在数据集中**全部** GT 证据的 ID（未经场景规则截断）。Incomplete 场景下 gt_evidence_ids 只含按规则使用的 1 张，本字段保留完整的 1 张列表以便核对。仅用于审计。",
           "items": { "type": "string" }
         },
         "gt_on_official_pool_ranks": {
@@ -210,6 +257,10 @@
         "retrieval_score": {
           "type": ["number", "null"],
           "description": "检索相似度分数。官方池未提供，故为 null；我方重检索路线会填真实分数。"
+        },
+        "used_in_prompt": {
+          "type": ["boolean", "null"],
+          "description": "该条是否实际进入提示。Incomplete 场景按官方规则只取首张，其余候选为 false。为 false 的条目仍保留在索引与 JSONL 的 available_evidence 中，以保证索引完整性且不留孤儿条目。"
         },
         "distractor_type": {
           "type": ["string", "null"],

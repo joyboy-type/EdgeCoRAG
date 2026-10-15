@@ -64,17 +64,29 @@ KEEP_SCRIPTS = [
     "verify_github_api_authenticity.py", "diagnose_tls_interception.py",
     "bootstrap_store.py", "acquire_sources.py", "setup_env.py",
     "install_portable_git.py", "audit_before_push.py", "publish_to_repo.py",
-    "git_cred_store.py", "check_stored_git_credential.py",
+    "git_cred_store.py",
+    # 本轮新增（修订与验收）
+    "audit_gt_match_rate.py", "reconcile_dataset_size.py",
+    "verify_hash_reliability.py", "test_hash_stability.py",
+    "determine_hash_method.py", "near_duplicate_check.py",
+    "verify_sample_files.py", "verify_handover_sample.py", "make_split.py",
 ]
 KEEP_REPORTS = ["audit_env.md", "A_P0_P1.md",
                 "requirements-main.lock.txt", "requirements-mrag.lock.txt"]
 KEEP_DATA = [
     ("outputs/dataset_probe/mrag_bench_schema.json", "mrag_bench_schema.json"),
     ("outputs/dataset_probe/evidence_ontology.json", "evidence_ontology.json"),
+    ("outputs/dataset_probe/gt_match_rate_audit.json", "gt_match_rate_audit.json"),
+    ("outputs/dataset_probe/near_duplicate_report.json", "near_duplicate_report.json"),
+    ("outputs/dataset_probe/size_reconciliation.json", "size_reconciliation.json"),
+    ("outputs/handover_verify/acceptance_report.json", "acceptance_report.json"),
+    ("outputs/handover_verify/sample_files_check.json", "sample_files_check.json"),
     ("outputs/gemma4_probe/tokenizer_check.json", "gemma4_tokenizer_check.json"),
     ("outputs/gemma4_probe/vram_diagnosis_gemma-4-E4B-it.json", "vram_diagnosis_e4b.json"),
     ("source_manifest.csv", "source_manifest.csv"),
 ]
+# setup 文档从 a-side-src/setup 读入（避免把长文写死在脚本里）
+SETUP_DIR = A_ROOT / "a-side-src" / "setup"
 
 
 def run(args: list[str], cwd: Path | None = None, check: bool = False,
@@ -147,7 +159,6 @@ def populate(wt: Path) -> None:
         shutil.rmtree(dst_a)
     for sub in ("scripts", "reports", "data", "setup"):
         (dst_a / sub).mkdir(parents=True)
-
     n = 0
     for name in KEEP_SCRIPTS:
         src = A_ROOT / "scripts" / name
@@ -165,10 +176,87 @@ def populate(wt: Path) -> None:
         if src.exists():
             shutil.copy2(src, dst_a / "data" / out)
 
-    (dst_a / "setup" / "WINDOWS_PROXY_NOTES.md").write_text(WINDOWS_NOTES,
-                                                           encoding="utf-8")
+    # setup 文档: 标准步骤与机器特有绕行**分开存放**
+    n_setup = 0
+    if SETUP_DIR.exists():
+        for src in sorted(SETUP_DIR.glob("*.md")):
+            shutil.copy2(src, dst_a / "setup" / src.name)
+            n_setup += 1
+    print(f"  a-side/setup/    {n_setup} 个文档(标准安装 + 机器特有分开)")
+
+    # 题目切分清单（预先规则 + 固定种子 + sha256，需入库供双方对齐）
+    src_splits = A_ROOT / "splits"
+    if src_splits.exists():
+        dst_sp = dst_a / "splits"
+        dst_sp.mkdir(parents=True, exist_ok=True)
+        n_sp = 0
+        for src in sorted(src_splits.glob("*")):
+            if src.is_file():
+                shutil.copy2(src, dst_sp / src.name)
+                n_sp += 1
+        print(f"  a-side/splits/   {n_sp} 个文件(题目划分与种子)")
+
+    # 交接计划：未完成事项与阻塞清单（供下一个接手者）
+    src_plans = A_ROOT / "a-side-src" / "plans"
+    if src_plans.exists():
+        dst_pl = dst_a / "plans"
+        dst_pl.mkdir(parents=True, exist_ok=True)
+        n_pl = 0
+        for src in sorted(src_plans.glob("*.md")):
+            shutil.copy2(src, dst_pl / src.name)
+            n_pl += 1
+        print(f"  a-side/plans/    {n_pl} 个文档(未完成事项与阻塞)")
+
     (wt / "README.md").write_text(ROOT_README, encoding="utf-8")
     print("  README.md 已更新")
+
+
+def merge_into_main(wt: Path, args, user: str, tok: str | None) -> int:
+    """把已推送的分支**快进合并**进 main 并推送。
+
+    只做 fast-forward: 若 main 与分支已分叉, 说明期间有人推了 main,
+    此时**中止并提示**, 不生成合并提交, 避免掩盖冲突。
+    """
+    print(f"\n=== 6. 合并到 main(仅快进) ===")
+    # 注意: 必须用 --force 更新跟踪引用。若远程分支历史被改写过(例如上一轮强推过),
+    # 普通 fetch 会因非快进而**静默不更新**跟踪引用,导致后续 --force-with-lease
+    # 用过期 OID 判租约,报 "stale info"(本机实测踩过两次)。
+    git("fetch", "--force", "origin", "main", "--depth", "50", cwd=wt)
+    ff = git("merge-base", "--is-ancestor", "origin/main", "HEAD", cwd=wt)
+    if ff.returncode != 0:
+        print("  ✗ 分支与 origin/main 已分叉(期间有人推送 main),不做合并。")
+        print("    请先人工 rebase: git rebase origin/main,再重跑。")
+        return 1
+
+    print("  可快进。切换 main 并合并…")
+    git("checkout", "-B", "main", "HEAD", cwd=wt)
+    mg = git("merge", "--ff-only", args.branch, cwd=wt)
+    if mg.returncode != 0:
+        print(f"  ✗ 快进合并失败: {(mg.stderr or '').strip()[:200]}")
+        return 1
+    head = git("rev-parse", "HEAD", cwd=wt).stdout.strip()
+    print(f"  main 现在指向 {head[:12]}")
+
+    if tok:
+        askpass = WORKTREE.parent / "_askpass2.cmd"
+        askpass.write_text("@echo off\r\necho %EC_USER%\r\necho %EC_TOKEN%\r\n",
+                           encoding="ascii")
+        try:
+            r = run(GIT_BASE + ["-c", f"core.askPass={askpass}", "push",
+                                "origin", "HEAD:main"],
+                    cwd=wt, env_extra={"EC_USER": user, "EC_TOKEN": tok})
+        finally:
+            askpass.unlink(missing_ok=True)
+    else:
+        r = git("push", "origin", "HEAD:main", cwd=wt)
+
+    if r.returncode == 0:
+        print(f"  ✅ main 已更新: https://github.com/joyboy-type/EdgeCoRAG/tree/main")
+        # 合并后切回分支,便于后续增量提交
+        git("checkout", args.branch, cwd=wt)
+        return 0
+    print(f"  ✗ 推送 main 失败: {((r.stderr or '') + (r.stdout or '')).strip()[:300]}")
+    return 1
 
 
 def main() -> int:
@@ -177,9 +265,37 @@ def main() -> int:
     ap.add_argument("--token", default=None, help="GitHub PAT(仅本次使用)")
     ap.add_argument("--use-stored-credential", action="store_true",
                     help="使用本机 Windows 凭据管理器中的 git 凭证")
+    ap.add_argument("--branch", default=None,
+                    help="推送到指定分支(默认推 main)。用于独立分支/PR 交付。")
+    ap.add_argument("--new-branch-from-main", action="store_true",
+                    help="从 origin/main 拉出新分支再推送(独立分支交付的推荐做法)")
+    ap.add_argument("--force-with-lease", action="store_true",
+                    help=("当远程分支已有本分支的旧提交时使用。带租约校验: "
+                          "若远程在此期间被他人改动则会失败,不会覆盖协作者工作。"
+                          "**仅在确认远程该分支只有自己的提交时使用。**"))
+    ap.add_argument("--expect-remote-oid", default=None,
+                    help=("与 --force-with-lease 配合: 显式声明期望的远程 OID。"
+                          "因为用 checkout -B 创建的分支没有 upstream 配置,"
+                          "纯 --force-with-lease 会报 stale info。"
+                          "用法: --expect-remote-oid <sha>"))
+    ap.add_argument("--merge-to-main", action="store_true",
+                    help=("推送分支后, 再把该分支**快进合并**进 main 并推送 main。"
+                          "仅在分支领先 main 时可快进; 若已分叉则中止, 不做合并提交。"))
     args = ap.parse_args()
 
     wt = prepare()
+
+    target_ref = "HEAD:main"
+    if args.branch:
+        if args.new_branch_from_main:
+            print(f"\n=== 1b. 从 origin/main 建立独立分支 {args.branch} ===")
+            git("checkout", "-B", args.branch, "origin/main", cwd=wt)
+            print(f"  已基于 origin/main 检出 {args.branch}")
+        else:
+            print(f"\n=== 1b. 使用现有分支 {args.branch} ===")
+            git("checkout", "-B", args.branch, cwd=wt)
+        target_ref = f"HEAD:{args.branch}"
+
     populate(wt)
 
     # 暂存必须在审查之前: 审查用 git ls-files 列文件
@@ -201,12 +317,29 @@ def main() -> int:
         print("  无变更可提交")
     else:
         c = git("commit", "-m",
-                "Add A-side retrieval deliverables and B handover package\n\n"
-                "- handover/: 分工与进度、证据规则、S3 干扰规范、接口 JSON Schema、5 题样例\n"
-                "- a-side/scripts: 数据集/模型/环境探针与契约校验脚本\n"
-                "- a-side/reports: 环境审计与复现进展报告\n"
-                "- a-side/setup: 本机代理/证书/镜像注意事项\n"
-                "- 记录 MRAG-Bench 版本锁定与官方池 55.9% GT 泄漏的实测结论",
+                "Revise retrieval-side handover: terminology, interface alignment, sample acceptance\n\n"
+                "方法学更正\n"
+                "- 「候选中包含 GT 即答案泄漏」改为「GT 图像字节级精确匹配命中率」，\n"
+                "  附计算脚本、数据版本、分母与输出记录；区分正常检索命中与使用标注生成候选\n"
+                "- 新增 official_pool_provenance.md：逐条标注已核实 / 未确认\n"
+                "- 明确自研重检索亦不能默认干净基线\n"
+                "- Incomplete 单独报告，但保留完整基准总体指标，不从总体剔除\n"
+                "- S3 哈希不重叠改为三层校验（字节哈希 / 近重复 dHash / 语义抽查三态标记）\n"
+                "- 核清 8 GiB 与 4 GiB 体积口径差异（parquet 实测 4.00 GiB）\n"
+                "- 标准安装步骤与机器特有代理绕行分开存放\n\n"
+                "接口对齐\n"
+                "- 不改写评分器，对齐 B 的 strict_choice_v1\n"
+                "- 保留 raw_id 原样字符串，qid = mragb:<raw_id>\n"
+                "- task_payload / 图片引用 / scoring_only 三区隔离\n"
+                "- 结果行补 evidence_version / run_batch_id / parser_version / raw_output\n"
+                "- 条件名统一 S0/S1/S2/S3-pure/S3-mixed\n"
+                "- 官方评分格式作为单独导出，不声称本 Schema 满足官方输入\n"
+                "- 失败不删题；主准确率用固定题单分母，成功子集另报并给覆盖率\n\n"
+                "样例验收\n"
+                "- 补入 GT 图片（按真实数量，未补图），S2 可跑\n"
+                "- 补一道 Incomplete 题并应用官方截断规则\n"
+                "- 图片改为 JPEG95 且哈希与落盘字节同源\n"
+                "- 新增 verify_handover_sample.py，8 组 28 项检查全部通过",
                 cwd=wt)
         print("  ✅ 已提交" if c.returncode == 0 else f"  ✗ 提交失败: {c.stderr[:200]}")
 
@@ -230,25 +363,44 @@ def main() -> int:
             user, tok = cred
             print(f"  使用本机凭据(用户 {user};secret 不显示、不落盘)")
 
+    # 构造 force 选项。优先用显式 OID 形式:
+    #   --force-with-lease=<ref>:<expected-oid>
+    # 它不依赖 upstream 配置,因此在 checkout -B 创建的分支上也能工作,
+    # 且安全保证相同: 若远程实际 OID 与期望不符,推送会被拒绝。
+    extra: list[str] = []
+    if args.force_with_lease:
+        if args.expect_remote_oid and args.branch:
+            extra.append(f"--force-with-lease=refs/heads/{args.branch}:"
+                         f"{args.expect_remote_oid}")
+        else:
+            extra.append("--force-with-lease")
+
     if tok:
         askpass = WORKTREE.parent / "_askpass.cmd"
         askpass.write_text("@echo off\r\necho %EC_USER%\r\necho %EC_TOKEN%\r\n",
                            encoding="ascii")
         try:
-            r = run(GIT_BASE + ["-c", f"core.askPass={askpass}", "push", "origin",
-                                "HEAD:main"],
+            r = run(GIT_BASE + ["-c", f"core.askPass={askpass}", "push"] + extra
+                    + ["origin", target_ref],
                     cwd=wt, env_extra={"EC_USER": user, "EC_TOKEN": tok})
         finally:
             askpass.unlink(missing_ok=True)
     else:
-        r = git("push", "origin", "HEAD:main", cwd=wt)
+        r = git("push", *extra, "origin", target_ref, cwd=wt)
 
     out = (r.stdout or "") + (r.stderr or "")
     if r.returncode == 0:
         print("  ✅ 推送成功")
         head = git("rev-parse", "HEAD", cwd=wt).stdout.strip()
         print(f"  commit: {head[:12]}")
+        br = args.branch or "main"
+        print(f"  分支  : {br}")
         print(f"  仓库  : https://github.com/joyboy-type/EdgeCoRAG")
+        if args.branch and args.branch != "main":
+            print(f"  PR 入口: https://github.com/joyboy-type/EdgeCoRAG/compare/"
+                  f"main...{args.branch}?expand=1")
+        if args.merge_to_main and args.branch and args.branch != "main":
+            return merge_into_main(wt, args, user, tok)
         return 0
 
     print(f"  ✗ 推送失败:\n    {out.strip()[:400]}")
@@ -378,20 +530,46 @@ handover/            给 B 的交接包
 └── freeze/            冻结清单模板
 
 a-side/              A 侧可复现资产
-├── scripts/          数据/模型/环境探针与样例生成脚本
+├── scripts/          数据/模型/环境探针、验收与契约校验脚本
 ├── reports/          环境审计与复现进展报告
-├── data/             小体积事实文件（schema、证据本体统计、源清单）
-└── setup/            本机环境注意事项（代理、证书、镜像）
+├── data/             小体积事实文件（schema、证据本体统计、命中率审计、验收报告）
+├── splits/           题目划分清单（固定种子 20261015）与 manifest
+├── plans/            **未完成事项与阻塞清单**（接手的 AI/人先读这个）
+└── setup/            安装说明
+    ├── STANDARD_INSTALL.md          ← **项目标准步骤**（与机器无关）
+    └── MACHINE_SPECIFIC_PROXY.md    ← 某台机器的代理/TLS 绕行，**非标准做法**
 ```
+
+## 给协作者 B 的确认事项
+
+见 **[`handover/docs/05_给B的确认与续作提示词.md`](handover/docs/05_给B的确认与续作提示词.md)**
+—— 内含 8 项待确认事项、B 确认后才能继续的工作、以及 B 现在就能独立做的事。
+
+## 未完成事项（**不要当作已完成**）
+
+见 **[`a-side/plans/NEXT_STEPS_AND_BLOCKERS.md`](a-side/plans/NEXT_STEPS_AND_BLOCKERS.md)**。
+摘要：
+
+- ⛔ **独立检索语料未验证可下载、许可未确认** → 重检索路线阻塞（关键路径）
+- ⛔ **Gemma 4 E4B 在 8 GB 显存不可行**（4bit 加载即占 8.685 GiB）→ A2/A3 路径受影响
+- ❌ 冻结证据列表（全量）、检索质量指标（R@1/R@5/MRR）、S3 干扰集、效用选择器
+- ⏳ 20 题联调清单（切分已定，冻结版未生成）
+
 
 ## 证据与数据规则（双方共同遵守）
 
 1. **GT、正确答案、命中标记只用于评分、Oracle 条件与离线分析，绝不能用于检索条件下的证据选择。**
-2. 官方 `retrieved_images` 中 **55.9%** 的题已含 GT 正确证据（场景间 6.9%–81.7%），
-   因此**不能当作干净检索基线**；跨场景对比会失真。
+2. 官方 `retrieved_images` 的 **GT 图像字节级精确匹配命中率**为
+   任意 **55.9%**、rank-0 **32.6%**、全部 GT 覆盖 **2.3%**（分母 1353）。
+   ⚠️ 这**不等于答案泄漏**——无法区分『检索器独立命中』与『候选生成使用 GT 标注』，
+   官方候选的产生过程未被完整说明。详见 `handover/docs/official_pool_provenance.md`。
+   它也**不能**反推自研重检索是干净基线。
 3. 官方 RAG 提示模板的**图片占位符数量写死**（常规 6、Incomplete 2）。
    改 top-k 必须同步改占位符，并另立 `protocol_version`。
-4. **失败题目不得静默删除**，需保留并记录 `status`，同时报告两个分母。
+4. **失败题目不得静默删除**。主准确率使用**固定题单分母**；
+   成功子集指标仅作补充，且必须给出**覆盖率**。
+5. **Incomplete 单独报告，但不得从总体剔除**。完整基准总体指标为主指标。
+6. 内部切出的留出集**不能叫「外部验证」**（同源）；外部验证须用 VisDoM / MMDocRAG。
 
 ## 数据版本（已锁定）
 
@@ -401,26 +579,25 @@ a-side/              A 侧可复现资产
 | revision | `43620fde4044bb150e158c67ad7af6b6b11e1da2` |
 | 许可 | CC-BY-4.0 |
 | split | **只有 `test`**，1,353 题（无官方 dev/val，需项目内自切分） |
+| parquet 实际字节 | **4.00 GiB**（本地实测；官方 API `usedStorage` ≈8 GiB 为不同口径） |
 
 ## 当前进展
 
 - A：环境与工具链已验证；论文、作者代码、数据集版本已核验；
-  **尚未产出冻结证据列表**。已交付 5 题接口样例供 B 联调。
+  **尚未产出冻结证据列表**。已交付 6 题接口样例（含 GT，S2 可跑，28/28 验收通过）。
 - B：已完成小样本与评分验证，正在整理运行代码和租用单卡 GPU 前的准备。
 - **真实模型试跑与正式实验尚未完成。**
 
-模型权重、数据图片、索引和运行缓存保存在仓库外；代码与配置后续按已验证版本陆续提交。
+模型权重、数据图片、索引和运行缓存保存在仓库外；代码与配置按已验证版本陆续提交。
 
-## 本机环境注意（Windows + 本地代理）
+## 安装
 
-本机 `github.com` 被 **Watt Toolkit（`Steam++.Accelerator`）** 在 `0.0.0.0:443` 本地拦截，
-schannel 无法完成吊销检查，会报 `CRYPT_E_NO_REVOCATION_CHECK`。克隆/推送需要：
+**标准步骤见 [`a-side/setup/STANDARD_INSTALL.md`](a-side/setup/STANDARD_INSTALL.md)。**
 
-```bash
-git -c http.sslVerify=false clone https://github.com/joyboy-type/EdgeCoRAG.git
-```
-
-详细说明见 `a-side/setup/WINDOWS_PROXY_NOTES.md`。
+本机（Windows）曾观察到本地 TLS 中间人代理导致 `git` 报
+`CRYPT_E_NO_REVOCATION_CHECK`。⚠️ **该问题及其绕行办法记录在
+[`a-side/setup/MACHINE_SPECIFIC_PROXY.md`](a-side/setup/MACHINE_SPECIFIC_PROXY.md)，
+它不是项目标准做法**——正确做法是修好证书信任链，而不是关闭 TLS 校验。
 """
 
 

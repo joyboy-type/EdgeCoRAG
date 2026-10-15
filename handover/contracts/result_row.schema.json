@@ -26,8 +26,16 @@
     },
     "condition": {
       "type": "string",
-      "description": "实验条件。S0=无证据；S1=统一检索证据；S2=GT 证据（Oracle 上界）；S3=干扰证据。",
-      "enum": ["S0", "S1", "S2", "S3", "S3-mixed"]
+      "description": "实验条件。S0=无证据；S1=共享检索证据；S2=GT 证据（Oracle 上界）；S3-pure=纯干扰；S3-mixed=正确证据混入干扰（固定 1 GT + 4 干扰）。泛指干扰实验时可用 S3 作为类别，但具体条件值必须用 S3-pure 或 S3-mixed。",
+      "enum": ["S0", "S1", "S2", "S3", "S3-pure", "S3-mixed"]
+    },
+    "evidence_version": {
+      "type": ["string", "null"],
+      "description": "证据冻结包版本号（如 reindexed_corpus_v1.0）。冻结后更新方法须换版本号并保留旧结果；没有它无法区分多版本结果。"
+    },
+    "run_batch_id": {
+      "type": ["string", "null"],
+      "description": "运行批次标识，任一批次内唯一。用于追溯『这条结果来自哪一次跑』。"
     },
     "pool_id": {
       "type": ["string", "null"],
@@ -72,11 +80,19 @@
     },
     "prediction_raw": {
       "type": "string",
-      "description": "模型原始输出全文。官方 score.py 读取的字段名是 'output'，此处同时另存，见 output。"
+      "description": "模型原始输出全文。**主字段**。与 raw_output 必须同值（刻意冗余，避免两侧代码互相迁就）。"
+    },
+    "raw_output": {
+      "type": ["string", "null"],
+      "description": "prediction_raw 的别名，供 B 侧既有代码读取。若两者都存在则必须相等。"
     },
     "output": {
       "type": ["string", "null"],
-      "description": "兼容官方 score.py 期望的 'output' 字段。"
+      "description": "**仅供导出官方格式使用**，不作为主字段。官方 score.py 读取此字段名。"
+    },
+    "parser_version": {
+      "type": ["string", "null"],
+      "description": "答案解析器版本。由 B 侧填写其已验证的 strict_choice_v1；A 侧置 null，不定义第二套解析器。"
     },
     "prediction": {
       "type": ["string", "null"],

@@ -1,0 +1,84 @@
+{
+  "dataset_repo": "uclanlp/MRAG-Bench",
+  "dataset_revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+  "seed": 20261015,
+  "group_by": [
+    "scenario",
+    "image_type"
+  ],
+  "rationale": "官方只有 test split，无 dev/val；切分仅依据 raw_id 与固定种子，不依据 scenario/aspect/答案；同源组整组分配",
+  "naming_warning": "internal_holdout 与 frozen_test 同源同分布，**不得称为外部验证**；外部验证须用 VisDoM / MMDocRAG",
+  "targets": {
+    "smoke_20": 20,
+    "dev": 150,
+    "internal_holdout": 150
+  },
+  "reviewed_ids_forced_to_dev": [],
+  "splits": {
+    "smoke_20": {
+      "count": 20,
+      "file": "smoke_20.txt",
+      "sha256": "d7309675ff90731a1b6539b8e109580580f09cd4bb1bd48365c03b2454330a15",
+      "scenarios": {
+        "Angle": 2,
+        "Biological": 2,
+        "Deformation": 2,
+        "Incomplete": 2,
+        "Obstruction": 2,
+        "Others": 2,
+        "Partial": 4,
+        "Scope": 2,
+        "Temporal": 2
+      }
+    },
+    "dev": {
+      "count": 150,
+      "file": "dev.txt",
+      "sha256": "5a80c8426b81b51b2cf93d6098cc2c4f15341b3ca781cf546915f58d50aca7da",
+      "scenarios": {
+        "Angle": 37,
+        "Biological": 11,
+        "Deformation": 11,
+        "Incomplete": 11,
+        "Obstruction": 12,
+        "Others": 13,
+        "Partial": 27,
+        "Scope": 11,
+        "Temporal": 17
+      }
+    },
+    "internal_holdout": {
+      "count": 150,
+      "file": "internal_holdout.txt",
+      "sha256": "1b719790a1886487564a41f2577c71a402019c00a51d65e97d3728f83f8df6a5",
+      "scenarios": {
+        "Angle": 37,
+        "Biological": 11,
+        "Deformation": 11,
+        "Incomplete": 11,
+        "Obstruction": 12,
+        "Others": 13,
+        "Partial": 27,
+        "Scope": 11,
+        "Temporal": 17
+      }
+    },
+    "frozen_test": {
+      "count": 1033,
+      "file": "frozen_test.txt",
+      "sha256": "266e97168e8a65e2793ec83110e9ed8ad0874dad3c1b5abc0d8fc59369d3d17b",
+      "scenarios": {
+        "Angle": 246,
+        "Biological": 78,
+        "Deformation": 78,
+        "Incomplete": 78,
+        "Obstruction": 82,
+        "Others": 92,
+        "Partial": 188,
+        "Scope": 78,
+        "Temporal": 113
+      }
+    }
+  },
+  "generated_at": "2026-10-15T16:29:13"
+}

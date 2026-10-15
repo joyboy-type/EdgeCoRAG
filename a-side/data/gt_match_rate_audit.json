@@ -1,0 +1,155 @@
+{
+  "script": "scripts/audit_gt_match_rate.py",
+  "metric_name": "GT 图像字节级精确匹配命中率 (exact-match hit rate)",
+  "metric_definition": "题目 q 计为命中,当且仅当 retrieved_images 中存在至少一张图的 原始字节 sha256 等于 gt_images 中某张图的 sha256。",
+  "what_this_is_not": [
+    "不等于答案泄漏: 无法区分『检索器独立命中』与『候选生成使用 GT/答案标注』",
+    "不能据此断定官方候选池不可用;也不能默认自研重检索就是干净基线",
+    "不涉及近重复图、裁剪/缩放变体、语义等价但字节不同的图"
+  ],
+  "recompute": {
+    "command": "python scripts/audit_gt_match_rate.py",
+    "dataset_repo": "uclanlp/MRAG-Bench",
+    "dataset_revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+    "dataset_license": "cc-by-4.0",
+    "split": "test",
+    "hash_algorithm": "sha256",
+    "hash_payload": "JPEG quality=95 重编码后取 sha256 (原始字节不可得,见 img_sha 文档)",
+    "hash_stability_verified": "scripts/test_hash_stability.py 对 qid=0 做 3 次独立加载，JPEG95/PNG 两种口径的哈希各自完全一致",
+    "container_format_note": "GT 与候选图使用同一编码口径，匹配关系为双射；命中率不受 PNG/JPEG 选择影响（两口径均已核对）"
+  },
+  "denominators": {
+    "questions_scanned": 1353,
+    "questions_with_nonempty_gt": 1353,
+    "questions_with_nonempty_retrieved": 1353,
+    "questions_with_empty_side": 0,
+    "denominator_used": "questions_with_nonempty_gt",
+    "note": "分母取 gt_images 非空的题;本数据集中与全部题数相同"
+  },
+  "headline": {
+    "exact_match_rate_any": 0.5588,
+    "exact_match_rate_rank0": 0.3259,
+    "all_gt_covered_rate": 0.0229,
+    "questions_any_hit": 756,
+    "questions_rank0_hit": 441,
+    "questions_all_gt_covered": 31
+  },
+  "hit_rank_distribution": {
+    "0": 441,
+    "1": 352,
+    "2": 303,
+    "3": 238,
+    "4": 187
+  },
+  "hit_gt_count_distribution": {
+    "0": 597,
+    "1": 327,
+    "2": 208,
+    "3": 143,
+    "4": 54,
+    "5": 24
+  },
+  "per_scenario": {
+    "Scope": {
+      "questions": 102,
+      "questions_any_hit": 73,
+      "questions_rank0_hit": 44,
+      "gt_images": 510,
+      "gt_images_hit": 160,
+      "retrieved_images": 510,
+      "exact_match_rate_any": 0.7157,
+      "exact_match_rate_rank0": 0.4314,
+      "gt_image_hit_rate": 0.3137
+    },
+    "Obstruction": {
+      "questions": 108,
+      "questions_any_hit": 79,
+      "questions_rank0_hit": 59,
+      "gt_images": 540,
+      "gt_images_hit": 191,
+      "retrieved_images": 540,
+      "exact_match_rate_any": 0.7315,
+      "exact_match_rate_rank0": 0.5463,
+      "gt_image_hit_rate": 0.3537
+    },
+    "Temporal": {
+      "questions": 149,
+      "questions_any_hit": 66,
+      "questions_rank0_hit": 33,
+      "gt_images": 745,
+      "gt_images_hit": 141,
+      "retrieved_images": 745,
+      "exact_match_rate_any": 0.443,
+      "exact_match_rate_rank0": 0.2215,
+      "gt_image_hit_rate": 0.1893
+    },
+    "Deformation": {
+      "questions": 102,
+      "questions_any_hit": 32,
+      "questions_rank0_hit": 17,
+      "gt_images": 510,
+      "gt_images_hit": 48,
+      "retrieved_images": 510,
+      "exact_match_rate_any": 0.3137,
+      "exact_match_rate_rank0": 0.1667,
+      "gt_image_hit_rate": 0.0941
+    },
+    "Biological": {
+      "questions": 102,
+      "questions_any_hit": 41,
+      "questions_rank0_hit": 22,
+      "gt_images": 510,
+      "gt_images_hit": 63,
+      "retrieved_images": 510,
+      "exact_match_rate_any": 0.402,
+      "exact_match_rate_rank0": 0.2157,
+      "gt_image_hit_rate": 0.1235
+    },
+    "Angle": {
+      "questions": 322,
+      "questions_any_hit": 226,
+      "questions_rank0_hit": 126,
+      "gt_images": 1610,
+      "gt_images_hit": 447,
+      "retrieved_images": 1610,
+      "exact_match_rate_any": 0.7019,
+      "exact_match_rate_rank0": 0.3913,
+      "gt_image_hit_rate": 0.2776
+    },
+    "Partial": {
+      "questions": 246,
+      "questions_any_hit": 134,
+      "questions_rank0_hit": 76,
+      "gt_images": 1230,
+      "gt_images_hit": 258,
+      "retrieved_images": 1230,
+      "exact_match_rate_any": 0.5447,
+      "exact_match_rate_rank0": 0.3089,
+      "gt_image_hit_rate": 0.2098
+    },
+    "Incomplete": {
+      "questions": 102,
+      "questions_any_hit": 7,
+      "questions_rank0_hit": 2,
+      "gt_images": 102,
+      "gt_images_hit": 7,
+      "retrieved_images": 510,
+      "exact_match_rate_any": 0.0686,
+      "exact_match_rate_rank0": 0.0196,
+      "gt_image_hit_rate": 0.0686
+    },
+    "Others": {
+      "questions": 120,
+      "questions_any_hit": 98,
+      "questions_rank0_hit": 62,
+      "gt_images": 600,
+      "gt_images_hit": 193,
+      "retrieved_images": 600,
+      "exact_match_rate_any": 0.8167,
+      "exact_match_rate_rank0": 0.5167,
+      "gt_image_hit_rate": 0.3217
+    }
+  },
+  "generated_at": "2026-10-15T15:39:51",
+  "elapsed_seconds": 435.2
+}

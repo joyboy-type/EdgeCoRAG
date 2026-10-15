@@ -1,0 +1,9 @@
+{
+  "script": "scripts/verify_sample_files.py",
+  "dir": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-B-handover\\samples",
+  "entries": 30,
+  "missing": 0,
+  "extension_content_mismatch": 0,
+  "hash_mismatch": 0,
+  "verdict": "consistent"
+}

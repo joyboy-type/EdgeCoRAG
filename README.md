@@ -27,20 +27,46 @@ handover/            给 B 的交接包
 └── freeze/            冻结清单模板
 
 a-side/              A 侧可复现资产
-├── scripts/          数据/模型/环境探针与样例生成脚本
+├── scripts/          数据/模型/环境探针、验收与契约校验脚本
 ├── reports/          环境审计与复现进展报告
-├── data/             小体积事实文件（schema、证据本体统计、源清单）
-└── setup/            本机环境注意事项（代理、证书、镜像）
+├── data/             小体积事实文件（schema、证据本体统计、命中率审计、验收报告）
+├── splits/           题目划分清单（固定种子 20261015）与 manifest
+├── plans/            **未完成事项与阻塞清单**（接手的 AI/人先读这个）
+└── setup/            安装说明
+    ├── STANDARD_INSTALL.md          ← **项目标准步骤**（与机器无关）
+    └── MACHINE_SPECIFIC_PROXY.md    ← 某台机器的代理/TLS 绕行，**非标准做法**
 ```
+
+## 给协作者 B 的确认事项
+
+见 **[`handover/docs/05_给B的确认与续作提示词.md`](handover/docs/05_给B的确认与续作提示词.md)**
+—— 内含 8 项待确认事项、B 确认后才能继续的工作、以及 B 现在就能独立做的事。
+
+## 未完成事项（**不要当作已完成**）
+
+见 **[`a-side/plans/NEXT_STEPS_AND_BLOCKERS.md`](a-side/plans/NEXT_STEPS_AND_BLOCKERS.md)**。
+摘要：
+
+- ⛔ **独立检索语料未验证可下载、许可未确认** → 重检索路线阻塞（关键路径）
+- ⛔ **Gemma 4 E4B 在 8 GB 显存不可行**（4bit 加载即占 8.685 GiB）→ A2/A3 路径受影响
+- ❌ 冻结证据列表（全量）、检索质量指标（R@1/R@5/MRR）、S3 干扰集、效用选择器
+- ⏳ 20 题联调清单（切分已定，冻结版未生成）
+
 
 ## 证据与数据规则（双方共同遵守）
 
 1. **GT、正确答案、命中标记只用于评分、Oracle 条件与离线分析，绝不能用于检索条件下的证据选择。**
-2. 官方 `retrieved_images` 中 **55.9%** 的题已含 GT 正确证据（场景间 6.9%–81.7%），
-   因此**不能当作干净检索基线**；跨场景对比会失真。
+2. 官方 `retrieved_images` 的 **GT 图像字节级精确匹配命中率**为
+   任意 **55.9%**、rank-0 **32.6%**、全部 GT 覆盖 **2.3%**（分母 1353）。
+   ⚠️ 这**不等于答案泄漏**——无法区分『检索器独立命中』与『候选生成使用 GT 标注』，
+   官方候选的产生过程未被完整说明。详见 `handover/docs/official_pool_provenance.md`。
+   它也**不能**反推自研重检索是干净基线。
 3. 官方 RAG 提示模板的**图片占位符数量写死**（常规 6、Incomplete 2）。
    改 top-k 必须同步改占位符，并另立 `protocol_version`。
-4. **失败题目不得静默删除**，需保留并记录 `status`，同时报告两个分母。
+4. **失败题目不得静默删除**。主准确率使用**固定题单分母**；
+   成功子集指标仅作补充，且必须给出**覆盖率**。
+5. **Incomplete 单独报告，但不得从总体剔除**。完整基准总体指标为主指标。
+6. 内部切出的留出集**不能叫「外部验证」**（同源）；外部验证须用 VisDoM / MMDocRAG。
 
 ## 数据版本（已锁定）
 
@@ -50,23 +76,22 @@ a-side/              A 侧可复现资产
 | revision | `43620fde4044bb150e158c67ad7af6b6b11e1da2` |
 | 许可 | CC-BY-4.0 |
 | split | **只有 `test`**，1,353 题（无官方 dev/val，需项目内自切分） |
+| parquet 实际字节 | **4.00 GiB**（本地实测；官方 API `usedStorage` ≈8 GiB 为不同口径） |
 
 ## 当前进展
 
 - A：环境与工具链已验证；论文、作者代码、数据集版本已核验；
-  **尚未产出冻结证据列表**。已交付 5 题接口样例供 B 联调。
+  **尚未产出冻结证据列表**。已交付 6 题接口样例（含 GT，S2 可跑，28/28 验收通过）。
 - B：已完成小样本与评分验证，正在整理运行代码和租用单卡 GPU 前的准备。
 - **真实模型试跑与正式实验尚未完成。**
 
-模型权重、数据图片、索引和运行缓存保存在仓库外；代码与配置后续按已验证版本陆续提交。
+模型权重、数据图片、索引和运行缓存保存在仓库外；代码与配置按已验证版本陆续提交。
 
-## 本机环境注意（Windows + 本地代理）
+## 安装
 
-本机 `github.com` 被 **Watt Toolkit（`Steam++.Accelerator`）** 在 `0.0.0.0:443` 本地拦截，
-schannel 无法完成吊销检查，会报 `CRYPT_E_NO_REVOCATION_CHECK`。克隆/推送需要：
+**标准步骤见 [`a-side/setup/STANDARD_INSTALL.md`](a-side/setup/STANDARD_INSTALL.md)。**
 
-```bash
-git -c http.sslVerify=false clone https://github.com/joyboy-type/EdgeCoRAG.git
-```
-
-详细说明见 `a-side/setup/WINDOWS_PROXY_NOTES.md`。
+本机（Windows）曾观察到本地 TLS 中间人代理导致 `git` 报
+`CRYPT_E_NO_REVOCATION_CHECK`。⚠️ **该问题及其绕行办法记录在
+[`a-side/setup/MACHINE_SPECIFIC_PROXY.md`](a-side/setup/MACHINE_SPECIFIC_PROXY.md)，
+它不是项目标准做法**——正确做法是修好证书信任链，而不是关闭 TLS 校验。

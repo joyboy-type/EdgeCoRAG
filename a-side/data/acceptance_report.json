@@ -1,0 +1,198 @@
+{
+  "script": "scripts/verify_handover_sample.py",
+  "sample_dir": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-B-handover\\samples",
+  "path_root": "samples/ (索引与 JSONL 中的 path 均相对该目录)",
+  "rows": 6,
+  "index_entries": 62,
+  "checks": {
+    "A. Schema 合规": {
+      "passed": 1,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "逐行通过 evidence_list.schema.json",
+          "ok": true,
+          "detail": "6 行"
+        }
+      ]
+    },
+    "B. ID 体系": {
+      "passed": 7,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "evidence_id 全局唯一",
+          "ok": true,
+          "detail": "62 条"
+        },
+        {
+          "name": "qid 前缀格式 mragb:<raw_id>",
+          "ok": true,
+          "detail": "6 题"
+        },
+        {
+          "name": "raw_id 与 qid 可互推",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id 含 qid 前缀",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "JSONL 内 qid 唯一",
+          "ok": true,
+          "detail": "6 题"
+        },
+        {
+          "name": "JSONL 与 CSV 的 evidence_id 集合一致(无孤儿)",
+          "ok": true,
+          "detail": "JSONL 62 / CSV 62"
+        },
+        {
+          "name": "used_in_prompt=false 的条目有声明来源",
+          "ok": true,
+          "detail": "孤儿 0"
+        }
+      ]
+    },
+    "C. 图片哈希": {
+      "passed": 3,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "索引文件全部存在",
+          "ok": true,
+          "detail": "缺失 0"
+        },
+        {
+          "name": "字节 sha256 与索引一致",
+          "ok": true,
+          "detail": "不符 0"
+        },
+        {
+          "name": "容器格式与扩展名一致",
+          "ok": true,
+          "detail": "不符 0"
+        }
+      ]
+    },
+    "D. 图片解码": {
+      "passed": 3,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "全部可被 PIL 打开",
+          "ok": true,
+          "detail": "失败 0"
+        },
+        {
+          "name": "尺寸与索引一致",
+          "ok": true,
+          "detail": "不符 0"
+        },
+        {
+          "name": "可转为 RGB",
+          "ok": true,
+          "detail": ""
+        }
+      ]
+    },
+    "E. 顺序一致": {
+      "passed": 1,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "evidence_order 与索引 rank 序列一致",
+          "ok": true,
+          "detail": "不符 0"
+        }
+      ]
+    },
+    "F. 数量正确": {
+      "passed": 3,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "num_evidence == len(evidence_order)",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "占位符数 == 证据数 + 1(含查询图)",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "Incomplete 场景证据数为 1",
+          "ok": true,
+          "detail": "1 题 Incomplete"
+        }
+      ]
+    },
+    "G. 跨字段": {
+      "passed": 6,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "retrieval_ranks 与列表等长",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "retrieval_scores 与列表等长",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "图片路径全部有效(相对 path_root)",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "GT ID 与 GT refs 一一对应",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "GT 命中位点在合法范围内",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "路径以 images/ 为根且按 raw_id 分目录",
+          "ok": true,
+          "detail": ""
+        }
+      ]
+    },
+    "H. 隔离性": {
+      "passed": 4,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "task_payload 不含答案字段",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "scoring_only 含 gold_choice 且取值合法",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "四个选项完整",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "is_oracle 全部为 false",
+          "ok": true,
+          "detail": ""
+        }
+      ]
+    }
+  },
+  "overall_pass": true
+}

@@ -1,0 +1,7 @@
+{
+  "script": "scripts/near_duplicate_check.py",
+  "mode": "samples_dir",
+  "dir": "..\\EdgeCoRAG-B-handover\\samples",
+  "questions": 5,
+  "findings": []
+}
