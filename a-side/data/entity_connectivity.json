@@ -1,0 +1,33 @@
+{
+  "script": "scripts/quantify_entity_connectivity.py",
+  "dataset_repo": "uclanlp/MRAG-Bench",
+  "dataset_revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+  "questions": 1353,
+  "unique_image_hashes": 4712,
+  "cross_question_shared_image_hashes": 2688,
+  "shared_image_shape": {
+    "gt<->gt": 1091,
+    "gt<->ret": 1423,
+    "query<->query": 162,
+    "ret<->ret": 11,
+    "query+gt+ret": 1
+  },
+  "exact_only_connectivity": {
+    "group_count": 7,
+    "largest_group": 1338,
+    "size_distribution": {
+      "2": 4,
+      "3": 1,
+      "4": 1,
+      "1338": 1
+    }
+  },
+  "per_question_shared_images": {
+    "mean": 8.02,
+    "min": 1,
+    "max": 11,
+    "median": 8
+  },
+  "conclusion": "精确重复单独就把绝大多数题目连成一个大组：组数 7、最大组 1338 题。因此**按图片连通性做实体级组隔离在本数据集上不可行** —— 任何组隔离都会把几乎所有题绑到同一子集。切分因此采用「场景分层 + 逐题分配」，并如实声明跨子集的图片相关性未能隔离。",
+  "generated_at": "2026-10-15T19:38:52"
+}

@@ -1,0 +1,48 @@
+{
+  "script": "scripts/probe_corpus_access.py",
+  "share_url": "https://drive.google.com/file/d/1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL/view?usp=sharing",
+  "direct_url": "https://drive.google.com/uc?export=download&id=1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL",
+  "file_id": "1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL",
+  "generated_at": "2026-10-15T20:12:22",
+  "reachability": [
+    {
+      "host": "drive.google.com",
+      "resolved_ip": "108.160.165.212",
+      "tcp_ok": false,
+      "tcp_error": "TimeoutError: timed out"
+    },
+    {
+      "host": "docs.google.com",
+      "resolved_ip": "157.240.17.35",
+      "tcp_ok": false,
+      "tcp_error": "TimeoutError: timed out"
+    },
+    {
+      "host": "googleusercontent.com",
+      "resolved_ip": "127.0.0.1",
+      "tcp_ok": true,
+      "connect_seconds": 0.01
+    },
+    {
+      "host": "www.googleapis.com",
+      "resolved_ip": "172.217.117.4",
+      "tcp_ok": false,
+      "tcp_error": "TimeoutError: timed out"
+    },
+    {
+      "host": "lh3.googleusercontent.com",
+      "resolved_ip": "142.250.73.129",
+      "tcp_ok": true,
+      "connect_seconds": 0.21
+    }
+  ],
+  "share_page": {
+    "error": "ConnectTimeout: HTTPSConnectionPool(host='drive.google.com', port=443): Max retries exceeded with url: /file/d/1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL/view?usp=sharing (Caused by ConnectTimeoutError(<HTTPSConnection(host='drive.google.com', port=443) at 0x2bba17ad5e0>, 'Connection to drive.google.com timed out. (connect timeout=40)'))"
+  },
+  "direct_link": {
+    "error": "ConnectTimeout: HTTPSConnectionPool(host='drive.google.com', port=443): Max retries exceeded with url: /uc?export=download&id=1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL (Caused by ConnectTimeoutError(<HTTPSConnection(host='drive.google.com', port=443) at 0x2bba17ae090>, 'Connection to drive.google.com timed out. (connect timeout=40)'))"
+  },
+  "verdict": "network_unreachable",
+  "license_status": "unconfirmed",
+  "license_note": "数据集本体是 CC-BY-4.0，但检索语料是**单独发布的压缩包**，官方未声明其许可，且其中各上游图片（Imagenet 等）许可不同。**在许可确认前，重检索结果不得对外发布。**"
+}

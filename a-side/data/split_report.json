@@ -1,0 +1,110 @@
+{
+  "script": "scripts/verify_split.py",
+  "dir": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-A\\splits",
+  "counts": {
+    "smoke_20": 20,
+    "dev": 150,
+    "internal_holdout": 150,
+    "frozen_test": 1033
+  },
+  "reviewed_count": 7,
+  "reviewed_by_set": {
+    "smoke_20": 0,
+    "dev": 7,
+    "internal_holdout": 0,
+    "frozen_test": 0
+  },
+  "checks": [
+    {
+      "check": "manifest 存在",
+      "ok": true,
+      "detail": "split_manifest.v2.json"
+    },
+    {
+      "check": "smoke_20.v2.txt 存在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "dev.v2.txt 存在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "internal_holdout.v2.txt 存在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "frozen_test.v2.txt 存在",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "I1 子集互斥（无 qid 跨子集）",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "I2 总覆盖完整",
+      "ok": true,
+      "detail": "唯一 1353 / 期望 1353"
+    },
+    {
+      "check": "I2b 无重复计数",
+      "ok": true,
+      "detail": "总行数 1353 vs 唯一 1353"
+    },
+    {
+      "check": "I6 qid 格式 mragb:<raw_id>",
+      "ok": true,
+      "detail": "异常 []"
+    },
+    {
+      "check": "I5 raw_id 为字符串",
+      "ok": true,
+      "detail": "非字符串 []"
+    },
+    {
+      "check": "I5b raw_id 形态记录",
+      "ok": true,
+      "detail": "含前导零的 raw_id 0 个（说明未做整数化）"
+    },
+    {
+      "check": "I3 已调试题不进入 internal_holdout",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "I3b 已调试题不进入 frozen_test",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "I4 已调试题全部有归属",
+      "ok": true,
+      "detail": "7 题均已放置"
+    },
+    {
+      "check": "I8 声明计数 == 文件行数",
+      "ok": true,
+      "detail": "smoke_20=20 dev=150 internal_holdout=150 frozen_test=1033"
+    },
+    {
+      "check": "I8b 文件哈希与 manifest 一致",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "I9 manifest 声明了机器可校验的分配规则",
+      "ok": true,
+      "detail": "assignment_rule='scenario_stratified_group_atomic_v2'"
+    },
+    {
+      "check": "I10 声明了实体/近重复组的处理方式",
+      "ok": true,
+      "detail": "entity_isolation.mode='per_question_fallback_giant_component'"
+    }
+  ],
+  "overall_pass": true
+}

@@ -13,12 +13,24 @@
     "dev": 150,
     "internal_holdout": 150
   },
-  "reviewed_ids_forced_to_dev": [],
+  "reviewed_ids_forced_to_dev": [
+    "# reviewed ids（一行一个 raw_id）",
+    "# 已调试题：B 侧提供的 7 个 + A 侧接触过的",
+    "# 格式: raw_id",
+    "# 详见 a-side/plans/REVIEWED_IDS.md",
+    "0",
+    "1",
+    "2",
+    "24",
+    "3",
+    "4",
+    "43"
+  ],
   "splits": {
     "smoke_20": {
-      "count": 20,
+      "count": 19,
       "file": "smoke_20.txt",
-      "sha256": "d7309675ff90731a1b6539b8e109580580f09cd4bb1bd48365c03b2454330a15",
+      "sha256": "940cb766a1e17f604be3058db17ed0052f7bae74450e2b52f2bdf3766456687d",
       "scenarios": {
         "Angle": 2,
         "Biological": 2,
@@ -27,40 +39,40 @@
         "Obstruction": 2,
         "Others": 2,
         "Partial": 4,
-        "Scope": 2,
+        "Scope": 1,
         "Temporal": 2
       }
     },
     "dev": {
-      "count": 150,
+      "count": 153,
       "file": "dev.txt",
-      "sha256": "5a80c8426b81b51b2cf93d6098cc2c4f15341b3ca781cf546915f58d50aca7da",
+      "sha256": "05828fac568407654cb39cbce69718320de8bbffb638b1e4da0f13fd961d0e23",
       "scenarios": {
         "Angle": 37,
         "Biological": 11,
         "Deformation": 11,
         "Incomplete": 11,
-        "Obstruction": 12,
+        "Obstruction": 13,
         "Others": 13,
         "Partial": 27,
-        "Scope": 11,
-        "Temporal": 17
+        "Scope": 12,
+        "Temporal": 18
       }
     },
     "internal_holdout": {
-      "count": 150,
+      "count": 148,
       "file": "internal_holdout.txt",
-      "sha256": "1b719790a1886487564a41f2577c71a402019c00a51d65e97d3728f83f8df6a5",
+      "sha256": "6e02a92561670fab0e2e25175620ef0e0a6c443918dfba631325e6890ff7d145",
       "scenarios": {
         "Angle": 37,
         "Biological": 11,
         "Deformation": 11,
         "Incomplete": 11,
-        "Obstruction": 12,
+        "Obstruction": 11,
         "Others": 13,
         "Partial": 27,
         "Scope": 11,
-        "Temporal": 17
+        "Temporal": 16
       }
     },
     "frozen_test": {
@@ -80,5 +92,5 @@
       }
     }
   },
-  "generated_at": "2026-10-15T16:29:13"
+  "generated_at": "2026-10-15T19:22:21"
 }

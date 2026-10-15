@@ -1,0 +1,274 @@
+{
+  "split_version": "v2",
+  "assignment_rule": "scenario_stratified_group_atomic_v2",
+  "dataset_repo": "uclanlp/MRAG-Bench",
+  "dataset_revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+  "seed": 20261015,
+  "reviewed_ids_source": "reviewed_ids.txt",
+  "reviewed_ids": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "24",
+    "43"
+  ],
+  "reviewed_target": "dev",
+  "reviewed_count": 7,
+  "entity_isolation": {
+    "source": "entity_groups.json",
+    "method": {
+      "exact_repeat": "所有图片(查询图+GT+候选)取 JPEG q95 字节 sha256，跨题同哈希即 union",
+      "near_duplicate": "查询图 dHash(64bit) 汉明距离 <= 6 即 union",
+      "union_find": "传递闭包成连通组"
+    },
+    "limitations": [
+      "这是**代理分组**，不是官方实体/文档标注",
+      "dHash 对旋转、大幅裁剪、水平翻转不敏感 → 会漏并",
+      "同场景不同实体可能因查询图相似而误并",
+      "因此只可声明『已按可检测到的重复做隔离』，不可声明『已消除全部相关性』"
+    ],
+    "group_count": 7,
+    "multi_question_groups": 7,
+    "questions_in_multi_groups": 1353,
+    "cross_question_exact_duplicate_images": 2688,
+    "near_duplicate_query_pairs": 400,
+    "caveat": "已按**可检测到的**图片重复/近重复做隔离；这是代理分组，非官方实体标注，**不能声称已消除全部相关性**",
+    "mode": "per_question_fallback_giant_component",
+    "giant_component_detected": true,
+    "largest_group_size": 1331,
+    "threshold": 338,
+    "max_group_fraction": 0.25,
+    "fallback_reason": "数据集上按图片共享关系做连通后，最大组达 1331/1353 题；组原子分配会把几乎所有题绑到同一子集（实测会得到 smoke_20=8、internal_holdout=0）。因此**放弃组隔离，改为逐题分配**，并如实声明跨子集的图片相关性**未能隔离**。",
+    "why_infeasible": "本数据集存在大量跨题复用的图片：实测 2688 个图片哈希被多题共享（gt<->ret 1423、gt<->gt 1091、query<->query 162 等），仅精确重复就足以把 1338 题连成一组；每题平均与约 9 道其它题共享图片。见 a-side/data/entity_connectivity.json。"
+  },
+  "stratification": {
+    "variable": "scenario",
+    "role": "仅用于均衡覆盖；**不是**同源分组依据",
+    "note": "scenario / image_type / source 是粗粒度属性，不能证明两题出自同一实体或同一源文档"
+  },
+  "targets": {
+    "smoke_20": 20,
+    "dev": 150,
+    "internal_holdout": 150
+  },
+  "actual_counts": {
+    "smoke_20": 20,
+    "dev": 150,
+    "internal_holdout": 150,
+    "frozen_test": 1033
+  },
+  "target_deviations": {
+    "smoke_20": {
+      "target": 20,
+      "actual": 20,
+      "delta": 0
+    },
+    "dev": {
+      "target": 143,
+      "actual": 150,
+      "delta": 7
+    },
+    "internal_holdout": {
+      "target": 150,
+      "actual": 150,
+      "delta": 0
+    }
+  },
+  "skipped_due_to_quota": 1033,
+  "skipped_examples": [
+    {
+      "gid": "G:193",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:643",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:209",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:185",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:820",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:1050",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:617",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:1236",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:12",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:804",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:318",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:1135",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:476",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:28",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:704",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:1351",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:594",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:1229",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:59",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    },
+    {
+      "gid": "G:959",
+      "size": 1,
+      "stratum": "Angle",
+      "reason": "layer_quota_full_for_this_unit_size"
+    }
+  ],
+  "naming_warning": "internal_holdout 与 frozen_test 同源同分布，**不得称为外部验证**；外部验证须用 VisDoM / MMDocRAG",
+  "label_exposure_note": "A 侧曾在**全部 1353 题**上计算过与 GT 相关的**聚合统计**（audit_gt_match_rate.py 等）。这些统计**未用于挑题**，切分规则只依赖 raw_id 与固定种子；但作为已发生的标签接触，如实声明。逐题具名的接触见 reviewed_ids。",
+  "splits": {
+    "smoke_20": {
+      "file": "smoke_20.v2.txt",
+      "count": 20,
+      "sha256": "363f69180d74a80340ae500c72717bc544973874874c033f477090f4412544f9",
+      "scenarios": {
+        "Angle": 3,
+        "Biological": 2,
+        "Deformation": 2,
+        "Incomplete": 1,
+        "Obstruction": 2,
+        "Others": 2,
+        "Partial": 4,
+        "Scope": 2,
+        "Temporal": 2
+      }
+    },
+    "dev": {
+      "file": "dev.v2.txt",
+      "count": 150,
+      "sha256": "8d5346df2690579e32d5bc90cf58b3978bff2a532c1ff33a343950a5a6df1bac",
+      "scenarios": {
+        "Angle": 33,
+        "Biological": 11,
+        "Deformation": 12,
+        "Incomplete": 13,
+        "Obstruction": 12,
+        "Others": 13,
+        "Partial": 26,
+        "Scope": 12,
+        "Temporal": 18
+      }
+    },
+    "internal_holdout": {
+      "file": "internal_holdout.v2.txt",
+      "count": 150,
+      "sha256": "3181bc8ebad7a776100c3ecd08b4401ae24f5417ff4adf2eaca02b312cb6526a",
+      "scenarios": {
+        "Angle": 38,
+        "Biological": 11,
+        "Deformation": 11,
+        "Incomplete": 11,
+        "Obstruction": 12,
+        "Others": 13,
+        "Partial": 27,
+        "Scope": 11,
+        "Temporal": 16
+      }
+    },
+    "frozen_test": {
+      "file": "frozen_test.v2.txt",
+      "count": 1033,
+      "sha256": "c9f950652442bad9bf71f53775c83f1f6b1f8cd2d7c7228967050b22fa957ed4",
+      "scenarios": {
+        "Angle": 248,
+        "Biological": 78,
+        "Deformation": 77,
+        "Incomplete": 77,
+        "Obstruction": 82,
+        "Others": 92,
+        "Partial": 189,
+        "Scope": 77,
+        "Temporal": 113
+      }
+    }
+  },
+  "generated_at": null,
+  "input_digest": "fb7df569304763e92bfc3b4b4f77657341fb0f60e76d50ed2c0eea78dd4b6525",
+  "deterministic": true,
+  "generated_at_note": "故意不写墙上时钟：时间戳会让重跑产生不同字节，破坏可重现性并造成无意义的提交分叉。用 input_digest 标识本次生成。"
+}

@@ -70,6 +70,9 @@ KEEP_SCRIPTS = [
     "verify_hash_reliability.py", "test_hash_stability.py",
     "determine_hash_method.py", "near_duplicate_check.py",
     "verify_sample_files.py", "verify_handover_sample.py", "make_split.py",
+    # 本轮新增（切分 v2 / 实体连通性 / 语料探测）
+    "verify_split.py", "build_entity_groups.py", "quantify_entity_connectivity.py",
+    "probe_corpus_access.py",
 ]
 KEEP_REPORTS = ["audit_env.md", "A_P0_P1.md",
                 "requirements-main.lock.txt", "requirements-mrag.lock.txt"]
@@ -79,14 +82,18 @@ KEEP_DATA = [
     ("outputs/dataset_probe/gt_match_rate_audit.json", "gt_match_rate_audit.json"),
     ("outputs/dataset_probe/near_duplicate_report.json", "near_duplicate_report.json"),
     ("outputs/dataset_probe/size_reconciliation.json", "size_reconciliation.json"),
+    ("outputs/dataset_probe/entity_connectivity.json", "entity_connectivity.json"),
+    ("outputs/corpus_probe/corpus_access.json", "corpus_access.json"),
     ("outputs/handover_verify/acceptance_report.json", "acceptance_report.json"),
     ("outputs/handover_verify/sample_files_check.json", "sample_files_check.json"),
+    ("outputs/split_verify/split_report.json", "split_report.json"),
     ("outputs/gemma4_probe/tokenizer_check.json", "gemma4_tokenizer_check.json"),
     ("outputs/gemma4_probe/vram_diagnosis_gemma-4-E4B-it.json", "vram_diagnosis_e4b.json"),
     ("source_manifest.csv", "source_manifest.csv"),
 ]
-# setup 文档从 a-side-src/setup 读入（避免把长文写死在脚本里）
+# setup 与 plans 文档从 a-side-src 读入（避免把长文写死在脚本里）
 SETUP_DIR = A_ROOT / "a-side-src" / "setup"
+PLANS_DIR = A_ROOT / "a-side-src" / "plans"
 
 
 def run(args: list[str], cwd: Path | None = None, check: bool = False,
@@ -197,15 +204,15 @@ def populate(wt: Path) -> None:
         print(f"  a-side/splits/   {n_sp} 个文件(题目划分与种子)")
 
     # 交接计划：未完成事项与阻塞清单（供下一个接手者）
-    src_plans = A_ROOT / "a-side-src" / "plans"
-    if src_plans.exists():
+    if PLANS_DIR.exists():
         dst_pl = dst_a / "plans"
         dst_pl.mkdir(parents=True, exist_ok=True)
         n_pl = 0
-        for src in sorted(src_plans.glob("*.md")):
-            shutil.copy2(src, dst_pl / src.name)
-            n_pl += 1
-        print(f"  a-side/plans/    {n_pl} 个文档(未完成事项与阻塞)")
+        for src in sorted(PLANS_DIR.glob("*")):
+            if src.is_file():
+                shutil.copy2(src, dst_pl / src.name)
+                n_pl += 1
+        print(f"  a-side/plans/    {n_pl} 个文档(决策清单/未完成事项/变更说明)")
 
     (wt / "README.md").write_text(ROOT_README, encoding="utf-8")
     print("  README.md 已更新")
@@ -314,32 +321,39 @@ def main() -> int:
 
     print("\n=== 5. 提交与推送 ===")
     if n_staged == 0:
-        print("  无变更可提交")
+        # 关键: 内容与 HEAD 一致时**不要新建提交**。
+        # 若新建,其父提交是本次 prepare 的 base(origin/main),
+        # 会与远程分支分叉,导致 non-fast-forward 被拒(本机实测踩过)。
+        head_now = git("rev-parse", "HEAD", cwd=wt).stdout.strip()
+        print(f"  无变更,不提交;直接推送现有 HEAD {head_now[:12]}")
     else:
         c = git("commit", "-m",
-                "Revise retrieval-side handover: terminology, interface alignment, sample acceptance\n\n"
-                "方法学更正\n"
-                "- 「候选中包含 GT 即答案泄漏」改为「GT 图像字节级精确匹配命中率」，\n"
-                "  附计算脚本、数据版本、分母与输出记录；区分正常检索命中与使用标注生成候选\n"
-                "- 新增 official_pool_provenance.md：逐条标注已核实 / 未确认\n"
-                "- 明确自研重检索亦不能默认干净基线\n"
-                "- Incomplete 单独报告，但保留完整基准总体指标，不从总体剔除\n"
-                "- S3 哈希不重叠改为三层校验（字节哈希 / 近重复 dHash / 语义抽查三态标记）\n"
-                "- 核清 8 GiB 与 4 GiB 体积口径差异（parquet 实测 4.00 GiB）\n"
-                "- 标准安装步骤与机器特有代理绕行分开存放\n\n"
-                "接口对齐\n"
-                "- 不改写评分器，对齐 B 的 strict_choice_v1\n"
-                "- 保留 raw_id 原样字符串，qid = mragb:<raw_id>\n"
-                "- task_payload / 图片引用 / scoring_only 三区隔离\n"
-                "- 结果行补 evidence_version / run_batch_id / parser_version / raw_output\n"
-                "- 条件名统一 S0/S1/S2/S3-pure/S3-mixed\n"
-                "- 官方评分格式作为单独导出，不声称本 Schema 满足官方输入\n"
-                "- 失败不删题；主准确率用固定题单分母，成功子集另报并给覆盖率\n\n"
-                "样例验收\n"
-                "- 补入 GT 图片（按真实数量，未补图），S2 可跑\n"
-                "- 补一道 Incomplete 题并应用官方截断规则\n"
-                "- 图片改为 JPEG95 且哈希与落盘字节同源\n"
-                "- 新增 verify_handover_sample.py，8 组 28 项检查全部通过",
+                "Split v2 (reviewed-id leak fix, honest entity isolation) + decisions\n\n"
+                "切分程序三处缺陷修正\n"
+                "- 【关键】已调试题漏进 frozen_test：v1 只在 smoke/dev/holdout 分配期间过滤，\n"
+                "  最后 rows[pos:] 直接进冻结集。实测泄漏 mragb:3/4/43，而题数相加仍为 1353，\n"
+                "  纯对数查不出。v2 改为在任何分配之前先摘出已调试题。\n"
+                "- 文档声称『同源整组分配』但代码是按场景分层逐题分配：改为 manifest 写入\n"
+                "  机器可校验的 assignment_rule 字段，并由 verify_split.py 断言。\n"
+                "- --dry-run 仍写文件：改为只计算/打印/自检，不写任何文件（已实测文件列表不变）。\n\n"
+                "同源隔离：从虚称改为如实结论\n"
+                "- 新增 build_entity_groups.py / quantify_entity_connectivity.py\n"
+                "- 实测跨题共享图片哈希 2688 个（gt<->ret 1423、gt<->gt 1091、query<->query 162），\n"
+                "  仅精确重复就把 1338/1353 题连成一组；每题平均与约 9 道其它题共享图片\n"
+                "- 结论：按图片连通性做实体级隔离在本数据集上**不可行**\n"
+                "  （组原子分配实测得到 smoke_20=8、internal_holdout=0）\n"
+                "- 故退化为逐题分配，并在 manifest 中如实声明『跨子集图片相关性未能隔离』\n\n"
+                "语料可取得性：给出明确结论\n"
+                "- 新增 probe_corpus_access.py；实测本机无法访问 Google 系域名\n"
+                "  （drive/docs/www.googleapis.com 超时）→ 当前网络下无法验证语料\n"
+                "- 找到作者背书：utility-mrag 文档说明官方数据集已内联候选，\n"
+                "  作者自己的复现无需单独语料\n"
+                "- 新增 plans/DECISIONS_NEEDED.md：集中列出 4 项决策与推荐方案\n\n"
+                "验证\n"
+                "- 新增 verify_split.py：18 项不变量（互斥/覆盖/已调试题不泄漏/raw_id 字符串/\n"
+                "  计数与哈希一致/规则可校验/实体隔离已声明）\n"
+                "- 三次独立运行哈希完全一致（可重现）\n"
+                "- v2 计数 20/150/150/1033，旧版 v1 保留",
                 cwd=wt)
         print("  ✅ 已提交" if c.returncode == 0 else f"  ✗ 提交失败: {c.stderr[:200]}")
 
