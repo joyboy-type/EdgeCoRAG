@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgecorag.local/schemas/result_row.schema.json",
+  "title": "EdgeCoRAG 逐题结果行（B 侧 → 分析）",
+  "description": "推理侧（B）为每道题、每个条件产出一行。此格式同时满足官方 score.py 的输入要求与 EdgeCoRAG 的成本分析需求。一行一题一条件（JSONL）。",
+  "type": "object",
+  "required": [
+    "qid", "raw_id", "condition", "evidence_ids_order",
+    "model_id", "model_revision", "quantization",
+    "prediction_raw", "prediction", "correct", "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "qid": { "type": "string", "pattern": "^mragb:.+$" },
+    "raw_id": {
+      "type": "string",
+      "description": "原始 item['id']。官方 score.py 内部用 'id' 字段，但官方 llava 脚本实际写出 'qs_id'，二者不一致——请在结果行里两个都带上（见 id 与 qs_id）。"
+    },
+    "id": {
+      "type": ["string", "null"],
+      "description": "兼容官方 score.py 期望的 'id' 字段。"
+    },
+    "qs_id": {
+      "type": ["string", "null"],
+      "description": "兼容官方 llava_one_vision.py 实际写出的 'qs_id' 字段。"
+    },
+    "condition": {
+      "type": "string",
+      "description": "实验条件。S0=无证据；S1=统一检索证据；S2=GT 证据（Oracle 上界）；S3=干扰证据。",
+      "enum": ["S0", "S1", "S2", "S3", "S3-mixed"]
+    },
+    "pool_id": {
+      "type": ["string", "null"],
+      "description": "该条件所用证据池，需与 evidence_list 的 pool_id 一致。"
+    },
+    "protocol_version": {
+      "type": ["string", "null"],
+      "description": "提示模板与 top-k 协议版本。不同协议不得混入同一张表。"
+    },
+    "prompt_template_version": {
+      "type": ["string", "null"],
+      "description": "提示模板版本标识。"
+    },
+    "prompt": {
+      "type": ["string", "null"],
+      "description": "完整提示文本（官方 score.py 的 GPT 兜底抽取需要它）。"
+    },
+    "evidence_ids_order": {
+      "type": "array",
+      "description": "实际送入模型的证据 ID 顺序（不含查询图）。用于分析顺序效应。",
+      "items": { "type": "string" }
+    },
+    "input_image_count": {
+      "type": ["integer", "null"],
+      "description": "送入模型的图片总数（含查询图）。"
+    },
+    "input_image_pixels": {
+      "type": ["array", "null"],
+      "description": "每张图的原始像素 [w, h]，与送入顺序对应。任务书要求记录输入图像数量/像素。",
+      "items": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 }
+    },
+    "model_id": { "type": "string", "description": "模型标识，如 'google/gemma-4-E2B-it'。" },
+    "model_revision": { "type": ["string", "null"], "description": "权重 revision / commit。" },
+    "quantization": {
+      "type": ["string", "null"],
+      "description": "量化精度，如 'bf16'、'int4-nf4'、'none'。任务书要求逐题记录。"
+    },
+    "framework_versions": {
+      "type": ["object", "null"],
+      "description": "如 {'torch': '2.11.0+cu128', 'transformers': '5.19.0'}。",
+      "additionalProperties": { "type": "string" }
+    },
+    "prediction_raw": {
+      "type": "string",
+      "description": "模型原始输出全文。官方 score.py 读取的字段名是 'output'，此处同时另存，见 output。"
+    },
+    "output": {
+      "type": ["string", "null"],
+      "description": "兼容官方 score.py 期望的 'output' 字段。"
+    },
+    "prediction": {
+      "type": ["string", "null"],
+      "description": "抽取后的选项字母 'A'/'B'/'C'/'D'。官方 score.py 用的字段名是 'output' 经抽取后的结果，不单独存。",
+      "enum": ["A", "B", "C", "D", null]
+    },
+    "extraction_method": {
+      "type": ["string", "null"],
+      "description": "答案抽取方式。重要：官方 automatic_extract 存在类型缺陷，需说明用了哪个版本。",
+      "enum": ["official_automatic", "official_gpt_fallback", "fixed_v1", "manual", null]
+    },
+    "gold_choice": {
+      "type": ["string", "null"],
+      "description": "官方 score.py 期望字段名为 'gt_choice'，值为 'A'/'B'/'C'/'D'。此处另存，见 gt_choice。仅用于评分，不得进入证据选择。",
+      "enum": ["A", "B", "C", "D", null]
+    },
+    "gt_choice": {
+      "type": ["string", "null"],
+      "description": "官方 score.py 直接读取的字段。必须与 gold_choice 一致。",
+      "enum": ["A", "B", "C", "D", null]
+    },
+    "correct": {
+      "type": ["boolean", "null"],
+      "description": "prediction == gt_choice。null 表示抽取失败或该题被排除。"
+    },
+    "scenario": {
+      "type": ["string", "null"],
+      "description": "官方 score.py 依赖它做分场景统计。",
+      "enum": ["Angle", "Partial", "Temporal", "Others", "Obstruction",
+               "Scope", "Deformation", "Biological", "Incomplete", null]
+    },
+    "aspect": { "type": ["string", "null"] },
+    "retrieval_ms": { "type": ["number", "null"], "description": "检索耗时（毫秒）。" },
+    "encoder_ms": { "type": ["number", "null"], "description": "查询编码耗时（毫秒）。" },
+    "router_ms": { "type": ["number", "null"], "description": "证据选择/路由耗时（毫秒）。" },
+    "generation_ms": { "type": ["number", "null"], "description": "生成耗时（毫秒）。" },
+    "e2e_ms": { "type": ["number", "null"], "description": "端到端耗时（毫秒）。不得把离线索引时间混入。" },
+    "cold_start": {
+      "type": ["boolean", "null"],
+      "description": "true 表示冷启动测量。任务书要求热启动测 3 次取中位数、另报冷启动。"
+    },
+    "repeat_index": {
+      "type": ["integer", "null"],
+      "description": "同一题的重复测量序号（0,1,2）。用于计算中位数。"
+    },
+    "peak_vram_gb": { "type": ["number", "null"], "description": "峰值显存（GiB），实测填写。" },
+    "hardware": {
+      "type": ["object", "null"],
+      "description": "硬件标识。B 侧机器与 A 侧可能不同，必须记录，否则耗时不可比。",
+      "additionalProperties": false,
+      "properties": {
+        "gpu": { "type": ["string", "null"] },
+        "vram_gb": { "type": ["number", "null"] },
+        "driver": { "type": ["string", "null"] }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "extraction_failed", "generation_failed", "missing_image", "excluded"],
+      "description": "失败题目保留在结果中，不得静默删除。"
+    },
+    "notes": { "type": ["string", "null"] }
+  }
+}

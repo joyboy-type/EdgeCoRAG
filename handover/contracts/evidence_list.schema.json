@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://edgecorag.local/schemas/evidence_list.schema.json",
+  "title": "EdgeCoRAG 冻结证据列表（检索侧 → B 侧）",
+  "description": "检索侧（A）交付给推理与分析侧（B）的逐题证据清单。一行一题（JSONL）。B 侧据此组装模型输入。字段分为两个区：task_payload 是组装模型输入所必需（题面、选项、图片）；scoring_only 只能用于评分与离线分析，严禁流入证据选择或 prompt。",
+  "type": "object",
+  "required": [
+    "qid", "raw_id", "split", "scenario", "aspect",
+    "question_image", "evidence_order", "num_evidence",
+    "pool_id", "retriever_id", "protocol_version", "status",
+    "task_payload", "scoring_only", "provenance"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "qid": {
+      "type": "string",
+      "description": "项目内题 ID，格式 'mragb:<原始 id>'。",
+      "pattern": "^mragb:.+$"
+    },
+    "raw_id": {
+      "type": "string",
+      "description": "HF 原始 item['id'] 的原样字符串，保留映射以便对照官方数字。"
+    },
+    "split": {
+      "type": "string",
+      "enum": ["smoke_20", "dev", "frozen_test", "heldout_external"],
+      "description": "所属子集。因官方无 dev split，这是项目内自切分。"
+    },
+    "scenario": {
+      "type": "string",
+      "enum": ["Angle", "Partial", "Temporal", "Others", "Obstruction",
+               "Scope", "Deformation", "Biological", "Incomplete"]
+    },
+    "aspect": { "type": "string" },
+    "question_image": {
+      "$ref": "#/$defs/imageRef",
+      "description": "查询图。送入模型时固定在第 1 位。"
+    },
+    "evidence_order": {
+      "type": "array",
+      "description": "实际送入模型的证据顺序（不含查询图）。顺序是变量，必须记录。",
+      "items": { "$ref": "#/$defs/evidenceRef" }
+    },
+    "num_evidence": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "evidence_order 的长度。Incomplete 场景按官方协议为 1，其余为 5。"
+    },
+    "pool_id": {
+      "type": "string",
+      "description": "候选池标识。用于区分泄漏池与干净池。",
+      "examples": ["official_retrieved_top5", "reindexed_corpus_v1", "gt_evidence", "pure_distractor_v1"]
+    },
+    "pool_leakage_rate": {
+      "type": ["number", "null"],
+      "description": "该池中已含 GT 正确证据的题目比例（0-1）。官方池实测 0.559。null 表示未测。",
+      "minimum": 0
+    },
+    "is_oracle": {
+      "type": "boolean",
+      "description": "true 表示该条件用了 gt_images 或答案信息，只能作为上界，不得称为可部署方法。"
+    },
+    "retriever_id": {
+      "type": ["string", "null"],
+      "description": "检索器标识与版本，如 'embeddinggemma-2@768dim'。官方池不由我们检索产生，故为 null。"
+    },
+    "retrieval_scores": {
+      "type": ["array", "null"],
+      "description": "与 evidence_order 一一对应的检索相似度分数。官方池不提供分数，故为 null。",
+      "items": { "type": ["number", "null"] }
+    },
+    "retrieval_ranks": {
+      "type": ["array", "null"],
+      "description": "与 evidence_order 一一对应的检索排名（0-based）。",
+      "items": { "type": ["integer", "null"] }
+    },
+    "protocol_version": {
+      "type": "string",
+      "description": "协议版本。官方场景规则用 proto_official_v1；固定 top-3 用 proto_fixedk3_v1；不同协议不得混表。"
+    },
+    "prompt_image_slots": {
+      "type": ["integer", "null"],
+      "description": "提示模板中的图片占位符数量。官方模板写死为 6（查询图+5 证据）/ Incomplete 为 2。改用其它 top-k 必须同步修改此值，否则与官方不可比。"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "missing_image", "corrupt_image", "retrieval_failed", "excluded"],
+      "description": "失败题目必须保留在清单中，不得静默删除。统计时需同时报告含失败与不含失败两个分母。"
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "失败原因或人工备注。"
+    },
+    "task_payload": {
+      "type": "object",
+      "description": "组装模型输入所必需的内容。B 侧只应使用本区与 question_image / evidence_order。",
+      "required": ["question"],
+      "additionalProperties": false,
+      "properties": {
+        "question": { "type": "string", "description": "题干原文（不含选项）。" },
+        "choices": {
+          "type": ["object", "null"],
+          "description": "四个选项的文本。官方 loader 会拼接为 'Choices:\\nA: ...\\nB: ...'。",
+          "additionalProperties": false,
+          "properties": {
+            "A": { "type": "string" }, "B": { "type": "string" },
+            "C": { "type": "string" }, "D": { "type": "string" }
+          }
+        }
+      }
+    },
+    "scoring_only": {
+      "type": "object",
+      "description": "⚠️ 仅供评分、Oracle 条件与离线分析。严禁进入证据选择逻辑或 prompt。",
+      "required": ["gold_choice"],
+      "additionalProperties": false,
+      "properties": {
+        "gold_choice": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D"],
+          "description": "正确选项字母。对应数据集 answer_choice。"
+        },
+        "answer_text": {
+          "type": ["string", "null"],
+          "description": "正确答案文本。对应数据集 answer。"
+        },
+        "gt_evidence_ids": {
+          "type": ["array", "null"],
+          "description": "GT 证据的稳定 ID 列表。用于命中判定与 Oracle 条件。",
+          "items": { "type": "string" }
+        },
+        "gt_on_official_pool_ranks": {
+          "type": ["array", "null"],
+          "description": "该题的 GT 出现在官方候选池中的位置（0-based）。空数组表示未命中。用于量化池泄漏。",
+          "items": { "type": "integer" }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "数据与代码溯源，供复验。",
+      "required": ["dataset_repo", "dataset_revision"],
+      "additionalProperties": false,
+      "properties": {
+        "dataset_repo": { "type": "string" },
+        "dataset_revision": { "type": "string" },
+        "dataset_license": { "type": ["string", "null"] },
+        "frozen_at": { "type": ["string", "null"], "description": "ISO 8601 时间。" },
+        "frozen_by": { "type": ["string", "null"] },
+        "config_hash": { "type": ["string", "null"], "description": "检索/选择配置文件的 SHA-256。" }
+      }
+    }
+  },
+  "$defs": {
+    "imageRef": {
+      "type": "object",
+      "description": "一个图片引用。稳定 ID 由 qid + role + rank 决定，绝不用 Viewer 临时地址。",
+      "required": ["evidence_id", "role", "path", "sha256", "w", "h"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "description": "格式 '<qid>#<role><rank>'，如 'mragb:0#official_retrieved0'。",
+          "pattern": "^mragb:.+#(q|gt|official_retrieved|reindexed|distractor)[0-9]*$"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["q", "gt", "official_retrieved", "reindexed", "distractor"]
+        },
+        "rank": {
+          "type": ["integer", "null"],
+          "description": "该角色内的顺序（0-based）。查询图为 null。"
+        },
+        "path": {
+          "type": "string",
+          "description": "相对冻结包根目录的路径，用 '/' 分隔。"
+        },
+        "sha256": {
+          "type": "string",
+          "description": "图片原始字节的 SHA-256。跨版本校验同一张图的唯一依据。",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "w": { "type": "integer", "description": "原始像素宽。" },
+        "h": { "type": "integer", "description": "原始像素高。" }
+      }
+    },
+    "evidenceRef": {
+      "type": "object",
+      "description": "证据引用。结构上是 imageRef 加上检索与干扰相关的可选字段。",
+      "required": ["evidence_id", "role", "path", "sha256", "w", "h"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^mragb:.+#(q|gt|official_retrieved|reindexed|distractor)[0-9]*$"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["q", "gt", "official_retrieved", "reindexed", "distractor"]
+        },
+        "rank": { "type": ["integer", "null"] },
+        "path": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "w": { "type": "integer" },
+        "h": { "type": "integer" },
+        "retrieval_rank": {
+          "type": ["integer", "null"],
+          "description": "检索排名，0 最优。官方池即官方返回顺序。"
+        },
+        "retrieval_score": {
+          "type": ["number", "null"],
+          "description": "检索相似度分数。官方池未提供，故为 null；我方重检索路线会填真实分数。"
+        },
+        "distractor_type": {
+          "type": ["string", "null"],
+          "description": "仅 S3 使用，仅用于分析，绝不进入 prompt。",
+          "enum": [null, "same_class_wrong_instance", "topic_related_but_unsupportive",
+                   "same_source_other_object", "near_duplicate_view",
+                   "hard_negative_from_retrieval"]
+        },
+        "contains_gt": {
+          "type": ["boolean", "null"],
+          "description": "S3 自动校验结果，纯干扰集必须为 false。"
+        }
+      }
+    }
+  }
+}

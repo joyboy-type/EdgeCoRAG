@@ -1,0 +1,81 @@
+{
+  "repo_id": "uclanlp/MRAG-Bench",
+  "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+  "scanned": 1353,
+  "q1_gt_single_vs_incomplete": {
+    "gt_single": 102,
+    "incomplete": 102,
+    "both": 102,
+    "gt_single_not_incomplete": 0,
+    "incomplete_not_gt_single": 0,
+    "fully_coincide": true
+  },
+  "q2_official_retrieved_contains_gt": {
+    "questions_with_any_gt_hit": 756,
+    "query_image_in_retrieved": 1,
+    "hit_rank_distribution": {
+      "0": 441,
+      "1": 352,
+      "2": 303,
+      "3": 238,
+      "4": 187
+    },
+    "per_scenario": {
+      "Scope": {
+        "questions": 102,
+        "questions_with_hit": 73,
+        "hit_images": 160,
+        "retrieved_images": 510
+      },
+      "Obstruction": {
+        "questions": 108,
+        "questions_with_hit": 79,
+        "hit_images": 191,
+        "retrieved_images": 540
+      },
+      "Temporal": {
+        "questions": 149,
+        "questions_with_hit": 66,
+        "hit_images": 141,
+        "retrieved_images": 745
+      },
+      "Deformation": {
+        "questions": 102,
+        "questions_with_hit": 32,
+        "hit_images": 51,
+        "retrieved_images": 510
+      },
+      "Biological": {
+        "questions": 102,
+        "questions_with_hit": 41,
+        "hit_images": 63,
+        "retrieved_images": 510
+      },
+      "Angle": {
+        "questions": 322,
+        "questions_with_hit": 226,
+        "hit_images": 447,
+        "retrieved_images": 1610
+      },
+      "Partial": {
+        "questions": 246,
+        "questions_with_hit": 134,
+        "hit_images": 258,
+        "retrieved_images": 1230
+      },
+      "Incomplete": {
+        "questions": 102,
+        "questions_with_hit": 7,
+        "hit_images": 17,
+        "retrieved_images": 510
+      },
+      "Others": {
+        "questions": 120,
+        "questions_with_hit": 98,
+        "hit_images": 193,
+        "retrieved_images": 600
+      }
+    }
+  },
+  "q4_score_field_present": false
+}

@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-10-15T14:48:10",
+  "pool_id": "official_retrieved_top5",
+  "num_questions": 5,
+  "num_evidence_refs": 30,
+  "dataset": {
+    "repo": "uclanlp/MRAG-Bench",
+    "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+    "license": "cc-by-4.0"
+  },
+  "official_pool_gt_leakage_rate": 0.559,
+  "self_checks": {
+    "每行必需字段齐全": true,
+    "evidence_id 全局唯一": true,
+    "索引中所有文件存在": true,
+    "文件 sha256 与索引一致": true,
+    "查询图未混入证据": true,
+    "num_evidence 与 evidence_order 长度一致": true,
+    "is_oracle=false 未使用 GT": true,
+    "已声明官方池泄漏率": true,
+    "scoring_only 区存在且含 gold_choice": true,
+    "task_payload 含题干与四选项": true,
+    "gt 泄漏位点已逐题量化": true,
+    "证据 sha256 均可在索引中查到": true
+  }
+}

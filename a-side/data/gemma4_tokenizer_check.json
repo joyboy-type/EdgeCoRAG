@@ -1,0 +1,33 @@
+{
+  "model_id": "google/gemma-4-E2B-it",
+  "vocab_size": 262144,
+  "encodings": {
+    "True": [
+      4339
+    ],
+    "False": [
+      9277
+    ],
+    " True": [
+      6288
+    ],
+    " False": [
+      8450
+    ],
+    "true": [
+      3397
+    ],
+    "false": [
+      4530
+    ],
+    "Yes": [
+      10784
+    ],
+    "No": [
+      3771
+    ]
+  },
+  "true_single_token": true,
+  "false_single_token": true,
+  "checked_at": "2026-10-15T13:30:41"
+}

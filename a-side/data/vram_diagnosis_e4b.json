@@ -1,0 +1,47 @@
+{
+  "model": "google/gemma-4-E4B-it",
+  "gpu_total_GiB": 8.0,
+  "vram_after_load": {
+    "allocated_GiB": 8.694,
+    "reserved_GiB": 9.006,
+    "peak_allocated_GiB": 8.825,
+    "peak_reserved_GiB": 9.006
+  },
+  "module_breakdown": [
+    {
+      "module": "model",
+      "params_B": 5.724,
+      "dtypes": "torch.bfloat16,torch.uint8"
+    },
+    {
+      "module": "lm_head",
+      "params_B": 0.671,
+      "dtypes": "torch.bfloat16"
+    }
+  ],
+  "cases": [
+    {
+      "image_size": 448,
+      "n_images": 1,
+      "max_new_tokens": 4,
+      "input_tokens": 296,
+      "vision_tokens": 2520,
+      "vision_tokens_per_image": 2520,
+      "prefill_vram": {
+        "allocated_GiB": 8.692,
+        "reserved_GiB": 8.736,
+        "peak_allocated_GiB": 8.692,
+        "peak_reserved_GiB": 8.736
+      },
+      "peak_vram": {
+        "allocated_GiB": 8.719,
+        "reserved_GiB": 9.006,
+        "peak_allocated_GiB": 8.825,
+        "peak_reserved_GiB": 9.006
+      },
+      "generate_seconds": 23.02,
+      "generated": "False<turn|>"
+    }
+  ],
+  "checked_at": "2026-10-15T13:59:29"
+}

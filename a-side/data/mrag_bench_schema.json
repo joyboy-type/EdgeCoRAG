@@ -1,0 +1,38 @@
+{
+  "repo_id": "uclanlp/MRAG-Bench",
+  "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+  "num_examples": 1353,
+  "scenario": {
+    "Scope": 102,
+    "Obstruction": 108,
+    "Temporal": 149,
+    "Deformation": 102,
+    "Biological": 102,
+    "Angle": 322,
+    "Partial": 246,
+    "Incomplete": 102,
+    "Others": 120
+  },
+  "aspect": {
+    "Perspective": 778,
+    "Transformative": 455,
+    "Others": 120
+  },
+  "image_type": {
+    "Animal": 416,
+    "Building": 44,
+    "Car": 286,
+    "Cats": 105,
+    "Fruit": 102,
+    "Flowers": 178,
+    "Keyboard": 102,
+    "Others_Geo": 120
+  },
+  "gt_images_count": {
+    "1": 102,
+    "5": 1251
+  },
+  "retrieved_images_count": {
+    "5": 1353
+  }
+}
