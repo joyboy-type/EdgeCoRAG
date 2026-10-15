@@ -1,37 +1,37 @@
 {
-  "A_checked_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "A_checked_commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
   "new_main_commit": true,
   "checked_utc": "2026-10-15",
   "items": [
     {
-      "deliverable": "corrected split + source groups + hashes",
-      "status": "v2_received_structural_checks_passed",
-      "detail": "20/150/150/1033; known7in dev; source grouping fell back to per-question. Global exposure completeness and source dependence remain disclosed limitations, not missing split-v2 claim."
+      "deliverable": "v2 splits",
+      "status": "received_preserved",
+      "detail": "Known7dev; registry not exhaustive; per-question fallback not source isolation."
     },
     {
-      "deliverable": "20-question representative startup/development bundle",
-      "status": "A_external_index_and_rebuild_recipe_received",
-      "detail": "A reports20rows/216image refs/220files. B has index/hashes/source script, not actual external package. Old source5/1 needs explicit new top3 adaptation."
+      "deliverable": "actual S1/S2 per split packages",
+      "status": "A_reports_and_rebuild_sources_received_not_actual_media",
+      "detail": "Need accessible transfer location, archive/full-file SHA, per-file manifest incl JSONL/CSV/meta, package/version mapping. Current A image/qid content_digest excludes text/options/gold/CSV."
     },
     {
-      "deliverable": "formal condition manifests S0/S1/S2",
-      "status": "await_formal_bundle",
-      "detail": "S1 fixed published top3 incl Incomplete; S2 actual5/1. Independent retrieval no longer prerequisite."
+      "deliverable": "S3 actual artifact integrity",
+      "status": "blocked_missing_4_digests_and_transfer_location",
+      "detail": "Four content_digest=null; rebuildability metadata is not B actual verification."
     },
     {
-      "deliverable": "S3-pure E2B/E4B",
-      "status": "missing",
-      "detail": "A STATUS says not started. Need semantic-reviewed D1, exactly3, eligible subset/coverage. D2 is optional."
+      "deliverable": "S3 semantic confirmation",
+      "status": "rule_candidates_only_not_accepted_pure",
+      "detail": "Wrong-option/source-answer matching and image_type do not establish visual nonsupport. Need per-final-evidence image-grounded review, method/reviewer/rationale/basis artifact, query/all-GT identity; confirm subset before predictions. Unknown/rejected diagnostic only. Dedup final3 mutually, and against query/allGT."
     },
     {
-      "deliverable": "selection and bundle manifests",
-      "status": "missing",
-      "detail": "Explicit counts incl Incomplete; actual ordered GT; evidence/data/template/protocol versions and retrieval provenance. No padding."
+      "deliverable": "rebuild provenance if transfer impossible",
+      "status": "incomplete",
+      "detail": "Two different A datasets/hub/fsspec locks; exact executing Python/env/OS/Pillow/JPEG codec unknown. Need source per-file hashes and expected full package hash. No multiGB reconstruction started."
     },
     {
-      "deliverable": "end-to-end retrieval interface/index",
-      "status": "conditional",
-      "detail": "Needed only if end-to-end claim is selected; do not add A remote latency to local generation."
+      "deliverable": "independent retrieval",
+      "status": "optional_not_main_blocker",
+      "detail": "Published top3 main requires no independent retrieval. Other-host retrieval times cannot be added to generation."
     }
   ],
   "B_exposure_registry": "debug_question_ids.json",
@@ -47,5 +47,6 @@
   "exposure_complete": false,
   "formal_blocking": true,
   "mechanism_testing_with_artificial_data_allowed": true,
-  "protocol_decisions_pending": false
+  "protocol_decisions_pending": false,
+  "B_adapter_status": "v1.7 condition-package and CSV interfaces implemented; formal media not received"
 }

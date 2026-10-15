@@ -1,6 +1,6 @@
 {
-  "version": "A_delivery_refs_v1.6",
-  "commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "version": "A_delivery_refs_v1.7",
+  "commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
   "repository": "https://github.com/joyboy-type/EdgeCoRAG",
   "split_version": "v2",
   "split_manifest": {
@@ -44,10 +44,167 @@
     "actual_external_files_received_by_B": false,
     "B_decode_hash_validation": false,
     "A_report_claim": "20 rows,216 image refs,220 package files; A reports37/37, not reproduced by B",
-    "rebuild_script_review": "a-side/scripts/build_evidence_package.py inspected only; has output deletion and project_config.apply_env. Never executed. Reconstruction uses streaming with nonzero dataset IO; published script produces old official5/1 selection and requires B explicit top3 adaptation."
+    "rebuild_script_review": "Historical 220-file index is old loader package, not new S1/S2/S3 acceptance. New builder at6e02 uses explicit S1 top3 and separate S2 actual GT. Read only; not executed."
   },
   "formal_full_evidence_received": false,
   "D1_semantic_verified_bundle_received": false,
   "unified_protocol": "published_top3_actual_gt_d1_v1",
-  "stage1_only": true
+  "stage1_only": false,
+  "previous_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "actual_formal_packages_received_by_B": false,
+  "round3_read_only_source_sha256": {
+    "a-side/plans/VERIFICATION_SUMMARY_ROUND3.md": "7fc122bd05f263e165a0a46f1621a79cc07c5367d4fde3918ce8681d9b7c40f9",
+    "a-side/plans/EXTERNAL_ARTIFACTS.json": "657023f1a5e4a38d6b80a9ce54c538f97356064f03f2bba7a5ac8180a39f2119",
+    "a-side/scripts/build_evidence_package.py": "b5ba160e1703db7db7cc80a81a26a438adf9a5112bc15a658d0620f67331cf3b",
+    "a-side/scripts/build_distractor_package.py": "ac00b11d0adb24e7f98b1551a3fcee651ac765c36945457e53d9205e008e020a",
+    "a-side/scripts/verify_packages.py": "d85a05e1f41750884d6a151e96420554fd67f97e9383b08fd17c1acb483b7c5f",
+    "a-side/scripts/project_config.py": "72b813abd25c1d954c8e290d0208e657f9035d1188fd2d8055fb676769b595ce",
+    "a-side/reports/requirements-main.lock.txt": "161d9c6c96d088c8b345d8f9ed271303d739f0a7ab322c9ce014639d28423acc",
+    "a-side/reports/requirements-mrag.lock.txt": "a420778819830bac22a1de5a6317ce2e05094b7f5a2ea844e9884d165a50ac0c"
+  },
+  "round3_packages": [
+    {
+      "name": "dev_s1",
+      "condition": "S1",
+      "package_version": "dev_s1_S1",
+      "content_digest": "c96ecb18f485fced901ab10436cba2f66270f7b39d97c278debfc047b4d7218b",
+      "files": 604,
+      "bytes": 149066026,
+      "questions": 150
+    },
+    {
+      "name": "dev_s2",
+      "condition": "S2",
+      "package_version": "dev_s2_S2",
+      "content_digest": "ee7a44fb7655bc0fdd39101e7cd1253cb872f99fd0cb4228896911be1c46d182",
+      "files": 852,
+      "bytes": 244572899,
+      "questions": 150
+    },
+    {
+      "name": "dev_s3",
+      "condition": "S3",
+      "package_version": "dev_s3",
+      "content_digest": null,
+      "files": 409,
+      "bytes": 94746883,
+      "questions": 150
+    },
+    {
+      "name": "frozen_test_s1",
+      "condition": "S1",
+      "package_version": "frozen_test_s1_S1",
+      "content_digest": "ffbbec45b655149962d4f660420f8d6489484b033ddc5403eb7bea13ccec5d5d",
+      "files": 4136,
+      "bytes": 997744228,
+      "questions": 1033
+    },
+    {
+      "name": "frozen_test_s2",
+      "condition": "S2",
+      "package_version": "frozen_test_s2_S2",
+      "content_digest": "fc136975496a0b51633c04496603f556af522d16f3a6a6cc5dcb97d7149b468e",
+      "files": 5894,
+      "bytes": 1543759626,
+      "questions": 1033
+    },
+    {
+      "name": "frozen_test_s3",
+      "condition": "S3",
+      "package_version": "frozen_test_s3",
+      "content_digest": null,
+      "files": 2649,
+      "bytes": 597029687,
+      "questions": 1033
+    },
+    {
+      "name": "internal_holdout_s1",
+      "condition": "S1",
+      "package_version": "internal_holdout_s1_S1",
+      "content_digest": "388511ef4ab6e7369cd586184e3034f72fce274189c1a01218306b889ad69434",
+      "files": 604,
+      "bytes": 143599554,
+      "questions": 150
+    },
+    {
+      "name": "internal_holdout_s2",
+      "condition": "S2",
+      "package_version": "internal_holdout_s2_S2",
+      "content_digest": "f5b81a8da101b28e19f042fefe08f6d53f1c027d6cec4fb830489d9e7cf32aa3",
+      "files": 860,
+      "bytes": 215793014,
+      "questions": 150
+    },
+    {
+      "name": "internal_holdout_s3",
+      "condition": "S3",
+      "package_version": "internal_holdout_s3",
+      "content_digest": null,
+      "files": 392,
+      "bytes": 85396667,
+      "questions": 150
+    },
+    {
+      "name": "smoke_20_s1",
+      "condition": "S1",
+      "package_version": "smoke_20_s1_S1",
+      "content_digest": "00dbcf050e7edb7c3ea2cfb364d5c5829364e52f3d31f0cb6ed7e233436c63c6",
+      "files": 84,
+      "bytes": 17692127,
+      "questions": 20
+    },
+    {
+      "name": "smoke_20_s2",
+      "condition": "S2",
+      "package_version": "smoke_20_s2_S2",
+      "content_digest": "079e21ef016208265598756c9fd51b677b5ec7ab2da34c0c48ab56e2bbf5e306",
+      "files": 120,
+      "bytes": 25967902,
+      "questions": 20
+    },
+    {
+      "name": "smoke_20_s3",
+      "condition": "S3",
+      "package_version": "smoke_20_s3",
+      "content_digest": null,
+      "files": 55,
+      "bytes": 9565577,
+      "questions": 20
+    }
+  ],
+  "round3_actual_status": {
+    "A_reports_only": true,
+    "B_received_actual_packages": false,
+    "S3_content_digests_null": 4,
+    "download_locations_present": false,
+    "rebuild_executed": false,
+    "S3_semantic_admitted": false
+  },
+  "rebuild_environment": {
+    "observed_A_lock_versions": {
+      "mrag": {
+        "datasets": "5.0.1",
+        "Pillow": "12.3.0",
+        "pyarrow": "26.0.0",
+        "fsspec": "2026.6.0",
+        "huggingface_hub": "0.36.2"
+      },
+      "main": {
+        "datasets": "5.1.0",
+        "Pillow": "12.3.0",
+        "pyarrow": "26.0.0",
+        "fsspec": "2026.7.0",
+        "huggingface_hub": "1.33.0"
+      }
+    },
+    "builder_runtime_used_by_A_not_identified": true,
+    "Python_OS_JPEG_codec_version_record_missing": true,
+    "encoding": "RGB convert then JPEG quality95; not Parquet original bytes",
+    "B_inference_Pillow": "11.3.0; decoding existing bytes only, no claim of matching A re-encoding",
+    "streaming": "nonzero IO; S3 two full passes over1353 questions plus source GTs",
+    "source_dataset_bytes_reported_by_A": 4295622485,
+    "new_12_packages_bytes_reported_by_A": 4124934190,
+    "download_or_rebuild_allowed_this_round": false,
+    "notes": "Source paths a-side/packages, not repository-root packages. Builders call project_config.apply_env forcing mirror. S1/S2 builder deletes existing output. Do not execute directly as receipt check; stable transfer plus full manifest hash preferred."
+  }
 }

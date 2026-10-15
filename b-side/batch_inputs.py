@@ -50,6 +50,10 @@ def load_task(task,data_root,decode=False):
             review_path=external(root,'audit/semantic_review.json')
             if sha(review_path)!=bundle['semantic_review_sha256']:raise ValueError('Semantic artifact SHA differs')
             semantic_review=read(review_path)
+            if semantic_review.get('version')=='A_csv_review_adapter_v1':
+                supports=bundle.get('semantic_support_artifacts',[])
+                if not supports:raise ValueError('CSV-adapted review support artifacts missing')
+                for descriptor in supports:checked(root,descriptor)
         except Exception as e:semantic_error=type(e).__name__+': '+str(e)
     for source in rows:
         # Whitelist neutral input fields. No GT/retrieval correctness/provenance enters backend messages.

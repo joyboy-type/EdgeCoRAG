@@ -15,5 +15,34 @@
   ],
   "undetermined": "diagnostic_only; report count and denominator, no invented acceptance percentage",
   "hash_nonoverlap": "necessary provenance check, not proof of semantic irrelevance",
-  "no_construction_or_model_execution": true
+  "no_construction_or_model_execution": true,
+  "admission_states": [
+    "candidate",
+    "undetermined",
+    "confirmed"
+  ],
+  "CSV_adapter": "integrate_condition_packages.py; rule-only 不支持 remains candidate; not confirmed_unsupportive",
+  "confirmation_contract": {
+    "top_level": [
+      "source_review_sha256",
+      "source_package_sha256",
+      "by_qid"
+    ],
+    "by_qid": {
+      "evidence": [
+        "evidence_id",
+        "semantic_status=confirmed_unsupportive",
+        "method=human_visual|documented_semantic_review",
+        "reviewer",
+        "rationale",
+        "evidence_sha256",
+        "reviewed_query_sha256",
+        "reviewed_gt_sha256 (all actual GT)",
+        "basis_artifact={path,sha256}"
+      ]
+    },
+    "review_id": "Derived B-csv-adapter SHA identity; never A native",
+    "gate": "Actual basis bytes/hash required. Documentary traceability check, not automatic semantic truth certification."
+  },
+  "duplicate_gate": "all final evidence bytes unique; no overlap with query/allGT; dHash<=6 against query/allGT/other final evidence diagnostic exclusion; not proof of semantic irrelevance"
 }

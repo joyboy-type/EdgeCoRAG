@@ -70,17 +70,18 @@ def prepare(source_jsonl,index_csv,selection_path,split_path,output,acknowledge_
         if c not in ['S0','S1','S2','S3-pure']:raise ValueError('Unsupported concrete condition')
         rows=[];counts[c]={}
         for q in selection['qids']:
-            a=source[q];pick=descriptor['by_qid'][q];selected=pick['evidence_ids'];errors=[]
+            a=source[q];pick=descriptor['by_qid'][q];selected=pick['evidence_ids'];errors=list(a.get('condition_errors',{}).get(c,[]))
+            unavailable=bool(errors)
             if len(set(selected))!=len(selected):raise ValueError('Duplicated evidence IDs; no padding allowed')
             if c=='S0' and selected:raise ValueError('S0 must be query only')
-            if c=='S1':
+            if c=='S1' and not unavailable:
                 if descriptor['source'] not in ['official_clip_candidates','A_independent_reretrieval']:raise ValueError('Explicit S1 source required')
                 eligible=([r['evidence_id'] for r in published_candidates(a)] if selection['protocol_version']==MAIN_PROTOCOL else
                           [r['evidence_id'] for r in a['evidence_order'] if r.get('used_in_prompt',True) is True])
                 if selection['protocol_version']==MAIN_PROTOCOL and selected!=eligible[:3]:raise ValueError('Main S1 must use exact published top3, including Incomplete')
                 if any(e not in eligible for e in selected):errors.append('S1 selection includes unused/unavailable source ref')
                 if [eligible.index(e) for e in selected if e in eligible]!=sorted(eligible.index(e) for e in selected if e in eligible):raise ValueError('S1 original evidence order changed')
-            if c=='S2':
+            if c=='S2' and not unavailable:
                 actual=a['scoring_only'].get('gt_evidence_ids',[])
                 if selection['protocol_version']==MAIN_PROTOCOL and (selected!=actual or len(actual)!=evidence_count('S2',a['scenario'])):
                     raise ValueError('Main S2 must retain all actual GT in order,5/1; no top3 truncation')

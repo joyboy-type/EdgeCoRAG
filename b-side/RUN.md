@@ -1,6 +1,6 @@
-# EdgeCoRAG B v1.6.0 — phase-one integration
+# EdgeCoRAG B v1.7.0 — split condition-package adapter
 
-Based on main 235482612d7791a883e585fa5b2f16228bfabd5c. Only b-side/ is added;
+Based on B90c5b1b + merged A main6e02a897869cb9bb8d8337afe0e6a7d07919f339. Only b-side/ is changed;
 root README/.gitignore and A files are preserved. This is NOT completion of all
 rental preparation. No weights, real processor/model loading or GPU inference
 were run. Actual offline results are in offline_checks.json; older accepted
@@ -16,14 +16,16 @@ from named per-question debugging. configs/debug_question_ids.json retains at
 least0,1,2,3,4,24,43; it does not claim global exhaustiveness. The20 smoke list/hash
 index were read as metadata only, not as question/answer/image content.
 
-A's smoke_20 index, report and rebuild script are in main. B has NOT received or
-reconstructed its actual external files. A's37/37 report is not B validation.
-The source builder applies project environment settings and deletes existing
-outputs; it was read, not executed. Its streaming still reads/downloads data and
-its original5/1 selection needs the following explicit new conversion. Request
-A's actual package/location or a controlled verified rebuild; do not run TLS
-bypass or arbitrary environment/download scripts. Full formal evidence and
-semantic-reviewed D1 are not present in the accepted B inputs yet.
+A round3 reports four splits with separate S1/S2/S3 packages. The builders and
+validator were read, not executed. Actual formal packages are NOT received by B.
+No download location is published; all four S3 content_digest fields are null.
+S1/S2 use official_retrieved_top3 and gt_evidence respectively; never rename a
+pool to pretend it is an old official_top5 package. Exact source/digest references
+and A's two differing dataset locks are in configs/a_delivery_refs.json.
+A's S3 rule label 不支持 is construction-only, NOT accepted semantic confirmation.
+Final evidence must be reviewed against target question/query/allGT. Same bytes
+and dHash guards cover query/allGT AND mutual final3; hashes are not semantic proof.
+A's actual per-image semantic review and transfer integrity remain pending.
 
 configs/protocol_main_v1.json is authorized and frozen pre-rental:
 - S0:evidence0 ->1 image.
@@ -40,6 +42,51 @@ Quality stages internal_holdout and frozen_test are scored separately, never
 pooled. Cost question-runs per split=15*N+2*N_S3. Smoke/dev/performance/warmups/
 retries are additional. Optional Qwen3.5-9B, other S3, D2, independent retrieval,
 official5/1 supplementary setting, ablations and second data are not prerequisites.
+
+## Separate condition-package integration (no acquisition)
+
+Use only actual externally supplied read-only package roots. No script here
+fetches a dataset or reconstructs missing images. Output must be a new external
+directory. For Windows use an existing audit venv and `--media-mode copy`;
+hardlink requires source/output on the same volume. No inference deps are needed.
+
+```bash
+python -B "$code/integrate_condition_packages.py" \
+  --s1 "$packages/dev_s1" --s2 "$packages/dev_s2" --s3 "$packages/dev_s3" \
+  --split "$repo/a-side/splits/dev.v2.txt" --output "$external/dev-v17" \
+  --media-mode copy
+```
+
+Layout: main/{bundle.json,split.json,inputs/S0.json,S1.json,S2.json,
+scoring/answers.json,media/<package-name>/<original-path>,audit/};
+audit/condition_integration.json and s3_review_adapter.json retain source hashes
+and diagnostic candidates. If zero confirmed eligible D1 questions, NO runnable
+s3/ bundle is emitted. This does not block main/ adapter receipt; it blocks S3
+acceptance. All conditions retain the fixed list even for missing condition/media.
+If every package lacks the same question/gold, integration fails explicitly;
+never fabricate answers or omit that qid. CLI writes a failure receipt beside output.
+
+Optional `--package-pins "$external/full-package-pins.json"` supplies
+{"S1":"<B full-file manifest SHA>","S2":"<...>","S3":"<...>"} after independent
+receipt review. The receipt defines its canonical full-file digest; A's narrower
+content_digest is separately checked, not interchangeable. Unpinned packages
+cannot approve formal bundles. Split approval still requires explicit limitations
+acknowledgment and HQ review; no auto-approval from an adapter pass.
+
+With actual image-grounded review, add `--confirmations "$external/review.json"`.
+See existing configs/s3_interface.json for fields. CSV-derived review_id is clearly
+B-generated. Original CSV/package SHA and final evidence IDs are preserved. A rule
+label alone stays candidate; unknown/rejected stays undetermined. Only documented
+per-image confirmation plus duplicate guards yields the predeclared S3 subset.
+Hashed basis artifacts and original CSV are retained for runtime verification.
+S1/S3 uses exactly that subset; full S1 remains separate. Normal S1/S2 is3vs5,
+Incomplete3vs1: the difference is not attributable solely to evidence quality.
+
+The existing single-source prepare_batch_inputs.py remains for legacy A6 startup
+and explicit sources. Use the multi-package entry above for new A delivery.
+The17 required combinations, score/parser/shared text and model pins are unchanged.
+No new full-suite rerun is required on receipt; targeted results are recorded in
+offline_checks.json. Windows continues waiting for HQ's final approved data/package.
 
 ## Models, budgets, independent environments
 
@@ -81,8 +128,10 @@ external. Exact weight-file bytes/hashes and storage terms are in registry/resou
 configs. No card capacity or GPU-hours guarantee; measure actual representative
 batches before extrapolation. A's E4B8GB observation does not size our rented GPU.
 
-## Receiving A material and generating neutral inputs
+## Legacy single-source path and batch binding
 
+The following single-source instructions are LEGACY or already unified-source only;
+new separate A packages must use integrate_condition_packages.py above.
 External layout:data/main/{bundle.json,split.json,inputs/,scoring/,audit/,media/};
 S3 subset may be a separate data/s3/ bundle. No real inputs/answers/images in Git.
 Use verify_external_package.py --root ACTUAL_A_PACKAGE --hash-index
@@ -183,5 +232,5 @@ requires complete identical lists; S1/S3 subset mode checks predeclared parent
 hash/coverage and preserves full S1 results. Optional source-cluster analysis
 requires an evidenced external grouping basis; v2's fallback is not entity isolation.
 Synthetic checks are not effectiveness evidence. Do not rerun old suites on receipt.
-Windows next step is only hash-checking this new code package in a NEW stage;
-actual A media receipt and formal binding remain a separate second phase.
+Windows waits for HQ final approval; do not receive this intermediate adapter package
+as the final experiment bundle. Actual A media receipt and formal binding remain pending.

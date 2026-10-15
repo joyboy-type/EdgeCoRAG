@@ -11,13 +11,16 @@ def evidence_count(condition,scenario):
 
 def published_candidates(row):
     """Original loader used_in_prompt flags are audit metadata, not this protocol's selection."""
-    if row.get('pool_id')!='official_retrieved_top5':raise ValueError('Published MRAG candidates required; no independent retrieval relabeling')
+    pool=row.get('pool_id')
+    if pool not in ['official_retrieved_top5','official_retrieved_top3']:raise ValueError('Published MRAG candidates required; no independent retrieval relabeling')
     refs=list(row['evidence_order'])+list((row.get('available_evidence_untruncated') or {}).get('retrieved_refs',[]))
     ids=[r['evidence_id'] for r in refs];ranks=[r.get('retrieval_rank') for r in refs]
     if len(ids)!=len(set(ids)) or len(ranks)!=len(set(ranks)):raise ValueError('Duplicate candidate ID/rank')
     if any(not isinstance(rank,int) for rank in ranks):raise ValueError('Explicit original integer ranks required')
     refs.sort(key=lambda r:r['retrieval_rank'])
     if len(refs)<3 or [r['retrieval_rank'] for r in refs[:3]]!=[0,1,2]:raise ValueError('Published first-three ranks incomplete')
+    if pool=='official_retrieved_top3' and (len(refs)!=3 or any(r.get('used_in_prompt') is not True for r in refs)):
+        raise ValueError('New published-top3 package must contain exactly its three used ranks; not a renamed top5 pool')
     return refs
 
 
@@ -41,6 +44,7 @@ def make_selection(rows,metadata,d1=None,s3_only=False):
         selected.append(q)
         for c in conditions:
             if c=='S0':refs=[]
+            elif row.get('condition_errors',{}).get(c):refs=[]
             elif c=='S1':refs=[r['evidence_id'] for r in published_candidates(row)[:3]]
             elif c=='S2':
                 refs=list(row['scoring_only']['gt_evidence_ids'])
