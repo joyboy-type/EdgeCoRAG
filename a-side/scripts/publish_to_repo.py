@@ -300,6 +300,10 @@ def main() -> int:
     ap.add_argument("--merge-to-main", action="store_true",
                     help=("推送分支后, 再把该分支**快进合并**进 main 并推送 main。"
                           "仅在分支领先 main 时可快进; 若已分叉则中止, 不做合并提交。"))
+    ap.add_argument("--commit-message", default=None,
+                    help=("本次提交信息。**必须传**,因为不同轮次的改动不同;"
+                          "复用同一段信息会造成多个提交信息相同、历史难以辨识"
+                          "(本机实测已出现两次同名提交)。"))
     args = ap.parse_args()
 
     wt = prepare()
@@ -339,33 +343,9 @@ def main() -> int:
         head_now = git("rev-parse", "HEAD", cwd=wt).stdout.strip()
         print(f"  无变更,不提交;直接推送现有 HEAD {head_now[:12]}")
     else:
-        c = git("commit", "-m",
-                "Split v2 (reviewed-id leak fix, honest entity isolation) + decisions\n\n"
-                "切分程序三处缺陷修正\n"
-                "- 【关键】已调试题漏进 frozen_test：v1 只在 smoke/dev/holdout 分配期间过滤，\n"
-                "  最后 rows[pos:] 直接进冻结集。实测泄漏 mragb:3/4/43，而题数相加仍为 1353，\n"
-                "  纯对数查不出。v2 改为在任何分配之前先摘出已调试题。\n"
-                "- 文档声称『同源整组分配』但代码是按场景分层逐题分配：改为 manifest 写入\n"
-                "  机器可校验的 assignment_rule 字段，并由 verify_split.py 断言。\n"
-                "- --dry-run 仍写文件：改为只计算/打印/自检，不写任何文件（已实测文件列表不变）。\n\n"
-                "同源隔离：从虚称改为如实结论\n"
-                "- 新增 build_entity_groups.py / quantify_entity_connectivity.py\n"
-                "- 实测跨题共享图片哈希 2688 个（gt<->ret 1423、gt<->gt 1091、query<->query 162），\n"
-                "  仅精确重复就把 1338/1353 题连成一组；每题平均与约 9 道其它题共享图片\n"
-                "- 结论：按图片连通性做实体级隔离在本数据集上**不可行**\n"
-                "  （组原子分配实测得到 smoke_20=8、internal_holdout=0）\n"
-                "- 故退化为逐题分配，并在 manifest 中如实声明『跨子集图片相关性未能隔离』\n\n"
-                "语料可取得性：给出明确结论\n"
-                "- 新增 probe_corpus_access.py；实测本机无法访问 Google 系域名\n"
-                "  （drive/docs/www.googleapis.com 超时）→ 当前网络下无法验证语料\n"
-                "- 找到作者背书：utility-mrag 文档说明官方数据集已内联候选，\n"
-                "  作者自己的复现无需单独语料\n"
-                "- 新增 plans/DECISIONS_NEEDED.md：集中列出 4 项决策与推荐方案\n\n"
-                "验证\n"
-                "- 新增 verify_split.py：18 项不变量（互斥/覆盖/已调试题不泄漏/raw_id 字符串/\n"
-                "  计数与哈希一致/规则可校验/实体隔离已声明）\n"
-                "- 三次独立运行哈希完全一致（可重现）\n"
-                "- v2 计数 20/150/150/1033，旧版 v1 保留",
+        c = git("commit", "-m", args.commit_message or
+                "Update A-side deliverables\n\n"
+                "(未提供 --commit-message;建议下次显式传入,避免提交信息雷同)",
                 cwd=wt)
         print("  ✅ 已提交" if c.returncode == 0 else f"  ✗ 提交失败: {c.stderr[:200]}")
 
