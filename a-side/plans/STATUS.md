@@ -4,7 +4,16 @@
 > 未完成事项见 [`NEXT_STEPS_AND_BLOCKERS.md`](NEXT_STEPS_AND_BLOCKERS.md)，
 > 待总部决策见 [`DECISIONS_NEEDED.md`](DECISIONS_NEEDED.md)。
 
-**核对基线**：`41aa349694df526afb987083fa6a209fbe45b174`
+**本轮实验口径（已固化）**：
+
+| 条件 | 证据 | 图片数 | 占位符 | pool_id |
+|---|---|---|---|---|
+| S0 | 无 | 0 | 1 | — |
+| S1 | 已发布候选 top-3（含 Incomplete） | 3 | 4 | `official_retrieved_top3` |
+| S2 | 真实 GT（常规 5 / Incomplete 1） | 5/1 | 6/2 | `gt_evidence` |
+| S3 | D1 纯干扰 | 3 | 4 | `pure_distractor_d1` |
+
+**核对基线**：`235482612d7791a883e585fa5b2f16228bfabd5c`（本轮交付提交见仓库）
 
 ---
 
@@ -118,18 +127,20 @@ python a-side/scripts/verify_handover_sample.py
 | EmbeddingGemma 2 检索**接口** | ✅ 完成（**R@1/R@5/MRR 未做**） |
 | Gemma 4 True/False 打分链路（E2B） | ✅ 完成 |
 | 数据集版本锁定与字段核验 | ✅ 完成 |
-| 官方评测代码缺陷核验 | ✅ 4 处 |
 | GT 精确匹配命中率 | ✅ 完成 |
 | 实体连通性量化 | ✅ 完成 |
 | 切分 v2（含缺陷修正与可重现） | ✅ 完成 |
-| 6 题接口样例 | ✅ 29/29 通过 |
-| **smoke_20 完整证据包** | ✅ 37/37 通过（**外置，不入库，可确定性重建**） |
-| **S1** | 🟡 **部分**：smoke_20 范围可用；**正式题单待决策 2**；独立重检索**不可能**（语料不可达） |
-| **S2** | 🟢 **可用**：GT 按真实数量落盘，映射完整 |
-| **S3** | 🔴 **未开始**：仅规范与三层校验设计 |
-| 检索质量指标 R@1/R@5/MRR | ❌ 未做 |
-| 正式题单证据包 | ⛔ 阻塞于决策 2 |
+| **S1 证据包（4 split，top-3 含 Incomplete）** | ✅ 完成（8/8 验收通过，覆盖 100%） |
+| **S2 证据包（4 split，真实 GT 5/1）** | ✅ 完成（覆盖 100%） |
+| **S3 D1 纯干扰集** | ✅ **完成**（4 split，满 3 张覆盖率 ~52%；无法判断题已排除并单列） |
+| **S0** | ✅ 无需单独包（查询图同 S1/S2，B 不喂证据即可） |
+| 检索质量指标 R@1/R@5/MRR | ❌ 未做（接口可用，指标未测） |
+| 正式题单证据包 | ✅ **已完成**（本轮 S1/S2/S3 覆盖 4 split） |
 | 端到端 GPU 性能 | ⛔ 需目标硬件，**不编造** |
+
+**S1/S2 证据包版本**：`<split>_s1` / `<split>_s2`（split ∈ smoke_20/dev/internal_holdout/frozen_test），
+由 `a-side/scripts/build_evidence_package.py` 确定性生成，
+`content_digest` 见各包 `package_meta.json`。
 
 ---
 

@@ -47,6 +47,14 @@ def dir_stats(p: Path) -> tuple[int, int]:
     return n, b
 
 
+def _split_of(pkg_name: str) -> str:
+    """从包名反推 split 名。"""
+    for s in ("smoke_20", "dev", "internal_holdout", "frozen_test"):
+        if pkg_name.startswith(s):
+            return s
+    return "unknown"
+
+
 def agg_digest(paths: list[Path]) -> str:
     """对一组文件做确定性聚合哈希（按相对路径排序，逐个喂入路径+内容哈希）。"""
     h = hashlib.sha256()
@@ -116,23 +124,47 @@ def main() -> int:
                     "license": "cc-by-4.0", "split": "test", "questions": 1353},
     })
 
-    # 3) smoke_20 证据包
-    pkg = cfg.ROOT / "packages" / "smoke_20"
-    n, b = dir_stats(pkg)
-    items.append({
-        "id": "smoke_20_evidence_package",
-        "kind": "evidence_package",
-        "description": "smoke_20 完整联调包（20 题，含查询图/候选/GT，37/37 验收通过）",
-        "path_hint": "工作区 packages/smoke_20/（按题单可重建，见 how_to_obtain）",
-        "files": n, "bytes": b,
-        "how_to_obtain": [
-            "python a-side/scripts/build_evidence_package.py "
-            "--list a-side/splits/smoke_20.v2.txt --name smoke_20",
-        ],
-        "rebuildable": True,
-        "rebuild_note": ("包可由题单 + 数据集确定性重建；"
-                         "content_digest 见包内 package_meta.json"),
-    })
+    # 3) 证据包（S1/S2/S3，按题单可确定性重建）
+    pkg_root = cfg.ROOT / "packages"
+    pkg_items = []
+    if pkg_root.exists():
+        for sub in sorted(pkg_root.iterdir()):
+            if not sub.is_dir():
+                continue
+            n, b = dir_stats(sub)
+            meta = {}
+            mp = sub / "package_meta.json"
+            if mp.exists():
+                try:
+                    meta = json.loads(mp.read_text(encoding="utf-8"))
+                except Exception:  # noqa: BLE001
+                    meta = {}
+            pkg_items.append({
+                "id": f"evidence_package_{sub.name}",
+                "kind": "evidence_package",
+                "description": meta.get("condition_description",
+                                       meta.get("artifact_kind", "evidence package")),
+                "name": sub.name,
+                "condition": meta.get("condition"),
+                "pool_id": meta.get("pool_id"),
+                "package_version": meta.get("package_version"),
+                "content_digest": meta.get("content_digest"),
+                "questions": meta.get("questions"),
+                "path_hint": f"工作区 packages/{sub.name}/（可按题单重建）",
+                "files": n, "bytes": b,
+                "how_to_obtain": [
+                    ("python a-side/scripts/build_evidence_package.py "
+                     f"--list a-side/splits/{_split_of(sub.name)}.v2.txt "
+                     f"--name {sub.name} --condition {meta.get('condition')}"
+                     if meta.get("condition") in ("S1", "S2", "S0") else
+                     ("python a-side/scripts/build_distractor_package.py "
+                      f"--list a-side/splits/{_split_of(sub.name)}.v2.txt "
+                      f"--name {sub.name}")),
+                ],
+                "rebuildable": True,
+                "rebuild_note": "content_digest 可校验重建结果字节一致",
+            })
+    items.extend(pkg_items)
 
     # 4) 虚拟环境
     for name in ("venv-main", "venv-mrag"):

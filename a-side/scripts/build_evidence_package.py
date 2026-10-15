@@ -1,25 +1,32 @@
-"""按题单生成完整联调证据包 —— B 可直接接收运行。
+"""按题单生成 S1 / S2 证据包（租卡前正式口径）。
 
-与 `make_b_handover_sample.py`（6 题接口样例）的区别：
-  * **按题单文件**生成（默认新切分的 `smoke_20.v2.txt`），不再用"前 N 题"；
-  * 每题给全：查询图、题干与四选项、S1 有序证据（含原始排名）、
-    S2 实际 GT 附件、图片索引、哈希、尺寸、编码说明；
-  * 严格遵守官方场景规则（Incomplete 只取首张，占位符 2，其余 5 张，占位符 6）。
+## 本轮的实验口径（用户指定）
 
-**编码口径（固定，不重复转码）**
+| 条件 | 证据 | 图片数 | 提示占位符 |
+|---|---|---|---|
+| **S0** | 无外部证据 | 0 | 1（仅查询图） |
+| **S1** | **MRAG-Bench 随附的已发布候选**，按既有排名取 **top-3**，**Incomplete 也用 3 张** | 3 | **4** |
+| **S2** | **真实 GT**，保留真实数量（常规 5、Incomplete 1），**不补齐也不截断成 top-3** | 5 / 1 | 6 / 2 |
 
-实测数据集图片取不到原始字节（`im.fp`/`_data`/`data`/`filename` 全为 None），
-因此落盘字节一律为 **JPEG quality=95 重编码**，且**索引哈希与落盘字节同源**
-（同一份 bytes 既写文件也算哈希）。该编码确定性已在多次独立加载中验证。
+⚠️ **S1 必须称为「已发布候选基线」**，不得称为我方独立重检索结果。
+   本包 `pool_id = official_retrieved_top3`，`is_oracle = false`，
+   `retriever_id = null`，并在 `provenance` 中写明来源。
 
-**路径约定（不绑定机器盘符）**
+⚠️ **占位符必须随图片数同步改**（官方模板写死 6/2）：
+   `prompt_image_slots = 1 + 证据数`。已在每行显式记录，并由校验器断言。
 
-所有 `path` 均相对包根目录，形如 `images/<raw_id>/<role>_<raw_id>_<rank>.jpg`。
-B 只需把包根目录放在任意位置即可定位全部文件。
+## 与 S2 的一处口径不一致（**需确认，不擅自决定**）
+
+S1 在 Incomplete 上取 3 张（占位符 4），而 S2 在 Incomplete 上只有 1 张
+（占位符 2）。同一场景下 S1/S2 的**图片数量不同**，
+因此 Incomplete 的 S1–S2 差距**不能纯归因于证据质量**。
+详见 `a-side/plans/` 中的口径说明。
 
 用法:
-    python scripts/build_evidence_package.py --list splits/smoke_20.v2.txt --name smoke_20
-    python scripts/build_evidence_package.py --list splits/frozen_test.v2.txt --name frozen_test --limit 50
+    python scripts/build_evidence_package.py --list splits/smoke_20.v2.txt \
+        --name smoke_20_s1 --condition S1
+    python scripts/build_evidence_package.py --list splits/frozen_test.v2.txt \
+        --name frozen_test_s2 --condition S2
 """
 
 from __future__ import annotations
@@ -44,8 +51,20 @@ LICENSE = "cc-by-4.0"
 PKG_ROOT = cfg.ROOT / "packages"
 ENCODE = {"format": "JPEG", "quality": 95,
           "note": ("原始字节不可得（im.fp/_data/data/filename 均为 None），"
-                   "故落盘字节为 JPEG q95 重编码；哈希与落盘字节同源。"
-                   "确定性已由 test_hash_stability.py 多次独立加载验证。")}
+                   "故落盘字节为 JPEG q95 重编码；哈希与落盘字节同源。")}
+
+# 条件定义：证据来源 + 每场景图片数
+CONDITIONS = {
+    "S0": {"pool_id": None, "is_oracle": False,
+           "desc": "无外部证据（仅查询图）"},
+    "S1": {"pool_id": "official_retrieved_top3", "is_oracle": False,
+           "desc": ("MRAG-Bench 随附的已发布候选，按既有排名取 top-3；"
+                    "**已发布候选基线**，非我方独立重检索")},
+    "S2": {"pool_id": "gt_evidence", "is_oracle": True,
+           "desc": "真实 GT 证据，保留真实数量（常规 5、Incomplete 1）"},
+    "S3": {"pool_id": "pure_distractor_d1", "is_oracle": False,
+           "desc": "D1 纯干扰（同类不同实例），数量与 S1 一致"},
+}
 
 
 def enc(im) -> bytes:
@@ -60,28 +79,39 @@ def read_qids(p: Path) -> list[str]:
         s = line.strip()
         if not s or s.startswith("#"):
             continue
-        out.append(s[6:] if s.startswith("mragb:") else s)   # raw_id
+        out.append(s[6:] if s.startswith("mragb:") else s)
     return out
+
+
+def select_s1(ex) -> list[tuple[int, object]]:
+    """S1: 已发布候选按既有排名取 top-3（Incomplete 同样取 3 张）。"""
+    return [(j, im) for j, im in enumerate(ex["retrieved_images"][:3])]
+
+
+def select_s2(ex) -> list[tuple[int, object]]:
+    """S2: 真实 GT，保留真实数量，不补齐不截断。"""
+    return [(k, g) for k, g in enumerate(ex["gt_images"])]
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--list", type=Path, required=True, help="题单文件（qid 或 raw_id，一行一个）")
-    ap.add_argument("--name", required=True, help="包名，如 smoke_20")
+    ap.add_argument("--list", type=Path, required=True)
+    ap.add_argument("--name", required=True)
+    ap.add_argument("--condition", required=True, choices=list(CONDITIONS))
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--evidence-version", default=None)
     args = ap.parse_args()
 
+    cond = CONDITIONS[args.condition]
     out = args.out or (PKG_ROOT / args.name)
-    ev_ver = args.evidence_version or f"{args.name}_official_retrieved"
+    ev_ver = args.evidence_version or f"{args.name}_{args.condition}"
     want = read_qids(args.list)
     if args.limit:
         want = want[: args.limit]
     want_set = set(want)
-    print(f"题单: {args.list.name}  {len(want)} 题")
-    print(f"输出: {out}")
-    print(f"证据版本: {ev_ver}")
+    print(f"条件 {args.condition}: {cond['desc']}")
+    print(f"题单 {args.list.name}  {len(want)} 题   ->  {out}")
 
     if out.exists():
         shutil.rmtree(out)
@@ -95,7 +125,7 @@ def main() -> int:
 
     rows: list[dict] = []
     index_rows: list[dict] = []
-    issues: list[str] = []
+    issues: list[dict] = []
     t0 = time.time()
 
     def dump(im, stem: str, raw_id: str, qid: str, role: str, rank, **extra) -> dict:
@@ -106,7 +136,8 @@ def main() -> int:
         p.write_bytes(b)
         sha = hashlib.sha256(b).hexdigest()
         if hashlib.sha256(p.read_bytes()).hexdigest() != sha:
-            issues.append(f"{qid}#{role}{rank}: 落盘回读哈希不一致")
+            issues.append({"qid": qid, "kind": "hash_mismatch",
+                           "detail": f"{role}{rank}"})
         ref = {"evidence_id": f"{qid}#{role}{'' if rank is None else rank}",
                "role": role, "rank": rank,
                "path": str(p.relative_to(out)).replace("\\", "/"),
@@ -120,59 +151,75 @@ def main() -> int:
         return ref
 
     found: set[str] = set()
-    for i, ex in enumerate(ds):
+    for ex in ds:
         rid = str(ex["id"])
         if rid not in want_set:
             continue
         found.add(rid)
         qid = f"mragb:{rid}"
         scenario = ex["scenario"]
-        is_incomplete = scenario == "Incomplete"
-        n_use = 1 if is_incomplete else len(ex["retrieved_images"])
+        is_inc = scenario == "Incomplete"
 
         q_ref = dump(ex["image"], f"query_{rid}", rid, qid, "q", None)
 
-        ev_all = []
-        for j, im in enumerate(ex["retrieved_images"]):
-            ev_all.append(dump(im, f"official_retrieved_{rid}_{j}", rid, qid,
-                               "official_retrieved", j,
-                               retrieval_rank=j, retrieval_score=None,
-                               used_in_prompt=(j < n_use)))
-        ev_use = [e for e in ev_all if e["used_in_prompt"]]
+        if args.condition == "S0":
+            pairs, role = [], "none"
+        elif args.condition == "S1":
+            pairs, role = select_s1(ex), "official_retrieved"
+        elif args.condition == "S2":
+            pairs, role = select_s2(ex), "gt"
+        else:
+            raise SystemExit("S3 由 build_distractor_package.py 生成，请勿用本脚本")
 
-        gt_all = [dump(g, f"gt_{rid}_{k}", rid, qid, "gt", k)
-                  for k, g in enumerate(ex["gt_images"])]
-        gt_use = gt_all[:1] if is_incomplete else gt_all
+        ev = [dump(im, f"{role}_{rid}_{k}", rid, qid, role, k,
+                   retrieval_rank=(k if args.condition == "S1" else None),
+                   retrieval_score=None,
+                   used_in_prompt=True)
+              for k, im in pairs] if pairs else []
 
-        ret_shas = [e["sha256"] for e in ev_use]
-        hit_ranks = [ret_shas.index(g["sha256"]) for g in gt_all
-                     if g["sha256"] in ret_shas]
+        # 数量与占位符
+        n_ev = len(ev)
+        slots = 1 + n_ev
+        if args.condition == "S2" and not is_inc:
+            assert n_ev == 5, f"{qid}: S2 常规场景应为 5 张，实为 {n_ev}"
+        if args.condition == "S2" and is_inc:
+            assert n_ev == 1, f"{qid}: S2 Incomplete 应为 1 张，实为 {n_ev}"
+        if args.condition == "S1":
+            assert n_ev == 3, f"{qid}: S1 应为 3 张，实为 {n_ev}"
+
+        # S1 的 GT 命中位点（仅分析）
+        ret_shas = [e["sha256"] for e in ev]
+        gt_hit = []
+        if args.condition == "S1":
+            gts = [hashlib.sha256(enc(g)).hexdigest() for g in ex["gt_images"]]
+            gt_hit = [ret_shas.index(s) for s in gts if s in ret_shas]
 
         rows.append({
-            "qid": qid, "raw_id": rid,
-            "split": args.name,
+            "qid": qid, "raw_id": rid, "split": args.name,
             "scenario": scenario, "aspect": ex["aspect"],
             "question_image": q_ref,
-            "evidence_order": ev_use,
-            "num_evidence": len(ev_use),
-            "pool_id": "official_retrieved_top5",
+            "evidence_order": ev,
+            "num_evidence": n_ev,
+            "pool_id": cond["pool_id"],
             "pool_gt_exact_match_rate": None,
-            "is_oracle": False,
+            "is_oracle": cond["is_oracle"],
             "retriever_id": None,
-            "retrieval_scores": [None] * len(ev_use),
-            "retrieval_ranks": [e["retrieval_rank"] for e in ev_use],
-            "protocol_version": "proto_official_v1",
-            "prompt_image_slots": 2 if is_incomplete else 6,
-            "scenario_rule_applied": ("official_incomplete_truncate_to_first"
-                                      if is_incomplete
-                                      else "official_use_all_candidates"),
-            "available_evidence_untruncated": (None if not is_incomplete else {
-                "note": "Incomplete 按官方规则只取首张；其余候选取用于分析，"
-                        "used_in_prompt=false，不得送入提示。",
-                "retrieved_count": len(ex["retrieved_images"]),
-                "gt_count": len(ex["gt_images"]),
-                "retrieved_refs": [e for e in ev_all if not e["used_in_prompt"]],
-                "gt_refs": gt_all[1:]}),
+            "retrieval_scores": [None] * n_ev,
+            "retrieval_ranks": [e.get("retrieval_rank") for e in ev],
+            "protocol_version": (f"proto_{args.condition.lower()}_top3_v1"
+                                 if args.condition == "S1"
+                                 else f"proto_{args.condition.lower()}_realk_v1"),
+            "prompt_image_slots": slots,
+            "scenario_rule_applied": (
+                "published_top3_including_incomplete" if args.condition == "S1"
+                else ("gt_real_count_incomplete_1" if args.condition == "S2"
+                      else "no_evidence")),
+            "available_evidence_untruncated": (
+                {"note": ("S1 只取已发布候选的前 3 张；其余候选未使用，"
+                          "仅登记数量以便核对。"),
+                 "retrieved_count_available": len(ex["retrieved_images"]),
+                 "used": min(3, len(ex["retrieved_images"]))}
+                if args.condition == "S1" else None),
             "status": "ok", "notes": None,
             "task_payload": {"question": ex["question"],
                              "choices": {"A": ex["A"], "B": ex["B"],
@@ -180,10 +227,11 @@ def main() -> int:
             "scoring_only": {
                 "gold_choice": ex["answer_choice"],
                 "answer_text": ex["answer"],
-                "gt_evidence_ids": [g["evidence_id"] for g in gt_use],
-                "gt_evidence_refs": gt_use,
-                "gt_evidence_ids_all": [g["evidence_id"] for g in gt_all],
-                "gt_on_official_pool_ranks": hit_ranks},
+                "gt_evidence_ids": [f"{qid}#gt{k}" for k in range(len(ex["gt_images"]))],
+                "gt_evidence_refs": (ev if args.condition == "S2" else None),
+                "gt_evidence_ids_all": [f"{qid}#gt{k}"
+                                        for k in range(len(ex["gt_images"]))],
+                "gt_on_official_pool_ranks": gt_hit},
             "provenance": {
                 "dataset_repo": REPO_ID, "dataset_revision": REVISION,
                 "dataset_license": LICENSE,
@@ -193,57 +241,56 @@ def main() -> int:
                 "generated_by": "scripts/build_evidence_package.py",
                 "encoding": ENCODE,
                 "path_root": f"{args.name}/",
+                "condition": args.condition,
+                "evidence_source": cond["desc"],
                 "config_hash": None},
         })
-        if len(found) % 5 == 0:
+        if len(found) % 20 == 0:
             print(f"  已生成 {len(found)}/{len(want)}  ({time.time() - t0:.0f}s)")
         if len(found) >= len(want):
             break
 
-    missing = want_set - found
+    missing = sorted(want_set - found)
     if missing:
-        issues.append(f"题单中有 {len(missing)} 题未在数据集中找到: {sorted(missing)[:10]}")
+        issues.append({"kind": "questions_not_found", "count": len(missing),
+                       "qids": [f"mragb:{m}" for m in missing[:20]]})
 
     rows.sort(key=lambda r: int(r["raw_id"]) if r["raw_id"].isdigit() else 0)
     (out / "evidence_list.jsonl").write_text(
         "\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8")
-
     with (out / "evidence_index.csv").open("w", encoding="utf-8-sig", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=["evidence_id", "raw_id", "qid", "role",
                                            "rank", "path", "sha256", "w", "h"])
         w.writeheader()
         w.writerows(index_rows)
 
-    # 覆盖率与失败记录
-    coverage = {
+    (out / "coverage.json").write_text(json.dumps({
+        "condition": args.condition,
         "requested": len(want), "generated": len(rows),
-        "missing": sorted(missing),
+        "missing": [f"mragb:{m}" for m in missing],
         "coverage_rate": round(len(rows) / max(len(want), 1), 4),
         "note": ("主准确率分母应使用**题单全量**（requested）；"
-                 "成功子集指标另报，并给出 coverage_rate"),
-    }
-    (out / "coverage.json").write_text(
-        json.dumps(coverage, ensure_ascii=False, indent=2), encoding="utf-8")
+                 "成功子集指标另报并给覆盖率。失败题不得静默丢弃。"),
+        "issues": issues,
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
 
     files = [f for f in imgroot.rglob("*") if f.is_file()]
     total = sum(f.stat().st_size for f in files)
-    # 确定性: 不用墙上时钟（时间戳会让重跑产生不同字节，破坏可复现性）
     dg = hashlib.sha256()
-    dg.update(args.name.encode("utf-8"))
-    dg.update(args.list.name.encode("utf-8"))
-    dg.update(ev_ver.encode("utf-8"))
-    dg.update(str(len(rows)).encode("utf-8"))
     for r in rows:
-        dg.update(r["qid"].encode("utf-8"))
+        dg.update(r["qid"].encode())
         for e in [r["question_image"]] + r["evidence_order"]:
-            dg.update(e["sha256"].encode("utf-8"))
-    pkg = {
+            dg.update(e["sha256"].encode())
+    (out / "package_meta.json").write_text(json.dumps({
         "artifact_kind": "evidence_package",
+        "package_version": ev_ver,
+        "condition": args.condition,
+        "condition_description": cond["desc"],
         "name": args.name,
         "split_file": args.list.name,
-        "evidence_version": ev_ver,
-        "protocol_version": "proto_official_v1",
-        "pool_id": "official_retrieved_top5",
+        "protocol_version": rows[0]["protocol_version"] if rows else None,
+        "pool_id": cond["pool_id"],
+        "is_oracle": cond["is_oracle"],
         "questions": len(rows),
         "image_files": len(files),
         "image_bytes": total,
@@ -253,23 +300,27 @@ def main() -> int:
         "content_digest": dg.hexdigest(),
         "deterministic": True,
         "generated_at": None,
-        "generated_at_note": "故意不写墙上时钟，以保证重跑字节一致。用 content_digest 标识。",
-        "not_claims": ["不声称任何一路线天然干净",
-                       "官方候选池的 GT 精确匹配命中率是池级统计，"
-                       "见 a-side/data/gt_match_rate_audit.json"],
+        "generated_at_note": "故意不写墙上时钟，保证重跑字节一致。",
+        "slot_rule": "prompt_image_slots = 1 (查询图) + 证据数",
+        "not_claims": [
+            "S1 是『已发布候选基线』，不是我方独立重检索结果",
+            "不声称任何一路线天然干净",
+            "S2 是 Oracle 上界，不是可部署方案",
+        ],
+        "known_mismatch": ({
+            "issue": "S1 与 S2 在 Incomplete 上的图片数不同",
+            "s1_incomplete_images": 3, "s2_incomplete_images": 1,
+            "consequence": ("同一场景下 S1/S2 图片数不一致，"
+                            "Incomplete 的 S1-S2 差距不能纯归因于证据质量"),
+            "needs_confirmation": True,
+        } if args.condition in ("S1", "S2") else None),
         "issues": issues,
-    }
-    (out / "package_meta.json").write_text(
-        json.dumps(pkg, ensure_ascii=False, indent=2), encoding="utf-8")
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print(f"\n✅ {args.name}: {len(rows)} 题, {len(files)} 张图, {total / 1024 ** 2:.1f} MiB")
-    print(f"   coverage: {coverage['coverage_rate']:.1%}  缺失 {len(missing)}")
-    if issues:
-        print("   ⚠️ issues:")
-        for x in issues[:5]:
-            print(f"      {x}")
-    print(f"-> {out}")
-    return 0 if not missing else 0
+    print(f"\n✅ {args.name}: {len(rows)} 题, {len(files)} 图, {total / 1024 ** 2:.1f} MiB")
+    print(f"   coverage {len(rows) / max(len(want), 1):.1%}  缺失 {len(missing)}")
+    print(f"   content_digest {dg.hexdigest()[:16]}")
+    return 0
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@
     "resolution": "EDGECORAG_STORE -> HF_HOME -> 默认路径（见 a-side/scripts/project_config.py）",
     "portability_note": "**不绑定机器盘符**：设 EDGECORAG_STORE 即可整盘迁移"
   },
-  "total_bytes": 26387042501,
+  "total_bytes": 30511976691,
   "items": [
     {
       "id": "hf_model_cache",
@@ -57,17 +57,251 @@
       }
     },
     {
-      "id": "smoke_20_evidence_package",
+      "id": "evidence_package_dev_s1",
       "kind": "evidence_package",
-      "description": "smoke_20 完整联调包（20 题，含查询图/候选/GT，37/37 验收通过）",
-      "path_hint": "工作区 packages/smoke_20/（按题单可重建，见 how_to_obtain）",
+      "description": "MRAG-Bench 随附的已发布候选，按既有排名取 top-3；**已发布候选基线**，非我方独立重检索",
+      "name": "dev_s1",
+      "condition": "S1",
+      "pool_id": "official_retrieved_top3",
+      "package_version": "dev_s1_S1",
+      "content_digest": "c96ecb18f485fced901ab10436cba2f66270f7b39d97c278debfc047b4d7218b",
+      "questions": 150,
+      "path_hint": "工作区 packages/dev_s1/（可按题单重建）",
+      "files": 604,
+      "bytes": 149066026,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/dev.v2.txt --name dev_s1 --condition S1"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_dev_s2",
+      "kind": "evidence_package",
+      "description": "真实 GT 证据，保留真实数量（常规 5、Incomplete 1）",
+      "name": "dev_s2",
+      "condition": "S2",
+      "pool_id": "gt_evidence",
+      "package_version": "dev_s2_S2",
+      "content_digest": "ee7a44fb7655bc0fdd39101e7cd1253cb872f99fd0cb4228896911be1c46d182",
+      "questions": 150,
+      "path_hint": "工作区 packages/dev_s2/（可按题单重建）",
+      "files": 852,
+      "bytes": 244572899,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/dev.v2.txt --name dev_s2 --condition S2"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_dev_s3",
+      "kind": "evidence_package",
+      "description": "distractor_package",
+      "name": "dev_s3",
+      "condition": "S3",
+      "pool_id": "pure_distractor_d1",
+      "package_version": "dev_s3",
+      "content_digest": null,
+      "questions": 150,
+      "path_hint": "工作区 packages/dev_s3/（可按题单重建）",
+      "files": 409,
+      "bytes": 94746883,
+      "how_to_obtain": [
+        "python a-side/scripts/build_distractor_package.py --list a-side/splits/dev.v2.txt --name dev_s3"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_frozen_test_s1",
+      "kind": "evidence_package",
+      "description": "MRAG-Bench 随附的已发布候选，按既有排名取 top-3；**已发布候选基线**，非我方独立重检索",
+      "name": "frozen_test_s1",
+      "condition": "S1",
+      "pool_id": "official_retrieved_top3",
+      "package_version": "frozen_test_s1_S1",
+      "content_digest": "ffbbec45b655149962d4f660420f8d6489484b033ddc5403eb7bea13ccec5d5d",
+      "questions": 1033,
+      "path_hint": "工作区 packages/frozen_test_s1/（可按题单重建）",
+      "files": 4136,
+      "bytes": 997744228,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/frozen_test.v2.txt --name frozen_test_s1 --condition S1"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_frozen_test_s2",
+      "kind": "evidence_package",
+      "description": "真实 GT 证据，保留真实数量（常规 5、Incomplete 1）",
+      "name": "frozen_test_s2",
+      "condition": "S2",
+      "pool_id": "gt_evidence",
+      "package_version": "frozen_test_s2_S2",
+      "content_digest": "fc136975496a0b51633c04496603f556af522d16f3a6a6cc5dcb97d7149b468e",
+      "questions": 1033,
+      "path_hint": "工作区 packages/frozen_test_s2/（可按题单重建）",
+      "files": 5894,
+      "bytes": 1543759626,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/frozen_test.v2.txt --name frozen_test_s2 --condition S2"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_frozen_test_s3",
+      "kind": "evidence_package",
+      "description": "distractor_package",
+      "name": "frozen_test_s3",
+      "condition": "S3",
+      "pool_id": "pure_distractor_d1",
+      "package_version": "frozen_test_s3",
+      "content_digest": null,
+      "questions": 1033,
+      "path_hint": "工作区 packages/frozen_test_s3/（可按题单重建）",
+      "files": 2649,
+      "bytes": 597029687,
+      "how_to_obtain": [
+        "python a-side/scripts/build_distractor_package.py --list a-side/splits/frozen_test.v2.txt --name frozen_test_s3"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_internal_holdout_s1",
+      "kind": "evidence_package",
+      "description": "MRAG-Bench 随附的已发布候选，按既有排名取 top-3；**已发布候选基线**，非我方独立重检索",
+      "name": "internal_holdout_s1",
+      "condition": "S1",
+      "pool_id": "official_retrieved_top3",
+      "package_version": "internal_holdout_s1_S1",
+      "content_digest": "388511ef4ab6e7369cd586184e3034f72fce274189c1a01218306b889ad69434",
+      "questions": 150,
+      "path_hint": "工作区 packages/internal_holdout_s1/（可按题单重建）",
+      "files": 604,
+      "bytes": 143599554,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/internal_holdout.v2.txt --name internal_holdout_s1 --condition S1"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_internal_holdout_s2",
+      "kind": "evidence_package",
+      "description": "真实 GT 证据，保留真实数量（常规 5、Incomplete 1）",
+      "name": "internal_holdout_s2",
+      "condition": "S2",
+      "pool_id": "gt_evidence",
+      "package_version": "internal_holdout_s2_S2",
+      "content_digest": "f5b81a8da101b28e19f042fefe08f6d53f1c027d6cec4fb830489d9e7cf32aa3",
+      "questions": 150,
+      "path_hint": "工作区 packages/internal_holdout_s2/（可按题单重建）",
+      "files": 860,
+      "bytes": 215793014,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/internal_holdout.v2.txt --name internal_holdout_s2 --condition S2"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_internal_holdout_s3",
+      "kind": "evidence_package",
+      "description": "distractor_package",
+      "name": "internal_holdout_s3",
+      "condition": "S3",
+      "pool_id": "pure_distractor_d1",
+      "package_version": "internal_holdout_s3",
+      "content_digest": null,
+      "questions": 150,
+      "path_hint": "工作区 packages/internal_holdout_s3/（可按题单重建）",
+      "files": 392,
+      "bytes": 85396667,
+      "how_to_obtain": [
+        "python a-side/scripts/build_distractor_package.py --list a-side/splits/internal_holdout.v2.txt --name internal_holdout_s3"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_smoke_20",
+      "kind": "evidence_package",
+      "description": "evidence_package",
+      "name": "smoke_20",
+      "condition": null,
+      "pool_id": "official_retrieved_top5",
+      "package_version": null,
+      "content_digest": "a8f174fb5893cc2aeceac23bc99c16b38271880065d18fc671c9923c5489fbb7",
+      "questions": 20,
+      "path_hint": "工作区 packages/smoke_20/（可按题单重建）",
       "files": 220,
       "bytes": 47900292,
       "how_to_obtain": [
-        "python a-side/scripts/build_evidence_package.py --list a-side/splits/smoke_20.v2.txt --name smoke_20"
+        "python a-side/scripts/build_distractor_package.py --list a-side/splits/smoke_20.v2.txt --name smoke_20"
       ],
       "rebuildable": true,
-      "rebuild_note": "包可由题单 + 数据集确定性重建；content_digest 见包内 package_meta.json"
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_smoke_20_s1",
+      "kind": "evidence_package",
+      "description": "MRAG-Bench 随附的已发布候选，按既有排名取 top-3；**已发布候选基线**，非我方独立重检索",
+      "name": "smoke_20_s1",
+      "condition": "S1",
+      "pool_id": "official_retrieved_top3",
+      "package_version": "smoke_20_s1_S1",
+      "content_digest": "00dbcf050e7edb7c3ea2cfb364d5c5829364e52f3d31f0cb6ed7e233436c63c6",
+      "questions": 20,
+      "path_hint": "工作区 packages/smoke_20_s1/（可按题单重建）",
+      "files": 84,
+      "bytes": 17692127,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/smoke_20.v2.txt --name smoke_20_s1 --condition S1"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_smoke_20_s2",
+      "kind": "evidence_package",
+      "description": "真实 GT 证据，保留真实数量（常规 5、Incomplete 1）",
+      "name": "smoke_20_s2",
+      "condition": "S2",
+      "pool_id": "gt_evidence",
+      "package_version": "smoke_20_s2_S2",
+      "content_digest": "079e21ef016208265598756c9fd51b677b5ec7ab2da34c0c48ab56e2bbf5e306",
+      "questions": 20,
+      "path_hint": "工作区 packages/smoke_20_s2/（可按题单重建）",
+      "files": 120,
+      "bytes": 25967902,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/smoke_20.v2.txt --name smoke_20_s2 --condition S2"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
+    },
+    {
+      "id": "evidence_package_smoke_20_s3",
+      "kind": "evidence_package",
+      "description": "distractor_package",
+      "name": "smoke_20_s3",
+      "condition": "S3",
+      "pool_id": "pure_distractor_d1",
+      "package_version": "smoke_20_s3",
+      "content_digest": null,
+      "questions": 20,
+      "path_hint": "工作区 packages/smoke_20_s3/（可按题单重建）",
+      "files": 55,
+      "bytes": 9565577,
+      "how_to_obtain": [
+        "python a-side/scripts/build_distractor_package.py --list a-side/splits/smoke_20.v2.txt --name smoke_20_s3"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "content_digest 可校验重建结果字节一致"
     },
     {
       "id": "venv_main",
