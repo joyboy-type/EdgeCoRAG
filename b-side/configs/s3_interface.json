@@ -1,0 +1,19 @@
+{
+  "status": "interface_only_not_formal_protocol",
+  "distractor_types": {
+    "D1": "same class different instance",
+    "D2": "other-question related topic"
+  },
+  "conditions": [
+    "S3-pure",
+    "S3-mixed"
+  ],
+  "semantic_statuses": [
+    "confirmed_unsupportive",
+    "supports_answer",
+    "undetermined"
+  ],
+  "undetermined": "diagnostic_only; report count and denominator, no invented acceptance percentage",
+  "hash_nonoverlap": "necessary provenance check, not proof of semantic irrelevance",
+  "no_construction_or_model_execution": true
+}

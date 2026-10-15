@@ -1,0 +1,53 @@
+{
+  "version": "A_delivery_refs_v1.6",
+  "commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "repository": "https://github.com/joyboy-type/EdgeCoRAG",
+  "split_version": "v2",
+  "split_manifest": {
+    "path": "a-side/splits/split_manifest.v2.json",
+    "sha256": "95aa40d2ea65e1134415fc63094c0dabbe6ee2088da6ef20bde23238ef1d55de"
+  },
+  "splits": {
+    "smoke_20": {
+      "count": 20,
+      "sha256": "363f69180d74a80340ae500c72717bc544973874874c033f477090f4412544f9",
+      "path": "a-side/splits/smoke_20.v2.txt"
+    },
+    "dev": {
+      "count": 150,
+      "sha256": "8d5346df2690579e32d5bc90cf58b3978bff2a532c1ff33a343950a5a6df1bac",
+      "path": "a-side/splits/dev.v2.txt"
+    },
+    "internal_holdout": {
+      "count": 150,
+      "sha256": "3181bc8ebad7a776100c3ecd08b4401ae24f5417ff4adf2eaca02b312cb6526a",
+      "path": "a-side/splits/internal_holdout.v2.txt"
+    },
+    "frozen_test": {
+      "count": 1033,
+      "sha256": "c9f950652442bad9bf71f53775c83f1f6b1f8cd2d7c7228967050b22fa957ed4",
+      "path": "a-side/splits/frozen_test.v2.txt"
+    }
+  },
+  "split_v2_received": true,
+  "known_debug_ids_moved_to_dev": true,
+  "all_exposures_exhaustively_confirmed": false,
+  "source_group_isolation": false,
+  "source_group_mode": "per_question_fallback_giant_component",
+  "source_group_caveat": "Per-question fallback; cross-split image dependence NOT isolated. Header assignment_rule/group caveat still overstates isolation in places; do not repeat that claim.",
+  "A_aggregate_label_exposure": "A 侧曾在**全部 1353 题**上计算过与 GT 相关的**聚合统计**（audit_gt_match_rate.py 等）。这些统计**未用于挑题**，切分规则只依赖 raw_id 与固定种子；但作为已发生的标签接触，如实声明。逐题具名的接触见 reviewed_ids。",
+  "smoke20": {
+    "index": "a-side/data/smoke_20_file_hashes.csv",
+    "index_sha256": "fd042822d8079074f8375e36f134ba0b683a38465d9db3d5e9d9b0041f327b75",
+    "A_report": "a-side/data/acceptance_report.json",
+    "external_reference": "a-side/plans/EXTERNAL_ARTIFACTS.json",
+    "actual_external_files_received_by_B": false,
+    "B_decode_hash_validation": false,
+    "A_report_claim": "20 rows,216 image refs,220 package files; A reports37/37, not reproduced by B",
+    "rebuild_script_review": "a-side/scripts/build_evidence_package.py inspected only; has output deletion and project_config.apply_env. Never executed. Reconstruction uses streaming with nonzero dataset IO; published script produces old official5/1 selection and requires B explicit top3 adaptation."
+  },
+  "formal_full_evidence_received": false,
+  "D1_semantic_verified_bundle_received": false,
+  "unified_protocol": "published_top3_actual_gt_d1_v1",
+  "stage1_only": true
+}

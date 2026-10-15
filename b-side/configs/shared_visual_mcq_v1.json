@@ -1,0 +1,5 @@
+{
+  "version": "shared_visual_mcq_v1",
+  "text": "Use the supplied images to answer the multiple-choice question. The first image is the query image; any subsequent images are additional visual context. Output exactly one uppercase option label: A, B, C, or D. Do not include explanations.\n\nQuestion: {question}\nOptions:\nA: {A}\nB: {B}\nC: {C}\nD: {D}",
+  "model_boundary": "Only abstract model_request and resolved image bytes are passed to the adapter, never condition/source/path/position names."
+}

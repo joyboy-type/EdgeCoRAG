@@ -1,0 +1,42 @@
+{
+  "adapter_version": "qwen3_vl_smoke_v1",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "python_minor": "3.12",
+  "torch_version": "2.8.0",
+  "torchvision_version": "0.23.0",
+  "transformers_version": "4.57.3",
+  "pillow_version": "11.3.0",
+  "cuda_wheel": "cu128",
+  "dtype": "float16",
+  "quantization": "none",
+  "attention": "sdpa",
+  "thinking": "Instruct checkpoint; no Thinking adapter or thought stripping",
+  "max_new_tokens": 16,
+  "do_sample": false,
+  "seed": 42,
+  "warmup_runs": 1,
+  "image_processing": {
+    "decode": "Pillow convert RGB; no EXIF transpose, alpha compositing or external resize",
+    "use_fast": false,
+    "min_pixels": 50176,
+    "max_pixels": 262144,
+    "status": "startup budget only; not frozen as formal experimental budget"
+  },
+  "timing": {
+    "preprocess_seconds": "CPU image decode plus processor chat template/tokenization; excludes host-to-device transfer",
+    "generate_seconds": "synchronize CUDA before/after generate; includes prefill and decoding, excludes preprocessing and host-to-device transfer",
+    "total_seconds": "per question decode, preprocessing, device transfer, generate and text decode; excludes initial model loading and warmup",
+    "cuda_peak": "PyTorch current-process allocator max_memory_allocated/max_memory_reserved after per-question reset; includes resident weights; NOT nvidia-smi total device memory or all CUDA driver allocations",
+    "comparison_status": "two-question smoke only; not statistically validated performance"
+  },
+  "sources": [
+    "https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct/blob/ebb281ec70b05090aa6165b016eac8ec08e71b17/README.md",
+    "https://huggingface.co/docs/transformers/v4.57.3/en/model_doc/qwen3_vl",
+    "https://github.com/huggingface/transformers/blob/v4.57.3/src/transformers/models/qwen3_vl/processing_qwen3_vl.py",
+    "https://pytorch.org/get-started/previous-versions/",
+    "https://pypi.org/pypi/transformers/4.57.3/json"
+  ],
+  "validation_status": "API/source and metadata checked; GPU loading/inference/OOM not yet verified",
+  "other_family": "Use a separate virtual environment and revision-specific adapter for Gemma; no Gemma compatibility claim for this pinned environment."
+}

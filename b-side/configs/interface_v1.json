@@ -1,0 +1,50 @@
+{
+  "version": "b_handover_interface_v1.2",
+  "native_id_type": "string",
+  "mapping": "native id preserved as raw_id; new project qid = mragb:<raw_id>; explicit official export maps qs_id back to raw_id. Legacy two-fixture mode retains original raw qids only for backward compatibility.",
+  "generation_required_fields": [
+    "qid",
+    "question",
+    "choices",
+    "query_image",
+    "evidence",
+    "condition"
+  ],
+  "image_reference_fields": [
+    "position_key",
+    "path",
+    "sha256"
+  ],
+  "image_paths": "relative to explicit --sample-root",
+  "scoring_answers": "external nonempty JSON list: qid, answer_choice, scenario; defines fixed question set",
+  "predictions": "JSONL: qid, raw_output:string, generation_error:null or nonempty string",
+  "parser": {
+    "version": "strict_choice_v1",
+    "accepted": "after surrounding whitespace removal, exactly uppercase A-D, (A)-(D), or fullwidth-parenthesis equivalents",
+    "no_external_api": true,
+    "no_long_answer_scan": true
+  },
+  "duplicate_or_unknown_qid": "error; no scores",
+  "denominator": "fixed external answer-file question list",
+  "failure_policy": "empty, parse failure, generation error and missing count as incorrect",
+  "coverage": "received records / fixed question count, includes recorded generation errors",
+  "valid_parse_rate": "parsed records / fixed question count",
+  "model_boundary": "Only model_request and resolved image bytes, never paths/condition/source/answers, reach future adapter.",
+  "synthetic": "fixed_A_v1 flagged predictions and scores remain external and separate by condition",
+  "A_result_schema": "B-native results add prediction_raw, prediction, extraction_method=strict_choice_v1, parser_version and detailed failures. Not claimed to conform to A result schema enum until A accepts these values.",
+  "evidence_version": "A-interface-sample-v2@commit#sha256=(source JSONL bytes + NUL + CSV bytes)",
+  "run_batch_id": "One id shared by all rows from one run invocation; not a per-row unique id",
+  "row_key": [
+    "run_batch_id",
+    "qid",
+    "model_id",
+    "model_revision",
+    "condition",
+    "protocol_version",
+    "repeat_index",
+    "evidence_version"
+  ],
+  "raw_alias_rule": "If both raw_output and prediction_raw exist, require exact equality",
+  "S3": "Only interface declarations D1/D2; undetermined => diagnostic_only; no percentage threshold",
+  "split_policy": "Current A full benchmark splits rejected pending exposure reconciliation; fixture qids are not formal splits"
+}

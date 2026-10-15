@@ -1,0 +1,50 @@
+{
+  "version": "integrated_prerental_v1.6.0",
+  "baseline_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "execution_environment": "cloud Linux/Python3.12.14; existing isolated Pillow audit env",
+  "synthetic_mechanism_checks": true,
+  "new_check_groups_passed": 12,
+  "new_checks": [
+    "main S1 is original ranked top3 for Scope/Incomplete; S2 retains actual5/1; D1 undetermined isolated",
+    "query-first image objects/slots1,4,6/2; hashes/decodes/dimensions and neutral template validated",
+    "S1 rank changes and S2 forced-top3 truncation rejected",
+    "actual semantic review SHA/selected IDs checked; missing review retains the fixed S3 row as failure",
+    "S1/S3 restricted to same predeclared semantic subset; parent/subset coverage saved, full S1 unchanged",
+    "all-model phase order enforced; current-phase independent models continue after failure, later phases blocked",
+    "formal split cannot bypass phase gate by relabeling",
+    "new-main shape resumes without generation; raw aliases/parser version unchanged",
+    "new worker phase/fingerprint path exercised by two actual synthetic subprocesses; resume produces no duplicate attempt",
+    "external hash-index verifier decodes artificial media and fails on corruption; never repairs/downloads",
+    "v2 text-list import verifies pinned hash/count and distinguishes explicit limitation acknowledgment from exhaustive exposure/source isolation",
+    "new performance grouping isolates models/hosts, duplicate observations rejected, n3 produces no P95"
+  ],
+  "static_checks": {
+    "all_Python_AST": true,
+    "all_JSON": true,
+    "all_shell_syntax": true,
+    "snapshot_Git_blobs_verified": 156,
+    "five_model_ids_revisions_classes_processors_envs_unchanged": true,
+    "environment_lock_hashes_verified": true,
+    "uniform_BF16_and_generation_budget_verified": true,
+    "unchanged_scorer_shared_template": true,
+    "unchanged_AST_from_v1_5": [
+      "run_task",
+      "history",
+      "append",
+      "lock",
+      "atomic_jsonl"
+    ],
+    "current_final_sources_AST_JSON_shell": true
+  },
+  "targeted_fix": "New subset pairing test exposed raw-vs-normalized parent split hash mismatch; canonical normalized parent hash now used; test passed after correction.",
+  "A_v2_checks": "Four actual split hashes/counts/unique/disjoint1353 and named seven in dev verified; no A split generator rerun.",
+  "A_smoke20_status": "Index/report/rebuild source received. Actual external220files not received/rebuilt/decoded by B. A report37/37 not reproduced by B.",
+  "prior_v1_5_checks_not_rerun": true,
+  "model_weights_downloaded": false,
+  "inference_dependencies_installed": false,
+  "real_processor_or_model_loaded": false,
+  "GPU_inference_verified": false,
+  "formal_materials_integrated": false,
+  "all_prerental_complete": false,
+  "new_main_review_guard": "D1 actual semantic artifact SHA/selected IDs verified; missing review retains fixed rows as failures."
+}

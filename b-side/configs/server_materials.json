@@ -1,0 +1,17 @@
+{
+  "version": "server_samples_v1",
+  "external_to_git": true,
+  "archive_name": "EdgeCoRAG_server_samples_v1.zip",
+  "sha256": "fd71b20aef2af929096c7a86e9a14bef30968a9752bfb9a90d9239e7198f23a7",
+  "bytes": 4522983,
+  "input_sha256": {
+    "S0": "63d771287cc52aa04c9e1bdf4514b7dcb50073f7309cdc92ae0b456e33347db0",
+    "S1": "435876f65091d3506980f09b4ec0470a9f826fa7e7e82543a6f9b057cb879ecb",
+    "S2": "d03204f29e551f8e1dcbcac573520ad2cd1ba516b483c74667b80e9e95ab8eed"
+  },
+  "protocol_version": "official_loader_smoke_v1",
+  "template_version": "shared_visual_mcq_v1",
+  "binding": "--inputs-root <external_root>/inputs ; --sample-root <external_root> ; --answers <external_root>/scoring/answers.json",
+  "source": "Existing verified Viewer assets and official candidate lists, not A output",
+  "separation": "Generation uses inputs/ + sample_images/. Scoring gets scoring/answers.json only through the independent scorer subprocess. Never pass file names/provenance to the model."
+}

@@ -1,0 +1,91 @@
+{
+  "version": "debug_exposure_v4",
+  "dataset_revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+  "raw_ids": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "24",
+    "43"
+  ],
+  "qids": [
+    "mragb:0",
+    "mragb:1",
+    "mragb:2",
+    "mragb:3",
+    "mragb:4",
+    "mragb:24",
+    "mragb:43"
+  ],
+  "exposure_sources": [
+    {
+      "raw_ids": [
+        "0",
+        "43"
+      ],
+      "reason": "B sample/loader and offline pipeline debugging"
+    },
+    {
+      "raw_ids": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "reason": "A handover inspection, conversion and synthetic pipeline"
+    },
+    {
+      "raw_ids": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "24"
+      ],
+      "reason": "new A6 handover audit/GT/Incomplete adapter validation"
+    },
+    {
+      "raw_ids": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "24"
+      ],
+      "reason": "new fixed commit 9a223: GT media audit and six-row synthetic adaptation"
+    }
+  ],
+  "usage": "Give to later split design; not a finalized split. Any benchmark-derived holdout is internal, not external validation.",
+  "completeness": "Known minimum only. A/B must add all other touched/reviewed samples before split repair. Do not infer only these seven were exposed.",
+  "scope_note": "This B conversation retained actual sample/answer/interface work on at least seven IDs. Artificial fixture IDs do not represent real benchmark exposure. Split-list/hash metadata review is not recorded as opening every question/answer.",
+  "exposure_registry_complete": false,
+  "A_v2_disposition": "All current named B IDs verified in dev.v2 at 2354826; no claim of global completeness.",
+  "metadata_only_smoke20_raw_ids": [
+    "10",
+    "118",
+    "227",
+    "332",
+    "492",
+    "517",
+    "580",
+    "673",
+    "769",
+    "774",
+    "815",
+    "916",
+    "939",
+    "1049",
+    "1051",
+    "1062",
+    "1117",
+    "1156",
+    "1266",
+    "1343"
+  ],
+  "metadata_only_scope": "Read qid list and file-hash index only; no question text, answer inspection or image decode for these20 by B. Not asserted to be per-question tuning/exposure."
+}

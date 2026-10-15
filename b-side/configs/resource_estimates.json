@@ -1,0 +1,24 @@
+{
+  "version": "resource_terms_draft_v1",
+  "weight_bytes_by_model": {
+    "qwen3vl_4b": 8875719344,
+    "qwen3vl_8b": 17534339512,
+    "gemma4_e2b": 10246621918,
+    "gemma4_e4b": 15992595884,
+    "qwen35_4b": 9319828096
+  },
+  "all_five_checkpoint_weight_bytes": 61969104754,
+  "weight_bytes_source": "HF official fixed-revision sibling metadata, no weights fetched",
+  "new_environment_compressed_wheel_bytes": 3974493339,
+  "wheel_size_method": "HEAD Content-Length for 51 exact resolved wheels; no wheel bodies downloaded",
+  "three_venvs": "Installed package trees are independent; shared pip/HF caches can deduplicate downloads but do not assume venv hardlinks. Installed bytes unmeasured.",
+  "disk_formula": "weight cache (61,969,104,754 bytes) + 3 installed envs + one shared wheel cache + real selected data/images + optional retrieval index + results + staging/temp/headroom",
+  "planning_headroom": "For preliminary storage reservation only, budget 8-15 GiB per environment and >=20 GiB staging/headroom in addition to exact weights, unknown full data/index/results. These are estimates, not measured installed sizes or guarantees.",
+  "full_data_bytes": null,
+  "index_bytes": null,
+  "GPU_peak_bytes": null,
+  "GPU_hours": null,
+  "quality_question_runs_formula": "15*N + 2*N_S3; if N_S3=N -> 17*N",
+  "total_generation_calls_formula": "quality question-runs + all preflight/development calls + performance sample_count*repeat_count per task + >=3 unscored warmups per newly warmed executed task + explicit retries",
+  "GPU_hours_method": "Measure representative per-model single/multi image development batches, account load/warmup/retry plus retrieval only if same-hardware interface is present. Do not extrapolate from synthetic or six-row results."
+}

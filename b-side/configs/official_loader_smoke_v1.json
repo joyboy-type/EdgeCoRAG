@@ -1,0 +1,43 @@
+{
+  "version": "official_loader_smoke_v1",
+  "formal_experiment_protocol": false,
+  "scope": "startup-only; legacy two-row fixture remains separate; current A-derived six-row bundle defines its own interface-only question list",
+  "qid_order": [
+    "0",
+    "43"
+  ],
+  "scenario_by_qid": {
+    "0": "Scope",
+    "43": "Incomplete"
+  },
+  "evidence_counts": {
+    "S0": {
+      "0": 0,
+      "43": 0
+    },
+    "S1": {
+      "0": 5,
+      "43": 1
+    },
+    "S2": {
+      "0": 5,
+      "43": 1
+    }
+  },
+  "sources": {
+    "S0": "none",
+    "S1": "official_clip_candidates",
+    "S2": "official_gt_images"
+  },
+  "query_first": true,
+  "evidence_order": "original list order",
+  "gt_padding_or_duplication": false,
+  "pending": [
+    "formal top-3 protocol",
+    "A evidence handoff",
+    "formal Incomplete policy"
+  ],
+  "A_handover_source_protocol": "proto_official_v1 recorded as provenance only, not adopted as a formal protocol",
+  "rule": "ordinary cases use first five evidence images; Incomplete uses first one; missing GT is never padded or substituted",
+  "formal_protocol_frozen": false
+}

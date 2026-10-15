@@ -1,0 +1,51 @@
+{
+  "A_checked_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "new_main_commit": true,
+  "checked_utc": "2026-10-15",
+  "items": [
+    {
+      "deliverable": "corrected split + source groups + hashes",
+      "status": "v2_received_structural_checks_passed",
+      "detail": "20/150/150/1033; known7in dev; source grouping fell back to per-question. Global exposure completeness and source dependence remain disclosed limitations, not missing split-v2 claim."
+    },
+    {
+      "deliverable": "20-question representative startup/development bundle",
+      "status": "A_external_index_and_rebuild_recipe_received",
+      "detail": "A reports20rows/216image refs/220files. B has index/hashes/source script, not actual external package. Old source5/1 needs explicit new top3 adaptation."
+    },
+    {
+      "deliverable": "formal condition manifests S0/S1/S2",
+      "status": "await_formal_bundle",
+      "detail": "S1 fixed published top3 incl Incomplete; S2 actual5/1. Independent retrieval no longer prerequisite."
+    },
+    {
+      "deliverable": "S3-pure E2B/E4B",
+      "status": "missing",
+      "detail": "A STATUS says not started. Need semantic-reviewed D1, exactly3, eligible subset/coverage. D2 is optional."
+    },
+    {
+      "deliverable": "selection and bundle manifests",
+      "status": "missing",
+      "detail": "Explicit counts incl Incomplete; actual ordered GT; evidence/data/template/protocol versions and retrieval provenance. No padding."
+    },
+    {
+      "deliverable": "end-to-end retrieval interface/index",
+      "status": "conditional",
+      "detail": "Needed only if end-to-end claim is selected; do not add A remote latency to local generation."
+    }
+  ],
+  "B_exposure_registry": "debug_question_ids.json",
+  "exposure_minimum": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "24",
+    "43"
+  ],
+  "exposure_complete": false,
+  "formal_blocking": true,
+  "mechanism_testing_with_artificial_data_allowed": true,
+  "protocol_decisions_pending": false
+}
