@@ -1,0 +1,37 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# External data, models, indexes and generated outputs
+/data/
+/datasets/
+/sample_images/
+/models/
+/checkpoints/
+/weights/
+/indexes/
+/cache/
+/tmp/
+/outputs/
+/runs/
+/local_run/
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.parquet
+
+# OS files
+.DS_Store
+Thumbs.db
