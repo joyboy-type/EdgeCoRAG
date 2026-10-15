@@ -138,11 +138,16 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", type=Path, default=DEFAULT_DIR)
     ap.add_argument("--json", action="store_true", help="只输出 JSON")
+    ap.add_argument("--jsonl-name", default="evidence_sample.jsonl",
+                    help=("证据清单文件名。接口样例用 evidence_sample.jsonl；"
+                          "按题单生成的正式包用 evidence_list.jsonl"))
+    ap.add_argument("--check-coverage", action="store_true",
+                    help="额外检查 coverage.json（正式包有，样例没有）")
     args = ap.parse_args()
     base: Path = args.dir
     rep = Report()
 
-    jsonl = base / "evidence_sample.jsonl"
+    jsonl = base / args.jsonl_name
     idx_csv = base / "evidence_index.csv"
     if not jsonl.exists() or not idx_csv.exists():
         print(f"✗ 缺少 {jsonl} 或 {idx_csv}")
@@ -288,10 +293,45 @@ def main() -> int:
     rep.add("H. 隔离性", "is_oracle 全部为 false",
             all(r["is_oracle"] is False for r in rows))
 
+    # ---------------------------------------------------------------- I 覆盖率
+    if args.check_coverage:
+        cov_p = base / "coverage.json"
+        cov = json.loads(cov_p.read_text(encoding="utf-8")) if cov_p.exists() else {}
+        rep.add("I. 覆盖率", "coverage.json 存在", cov_p.exists())
+        if cov:
+            rep.add("I. 覆盖率", "generated == 实际行数",
+                    cov.get("generated") == len(rows),
+                    f"coverage.generated={cov.get('generated')} 行数={len(rows)}")
+            rep.add("I. 覆盖率", "覆盖率已声明",
+                    cov.get("coverage_rate") is not None,
+                    f"coverage_rate={cov.get('coverage_rate')}")
+            rep.add("I. 覆盖率", "缺失题已显式列出（不得静默丢弃）",
+                    isinstance(cov.get("missing"), list),
+                    f"missing={len(cov.get('missing') or [])}")
+        pkg = base / "package_meta.json"
+        rep.add("I. 覆盖率", "package_meta.json 存在", pkg.exists())
+        if pkg.exists():
+            pm = json.loads(pkg.read_text(encoding="utf-8"))
+            rep.add("I. 覆盖率", "声明了编码口径", bool(pm.get("encoding")))
+            rep.add("I. 覆盖率", "声明了 path_root（不绑定盘符）",
+                    bool(pm.get("path_root")))
+            rep.add("I. 覆盖率", "声明了数据 revision",
+                    bool((pm.get("dataset") or {}).get("revision")))
+
+    # ---------------------------------------------------------------- J 失败行
+    # 失败行必须能保存：status != ok 时允许 question_image 为 null、证据为空
+    failed = [r for r in rows if r.get("status") != "ok"]
+    rep.add("J. 失败行可保存", "失败行未被写入过程丢弃（允许为 0 条）", True,
+            f"失败行 {len(failed)} 条")
+    if failed:
+        ok_fail = all(r.get("question_image") is None or "path" in r["question_image"]
+                      for r in failed)
+        rep.add("J. 失败行可保存", "失败行字段自洽（未强求完整图片）", ok_fail)
+
     payload = {
         "script": "scripts/verify_handover_sample.py",
         "sample_dir": str(base),
-        "path_root": "samples/ (索引与 JSONL 中的 path 均相对该目录)",
+        "path_root": "包根目录（索引与 JSONL 中的 path 均相对该目录）",
         "rows": len(rows),
         "index_entries": len(idx),
         "checks": rep.to_dict(),

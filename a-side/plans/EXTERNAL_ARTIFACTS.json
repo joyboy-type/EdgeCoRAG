@@ -1,0 +1,116 @@
+{
+  "script": "scripts/build_external_manifest.py",
+  "purpose": "外置材料清单：记录稳定获取方式、版本、大小与内容 SHA-256。清单入库，物件本身不入库。",
+  "path_convention": {
+    "env_var": "EDGECORAG_STORE",
+    "default": "E:\\EdgeCoRAG-A-store",
+    "resolution": "EDGECORAG_STORE -> HF_HOME -> 默认路径（见 a-side/scripts/project_config.py）",
+    "portability_note": "**不绑定机器盘符**：设 EDGECORAG_STORE 即可整盘迁移"
+  },
+  "total_bytes": 26387042501,
+  "items": [
+    {
+      "id": "hf_model_cache",
+      "kind": "model_weights",
+      "description": "EmbeddingGemma 2 与 Gemma 4 E2B 权重（HF 缓存布局）",
+      "path_hint": "由 $EDGECORAG_STORE/hf-cache 指定；HF_HOME 指向它",
+      "files": 45,
+      "bytes": 11805842235,
+      "how_to_obtain": [
+        "export HF_ENDPOINT=https://hf-mirror.com（本机 huggingface.co DNS 被污染）",
+        "python a-side/scripts/download_models.py --model embeddinggemma",
+        "python a-side/scripts/download_models.py --model e2b"
+      ],
+      "models": [
+        {
+          "repo": "google/embeddinggemma-2",
+          "revision": "914f7f89142e33e7",
+          "params": "0.744 B",
+          "approx_gb": 1.42
+        },
+        {
+          "repo": "google/gemma-4-E2B-it",
+          "revision": "3e22461f65e89153",
+          "params": "5.123 B",
+          "approx_gb": 9.57
+        }
+      ],
+      "note": "Gemma 4 E4B 未下载：8 GB 显存实测不可行（4bit 加载即占 8.685 GiB）"
+    },
+    {
+      "id": "mrag_bench_parquet",
+      "kind": "dataset",
+      "description": "MRAG-Bench test split parquet（28 个文件）",
+      "path_hint": "$EDGECORAG_STORE/datasets/mrag_bench/43620fde.../",
+      "files": 63,
+      "bytes": 4295622485,
+      "how_to_obtain": [
+        "export HF_ENDPOINT=https://hf-mirror.com",
+        "python a-side/scripts/download_dataset.py"
+      ],
+      "dataset": {
+        "repo": "uclanlp/MRAG-Bench",
+        "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+        "license": "cc-by-4.0",
+        "split": "test",
+        "questions": 1353
+      }
+    },
+    {
+      "id": "smoke_20_evidence_package",
+      "kind": "evidence_package",
+      "description": "smoke_20 完整联调包（20 题，含查询图/候选/GT，37/37 验收通过）",
+      "path_hint": "工作区 packages/smoke_20/（按题单可重建，见 how_to_obtain）",
+      "files": 220,
+      "bytes": 47900292,
+      "how_to_obtain": [
+        "python a-side/scripts/build_evidence_package.py --list a-side/splits/smoke_20.v2.txt --name smoke_20"
+      ],
+      "rebuildable": true,
+      "rebuild_note": "包可由题单 + 数据集确定性重建；content_digest 见包内 package_meta.json"
+    },
+    {
+      "id": "venv_main",
+      "kind": "python_env",
+      "description": ".venv-main（transformers 5.x：EmbeddingGemma 2 / Gemma 4）",
+      "path_hint": "$EDGECORAG_STORE/venvs/venv-main（工作区内以 junction 指向）",
+      "files": 41410,
+      "bytes": 5281702430,
+      "how_to_obtain": [
+        "python a-side/scripts/setup_env.py main",
+        "python a-side/scripts/setup_env.py mrag"
+      ],
+      "lockfile": "a-side/reports/requirements-main.lock.txt"
+    },
+    {
+      "id": "venv_mrag",
+      "kind": "python_env",
+      "description": ".venv-mrag（transformers 4.x：作者代码；作者注释要求 <5）",
+      "path_hint": "$EDGECORAG_STORE/venvs/venv-mrag（工作区内以 junction 指向）",
+      "files": 34678,
+      "bytes": 4955975059,
+      "how_to_obtain": [
+        "python a-side/scripts/setup_env.py main",
+        "python a-side/scripts/setup_env.py mrag"
+      ],
+      "lockfile": "a-side/reports/requirements-mrag.lock.txt"
+    }
+  ],
+  "unavailable": [
+    {
+      "id": "official_retrieval_corpus",
+      "status": "not_obtained",
+      "reason": "本机网络无法访问 Google 系域名（drive/docs/www.googleapis.com 超时）；许可亦未确认。详见 a-side/data/corpus_access.json",
+      "consequence": "独立重检索路线当前不具备可执行条件"
+    },
+    {
+      "id": "gemma_4_E4B_weights",
+      "status": "deliberately_not_downloaded",
+      "reason": "8 GB 显存实测不可行；已删除以节省空间",
+      "consequence": "A2/A3 路径需更大显存机器"
+    }
+  ],
+  "deterministic": true,
+  "generated_at": null,
+  "generated_at_note": "故意不写墙上时钟，保证重跑字节一致。"
+}

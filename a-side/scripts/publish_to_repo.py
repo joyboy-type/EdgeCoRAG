@@ -72,7 +72,7 @@ KEEP_SCRIPTS = [
     "verify_sample_files.py", "verify_handover_sample.py", "make_split.py",
     # 本轮新增（切分 v2 / 实体连通性 / 语料探测）
     "verify_split.py", "build_entity_groups.py", "quantify_entity_connectivity.py",
-    "probe_corpus_access.py",
+    "probe_corpus_access.py", "build_evidence_package.py", "build_external_manifest.py",
 ]
 KEEP_REPORTS = ["audit_env.md", "A_P0_P1.md",
                 "requirements-main.lock.txt", "requirements-mrag.lock.txt"]
@@ -212,7 +212,19 @@ def populate(wt: Path) -> None:
             if src.is_file():
                 shutil.copy2(src, dst_pl / src.name)
                 n_pl += 1
-        print(f"  a-side/plans/    {n_pl} 个文档(决策清单/未完成事项/变更说明)")
+        print(f"  a-side/plans/    {n_pl} 个文档(决策清单/未完成事项/变更说明/验证摘要)")
+
+    # 外置材料清单与小体积哈希明细（物件本身不入库）
+    ext_src = A_ROOT / "a-side-src" / "data" / "external"
+    if ext_src.exists():
+        dst_ext = dst_a / "data"
+        dst_ext.mkdir(parents=True, exist_ok=True)
+        n_ext = 0
+        for src in sorted(ext_src.glob("*")):
+            if src.is_file() and src.stat().st_size < 512 * 1024:
+                shutil.copy2(src, dst_ext / src.name)
+                n_ext += 1
+        print(f"  a-side/data/     外置清单哈希明细 {n_ext} 个")
 
     (wt / "README.md").write_text(ROOT_README, encoding="utf-8")
     print("  README.md 已更新")

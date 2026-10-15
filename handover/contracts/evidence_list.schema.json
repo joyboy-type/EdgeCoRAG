@@ -185,16 +185,46 @@
     },
     "provenance": {
       "type": "object",
-      "description": "数据与代码溯源，供复验。",
+      "description": "数据与代码溯源，供复验。回答『这条记录是哪一次、用哪个版本、由哪个脚本生成的』。",
       "required": ["dataset_repo", "dataset_revision"],
       "additionalProperties": false,
       "properties": {
         "dataset_repo": { "type": "string" },
         "dataset_revision": { "type": "string" },
         "dataset_license": { "type": ["string", "null"] },
+        "split_version": {
+          "type": ["string", "null"],
+          "description": "题单/切分版本标识（如 smoke_20.v2）。用于定位题单来源。"
+        },
+        "evidence_version": {
+          "type": ["string", "null"],
+          "description": "证据冻结包版本（如 smoke_20_official_retrieved）。冻结后更新方法须换版本号并保留旧结果。"
+        },
+        "run_batch_id": {
+          "type": ["string", "null"],
+          "description": "运行批次标识，同一次运行共享；行唯一性由 qid+模型+条件+协议+重复号等复合键保证。生成阶段为 null。"
+        },
+        "generated_by": {
+          "type": ["string", "null"],
+          "description": "生成该记录的脚本路径（便于复现）。"
+        },
+        "path_root": {
+          "type": ["string", "null"],
+          "description": "所有 path 的相对根目录。**不得绑定机器盘符**，B 可把包根目录放在任意位置。"
+        },
+        "encoding": {
+          "type": ["object", "null"],
+          "description": "图片编码口径。因原始字节不可得，本项目统一为 JPEG q95 重编码，哈希与落盘字节同源。",
+          "additionalProperties": true,
+          "properties": {
+            "format": { "type": ["string", "null"] },
+            "quality": { "type": ["integer", "null"] },
+            "note": { "type": ["string", "null"] }
+          }
+        },
+        "config_hash": { "type": ["string", "null"], "description": "检索/选择配置文件的 SHA-256。" },
         "frozen_at": { "type": ["string", "null"], "description": "ISO 8601 时间。" },
-        "frozen_by": { "type": ["string", "null"] },
-        "config_hash": { "type": ["string", "null"], "description": "检索/选择配置文件的 SHA-256。" }
+        "frozen_by": { "type": ["string", "null"] }
       }
     }
   },

@@ -1,9 +1,9 @@
 {
   "script": "scripts/verify_handover_sample.py",
-  "sample_dir": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-B-handover\\samples",
-  "path_root": "samples/ (索引与 JSONL 中的 path 均相对该目录)",
-  "rows": 6,
-  "index_entries": 62,
+  "sample_dir": "packages\\smoke_20",
+  "path_root": "包根目录（索引与 JSONL 中的 path 均相对该目录）",
+  "rows": 20,
+  "index_entries": 216,
   "checks": {
     "A. Schema 合规": {
       "passed": 1,
@@ -12,7 +12,7 @@
         {
           "name": "逐行通过 evidence_list.schema.json",
           "ok": true,
-          "detail": "6 行"
+          "detail": "20 行"
         }
       ]
     },
@@ -23,12 +23,12 @@
         {
           "name": "evidence_id 全局唯一",
           "ok": true,
-          "detail": "62 条"
+          "detail": "216 条"
         },
         {
           "name": "qid 前缀格式 mragb:<raw_id>",
           "ok": true,
-          "detail": "6 题"
+          "detail": "20 题"
         },
         {
           "name": "raw_id 与 qid 可互推",
@@ -43,12 +43,12 @@
         {
           "name": "JSONL 内 qid 唯一",
           "ok": true,
-          "detail": "6 题"
+          "detail": "20 题"
         },
         {
           "name": "JSONL 与 CSV 的 evidence_id 集合一致(无孤儿)",
           "ok": true,
-          "detail": "JSONL 62 / CSV 62"
+          "detail": "JSONL 216 / CSV 216"
         },
         {
           "name": "used_in_prompt=false 的条目有声明来源",
@@ -190,6 +190,63 @@
           "name": "is_oracle 全部为 false",
           "ok": true,
           "detail": ""
+        }
+      ]
+    },
+    "I. 覆盖率": {
+      "passed": 8,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "coverage.json 存在",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "generated == 实际行数",
+          "ok": true,
+          "detail": "coverage.generated=20 行数=20"
+        },
+        {
+          "name": "覆盖率已声明",
+          "ok": true,
+          "detail": "coverage_rate=1.0"
+        },
+        {
+          "name": "缺失题已显式列出（不得静默丢弃）",
+          "ok": true,
+          "detail": "missing=0"
+        },
+        {
+          "name": "package_meta.json 存在",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "声明了编码口径",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "声明了 path_root（不绑定盘符）",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "声明了数据 revision",
+          "ok": true,
+          "detail": ""
+        }
+      ]
+    },
+    "J. 失败行可保存": {
+      "passed": 1,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "失败行未被写入过程丢弃（允许为 0 条）",
+          "ok": true,
+          "detail": "失败行 0 条"
         }
       ]
     }
