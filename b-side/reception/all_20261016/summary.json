@@ -126,5 +126,24 @@
     "unresolved_groups": 114,
     "original_order_preserved": true,
     "A_global_ordering_claim_accepted": false
+  },
+  "HQ_closeout_20261016": {
+    "authorization": "User relayed explicit HQ closeout decisions in this conversation",
+    "accepted_method": "image_model_assisted",
+    "accepted_scope": "supplemental robustness only; dev5 development, holdout2, frozen29; smoke0 retained",
+    "historical_observations_unchanged": true,
+    "model_serving_revision_available": false,
+    "preview_limitations_and_label_aware_exposure_retained": true,
+    "S1_S3_identical_qids_only": true,
+    "main_S0_S1_S2_full_original_split": true,
+    "actual_evidence_order_frozen": true,
+    "ordering_violations": 88,
+    "ordering_unresolved": 114,
+    "near_duplicate_failed_groups_excluded": 4,
+    "current_binding_config": "../../configs/final_binding_v1.json",
+    "current_task_plan": "../../configs/task_matrix_draft.json",
+    "code_review_merge_pending": true,
+    "destination_final_binding_reconstruction_pending": true,
+    "GPU_verified": false
   }
 }

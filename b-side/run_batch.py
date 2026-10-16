@@ -19,15 +19,26 @@ from score_minimal import evaluate,parse_choice,PARSER_VERSION
 
 ROOT=Path(__file__).resolve().parent
 REGISTRY=ROOT/'configs/model_registry.json'
-STAGES=['preflight_single','preflight_multi','smoke','development','quality','performance','mechanism_test']
+STAGES=['preflight_single','preflight_multi','smoke','development','quality','performance']
 PHASES=['smoke','development','internal_holdout','frozen_test','performance']
 
 def phase_for(task):
+    if task['stage'] not in STAGES:raise ValueError('Unscheduled task stage: '+str(task['stage'])+'; use development for dev S3, not mechanism_test')
     if task['stage'] in ['preflight_single','preflight_multi','smoke']:expected='smoke'
     elif task['stage']=='quality':expected=task['split']
     else:expected=task['stage']
     if task.get('phase') and task['phase']!=expected:raise ValueError('Task phase conflicts with stage/split')
     return expected
+
+
+def scheduled_tasks(matrix,through_phase):
+    """Every item maps to a known phase; deferred work is explicit, never dropped."""
+    limit=PHASES.index(through_phase);scheduled=[];deferred=[]
+    for task in matrix['task_items']:
+        phase=phase_for(task)
+        if phase not in PHASES:raise ValueError('Unscheduled phase: '+phase)
+        (scheduled if PHASES.index(phase)<=limit else deferred).append(task['task_id'])
+    return scheduled,deferred
 
 
 def atomic(path,value):
@@ -100,7 +111,7 @@ def code_versions():
 
 def task_identity(task,model,rows,backend):
     return {'task':task,'model':model,'qids':[r['qid'] for r in rows],'backend':backend,
-            'code':code_versions(),'code_version':read(ROOT/'package_hashes.json')['preparation_version'],
+            'code':code_versions(),'code_version':read(ROOT/'package_hashes.json')['version'],
             'package_manifest_sha256':sha(ROOT/'package_hashes.json'),'parser':PARSER_VERSION,'warmup_runs':3}
 
 
@@ -125,7 +136,9 @@ def snapshot(task_dir,task,model,bundle,bundle_root,rows,latest,synthetic,status
         'semantic_review_sha256':bundle.get('semantic_review_sha256'),
         'parent_split_manifest_sha256':read(checked(bundle_root,bundle['split_manifest'])).get('parent_split_manifest_sha256'),
         'selection_timing':bundle.get('selection_timing'),'retrieval_timing':bundle.get('retrieval_timing'),
-        'cross_hardware_timing_added':False})
+        'cross_hardware_timing_added':False,'review_method':bundle.get('review_method'),
+        'review_scope':bundle.get('review_scope'),'review_limitations':bundle.get('review_limitations'),
+        'HQ_binding_config_sha256':bundle.get('HQ_binding_config_sha256'),'evidence_order_policy':bundle.get('evidence_order_policy')})
     atomic_jsonl(task_dir/'predictions.jsonl',selected)
     atomic_jsonl(task_dir/'scorer_projection.jsonl',projection)
     # Performance gets no aggregate accuracy: its repeats cannot become quality rows.
@@ -192,7 +205,9 @@ def run_task(task,model,data_root,run_root,backend_factory,backend=None,backend_
                     'protocol_version':task['protocol_version'],'evidence_version':task['evidence_version'],
                     'template_version':row['template_version'],'run_batch_id':run_root.name,'repeat_index':task['repeat_index'],
                     'stage':task['stage'],'evidence_ids_order':[r.get('evidence_id',r['position_key']) for r in row['evidence']],
-                    'input_status':row['input_status'],'input_error':row.get('input_error')}
+                    'input_status':row['input_status'],'input_error':row.get('input_error'),
+                    'review_method':bundle.get('review_method'),'review_scope':bundle.get('review_scope'),
+                    'review_limitations':bundle.get('review_limitations'),'HQ_binding_config_sha256':bundle.get('HQ_binding_config_sha256')}
             record['row_key']=[run_root.name,task['task_id'],q,model['model_id'],model['revision'],task['condition'],task['protocol_version'],task['repeat_index'],task['evidence_version']]
             try:
                 if startup_error:raise RuntimeError(startup_error)
@@ -250,6 +265,8 @@ def inspect_matrix(matrix,registry):
         if len(pairs)!=17 or set(pairs)!=expected:errors.append('Exactly 17 mandatory quality combinations required per split: '+str(split))
         if split not in ['internal_holdout','frozen_test']:errors.append('Quality stage must name internal_holdout or frozen_test')
     if matrix.get('scope')=='full_required' and quality_splits!={'internal_holdout','frozen_test'}:errors.append('Full scope requires holdout and frozen-test phases')
+    try:scheduled_tasks(matrix,'performance')
+    except ValueError as e:errors.append(str(e))
     return sorted(set(errors))
 
 
@@ -259,6 +276,7 @@ def worker(args,matrix,registry):
     all_tasks=[t for t in matrix['task_items'] if t['model']==args.worker_model]
     phase=getattr(args,'phase',None)
     tasks=[t for t in all_tasks if not phase or phase_for(t)==phase]
+    if not tasks:raise ValueError('Worker has no tasks for requested phase/model')
     tasks.sort(key=lambda t:(STAGES.index(t['stage']),t['task_id']))
     backend=None;passed=set();states=[]
     for previous in all_tasks:
@@ -326,9 +344,8 @@ def main():
         envs=read(args.env_map) if args.env_map else {}
         if args.backend=='hf' and not args.env_map:raise ValueError('Separate model environments must be explicit')
         results=[]
+        expected_tasks,deferred_tasks=scheduled_tasks(matrix,args.through_phase)
         active_phases=[p for p in PHASES if any(phase_for(t)==p for t in matrix['task_items'])]
-        # Artificial mechanism-only matrices remain usable for offline controls.
-        if not active_phases:active_phases=['mechanism_test']
         for phase in active_phases:
             if phase in PHASES and PHASES.index(phase)>PHASES.index(args.through_phase):break
             phase_results=[]
@@ -344,13 +361,21 @@ def main():
                     try:result=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,env={**os.environ,'CUDA_VISIBLE_DEVICES':'0','PYTHONUTF8':'1'})
                     except KeyboardInterrupt:
                         atomic(args.run_root/'batch_state.json',{'status':'interrupted','phase':phase,'model_results':results});raise
-                row={'model':key,'phase':phase,'exit_code':result.returncode,'policy':'continue_other_models_in_current_phase; block_next_phase_on_failure'}
+                # A zero worker exit is insufficient without every requested task receipt.
+                state_path=args.run_root/(key+'.'+phase+'.state.json')
+                expected_ids={t['task_id'] for t in matrix['task_items'] if t['model']==key and phase_for(t)==phase}
+                receipt=read(state_path) if state_path.exists() else {}
+                actual=receipt.get('tasks',[])
+                ids=[t.get('task_id') for t in actual]
+                complete=(len(ids)==len(set(ids)) and set(ids)==expected_ids and all(t.get('exit_code')==0 for t in actual))
+                code=result.returncode or (0 if complete else 2)
+                row={'model':key,'phase':phase,'exit_code':code,'task_receipts_complete':complete,'policy':'continue_other_models_in_current_phase; block_next_phase_on_failure'}
                 results.append(row);phase_results.append(row)
                 atomic(args.run_root/'batch_state.json',{'status':'running','phase':phase,'model_results':results})
             if any(r['exit_code'] for r in phase_results):
                 atomic(args.run_root/'batch_state.json',{'status':'blocked_phase_failure','phase':phase,'model_results':results})
                 return 2
-        atomic(args.run_root/'batch_state.json',{'status':'requested_phases_completed','through_phase':args.through_phase,'model_results':results})
+        atomic(args.run_root/'batch_state.json',{'status':'requested_phases_completed','through_phase':args.through_phase,'completed_task_ids':expected_tasks,'deferred_task_ids':deferred_tasks,'model_results':results})
         return 0
 
 if __name__=='__main__':sys.exit(main())

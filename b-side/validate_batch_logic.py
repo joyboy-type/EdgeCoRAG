@@ -175,7 +175,7 @@ def validate_controls():
     checks=[];registry=inputs.read(runner.REGISTRY)
     with tempfile.TemporaryDirectory(prefix='edgecorag-controls-') as td:
         root=Path(td);data,bundle,*_=fixture(root)
-        def task(model,name,stage='mechanism_test'):
+        def task(model,name,stage='development'):
             m=registry['models'][model]
             return {'task_id':name,'model':model,'model_revision':m['revision'],'environment':m['environment'],
                 'condition':'S1','stage':stage,'repeat_index':0,'split':bundle['split'],
@@ -190,7 +190,7 @@ def validate_controls():
             '--run-root',str(root/'process-run'),'--backend','synthetic','--execute']
         r=subprocess.run(cmd,capture_output=True,text=True);assert r.returncode==0,r.stderr
         for model,task_id in [('qwen3vl_4b','qwen_mechanism'),('gemma4_e2b','gemma_mechanism')]:
-            assert inputs.read(root/'process-run'/(model+'.state.json'))['tasks'][0]['exit_code']==0
+            assert inputs.read(root/'process-run'/(model+'.development.state.json'))['tasks'][0]['exit_code']==0
             assert inputs.read(root/'process-run'/task_id/'score.json')['synthetic'] is True
         r=subprocess.run(cmd,capture_output=True,text=True);assert r.returncode==0,r.stderr
         assert len((root/'process-run/qwen_mechanism/attempts.jsonl').read_text().splitlines())==2

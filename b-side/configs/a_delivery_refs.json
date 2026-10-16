@@ -1,5 +1,5 @@
 {
-  "version": "A_delivery_refs_v1.9.0",
+  "version": "A_delivery_refs_v1.10.0",
   "commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
   "repository": "https://github.com/joyboy-type/EdgeCoRAG",
   "split_version": "v2",
@@ -231,5 +231,10 @@
   "other_splits_actual_received_by_B": false,
   "latest_actual_receipt": "reception/all_20261016/summary.json",
   "release_assets_all_splits": "reception/all_20261016/release_assets.json",
-  "older_scope_fields_are_historical": true
+  "older_scope_fields_are_historical": true,
+  "HQ_closeout": {
+    "decision": "limited assisted S3 accepted; actual evidence order frozen; original split v2 with disclosed labels/exposure/dependence",
+    "config": "final_binding_v1.json",
+    "pending": "B delta PR review/merge and destination reconstruction; all CUDA/runtime results unverified"
+  }
 }

@@ -125,7 +125,9 @@ def validate():
         real_subprocess=subprocess.run
         def child(cmd,*a,**kw):
             if '--worker-model' in cmd:
-                calls.append((cmd[cmd.index('--phase')+1],cmd[cmd.index('--worker-model')+1]))
+                phase=cmd[cmd.index('--phase')+1];key=cmd[cmd.index('--worker-model')+1];calls.append((phase,key))
+                state={'tasks':[{'task_id':t['task_id'],'exit_code':0} for t in phase_tasks if t['model']==key and runner.phase_for(t)==phase]}
+                runner.atomic(Path(cmd[cmd.index('--run-root')+1])/(key+'.'+phase+'.state.json'),state)
                 return subprocess.CompletedProcess(cmd,0)
             return real_subprocess(cmd,*a,**kw)
         argv=['run_batch.py','--matrix',str(mp),'--data-root',str(data),'--run-root',str(out),'--execute']
@@ -168,7 +170,7 @@ def validate_new_boundaries():
         tasks=[]
         for key in ['qwen3vl_4b','gemma4_e2b']:
             tasks.append({'task_id':key+'_control','model':key,'model_revision':reg['models'][key]['revision'],
-                'environment':reg['models'][key]['environment'],'condition':'S1','stage':'mechanism_test',
+                'environment':reg['models'][key]['environment'],'condition':'S1','stage':'development',
                 'repeat_index':0,'split':bundle['split'],'bundle':'fixture/bundle.json','bundle_sha256':sha(data/'bundle.json'),
                 'split_manifest_sha256':bundle['split_manifest']['sha256'],'protocol_version':bundle['protocol_version'],
                 'evidence_version':bundle['evidence_version']})
@@ -179,7 +181,7 @@ def validate_new_boundaries():
             '--run-root',str(out),'--backend','synthetic','--execute']
         result=subprocess.run(cmd,capture_output=True,text=True);assert result.returncode==0,result.stderr
         for key in matrix['order']:
-            state=read(out/(key+'.mechanism_test.state.json'));assert state['tasks'][0]['exit_code']==0
+            state=read(out/(key+'.development.state.json'));assert state['tasks'][0]['exit_code']==0
         before=(out/'qwen3vl_4b_control/attempts.jsonl').read_bytes()
         result=subprocess.run(cmd,capture_output=True,text=True);assert result.returncode==0,result.stderr
         assert (out/'qwen3vl_4b_control/attempts.jsonl').read_bytes()==before

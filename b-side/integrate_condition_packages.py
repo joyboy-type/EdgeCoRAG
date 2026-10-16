@@ -216,11 +216,11 @@ def checklist_confirmations(path,package,rows,method=None,review_model=None):
     Metadata bindings derived here identify the received media, not proof that a
     reviewer personally inspected every GT image. The duplicate gate is separate.
     """
-    required={'qid','final_evidence_id','semantic_verdict','review_basis','reviewer','reviewed_at'}
+    required=('qid','final_evidence_id','semantic_verdict','review_basis','reviewer','reviewed_at')
     seen=set();audit=[];by_qid={};original_sha=sha(path)
     with path.open(encoding='utf-8-sig',newline='') as f:
         reader=csv.DictReader(f)
-        if not required<=set(reader.fieldnames or []):raise ValueError('Checklist six required columns missing')
+        if not set(required)<=set(reader.fieldnames or []):raise ValueError('Checklist six required columns missing')
         for number,raw in enumerate(reader,2):
             record={k:(raw.get(k) or '').strip() for k in required}
             q,eid=record['qid'],record['final_evidence_id'];key=(q,eid)

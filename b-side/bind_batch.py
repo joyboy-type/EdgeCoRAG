@@ -20,6 +20,7 @@ def bind(binding_path,data_root,output):
             'split_manifest_sha256':bundle['split_manifest']['sha256'],'split':bundle['split'],
             'protocol_version':bundle['protocol_version'],'evidence_version':bundle['evidence_version']})
         t['phase']=phase_for(t)
+        t['status']='bound_offline_GPU_unverified'
         if t['stage']=='quality' and t.get('repeat_index')!=0:raise ValueError('Quality has exactly one repeat0 per split/model/condition')
         if t['protocol_version']!=PROTOCOL:raise ValueError('Main protocol required; old official_loader_smoke_v1 is legacy only')
         bundle,root,media,rows=load_task(t,data_root,decode=True);bundles[t['task_id']]=bundle
@@ -55,7 +56,7 @@ def bind(binding_path,data_root,output):
     quality_splits={t['split'] for t in tasks if t['stage']=='quality'}
     if scope=='full_required' and quality_splits!={'internal_holdout','frozen_test'}:raise ValueError('Full required matrix needs both holdout and frozen-test phases')
     if scope=='smoke_only' and any(t['phase']!='smoke' for t in tasks):raise ValueError('Smoke-only cannot be labeled full preparation')
-    matrix={'version':'bound_batch_v1.6','approved':binding.get('approved',False),'scope':scope,'protocol':protocol,
+    matrix={'version':'bound_batch_v1.10','approved':binding.get('approved',False),'scope':scope,'protocol':protocol,
         'registry_sha256':sha(REGISTRY),'binding_sha256':sha(binding_path),'order':[m for m in registry['models'] if any(t['model']==m for t in tasks)],
         'quality_formula':'For each formal split:15*N+2*N_S3; S1/S3 subset comparison does not add quality generations',
         'quality_question_runs':sum(len(bundles[t['task_id']]['qids']) for t in tasks if t['stage']=='quality'),

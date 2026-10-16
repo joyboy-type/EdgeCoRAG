@@ -1,8 +1,134 @@
-# EdgeCoRAG B v1.9.0 — all-split receipt and assisted evidence review
+# EdgeCoRAG B v1.10.0 — final binding and bounded runtime closeout
 
-Based on B459a262 and A c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ changes.
+Based on B9e81c89 and A c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ changes.
 Cloud Linux receipt is not a user Mac/Windows result or GPU validation. Keep PR1
 draft pending HQ review. No experiment model, weights, processor or CUDA loaded.
+
+## Current HQ closeout decision and Windows handoff
+
+HQ accepted the existing image_model_assisted S3 subsets ONLY as limited
+supplemental robustness experiments: dev5 development/mechanism, holdout2/150,
+frozen29/1033. The smoke subset remains0/20. Original CSV/observations and their
+hashes are immutable. No new image review, old suite or real material reception
+was repeated in v1.10.0. Serving revision is unavailable, contact-sheet resolution
+limited, reviewer is not human, and audits were label-aware. No representative,
+entity-isolated, answer-blind or universal semantic-independence claim is made.
+Historical receipt files below retain their original HQ_pending states; this
+section and configs/final_binding_v1.json record the later explicit authorization.
+
+Preserve actual evidence order, including88 stronger semantic-order violations
+and114 unresolved groups. Four near-duplicate-failed frozen groups remain out.
+All S0/S1/S2 use their original full split. Main S1 never shrinks to the S3 list.
+S1/S3 analysis restricts the existing S1 predictions to the SAME predeclared
+S3 qids, with parent/subset denominators, coverage and domain-bias caveats.
+
+Final task plan (configs/task_matrix_draft.json; hashes/models/budgets pinned):
+
+| Global phase | Tasks | Question-runs, excluding warmups/retries |
+| --- | ---: | ---: |
+| smoke |25 =10 single/multi one-question probes +15 full S0/S1/S2 tasks |310 |
+| development |17 =15 full-dev S0/S1/S2 + E2B/E4B explicit dev5 S3 tasks |2260 |
+| internal_holdout |17 quality combinations |2254 =15*150+2*2 |
+| frozen_test |17 quality combinations |15553 =15*1033+2*29 |
+| performance |85 =5 repeats of17 conditions, never accuracy rows |1550 |
+
+Total161 tasks /21927 question-runs; FORMAL quality alone17807. No GPU-hour or
+capacity claim. All five models must complete every development task successfully
+before either formal phase. Smoke S3 has NO task and is not declared completed.
+E2B/E4B S3 startup validation is explicitly development/dev5. The existing
+performance repeat budget is retained: S0/S1/S2 use smoke20; S3 uses dev5 with
+25 measurements per model and NO P95. These are generation-only measurements,
+not retrieval, independent questions, stability evidence or extra quality scores.
+Quality, performance, probes and warmups are separately identified.
+
+mechanism_test is a read-only input-acceptance API stage ONLY. Production matrices
+containing it (alone or mixed) now fail explicitly. Every admitted task maps to a
+scheduled global phase or an explicit --through-phase deferred ID. Zero worker
+exit without a complete unique per-task receipt cannot complete a phase.
+Default condition analysis requires identical nonempty model_id/model_revision
+and emits both identities. No implicit cross-model condition effect is allowed.
+
+### Final external reconstruction, after HQ reviews/merges this exact delta
+
+The small code ZIP contains b-side/ only. Data stay outside code, using the SAME
+12 published ZIPs: config release.assets includes exact asset IDs, byte counts,
+SHA256 and URLs. Reuse already verified archives/extractions, no new evidence
+build. No cloud /workspace or Mac /Users location is a deployment dependency.
+The existing receiver extracts fresh packages; NEVER rerun against existing roots
+or call A finalize. New binding outputs must not overwrite previous data/results.
+
+Windows PowerShell (replace these explicit deployment paths once; use existing
+audit Python/Pillow environment, not Anaconda base):
+
+```powershell
+$code = "D:\EdgeCoRAG-B\final-code\b-side"
+$external = "D:\EdgeCoRAG-B\evidence-v1"
+$py = "D:\EdgeCoRAG-B\.venv\Scripts\python.exe"
+# Only when original packages are absent: export the fixed asset manifest.
+& $py -X utf8 -B "$code/finalize_binding.py" --asset-manifest "$external/assets.json"
+# Supply the existing12 ZIPs in $external/archives. Download only genuinely absent
+# assets after HQ transfer approval; --download is explicit on this receiver.
+& $py -X utf8 -B "$code/receive_release_packages.py" --manifest "$external/assets.json" --root "$external"
+# If packages already exist, skip the receiver and use their existing root here.
+& $py -X utf8 -B "$code/finalize_binding.py" --packages "$external/packages" --archives "$external/archives" --data-root "$external/bound-v110" --media-mode hardlink
+```
+
+Use --media-mode copy only if hardlinks are unsupported or cross-volume; it does
+not alter image content/ordering. Hardlinks keep shared source bytes without
+unnecessary duplicate directories. Finalizer verifies all ZIP SHA/size, full
+package pins, the unchanged filled CSV and basis snapshots; reconstructs exact
+v2 text/hash; invokes the existing condition adapter; checks eligible qids and
+actual selected evidence ID order; builds the probe views; then calls the existing
+binder. It never reads model results or rejudges semantics. A changed subset or
+order fails; no silent filtering, filling or standard relaxation. Ordinary input
+failures stay in their full denominators and binding_receipt lists them explicitly.
+
+Output layout (external, no images/answers committed):
+- integrated/<split>/main/{bundle.json,inputs/,scoring/,media/,audit/}
+- integrated/<split>/s3/... only for dev/holdout/frozen eligible subsets
+- probes/preflight_single/ and probes/preflight_multi/, each one fixed smoke qid
+- fixed_lists/, binding.json, bound_matrix.json, selection_manifest.json,
+  binding_receipt.json (all generated metadata/review hashes), or binding.failure.json.
+
+selection_manifest pins actual ordered IDs/image hashes per qid/condition;
+binding_receipt pins the reconstructed matrix and generated metadata. Static code
+config/ZIP hashes and external data hashes are DISTINCT. Generated bundle/matrix
+hashes are recomputed at the destination and must be retained with results; do not
+reuse old unapproved v1.9 bundle hashes. Checklist serialization order is now fixed
+so process hash randomization cannot silently change a binding. This cloud
+closeout used artificial fixtures/config checks only: renewed destination binding
+against real media has not been falsely reported as executed here.
+
+### Linux launch, disconnect, resume and retrieval
+
+After HQ-approved transfer and per-family environments/cache setup (unchanged
+locks, registry revisions and budgets below), set code/data/run/control_python and
+an EXTERNAL env_map.local.json mapping qwen3vl/gemma4/qwen35 to their environment
+Python executables. Windows is only the SSH operator. No install/weights/GPU action
+is performed by this delivery.
+
+```bash
+# First authorized GPU session: whole-fleet smoke then development, in tmux.
+# Explicitly stop before formal evaluation until all development tasks pass.
+command=("$control_python" -u -B "$code/run_batch.py" --matrix "$data/bound_matrix.json" --data-root "$data" --run-root "$run" --env-map "$env_map" --backend hf --execute --through-phase development)
+printf -v cmd '%q ' "${command[@]}"
+tmux new-session -d -s edgecorag-development "$cmd > /tmp/edgecorag-development-launch.log 2>&1"
+# Inspect every model/phase/task state and saved development scores/errors.
+# Then SAME code/config/run root continues formal phases and performance:
+bash "$code/start_batch.sh" "$code" "$data/bound_matrix.json" "$data" "$run" "$control_python" "$env_map"
+# Same command resumes successful attempts without generation. For diagnosed
+# failures only, append --retry-failures; OOM never auto-shrinks budget/precision.
+# Retrieve immutable result archive after the tmux process has ended:
+tar -czf "$run.tar.gz" -C "$(dirname "$run")" "$(basename "$run")"
+sha256sum "$run.tar.gz"
+```
+
+From Windows use scp -P PORT USER@HOST:REMOTE_ARCHIVE D:/EdgeCoRAG-B/results/.
+Keep all attempts/errors/configuration, batch_identity, matrix/selection/binding
+receipt and states. Run paired/coverage summaries locally after ending the GPU
+lease. Existing RUN timing boundaries/three warmups/CUDA sync remain unchanged;
+no cross-hardware addition or P95 from25 repeats. CUDA import/loading/VRAM/OOM/
+processor compatibility and actual five-model results remain UNVERIFIED.
 
 ## A status and frozen main contract
 
@@ -34,14 +160,14 @@ reception/all_20261016/label_aware_audit_registry.json. This is not label blindn
 and global exposure completeness remains false. Legacy engineering qids remain
 separate; do not use the audit list as a tuning list or automatically redraw splits.
 
-Proposed S3 subsets pending HQ adjudication: smoke0/20, dev5/150 (prior receipt),
+Historical v1.9 proposed S3 subsets (now accepted only within current HQ limits): smoke0/20, dev5/150 (prior receipt),
 internal_holdout2/150 (415,1009), frozen_test29/1033. All retained groups have
 three visually judged nonsupportive candidates and pass query/allGT/mutual exact
 and dHash<=6 guards. Unknown/support/blank are excluded; these guards do not prove
 universal semantic independence. Existing S1/S3 analysis uses identical subset
 qids while retaining full S1. Coverage and narrow domain composition limit claims.
 Smoke has no eligible S3: do not silently pad/skip/relabel it to pass all17 tasks.
-No formal approval or all-rental-ready status is granted.
+The original receipt did not grant approval; current HQ scope is recorded above. GPU readiness is still unverified.
 
 Actual ID/rank/CSV-position order passed. Stronger wrong-option/source-qid/GT
 ordering was checkable for513 groups:88 violate the claimed ordering;114 groups
@@ -108,7 +234,7 @@ Use smoke_20/review_batch_001, frozen_test/review_batch_002 and prior
 dev_20261016/review_checklist.B_model_assisted.csv respectively. These are offline
 reconstruction paths, not formal quality approval. The validator uses
 mechanism_test for all splits, so reading a holdout is not labeled development.
-Do not add --acknowledge-split-limitations until HQ explicitly accepts the binding.
+Legacy reconstruction remains unapproved by default; the finalizer above applies the now-explicit HQ limitations acknowledgment.
 Fixed parent main S0/S1/S2 lists remain intact; only S3 has an explicit eligible
 subset. Raw review sheets/answers stay external. Review CSV, observation
 snapshots, source package pins and per-file metadata hashes are committed.
@@ -373,6 +499,5 @@ requires complete identical lists; S1/S3 subset mode checks predeclared parent
 hash/coverage and preserves full S1 results. Optional source-cluster analysis
 requires an evidenced external grouping basis; v2's fallback is not entity isolation.
 Synthetic checks are not effectiveness evidence. Do not rerun old suites on receipt.
-Windows waits for HQ review of assisted S3 judgments, empty smoke-S3 handling,
-ordering differences and formal bindings. All-cut offline receipt is complete;
+Windows waits for HQ review/merge of the v1.10 closeout delta, then reconstructs the pinned final bindings with the current entry above. All-cut offline receipt is complete;
 CUDA loading, memory/OOM and real performance remain unverified.

@@ -11,5 +11,26 @@
     "frozen_test/runner_receipt.json"
   ],
   "empty_smoke_subset_preserved": true,
-  "classifier_prompt_scorer_model_matrix_unchanged": true
+  "classifier_prompt_scorer_model_matrix_unchanged": true,
+  "v1_10_0_closeout": {
+    "version": "B_closeout_targeted_v1.10.0",
+    "actual_environment": "cloud Linux",
+    "status": "PASS",
+    "checks": [
+      "all161 final tasks scheduled; smoke25/dev17/formal17+17/performance85; dev S3 explicit; deferred IDs explicit",
+      "mixed normal+mechanism_test cannot silently complete; unknown/standalone mechanism stages explicitly rejected by runner",
+      "actual synthetic subprocess dispatch executes every mixed smoke/development task, including dev S3; identities/read-write-score/save checked, no real data",
+      "zero worker exit without complete per-task receipts blocks the next global phase",
+      "new single-question probe wrapper resolves local media, isolated scoring and fixed list without unsafe parent paths",
+      "new final binding checks saved observations against candidate/query/all-GT hashes; contradictory GT identity rejected even with matching basis-file SHA",
+      "checklist conversion byte serialization identical under two PYTHONHASHSEED values; original CSV unchanged",
+      "both paired APIs reject cross-model/cross-revision/empty identities; valid same-model delta and full-parent/subset denominators unchanged; identities emitted",
+      "immutable committed review/config/lock pins validate; actual image review and all prior receipt/test suites NOT rerun"
+    ],
+    "GPU_verified": false,
+    "synthetic_only_new_dispatch": true,
+    "actual_external_packages_rebuilt_this_round": false,
+    "old_tests_rerun": false,
+    "images_re_reviewed": false
+  }
 }

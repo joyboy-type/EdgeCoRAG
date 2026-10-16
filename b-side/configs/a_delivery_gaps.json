@@ -20,8 +20,8 @@
     },
     {
       "deliverable": "S3 semantic confirmation",
-      "status": "all_final_candidates_assisted_review_complete_HQ_pending",
-      "detail": "Prior dev254 reused; new1874 actual final candidates reviewed. Proposed groups smoke0/dev5/internal2/frozen29; support/unknown/blank excluded. Smoke S3 empty blocks full17 smoke; no arbitrary padding/coverage threshold. See reception/all_20261016."
+      "status": "HQ_accepted_limited_image_model_assisted_supplement",
+      "detail": "smoke0 retained; dev5 development only; holdout2/frozen29 same-qid S1 comparisons, parent/coverage/domain limits mandatory; original observations unchanged; not human or universal independence guarantee."
     },
     {
       "deliverable": "rebuild provenance if transfer impossible",
@@ -35,8 +35,8 @@
     },
     {
       "deliverable": "claimed S3 semantic ordering",
-      "status": "not_verified_violations_observed",
-      "detail": "513 groups checkable;88 violate wrong-option/source-qid/GT ordering,114 unresolved. Preserve actual order; A/HQ decide documented current order or revised package versions/hashes."
+      "status": "actual_original_order_frozen_by_HQ",
+      "detail": "88 claimed-semantic-order violations/114 unresolved remain disclosed. Do not reorder or assert wrong-option/source ordering.4 near-duplicate failed groups excluded."
     }
   ],
   "B_exposure_registry": "debug_question_ids.json",
@@ -193,15 +193,16 @@
     "1347"
   ],
   "exposure_complete": false,
-  "formal_blocking": true,
+  "formal_blocking": false,
   "mechanism_testing_with_artificial_data_allowed": true,
   "protocol_decisions_pending": false,
-  "B_adapter_status": "v1.8.0 actual dev receipt/runtime input acceptance; other cuts and formal S3 acceptance pending",
+  "B_adapter_status": "v1.10.0 final code/binding closeout; all actual prior receipts retained; new binding reconstructed at destination from pinned Release sources",
   "user_reported_transfer": {
-    "total": "3.69 GiB reported by user",
-    "B_actual_received": "dev_s1/dev_s2/dev_s3 only",
-    "ZIP_bytes": 468954999,
+    "actual_all12_received_cloud": true,
+    "source_pins": "../reception/all_20261016/release_assets.json",
     "rebuild_started": false
   },
-  "label_aware_audit_registry": "../reception/all_20261016/label_aware_audit_registry.json"
+  "label_aware_audit_registry": "../reception/all_20261016/label_aware_audit_registry.json",
+  "code_review_pending": true,
+  "GPU_verified": false
 }

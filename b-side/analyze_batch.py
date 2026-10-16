@@ -14,7 +14,18 @@ def quantile(xs,p):
     return xs[lo]+(xs[hi]-xs[lo])*(i-lo)
 
 
+def same_model(left,right):
+    identities=[]
+    for score in [left,right]:
+        identity={k:score.get(k) for k in ['model_id','model_revision']}
+        if any(not isinstance(v,str) or not v.strip() for v in identity.values()):raise ValueError('Nonempty model_id/model_revision required for same-model condition analysis')
+        identities.append(identity)
+    if identities[0]!=identities[1]:raise ValueError('Same-model comparison requires identical model_id and model_revision')
+    return {'comparison_mode':'same_model_conditions','left_model':identities[0],'right_model':identities[1]}
+
+
 def paired(left,right,repetitions=2000,seed=42,groups=None,allow_synthetic=False):
+    model_identity=same_model(left,right)
     for score in [left,right]:
         if score.get('synthetic') and not allow_synthetic:raise ValueError('Synthetic results are mechanism evidence only')
         if score.get('stage')!='quality' or score.get('performance_repeats_excluded_from_accuracy'):raise ValueError('Quality score required')
@@ -51,7 +62,7 @@ def paired(left,right,repetitions=2000,seed=42,groups=None,allow_synthetic=False
         scenes[s]={'n':len(qs),'left_accuracy':sum(a[q]['correct'] for q in qs)/len(qs),
                    'right_accuracy':sum(b[q]['correct'] for q in qs)/len(qs),
                    'difference':sum(delta[q] for q in qs)/len(qs)}
-    return {'method':method,'n_questions':len(qids),'resamples':repetitions,'seed':seed,
+    return {**model_identity,'method':method,'n_questions':len(qids),'resamples':repetitions,'seed':seed,
         'difference_right_minus_left':sum(delta.values())/len(delta),'percentile_CI_95':[quantile(samples,.025),quantile(samples,.975)],
         'scenarios':scenes,'Incomplete_retained_in_overall':True,'synthetic':bool(left.get('synthetic') or right.get('synthetic')),
         'caveat':'Small or dependent samples limit inference; grouping basis must be supplied, never inferred from image-hash disjointness. No automatic significance or external-validation claim.'}
@@ -59,6 +70,7 @@ def paired(left,right,repetitions=2000,seed=42,groups=None,allow_synthetic=False
 
 def paired_S1_S3_subset(left,right,repetitions=2000,seed=42,allow_synthetic=False):
     import copy
+    same_model(left,right)
     if left.get('condition')!='S1' or right.get('condition')!='S3-pure':raise ValueError('Require S1 full and S3-pure subset scores')
     coverage=right.get('S3_coverage')
     if not coverage or not right.get('semantic_review_sha256'):raise ValueError('Predeclared semantic subset metadata required')
@@ -74,7 +86,9 @@ def paired_S1_S3_subset(left,right,repetitions=2000,seed=42,allow_synthetic=Fals
         'paired_denominator':len(eligible),'coverage':len(eligible)/len(parent),
         'S1_subset_accuracy':sum(mapping[q]['correct'] for q in eligible)/len(eligible),
         'S3_subset_accuracy':sum(r['correct'] for r in right['per_question'])/len(eligible),
-        'full_S1_score_unchanged':True})
+        'full_S1_score_unchanged':True,'S3_review_method':right.get('review_method'),
+        'S3_review_scope':right.get('review_scope'),'review_limitations':right.get('review_limitations'),
+        'domain_bias_note':'Small selected image-model-assisted subsets are not representative of the full benchmark; no universal semantic-independence guarantee.'})
     return value
 
 
