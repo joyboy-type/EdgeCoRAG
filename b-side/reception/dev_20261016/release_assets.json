@@ -1,0 +1,55 @@
+{
+  "version": "dev_actual_receipt_v1.8.0",
+  "repository": "joyboy-type/EdgeCoRAG",
+  "release_id": 414607999,
+  "tag": "evidence-packages-v1.0",
+  "A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "assets": [
+    {
+      "id": 646327173,
+      "name": "dev_s1.zip",
+      "size": 142898164,
+      "state": "uploaded",
+      "digest": "sha256:24fd31d9e98b3f1ecf356d1893fb813b031784cad16134dadc326fea6d2b40db",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/dev_s1.zip",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/dev_s1.zip",
+      "created_at": "2026-10-16T06:03:33Z",
+      "updated_at": "2026-10-16T06:07:24Z",
+      "condition": "S.",
+      "package": "dev_s1",
+      "sha256": "24fd31d9e98b3f1ecf356d1893fb813b031784cad16134dadc326fea6d2b40db",
+      "max_expanded_bytes": 298132052
+    },
+    {
+      "id": 646334888,
+      "name": "dev_s2.zip",
+      "size": 235023165,
+      "state": "uploaded",
+      "digest": "sha256:ac0fa975fb41752436828c71b766a8742f1051925e389abf07f43ebf38ad6018",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/dev_s2.zip",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/dev_s2.zip",
+      "created_at": "2026-10-16T06:07:26Z",
+      "updated_at": "2026-10-16T06:13:59Z",
+      "condition": "S.",
+      "package": "dev_s2",
+      "sha256": "ac0fa975fb41752436828c71b766a8742f1051925e389abf07f43ebf38ad6018",
+      "max_expanded_bytes": 489145798
+    },
+    {
+      "id": 646350203,
+      "name": "dev_s3.zip",
+      "size": 91033670,
+      "state": "uploaded",
+      "digest": "sha256:7fa6ed4e4050e29cb6837b9406be7bc0d7e5f808a532e89edef96b22857e4301",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/dev_s3.zip",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/dev_s3.zip",
+      "created_at": "2026-10-16T06:14:01Z",
+      "updated_at": "2026-10-16T06:16:34Z",
+      "condition": "S.",
+      "package": "dev_s3",
+      "sha256": "7fa6ed4e4050e29cb6837b9406be7bc0d7e5f808a532e89edef96b22857e4301",
+      "max_expanded_bytes": 189668542
+    }
+  ],
+  "scope": "Only dev authorized. Future splits require separately supplied approved pins; do not auto-enumerate/download release."
+}

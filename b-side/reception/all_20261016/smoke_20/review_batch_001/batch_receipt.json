@@ -1,0 +1,26 @@
+{
+  "version": "actual_predeclared_review_batch_v1",
+  "split": "smoke_20",
+  "batch": 1,
+  "recorded_at": "2026-10-16T09:16:26+00:00",
+  "total_source_candidate_positions": 30,
+  "actual_visually_reviewed_positions": 30,
+  "review_complete": true,
+  "verdict_counts": {
+    "支持": 7,
+    "无法判断": 23
+  },
+  "eligible_qids": [],
+  "parent_denominator": 20,
+  "coverage": 0,
+  "checklist_sha256": "baede2b03280c30c7f49b086344ec8d30acb199f1ac0589a80948419edc3afc2",
+  "review_snapshot_sha256": "39fd46f46d471306b458c33278ff38fda4fa2a74e0b29eeb42b1942c26b3e951",
+  "no_nonnegative_or_blank_confirmation": true,
+  "source_originals_unchanged": true,
+  "HQ_accepted": false,
+  "formal_S3_accepted": false,
+  "model_predictions_seen": false,
+  "protocol_model_prompt_or_budget_changes": false,
+  "GPU_verified": false,
+  "label_aware_evidence_audit_not_engineering_tuning": true
+}

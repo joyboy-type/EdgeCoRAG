@@ -1,0 +1,101 @@
+{
+  "version": "published_top3_actual_gt_d1_v1",
+  "approved": true,
+  "authorization": "HQ/user message in this conversation,2026-10-15",
+  "scope": "HQ closeout: original split v2 full S0/S1/S2; assisted D1 supplemental subsets only; real CUDA unverified",
+  "s1_source": "official_clip_candidates",
+  "evidence_rule": "published_top3_actual_gt_d1_v1",
+  "S0": {
+    "evidence": 0
+  },
+  "S1": {
+    "evidence": 3,
+    "Incomplete": 3,
+    "selection": "original published ranks 0,1,2, including refs marked unused by OLD official-loader protocol",
+    "independent_retrieval": false
+  },
+  "S2": {
+    "normal": 5,
+    "Incomplete": 1,
+    "selection": "all actual ordered GT refs; no padding or forced top3"
+  },
+  "S3": {
+    "evidence": 3,
+    "type": "D1",
+    "semantic_status": "confirmed_unsupportive",
+    "review_reference_required": true,
+    "undetermined": "diagnostic_only, never pure distractor",
+    "subset_comparison": "restrict S1 results to identical predeclared S3 qids; report subset/parent denominators and coverage",
+    "method": "image_model_assisted",
+    "interpretation": "supplemental robustness on narrow reviewed subsets, not full-benchmark representative or universal semantic-independence guarantee",
+    "smoke_empty": "zero retained; no S3 smoke task; explicit E2B/E4B dev5 development tasks instead",
+    "accepted_subsets": {
+      "smoke_20": 0,
+      "dev": 5,
+      "internal_holdout": 2,
+      "frozen_test": 29
+    }
+  },
+  "s3_approved": true,
+  "precision": "uniform bfloat16",
+  "quantization": "none",
+  "attention": "sdpa",
+  "thinking": false,
+  "seed": 42,
+  "do_sample": false,
+  "max_new_tokens": 64,
+  "image_processing": {
+    "source_bytes_order": "same per condition across models; native processor resizes differ",
+    "qwen": {
+      "min_pixels": 50176,
+      "max_pixels": 262144,
+      "use_fast": false
+    },
+    "gemma4": {
+      "max_soft_tokens": 140
+    },
+    "equivalent_visual_token_budget_claim": false
+  },
+  "quality_repeat_index": 0,
+  "warmup_runs": 3,
+  "phase_order": [
+    "smoke",
+    "development",
+    "internal_holdout",
+    "frozen_test",
+    "performance"
+  ],
+  "performance": {
+    "list": "S0/S1/S2 smoke_20.v2; S3-pure dev5 (explicit non-quality development subset)",
+    "repetitions": 5,
+    "target_observations_per_condition": 100,
+    "p95_minimum_observations": 100,
+    "P95_claim": "descriptive; five repeats of20questions are not100independent questions; no stability guarantee",
+    "accuracy_repeats_added": 0,
+    "S3_observations_per_model": 25,
+    "S3_p95": null,
+    "S3_caveat": "5 repeats x5 dev questions; no P95 with n25, not a test accuracy result"
+  },
+  "timing": {
+    "generate": "CUDA sync before/after generate; prefill+decode, excludes CPU preprocess/transfer",
+    "end_to_end": "per question decode/preprocess/transfer/generate/final boundary; excludes bundle checks/load/warmup/scoring",
+    "retrieval": "not executed for published candidates; null, not zero",
+    "selection": "CPU selection duration separately recorded, never added across hardware",
+    "memory": "process allocator peak separate from device-wide peak; unmeasured device peak=null"
+  },
+  "optional_not_blocking": [
+    "independent retrieval",
+    "D2",
+    "official5/1 candidate supplement",
+    "Qwen3.5-9B",
+    "other-model S3",
+    "k ablation",
+    "second dataset"
+  ],
+  "GPU_compatible": false,
+  "all_prerental_complete": false,
+  "TF32": false,
+  "precision_note": "BF16 loading/compute policy; official internal FP32 numerical paths may remain. Log actual parameter dtype counts; not an all-operations-BF16 claim.",
+  "evidence_order": "Actual original array/ID order frozen; do not assert wrong-option/source-qid/GT semantic ordering. Prior88 violations/114 unresolved retained.",
+  "HQ_closeout_authorization": "User relayed HQ final closeout decisions in this conversation,2026-10-16; pending code PR review/merge, not a CUDA approval"
+}

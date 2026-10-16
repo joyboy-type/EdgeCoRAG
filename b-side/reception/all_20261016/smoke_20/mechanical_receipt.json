@@ -1,0 +1,210 @@
+{
+  "version": "actual_remaining_split_receipt_v1",
+  "split": "smoke_20",
+  "recorded_at": "2026-10-16T09:12:20+00:00",
+  "actual_environment": "cloud Linux",
+  "Python": "3.12.14",
+  "Pillow": "12.3.0",
+  "B_code_commit": "459a2620086ff3437562c18f5a73220127399a35",
+  "A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "packages": {
+    "S1": {
+      "question_rows": 20,
+      "indexed_image_positions": 80,
+      "decoded_positions": 80,
+      "unique_contents": 79,
+      "evidence_count_distribution": {
+        "3": 20
+      },
+      "image_errors": [],
+      "source_full_package_sha256": "d70a87ba11e9ffb06244183de0d63687f1d4bfdd1c7178d7da332eafe9807410",
+      "all_file_count": 84,
+      "metadata_files": [
+        {
+          "path": "coverage.json",
+          "bytes": 273,
+          "sha256": "6574ce69fb5691e94bea804b2966350cf3ecc1a8c6288f1054bbba06344e79f9"
+        },
+        {
+          "path": "evidence_index.csv",
+          "bytes": 13522,
+          "sha256": "bcfb6c60d50aa859cbc922f03c5ba1d20f763c9345c3f54912dc240857d2e81c"
+        },
+        {
+          "path": "evidence_list.jsonl",
+          "bytes": 61286,
+          "sha256": "8e5f2351575529d5edc5676d0ac84c61ff5a58858307aedb88d56b984ef520a0"
+        },
+        {
+          "path": "package_meta.json",
+          "bytes": 1759,
+          "sha256": "566d38f7a01830c07bcd9de8ade406d545d2c77b3a22aefa9d87069d0e2fe362"
+        }
+      ]
+    },
+    "S2": {
+      "question_rows": 20,
+      "indexed_image_positions": 116,
+      "decoded_positions": 116,
+      "unique_contents": 116,
+      "evidence_count_distribution": {
+        "5": 19,
+        "1": 1
+      },
+      "image_errors": [],
+      "source_full_package_sha256": "bed9ac127c8931b434c4e9a56037d8263b68269707ff2fefa3ab7aeb3c2bd365",
+      "all_file_count": 120,
+      "metadata_files": [
+        {
+          "path": "coverage.json",
+          "bytes": 273,
+          "sha256": "7f043bd686fc8200a341f10471f7cac220877085a87637b65096fee7a15ab7ea"
+        },
+        {
+          "path": "evidence_index.csv",
+          "bytes": 15444,
+          "sha256": "b27b13c78833e05e2b31cea15bd38c444872f813b5df36d543d376bf2a4b076b"
+        },
+        {
+          "path": "evidence_list.jsonl",
+          "bytes": 89957,
+          "sha256": "ab6fff805ae87c25f05f497a1d249043aa7a97090f12b11c19510ba06bd86610"
+        },
+        {
+          "path": "package_meta.json",
+          "bytes": 1697,
+          "sha256": "914a83cd9038997cdbfd38de54e44f715d42db93ebe4c0e8c93263fc9281b394"
+        }
+      ]
+    },
+    "S3": {
+      "question_rows": 20,
+      "indexed_image_positions": 50,
+      "decoded_positions": 50,
+      "unique_contents": 50,
+      "evidence_count_distribution": {
+        "3": 10,
+        "0": 10
+      },
+      "image_errors": [],
+      "source_full_package_sha256": "2e24e9fe6864208c3be9d2272d86b638a10b00c04c0e89ab3470ba6642cf716b",
+      "all_file_count": 57,
+      "metadata_files": [
+        {
+          "path": "coverage.json",
+          "bytes": 2157,
+          "sha256": "bef8a9665977cd53be8d9aa91914d6c5150204f2bb58aa3e3492de5ae4a8e2b8"
+        },
+        {
+          "path": "evidence_index.csv",
+          "bytes": 7321,
+          "sha256": "b0fbbb7e27ce6914f1679f7bf8968acbc517cb26aa38bfb64d3d4c1dde90a428"
+        },
+        {
+          "path": "evidence_list.jsonl",
+          "bytes": 42536,
+          "sha256": "a3e4e1ae159863855aea250c3d90c5f7c87d429e8efae47eedf50440263b9ba7"
+        },
+        {
+          "path": "file_hashes.csv",
+          "bytes": 5127,
+          "sha256": "e10e22d7cde8eb471956104dcb046a2e5509be7727fb85c79d9fc5bd6d6c2d1f"
+        },
+        {
+          "path": "package_meta.json",
+          "bytes": 1754,
+          "sha256": "df00b4b498ede16074eb4f28efffc9f783fa7716fb4f1af74f47b3c06ab97a49"
+        },
+        {
+          "path": "review_checklist.csv",
+          "bytes": 7284,
+          "sha256": "348ad3d76ce26d26db314a0c76c9bc9f5180764a7913ac364be403e5ffd68a47"
+        },
+        {
+          "path": "semantic_review.csv",
+          "bytes": 21181,
+          "sha256": "098b89a5e3c627fc3c98675c12acd552bb1bfd5502c2d77af9a95e53988b28b0"
+        }
+      ],
+      "source_checklist_verdict_counts": {
+        "": 30
+      }
+    }
+  },
+  "conditions": {
+    "S0": {
+      "fixed_denominator": 20,
+      "input_ok": 20,
+      "failures": [],
+      "image_slots_distribution": {
+        "1": 20
+      },
+      "runner_loader_and_shared_message_order_passed": true
+    },
+    "S1": {
+      "fixed_denominator": 20,
+      "input_ok": 20,
+      "failures": [],
+      "image_slots_distribution": {
+        "4": 20
+      },
+      "runner_loader_and_shared_message_order_passed": true
+    },
+    "S2": {
+      "fixed_denominator": 20,
+      "input_ok": 20,
+      "failures": [],
+      "image_slots_distribution": {
+        "6": 19,
+        "2": 1
+      },
+      "runner_loader_and_shared_message_order_passed": true
+    }
+  },
+  "fixed_qids": [
+    "mragb:10",
+    "mragb:118",
+    "mragb:227",
+    "mragb:332",
+    "mragb:492",
+    "mragb:517",
+    "mragb:580",
+    "mragb:673",
+    "mragb:769",
+    "mragb:774",
+    "mragb:815",
+    "mragb:916",
+    "mragb:939",
+    "mragb:1049",
+    "mragb:1051",
+    "mragb:1062",
+    "mragb:1117",
+    "mragb:1156",
+    "mragb:1266",
+    "mragb:1343"
+  ],
+  "predeclared_label_aware_audit_only": true,
+  "engineering_prompt_or_model_tuning": false,
+  "model_predictions_seen": false,
+  "experiment_model_or_processor_loaded": false,
+  "source_packages_unchanged": true,
+  "GPU_verified": false,
+  "formal_S3_accepted": false,
+  "full_rental_preparation_complete": false,
+  "S3_dedup_blockers": {},
+  "source_semantic_sort_claim_verified": false,
+  "caveat": "Same positions/order checked, not semantic wrong-option ordering. S1/S2 regular3vs5 and Incomplete3vs1. No model quality measured.",
+  "S3_nonempty_groups_without_duplicate_blockers": [
+    "mragb:10",
+    "mragb:118",
+    "mragb:227",
+    "mragb:492",
+    "mragb:517",
+    "mragb:673",
+    "mragb:769",
+    "mragb:815",
+    "mragb:939",
+    "mragb:1117"
+  ],
+  "report_label_correction": "Renamed a misleading report-only key; this list includes partial groups. No acceptance rerun or source changes."
+}

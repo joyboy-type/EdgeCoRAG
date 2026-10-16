@@ -1,0 +1,52 @@
+{
+  "status": "validated_inputs",
+  "backend": "validate",
+  "conditions": [
+    {
+      "bundle": "s3/bundle.json",
+      "bundle_sha256": "5c8579d990cb17f8df075d650cc07c465346173f167f4dce960a53f0fc6a68d2",
+      "condition": "S3-pure",
+      "fixed_denominator": 29,
+      "input_ok": 29,
+      "failures": [],
+      "image_counts": {
+        "4": 29
+      },
+      "qid_order": [
+        "mragb:48",
+        "mragb:101",
+        "mragb:106",
+        "mragb:146",
+        "mragb:147",
+        "mragb:186",
+        "mragb:404",
+        "mragb:409",
+        "mragb:453",
+        "mragb:486",
+        "mragb:493",
+        "mragb:499",
+        "mragb:529",
+        "mragb:533",
+        "mragb:554",
+        "mragb:612",
+        "mragb:621",
+        "mragb:633",
+        "mragb:713",
+        "mragb:788",
+        "mragb:841",
+        "mragb:861",
+        "mragb:920",
+        "mragb:999",
+        "mragb:1074",
+        "mragb:1077",
+        "mragb:1207",
+        "mragb:1209",
+        "mragb:1335"
+      ],
+      "formal_split_approved": false
+    }
+  ],
+  "GPU_verified": false,
+  "inference_or_accuracy_generated": false,
+  "gold_read_by_this_validator": false
+}

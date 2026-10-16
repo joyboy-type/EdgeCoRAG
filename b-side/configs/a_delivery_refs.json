@@ -1,0 +1,240 @@
+{
+  "version": "A_delivery_refs_v1.10.0",
+  "commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "repository": "https://github.com/joyboy-type/EdgeCoRAG",
+  "split_version": "v2",
+  "split_manifest": {
+    "path": "a-side/splits/split_manifest.v2.json",
+    "sha256": "95aa40d2ea65e1134415fc63094c0dabbe6ee2088da6ef20bde23238ef1d55de"
+  },
+  "splits": {
+    "smoke_20": {
+      "count": 20,
+      "sha256": "363f69180d74a80340ae500c72717bc544973874874c033f477090f4412544f9",
+      "path": "a-side/splits/smoke_20.v2.txt"
+    },
+    "dev": {
+      "count": 150,
+      "sha256": "8d5346df2690579e32d5bc90cf58b3978bff2a532c1ff33a343950a5a6df1bac",
+      "path": "a-side/splits/dev.v2.txt"
+    },
+    "internal_holdout": {
+      "count": 150,
+      "sha256": "3181bc8ebad7a776100c3ecd08b4401ae24f5417ff4adf2eaca02b312cb6526a",
+      "path": "a-side/splits/internal_holdout.v2.txt"
+    },
+    "frozen_test": {
+      "count": 1033,
+      "sha256": "c9f950652442bad9bf71f53775c83f1f6b1f8cd2d7c7228967050b22fa957ed4",
+      "path": "a-side/splits/frozen_test.v2.txt"
+    }
+  },
+  "split_v2_received": true,
+  "known_debug_ids_moved_to_dev": true,
+  "all_exposures_exhaustively_confirmed": false,
+  "source_group_isolation": false,
+  "source_group_mode": "per_question_fallback_giant_component",
+  "source_group_caveat": "Per-question fallback; cross-split image dependence NOT isolated. Header assignment_rule/group caveat still overstates isolation in places; do not repeat that claim.",
+  "A_aggregate_label_exposure": "A 侧曾在**全部 1353 题**上计算过与 GT 相关的**聚合统计**（audit_gt_match_rate.py 等）。这些统计**未用于挑题**，切分规则只依赖 raw_id 与固定种子；但作为已发生的标签接触，如实声明。逐题具名的接触见 reviewed_ids。",
+  "smoke20": {
+    "index": "a-side/data/smoke_20_file_hashes.csv",
+    "index_sha256": "fd042822d8079074f8375e36f134ba0b683a38465d9db3d5e9d9b0041f327b75",
+    "A_report": "a-side/data/acceptance_report.json",
+    "external_reference": "a-side/plans/EXTERNAL_ARTIFACTS.json",
+    "actual_external_files_received_by_B": false,
+    "B_decode_hash_validation": false,
+    "A_report_claim": "20 rows,216 image refs,220 package files; A reports37/37, not reproduced by B",
+    "rebuild_script_review": "Historical 220-file index is old loader package, not new S1/S2/S3 acceptance. New builder at6e02 uses explicit S1 top3 and separate S2 actual GT. Read only; not executed.",
+    "historical_index_status": "a-side/data/smoke_20_file_hashes.csv removed from c0e0931; prior235 receipt metadata is historical only, not an active new-package index."
+  },
+  "formal_full_evidence_received": false,
+  "D1_semantic_verified_bundle_received": false,
+  "unified_protocol": "published_top3_actual_gt_d1_v1",
+  "stage1_only": false,
+  "previous_commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
+  "actual_formal_packages_received_by_B": false,
+  "round3_read_only_source_sha256": {
+    "a-side/plans/VERIFICATION_SUMMARY_ROUND3.md": "7fc122bd05f263e165a0a46f1621a79cc07c5367d4fde3918ce8681d9b7c40f9",
+    "a-side/plans/EXTERNAL_ARTIFACTS.json": "657023f1a5e4a38d6b80a9ce54c538f97356064f03f2bba7a5ac8180a39f2119",
+    "a-side/scripts/build_evidence_package.py": "b5ba160e1703db7db7cc80a81a26a438adf9a5112bc15a658d0620f67331cf3b",
+    "a-side/scripts/build_distractor_package.py": "ac00b11d0adb24e7f98b1551a3fcee651ac765c36945457e53d9205e008e020a",
+    "a-side/scripts/verify_packages.py": "d85a05e1f41750884d6a151e96420554fd67f97e9383b08fd17c1acb483b7c5f",
+    "a-side/scripts/project_config.py": "72b813abd25c1d954c8e290d0208e657f9035d1188fd2d8055fb676769b595ce",
+    "a-side/reports/requirements-main.lock.txt": "161d9c6c96d088c8b345d8f9ed271303d739f0a7ab322c9ce014639d28423acc",
+    "a-side/reports/requirements-mrag.lock.txt": "a420778819830bac22a1de5a6317ce2e05094b7f5a2ea844e9884d165a50ac0c"
+  },
+  "round3_packages": [
+    {
+      "name": "dev_s1",
+      "condition": "S1",
+      "package_version": "dev_s1_S1",
+      "content_digest": "c96ecb18f485fced901ab10436cba2f66270f7b39d97c278debfc047b4d7218b",
+      "files": 604,
+      "bytes": 149066026,
+      "questions": 150
+    },
+    {
+      "name": "dev_s2",
+      "condition": "S2",
+      "package_version": "dev_s2_S2",
+      "content_digest": "ee7a44fb7655bc0fdd39101e7cd1253cb872f99fd0cb4228896911be1c46d182",
+      "files": 852,
+      "bytes": 244572899,
+      "questions": 150
+    },
+    {
+      "name": "dev_s3",
+      "condition": "S3",
+      "package_version": "dev_s3",
+      "content_digest": "2665e6d3f84ff2d744a4c5367531b7017a1bca9c4afd861d410f5e332e22819e",
+      "files": 411,
+      "bytes": 94834271,
+      "questions": 150
+    },
+    {
+      "name": "frozen_test_s1",
+      "condition": "S1",
+      "package_version": "frozen_test_s1_S1",
+      "content_digest": "ffbbec45b655149962d4f660420f8d6489484b033ddc5403eb7bea13ccec5d5d",
+      "files": 4136,
+      "bytes": 997744228,
+      "questions": 1033
+    },
+    {
+      "name": "frozen_test_s2",
+      "condition": "S2",
+      "package_version": "frozen_test_s2_S2",
+      "content_digest": "fc136975496a0b51633c04496603f556af522d16f3a6a6cc5dcb97d7149b468e",
+      "files": 5894,
+      "bytes": 1543759626,
+      "questions": 1033
+    },
+    {
+      "name": "frozen_test_s3",
+      "condition": "S3",
+      "package_version": "frozen_test_s3",
+      "content_digest": "e81c2d410142f7e3bfc6fa67e315fdd4e610de919f9b7f7ba639165e5e351469",
+      "files": 2651,
+      "bytes": 596932914,
+      "questions": 1033
+    },
+    {
+      "name": "internal_holdout_s1",
+      "condition": "S1",
+      "package_version": "internal_holdout_s1_S1",
+      "content_digest": "388511ef4ab6e7369cd586184e3034f72fce274189c1a01218306b889ad69434",
+      "files": 604,
+      "bytes": 143599554,
+      "questions": 150
+    },
+    {
+      "name": "internal_holdout_s2",
+      "condition": "S2",
+      "package_version": "internal_holdout_s2_S2",
+      "content_digest": "f5b81a8da101b28e19f042fefe08f6d53f1c027d6cec4fb830489d9e7cf32aa3",
+      "files": 860,
+      "bytes": 215793014,
+      "questions": 150
+    },
+    {
+      "name": "internal_holdout_s3",
+      "condition": "S3",
+      "package_version": "internal_holdout_s3",
+      "content_digest": "268cca7136c77f06211980b9acbcd7969d836a87eb4141fae86d5b693a632ff4",
+      "files": 394,
+      "bytes": 86231864,
+      "questions": 150
+    },
+    {
+      "name": "smoke_20_s1",
+      "condition": "S1",
+      "package_version": "smoke_20_s1_S1",
+      "content_digest": "00dbcf050e7edb7c3ea2cfb364d5c5829364e52f3d31f0cb6ed7e233436c63c6",
+      "files": 84,
+      "bytes": 17692127,
+      "questions": 20
+    },
+    {
+      "name": "smoke_20_s2",
+      "condition": "S2",
+      "package_version": "smoke_20_s2_S2",
+      "content_digest": "079e21ef016208265598756c9fd51b677b5ec7ab2da34c0c48ab56e2bbf5e306",
+      "files": 120,
+      "bytes": 25967902,
+      "questions": 20
+    },
+    {
+      "name": "smoke_20_s3",
+      "condition": "S3",
+      "package_version": "smoke_20_s3",
+      "content_digest": "4e33f53a57827431d0c8c51381dc67d784d84ed8de1975ec9d59431b634eada8",
+      "files": 57,
+      "bytes": 9579403,
+      "questions": 20
+    }
+  ],
+  "round3_actual_status": {
+    "A_reports_only": false,
+    "B_received_actual_packages": "dev only",
+    "S3_content_digests_null": 0,
+    "download_locations_present": "dev release assets verified; no receipt of remaining cuts",
+    "rebuild_executed": false,
+    "S3_semantic_admitted": false,
+    "formal_S3_subset_empty_per_A": "A original checklist blank; B assisted dev subset separately proposed, HQ acceptance pending"
+  },
+  "rebuild_environment": {
+    "observed_A_lock_versions": {
+      "mrag": {
+        "datasets": "5.0.1",
+        "Pillow": "12.3.0",
+        "pyarrow": "26.0.0",
+        "fsspec": "2026.6.0",
+        "huggingface_hub": "0.36.2"
+      },
+      "main": {
+        "datasets": "5.1.0",
+        "Pillow": "12.3.0",
+        "pyarrow": "26.0.0",
+        "fsspec": "2026.7.0",
+        "huggingface_hub": "1.33.0"
+      }
+    },
+    "builder_runtime_used_by_A_not_identified": true,
+    "Python_OS_JPEG_codec_version_record_missing": true,
+    "encoding": "RGB convert then JPEG quality95; not Parquet original bytes",
+    "B_inference_Pillow": "11.3.0; decoding existing bytes only, no claim of matching A re-encoding",
+    "streaming": "nonzero IO; S3 two full passes over1353 questions plus source GTs",
+    "source_dataset_bytes_reported_by_A": 4295622485,
+    "new_12_packages_bytes_reported_by_A": 4125773828,
+    "download_or_rebuild_allowed_this_round": "Only3 dev release archives were authorized/downloaded. No reconstruction or other split acquisition.",
+    "notes": "Source paths a-side/packages, not repository-root packages. Builders call project_config.apply_env forcing mirror. S1/S2 builder deletes existing output. Do not execute directly as receipt check; stable transfer plus full manifest hash preferred."
+  },
+  "current_read_only_source_sha256": {
+    "a-side/plans/S3_REVIEW_GUIDE.md": "099d57b3e7cb353e1b34301fc0187b6c76793c25be1282ba8b94107abb8e2e99",
+    "handover/contracts/包接口交接.md": "908ef0d0643f2b4aea4011468e657344d99900533346512fdcb26eee734e65d4",
+    "a-side/scripts/finalize_s3_packages.py": "5cbeb08100ccdc02973b10c86c7642294d68692d2193f6c1528c3a0021d75014",
+    "a-side/scripts/build_distractor_package.py": "a4ad40d9cf0232d5392934e9f934737e32a3ec9f78b7c95a675d416f7c020ac8",
+    "a-side/plans/EXTERNAL_ARTIFACTS.json": "e5dc35d4a90c1685e50014ba13f8e29f5775ded03bc0f7c79e7f42a82df5a771",
+    "a-side/plans/VERIFICATION_SUMMARY_ROUND3.md": "f12ee9cc57f6132708acdd94705370d3b8bc1ba69cab5e7d9df39d8b76550b96"
+  },
+  "new_A_code_caveats": {
+    "finalizer_rewrites_checklist": "Always writes a blank review_checklist.csv via mode w. B never invokes it, never overwrites filled reviews.",
+    "all_GT_near_duplicates": "Builder GT exact-byte only; B actual dev checks query/allGT/mutual SHA+dHash threshold6 completed with zero algorithmic blockers. This does not guarantee semantic unrelatedness.",
+    "ordering": "Finalizer changes null ranks/meta only; does not reorder. Builder iterates cand_buf filled in dataset-source traversal, not proof of claimed wrong-option then source ordering. Preserve observed array/rank, claim not verified.",
+    "digest": "Finalized S3 uses sorted path,NUL,image SHA,LF; excludes JSONL/CSV/review. B full-file manifest includes them, so filled review changes full digest."
+  },
+  "dev_actual_reception": "../reception/dev_20261016/receipt.json",
+  "dev_release_assets": "../reception/dev_20261016/release_assets.json",
+  "dev_actual_received_by_B": true,
+  "dev_actual_S1_S2_mechanical_passed": true,
+  "dev_S3_actual_image_review": "B model-assisted254 evidence positions;5 complete groups pending HQ acceptance; no human adjudication; exact serving model revision unavailable",
+  "other_splits_actual_received_by_B": false,
+  "latest_actual_receipt": "reception/all_20261016/summary.json",
+  "release_assets_all_splits": "reception/all_20261016/release_assets.json",
+  "older_scope_fields_are_historical": true,
+  "HQ_closeout": {
+    "decision": "limited assisted S3 accepted; actual evidence order frozen; original split v2 with disclosed labels/exposure/dependence",
+    "config": "final_binding_v1.json",
+    "pending": "B delta PR review/merge and destination reconstruction; all CUDA/runtime results unverified"
+  }
+}

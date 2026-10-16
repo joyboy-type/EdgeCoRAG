@@ -1,0 +1,91 @@
+{
+  "preparation_version": "checklist_guard_v1.7.2",
+  "dataset": {
+    "name": "uclanlp/MRAG-Bench",
+    "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+    "split": "test",
+    "two_fixture_ids": [
+      "0",
+      "43"
+    ],
+    "card_url": "https://huggingface.co/datasets/uclanlp/MRAG-Bench/blob/43620fde4044bb150e158c67ad7af6b6b11e1da2/README.md"
+  },
+  "upstream_code": {
+    "repository": "https://github.com/mragbench/MRAG-Bench",
+    "commit": "4ae2241fdc5a9505f63dbae230e50a3097296af0",
+    "retained_git_blob_sha1": {
+      "eval/score.py": "8b449d18d89da142374cc555abd7ebad46915ef7",
+      "eval/utils/automatic_extract.py": "82f72514b796d3e677036239cb310f0e3bb29efa",
+      "eval/utils/dataloader.py": "96c3d2001f3111d388aa0cc17ad6ef43d3cc6297",
+      "eval/utils/gpt_extract.py": "c392d7373bbaee99698712af13af9843ea3457b8"
+    },
+    "files_not_vendored": true,
+    "license": "No license assigned here; consult upstream before obtaining or redistributing."
+  },
+  "external_sample_material": {
+    "archive_name": "EdgeCoRAG_MRAG_mincheck.zip",
+    "size_bytes": 4544306,
+    "sha256": "afd04d59ef8792e13fd8fce8dff31e30cd7b5d8e5b6b96a901f43de536adac82",
+    "acquisition": "Use existing verified handoff package outside repository. If unavailable, obtain fixed upstream data or bounded Viewer rows 0/43, verify revision and compare the integrity hashes; Viewer assets are not attested as Parquet bytes. No automatic download implemented.",
+    "expected_files": [
+      "generation/s0_inputs.json",
+      "generation/retrieved_candidates.json",
+      "scoring/answers.json",
+      "scoring/gt_images.json",
+      "audit/assets.json",
+      "audit/sample_ids.json",
+      "sample_images/"
+    ],
+    "integrity_sha256": {
+      "generation/s0_inputs.json": "9bbb2623496f913b024971d44126da8c7e511c2ab1355d136a1371b69d9aa0f6",
+      "generation/retrieved_candidates.json": "c4c61dc82ef51ca215fe3e7b867248c437886b9f2c334e2f35281bf03e491b3c",
+      "scoring/answers.json": "8f6b06a54b9b1ef82774858b98c3a2e8b62d2285b55b97a8e8ea2f6114415dd6",
+      "scoring/gt_images.json": "d43a436be1bf5b3362712621bccc28561d3b36b109db5e198ebccb1f8ee1e016",
+      "audit/assets.json": "47a87481d0486dadc0eec4037d13975d59c4d9ead3c4ff78716f21740efec891",
+      "audit/sample_ids.json": "f3be5f7ed00d3145a8cd3ef37966dc14118f8ec212ee1cdc160dfa31d8340700"
+    },
+    "source": "huggingface_viewer_asset",
+    "parquet_byte_identity_verified": false
+  },
+  "retained_original_archives": {
+    "EdgeCoRAG_minimal_scorer_v1.zip": "feed44e26d57ca7bca263ad2a62a9c49468fed80e6bbcf24a150ae9b711657d8",
+    "EdgeCoRAG_offline_smoke_v1.zip": "40ac54df0914098cd801081e30ffcd9f09c43a15a9cedf3a61dbd30177f93787"
+  },
+  "changes": [
+    "Explicit UTF-8 saved JSON reading and subprocess output decoding",
+    "verify_inputs requires --sample-root rather than adjacent real data",
+    "shared template extracted to configs with identical text",
+    "LF checkouts preserve existing scorer hash"
+  ],
+  "semantics_unchanged": [
+    "strict_choice_v1",
+    "shared_visual_mcq_v1",
+    "official_loader_smoke_v1"
+  ],
+  "no_model_integration": false,
+  "model_integration_status": "five frozen-config adapters prepared; no model/processor/GPU load tested",
+  "A_baseline_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "changes_from_v1_2": [
+    "Add read-only A audit and minimal conversion",
+    "Namespaced qids/raw_id and B-native prediction aliases",
+    "Optional bundle-manifest/condition selection on unchanged model backend",
+    "Input failures retained and separately counted",
+    "A-derived tmux launcher defaults S0 S1 because S2 has no GT files",
+    "Root README/.gitignore and A directories are not part of B patch"
+  ],
+  "changes_from_v1_3": [
+    "Accept new six-row A interface sample including explicit GT refs",
+    "Audit all 62 reference positions; 53 unique SHA-256 contents; JPEG95 reencoding",
+    "Filter used_in_prompt=false and keep untruncated pools audit-only",
+    "Preserve null/missing query failures",
+    "Add evidence version, shared batch id and composite row key",
+    "Keep full benchmark splits unapproved; only six interface rows drive this run",
+    "S3 D1/D2 interface with undetermined diagnostic routing only"
+  ],
+  "legacy_A6_baseline_commit": "9a223095e829d4baec98c761038f84127d9f7f62",
+  "legacy_history_note": "changes_from_v1_2/v1_3 describe historical packages ONLY. They do not describe current main or current evidence rules.",
+  "main_protocol": "published_top3_actual_gt_d1_v1",
+  "current_A_delivery_refs": "a_delivery_refs.json",
+  "current_A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "current_external_data_status": "Actual3dev Release ZIPs received/verified; metadata/reviews in reception/dev_20261016. Other splits and formal acceptance pending. Original JPEG95 bytes unchanged, not Parquet byte copies."
+}

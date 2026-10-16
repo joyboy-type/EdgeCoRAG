@@ -1,0 +1,149 @@
+{
+  "version": "B_actual_all_receipt_v1.9.0",
+  "recorded_at": "2026-10-16T10:22:32+00:00",
+  "actual_environment": "cloud Linux, not user Mac or Windows",
+  "B_parent_commit": "459a2620086ff3437562c18f5a73220127399a35",
+  "A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "Python": "3.12.14",
+  "Pillow": "12.3.0 (receipt-only venv; model locks unchanged)",
+  "newly_received_ZIPs": 9,
+  "new_ZIP_bytes": 3493155788,
+  "dev_reused": "../dev_20261016/receipt.json, prior actual v1.8.0; not redownloaded/retested",
+  "prior_dev_proposed_qids": [
+    "mragb:2",
+    "mragb:3",
+    "mragb:288",
+    "mragb:399",
+    "mragb:1100"
+  ],
+  "prior_dev_HQ_accepted": false,
+  "splits": [
+    {
+      "split": "smoke_20",
+      "fixed_denominator": 20,
+      "image_positions_decoded": 246,
+      "S3_candidate_positions": 30,
+      "S3_reviewed_positions": 30,
+      "verdict_counts": {
+        "支持": 7,
+        "无法判断": 23
+      },
+      "proposed_S3_qids": [],
+      "proposed_S3_count": 0,
+      "coverage": 0,
+      "HQ_accepted": false
+    },
+    {
+      "split": "internal_holdout",
+      "fixed_denominator": 150,
+      "image_positions_decoded": 1843,
+      "S3_candidate_positions": 237,
+      "S3_reviewed_positions": 237,
+      "verdict_counts": {
+        "无法判断": 198,
+        "支持": 33,
+        "不支持": 6
+      },
+      "proposed_S3_qids": [
+        "mragb:415",
+        "mragb:1009"
+      ],
+      "proposed_S3_count": 2,
+      "coverage": 0.013333333333333334,
+      "HQ_accepted": false
+    },
+    {
+      "split": "frozen_test",
+      "fixed_denominator": 1033,
+      "image_positions_decoded": 12662,
+      "S3_candidate_positions": 1607,
+      "S3_reviewed_positions": 1607,
+      "verdict_counts": {
+        "无法判断": 1356,
+        "支持": 164,
+        "不支持": 87
+      },
+      "proposed_S3_qids": [
+        "mragb:48",
+        "mragb:101",
+        "mragb:106",
+        "mragb:146",
+        "mragb:147",
+        "mragb:186",
+        "mragb:404",
+        "mragb:409",
+        "mragb:453",
+        "mragb:486",
+        "mragb:493",
+        "mragb:499",
+        "mragb:529",
+        "mragb:533",
+        "mragb:554",
+        "mragb:612",
+        "mragb:621",
+        "mragb:633",
+        "mragb:713",
+        "mragb:788",
+        "mragb:841",
+        "mragb:861",
+        "mragb:920",
+        "mragb:999",
+        "mragb:1074",
+        "mragb:1077",
+        "mragb:1207",
+        "mragb:1209",
+        "mragb:1335"
+      ],
+      "proposed_S3_count": 29,
+      "coverage": 0.028073572120038724,
+      "HQ_accepted": false
+    }
+  ],
+  "image_positions_not_unique_contents": true,
+  "S0_S1_S2_main_fixed_denominator": 1203,
+  "whole_benchmark_including_reused_dev": 1353,
+  "new_visual_review_positions": 1874,
+  "actual_visual_review_complete_for_received_final_candidates": true,
+  "review_method": "image_model_assisted",
+  "reviewer": "B/Codex conversation assistant (not human)",
+  "serving_model_revision": "Not exposed by runtime; do not invent a revision",
+  "visual_resolution_limit": "Review used hash-bound contact sheets: candidate previews up to590x285; query/allGT thumbnails292x175. Fine-grained ambiguity stays unknown. Not a full-resolution human adjudication.",
+  "criteria": "No source automatic nonsupport promoted. Candidate/query/allGT/within-group exact and dHash<=6 guard; all3 must be reviewed nonsupport; support/unknown/blank excluded. Gate tests similarity, not universal semantic independence.",
+  "S1_S3_comparison": "Compare same proposed qids only, keep parent denominator and coverage. Subsets not representative of whole benchmark.",
+  "count_caveat": "S1 regular3/Incomplete3 versus S2 regular5/Incomplete1. Differences cannot be attributed solely to evidence content.",
+  "status": "actual_mechanical_receipt_and_assisted_review_complete_HQ_pending",
+  "GPU_verified": false,
+  "all_prerental_ready": false,
+  "HQ_decisions_needed": [
+    "Adjudicate proposed subsets; smoke S3 has0 eligible questions, so current complete seventeen-condition smoke cannot run. Do not pad/relabel/skip silently.",
+    "Accept or revise evidence and split versions after label-aware audit disclosure; formal approval remains false.",
+    "Low S3 coverage and domain concentration limit conclusions; no arbitrary minimum coverage threshold chosen."
+  ],
+  "Windows_next": "Receive the same code commit plus external release ZIPs pinned here. Reuse existing caches; keep answers/images/reviews outside code. Reconstruct with existing receiver and condition adapter; no official quality run until HQ acceptance.",
+  "ordering_audit": {
+    "checkable_groups": 513,
+    "violating_groups": 88,
+    "unresolved_groups": 114,
+    "original_order_preserved": true,
+    "A_global_ordering_claim_accepted": false
+  },
+  "HQ_closeout_20261016": {
+    "authorization": "User relayed explicit HQ closeout decisions in this conversation",
+    "accepted_method": "image_model_assisted",
+    "accepted_scope": "supplemental robustness only; dev5 development, holdout2, frozen29; smoke0 retained",
+    "historical_observations_unchanged": true,
+    "model_serving_revision_available": false,
+    "preview_limitations_and_label_aware_exposure_retained": true,
+    "S1_S3_identical_qids_only": true,
+    "main_S0_S1_S2_full_original_split": true,
+    "actual_evidence_order_frozen": true,
+    "ordering_violations": 88,
+    "ordering_unresolved": 114,
+    "near_duplicate_failed_groups_excluded": 4,
+    "current_binding_config": "../../configs/final_binding_v1.json",
+    "current_task_plan": "../../configs/task_matrix_draft.json",
+    "code_review_merge_pending": true,
+    "destination_final_binding_reconstruction_pending": true,
+    "GPU_verified": false
+  }
+}

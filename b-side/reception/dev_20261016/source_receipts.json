@@ -1,0 +1,131 @@
+{
+  "S1": {
+    "ZIP_sha256": "24fd31d9e98b3f1ecf356d1893fb813b031784cad16134dadc326fea6d2b40db",
+    "asset_id": 646327173,
+    "release_id": 414607999,
+    "archive_bytes": 142898164,
+    "expanded_bytes": 149066026,
+    "condition": "S1",
+    "namespace": "dev_s1",
+    "package_version": "dev_s1_S1",
+    "source_package_sha256": "4d6bdccf8f19d5df5ddcabe8ec1d9de28d41c95c3dd2a066f1b01c6675a0dde1",
+    "digest_algorithm": "B full-file path/bytes/SHA256 canonical manifest v1",
+    "A_content_digest": "c96ecb18f485fced901ab10436cba2f66270f7b39d97c278debfc047b4d7218b",
+    "A_digest_scheme": "A_legacy_qid_and_ordered_image_sha256",
+    "A_digest_scope": "images only; not JSONL/CSV/reviews",
+    "externally_pinned": false,
+    "file_count": 604,
+    "source_jsonl_sha256": "fe8641581de1f24c178a5a691f7739046a43574e22cec042f2e60c636af74eca",
+    "index_sha256": "af91d5feb0e52248231ced0a30b2609ae5b211ac22a4ac1406330829cade79e4",
+    "S3_claimed_semantic_sort_verified": null,
+    "S3_order_checked": null,
+    "non_image_files": {
+      "package_meta.json": {
+        "bytes": 1742,
+        "sha256": "765def70bcacf9a7d520a1d51493665833fefd919e8a3bea2cec2f66bb8b1d0b"
+      },
+      "evidence_index.csv": {
+        "bytes": 100426,
+        "sha256": "af91d5feb0e52248231ced0a30b2609ae5b211ac22a4ac1406330829cade79e4"
+      },
+      "coverage.json": {
+        "bytes": 275,
+        "sha256": "5500daeb80175f68e36a8986c069ceeb10d1694293a8e55e211836f2331f4b4d"
+      },
+      "evidence_list.jsonl": {
+        "bytes": 452958,
+        "sha256": "fe8641581de1f24c178a5a691f7739046a43574e22cec042f2e60c636af74eca"
+      }
+    }
+  },
+  "S2": {
+    "ZIP_sha256": "ac0fa975fb41752436828c71b766a8742f1051925e389abf07f43ebf38ad6018",
+    "asset_id": 646334888,
+    "release_id": 414607999,
+    "archive_bytes": 235023165,
+    "expanded_bytes": 244572899,
+    "condition": "S2",
+    "namespace": "dev_s2",
+    "package_version": "dev_s2_S2",
+    "source_package_sha256": "ee7e00f7a34876b166edcdb006ca53d1ee7741aa99b554c5d15af1b93d48085a",
+    "digest_algorithm": "B full-file path/bytes/SHA256 canonical manifest v1",
+    "A_content_digest": "ee7a44fb7655bc0fdd39101e7cd1253cb872f99fd0cb4228896911be1c46d182",
+    "A_digest_scheme": "A_legacy_qid_and_ordered_image_sha256",
+    "A_digest_scope": "images only; not JSONL/CSV/reviews",
+    "externally_pinned": false,
+    "file_count": 852,
+    "source_jsonl_sha256": "132c0d0fbf4b74f5aaa93d2ce9dde0641ab1a3df7308cb60bd1d3fd097c77fef",
+    "index_sha256": "f72234635e6d482ffdeec07e70ed4cd94cb77489f99972739796eb9505602f74",
+    "S3_claimed_semantic_sort_verified": null,
+    "S3_order_checked": null,
+    "non_image_files": {
+      "package_meta.json": {
+        "bytes": 1679,
+        "sha256": "17ad5325a94c65e29cfdfd133ac390c8c32a93b45f1f12a424864c9b420de0f4"
+      },
+      "evidence_index.csv": {
+        "bytes": 111645,
+        "sha256": "f72234635e6d482ffdeec07e70ed4cd94cb77489f99972739796eb9505602f74"
+      },
+      "coverage.json": {
+        "bytes": 275,
+        "sha256": "c524fbd8bc5ba77efce3ab5a9bba425517a5c79b608a42e64f44d9b3255b2585"
+      },
+      "evidence_list.jsonl": {
+        "bytes": 655473,
+        "sha256": "132c0d0fbf4b74f5aaa93d2ce9dde0641ab1a3df7308cb60bd1d3fd097c77fef"
+      }
+    }
+  },
+  "S3": {
+    "ZIP_sha256": "7fa6ed4e4050e29cb6837b9406be7bc0d7e5f808a532e89edef96b22857e4301",
+    "asset_id": 646350203,
+    "release_id": 414607999,
+    "archive_bytes": 91033670,
+    "expanded_bytes": 94834271,
+    "condition": "S3",
+    "namespace": "dev_s3",
+    "package_version": "dev_s3",
+    "source_package_sha256": "a37c250b721cca1980061ba938932539c5d4e38dc0037fdc6a127d12b40d00e9",
+    "digest_algorithm": "B full-file path/bytes/SHA256 canonical manifest v1",
+    "A_content_digest": "2665e6d3f84ff2d744a4c5367531b7017a1bca9c4afd861d410f5e332e22819e",
+    "A_digest_scheme": "A_finalized_S3_sorted_path_NUL_sha256_LF",
+    "A_digest_scope": "images only; not JSONL/CSV/reviews",
+    "externally_pinned": false,
+    "file_count": 411,
+    "source_jsonl_sha256": "116b511d2614c0862579e1940b35b8eae5d4e26bdb553377b5c0db60830c4ad1",
+    "index_sha256": "fab8e54d1dd50f0c91048a1fcebb46064ece471fafdcd2424bce00f040c7c3d0",
+    "S3_claimed_semantic_sort_verified": false,
+    "S3_order_checked": "Array position/evidence rank/ID only; source wrong-option ordering not established",
+    "non_image_files": {
+      "package_meta.json": {
+        "bytes": 1751,
+        "sha256": "8052c81e4c6b7396514e5c5d75b26101b6395014d5180273d57bccfa77151b15"
+      },
+      "semantic_review.csv": {
+        "bytes": 167022,
+        "sha256": "2ad1e3057830c6cee98b8968e16aa9b46415445dc3a1a0da6b84ebfc3e0d68fa"
+      },
+      "evidence_index.csv": {
+        "bytes": 58933,
+        "sha256": "fab8e54d1dd50f0c91048a1fcebb46064ece471fafdcd2424bce00f040c7c3d0"
+      },
+      "coverage.json": {
+        "bytes": 2179,
+        "sha256": "fcd5f617e25cdec8c29a2d630703983be74972f9631ca0cc51c46657d50c82ca"
+      },
+      "evidence_list.jsonl": {
+        "bytes": 321669,
+        "sha256": "116b511d2614c0862579e1940b35b8eae5d4e26bdb553377b5c0db60830c4ad1"
+      },
+      "file_hashes.csv": {
+        "bytes": 41272,
+        "sha256": "8c8384f64d5b25d7ba19cb40e6786518dc1aa1b11044217d0a9c7b8aa08a03cd"
+      },
+      "review_checklist.csv": {
+        "bytes": 54380,
+        "sha256": "aa954c33e07e07ec078099cf21f0a03805e476321fa5e54d22be6ad6b422c1d7"
+      }
+    }
+  }
+}

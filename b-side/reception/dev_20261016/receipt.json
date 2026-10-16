@@ -1,0 +1,168 @@
+{
+  "version": "dev_actual_receipt_v1.8.0",
+  "recorded_at": "2026-10-16T07:08:21+00:00",
+  "actual_environment": "cloud Linux",
+  "python": "3.12.14",
+  "Pillow": "12.3.0",
+  "A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "B_commit": "7ccef5e2e7d8b7cbc489942dc5425ee8dbd48a19",
+  "packages": {
+    "dev_s1": {
+      "rows": 150,
+      "indexed_images": 600,
+      "decoded_images": 600,
+      "unique_contents": 436,
+      "evidence_counts": {
+        "3": 150
+      },
+      "unindexed_image_files": [],
+      "all_index_hash_decode_size_passed": true
+    },
+    "dev_s2": {
+      "rows": 150,
+      "indexed_images": 848,
+      "decoded_images": 848,
+      "unique_contents": 787,
+      "evidence_counts": {
+        "5": 137,
+        "1": 13
+      },
+      "unindexed_image_files": [],
+      "all_index_hash_decode_size_passed": true
+    },
+    "dev_s3": {
+      "rows": 150,
+      "indexed_images": 404,
+      "decoded_images": 404,
+      "unique_contents": 338,
+      "evidence_counts": {
+        "3": 84,
+        "0": 65,
+        "2": 1
+      },
+      "unindexed_image_files": [],
+      "all_index_hash_decode_size_passed": true
+    }
+  },
+  "input_conditions": {
+    "S0": {
+      "fixed_denominator": 150,
+      "input_ok": 150,
+      "qid_order_matches": true,
+      "actual_runtime_loader_and_shared_message_builder_passed": true,
+      "image_count_distribution": {
+        "1": 150
+      }
+    },
+    "S1": {
+      "fixed_denominator": 150,
+      "input_ok": 150,
+      "qid_order_matches": true,
+      "actual_runtime_loader_and_shared_message_builder_passed": true,
+      "image_count_distribution": {
+        "4": 150
+      }
+    },
+    "S2": {
+      "fixed_denominator": 150,
+      "input_ok": 150,
+      "qid_order_matches": true,
+      "actual_runtime_loader_and_shared_message_builder_passed": true,
+      "image_count_distribution": {
+        "6": 137,
+        "2": 13
+      }
+    }
+  },
+  "independent_answer_count": 150,
+  "actual_model_loaded": false,
+  "GPU_verified": false,
+  "synthetic_accuracy_generated": false,
+  "raw_sources_modified": false,
+  "source_receipts": "source_receipts.json",
+  "release_assets": "release_assets.json",
+  "all_1852_index_positions_verified": true,
+  "cross_package_question_choices_gold_query_scenarios_match": true,
+  "source_GT_ID_order_S1_S2_match": true,
+  "generation_input_whitelist_and_shared_messages_passed": true,
+  "media_namespaces": [
+    "dev_s1",
+    "dev_s2",
+    "dev_s3"
+  ],
+  "missing_questions_dropped": false,
+  "source_archives_and_extracted_files_unmodified": true,
+  "S3": {
+    "complete3_candidates": 84,
+    "partial2_candidates": 1,
+    "empty_candidates": 65,
+    "candidate_full3_coverage": 0.56,
+    "reviewed_evidence_positions": 254,
+    "reviewed_target_questions": 85,
+    "verdict_counts": {
+      "无法判断": 194,
+      "支持": 45,
+      "不支持": 15
+    },
+    "review_valid_subgroup": [
+      "mragb:2",
+      "mragb:3",
+      "mragb:288",
+      "mragb:399",
+      "mragb:1100"
+    ],
+    "paired_denominator": 5,
+    "coverage": 0.03333333333333333,
+    "raw_evidence_dedup_gate": "Exact SHA and 64-bit dHash/LANCZOS, Hamming<=6, versus query/all actual GT/mutual final group",
+    "duplicate_diagnostics": {},
+    "near_duplicate_guarantee": false,
+    "source_sort_global_claim_verified": false,
+    "assisted_review_only": true,
+    "exact_serving_model_revision_available": false,
+    "HQ_accepted": false,
+    "formal_S3_accepted": false,
+    "original_blank_checklist_unchanged": true
+  },
+  "S3_runtime_loader": {
+    "status": "validated_inputs",
+    "backend": "validate",
+    "conditions": [
+      {
+        "bundle": "s3/bundle.json",
+        "bundle_sha256": "514119cab81baf82a431326fee03020c4214132b430a4dc3f7bc9cd70530e803",
+        "condition": "S3-pure",
+        "fixed_denominator": 5,
+        "input_ok": 5,
+        "failures": [],
+        "image_counts": {
+          "4": 5
+        },
+        "qid_order": [
+          "mragb:2",
+          "mragb:3",
+          "mragb:288",
+          "mragb:399",
+          "mragb:1100"
+        ],
+        "formal_split_approved": false
+      }
+    ],
+    "GPU_verified": false,
+    "inference_or_accuracy_generated": false,
+    "gold_read_by_this_validator": false
+  },
+  "S1_S2_caveat": "Regular3vs5; Incomplete3vs1. Differences cannot be attributed only to evidence quality/content.",
+  "dev_exposure_scope": "All150 target question/choices/gold compared programmatically;85 target review panels visually inspected incl all254 candidate positions. Source GT images viewed as supplied candidates, without opening their original source questions/answers outside dev.",
+  "review_images_and_gold_location": "External release assets; review-only sheets contain gold and are excluded from generation inputs and Git. Stable identity is original media path+content SHA, not sheet/Viewer URL.",
+  "frozen_test_packages_downloaded_or_opened": false,
+  "other_split_packages_received_this_round": false,
+  "official_A_builders_or_finalizer_executed": false,
+  "old_test_suites_rerun": false,
+  "new_helper_test": "validate_release_receipt.py artificial ZIP targeted checks passed after correcting fixture directory reuse; no network/data/model",
+  "only_new_S3_bundle_runtime_checked": true,
+  "all_prerental_complete": false,
+  "remaining": "Other authorized split receipts; HQ adjudication of assisted review/subsets and source-order claim; phase bindings/full matrix material integration; GPU model loading/memory/compatibility/performance.",
+  "source_full_hashes_unchanged_after_visual_review": true,
+  "S1_S3_parent_hash_qids_subset_contract_passed": true,
+  "package_images_are_original_Parquet_bytes": false
+}

@@ -1,0 +1,19 @@
+{
+  "id": 646520444,
+  "name": "internal_holdout_s1.zip",
+  "size": 137966239,
+  "state": "uploaded",
+  "digest": "sha256:7faefb10e83b289e8f62e283ddb2d4a1e5d44fdf5a91672c67a377bb1133a2cb",
+  "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/internal_holdout_s1.zip",
+  "created_at": "2026-10-16T07:25:37Z",
+  "updated_at": "2026-10-16T07:26:06Z",
+  "package": "internal_holdout_s1",
+  "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/internal_holdout_s1.zip",
+  "sha256": "7faefb10e83b289e8f62e283ddb2d4a1e5d44fdf5a91672c67a377bb1133a2cb",
+  "max_expanded_bytes": 287199108,
+  "actual_environment": "cloud Linux",
+  "recorded_at": "2026-10-16T09:11:05.181871+00:00",
+  "status": "verified",
+  "actual_bytes": 137966239,
+  "actual_sha256": "7faefb10e83b289e8f62e283ddb2d4a1e5d44fdf5a91672c67a377bb1133a2cb"
+}

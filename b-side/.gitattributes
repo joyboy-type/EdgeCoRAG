@@ -1,0 +1,4 @@
+# Stable hashes across macOS, Linux and Windows checkouts.
+* text=auto eol=lf
+# Hashed review bytes are authoritative across Windows/Mac/Linux; no EOL conversion.
+reception/**/review_checklist*.csv -text

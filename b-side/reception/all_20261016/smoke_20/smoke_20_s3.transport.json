@@ -1,0 +1,19 @@
+{
+  "id": 646524477,
+  "name": "smoke_20_s3.zip",
+  "size": 9276593,
+  "state": "uploaded",
+  "digest": "sha256:f3efcf3f10421aad60352d98701da1c295c72536dc57aa03a81093e29fa74830",
+  "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s3.zip",
+  "created_at": "2026-10-16T07:27:13Z",
+  "updated_at": "2026-10-16T07:27:14Z",
+  "package": "smoke_20_s3",
+  "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s3.zip",
+  "sha256": "f3efcf3f10421aad60352d98701da1c295c72536dc57aa03a81093e29fa74830",
+  "max_expanded_bytes": 19158806,
+  "actual_environment": "cloud Linux",
+  "recorded_at": "2026-10-16T09:10:47.302298+00:00",
+  "status": "verified",
+  "actual_bytes": 9276593,
+  "actual_sha256": "f3efcf3f10421aad60352d98701da1c295c72536dc57aa03a81093e29fa74830"
+}

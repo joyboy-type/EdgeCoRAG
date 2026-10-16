@@ -1,0 +1,16 @@
+{
+  "actual_packages_only": true,
+  "final_order_and_id_position_checked": true,
+  "nonempty_targets": 85,
+  "different_source_qid_within_group": 20,
+  "source_numeric_gt_order_monotonic_groups": 75,
+  "wrong_option_sort_known_dev_source_groups_checked": 9,
+  "outside_dev_source_groups_not_answer_inspected": 76,
+  "violations_known_dev_only": [],
+  "whole_claim_verified": false,
+  "limitation": "Builder collects in dataset traversal order after candidate selection; finalizer nulls retrieval ranks and changes descriptive text but does not reorder. Source labels outside dev not opened; no claim wrong-option/source semantic sorting globally verified.",
+  "source_scripts_sha256": {
+    "a-side/scripts/build_distractor_package.py": "a4ad40d9cf0232d5392934e9f934737e32a3ec9f78b7c95a675d416f7c020ac8",
+    "a-side/scripts/finalize_s3_packages.py": "5cbeb08100ccdc02973b10c86c7642294d68692d2193f6c1528c3a0021d75014"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "external_deployment_root": "smoke_20/review_batch_001/inputs",
+  "bundles": [
+    {
+      "path": "main/bundle.json",
+      "sha256": "9554f4d69e21e92da33d2ad53a494164a43933b249e9f6fddd1bf5210f1eaa36"
+    }
+  ],
+  "main_fixed_denominator": 20,
+  "paired_S1_S3_qids": [],
+  "coverage": 0,
+  "formal_split_approved": false,
+  "answers_and_images_external": true
+}

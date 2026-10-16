@@ -1,0 +1,211 @@
+{
+  "version": "B_offline_checks_v1.10.0",
+  "A_baseline_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+  "current_actual_receipt": "reception/all_20261016/summary.json",
+  "current_receipt_sha256": "c9422ca894db952c340d87eca269a99cf4fa79b8b833e222292e9f93ce1153b3",
+  "new_checks": {
+    "scope": "New actual per-split receipt, final assisted-review snapshots, paired subset runtime contract, report-only approval distinction. No old suite/model inference.",
+    "review_records_bijective_to_all_final_candidates": true,
+    "per_record_query_allGT_candidate_hashes_match": true,
+    "complete3_nonsupport_only_admission": true,
+    "S1_S3_same_qids_same_order": true,
+    "formal_approval_remains_false": true,
+    "approval_report_expression_checked_none_unapproved_approved": true,
+    "actual_subset_loader_results": [
+      "internal_holdout/runner_receipt.json",
+      "frozen_test/runner_receipt.json"
+    ],
+    "empty_smoke_subset_preserved": true,
+    "classifier_prompt_scorer_model_matrix_unchanged": true
+  },
+  "v1_8_0_historical_not_rerun": {
+    "version": "dev_receipt_v1.8.0",
+    "A_baseline_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+    "current_actual_receipt": "reception/dev_20261016/receipt.json",
+    "current_receipt_sha256": "695a091382a4b09d1da41f94be844b89ddc4e527f106c686cc98176d4c43e5d4",
+    "new_checks": {
+      "real_dev_archives": 3,
+      "real_dev_target_qids": 150,
+      "actual_image_positions_decoded": 1852,
+      "cross_condition_main_input_loader_and_messages": true,
+      "real_S3_visual_review_records": 254,
+      "new_reviewed_S3_runtime_rows": 5,
+      "new_zip_safety_fixture_passed": true,
+      "no_old_suites_rerun": true,
+      "old_code_semantics_changed": false
+    },
+    "v1_7_2_checks_historical_not_rerun": {
+      "version": "checklist_guard_v1.7.2",
+      "A_baseline_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+      "new_targeted_checks": {
+        "version": "checklist_guard_v1.7.2",
+        "checks": [
+          "Package checklist is authoritative without explicit --review-checklist: alternate all-confirmed JSON cannot override supports/unknown/blank even with matching current hashes",
+          "Missing/stale checklist SHA and conflicting reviewer metadata fail closed; JSON cannot create a second independent authority",
+          "Consistent artificial filled checklist plus bound supplemental JSON works; checklist bytes remain immutable and are rechecked as a runtime support artifact"
+        ],
+        "passed_groups": 3,
+        "synthetic_only": true,
+        "previous_five_delta_groups_not_rerun": true,
+        "old_suites_rerun": false,
+        "actual_packages_received": false,
+        "real_semantic_review_performed": false,
+        "GPU_verified": false
+      },
+      "v1_7_1_checks_historical_not_rerun": {
+        "version": "checklist_delta_v1.7.1",
+        "A_baseline_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
+        "previous_B_commit": "a0f35a436013cda12013dff0fdee7b490a26df4c",
+        "new_targeted_checks": {
+          "version": "checklist_delta_v1.7.1",
+          "checks": [
+            "New finalized S3 null retrieval ranks and sorted image-index digest accepted; nonnull/mixed finalized ranks rejected; positional ranks preserved",
+            "Blank checklist plus automatic source initial labels never admits S3; original checklist SHA and six fields retained",
+            "Filled CSV changes full metadata/review package hash while media digest stays unchanged; stale full pin rejected; no implicit human method or anonymous model assistance",
+            "Explicit artificial assisted review converts traceably with reviewer/model/time/basis and source bytes immutable; hashes checked at runtime; review/gold absent from generation inputs",
+            "Unknown semantic verdict excludes whole fixed3 subset; duplicate or unknown checklist evidence identities fail closed"
+          ],
+          "passed_groups": 5,
+          "synthetic_only": true,
+          "old_suites_rerun": false,
+          "actual_formal_packages_received": false,
+          "new_real_debug_ids_inspected": false,
+          "real_semantic_review_performed": false,
+          "GPU_verified": false
+        },
+        "v1_7_0_checks_historical_not_rerun": {
+          "version": "condition_adapter_v1.7.0",
+          "A_baseline_commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
+          "previous_B_commit": "90c5b1b4bea06d723d482ba60b572f3ba3578152",
+          "new_targeted_checks": {
+            "version": "condition_adapter_v1.7.0",
+            "execution_environment": "cloud Linux; existing isolated Pillow audit env",
+            "checks": [
+              "CSV rule-only labels remain candidate; actual CSV/full-package hashes/evidence IDs and derived audit review IDs preserved; no formal S3",
+              "Split condition pools retained; query-first neutral inputs; 0/3/5-or1 evidence and1/4/6-or2 slots; colliding relative paths isolated; synthetic output scored per condition",
+              "Question/choices/independent gold/query/ID/rank drift and duplicate/unknown source qids rejected",
+              "Missing condition row or media remains a failed fixed-denominator question; no GT padding/substitution",
+              "Hashed independent per-evidence confirmation/basis/query/all-GT identities gate S3; declared same-question subset and coverage; runtime retains failure if review basis disappears",
+              "Changed CSV/package pin and incomplete reviewed-GT identity rejected; formal split not approved by unpinned packages",
+              "Final-three mutual byte/near-duplicate and query/all-GT near-duplicate gate executed independently of mechanical semantic labels",
+              "Existing six IDs0,1,2,3,4,24 only: newly split-package adapter decode/hash/order and exactS0/S1/S2counts pass; not acceptance of A new formal packages"
+            ],
+            "passed_groups": 8,
+            "synthetic_mechanism_checks": true,
+            "old_test_suites_rerun": false,
+            "actual_A_formal_packages_received": false,
+            "real_model_loaded": false,
+            "GPU_verified": false,
+            "new_test_question_contents_opened": false
+          },
+          "v1_6_checks_historical_not_rerun": {
+            "version": "integrated_prerental_v1.6.0",
+            "baseline_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+            "execution_environment": "cloud Linux/Python3.12.14; existing isolated Pillow audit env",
+            "synthetic_mechanism_checks": true,
+            "new_check_groups_passed": 12,
+            "new_checks": [
+              "main S1 is original ranked top3 for Scope/Incomplete; S2 retains actual5/1; D1 undetermined isolated",
+              "query-first image objects/slots1,4,6/2; hashes/decodes/dimensions and neutral template validated",
+              "S1 rank changes and S2 forced-top3 truncation rejected",
+              "actual semantic review SHA/selected IDs checked; missing review retains the fixed S3 row as failure",
+              "S1/S3 restricted to same predeclared semantic subset; parent/subset coverage saved, full S1 unchanged",
+              "all-model phase order enforced; current-phase independent models continue after failure, later phases blocked",
+              "formal split cannot bypass phase gate by relabeling",
+              "new-main shape resumes without generation; raw aliases/parser version unchanged",
+              "new worker phase/fingerprint path exercised by two actual synthetic subprocesses; resume produces no duplicate attempt",
+              "external hash-index verifier decodes artificial media and fails on corruption; never repairs/downloads",
+              "v2 text-list import verifies pinned hash/count and distinguishes explicit limitation acknowledgment from exhaustive exposure/source isolation",
+              "new performance grouping isolates models/hosts, duplicate observations rejected, n3 produces no P95"
+            ],
+            "static_checks": {
+              "all_Python_AST": true,
+              "all_JSON": true,
+              "all_shell_syntax": true,
+              "snapshot_Git_blobs_verified": 156,
+              "five_model_ids_revisions_classes_processors_envs_unchanged": true,
+              "environment_lock_hashes_verified": true,
+              "uniform_BF16_and_generation_budget_verified": true,
+              "unchanged_scorer_shared_template": true,
+              "unchanged_AST_from_v1_5": [
+                "run_task",
+                "history",
+                "append",
+                "lock",
+                "atomic_jsonl"
+              ],
+              "current_final_sources_AST_JSON_shell": true
+            },
+            "targeted_fix": "New subset pairing test exposed raw-vs-normalized parent split hash mismatch; canonical normalized parent hash now used; test passed after correction.",
+            "A_v2_checks": "Four actual split hashes/counts/unique/disjoint1353 and named seven in dev verified; no A split generator rerun.",
+            "A_smoke20_status": "Index/report/rebuild source received. Actual external220files not received/rebuilt/decoded by B. A report37/37 not reproduced by B.",
+            "prior_v1_5_checks_not_rerun": true,
+            "model_weights_downloaded": false,
+            "inference_dependencies_installed": false,
+            "real_processor_or_model_loaded": false,
+            "GPU_inference_verified": false,
+            "formal_materials_integrated": false,
+            "all_prerental_complete": false,
+            "new_main_review_guard": "D1 actual semantic artifact SHA/selected IDs verified; missing review retains fixed rows as failures."
+          },
+          "static_current_changes": {
+            "Python_AST": true,
+            "JSON": true,
+            "bash_syntax": true,
+            "scorer_template_debug_registry_model_pins_and17_matrix_unchanged": true
+          },
+          "initial_fixture_fix": "Known6 conversion initially retained old Incomplete used_in_prompt=false; explicit new-package fixture flags corrected without modifying original A6 source. Targeted checks then passed.",
+          "actual_A_formal_packages_received": false,
+          "full_prerental_complete": false,
+          "remote_PR_update_status": "Not asserted by offline checks; publication receipt and actual PR determine remote state"
+        },
+        "static_delta": {
+          "changed_Python_AST": true,
+          "JSON": true,
+          "scorer_shared_template_debug_registry_17_matrix_model_pins_runtime_and_old_adapters_unchanged": true,
+          "A_root_tree_preserved": true
+        },
+        "source_scripts_executed": false,
+        "actual_A_packages_received": false,
+        "S3_semantic_review_performed": false,
+        "formal_S3_accepted": false,
+        "all_prerental_complete": false,
+        "publication_status": "Not asserted by checks; actual PR and publication receipt determine remote state"
+      },
+      "three_review_findings": {
+        "S3_null_ranks": "Already fixed and checked in v1.7.1; not reimplemented/retested",
+        "A_media_digest": "Already recomputed under finalized sorted(path NUL sha LF) scheme in v1.7.1; not skipped or rerun",
+        "checklist_confirmation_override": "Actual bypass identified after v1.7.1; v1.7.2 always enforces active checklist even for alternate JSON, with current SHA and metadata agreement"
+      },
+      "actual_packages_received": false,
+      "formal_S3_accepted": false,
+      "all_prerental_complete": false
+    },
+    "GPU_verified": false,
+    "formal_S3_accepted": false,
+    "all_prerental_complete": false
+  },
+  "GPU_verified": false,
+  "old_suites_rerun": false,
+  "v1_10_0_closeout": {
+    "version": "B_closeout_targeted_v1.10.0",
+    "actual_environment": "cloud Linux",
+    "status": "PASS",
+    "checks": [
+      "all161 final tasks scheduled; smoke25/dev17/formal17+17/performance85; dev S3 explicit; deferred IDs explicit",
+      "mixed normal+mechanism_test cannot silently complete; unknown/standalone mechanism stages explicitly rejected by runner",
+      "actual synthetic subprocess dispatch executes every mixed smoke/development task, including dev S3; identities/read-write-score/save checked, no real data",
+      "zero worker exit without complete per-task receipts blocks the next global phase",
+      "new single-question probe wrapper resolves local media, isolated scoring and fixed list without unsafe parent paths",
+      "new final binding checks saved observations against candidate/query/all-GT hashes; contradictory GT identity rejected even with matching basis-file SHA",
+      "checklist conversion byte serialization identical under two PYTHONHASHSEED values; original CSV unchanged",
+      "both paired APIs reject cross-model/cross-revision/empty identities; valid same-model delta and full-parent/subset denominators unchanged; identities emitted",
+      "immutable committed review/config/lock pins validate; actual image review and all prior receipt/test suites NOT rerun"
+    ],
+    "GPU_verified": false,
+    "synthetic_only_new_dispatch": true,
+    "actual_external_packages_rebuilt_this_round": false,
+    "old_tests_rerun": false,
+    "images_re_reviewed": false
+  }
+}

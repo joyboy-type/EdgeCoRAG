@@ -1,0 +1,28 @@
+{
+  "method": "Official HF fixed-revision metadata/config/cards/templates; Transformers v5.19.0 official class/processor source; PyPI metadata-only dry-run resolution and wheel HEAD sizes",
+  "official_source_bodies_vendored": false,
+  "retrieved_file_sha256": {
+    "image_processing_pil_qwen2_vl.py": "59375c46d4418d3c1dcee1b8905668ff598730f3ab9469de9e332c8f26ef5911",
+    "qwen3_5_modeling.py": "aac2a1bcca88829afc6dbdf83f97155ebf64d800ee9d703af3802a9aebcfcd18",
+    "pypi_transformers_5.19.0.json": "76df61dba349d2d715299b06c81cebe481ab727c970369208669b3d16b504d3a",
+    "gemma4_modeling.py": "edc123ab83fbb25548ec65536eaecee998c088653adf683be3ef69d62e2bfea9",
+    "transformers519_resolution.json": "504cefb5ca73f5d8989d88c89a311110eb93c14a3faa89aee488c6e78b73b23c",
+    "qwen3_vl_processing_5.19.0.py": "02d50224d9dc9ce38690cfa6a0106be897f619444ebe3ff7ba38cbcdda9e3ef2",
+    "google__gemma-4-E2B-it.metadata.json": "18e94cb272a80beb09be0120626baa49213bc1653c4faf09f682797ef56218d0",
+    "gemma4_image_processing.py": "5d280d5448b1c219183a27e95b6aa7178b350275772d07881c91c65f13fa815e",
+    "image_processing_qwen2_vl.py": "ebdb484798a6aefebc5dbe5431d3e4af8f460404d95d4cb67165fdff624ed333",
+    "Qwen__Qwen3-VL-8B-Instruct.metadata.json": "4f5392d2c761ff6b64778478e1264c4ab5717fe32ec6e6ba7c08a79027252f25",
+    "Qwen__Qwen3.5-4B.metadata.json": "f11003df129008a54ca2a36bc6f33263e50223de5d3fb0878ac262fc269f3637",
+    "qwen4_metadata.json": "fa22e9ba3d0fb40e4ce09413f31c69e14ed9fed3dbcf97156245698738edea6e",
+    "processing_utils_5.19.0.py": "a6289fc280765c492fc9cc4fbbe84a062e596a062f9b2bce6bf43eae680d6010",
+    "google__gemma-4-E4B-it.metadata.json": "06697782adcade981ad07c765147e43423de0b3d213ae438ddbbcc340789fed6",
+    "gemma4_processing.py": "862cd450282634ec18f3b66add025870a0c98508e59419529e1e3229c835a927",
+    "gemma_tokenizer_response.json": "9d656f59f7efc4b6c8444669272ea59b8549fd9abfe1b494cebc2d7b1f9531ad"
+  },
+  "class_checks": "Gemma4ForConditionalGeneration, Qwen3_5ForConditionalGeneration, Qwen3VLForConditionalGeneration; first two actual v5.19 source symbol checks, Qwen3VL retained v4.57.3 verified implementation",
+  "processor_API": "5.19 processor_kwargs separate from template enable_thinking; official Gemma parse_response; ordered PIL images through shared neutral message builder",
+  "quantization": "General BitsAndBytesConfig API verified only; not enabled, per-model GPU behavior untested",
+  "model_revision_source": "model_registry.json revisions resolved from official HF API; 4B old revision retained",
+  "dependency_resolution": "51 pinned package metadata resolved; 0 inference package installs; no wheel bodies or weights downloaded",
+  "GPU_verified": false
+}

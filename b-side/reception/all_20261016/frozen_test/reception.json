@@ -1,0 +1,60 @@
+{
+  "status": "received_not_semantically_accepted",
+  "assets": [
+    {
+      "id": 646356750,
+      "name": "frozen_test_s1.zip",
+      "size": 954671371,
+      "state": "uploaded",
+      "digest": "sha256:d5180085dd1ed6826df799d976393ffc55f44d7f8b768c82bff80cce30447068",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s1.zip",
+      "created_at": "2026-10-16T06:16:36Z",
+      "updated_at": "2026-10-16T06:42:22Z",
+      "package": "frozen_test_s1",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s1.zip",
+      "sha256": "d5180085dd1ed6826df799d976393ffc55f44d7f8b768c82bff80cce30447068",
+      "max_expanded_bytes": 1995488456,
+      "ZIP_verified": true,
+      "safe_extraction": true,
+      "file_entries": 4136,
+      "expanded_bytes": 997744228
+    },
+    {
+      "id": 646419589,
+      "name": "frozen_test_s2.zip",
+      "size": 1485932250,
+      "state": "uploaded",
+      "digest": "sha256:3f67b511861952b479c89ad0ec16acfb1ecf07932a01a75dd05f89e307079377",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s2.zip",
+      "created_at": "2026-10-16T06:42:24Z",
+      "updated_at": "2026-10-16T07:23:38Z",
+      "package": "frozen_test_s2",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s2.zip",
+      "sha256": "3f67b511861952b479c89ad0ec16acfb1ecf07932a01a75dd05f89e307079377",
+      "max_expanded_bytes": 3087519252,
+      "ZIP_verified": true,
+      "safe_extraction": true,
+      "file_entries": 5894,
+      "expanded_bytes": 1543759626
+    },
+    {
+      "id": 646515002,
+      "name": "frozen_test_s3.zip",
+      "size": 571949633,
+      "state": "uploaded",
+      "digest": "sha256:8b907e5013c29daae36e1f0ca2f51021bbcd279d8d2a92de71935e641962257e",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s3.zip",
+      "created_at": "2026-10-16T07:23:40Z",
+      "updated_at": "2026-10-16T07:25:35Z",
+      "package": "frozen_test_s3",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s3.zip",
+      "sha256": "8b907e5013c29daae36e1f0ca2f51021bbcd279d8d2a92de71935e641962257e",
+      "max_expanded_bytes": 1193865828,
+      "ZIP_verified": true,
+      "safe_extraction": true,
+      "file_entries": 2651,
+      "expanded_bytes": 596932914
+    }
+  ],
+  "GPU_verified": false
+}
