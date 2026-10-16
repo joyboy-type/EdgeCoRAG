@@ -253,7 +253,8 @@ def main() -> int:
     review_rows: list[dict] = []
     stats = {"with_3": 0, "partial": 0, "none": 0,
              "unsupported_kept": 0, "undetermined_excluded": 0,
-             "byte_dup_excluded": 0, "near_dup_excluded": 0}
+             "byte_dup_excluded": 0, "near_dup_excluded": 0,
+             "within_3_dup_excluded": 0}
     scenario_stat: dict[str, dict] = {}
 
     for rid, t in sorted(targets.items(), key=lambda x: int(x[0]) if x[0].isdigit() else 0):
@@ -303,10 +304,27 @@ def main() -> int:
                 c["semantic_verdict"] = verdict
                 c["justification"] = rec["justification"]
                 if len(kept) < N_WANT:
-                    c["final_evidence_id"] = f"{qid}#distractor{len(kept)}"
-                    rec["final_evidence_id"] = c["final_evidence_id"]
-                    rec["fate"] = "kept"
-                    kept.append(c)
+                    # **组内去重**：与已选中的干扰图之间做字节重复 + 近重复检查。
+                    # 实测本数据集跨题共享图片达 2688 个哈希，不同错误选项可能映射到
+                    # 同一张图（或视觉近重复图），故必须对最终 3 张之间也去重。
+                    dup_in_kept = False
+                    for k in kept:
+                        if c["sha256"] == k["sha256"]:
+                            dup_in_kept = True
+                            break
+                        if ham(c["dhash"], k["dhash"]) <= NEAR_THRESH:
+                            dup_in_kept = True
+                            break
+                    if dup_in_kept:
+                        rec["fate"] = "excluded_within_3_dup"
+                        rec["final_evidence_id"] = ""
+                        stats["within_3_dup_excluded"] = stats.get(
+                            "within_3_dup_excluded", 0) + 1
+                    else:
+                        c["final_evidence_id"] = f"{qid}#distractor{len(kept)}"
+                        rec["final_evidence_id"] = c["final_evidence_id"]
+                        rec["fate"] = "kept"
+                        kept.append(c)
                 else:
                     rec["fate"] = "excess_unused"
                     rec["final_evidence_id"] = ""
@@ -457,6 +475,7 @@ def main() -> int:
             "undetermined_semantics": stats["undetermined_excluded"],
             "byte_duplicate": stats["byte_dup_excluded"],
             "near_duplicate": stats["near_dup_excluded"],
+            "within_3_duplicate": stats["within_3_dup_excluded"],
         },
         "per_scenario": scenario_stat,
         "semantic_review_method": (

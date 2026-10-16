@@ -139,28 +139,38 @@ def main() -> int:
                     meta = json.loads(mp.read_text(encoding="utf-8"))
                 except Exception:  # noqa: BLE001
                     meta = {}
+            cond = meta.get("condition")
+            # 旧版 smoke_20（无 condition）是已被 S1/S2/S3 取代的接口样例，跳过
+            if cond is None:
+                print(f"  跳过旧包（无 condition，已被取代）: {sub.name}")
+                continue
+            is_s3 = (cond == "S3")
+            kind = "distractor_package" if is_s3 else "evidence_package"
             pkg_items.append({
                 "id": f"evidence_package_{sub.name}",
-                "kind": "evidence_package",
+                "kind": kind,
                 "description": meta.get("condition_description",
                                        meta.get("artifact_kind", "evidence package")),
                 "name": sub.name,
-                "condition": meta.get("condition"),
+                "condition": cond,
                 "pool_id": meta.get("pool_id"),
                 "package_version": meta.get("package_version"),
                 "content_digest": meta.get("content_digest"),
+                "content_digest_scope": meta.get("content_digest_scope"),
                 "questions": meta.get("questions"),
+                "coverage": meta.get("coverage_rate_full_3", meta.get("coverage_rate")),
                 "path_hint": f"工作区 packages/{sub.name}/（可按题单重建）",
                 "files": n, "bytes": b,
-                "how_to_obtain": [
-                    ("python a-side/scripts/build_evidence_package.py "
+                "how_to_obtain": (
+                    ["python a-side/scripts/build_distractor_package.py "
                      f"--list a-side/splits/{_split_of(sub.name)}.v2.txt "
-                     f"--name {sub.name} --condition {meta.get('condition')}"
-                     if meta.get("condition") in ("S1", "S2", "S0") else
-                     ("python a-side/scripts/build_distractor_package.py "
-                      f"--list a-side/splits/{_split_of(sub.name)}.v2.txt "
-                      f"--name {sub.name}")),
-                ],
+                     f"--name {sub.name}",
+                     "python a-side/scripts/finalize_s3_packages.py "
+                     f"--dir packages/{sub.name}"]
+                    if is_s3 else
+                    ["python a-side/scripts/build_evidence_package.py "
+                     f"--list a-side/splits/{_split_of(sub.name)}.v2.txt "
+                     f"--name {sub.name} --condition {cond}"]),
                 "rebuildable": True,
                 "rebuild_note": "content_digest 可校验重建结果字节一致",
             })

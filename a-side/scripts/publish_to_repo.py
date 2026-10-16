@@ -75,6 +75,7 @@ KEEP_SCRIPTS = [
     "probe_corpus_access.py", "build_evidence_package.py", "build_external_manifest.py",
     # 本轮新增（S1/S2/S3 正式口径证据包 + 包验收）
     "verify_packages.py", "build_distractor_package.py",
+    "finalize_s3_packages.py",
 ]
 KEEP_REPORTS = ["audit_env.md", "A_P0_P1.md",
                 "requirements-main.lock.txt", "requirements-mrag.lock.txt"]
