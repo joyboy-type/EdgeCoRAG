@@ -1,5 +1,5 @@
 {
-  "preparation_version": "condition_adapter_v1.7.0",
+  "preparation_version": "checklist_delta_v1.7.1",
   "dataset": {
     "name": "uclanlp/MRAG-Bench",
     "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
@@ -86,6 +86,6 @@
   "legacy_history_note": "changes_from_v1_2/v1_3 describe historical packages ONLY. They do not describe current main or current evidence rules.",
   "main_protocol": "published_top3_actual_gt_d1_v1",
   "current_A_delivery_refs": "a_delivery_refs.json",
-  "current_A_commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
+  "current_A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
   "current_external_data_status": "See a_delivery_refs.json; new per-condition actual media not received. Legacy archives unchanged."
 }

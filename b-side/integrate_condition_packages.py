@@ -7,6 +7,7 @@ independent scoring-file writer. CSV construction labels are NOT semantic proof.
 import argparse
 import copy
 import csv
+from datetime import datetime
 import hashlib
 import json
 import os
@@ -21,7 +22,7 @@ from prepare_batch_inputs import prepare, read_split
 from protocol_rules import make_selection, evidence_count
 from run_batch import atomic
 
-BASE='6e02a897869cb9bb8d8337afe0e6a7d07919f339'
+BASE='c0e0931d8ad8d640e9c8002516fea43a70049831'
 
 
 def full_digest(root):
@@ -59,8 +60,11 @@ def load_package(root,condition,expected=None):
         if r.get('retrieval_ranks')!=[x.get('retrieval_rank') for x in refs] or r.get('retrieval_scores')!=[x.get('retrieval_score') for x in refs]:raise ValueError('Rank/score arrays differ from evidence')
         for k,e in enumerate(refs):
             if e['role']!=role or e['rank']!=k or e['evidence_id']!=q+'#'+role+str(k):raise ValueError('Evidence ID/role/rank order mismatch')
-            if condition in ['S1','S3'] and e.get('retrieval_rank')!=k:raise ValueError('Original retrieval rank mismatch')
+            if condition=='S1' and e.get('retrieval_rank')!=k:raise ValueError('Original retrieval rank mismatch')
+            if condition=='S3' and e.get('retrieval_rank') not in [None,k]:raise ValueError('S3 rank must be null or the explicit legacy positional rank')
             if e.get('used_in_prompt') is not True:raise ValueError('Unused evidence in condition package')
+        if condition=='S3' and [e.get('retrieval_rank') for e in refs] not in [[None]*len(refs),list(range(len(refs)))]:raise ValueError('Mixed S3 null/legacy retrieval rank convention')
+        if condition=='S3' and meta.get('content_digest_algorithm')=='sha256' and any(e.get('retrieval_rank') is not None for e in refs):raise ValueError('Finalized S3 must have null retrieval ranks')
         if condition=='S2' and ([e['evidence_id'] for e in refs]!=r['scoring_only']['gt_evidence_ids'] or refs!=r['scoring_only']['gt_evidence_refs']):raise ValueError('GT IDs/ref order mismatch')
         if r['status']=='ok' and len(refs)!=evidence_count('S3-pure' if condition=='S3' else condition,r['scenario']):raise ValueError('Actual evidence count mismatch; do not pad/truncate')
         if condition=='S3' and len(refs)>3:raise ValueError('S3 too many refs')
@@ -84,14 +88,24 @@ def load_package(root,condition,expected=None):
     if set(index)-declared:raise ValueError('Orphan indexed references')
     # Verify A's narrower digest separately; it does not cover question/options/gold/CSV.
     h=hashlib.sha256()
-    for r in rows.values():
-        h.update(r['qid'].encode())
-        for e in ([r['question_image']] if r.get('question_image') else [])+r['evidence_order']:h.update(e['sha256'].encode())
+    if condition=='S3' and meta.get('content_digest_algorithm')=='sha256' and meta.get('file_hashes_csv')=='file_hashes.csv':
+        digest_scheme='A_finalized_S3_sorted_path_NUL_sha256_LF'
+        if not (root/'file_hashes.csv').is_file():raise ValueError('Finalized S3 image hash CSV missing')
+        if 'path' not in meta.get('content_digest_scope',''):raise ValueError('Finalized S3 digest scope missing')
+        for i in sorted(index.values(),key=lambda x:x['path']):
+            h.update(i['path'].encode());h.update(b'\0');h.update(i['sha256'].encode());h.update(b'\n')
+    else:
+        digest_scheme='A_legacy_qid_and_ordered_image_sha256'
+        for r in rows.values():
+            h.update(r['qid'].encode())
+            for e in ([r['question_image']] if r.get('question_image') else [])+r['evidence_order']:h.update(e['sha256'].encode())
     if meta.get('content_digest') is not None and meta['content_digest']!=h.hexdigest():raise ValueError('A declared content_digest mismatch')
     return {'root':root,'name':name,'rows':rows,'index':index,'receipt':{'condition':condition,'namespace':name,
         'package_version':meta['package_version'],'source_package_sha256':digest,'digest_algorithm':'B full-file path/bytes/SHA256 canonical manifest v1',
-        'A_content_digest':meta.get('content_digest'),'externally_pinned':expected is not None,'file_count':len(files),
-        'source_jsonl_sha256':sha(root/'evidence_list.jsonl'),'index_sha256':sha(root/'evidence_index.csv')}}
+        'A_content_digest':meta.get('content_digest'),'A_digest_scheme':digest_scheme,'A_digest_scope':'images only; not JSONL/CSV/reviews','externally_pinned':expected is not None,'file_count':len(files),
+        'source_jsonl_sha256':sha(root/'evidence_list.jsonl'),'index_sha256':sha(root/'evidence_index.csv'),
+        'S3_claimed_semantic_sort_verified':False if condition=='S3' else None,
+        'S3_order_checked':'Array position/evidence rank/ID only; source wrong-option ordering not established' if condition=='S3' else None}}
 
 
 def same_question(a,b):
@@ -154,8 +168,9 @@ def review_csv(package,rows,confirmations=None,confirmation_sha=None):
             if proof:
                 if not src or state!='candidate':raise ValueError('Cannot promote rejected/unknown source evidence')
                 query=row['question_image'];gts=row['scoring_only']['gt_evidence_refs']
-                if proof.get('semantic_status')!='confirmed_unsupportive' or proof.get('method') not in ['human_visual','documented_semantic_review'] or not proof.get('reviewer') or not proof.get('rationale'):
+                if proof.get('semantic_status')!='confirmed_unsupportive' or proof.get('method') not in ['human_visual','documented_semantic_review','image_model_assisted'] or not proof.get('reviewer') or not proof.get('rationale'):
                     raise ValueError('Actual per-image semantic review method/reviewer/rationale required')
+                if proof.get('method')=='image_model_assisted' and not proof.get('review_model'):raise ValueError('Assisted review model identity must be recorded')
                 if proof.get('evidence_sha256')!=e['sha256'] or proof.get('reviewed_query_sha256')!=query['sha256'] or sorted(proof.get('reviewed_gt_sha256',[]))!=sorted(g['sha256'] for g in gts):raise ValueError('Reviewed candidate/query/all-GT identity mismatch')
                 artifact=resolve_image(package['confirmation_root'],proof['basis_artifact']['path'])
                 if sha(artifact)!=proof['basis_artifact']['sha256']:raise ValueError('Missing/changed actual review basis artifact')
@@ -168,14 +183,76 @@ def review_csv(package,rows,confirmations=None,confirmation_sha=None):
             'review_id_origin':'B generated audit identifier; not A native','distractor_type':'D1','evidence':entries}
     return {'version':'A_csv_review_adapter_v1','source_review_sha256':original_sha,
         'source_package_sha256':package['receipt']['source_package_sha256'],'confirmation_sha256':confirmation_sha,
+        'source_checklist_sha256':confirmations.get('source_checklist_sha256'),'checklist_records':confirmations.get('checklist_records',[]),
         'confirmation_supplied':bool(confirmations),'semantic_claim':'Traceability validated only; rule labels are not proof of nonsupport',
         'by_qid':by_qid,'source_csv_records':audit}
 
 
-def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=None,pins=None,mode='hardlink',acknowledge=False,A_commit=BASE):
+def checklist_confirmations(path,package,rows,method=None,review_model=None):
+    """Read-only six-field checklist -> explicit traceable confirmation contract.
+
+    No human-review default. A supplied method is an explicit caller attestation,
+    not a claim this adapter viewed any images. Raw CSV stays external to prompts.
+    Metadata bindings derived here identify the received media, not proof that a
+    reviewer personally inspected every GT image. The duplicate gate is separate.
+    """
+    required={'qid','final_evidence_id','semantic_verdict','review_basis','reviewer','reviewed_at'}
+    seen=set();audit=[];by_qid={};original_sha=sha(path)
+    with path.open(encoding='utf-8-sig',newline='') as f:
+        reader=csv.DictReader(f)
+        if not required<=set(reader.fieldnames or []):raise ValueError('Checklist six required columns missing')
+        for number,raw in enumerate(reader,2):
+            record={k:(raw.get(k) or '').strip() for k in required}
+            q,eid=record['qid'],record['final_evidence_id'];key=(q,eid)
+            if key in seen:raise ValueError('Duplicate checklist qid/evidence ID')
+            seen.add(key)
+            if q not in rows:raise ValueError('Unknown checklist qid')
+            row=rows[q];refs={e['evidence_id']:e for e in row.get('_s3_refs',[])}
+            if eid not in refs:raise ValueError('Unknown checklist final evidence ID')
+            e=refs[eid]
+            # A's full checklist additionally carries question/gold/path: verify if supplied.
+            fields={'raw_id':row['raw_id'],'scenario':row['scenario'],'question':row['task_payload']['question'],
+                'correct_choice':row['scoring_only']['gold_choice'],'correct_answer':row['scoring_only'].get('answer_text'),
+                'distractor_image_path':e['path'].removeprefix(package['name']+'/')}
+            fields.update({'choices_'+k:v for k,v in row['task_payload']['choices'].items()})
+            for k,v in fields.items():
+                if k in raw and raw[k]!=v:raise ValueError('Checklist target metadata differs: '+k)
+            if raw.get('review_method') and method and raw['review_method'].strip()!=method:raise ValueError('Conflicting declared review methods')
+            if raw.get('review_model') and review_model and raw['review_model'].strip()!=review_model:raise ValueError('Conflicting declared review models')
+            actual_method=(raw.get('review_method') or method or '').strip()
+            actual_model=(raw.get('review_model') or review_model or '').strip()
+            reasons=[]
+            if record['semantic_verdict']!='不支持':reasons.append('blank/supports/unknown/automatic verdict is not confirmed nonsupport')
+            if any(not record[k] for k in ['review_basis','reviewer','reviewed_at']):reasons.append('review basis/reviewer/time incomplete')
+            try:
+                stamp=datetime.fromisoformat(record['reviewed_at'].replace('Z','+00:00'))
+                if stamp.tzinfo is None:raise ValueError('timezone missing')
+            except ValueError:reasons.append('reviewed_at needs ISO8601 time and timezone')
+            if actual_method not in ['human_visual','image_model_assisted']:reasons.append('explicit image-grounded review method missing; no automatic human default')
+            if actual_method=='image_model_assisted' and not actual_model:reasons.append('actual review model identity missing')
+            if actual_method=='human_visual' and actual_model:reasons.append('model-assisted review must be labelled image_model_assisted, not human_visual')
+            record.update({'source_csv_line':number,'review_method':actual_method,'review_model':actual_model or None,
+                'admission_state':'confirmed' if not reasons else 'undetermined','admission_blockers':reasons})
+            audit.append(record)
+            if reasons:continue
+            proof={'evidence_id':eid,'semantic_status':'confirmed_unsupportive','method':actual_method,
+                'review_model':actual_model or None,'reviewer':record['reviewer'],'reviewed_at':record['reviewed_at'],
+                'rationale':record['review_basis'],'evidence_sha256':e['sha256'],
+                'reviewed_query_sha256':row['question_image']['sha256'],
+                'reviewed_gt_sha256':[g['sha256'] for g in row['scoring_only']['gt_evidence_refs']],
+                'media_binding_origin':'Derived package identities, not an assertion reviewer personally viewed every GT. Per-image semantic basis is the original checklist record.',
+                'basis_artifact':{'path':'review_checklist.source.csv','sha256':original_sha},'checklist_record':record}
+            by_qid.setdefault(q,{'evidence':[]})['evidence'].append(proof)
+    return {'version':'A_checklist_confirmation_adapter_v1','source_review_sha256':sha(package['root']/'semantic_review.csv'),
+        'source_package_sha256':package['receipt']['source_package_sha256'],'source_checklist_sha256':original_sha,
+        'by_qid':by_qid,'checklist_records':audit,'B_actual_semantic_review_performed':False}
+
+
+def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=None,pins=None,mode='hardlink',acknowledge=False,A_commit=BASE,checklist_path=None,review_method=None,review_model=None):
     if output.exists():raise ValueError('New output directory required')
     if not re.fullmatch('[0-9a-f]{40}',A_commit):raise ValueError('Fixed full A commit required')
-    if confirmation_path and not s3_root:raise ValueError('Confirmations require an S3 source package')
+    if (confirmation_path or checklist_path) and not s3_root:raise ValueError('Review artifacts require an S3 source package')
+    if confirmation_path and checklist_path:raise ValueError('Use confirmation JSON OR checklist CSV, not both')
     pins=pins or {};packages={}
     for c,p in [('S1',s1_root),('S2',s2_root),('S3',s3_root)]:
         if p:packages[c]=load_package(p,c,pins.get(c))
@@ -259,7 +336,13 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
         main=prepare(source,index,selection_path,split_path,output/'main',acknowledge)
         review=None;s3=None
         if 'S3' in packages:
-            package=packages['S3'];package['confirmation_root']=confirmation_path.parent.resolve() if confirmation_path else package['root']
+            package=packages['S3']
+            if checklist_path:
+                converted=checklist_confirmations(checklist_path,package,{a['qid']:a for a in normalized},review_method,review_model)
+                # Copy, never rewrite, the filled checklist; the hashed raw CSV is the actual basis artifact.
+                shutil.copyfile(checklist_path,temp/'review_checklist.source.csv')
+                confirmation_path=temp/'checklist_confirmations.json';atomic(confirmation_path,converted)
+            package['confirmation_root']=confirmation_path.parent.resolve() if confirmation_path else package['root']
             review=review_csv(package,{a['qid']:a for a in normalized},read(confirmation_path) if confirmation_path else None,sha(confirmation_path) if confirmation_path else None)
             for q,record in review['by_qid'].items():
                 if dedup.get(q) or next(a for a in normalized if a['qid']==q)['condition_errors'].get('S3'):
@@ -274,6 +357,7 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
                 s3=prepare(source,index,sp,split_path,output/'s3',acknowledge,review_path)
             atomic(output/'audit/s3_review_adapter.json',review)
             shutil.copyfile(package['root']/'semantic_review.csv',output/'audit/source_semantic_review.csv')
+            if checklist_path:shutil.copyfile(checklist_path,output/'audit/source_review_checklist.csv')
         for name,bundle in [('main',main),('s3',s3)]:
             if bundle is None:continue
             root=output/name
@@ -298,7 +382,7 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
                 bundle['semantic_support_artifacts']=supporting
             bundle['media_deployment']='Selected files materialized under media/<package namespace>/<original relative path>; missing files remain failed rows.'
             atomic(root/'bundle.json',bundle)
-        report={'version':'condition_packages_adapter_v1.7.0','A_commit':A_commit,'fixed_qids':qids,
+        report={'version':'condition_packages_adapter_v1.7.1','A_commit':A_commit,'fixed_qids':qids,
             'source_packages':{c:p['receipt'] for c,p in packages.items()},'S3_duplicate_diagnostics':dedup,
             'S3_confirmed_qids':s3['qids'] if s3 else [],'S3_parent_denominator':len(qids),
             'S3_coverage':len(s3['qids'])/len(qids) if s3 else 0,'S3_diagnostic_qids':[q for q in qids if not s3 or q not in s3['qids']],
@@ -313,11 +397,14 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['s1','s2','split','output']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--s3',type=Path);p.add_argument('--confirmations',type=Path);p.add_argument('--package-pins',type=Path)
+    p.add_argument('--review-checklist',type=Path)
+    p.add_argument('--review-method',choices=['human_visual','image_model_assisted'])
+    p.add_argument('--review-model',help='Actual model/revision or service/version used for assisted review; never invokes a model')
     p.add_argument('--media-mode',choices=['hardlink','copy'],default='hardlink')
     p.add_argument('--acknowledge-split-limitations',action='store_true');p.add_argument('--A-commit',default=BASE)
     a=p.parse_args()
     try:
-        result=integrate(a.s1,a.s2,a.split,a.output,a.s3,a.confirmations,read(a.package_pins) if a.package_pins else None,a.media_mode,a.acknowledge_split_limitations,a.A_commit)
+        result=integrate(a.s1,a.s2,a.split,a.output,a.s3,a.confirmations,read(a.package_pins) if a.package_pins else None,a.media_mode,a.acknowledge_split_limitations,a.A_commit,a.review_checklist,a.review_method,a.review_model)
         print(json.dumps({'fixed_questions':len(result['fixed_qids']),'S3_coverage':result['S3_coverage'],'S3_admitted':result['S3_formal_admitted']}))
     except Exception as e:
         # Keep a failure receipt outside partial outputs; no source deletion or repair.

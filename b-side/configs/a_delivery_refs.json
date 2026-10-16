@@ -1,6 +1,6 @@
 {
-  "version": "A_delivery_refs_v1.7",
-  "commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
+  "version": "A_delivery_refs_v1.7.1",
+  "commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
   "repository": "https://github.com/joyboy-type/EdgeCoRAG",
   "split_version": "v2",
   "split_manifest": {
@@ -44,13 +44,14 @@
     "actual_external_files_received_by_B": false,
     "B_decode_hash_validation": false,
     "A_report_claim": "20 rows,216 image refs,220 package files; A reports37/37, not reproduced by B",
-    "rebuild_script_review": "Historical 220-file index is old loader package, not new S1/S2/S3 acceptance. New builder at6e02 uses explicit S1 top3 and separate S2 actual GT. Read only; not executed."
+    "rebuild_script_review": "Historical 220-file index is old loader package, not new S1/S2/S3 acceptance. New builder at6e02 uses explicit S1 top3 and separate S2 actual GT. Read only; not executed.",
+    "historical_index_status": "a-side/data/smoke_20_file_hashes.csv removed from c0e0931; prior235 receipt metadata is historical only, not an active new-package index."
   },
   "formal_full_evidence_received": false,
   "D1_semantic_verified_bundle_received": false,
   "unified_protocol": "published_top3_actual_gt_d1_v1",
   "stage1_only": false,
-  "previous_commit": "235482612d7791a883e585fa5b2f16228bfabd5c",
+  "previous_commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
   "actual_formal_packages_received_by_B": false,
   "round3_read_only_source_sha256": {
     "a-side/plans/VERIFICATION_SUMMARY_ROUND3.md": "7fc122bd05f263e165a0a46f1621a79cc07c5367d4fde3918ce8681d9b7c40f9",
@@ -85,9 +86,9 @@
       "name": "dev_s3",
       "condition": "S3",
       "package_version": "dev_s3",
-      "content_digest": null,
-      "files": 409,
-      "bytes": 94746883,
+      "content_digest": "2665e6d3f84ff2d744a4c5367531b7017a1bca9c4afd861d410f5e332e22819e",
+      "files": 411,
+      "bytes": 94834271,
       "questions": 150
     },
     {
@@ -112,9 +113,9 @@
       "name": "frozen_test_s3",
       "condition": "S3",
       "package_version": "frozen_test_s3",
-      "content_digest": null,
-      "files": 2649,
-      "bytes": 597029687,
+      "content_digest": "e81c2d410142f7e3bfc6fa67e315fdd4e610de919f9b7f7ba639165e5e351469",
+      "files": 2651,
+      "bytes": 596932914,
       "questions": 1033
     },
     {
@@ -139,9 +140,9 @@
       "name": "internal_holdout_s3",
       "condition": "S3",
       "package_version": "internal_holdout_s3",
-      "content_digest": null,
-      "files": 392,
-      "bytes": 85396667,
+      "content_digest": "268cca7136c77f06211980b9acbcd7969d836a87eb4141fae86d5b693a632ff4",
+      "files": 394,
+      "bytes": 86231864,
       "questions": 150
     },
     {
@@ -166,19 +167,20 @@
       "name": "smoke_20_s3",
       "condition": "S3",
       "package_version": "smoke_20_s3",
-      "content_digest": null,
-      "files": 55,
-      "bytes": 9565577,
+      "content_digest": "4e33f53a57827431d0c8c51381dc67d784d84ed8de1975ec9d59431b634eada8",
+      "files": 57,
+      "bytes": 9579403,
       "questions": 20
     }
   ],
   "round3_actual_status": {
     "A_reports_only": true,
     "B_received_actual_packages": false,
-    "S3_content_digests_null": 4,
+    "S3_content_digests_null": 0,
     "download_locations_present": false,
     "rebuild_executed": false,
-    "S3_semantic_admitted": false
+    "S3_semantic_admitted": false,
+    "formal_S3_subset_empty_per_A": true
   },
   "rebuild_environment": {
     "observed_A_lock_versions": {
@@ -203,8 +205,22 @@
     "B_inference_Pillow": "11.3.0; decoding existing bytes only, no claim of matching A re-encoding",
     "streaming": "nonzero IO; S3 two full passes over1353 questions plus source GTs",
     "source_dataset_bytes_reported_by_A": 4295622485,
-    "new_12_packages_bytes_reported_by_A": 4124934190,
+    "new_12_packages_bytes_reported_by_A": 4125773828,
     "download_or_rebuild_allowed_this_round": false,
     "notes": "Source paths a-side/packages, not repository-root packages. Builders call project_config.apply_env forcing mirror. S1/S2 builder deletes existing output. Do not execute directly as receipt check; stable transfer plus full manifest hash preferred."
+  },
+  "current_read_only_source_sha256": {
+    "a-side/plans/S3_REVIEW_GUIDE.md": "099d57b3e7cb353e1b34301fc0187b6c76793c25be1282ba8b94107abb8e2e99",
+    "handover/contracts/包接口交接.md": "908ef0d0643f2b4aea4011468e657344d99900533346512fdcb26eee734e65d4",
+    "a-side/scripts/finalize_s3_packages.py": "5cbeb08100ccdc02973b10c86c7642294d68692d2193f6c1528c3a0021d75014",
+    "a-side/scripts/build_distractor_package.py": "a4ad40d9cf0232d5392934e9f934737e32a3ec9f78b7c95a675d416f7c020ac8",
+    "a-side/plans/EXTERNAL_ARTIFACTS.json": "e5dc35d4a90c1685e50014ba13f8e29f5775ded03bc0f7c79e7f42a82df5a771",
+    "a-side/plans/VERIFICATION_SUMMARY_ROUND3.md": "f12ee9cc57f6132708acdd94705370d3b8bc1ba69cab5e7d9df39d8b76550b96"
+  },
+  "new_A_code_caveats": {
+    "finalizer_rewrites_checklist": "Always writes a blank review_checklist.csv via mode w. B never invokes it, never overwrites filled reviews.",
+    "all_GT_near_duplicates": "Guide claims done; builder computes dHash only for query and final peers; GTs get exact-byte hashes only. B independently implements query/allGT/mutual guards, actual-package run pending.",
+    "ordering": "Finalizer changes null ranks/meta only; does not reorder. Builder iterates cand_buf filled in dataset-source traversal, not proof of claimed wrong-option then source ordering. Preserve observed array/rank, claim not verified.",
+    "digest": "Finalized S3 uses sorted path,NUL,image SHA,LF; excludes JSONL/CSV/review. B full-file manifest includes them, so filled review changes full digest."
   }
 }

@@ -189,8 +189,79 @@ def validate(legacy_six_root=None):
         'checks':checks,'passed_groups':len(checks),'synthetic_mechanism_checks':True,'old_test_suites_rerun':False,
         'actual_A_formal_packages_received':False,'real_model_loaded':False,'GPU_verified':False,'new_test_question_contents_opened':False}
 
+def validate_checklist_delta():
+    """v1.7.1 delta ONLY: synthetic A-finalized fields/checklist conversion."""
+    import hashlib
+    from integrate_condition_packages import load_package,full_digest
+    checks=[]
+    with tempfile.TemporaryDirectory(prefix='B-checklist-delta-') as td:
+        root=Path(td)
+        originals=[{'raw_id':'checklist_fixture','qid':'mragb:checklist_fixture','scenario':'Incomplete','aspect':'ARTIFICIAL',
+            'task_payload':{'question':'ARTIFICIAL only','choices':dict(zip('ABCD',['one','two','three','four']))},
+            'scoring_only':{'gold_choice':'B','answer_text':'two'}}]
+        s1,s2,s3=[root/x for x in ['fixture_s1','fixture_s2','fixture_s3']]
+        write_package(s1,'S1',originals);write_package(s2,'S2',originals);rows=write_package(s3,'S3',originals)
+        for r in rows:
+            r['retrieval_ranks']=[None]*len(r['evidence_order'])
+            for e in r['evidence_order']:e['retrieval_rank']=None
+        (s3/'evidence_list.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
+        with (s3/'evidence_index.csv').open(encoding='utf-8-sig',newline='') as f:index=list(csv.DictReader(f))
+        h=hashlib.sha256()
+        for i in sorted(index,key=lambda x:x['path']):h.update(i['path'].encode()+b'\0'+i['sha256'].encode()+b'\n')
+        meta=read(s3/'package_meta.json');meta.update({'content_digest':h.hexdigest(),'content_digest_algorithm':'sha256','file_hashes_csv':'file_hashes.csv','content_digest_scope':'sorted path\\x00sha256\\n images only'})
+        (s3/'package_meta.json').write_text(json.dumps(meta))
+        with (s3/'file_hashes.csv').open('w',encoding='utf-8',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=['rel_path','bytes','sha256']);w.writeheader()
+            for i in index:w.writerow({'rel_path':i['path'],'bytes':(s3/i['path']).stat().st_size,'sha256':i['sha256']})
+        fields=['qid','final_evidence_id','semantic_verdict','review_basis','reviewer','reviewed_at']
+        pending=[{'qid':r['qid'],'final_evidence_id':e['evidence_id'],'semantic_verdict':'','review_basis':'','reviewer':'','reviewed_at':''} for r in rows for e in r['evidence_order']]
+        checklist=s3/'review_checklist.csv'
+        def save(records):
+            with checklist.open('w',encoding='utf-8-sig',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(records)
+        save(pending);pinned=full_digest(s3)[0];media_digest=meta['content_digest']
+        package=load_package(s3,'S3');assert package['receipt']['A_content_digest']==media_digest
+        assert package['receipt']['A_digest_scheme']=='A_finalized_S3_sorted_path_NUL_sha256_LF'
+        original=(s3/'evidence_list.jsonl').read_bytes()
+        rows[0]['retrieval_ranks']=[0,None,None];rows[0]['evidence_order'][0]['retrieval_rank']=0
+        (s3/'evidence_list.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
+        rejected(lambda:load_package(s3,'S3'))
+        (s3/'evidence_list.jsonl').write_bytes(original)
+        checks.append('New finalized S3 null retrieval ranks and sorted image-index digest accepted; nonnull/mixed finalized ranks rejected; positional ranks preserved')
+        split=root/'split.json';split.write_text(json.dumps({'qids':['mragb:checklist_fixture'],'split':'artificial_delta','approved':False,'kind':'artificial'}))
+        blank=root/'blank';result=integrate(s1,s2,split,blank,s3,checklist_path=checklist,review_method='human_visual')
+        assert not result['S3_formal_admitted']
+        trace=read(blank/'audit/s3_review_adapter.json');assert trace['source_checklist_sha256']==sha(checklist)
+        assert len(trace['checklist_records'])==3
+        checks.append('Blank checklist plus automatic source initial labels never admits S3; original checklist SHA and six fields retained')
+        filled=[{**r,'semantic_verdict':'不支持','review_basis':'ARTIFICIAL visual-basis fixture only','reviewer':'ARTIFICIAL reviewer','reviewed_at':'2026-10-16T12:00:00+08:00'} for r in pending]
+        save(filled)
+        assert full_digest(s3)[0]!=pinned and load_package(s3,'S3')['receipt']['A_content_digest']==media_digest
+        rejected(lambda:load_package(s3,'S3',pinned))
+        unm=root/'method_missing';assert not integrate(s1,s2,split,unm,s3,checklist_path=checklist)['S3_formal_admitted']
+        assisted_missing=root/'assisted_model_missing';assert not integrate(s1,s2,split,assisted_missing,s3,checklist_path=checklist,review_method='image_model_assisted')['S3_formal_admitted']
+        checks.append('Filled CSV changes full metadata/review package hash while media digest stays unchanged; stale full pin rejected; no implicit human method or anonymous model assistance')
+        before=checklist.read_bytes();confirmed=root/'confirmed';result=integrate(s1,s2,split,confirmed,s3,checklist_path=checklist,review_method='image_model_assisted',review_model='ARTIFICIAL_MODEL@fixture_revision')
+        assert result['S3_formal_admitted'] and checklist.read_bytes()==before
+        rr=read(confirmed/'s3/audit/semantic_review.json')
+        proof=next(iter(rr['by_qid'].values()))['evidence'][0]['confirmation']
+        assert proof['method']=='image_model_assisted' and proof['review_model']=='ARTIFICIAL_MODEL@fixture_revision'
+        assert proof['checklist_record']['reviewed_at']=='2026-10-16T12:00:00+08:00'
+        assert sha(confirmed/'s3/audit/review_basis/review_checklist.source.csv')==sha(checklist)
+        assert load_task(task(confirmed,'S3-pure','s3'),confirmed,True)[3][0]['input_status']=='ok'
+        assert 'review_basis' not in json.dumps(read(confirmed/'s3/inputs/S3-pure.json'))
+        checks.append('Explicit artificial assisted review converts traceably with reviewer/model/time/basis and source bytes immutable; hashes checked at runtime; review/gold absent from generation inputs')
+        unknown=copy.deepcopy(filled);unknown[0]['semantic_verdict']='无法判断';save(unknown)
+        assert not integrate(s1,s2,split,root/'unknown',s3,checklist_path=checklist,review_method='human_visual')['S3_formal_admitted']
+        save(filled+[filled[0]]);rejected(lambda:integrate(s1,s2,split,root/'duplicate_review',s3,checklist_path=checklist,review_method='human_visual'))
+        bad=copy.deepcopy(filled);bad[0]['final_evidence_id']='unknown';save(bad);rejected(lambda:integrate(s1,s2,split,root/'unknown_id',s3,checklist_path=checklist,review_method='human_visual'))
+        checks.append('Unknown semantic verdict excludes whole fixed3 subset; duplicate or unknown checklist evidence identities fail closed')
+    return {'version':'checklist_delta_v1.7.1','checks':checks,'passed_groups':len(checks),'synthetic_only':True,
+        'old_suites_rerun':False,'actual_formal_packages_received':False,'new_real_debug_ids_inspected':False,
+        'real_semantic_review_performed':False,'GPU_verified':False}
+
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--legacy-six-root',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    result=validate(a.legacy_six_root);a.output.parent.mkdir(parents=True,exist_ok=True)
+    p=argparse.ArgumentParser();p.add_argument('--legacy-six-root',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--checklist-delta-only',action='store_true');a=p.parse_args()
+    result=validate_checklist_delta() if a.checklist_delta_only else validate(a.legacy_six_root);a.output.parent.mkdir(parents=True,exist_ok=True)
     with a.output.open('x',encoding='utf-8') as f:json.dump(result,f,indent=2)
     print(json.dumps({'passed_groups':result['passed_groups'],'GPU_verified':False}))

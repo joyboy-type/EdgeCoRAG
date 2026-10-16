@@ -32,7 +32,7 @@
       "evidence": [
         "evidence_id",
         "semantic_status=confirmed_unsupportive",
-        "method=human_visual|documented_semantic_review",
+        "method=human_visual|documented_semantic_review|image_model_assisted",
         "reviewer",
         "rationale",
         "evidence_sha256",
@@ -44,5 +44,23 @@
     "review_id": "Derived B-csv-adapter SHA identity; never A native",
     "gate": "Actual basis bytes/hash required. Documentary traceability check, not automatic semantic truth certification."
   },
-  "duplicate_gate": "all final evidence bytes unique; no overlap with query/allGT; dHash<=6 against query/allGT/other final evidence diagnostic exclusion; not proof of semantic irrelevance"
+  "duplicate_gate": "all final evidence bytes unique; no overlap with query/allGT; dHash<=6 against query/allGT/other final evidence diagnostic exclusion; not proof of semantic irrelevance",
+  "checklist_adapter": {
+    "entry": "integrate_condition_packages.py --review-checklist EXTERNAL_FILLED.csv --review-method human_visual|image_model_assisted",
+    "required_CSV_fields": [
+      "qid",
+      "final_evidence_id",
+      "semantic_verdict",
+      "review_basis",
+      "reviewer",
+      "reviewed_at"
+    ],
+    "reviewed_at": "ISO8601 timestamp with timezone; no generated default",
+    "review_method": "Explicit per-row review_method column or CLI flag; no human default; automatic methods not accepted",
+    "image_model_assisted": "Actual review_model column or --review-model model/revision/service version required; actual reviewer retained; never labelled human",
+    "traceability": "Original checklist/mechanical CSV/full source package SHA; B-derived review ID; original six-field record, source line and basis bytes retained outside prompts",
+    "blank_or_unknown": "Diagnostic-only, no formal subset; actual S3 remains unaccepted until actual media and reviews validated",
+    "source_immutable": "No finalizer invocation, checklist bytes never rewritten",
+    "new_A_S3_fields": "retrieval_rank=null; positional rank preserved; finalized image digest checked separately from full metadata/review digest"
+  }
 }

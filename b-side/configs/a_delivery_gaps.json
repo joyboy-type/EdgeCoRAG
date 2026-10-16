@@ -1,5 +1,5 @@
 {
-  "A_checked_commit": "6e02a897869cb9bb8d8337afe0e6a7d07919f339",
+  "A_checked_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
   "new_main_commit": true,
   "checked_utc": "2026-10-15",
   "items": [
@@ -15,13 +15,13 @@
     },
     {
       "deliverable": "S3 actual artifact integrity",
-      "status": "blocked_missing_4_digests_and_transfer_location",
-      "detail": "Four content_digest=null; rebuildability metadata is not B actual verification."
+      "status": "image_digests_received_actual_full_package_and_transfer_pending",
+      "detail": "All4 image digests now nonnull; need accessible actual package plus full metadata/review file manifest hashes, not only image digest."
     },
     {
       "deliverable": "S3 semantic confirmation",
-      "status": "rule_candidates_only_not_accepted_pure",
-      "detail": "Wrong-option/source-answer matching and image_type do not establish visual nonsupport. Need per-final-evidence image-grounded review, method/reviewer/rationale/basis artifact, query/all-GT identity; confirm subset before predictions. Unknown/rejected diagnostic only. Dedup final3 mutually, and against query/allGT."
+      "status": "A_explicitly_unreviewed_formal_subset_empty",
+      "detail": "Blank review_checklist and automatic semantic_review are not confirmations. Need actual reviewer/model/method/time/basis; B read-only converter supports them. No actual semantic review performed by B. Unknown/blank diagnostic only."
     },
     {
       "deliverable": "rebuild provenance if transfer impossible",
@@ -48,5 +48,5 @@
   "formal_blocking": true,
   "mechanism_testing_with_artificial_data_allowed": true,
   "protocol_decisions_pending": false,
-  "B_adapter_status": "v1.7 condition-package and CSV interfaces implemented; formal media not received"
+  "B_adapter_status": "v1.7.1 checklist/null-rank/media-digest delta implemented; actual packages not received"
 }

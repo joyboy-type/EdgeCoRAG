@@ -1,6 +1,6 @@
-# EdgeCoRAG B v1.7.0 — split condition-package adapter
+# EdgeCoRAG B v1.7.1 — finalized S3 checklist interface
 
-Based on B90c5b1b + merged A main6e02a897869cb9bb8d8337afe0e6a7d07919f339. Only b-side/ is changed;
+Based on B a0f35a4 + merged A main c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ is changed;
 root README/.gitignore and A files are preserved. This is NOT completion of all
 rental preparation. No weights, real processor/model loading or GPU inference
 were run. Actual offline results are in offline_checks.json; older accepted
@@ -18,7 +18,8 @@ index were read as metadata only, not as question/answer/image content.
 
 A round3 reports four splits with separate S1/S2/S3 packages. The builders and
 validator were read, not executed. Actual formal packages are NOT received by B.
-No download location is published; all four S3 content_digest fields are null.
+No actual package download location is available to B. All four S3 image digests
+are now nonnull, but exclude JSONL/CSV/reviews; full receipt is still pending.
 S1/S2 use official_retrieved_top3 and gt_evidence respectively; never rename a
 pool to pretend it is an old official_top5 package. Exact source/digest references
 and A's two differing dataset locks are in configs/a_delivery_refs.json.
@@ -82,6 +83,29 @@ Hashed basis artifacts and original CSV are retained for runtime verification.
 S1/S3 uses exactly that subset; full S1 remains separate. Normal S1/S2 is3vs5,
 Incomplete3vs1: the difference is not attributable solely to evidence quality.
 
+For an actually filled A checklist, use `--review-checklist EXTERNAL_FILLED.csv`
+instead of --confirmations, and explicitly declare `--review-method human_visual`
+or `--review-method image_model_assisted --review-model ACTUAL_MODEL_REVISION`.
+Optional per-row review_method/review_model columns must agree with CLI values.
+Required original fields: qid,final_evidence_id,semantic_verdict,review_basis,
+reviewer,reviewed_at. Time must be ISO8601 with timezone. Blank/unknown/automatic
+labels, missing basis/reviewer/time/method or model identity do not admit S3.
+These CLI values attest the actual review method; the adapter performs no review
+and invokes no model. It does not assert a reviewer personally viewed every GT;
+derived media identities bind the received target/context, and duplicate guards
+are independent. Raw filled CSV is copied byte-for-byte to external audit, hashed
+with converted JSON and original mechanical CSV, and never enters prompts.
+
+NEVER rerun A finalize_s3_packages.py over filled reviews: it opens the checklist
+with w and replaces it with blanks. B does not call it. A guide's all-GT dHash claim
+is not supported by builder code; GT exact-byte and final-peer checks differ from
+all-GT near checks. Finalizer's sorting declaration is not proof of reordering.
+B validates actual array/rank/IDs and separately runs its all-GT/mutual guards on
+receipt; it does not claim semantic source-order verification from metadata.
+New finalized S3 null retrieval_rank is accepted; original positional rank stays.
+S3 image digest uses sorted path+NUL+image SHA+LF; full package pins additionally
+bind all JSONL, CSV, metadata and reviews. Filling a checklist changes the full pin.
+
 The existing single-source prepare_batch_inputs.py remains for legacy A6 startup
 and explicit sources. Use the multi-package entry above for new A delivery.
 The17 required combinations, score/parser/shared text and model pins are unchanged.
@@ -135,7 +159,7 @@ new separate A packages must use integrate_condition_packages.py above.
 External layout:data/main/{bundle.json,split.json,inputs/,scoring/,audit/,media/};
 S3 subset may be a separate data/s3/ bundle. No real inputs/answers/images in Git.
 Use verify_external_package.py --root ACTUAL_A_PACKAGE --hash-index
-repo/a-side/data/smoke_20_file_hashes.csv [--decode] for read-only receipt. It never
+ACTUAL_PACKAGE_FULL_FILE_HASH_INDEX [--decode] for read-only receipt. It never
 downloads/repairs files; semantic D1 acceptance is a separate review artifact.
 
 ```bash
