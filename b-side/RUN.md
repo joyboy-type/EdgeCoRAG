@@ -1,6 +1,6 @@
-# EdgeCoRAG B v1.7.2 — authoritative S3 checklist binding
+# EdgeCoRAG B v1.8.0 — actual dev receipt and assisted review
 
-Based on B a0f35a4 + merged A main c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ is changed;
+Based on B7ccef5e + merged A main c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ is changed;
 root README/.gitignore and A files are preserved. This is NOT completion of all
 rental preparation. No weights, real processor/model loading or GPU inference
 were run. Actual offline results are in offline_checks.json; older accepted
@@ -12,21 +12,30 @@ A split v2 is RECEIVED:20/150/150/1033, file hashes/counts/disjointness/1353 cov
 and seven named B questions in dev were independently checked. Do not keep saying
 A has not repaired the split. v2 uses per-question fallback:cross-split source/
 image dependence is NOT isolated. Aggregate label exposure is disclosed separately
-from named per-question debugging. configs/debug_question_ids.json retains at
-least0,1,2,3,4,24,43; it does not claim global exhaustiveness. The20 smoke list/hash
+from named per-question debugging. configs/debug_question_ids.json now records all
+150 authorized dev targets, including the prior seven; it does not claim global
+exhaustiveness. Candidate source-image exposure is logged separately from source
+question/answer access. The20 smoke list/hash
 index were read as metadata only, not as question/answer/image content.
 
-A round3 reports four splits with separate S1/S2/S3 packages. The builders and
-validator were read, not executed. Actual formal packages are NOT received by B.
-No actual package download location is available to B. All four S3 image digests
-are now nonnull, but exclude JSONL/CSV/reviews; full receipt is still pending.
+A round3 reports four splits with separate S1/S2/S3 packages. Only the three dev
+Release assets were received and checked in cloud Linux, not on the user's Mac.
+See reception/dev_20261016/ for actual ZIP IDs/SHA/size, full-file metadata hashes,
+receipt, visual-review records and proposed subset. Other cuts were not received;
+frozen-test content was not downloaded/opened. A builders/finalizer were not run.
+Image content digests exclude JSONL/CSV/reviews; B full-file pins bind those too.
 S1/S2 use official_retrieved_top3 and gt_evidence respectively; never rename a
 pool to pretend it is an old official_top5 package. Exact source/digest references
 and A's two differing dataset locks are in configs/a_delivery_refs.json.
 A's S3 rule label 不支持 is construction-only, NOT accepted semantic confirmation.
 Final evidence must be reviewed against target question/query/allGT. Same bytes
 and dHash guards cover query/allGT AND mutual final3; hashes are not semantic proof.
-A's actual per-image semantic review and transfer integrity remain pending.
+B viewed all254 supplied dev S3 candidate positions against85 target panels and
+actual GT thumbnails, using the conversation assistant's visual capability, NOT
+human adjudication or an external paid API. Exact serving model revision is not
+exposed.45 were supportive,194 unknown,15 nonsupportive under the recorded visual
+judgment; the latter form5 complete groups (5/150=3.33%). This development subset
+requires HQ review, not a declaration of formal S3 acceptance or zero causal help.
 
 configs/protocol_main_v1.json is authorized and frozen pre-rental:
 - S0:evidence0 ->1 image.
@@ -57,6 +66,60 @@ python -B "$code/integrate_condition_packages.py" \
   --split "$repo/a-side/splits/dev.v2.txt" --output "$external/dev-v17" \
   --media-mode copy
 ```
+
+## Actual dev receipt, reproducible without rebuilding
+
+Reuse existing supplied ZIPs under EXTERNAL_ROOT/archives/. This stdlib entry
+checks pinned archive size/SHA and safely extracts only into NEW package folders:
+
+```bash
+python -B "$code/receive_release_packages.py" --manifest "$code/reception/dev_20261016/release_assets.json" --root "$external"
+```
+
+Only add --download when acquiring those exact3 dev archives is authorized and
+they are absent locally. About447MiB of ZIPs; expanded original files488473196B.
+It never enumerates other releases/splits, builds data, rewrites existing folders,
+or calls A finalize. For later cuts supply a newly approved explicit asset-pin
+manifest to the SAME entry; do not change dev pins or auto-fetch frozen content.
+
+The original A checklist stays blank and immutable. The reviewed six-field CSV
+in reception/dev_20261016/ has NO correct choices/questions/images; it is a B
+model-assisted revision, not A/human confirmation. Its hash, original checklist,
+automatic CSV, source ZIP and entire source package are separately bound.
+
+```bash
+python -B "$code/integrate_condition_packages.py" \
+  --s1 "$external/packages/dev_s1" --s2 "$external/packages/dev_s2" --s3 "$external/packages/dev_s3" \
+  --split "$repo/a-side/splits/dev.v2.txt" --output "$external/dev-reviewed" \
+  --package-pins "$code/reception/dev_20261016/full_package_pins.json" \
+  --review-checklist "$code/reception/dev_20261016/review_checklist.B_model_assisted.csv" \
+  --review-method image_model_assisted \
+  --review-model 'OpenAI Codex conversation assistant; exact serving model ID/revision not exposed by runtime' \
+  --media-mode copy
+python -B "$code/validate_received_inputs.py" --data-root "$external/dev-reviewed" \
+  --bundle main/bundle.json s3/bundle.json --output "$external/new-input-receipt.json"
+```
+
+Use an existing audit venv (Pillow only needed here, no inference installation);
+this cloud receipt used Python3.12.14/Pillow12.3.0, separate from unchanged pinned
+model environments. On Windows invoke the existing audit python.exe with
+`-X utf8 -B`, use the same arguments on one line, and `--media-mode copy`.
+The validator reads generation inputs through the actual runner/shared-message
+contract and preserves failures; it reads no scoring answers or model backend.
+S0/S1/S2 each retain150; reviewed S3 retains5, with matching S1 subset comparisons.
+The adapter's legacy S3_formal_admitted field denotes its review gate ONLY; dev
+bundle formal_split_approved remains false and HQ_accepted=false in the receipt.
+No model predictions or accuracy/performance results were produced this round.
+
+Own committed metadata is sufficient to locate/verify the external Release media.
+Review-only contact sheets contain scoring context: NEVER copy them into prompts
+or Git. Stable evidence identity is original path + content SHA, not a sheet URL.
+Sorting was checked by actual array/rank/evidence IDs; only9 nonempty groups had
+all source answers already in dev for the stronger wrong-option order check.
+Other source questions/answers were not opened. The global semantic sort claim
+is unverified. B's actual query/allGT/mutual dHash gate found no blockers; this is
+not proof of semantic unrelatedness, nor a guarantee all perceptual duplicates
+are detected. None of the received source bytes was rewritten.
 
 Layout: main/{bundle.json,split.json,inputs/S0.json,S1.json,S2.json,
 scoring/answers.json,media/<package-name>/<original-path>,audit/};
@@ -263,5 +326,6 @@ requires complete identical lists; S1/S3 subset mode checks predeclared parent
 hash/coverage and preserves full S1 results. Optional source-cluster analysis
 requires an evidenced external grouping basis; v2's fallback is not entity isolation.
 Synthetic checks are not effectiveness evidence. Do not rerun old suites on receipt.
-Windows waits for HQ final approval; do not receive this intermediate adapter package
-as the final experiment bundle. Actual A media receipt and formal binding remain pending.
+Windows waits for HQ final approval; this dev-receipt package is not the final
+all-split experiment bundle. Remaining cuts, HQ review of assisted S3 judgments,
+formal bindings and GPU checks remain pending.

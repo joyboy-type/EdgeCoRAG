@@ -1,5 +1,5 @@
 {
-  "version": "A_delivery_refs_v1.7.1",
+  "version": "A_delivery_refs_v1.8.0",
   "commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
   "repository": "https://github.com/joyboy-type/EdgeCoRAG",
   "split_version": "v2",
@@ -174,13 +174,13 @@
     }
   ],
   "round3_actual_status": {
-    "A_reports_only": true,
-    "B_received_actual_packages": false,
+    "A_reports_only": false,
+    "B_received_actual_packages": "dev only",
     "S3_content_digests_null": 0,
-    "download_locations_present": false,
+    "download_locations_present": "dev release assets verified; no receipt of remaining cuts",
     "rebuild_executed": false,
     "S3_semantic_admitted": false,
-    "formal_S3_subset_empty_per_A": true
+    "formal_S3_subset_empty_per_A": "A original checklist blank; B assisted dev subset separately proposed, HQ acceptance pending"
   },
   "rebuild_environment": {
     "observed_A_lock_versions": {
@@ -206,7 +206,7 @@
     "streaming": "nonzero IO; S3 two full passes over1353 questions plus source GTs",
     "source_dataset_bytes_reported_by_A": 4295622485,
     "new_12_packages_bytes_reported_by_A": 4125773828,
-    "download_or_rebuild_allowed_this_round": false,
+    "download_or_rebuild_allowed_this_round": "Only3 dev release archives were authorized/downloaded. No reconstruction or other split acquisition.",
     "notes": "Source paths a-side/packages, not repository-root packages. Builders call project_config.apply_env forcing mirror. S1/S2 builder deletes existing output. Do not execute directly as receipt check; stable transfer plus full manifest hash preferred."
   },
   "current_read_only_source_sha256": {
@@ -219,8 +219,14 @@
   },
   "new_A_code_caveats": {
     "finalizer_rewrites_checklist": "Always writes a blank review_checklist.csv via mode w. B never invokes it, never overwrites filled reviews.",
-    "all_GT_near_duplicates": "Guide claims done; builder computes dHash only for query and final peers; GTs get exact-byte hashes only. B independently implements query/allGT/mutual guards, actual-package run pending.",
+    "all_GT_near_duplicates": "Builder GT exact-byte only; B actual dev checks query/allGT/mutual SHA+dHash threshold6 completed with zero algorithmic blockers. This does not guarantee semantic unrelatedness.",
     "ordering": "Finalizer changes null ranks/meta only; does not reorder. Builder iterates cand_buf filled in dataset-source traversal, not proof of claimed wrong-option then source ordering. Preserve observed array/rank, claim not verified.",
     "digest": "Finalized S3 uses sorted path,NUL,image SHA,LF; excludes JSONL/CSV/review. B full-file manifest includes them, so filled review changes full digest."
-  }
+  },
+  "dev_actual_reception": "../reception/dev_20261016/receipt.json",
+  "dev_release_assets": "../reception/dev_20261016/release_assets.json",
+  "dev_actual_received_by_B": true,
+  "dev_actual_S1_S2_mechanical_passed": true,
+  "dev_S3_actual_image_review": "B model-assisted254 evidence positions;5 complete groups pending HQ acceptance; no human adjudication; exact serving model revision unavailable",
+  "other_splits_actual_received_by_B": false
 }

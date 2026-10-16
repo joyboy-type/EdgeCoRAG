@@ -87,5 +87,5 @@
   "main_protocol": "published_top3_actual_gt_d1_v1",
   "current_A_delivery_refs": "a_delivery_refs.json",
   "current_A_commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
-  "current_external_data_status": "See a_delivery_refs.json; new per-condition actual media not received. Legacy archives unchanged."
+  "current_external_data_status": "Actual3dev Release ZIPs received/verified; metadata/reviews in reception/dev_20261016. Other splits and formal acceptance pending. Original JPEG95 bytes unchanged, not Parquet byte copies."
 }
