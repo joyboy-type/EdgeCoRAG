@@ -1,5 +1,5 @@
 {
-  "version": "A_delivery_refs_v1.8.0",
+  "version": "A_delivery_refs_v1.9.0",
   "commit": "c0e0931d8ad8d640e9c8002516fea43a70049831",
   "repository": "https://github.com/joyboy-type/EdgeCoRAG",
   "split_version": "v2",
@@ -228,5 +228,8 @@
   "dev_actual_received_by_B": true,
   "dev_actual_S1_S2_mechanical_passed": true,
   "dev_S3_actual_image_review": "B model-assisted254 evidence positions;5 complete groups pending HQ acceptance; no human adjudication; exact serving model revision unavailable",
-  "other_splits_actual_received_by_B": false
+  "other_splits_actual_received_by_B": false,
+  "latest_actual_receipt": "reception/all_20261016/summary.json",
+  "release_assets_all_splits": "reception/all_20261016/release_assets.json",
+  "older_scope_fields_are_historical": true
 }

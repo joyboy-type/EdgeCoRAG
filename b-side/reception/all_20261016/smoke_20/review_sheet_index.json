@@ -1,0 +1,33 @@
+[
+  {
+    "page": 0,
+    "qids": [
+      "mragb:10",
+      "mragb:118",
+      "mragb:227",
+      "mragb:492"
+    ],
+    "path": "review_only_sheets/page_000.jpg",
+    "sha256": "081df228ce3e104e7813c829c1505ef241caa0cf6d292d83fb45de81ff014b25"
+  },
+  {
+    "page": 1,
+    "qids": [
+      "mragb:517",
+      "mragb:673",
+      "mragb:769",
+      "mragb:815"
+    ],
+    "path": "review_only_sheets/page_001.jpg",
+    "sha256": "4e55f9413361808271a36ef58f63767632a2818b70797a16a2bd3dc174a314c3"
+  },
+  {
+    "page": 2,
+    "qids": [
+      "mragb:939",
+      "mragb:1117"
+    ],
+    "path": "review_only_sheets/page_002.jpg",
+    "sha256": "1fdbd34254a4fe9f8d07bed79ca2fa221f43a2014e0d5f079098aad096e277c6"
+  }
+]

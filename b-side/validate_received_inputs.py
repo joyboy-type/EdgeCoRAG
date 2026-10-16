@@ -16,7 +16,9 @@ def verify(data_root, bundle_names):
     for name in bundle_names:
         path = external(data_root, name); b = read(path)
         for condition in b['conditions']:
-            task = {'bundle': name, 'bundle_sha256': sha(path), 'stage': 'development',
+            # Receipt uses the read-only mechanism stage for every split; it is
+            # not a development experiment or approval for formal quality runs.
+            task = {'bundle': name, 'bundle_sha256': sha(path), 'stage': 'mechanism_test',
                     'condition': condition, **{k: b[k] for k in ['split', 'protocol_version', 'evidence_version']},
                     'split_manifest_sha256': b['split_manifest']['sha256']}
             _, _, media, rows = load_task(task, data_root, decode=True)

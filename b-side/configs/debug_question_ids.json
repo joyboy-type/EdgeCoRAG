@@ -1,5 +1,5 @@
 {
-  "version": "debug_exposure_v5_dev_actual",
+  "version": "debug_exposure_v6_separate_label_aware_audit",
   "dataset_revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
   "raw_ids": [
     "0",
@@ -593,10 +593,22 @@
   ],
   "usage": "Give to later split design; not a finalized split. Any benchmark-derived holdout is internal, not external validation.",
   "completeness": "Known minimum now includes the150 authorized dev target questions. This scope is not a global exhaustive exposure registry. Additional source-image-only exposures are separately recorded; do not equate them to opening their source question/answer.",
-  "scope_note": "Question/gold comparisons for all150 dev targets;85 visually reviewed target panels. No new frozen-test package/question/answer opened; candidate source images may derive from any split and are explicitly logged as image-only exposure.",
+  "scope_note": "Legacy engineering/dev scope retained above. New smoke/internal_holdout/frozen receipt parses question/options/gold; actual nonempty S3 targets visually audited under a predefined label-aware evidence-only rule. See separate label_aware_audit_registry. No model predictions or parameter tuning.",
   "exposure_registry_complete": false,
   "A_v2_disposition": "All current named B IDs verified in dev.v2 at 2354826; no claim of global completeness.",
-  "metadata_only_smoke20_raw_ids": [
+  "metadata_only_scope": "Historical before this receipt; no longer the current smoke exposure status.",
+  "pre_dev_known_minimum_raw_ids": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "24",
+    "43"
+  ],
+  "dev_receipt": "reception/dev_20261016/receipt.json",
+  "source_image_exposure_records": "reception/dev_20261016/s3_review_records.json",
+  "metadata_only_smoke20_raw_ids_historical": [
     "10",
     "118",
     "227",
@@ -618,16 +630,5 @@
     "1266",
     "1343"
   ],
-  "metadata_only_scope": "Read qid list and file-hash index only; no question text, answer inspection or image decode for these20 by B. Not asserted to be per-question tuning/exposure.",
-  "pre_dev_known_minimum_raw_ids": [
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "24",
-    "43"
-  ],
-  "dev_receipt": "reception/dev_20261016/receipt.json",
-  "source_image_exposure_records": "reception/dev_20261016/s3_review_records.json"
+  "label_aware_audit_registry": "reception/all_20261016/label_aware_audit_registry.json"
 }

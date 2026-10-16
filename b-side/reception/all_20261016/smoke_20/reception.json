@@ -1,0 +1,60 @@
+{
+  "status": "received_not_semantically_accepted",
+  "assets": [
+    {
+      "id": 646524100,
+      "name": "smoke_20_s1.zip",
+      "size": 16806247,
+      "state": "uploaded",
+      "digest": "sha256:5ce61c1da0effeb750dcd736927d3602d9abb7324c225a4f14c9f91d7ac50473",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s1.zip",
+      "created_at": "2026-10-16T07:27:04Z",
+      "updated_at": "2026-10-16T07:27:07Z",
+      "package": "smoke_20_s1",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s1.zip",
+      "sha256": "5ce61c1da0effeb750dcd736927d3602d9abb7324c225a4f14c9f91d7ac50473",
+      "max_expanded_bytes": 35384254,
+      "ZIP_verified": true,
+      "safe_extraction": true,
+      "file_entries": 84,
+      "expanded_bytes": 17692127
+    },
+    {
+      "id": 646524261,
+      "name": "smoke_20_s2.zip",
+      "size": 25068096,
+      "state": "uploaded",
+      "digest": "sha256:1b6e0a085bb006aec8321d5a8a954ad8edcc3e69c32ba98a35c2206e73d6a2ad",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s2.zip",
+      "created_at": "2026-10-16T07:27:08Z",
+      "updated_at": "2026-10-16T07:27:11Z",
+      "package": "smoke_20_s2",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s2.zip",
+      "sha256": "1b6e0a085bb006aec8321d5a8a954ad8edcc3e69c32ba98a35c2206e73d6a2ad",
+      "max_expanded_bytes": 51935804,
+      "ZIP_verified": true,
+      "safe_extraction": true,
+      "file_entries": 120,
+      "expanded_bytes": 25967902
+    },
+    {
+      "id": 646524477,
+      "name": "smoke_20_s3.zip",
+      "size": 9276593,
+      "state": "uploaded",
+      "digest": "sha256:f3efcf3f10421aad60352d98701da1c295c72536dc57aa03a81093e29fa74830",
+      "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s3.zip",
+      "created_at": "2026-10-16T07:27:13Z",
+      "updated_at": "2026-10-16T07:27:14Z",
+      "package": "smoke_20_s3",
+      "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/smoke_20_s3.zip",
+      "sha256": "f3efcf3f10421aad60352d98701da1c295c72536dc57aa03a81093e29fa74830",
+      "max_expanded_bytes": 19158806,
+      "ZIP_verified": true,
+      "safe_extraction": true,
+      "file_entries": 57,
+      "expanded_bytes": 9579403
+    }
+  ],
+  "GPU_verified": false
+}

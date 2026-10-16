@@ -1,0 +1,15 @@
+{
+  "scope": "New actual per-split receipt, final assisted-review snapshots, paired subset runtime contract, report-only approval distinction. No old suite/model inference.",
+  "review_records_bijective_to_all_final_candidates": true,
+  "per_record_query_allGT_candidate_hashes_match": true,
+  "complete3_nonsupport_only_admission": true,
+  "S1_S3_same_qids_same_order": true,
+  "formal_approval_remains_false": true,
+  "approval_report_expression_checked_none_unapproved_approved": true,
+  "actual_subset_loader_results": [
+    "internal_holdout/runner_receipt.json",
+    "frozen_test/runner_receipt.json"
+  ],
+  "empty_smoke_subset_preserved": true,
+  "classifier_prompt_scorer_model_matrix_unchanged": true
+}

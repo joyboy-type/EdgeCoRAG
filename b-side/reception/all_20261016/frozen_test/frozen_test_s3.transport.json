@@ -1,0 +1,19 @@
+{
+  "id": 646515002,
+  "name": "frozen_test_s3.zip",
+  "size": 571949633,
+  "state": "uploaded",
+  "digest": "sha256:8b907e5013c29daae36e1f0ca2f51021bbcd279d8d2a92de71935e641962257e",
+  "browser_download_url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s3.zip",
+  "created_at": "2026-10-16T07:23:40Z",
+  "updated_at": "2026-10-16T07:25:35Z",
+  "package": "frozen_test_s3",
+  "url": "https://github.com/joyboy-type/EdgeCoRAG/releases/download/evidence-packages-v1.0/frozen_test_s3.zip",
+  "sha256": "8b907e5013c29daae36e1f0ca2f51021bbcd279d8d2a92de71935e641962257e",
+  "max_expanded_bytes": 1193865828,
+  "actual_environment": "cloud Linux",
+  "recorded_at": "2026-10-16T09:11:36.808646+00:00",
+  "status": "verified",
+  "actual_bytes": 571949633,
+  "actual_sha256": "8b907e5013c29daae36e1f0ca2f51021bbcd279d8d2a92de71935e641962257e"
+}

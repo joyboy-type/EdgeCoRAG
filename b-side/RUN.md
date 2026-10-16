@@ -1,10 +1,8 @@
-# EdgeCoRAG B v1.8.0 — actual dev receipt and assisted review
+# EdgeCoRAG B v1.9.0 — all-split receipt and assisted evidence review
 
-Based on B7ccef5e + merged A main c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ is changed;
-root README/.gitignore and A files are preserved. This is NOT completion of all
-rental preparation. No weights, real processor/model loading or GPU inference
-were run. Actual offline results are in offline_checks.json; older accepted
-sample/scorer/synthetic suites were not rerun.
+Based on B459a262 and A c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ changes.
+Cloud Linux receipt is not a user Mac/Windows result or GPU validation. Keep PR1
+draft pending HQ review. No experiment model, weights, processor or CUDA loaded.
 
 ## A status and frozen main contract
 
@@ -15,27 +13,43 @@ image dependence is NOT isolated. Aggregate label exposure is disclosed separate
 from named per-question debugging. configs/debug_question_ids.json now records all
 150 authorized dev targets, including the prior seven; it does not claim global
 exhaustiveness. Candidate source-image exposure is logged separately from source
-question/answer access. The20 smoke list/hash
-index were read as metadata only, not as question/answer/image content.
+question/answer access. The former metadata-only smoke status is historical. New label-aware audit
+exposure is separate from engineering/dev tuning; see the registry below.
 
-A round3 reports four splits with separate S1/S2/S3 packages. Only the three dev
-Release assets were received and checked in cloud Linux, not on the user's Mac.
-See reception/dev_20261016/ for actual ZIP IDs/SHA/size, full-file metadata hashes,
-receipt, visual-review records and proposed subset. Other cuts were not received;
-frozen-test content was not downloaded/opened. A builders/finalizer were not run.
-Image content digests exclude JSONL/CSV/reviews; B full-file pins bind those too.
-S1/S2 use official_retrieved_top3 and gt_evidence respectively; never rename a
-pool to pretend it is an old official_top5 package. Exact source/digest references
-and A's two differing dataset locks are in configs/a_delivery_refs.json.
-A's S3 rule label 不支持 is construction-only, NOT accepted semantic confirmation.
-Final evidence must be reviewed against target question/query/allGT. Same bytes
-and dHash guards cover query/allGT AND mutual final3; hashes are not semantic proof.
-B viewed all254 supplied dev S3 candidate positions against85 target panels and
-actual GT thumbnails, using the conversation assistant's visual capability, NOT
-human adjudication or an external paid API. Exact serving model revision is not
-exposed.45 were supportive,194 unknown,15 nonsupportive under the recorded visual
-judgment; the latter form5 complete groups (5/150=3.33%). This development subset
-requires HQ review, not a declaration of formal S3 acceptance or zero causal help.
+All12 Release ZIPs have actual receipt records: dev reuses accepted v1.8.0
+(no redownload/retest); the other9 were received this round outside code. See
+reception/all_20261016/summary.json and release_assets.json. New indexed image
+positions decoded:14751, not14751 unique contents. Full-file pins bind metadata,
+JSONL, original CSV/checklists as well as images. Original packages are unchanged.
+A builders/finalizer were not run.
+
+All1874 new final S3 candidate positions were visually reviewed with target
+question/options/gold, query and all supplied GT thumbnails. Method is
+image_model_assisted, reviewer is B/Codex conversation assistant, NOT human. Exact
+serving model ID/revision is unavailable. Hash-bound contact-sheet previews have
+limited resolution; unresolved fine distinctions/comparison help remain unknown.
+No model predictions were viewed and no prompt/budget/model tuning occurred.
+Candidate source-image exposures and label-aware target audits are recorded in
+reception/all_20261016/label_aware_audit_registry.json. This is not label blindness
+and global exposure completeness remains false. Legacy engineering qids remain
+separate; do not use the audit list as a tuning list or automatically redraw splits.
+
+Proposed S3 subsets pending HQ adjudication: smoke0/20, dev5/150 (prior receipt),
+internal_holdout2/150 (415,1009), frozen_test29/1033. All retained groups have
+three visually judged nonsupportive candidates and pass query/allGT/mutual exact
+and dHash<=6 guards. Unknown/support/blank are excluded; these guards do not prove
+universal semantic independence. Existing S1/S3 analysis uses identical subset
+qids while retaining full S1. Coverage and narrow domain composition limit claims.
+Smoke has no eligible S3: do not silently pad/skip/relabel it to pass all17 tasks.
+No formal approval or all-rental-ready status is granted.
+
+Actual ID/rank/CSV-position order passed. Stronger wrong-option/source-qid/GT
+ordering was checkable for513 groups:88 violate the claimed ordering;114 groups
+remain unresolved without physically cached dev source labels. Original order
+was preserved. A builder pass2 follows dataset traversal; finalizer does not
+reorder. B independently checked allGT and within-group near duplicates;4 frozen
+groups are blocked. Details and script hashes are in each ordering_audit.json
+and mechanical_receipt.json, not inferred from A guide prose.
 
 configs/protocol_main_v1.json is authorized and frozen pre-rental:
 - S0:evidence0 ->1 image.
@@ -66,6 +80,38 @@ python -B "$code/integrate_condition_packages.py" \
   --split "$repo/a-side/splits/dev.v2.txt" --output "$external/dev-v17" \
   --media-mode copy
 ```
+
+## Reuse all-split assets and filled review snapshots (v1.9.0)
+
+No large media, answers or generated bundles are committed. Release URLs/IDs, ZIP
+size/SHA and expanded-size bounds are pinned in reception/all_20261016/release_assets.json.
+Keep existing caches; do not redownload unchanged dev. Existing receiver accepts
+a manifest containing only the required split assets, and refuses existing
+extraction roots. For missing archives only, --download is explicit; no rebuild.
+Original checklist is preserved; select a new filled snapshot explicitly. Never
+run A finalize against filled reviews. Example after supplying archives/packages:
+
+```bash
+split=internal_holdout
+review="$code/reception/all_20261016/$split/review_batch_001"
+python -B "$code/integrate_condition_packages.py" \
+  --s1 "$packages/${split}_s1" --s2 "$packages/${split}_s2" \
+  --s3 "$packages/${split}_s3" --split "$repo/a-side/splits/$split.v2.txt" \
+  --package-pins "$code/reception/all_20261016/$split/full_package_pins.json" \
+  --review-checklist "$review/review_checklist.B_model_assisted.csv" \
+  --review-method image_model_assisted \
+  --review-model 'OpenAI Codex conversation assistant; exact serving model ID/revision not exposed by runtime' \
+  --media-mode copy --output "$new_external_output"
+```
+
+Use smoke_20/review_batch_001, frozen_test/review_batch_002 and prior
+dev_20261016/review_checklist.B_model_assisted.csv respectively. These are offline
+reconstruction paths, not formal quality approval. The validator uses
+mechanism_test for all splits, so reading a holdout is not labeled development.
+Do not add --acknowledge-split-limitations until HQ explicitly accepts the binding.
+Fixed parent main S0/S1/S2 lists remain intact; only S3 has an explicit eligible
+subset. Raw review sheets/answers stay external. Review CSV, observation
+snapshots, source package pins and per-file metadata hashes are committed.
 
 ## Actual dev receipt, reproducible without rebuilding
 
@@ -107,8 +153,9 @@ model environments. On Windows invoke the existing audit python.exe with
 The validator reads generation inputs through the actual runner/shared-message
 contract and preserves failures; it reads no scoring answers or model backend.
 S0/S1/S2 each retain150; reviewed S3 retains5, with matching S1 subset comparisons.
-The adapter's legacy S3_formal_admitted field denotes its review gate ONLY; dev
-bundle formal_split_approved remains false and HQ_accepted=false in the receipt.
+Historical v1.8 reports used S3_formal_admitted for subset construction. New
+reports distinguish S3_review_gated_subset_constructed from actual formal
+approval; bundles remain unapproved until HQ acceptance.
 No model predictions or accuracy/performance results were produced this round.
 
 Own committed metadata is sufficient to locate/verify the external Release media.
@@ -326,6 +373,6 @@ requires complete identical lists; S1/S3 subset mode checks predeclared parent
 hash/coverage and preserves full S1 results. Optional source-cluster analysis
 requires an evidenced external grouping basis; v2's fallback is not entity isolation.
 Synthetic checks are not effectiveness evidence. Do not rerun old suites on receipt.
-Windows waits for HQ final approval; this dev-receipt package is not the final
-all-split experiment bundle. Remaining cuts, HQ review of assisted S3 judgments,
-formal bindings and GPU checks remain pending.
+Windows waits for HQ review of assisted S3 judgments, empty smoke-S3 handling,
+ordering differences and formal bindings. All-cut offline receipt is complete;
+CUDA loading, memory/OOM and real performance remain unverified.

@@ -1,0 +1,25 @@
+{
+  "status": "validated_inputs",
+  "backend": "validate",
+  "conditions": [
+    {
+      "bundle": "s3/bundle.json",
+      "bundle_sha256": "13d3efd6c033037b338b307f9573d0cdbe128601bebe704a39140a051ff79934",
+      "condition": "S3-pure",
+      "fixed_denominator": 2,
+      "input_ok": 2,
+      "failures": [],
+      "image_counts": {
+        "4": 2
+      },
+      "qid_order": [
+        "mragb:415",
+        "mragb:1009"
+      ],
+      "formal_split_approved": false
+    }
+  ],
+  "GPU_verified": false,
+  "inference_or_accuracy_generated": false,
+  "gold_read_by_this_validator": false
+}

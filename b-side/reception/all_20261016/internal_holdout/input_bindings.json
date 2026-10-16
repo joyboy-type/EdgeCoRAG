@@ -1,0 +1,21 @@
+{
+  "external_deployment_root": "internal_holdout/review_batch_001/inputs",
+  "bundles": [
+    {
+      "path": "main/bundle.json",
+      "sha256": "aa30f599e0c4ad559e5e8d7e42b19031df10f6ec4eb734f88f1b76d5703c193c"
+    },
+    {
+      "path": "s3/bundle.json",
+      "sha256": "13d3efd6c033037b338b307f9573d0cdbe128601bebe704a39140a051ff79934"
+    }
+  ],
+  "main_fixed_denominator": 150,
+  "paired_S1_S3_qids": [
+    "mragb:415",
+    "mragb:1009"
+  ],
+  "coverage": 0.013333333333333334,
+  "formal_split_approved": false,
+  "answers_and_images_external": true
+}

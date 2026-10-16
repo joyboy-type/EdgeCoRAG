@@ -1,0 +1,16 @@
+{
+  "array_evidenceID_rank_CSV_order_checked": true,
+  "nonempty_groups": 10,
+  "wrong_option_source_qid_gt_order_checkable_groups": 8,
+  "violations_qids": [
+    "mragb:227"
+  ],
+  "unresolved_source_label_groups": 2,
+  "whole_sort_claim_verified": false,
+  "no_reordering_or_source_repair": true,
+  "reason": "Builder pass2 fills candidate buffer in dataset traversal order, not candidate_refs order; finalizer does not sort images. Source labels from dev missing in physical cache and not reacquired. Numeric ordering alone is not semantic proof.",
+  "source_scripts_sha256": {
+    "a-side/scripts/build_distractor_package.py": "a4ad40d9cf0232d5392934e9f934737e32a3ec9f78b7c95a675d416f7c020ac8",
+    "a-side/scripts/finalize_s3_packages.py": "5cbeb08100ccdc02973b10c86c7642294d68692d2193f6c1528c3a0021d75014"
+  }
+}

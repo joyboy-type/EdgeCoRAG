@@ -409,7 +409,9 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
             'source_packages':{c:p['receipt'] for c,p in packages.items()},'S3_duplicate_diagnostics':dedup,
             'S3_confirmed_qids':s3['qids'] if s3 else [],'S3_parent_denominator':len(qids),
             'S3_coverage':len(s3['qids'])/len(qids) if s3 else 0,'S3_diagnostic_qids':[q for q in qids if not s3 or q not in s3['qids']],
-            'S3_formal_admitted':s3 is not None,'actual_semantic_truth_independently_verified_by_B':False,
+            'S3_review_gated_subset_constructed':s3 is not None,
+            'S3_formal_admitted':bool(s3 and s3.get('formal_split_approved')),
+            'actual_semantic_truth_independently_verified_by_B':False,
             'S1_S2_count_caveat':'Regular3vs5; Incomplete3vs1. Effects are not attributable solely to evidence content/quality.',
             'global_exposure_registry_complete':False,'all_prerental_complete':False}
         atomic(output/'audit/condition_integration.json',report)

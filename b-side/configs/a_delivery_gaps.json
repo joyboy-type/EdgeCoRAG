@@ -10,28 +10,33 @@
     },
     {
       "deliverable": "actual S1/S2 per split packages",
-      "status": "dev_received_mechanically_accepted_remaining_splits_pending",
-      "detail": "dev150 S1top3 and actual S2five/one verified. Other cuts need authorized exact Release asset pins and separate receipt."
+      "status": "all_four_splits_received_mechanically_accepted",
+      "detail": "dev v1.8 reused; new9 ZIPs verified. S0/S1/S2 fixed lists20/150/150/1033; published3 versus actualGT5/1. No GPU verification."
     },
     {
       "deliverable": "S3 actual artifact integrity",
-      "status": "dev_actual_archive_and_full_metadata_media_hashes_verified",
-      "detail": "dev archive SHA, image content digest, all image hashes/decode/dimensions and B full-file metadata/checklist digest verified. Remaining cuts not received."
+      "status": "all_four_splits_ZIP_and_full_metadata_media_integrity_verified",
+      "detail": "New14751 image positions decoded; source metadata and original reviews bound in full-file pins. No rebuild or image edits."
     },
     {
       "deliverable": "S3 semantic confirmation",
-      "status": "B_dev_model_assisted_review_complete_HQ_acceptance_pending",
-      "detail": "254 actual candidate images reviewed:45 supports,194 unknown,15 nonsupport. Five full3 groups proposed,coverage5/150. Original A blank/auto labels not confirmations. Need HQ adjudication and actual review for later splits."
+      "status": "all_final_candidates_assisted_review_complete_HQ_pending",
+      "detail": "Prior dev254 reused; new1874 actual final candidates reviewed. Proposed groups smoke0/dev5/internal2/frozen29; support/unknown/blank excluded. Smoke S3 empty blocks full17 smoke; no arbitrary padding/coverage threshold. See reception/all_20261016."
     },
     {
       "deliverable": "rebuild provenance if transfer impossible",
-      "status": "not_needed_for_dev_received_release_bytes",
-      "detail": "Do not reconstruct received bytes. For missing future assets prefer uploaded archive SHA rather than assuming codec-identical rebuilding."
+      "status": "unneeded_all12_release_bytes_received",
+      "detail": "Do not rebuild or redownload cached dev. Fixed Release assets/whole hashes available."
     },
     {
       "deliverable": "independent retrieval",
       "status": "optional_not_main_blocker",
       "detail": "Published top3 main requires no independent retrieval. Other-host retrieval times cannot be added to generation."
+    },
+    {
+      "deliverable": "claimed S3 semantic ordering",
+      "status": "not_verified_violations_observed",
+      "detail": "513 groups checkable;88 violate wrong-option/source-qid/GT ordering,114 unresolved. Preserve actual order; A/HQ decide documented current order or revised package versions/hashes."
     }
   ],
   "B_exposure_registry": "debug_question_ids.json",
@@ -197,5 +202,6 @@
     "B_actual_received": "dev_s1/dev_s2/dev_s3 only",
     "ZIP_bytes": 468954999,
     "rebuild_started": false
-  }
+  },
+  "label_aware_audit_registry": "../reception/all_20261016/label_aware_audit_registry.json"
 }
