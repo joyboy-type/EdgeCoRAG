@@ -260,8 +260,62 @@ def validate_checklist_delta():
         'old_suites_rerun':False,'actual_formal_packages_received':False,'new_real_debug_ids_inspected':False,
         'real_semantic_review_performed':False,'GPU_verified':False}
 
+def validate_checklist_override_guard():
+    """v1.7.2: only the alternate-confirmation bypass; no old suites."""
+    from integrate_condition_packages import full_digest
+    checks=[]
+    with tempfile.TemporaryDirectory(prefix='B-checklist-override-') as td:
+        root=Path(td);q='mragb:guard_fixture'
+        original=[{'raw_id':'guard_fixture','qid':q,'scenario':'Incomplete','aspect':'ARTIFICIAL',
+            'task_payload':{'question':'ARTIFICIAL guard only','choices':dict(zip('ABCD',['one','two','three','four']))},
+            'scoring_only':{'gold_choice':'B','answer_text':'two'}}]
+        s1,s2,s3=[root/x for x in ['guard_s1','guard_s2','guard_s3']]
+        rows1=write_package(s1,'S1',original);rows2=write_package(s2,'S2',original);rows3=write_package(s3,'S3',original)
+        split=root/'split.json';split.write_text(json.dumps({'qids':[q],'split':'artificial_guard','approved':False,'kind':'artificial'}))
+        checklist=s3/'review_checklist.csv';basis=root/'basis.txt';basis.write_text('ARTIFICIAL actual-basis fixture only')
+        records=[{'qid':q,'final_evidence_id':e['evidence_id'],'semantic_verdict':'不支持',
+            'review_basis':'ARTIFICIAL per-image basis','reviewer':'ARTIFICIAL reviewer','reviewed_at':'2026-10-16T12:00:00+08:00'} for e in rows3[0]['evidence_order']]
+        cfpath=root/'alternate_confirmation.json'
+        def write(verdict='不支持'):
+            rr=copy.deepcopy(records);rr[0]['semantic_verdict']=verdict
+            with checklist.open('w',encoding='utf-8-sig',newline='') as f:
+                w=csv.DictWriter(f,fieldnames=list(rr[0]));w.writeheader();w.writerows(rr)
+            proofs=[{'evidence_id':e['evidence_id'],'semantic_status':'confirmed_unsupportive','method':'human_visual',
+                'reviewer':'ARTIFICIAL reviewer','reviewed_at':'2026-10-16T12:00:00+08:00','rationale':'ARTIFICIAL per-image basis',
+                'evidence_sha256':e['sha256'],'reviewed_query_sha256':rows1[0]['question_image']['sha256'],
+                'reviewed_gt_sha256':[g['sha256'] for g in rows2[0]['evidence_order']],
+                'basis_artifact':{'path':basis.name,'sha256':sha(basis)}} for e in rows3[0]['evidence_order']]
+            cf={'source_review_sha256':sha(s3/'semantic_review.csv'),'source_package_sha256':full_digest(s3)[0],
+                'source_checklist_sha256':sha(checklist),'by_qid':{q:{'evidence':proofs}}}
+            cfpath.write_text(json.dumps(cf));return cf
+        for i,verdict in enumerate(['支持','无法判断','']):
+            write(verdict)
+            rejected(lambda:integrate(s1,s2,split,root/('blocked_'+str(i)),s3,cfpath,review_method='human_visual'))
+        checks.append('Package checklist is authoritative without explicit --review-checklist: alternate all-confirmed JSON cannot override supports/unknown/blank even with matching current hashes')
+        cf=write();cf.pop('source_checklist_sha256');cfpath.write_text(json.dumps(cf))
+        rejected(lambda:integrate(s1,s2,split,root/'unbound',s3,cfpath,review_method='human_visual'))
+        cf=write();cf['by_qid'][q]['evidence'][0]['reviewer']='DIFFERENT';cfpath.write_text(json.dumps(cf))
+        rejected(lambda:integrate(s1,s2,split,root/'conflicting_reviewer',s3,cfpath,review_method='human_visual'))
+        cf=write();cf['source_checklist_sha256']='0'*64;cfpath.write_text(json.dumps(cf))
+        rejected(lambda:integrate(s1,s2,split,root/'stale_checklist',s3,cfpath,review_method='human_visual'))
+        checks.append('Missing/stale checklist SHA and conflicting reviewer metadata fail closed; JSON cannot create a second independent authority')
+        cf=write();cf['checklist_records']=[{'semantic_verdict':'FORGED supplemental record'}];cfpath.write_text(json.dumps(cf))
+        before=checklist.read_bytes();out=root/'positive';r=integrate(s1,s2,split,out,s3,cfpath,review_method='human_visual')
+        assert r['S3_formal_admitted'] and checklist.read_bytes()==before
+        trace=read(out/'s3/audit/semantic_review.json')
+        assert len(trace['checklist_records'])==3 and all(x['semantic_verdict']=='不支持' for x in trace['checklist_records'])
+        b=read(out/'s3/bundle.json');active=out/'s3/audit/active_review_checklist.csv'
+        assert any(x['path']=='audit/active_review_checklist.csv' and x['sha256']==sha(checklist) for x in b['semantic_support_artifacts'])
+        assert load_task(task(out,'S3-pure','s3'),out,True)[3][0]['input_status']=='ok'
+        active.write_bytes(b'changed')
+        assert load_task(task(out,'S3-pure','s3'),out)[3][0]['input_status']=='missing_or_invalid_image'
+        checks.append('Consistent artificial filled checklist plus bound supplemental JSON works; checklist bytes remain immutable and are rechecked as a runtime support artifact')
+    return {'version':'checklist_guard_v1.7.2','checks':checks,'passed_groups':len(checks),'synthetic_only':True,
+        'previous_five_delta_groups_not_rerun':True,'old_suites_rerun':False,'actual_packages_received':False,
+        'real_semantic_review_performed':False,'GPU_verified':False}
+
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--legacy-six-root',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--checklist-delta-only',action='store_true');a=p.parse_args()
-    result=validate_checklist_delta() if a.checklist_delta_only else validate(a.legacy_six_root);a.output.parent.mkdir(parents=True,exist_ok=True)
+    p=argparse.ArgumentParser();p.add_argument('--legacy-six-root',type=Path);p.add_argument('--output',type=Path,required=True);p.add_argument('--checklist-delta-only',action='store_true');p.add_argument('--checklist-override-only',action='store_true');a=p.parse_args()
+    result=validate_checklist_override_guard() if a.checklist_override_only else validate_checklist_delta() if a.checklist_delta_only else validate(a.legacy_six_root);a.output.parent.mkdir(parents=True,exist_ok=True)
     with a.output.open('x',encoding='utf-8') as f:json.dump(result,f,indent=2)
     print(json.dumps({'passed_groups':result['passed_groups'],'GPU_verified':False}))

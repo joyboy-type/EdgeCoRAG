@@ -91,6 +91,7 @@ def load_package(root,condition,expected=None):
     if condition=='S3' and meta.get('content_digest_algorithm')=='sha256' and meta.get('file_hashes_csv')=='file_hashes.csv':
         digest_scheme='A_finalized_S3_sorted_path_NUL_sha256_LF'
         if not (root/'file_hashes.csv').is_file():raise ValueError('Finalized S3 image hash CSV missing')
+        if not (root/'review_checklist.csv').is_file():raise ValueError('Finalized S3 review checklist missing')
         if 'path' not in meta.get('content_digest_scope',''):raise ValueError('Finalized S3 digest scope missing')
         for i in sorted(index.values(),key=lambda x:x['path']):
             h.update(i['path'].encode());h.update(b'\0');h.update(i['sha256'].encode());h.update(b'\n')
@@ -138,6 +139,22 @@ def review_csv(package,rows,confirmations=None,confirmation_sha=None):
     """
     path=package['root']/'semantic_review.csv';original_sha=sha(path)
     confirmations=confirmations or {}
+    authoritative=None
+    active_checklist=package.get('active_checklist_path')
+    if active_checklist is None and (package['root']/'review_checklist.csv').is_file():
+        active_checklist=package['root']/'review_checklist.csv'
+    if active_checklist is not None:
+        authoritative=checklist_confirmations(active_checklist,package,rows,package.get('review_method'),package.get('review_model'))
+        if not confirmations:confirmations=authoritative
+        if confirmations.get('source_checklist_sha256')!=sha(active_checklist):
+            raise ValueError('Confirmation is not bound to the active checklist SHA')
+        allowed={(q,p['evidence_id']):p for q,r in authoritative['by_qid'].items() for p in r['evidence']}
+        for q,record in confirmations.get('by_qid',{}).items():
+            for proof in record.get('evidence',[]):
+                expected=allowed.get((q,proof['evidence_id']))
+                if expected is None:raise ValueError('Confirmation cannot override blank/supports/unknown or incomplete active checklist')
+                for key in ['semantic_status','method','review_model','reviewer','reviewed_at','rationale','evidence_sha256','reviewed_query_sha256','reviewed_gt_sha256']:
+                    if proof.get(key)!=expected.get(key):raise ValueError('Confirmation conflicts with active checklist: '+key)
     if confirmations and (confirmations.get('source_review_sha256')!=original_sha or confirmations.get('source_package_sha256')!=package['receipt']['source_package_sha256']):raise ValueError('Confirmation bound to different original CSV/package')
     kept={};audit=[]
     with path.open(encoding='utf-8-sig',newline='') as f:
@@ -183,7 +200,10 @@ def review_csv(package,rows,confirmations=None,confirmation_sha=None):
             'review_id_origin':'B generated audit identifier; not A native','distractor_type':'D1','evidence':entries}
     return {'version':'A_csv_review_adapter_v1','source_review_sha256':original_sha,
         'source_package_sha256':package['receipt']['source_package_sha256'],'confirmation_sha256':confirmation_sha,
-        'source_checklist_sha256':confirmations.get('source_checklist_sha256'),'checklist_records':confirmations.get('checklist_records',[]),
+        'source_checklist_sha256':confirmations.get('source_checklist_sha256'),
+        'package_checklist_sha256':sha(package['root']/'review_checklist.csv') if (package['root']/'review_checklist.csv').is_file() else None,
+        'active_checklist_origin':'explicit selected revision' if package.get('explicit_checklist_selected') else 'package checklist' if active_checklist else None,
+        'checklist_records':authoritative['checklist_records'] if authoritative is not None else confirmations.get('checklist_records',[]),
         'confirmation_supplied':bool(confirmations),'semantic_claim':'Traceability validated only; rule labels are not proof of nonsupport',
         'by_qid':by_qid,'source_csv_records':audit}
 
@@ -337,10 +357,12 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
         review=None;s3=None
         if 'S3' in packages:
             package=packages['S3']
-            if checklist_path:
-                converted=checklist_confirmations(checklist_path,package,{a['qid']:a for a in normalized},review_method,review_model)
+            active_checklist=checklist_path or (package['root']/'review_checklist.csv' if (package['root']/'review_checklist.csv').is_file() else None)
+            package.update({'active_checklist_path':active_checklist,'review_method':review_method,'review_model':review_model,'explicit_checklist_selected':checklist_path is not None})
+            if active_checklist and confirmation_path is None:
+                converted=checklist_confirmations(active_checklist,package,{a['qid']:a for a in normalized},review_method,review_model)
                 # Copy, never rewrite, the filled checklist; the hashed raw CSV is the actual basis artifact.
-                shutil.copyfile(checklist_path,temp/'review_checklist.source.csv')
+                shutil.copyfile(active_checklist,temp/'review_checklist.source.csv')
                 confirmation_path=temp/'checklist_confirmations.json';atomic(confirmation_path,converted)
             package['confirmation_root']=confirmation_path.parent.resolve() if confirmation_path else package['root']
             review=review_csv(package,{a['qid']:a for a in normalized},read(confirmation_path) if confirmation_path else None,sha(confirmation_path) if confirmation_path else None)
@@ -357,7 +379,7 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
                 s3=prepare(source,index,sp,split_path,output/'s3',acknowledge,review_path)
             atomic(output/'audit/s3_review_adapter.json',review)
             shutil.copyfile(package['root']/'semantic_review.csv',output/'audit/source_semantic_review.csv')
-            if checklist_path:shutil.copyfile(checklist_path,output/'audit/source_review_checklist.csv')
+            if active_checklist:shutil.copyfile(active_checklist,output/'audit/source_review_checklist.csv')
         for name,bundle in [('main',main),('s3',s3)]:
             if bundle is None:continue
             root=output/name
@@ -373,6 +395,7 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
                     dest=root/'audit'/relative;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dest)
                     supporting.append({'path':dest.relative_to(root).as_posix(),'sha256':sha(dest)})
                 support(packages['S3']['root']/'semantic_review.csv','source_semantic_review.csv')
+                if active_checklist:support(active_checklist,'active_review_checklist.csv')
                 support(confirmation_path,'confirmations.json')
                 for record in review['by_qid'].values():
                     for e in record['evidence']:
@@ -382,7 +405,7 @@ def integrate(s1_root,s2_root,split_path,output,s3_root=None,confirmation_path=N
                 bundle['semantic_support_artifacts']=supporting
             bundle['media_deployment']='Selected files materialized under media/<package namespace>/<original relative path>; missing files remain failed rows.'
             atomic(root/'bundle.json',bundle)
-        report={'version':'condition_packages_adapter_v1.7.1','A_commit':A_commit,'fixed_qids':qids,
+        report={'version':'condition_packages_adapter_v1.7.2','A_commit':A_commit,'fixed_qids':qids,
             'source_packages':{c:p['receipt'] for c,p in packages.items()},'S3_duplicate_diagnostics':dedup,
             'S3_confirmed_qids':s3['qids'] if s3 else [],'S3_parent_denominator':len(qids),
             'S3_coverage':len(s3['qids'])/len(qids) if s3 else 0,'S3_diagnostic_qids':[q for q in qids if not s3 or q not in s3['qids']],

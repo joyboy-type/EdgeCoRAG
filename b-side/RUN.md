@@ -1,4 +1,4 @@
-# EdgeCoRAG B v1.7.1 — finalized S3 checklist interface
+# EdgeCoRAG B v1.7.2 — authoritative S3 checklist binding
 
 Based on B a0f35a4 + merged A main c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ is changed;
 root README/.gitignore and A files are preserved. This is NOT completion of all
@@ -87,6 +87,13 @@ For an actually filled A checklist, use `--review-checklist EXTERNAL_FILLED.csv`
 instead of --confirmations, and explicitly declare `--review-method human_visual`
 or `--review-method image_model_assisted --review-model ACTUAL_MODEL_REVISION`.
 Optional per-row review_method/review_model columns must agree with CLI values.
+When no --review-checklist is supplied, the package checklist is automatically
+the active authority, even with --confirmations JSON. JSON must bind its current
+source_checklist_sha256 and agree with its per-image verdict/method/reviewer/time/
+basis and media identities. Blank/supports/unknown/incomplete entries cannot be
+overridden by another confirmation. An explicitly selected revised checklist is
+recorded alongside the original package checklist SHA; no source file is rewritten.
+Both active CSV and JSON are runtime-hashed support artifacts.
 Required original fields: qid,final_evidence_id,semantic_verdict,review_basis,
 reviewer,reviewed_at. Time must be ISO8601 with timezone. Blank/unknown/automatic
 labels, missing basis/reviewer/time/method or model identity do not admit S3.

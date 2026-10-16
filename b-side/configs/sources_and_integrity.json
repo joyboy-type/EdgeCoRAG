@@ -1,5 +1,5 @@
 {
-  "preparation_version": "checklist_delta_v1.7.1",
+  "preparation_version": "checklist_guard_v1.7.2",
   "dataset": {
     "name": "uclanlp/MRAG-Bench",
     "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",

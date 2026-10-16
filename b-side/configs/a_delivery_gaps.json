@@ -48,5 +48,11 @@
   "formal_blocking": true,
   "mechanism_testing_with_artificial_data_allowed": true,
   "protocol_decisions_pending": false,
-  "B_adapter_status": "v1.7.1 checklist/null-rank/media-digest delta implemented; actual packages not received"
+  "B_adapter_status": "v1.7.2 default checklist authority + anti-override guard; actual packages pending",
+  "user_reported_transfer": {
+    "total": "3.69 GiB",
+    "status": "upload_in_progress",
+    "B_actual_received": false,
+    "rebuild_or_redownload_started": false
+  }
 }

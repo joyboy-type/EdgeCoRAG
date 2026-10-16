@@ -61,6 +61,8 @@
     "traceability": "Original checklist/mechanical CSV/full source package SHA; B-derived review ID; original six-field record, source line and basis bytes retained outside prompts",
     "blank_or_unknown": "Diagnostic-only, no formal subset; actual S3 remains unaccepted until actual media and reviews validated",
     "source_immutable": "No finalizer invocation, checklist bytes never rewritten",
-    "new_A_S3_fields": "retrieval_rank=null; positional rank preserved; finalized image digest checked separately from full metadata/review digest"
+    "new_A_S3_fields": "retrieval_rank=null; positional rank preserved; finalized image digest checked separately from full metadata/review digest",
+    "authority": "Explicit selected checklist revision or default package review_checklist.csv; supplemental confirmation cannot override blank/supports/unknown/incomplete verdicts. Bound source_checklist_sha256 required; reviewer/time/method/basis/media must agree.",
+    "revision_trace": "Original package checklist SHA and active selected checklist origin retained; raw CSV and derived JSON runtime-bound; no source rewrite"
   }
 }
