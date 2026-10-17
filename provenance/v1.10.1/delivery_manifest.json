@@ -1,9 +1,9 @@
 {
-  "version": "delivery_v1.10.1_20261017_record_diagnostics",
+  "version": "delivery_v1.10.1_20261017_next_stage_tasks",
   "parent_source_commit": "6c529479b94362c19094088524f8702ca2a9a0de",
   "algorithm": "sha256",
   "scope": "All publication checkout tracked files except this self-referential manifest; includes inherited useful source/audit/sample files. Git internals and full local backup excluded.",
-  "file_count": 384,
+  "file_count": 386,
   "files": [
     {
       "path": ".gitattributes",
@@ -17,8 +17,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3239,
-      "sha256": "b2fa5d0a455e8cb25a39ceff4772747398de84d75e0fcab1abbb6831b0860ad2"
+      "bytes": 3448,
+      "sha256": "7d2f30921f20809eec3017586df4abba9bd4b328c755a71c73f5f6fb7e5c206f"
     },
     {
       "path": "a-side/data/acceptance_report.json",
@@ -1682,8 +1682,8 @@
     },
     {
       "path": "reports/Next_steps.md",
-      "bytes": 2857,
-      "sha256": "fe808f9f5b725d3f9a7d156f5094dc5efb9bebe6f7fe28364fb11de9934e5266"
+      "bytes": 3314,
+      "sha256": "cfc724ef10e91e223f77aa8b9469156e6ea0b8d30e150e7f87003ad54d734929"
     },
     {
       "path": "reports/Reconstruction.md",
@@ -1694,6 +1694,16 @@
       "path": "reports/Requirements.md",
       "bytes": 10033,
       "sha256": "bfb3df6100dc62a7235bf51c03a9993cec06505cf52cf9d90b2116b0efd0a8d0"
+    },
+    {
+      "path": "reports/next_stage_20261017/A_TASKS.md",
+      "bytes": 7748,
+      "sha256": "bd4877679f49b800faaca24e43be80b244dadf6567670e84eb739fc63ce74866"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_TASKS.md",
+      "bytes": 8865,
+      "sha256": "6ce2347d63daf68048241fa3e4b31fc0448c1a58aa5ba72a2c5d59463462261c"
     },
     {
       "path": "reports/v1.10.1/analysis_results.json",
@@ -1926,5 +1936,5 @@
       "sha256": "e889841c83f82a967a79335bbeb43d67cf32533bd52fcdb28033d77c71f47854"
     }
   ],
-  "preceding_publication_commit": "49031cf65538521f76fc9c275c7fdd3be6923c77"
+  "preceding_publication_commit": "6fc8e2e0e133189a6b6043653c57192b986dc71a"
 }
