@@ -1,0 +1,5 @@
+﻿model_key,model,split,parent_n,paired_n,coverage,s1_subset_accuracy,s3_subset_accuracy,delta_pp,ci_low_pp,ci_high_pp,review_method
+gemma4_e2b,Gemma4 E2B,internal_holdout,150,2,0.013333333333333334,0.5,0.5,0.0,0.0,0.0,image_model_assisted
+gemma4_e4b,Gemma4 E4B,internal_holdout,150,2,0.013333333333333334,1.0,0.5,-50.0,-50.0,-50.0,image_model_assisted
+gemma4_e2b,Gemma4 E2B,frozen_test,1033,29,0.028073572120038724,0.5172413793103449,0.3103448275862069,-20.689655172413794,-41.37931034482759,-3.4482758620689653,image_model_assisted
+gemma4_e4b,Gemma4 E4B,frozen_test,1033,29,0.028073572120038724,0.3448275862068966,0.3448275862068966,0.0,-17.24137931034483,17.24137931034483,image_model_assisted

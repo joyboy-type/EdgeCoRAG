@@ -1,0 +1,16 @@
+﻿model_key,model,condition,quality_split,quality_n,accuracy,performance_split,performance_observations,performance_unique_questions,offline_p50_ms,offline_p95_ms,performance_peak_reserved_gib,full_system_cost,quality_and_cost_workloads_identical,descriptive_nondominated_offline_p95_ms,descriptive_nondominated_performance_peak_reserved_gib
+qwen3vl_4b,Qwen3-VL 4B,S0,frozen_test,1033,0.601161665053243,smoke_20,100,20,136.5488488227129,173.2604317367077,8.482421875,False,False,True,True
+qwen3vl_4b,Qwen3-VL 4B,S1,frozen_test,1033,0.5759922555663117,smoke_20,100,20,285.52031703293324,694.7729848325253,8.748046875,False,False,True,True
+qwen3vl_4b,Qwen3-VL 4B,S2,frozen_test,1033,0.6940948693126815,smoke_20,100,20,371.7677630484104,742.7522361278533,8.986328125,False,False,True,True
+qwen3vl_8b,Qwen3-VL 8B,S0,frozen_test,1033,0.5643756050338818,smoke_20,100,20,160.59059090912342,199.28611777722836,16.685546875,False,False,False,False
+qwen3vl_8b,Qwen3-VL 8B,S1,frozen_test,1033,0.5614714424007744,smoke_20,100,20,387.3608335852623,986.3680142909238,16.953125,False,False,False,False
+qwen3vl_8b,Qwen3-VL 8B,S2,frozen_test,1033,0.6679574056147144,smoke_20,100,20,449.0225240588188,855.7000949978827,17.330078125,False,False,False,False
+gemma4_e2b,Gemma4 E2B,S0,frozen_test,1033,0.36302032913843174,smoke_20,100,20,158.72835367918015,175.0219877809286,9.771484375,False,False,False,False
+gemma4_e2b,Gemma4 E2B,S1,frozen_test,1033,0.3543078412391094,smoke_20,100,20,203.8427796214819,413.5394325479865,9.771484375,False,False,True,False
+gemma4_e2b,Gemma4 E2B,S2,frozen_test,1033,0.4269119070667957,smoke_20,100,20,294.51657459139824,622.4918518215418,9.908203125,False,False,False,False
+gemma4_e4b,Gemma4 E4B,S0,frozen_test,1033,0.38431752178121975,smoke_20,100,20,196.33296877145767,215.85732828825712,15.07421875,False,False,False,False
+gemma4_e4b,Gemma4 E4B,S1,frozen_test,1033,0.4133591481122943,smoke_20,100,20,264.5832169800997,501.6276475042104,15.07421875,False,False,True,False
+gemma4_e4b,Gemma4 E4B,S2,frozen_test,1033,0.47725072604065827,smoke_20,100,20,304.7914896160364,616.8448284268378,15.22265625,False,False,True,False
+qwen35_4b,Qwen3.5 4B,S0,frozen_test,1033,0.5353339787028074,smoke_20,100,20,328.3591717481613,375.51174722611904,8.76171875,False,False,False,False
+qwen35_4b,Qwen3.5 4B,S1,frozen_test,1033,0.5450145208131656,smoke_20,100,20,476.1450793594122,1082.0503477007076,9.03125,False,False,False,False
+qwen35_4b,Qwen3.5 4B,S2,frozen_test,1033,0.5818005808325266,smoke_20,100,20,533.2097541540861,1149.7257307171747,9.38671875,False,False,False,False

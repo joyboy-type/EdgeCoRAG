@@ -1,0 +1,34 @@
+{
+  "status": "verified_local_export",
+  "runtime_version": "v1.10.1",
+  "parent_source_commit": "6c529479b94362c19094088524f8702ca2a9a0de",
+  "runtime_manifest_sha256": "8b6c2182a2e45ee325f2490c206fb32c7878db158f019b992a49cfd41c1194d6",
+  "matrix_sha256": "630eee8d4032fa0aede73eef89612801ff521785e045bdfc0f14ffaea094c555",
+  "tasks": 161,
+  "formal_tasks": 119,
+  "question_runs": 21927,
+  "format_failures_including_performance": 132,
+  "worker_phase_receipts": 25,
+  "worker_phase_receipts_exit_zero_and_complete": true,
+  "retries": 0,
+  "main_quality_question_runs": 17807,
+  "performance_question_runs": 1550,
+  "warmups_excluded": 483,
+  "raw_archive_sha256": "98bf99c45ecdd1a44029747885e9c3e49f860b95ae95079ea0c5c123b33ffc85",
+  "models": [
+    "gemma4_e2b",
+    "gemma4_e4b",
+    "qwen35_4b",
+    "qwen3vl_4b",
+    "qwen3vl_8b"
+  ],
+  "runtime_code_is_exact_executed_bytes": true,
+  "image_pixels_and_weights_included": false,
+  "hardware": "single NVIDIA GeForce RTX 4090 24 GB",
+  "limitations": [
+    "processor-rendered chat-template string not logged",
+    "full retrieval/encoder/index residency and energy not measured",
+    "source-cluster confidence intervals unavailable",
+    "S3 image-model-assisted label-aware selected subset"
+  ]
+}
