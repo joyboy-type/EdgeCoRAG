@@ -1,97 +1,62 @@
 # EdgeCoRAG
 
-研究小型多模态模型结合视觉检索后的能力替代边界，以及回答质量、延迟和显存之间的关系。
+研究小型多模态模型在共享视觉证据下的能力边界，以及质量、生成时延和显存的关系。
 
-## 协作分工
+截至2026年10月17日，runtime-v1.10.1批准的161任务、21927次问答已全部完成并本地备份核验。五模型技术通过，132次正常格式失败全部计错。任务书整体仍有第二数据集、完整检索成本、机制审定及来源聚类统计等缺口，不能由技术通过宣称论文结论成立。
 
-- **A**：检索器、证据选择与冻结证据交接。
-- **B**：统一模型推理、公平比较、评分统计与错误分析。
+完整成果位于[交付分支](https://github.com/joyboy-type/EdgeCoRAG/tree/results/runtime-v1.10.1-delivery)，由[草稿PR #2](https://github.com/joyboy-type/EdgeCoRAG/pull/2)集中审阅。默认`main`首页同步当前导航；下列成果链接指向交付分支，尚未将整份PR合并为`main`的源码。
 
-## 实验条件
+## 当前进度与下一项工作
 
-- **S0**：无外部证据。
-- **S1**：共享检索证据。
-- **S2**：GT 正确证据，用于诊断能力上限。
-- **S3**：错误或干扰证据。
+| 范围 | 已核对的状态 | 接下来做什么 |
+| --- | --- | --- |
+| 第一轮模型实验 | 161任务、21927次运行完成并备份 | 保留固定分母与全部失败记录 |
+| B-01阶段论文 | 初稿已交付 | 审阅、修订方法和结论表达 |
+| B-02记录诊断 | 37条论断证据、20条案例状态已交付 | 图像可获得性待A-01；视觉机制未审定 |
+| B-03第二数据集 | 官方来源与评分代码已静态核验 | 解决MMDocRAG许可冲突、schema与评分适配缺口 |
+| B-04/B-05统计与新协议 | 方法边界与预案已交付 | 等可信来源分组、正式矩阵和资源预算 |
+| A本批任务 | [独立任务 #3](https://github.com/joyboy-type/EdgeCoRAG/issues/3)已发布，本仓库尚无本批交付回执 | 先回传现有图片可获得性、独立语料访问与许可 |
 
-> ⚠️ **S2 是理想条件上界，不是可部署方案。** 任何把 S2 当作方法结果的说法都不成立。
+B侧进度集中在[任务 #4](https://github.com/joyboy-type/EdgeCoRAG/issues/4)与[B交付回执](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_return.md)。没有回传的A侧工作不推断为已完成或未开展。本批未新增推理、judge调用、图库下载或租卡。
 
-## 仓库结构
+## 当前交付入口
 
-```
-handover/            给 B 的交接包
-├── README.md          交接包入口（先读这个）
-├── docs/              分工与进度、证据规则、S3 干扰证据规范
-├── contracts/         接口 JSON Schema + 官方评测代码差异
-├── samples/           少量接口样例（含图片，可直接跑通）
-└── freeze/            冻结清单模板
+- 下一阶段分别执行：[A：语料、检索与证据交接任务](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/A_TASKS.md)／[你与B：阶段论文、诊断与补充协议任务](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_TASKS.md)
+- B侧本批交付：[阶段论文初稿](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_phase_report.md)／[离线报告（下载后打开）](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_phase_report.html)／[论断证据表](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_claim_evidence.csv)／[任务进度与仍缺的证据](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_return.md)
+- [第二数据集可行性](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_external_dataset_feasibility.md)／[统计补强决策](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/B_statistics_decision.md)／[下一轮实验预案](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/next_stage_20261017/next_experiment_decision.md)
+- [整合说明 Word 文档（首次交付快照）](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/EdgeCoRAG阶段成果与任务要求整合.docx)
+- [下一步应该做什么](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/Next_steps.md)
+- [任务书与全部现有文档要求整合](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/Requirements.md)
+- [五模型比较报告](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/B_comparison.md)
+- [已保存结果诊断报告（离线 HTML）](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/v1.10.1/diagnostics/report.html)：GT 哈希分组、格式影响分解与 20 个待审案例
+- [文献与复现状态](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/B_papers.md)
+- [交付包与清理说明](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/Delivery.md)
+- [逐题结果与输入上下文](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/logs/README.md)
+- [离线复算方法](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/analysis/v1.10.1/README.md)
+- [原始绑定与补丁运行的两阶段重建](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/reports/Reconstruction.md)
 
-a-side/              A 侧可复现资产
-├── scripts/          数据/模型/环境探针、验收与契约校验脚本
-├── reports/          环境审计与复现进展报告
-├── data/             小体积事实文件（schema、证据本体统计、命中率审计、验收报告）
-├── splits/           题目划分清单（固定种子 20261015）与 manifest
-├── plans/            **未完成事项与阻塞清单**（接手的 AI/人先读这个）
-└── setup/            安装说明
-    ├── STANDARD_INSTALL.md          ← **项目标准步骤**（与机器无关）
-    └── MACHINE_SPECIFIC_PROXY.md    ← 某台机器的代理/TLS 绕行，**非标准做法**
-```
+## 主结果
 
-## 给协作者 B 的确认事项
+冻结集每条件1033题、严格评分；S0仅查询图，S1为发布的官方检索候选top3，S2为actual GT oracle。
 
-见 **[`handover/docs/05_给B的确认与续作提示词.md`](handover/docs/05_给B的确认与续作提示词.md)**
-—— 内含 8 项待确认事项、B 确认后才能继续的工作、以及 B 现在就能独立做的事。
+| 模型 | S0 | S1 | S2 |
+| --- | --- | --- | --- |
+| Qwen3-VL 4B | 60.12% | 57.60% | 69.41% |
+| Qwen3-VL 8B | 56.44% | 56.15% | 66.80% |
+| Gemma 4 E2B | 36.30% | 35.43% | 42.69% |
+| Gemma 4 E4B | 38.43% | 41.34% | 47.73% |
+| Qwen3.5 4B | 53.53% | 54.50% | 58.18% |
 
-## 未完成事项（**不要当作已完成**）
+Gemma在同S1下仍低于Qwen，不能写为普遍替代。S2只用于oracle诊断。结果来自同一RTX4090，性能为预处理与生成，不是端到端检索或真实边缘设备评测。
 
-见 **[`a-side/plans/NEXT_STEPS_AND_BLOCKERS.md`](a-side/plans/NEXT_STEPS_AND_BLOCKERS.md)**。
-摘要：
+## 目录
 
-- ⛔ **独立检索语料未验证可下载、许可未确认** → 重检索路线阻塞（关键路径）
-- ⛔ **Gemma 4 E4B 在 8 GB 显存不可行**（4bit 加载即占 8.685 GiB）→ A2/A3 路径受影响
-- ❌ 冻结证据列表（全量）、检索质量指标（R@1/R@5/MRR）、S3 干扰集、效用选择器
-- ⏳ 20 题联调清单（切分已定，冻结版未生成）
+`b-side/` 保留准确的已执行v1.10.1代码、冻结配置和接收审计；`a-side/`及`handover/`保留A侧来源、契约、历史探针与可复现样例；`reports/`为当前报告和表格；`figures/v1.10.1/`为PNG/SVG/PDF科研图；`logs/`为压缩逐题记录和结构化输入；`provenance/v1.10.1/`为代码身份、矩阵、25份阶段回执与交付哈希；`configs/model_registry.yaml`为原JSON注册表的兼容镜像。
 
+## 版本与历史文档
 
-## 证据与数据规则（双方共同遵守）
+原始批准源提交为`6c529479b94362c19094088524f8702ca2a9a0de`，实际执行为该源码加用户批准的v1.10.1补丁，由`b-side/package_hashes.json`锁定。补丁只把正常格式失败与技术失败的阶段门禁分开，并补足Qwen依赖；提示词、严格解析、64token、BF16及科学参数未变。
 
-1. **GT、正确答案、命中标记只用于评分、Oracle 条件与离线分析，绝不能用于检索条件下的证据选择。**
-2. 官方 `retrieved_images` 的 **GT 图像字节级精确匹配命中率**为
-   任意 **55.9%**、rank-0 **32.6%**、全部 GT 覆盖 **2.3%**（分母 1353）。
-   ⚠️ 这**不等于答案泄漏**——无法区分『检索器独立命中』与『候选生成使用 GT 标注』，
-   官方候选的产生过程未被完整说明。详见 `handover/docs/official_pool_provenance.md`。
-   它也**不能**反推自研重检索是干净基线。
-3. 官方 RAG 提示模板的**图片占位符数量写死**（常规 6、Incomplete 2）。
-   改 top-k 必须同步改占位符，并另立 `protocol_version`。
-4. **失败题目不得静默删除**。主准确率使用**固定题单分母**；
-   成功子集指标仅作补充，且必须给出**覆盖率**。
-5. **Incomplete 单独报告，但不得从总体剔除**。完整基准总体指标为主指标。
-6. 内部切出的留出集**不能叫「外部验证」**（同源）；外部验证须用 VisDoM / MMDocRAG。
+旧A侧状态文档、冻结注册表和前租用回执描述当时状态，保留其原始内容以便追溯；当前完成状态以[执行回执](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/provenance/v1.10.1/execution_receipt.json)为准。历史“尚未GPU验证”字段没有被悄悄改写。完整原始attempts、旧失败记录、备份archive在本地保留。
 
-## 数据版本（已锁定）
-
-| 项 | 值 |
-|---|---|
-| 数据集 | `uclanlp/MRAG-Bench` |
-| revision | `43620fde4044bb150e158c67ad7af6b6b11e1da2` |
-| 许可 | CC-BY-4.0 |
-| split | **只有 `test`**，1,353 题（无官方 dev/val，需项目内自切分） |
-| parquet 实际字节 | **4.00 GiB**（本地实测；官方 API `usedStorage` ≈8 GiB 为不同口径） |
-
-## 当前进展
-
-- A：环境与工具链已验证；论文、作者代码、数据集版本已核验；
-  **尚未产出冻结证据列表**。已交付 6 题接口样例（含 GT，S2 可跑，28/28 验收通过）。
-- B：已完成小样本与评分验证，正在整理运行代码和租用单卡 GPU 前的准备。
-- **真实模型试跑与正式实验尚未完成。**
-
-模型权重、数据图片、索引和运行缓存保存在仓库外；代码与配置按已验证版本陆续提交。
-
-## 安装
-
-**标准步骤见 [`a-side/setup/STANDARD_INSTALL.md`](a-side/setup/STANDARD_INSTALL.md)。**
-
-本机（Windows）曾观察到本地 TLS 中间人代理导致 `git` 报
-`CRYPT_E_NO_REVOCATION_CHECK`。⚠️ **该问题及其绕行办法记录在
-[`a-side/setup/MACHINE_SPECIFIC_PROXY.md`](a-side/setup/MACHINE_SPECIFIC_PROXY.md)，
-它不是项目标准做法**——正确做法是修好证书信任链，而不是关闭 TLS 校验。
+本轮新增材料不含模型权重、数据集原始图片、环境、缓存、认证信息或服务器运维工具。仓库已有的6题接口图片是可复现实例，继续保留；不能因为文件较大就删掉仍被验证器引用的有效样例。数据与许可见[source_manifest.csv](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/source_manifest.csv)。
