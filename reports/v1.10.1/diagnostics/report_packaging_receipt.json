@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "html": "report.html",
+  "stages": {
+    "validation": "passed",
+    "package": "passed",
+    "verification": "structural_only"
+  },
+  "browserWarning": {
+    "code": "browser_unavailable",
+    "message": "No installed Chromium headless-shell executable was found. Set CHROMIUM_EXECUTABLE_PATH (or the legacy PLAYWRIGHT_EXECUTABLE_PATH) or preinstall Chromium headless-shell under PLAYWRIGHT_BROWSERS_PATH; portable tooling never downloads browsers."
+  },
+  "counts": {
+    "blocks": 19,
+    "charts": 2,
+    "html": 0,
+    "metrics": 0,
+    "tables": 5
+  },
+  "sourceDialog": "not_verified",
+  "sourceInteraction": "not_verified",
+  "viewports": [],
+  "timings": {
+    "validateAndPackageMs": 51.8,
+    "staticChartExtractionMs": 0.7,
+    "structuralVerificationMs": 2.4,
+    "totalMs": 55.2
+  },
+  "additional_browser_attempt": {
+    "executable": "Installed Google Chrome",
+    "status": "browser_environment_mismatch",
+    "stage": "static_charts",
+    "message": "Requested chart extraction environment was not applied; final package uses structural_only verification."
+  },
+  "paths_are_report_relative": true
+}

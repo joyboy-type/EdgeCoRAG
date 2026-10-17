@@ -102,7 +102,11 @@ def history(path,expected_fingerprint,allowed_qids):
     return records,latest
 
 
-def failed(record):return bool(record.get('generation_error')) or record.get('parse_status')!='ok'
+def failed(record):
+    """Technical failure only; strict format noncompliance remains a scored wrong answer."""
+    return (bool(record.get('generation_error') or record.get('final_extraction_error') or record.get('oom'))
+            or record.get('input_status','ok')!='ok'
+            or record.get('parse_status') not in ('ok','parse_failure','empty_output'))
 
 def code_versions():
     return {p.relative_to(ROOT).as_posix():sha(p) for p in sorted(ROOT.rglob('*'))
@@ -121,9 +125,12 @@ def snapshot(task_dir,task,model,bundle,bundle_root,rows,latest,synthetic,status
     answers=read(answer_path)
     if [a['qid'] for a in answers]!=bundle['qids']:raise ValueError('Scoring fixed qids differ from input list')
     selected=[latest[r['qid']] for r in rows if r['qid'] in latest]
+    format_failures=[r['qid'] for r in selected if not failed(r) and r.get('parse_status') in ('parse_failure','empty_output')]
     projection=[{'qid':r['qid'],'raw_output':r['final_output'],'generation_error':r['generation_error']} for r in selected]
     score=evaluate(answers,projection)
     score.update({'synthetic':synthetic,'task_id':task['task_id'],'stage':task['stage'],
+        'execution_failure_policy':'technical_only_format_wrong_v1',
+        'format_failure_count':len(format_failures),'technical_failure_count':sum(failed(r) for r in selected),
         'condition':task['condition'],'model_id':model['model_id'],'model_revision':model['revision'],
         'scoring_boundary':'final_output projection; complete raw output retained in predictions/attempts',
         'input_failure_count':sum(r['input_status']!='ok' for r in rows),
@@ -145,9 +152,12 @@ def snapshot(task_dir,task,model,bundle,bundle_root,rows,latest,synthetic,status
     if task['stage']!='performance':atomic(task_dir/'score.json',score)
     pending=[r['qid'] for r in rows if r['qid'] not in latest]
     retry=[r['qid'] for r in selected if failed(r)]
-    atomic(task_dir/'retry_queue.json',{'missing_qids':pending,'failed_qids':retry,'explicit_retry_required':True})
+    atomic(task_dir/'retry_queue.json',{'missing_qids':pending,'failed_qids':retry,'explicit_retry_required':True,
+        'format_failure_qids_not_retried':format_failures})
     atomic(task_dir/'state.json',{'status':status,'fixed_total':len(rows),'received_unique':len(latest),
         'missing_qids':pending,'failed_qids':retry,'exit_code':2 if pending or retry else 0,
+        'format_failure_qids':format_failures,'format_failures_count_as_incorrect':True,
+        'execution_failure_policy':'technical_only_format_wrong_v1',
         'stage':task['stage'],'synthetic':synthetic})
     return not pending and not retry
 

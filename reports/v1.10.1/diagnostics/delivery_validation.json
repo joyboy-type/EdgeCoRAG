@@ -1,0 +1,52 @@
+{
+  "status": "PASS_records_and_structure_only",
+  "base_publication_commit": "49031cf65538521f76fc9c275c7fdd3be6923c77",
+  "diagnostic_recomputed_and_reconciled": true,
+  "recomputed_files_compared": [
+    "case_ledger.csv.gz",
+    "condition_errors.csv",
+    "condition_errors.sql",
+    "diagnostic_results.json",
+    "format_decomposition.csv",
+    "format_decomposition.sql",
+    "gt_decomposition.csv",
+    "gt_decomposition.sql",
+    "patterns.csv",
+    "patterns.sql",
+    "record_summary.sql",
+    "scenario_contributions.csv",
+    "selected_cases.csv",
+    "selected_cases.sql",
+    "summary.csv",
+    "validation_receipt.json"
+  ],
+  "notebook": {
+    "executed_code_cells": 8,
+    "execution_counts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "errors": 0
+  },
+  "source_hashes_verified": true,
+  "report": {
+    "blocks": 19,
+    "charts": 2,
+    "tables": 5,
+    "contract_validation": "passed",
+    "structural_verification": "passed",
+    "browser_charts_and_interactions": "not_verified",
+    "limitation": "Bundled headless-shell unavailable; installed Chrome attempt returned browser_environment_mismatch. No visual/browser QA success claimed."
+  },
+  "new_publication_files_secret_and_local_path_scan": "passed",
+  "executed_code_inputs_and_scientific_settings_unchanged": true,
+  "visual_mechanism_reviews_completed": 0,
+  "new_inference": false,
+  "R21_status": "partial"
+}

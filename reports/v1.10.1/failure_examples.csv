@@ -1,0 +1,265 @@
+﻿split,model_key,left,right,qid,observed_transition,gold,left_raw,right_raw,mechanism_adjudicated,selection_rule
+internal_holdout,qwen3vl_4b,S0,S1,mragb:1009,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S1,mragb:1044,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S1,mragb:111,right_to_wrong,B,B,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S1,mragb:1160,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S1,mragb:1321,wrong_to_right,C,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S1,mragb:1327,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S1,S2,mragb:1352,right_to_wrong,C,C,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S1,S2,mragb:336,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S1,S2,mragb:354,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S1,S2,mragb:1044,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S1,S2,mragb:111,wrong_to_right,B,D,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S1,S2,mragb:116,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S2,mragb:1009,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S2,mragb:155,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S2,mragb:354,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S2,mragb:1160,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S2,mragb:1321,wrong_to_right,C,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_4b,S0,S2,mragb:1327,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S1,mragb:1061,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S1,mragb:1167,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S1,mragb:1200,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S1,mragb:1009,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S1,mragb:102,wrong_to_right,A,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S1,mragb:155,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S1,S2,mragb:111,right_to_wrong,B,B,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S1,S2,mragb:310,right_to_wrong,A,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S1,S2,mragb:343,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S1,S2,mragb:1061,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S1,S2,mragb:116,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S1,S2,mragb:1200,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S2,mragb:111,right_to_wrong,B,B,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S2,mragb:1167,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S2,mragb:375,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S2,mragb:1009,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S2,mragb:102,wrong_to_right,A,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen3vl_8b,S0,S2,mragb:116,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S1,mragb:1061,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S1,mragb:1155,right_to_wrong,C,C,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S1,mragb:121,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S1,mragb:1088,wrong_to_right,B,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S1,mragb:1352,wrong_to_right,C,D,C,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S1,mragb:155,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S1,S2,mragb:1205,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S1,S2,mragb:1261,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S1,S2,mragb:1321,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S1,S2,mragb:1200,wrong_to_right,A,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S1,S2,mragb:1215,wrong_to_right,C,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S1,S2,mragb:1289,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S2,mragb:1061,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S2,mragb:1155,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S2,mragb:1205,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S2,mragb:1088,wrong_to_right,B,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S2,mragb:1200,wrong_to_right,A,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e2b,S0,S2,mragb:140,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S1,mragb:1061,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S1,mragb:1092,right_to_wrong,D,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S1,mragb:1155,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S1,mragb:1088,wrong_to_right,B,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S1,mragb:199,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S1,mragb:247,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S1,S2,mragb:1052,right_to_wrong,D,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S1,S2,mragb:199,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S1,S2,mragb:277,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S1,S2,mragb:1061,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S1,S2,mragb:1092,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S1,S2,mragb:116,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S2,mragb:1052,right_to_wrong,D,D,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S2,mragb:1155,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S2,mragb:321,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S2,mragb:1088,wrong_to_right,B,A,B,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S2,mragb:116,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,gemma4_e4b,S0,S2,mragb:1289,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S1,mragb:1200,right_to_wrong,A,"A
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S1,mragb:1215,right_to_wrong,C,"C
+","A
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S1,mragb:1218,right_to_wrong,B,"B
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S1,mragb:116,wrong_to_right,D,"A
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S1,mragb:1249,wrong_to_right,B,"A
+","B
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S1,mragb:140,wrong_to_right,D,"A
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S1,S2,mragb:165,right_to_wrong,A,"A
+","Based on the visual evidence provided in the images, particularly the first image which shows a silhouette of the animal against the sky, we can identify the creature.
+
+- The animal in the first image has long, curved horns that sweep back from the head. This is a key characteristic of an ibex.
+- The",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S1,S2,mragb:180,right_to_wrong,D,"D
+","C
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S1,S2,mragb:199,right_to_wrong,A,"A
+","C
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S1,S2,mragb:1052,wrong_to_right,D,"B
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S1,S2,mragb:1073,wrong_to_right,D,"B
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S1,S2,mragb:121,wrong_to_right,A,"D
+","A
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S2,mragb:1200,right_to_wrong,A,"A
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S2,mragb:1215,right_to_wrong,C,"C
+","Based on the visual evidence provided in the images, the animal depicted has the following characteristics:
+- A reddish-brown coat.
+- Black fur on its legs and lower body.
+- White markings on its face, including around the eyes and muzzle.
+- Small, rounded ears with white tufts.",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S2,mragb:1218,right_to_wrong,B,"B
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S2,mragb:1052,wrong_to_right,D,"A
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S2,mragb:1073,wrong_to_right,D,"B
+","D
+",False,first 3 lexicographic qids per transition group
+internal_holdout,qwen35_4b,S0,S2,mragb:116,wrong_to_right,D,"A
+","D
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S1,mragb:1018,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S1,mragb:1072,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S1,mragb:1125,right_to_wrong,D,D,B,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S1,mragb:1006,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S1,mragb:1007,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S1,mragb:1025,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S1,S2,mragb:1055,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S1,S2,mragb:1091,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S1,S2,mragb:1101,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S1,S2,mragb:1002,wrong_to_right,B,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S1,S2,mragb:1004,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S1,S2,mragb:1018,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S2,mragb:1072,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S2,mragb:1107,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S2,mragb:1129,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S2,mragb:1002,wrong_to_right,B,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S2,mragb:1004,wrong_to_right,D,A,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_4b,S0,S2,mragb:1006,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S1,mragb:1000,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S1,mragb:1005,right_to_wrong,B,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S1,mragb:1008,right_to_wrong,A,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S1,mragb:100,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S1,mragb:1006,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S1,mragb:1019,wrong_to_right,A,D,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S1,S2,mragb:1089,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S1,S2,mragb:1119,right_to_wrong,B,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S1,S2,mragb:1129,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S1,S2,mragb:1000,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S1,S2,mragb:1005,wrong_to_right,B,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S1,S2,mragb:1008,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S2,mragb:1119,right_to_wrong,B,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S2,mragb:1129,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S2,mragb:1141,right_to_wrong,A,A,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S2,mragb:100,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S2,mragb:1006,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen3vl_8b,S0,S2,mragb:1019,wrong_to_right,A,D,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S1,mragb:100,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S1,mragb:1000,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S1,mragb:1004,right_to_wrong,D,D,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S1,mragb:1005,wrong_to_right,B,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S1,mragb:1006,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S1,mragb:1021,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S1,S2,mragb:1005,right_to_wrong,B,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S1,S2,mragb:1021,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S1,S2,mragb:1081,right_to_wrong,D,D,C,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S1,S2,mragb:100,wrong_to_right,C,A,C,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S1,S2,mragb:1000,wrong_to_right,C,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S1,S2,mragb:101,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S2,mragb:1004,right_to_wrong,D,D,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S2,mragb:1010,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S2,mragb:1012,right_to_wrong,D,D,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S2,mragb:1006,wrong_to_right,D,C,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S2,mragb:1019,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e2b,S0,S2,mragb:1023,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S1,mragb:100,right_to_wrong,C,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S1,mragb:1004,right_to_wrong,D,D,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S1,mragb:1005,right_to_wrong,B,B,C,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S1,mragb:1006,wrong_to_right,D,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S1,mragb:1011,wrong_to_right,D,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S1,mragb:1020,wrong_to_right,D,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S1,S2,mragb:1011,right_to_wrong,D,D,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S1,S2,mragb:1050,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S1,S2,mragb:1078,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S1,S2,mragb:1004,wrong_to_right,D,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S1,S2,mragb:1005,wrong_to_right,B,C,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S1,S2,mragb:1019,wrong_to_right,A,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S2,mragb:100,right_to_wrong,C,C,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S2,mragb:1029,right_to_wrong,B,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S2,mragb:1050,right_to_wrong,A,A,B,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S2,mragb:1006,wrong_to_right,D,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S2,mragb:1019,wrong_to_right,A,B,A,False,first 3 lexicographic qids per transition group
+frozen_test,gemma4_e4b,S0,S2,mragb:1020,wrong_to_right,D,B,D,False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S1,mragb:1002,right_to_wrong,B,"B
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S1,mragb:1005,right_to_wrong,B,"B
+","D
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S1,mragb:1007,right_to_wrong,D,"D
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S1,mragb:100,wrong_to_right,C,"B
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S1,mragb:1006,wrong_to_right,D,"C
+","D
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S1,mragb:1015,wrong_to_right,A,"D
+","A
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S1,S2,mragb:1006,right_to_wrong,D,"D
+","To determine the region of origin, we can analyze the visual evidence provided in the images.
+
+- The first image shows a street scene with a sign for ""Romano Home Restorations"". This is a well-known company based in Buenos Aires, Argentina.
+- The second image displays a trash bin with a label",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S1,S2,mragb:1008,right_to_wrong,A,"A
+","Based the provided images, we can observe the various stages of decay and spoilage in passion fruit.
+
+- **Image 3 and 4** show fruits that have turned brown, wrinkled, and are covered in white mold. This corresponds to options B and C.
+- **Image 5** shows cut",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S1,S2,mragb:1015,right_to_wrong,A,"A
+","To determine which characteristic is unlikely to occur due to oxidation, we must analyze the process of oxidation and its effects on the fruit shown in the images, which is a rambutan.
+
+- **Oxidation** is a chemical reaction that occurs when a substance, often an organic one like fruit flesh, is exposed",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S1,S2,mragb:1000,wrong_to_right,C,"A
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S1,S2,mragb:1005,wrong_to_right,B,"D
+","B
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S1,S2,mragb:1007,wrong_to_right,D,"C
+","D
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S2,mragb:1002,right_to_wrong,B,"B
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S2,mragb:1008,right_to_wrong,A,"A
+","Based the provided images, we can observe the various stages of decay and spoilage in passion fruit.
+
+- **Image 3 and 4** show fruits that have turned brown, wrinkled, and are covered in white mold. This corresponds to options B and C.
+- **Image 5** shows cut",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S2,mragb:101,right_to_wrong,A,"A
+","D
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S2,mragb:100,wrong_to_right,C,"B
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S2,mragb:1000,wrong_to_right,C,"A
+","C
+",False,first 3 lexicographic qids per transition group
+frozen_test,qwen35_4b,S0,S2,mragb:1016,wrong_to_right,D,"C
+","D
+",False,first 3 lexicographic qids per transition group

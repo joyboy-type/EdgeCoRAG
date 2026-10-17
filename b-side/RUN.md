@@ -1,3 +1,28 @@
+# EdgeCoRAG runtime v1.10.1 — technical gate and tokenizer dependency repair
+
+User authorized on2026-10-17 before development or formal evaluation: ordinary
+normal-generation empty/unparseable answers remain incorrect under unchanged
+strict_choice_v1 scoring and the full fixed denominator. They no longer block
+technical task completion and are excluded from automatic/explicit failure retry.
+Input/generation/OOM/adapter-final-extraction errors continue to block advancement.
+State/score receipts separately expose format and technical failure counts.
+
+All prompts, model/revision/weight pins, BF16/SDPA/greedy64-token generation,
+image budgets, evidence order/subsets, seeds, scorer and parser remain unchanged.
+The original v1.10.0 source, bindings and failed attempts are preserved. Run this
+runtime in a NEW v1.10.1 run root against the accepted original bound matrix;
+record both the source binding receipt and this runtime manifest with results.
+Only smoke/development is authorized by this hotfix deployment. No formal phase
+is implicitly started. Original source instructions/history follow below.
+
+The qwen3vl lock adds protobuf6.33.0 without upgrading any preexisting package.
+Fixed-revision merges.txt artifacts are cached for both Qwen3-VL processors;
+the external environment-repair receipt records exact URLs/revisions/SHA256 and
+successful offline processor probes. These are tokenizer resources, not new
+weights or changed scientific settings.
+
+---
+
 # EdgeCoRAG B v1.10.0 — final binding and bounded runtime closeout
 
 Based on B9e81c89 and A c0e0931d8ad8d640e9c8002516fea43a70049831. Only b-side/ changes.

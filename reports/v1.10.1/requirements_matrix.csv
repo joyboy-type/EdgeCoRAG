@@ -1,0 +1,38 @@
+﻿id,source,requirement,status,evidence,limit_or_next_action
+R01,张 §1 §6,五模型 S0 S1 S2 公平主实验,已完成 限冻结范围,reports/B_comparison.md; reports/v1.10.1/quality.csv,使用发布的官方候选 top3，不是新 EmbeddingGemma 检索
+R02,张 §1 §3 §6,Qwen3.5 9B 与更大模型,后置可选,b-side/configs/model_registry.json,未运行，不纳入当前五模型计划
+R03,张 §1 §6,各家最佳固定 RAG 补充,待补,reports/Next_steps.md,现有共享检索不能替代最佳固定 RAG
+R04,张 §2 §4,MRAG 1353 题 schema 与官方接口核验,已完成,handover/contracts/官方评测接口差异.md; b-side/configs/sources_and_integrity.json,strict_choice_v1 为项目主评分；不冒称复现官方排行榜
+R05,张 §2 §10,B_papers 逐论文方法 数值 许可 复现状态,部分完成,reports/B_papers.md; source_manifest.csv; reports/next_stage_20261017/B_paper_evidence.csv; reports/next_stage_20261017/B_paper_table_evidence.csv; reports/next_stage_20261017/B_paper_table_audit.md,四篇选定主表36行数值与设置已核验；非原论文全部表格复现，其他文献、完整方法与许可仍有缺口
+R06,张 §2 §4 §9,第二数据集 MMDocRAG 或 VisDoM,待补,reports/next_stage_20261017/B_external_dataset_feasibility.md; reports/next_stage_20261017/B_mmdocrag_scoring_contract.md,选定主表与评分合同已补；论文/源码F1聚合不同、许可冲突、真实schema与适配可运行性未解；无外部推理
+R07,张 §2,Utility MRAG 方法对照,待补 A侧,a-side/reports/A_P0_P1.md,历史23项作者测试不等于完整方法或论文数字复现
+R08,张 §2,VQQP 图像降质鲁棒性,后置可选,source_manifest.csv,未开展
+R09,张 §3 §5,模型 revision 与独立环境,已完成 限本次硬件,configs/model_registry.yaml; provenance/v1.10.1/execution_receipt.json,原始 registry 中 GPU_unverified 是冻结前状态，实测见独立回执
+R10,张 §3 §6,精度 thinking 采样 输出预算不变,已完成,b-side/configs/protocol_main_v1.json; logs/B_predictions.jsonl.gz,BF16 无量化 无offload greedy64 seed42 TF32关闭
+R11,张 §6,共享证据顺序 内容 topk,已完成,logs/B_input_contexts.jsonl.gz; b-side/reception/,S1 3张；S2 常规5张 Incomplete1张；证据数不同影响解释
+R12,张 §6,输入像素 预处理 实际tokens,已完成 限所记录字段,logs/B_predictions.jsonl.gz; logs/B_input_contexts.jsonl.gz,不同原生视觉tokenizer并非严格等token
+R13,张 §6,统一图像尺寸限制与公平预算,部分完成,configs/model_registry.yaml,共享原图；Qwen像素限制与Gemma soft-token限制不同，不能声称同实际视觉token
+R14,张 §6,Gemma S3 干扰实验,已完成 限补充子集,reports/v1.10.1/s3_subsets.csv,dev5 holdout2 frozen29，AI图像辅助且label-aware，非人工盲审
+R15,handover/docs/04_S3干扰证据规范.md,S3 字节 近重复 语义审阅与覆盖率,已完成 限已批准子集,b-side/reception/; b-side/configs/final_binding_v1.json,不能推出普遍语义无关；88排序违例114未决按原序保留；4冻结近重复失败组排除
+R16,张 §6,三次warmup 热启动P50 P95,已完成 限生成边界,reports/v1.10.1/performance.csv; provenance/v1.10.1/execution_receipt.json,483 warmup不评分；主组100观测；S3 25观测不报P95
+R17,张 §6 §8,检索 编码 索引驻留与完整端到端时延显存,待补,reports/Next_steps.md,现有只含预处理及生成，allocator峰值非整卡峰值
+R18,张 §6,能耗与顺序切换成本,未测或不适用本轮,reports/B_comparison.md,功耗可选；无offload，不将未测值写成0
+R19,张 §7 §10,逐题结构化输出 raw answer 与完整矩阵,已交付,logs/B_predictions.jsonl.gz,"含21,927条，解压后为B_predictions.jsonl；性能不能加入质量分母"
+R20,张 §7,处理器完整rendered_prompt与图片清单,部分完成,logs/B_input_contexts.jsonl.gz,结构化messages与图像路径哈希已存；最终chat-template字符串未存，不伪造
+R21,张 §7 §8,未检索到 已出现没答对 检索伤害四类机制,部分完成,reports/v1.10.1/answer_transitions.csv; reports/v1.10.1/gt_overlap_strata.csv; reports/v1.10.1/diagnostics/report.html; reports/next_stage_20261017/B_case_review_status.csv,已完成17745条主条件记录诊断、GT与格式分解、20条案例记录核对；未看图，语义支持与因果机制仍待审定
+R22,张 §8,按题或文档来源聚类95%配对CI,部分完成,reports/v1.10.1/paired_comparisons.csv; reports/v1.10.1/cross_model_paired.csv; reports/next_stage_20261017/B_statistics_decision.md,现为场景分层题级bootstrap2000 seed42；无来源聚类或多重校正，方法边界已交付、可信来源键待A-04
+R23,张 §7 §8,同证据跨模型配对差距,已交付 描述性,reports/v1.10.1/cross_model_paired.csv,无预注册非劣效界值，不以区间包含0宣称等价
+R24,张 §8,类别分层 OCR 图表 跨图关联等,部分完成,reports/v1.10.1/scenarios.csv; reports/next_stage_20261017/B_statistics_decision.md,已按MRAG官方9场景；概念类别映射规范与依据仍待补，不根据模型优劣事后挑类别
+R25,张 §8 §10,质量与P95 显存Pareto图,已交付 限离线生成,figures/v1.10.1/quality_latency_pareto.png; figures/v1.10.1/quality_memory_pareto.png,质量1033冻结题，成本20smoke题x5，非同负载端到端前沿
+R26,张 §9 Gate B1,停止普遍超越大模型叙述,已执行,reports/B_comparison.md,同S1下Gemma与Qwen仍有明显观察差距；聚焦边界与负结果
+R27,张 §10,model_registry.yaml,已交付,configs/model_registry.yaml,JSON兼容YAML精确镜像，唯一运行权威仍是b-side/configs/model_registry.json
+R28,张 §10,source_manifest.csv,已交付 部分核验,source_manifest.csv,既有已核验来源与未独立核验字段分开，许可unknown不等于可再分发
+R29,handover/contracts/接口对齐_A侧确认.md,qid raw_id 别名 strict parser 失败保留,已完成,logs/B_predictions.jsonl.gz; b-side/score_minimal.py,raw_output=prediction_raw，格式失败严格计错
+R30,handover/contracts/接口对齐_A侧确认.md,官方格式独立导出与顺序补齐,待补,handover/contracts/官方评测接口差异.md,本次发布主JSONL及scorer兼容投影；未完成全数据官方顺序导出/修正后官方评分复核
+R31,handover/docs/03_证据规则.md,GT与答案仅评分Oracle 离线分析,已完成 限本次流程,b-side/batch_inputs.py; logs/B_input_contexts.jsonl.gz,S3 label-aware审核单独披露；不称整体盲测
+R32,handover/docs/official_pool_provenance.md,官方候选来源与命中率不当作泄漏证明,已披露,handover/docs/official_pool_provenance.md; reports/v1.10.1/gt_overlap_by_scenario.csv,本轮top3精确GT哈希命中率已分场景报告，不是独立检索R@k、语义支持或泄漏证明
+R33,a-side/plans/STATUS.md 与 NEXT_STEPS_AND_BLOCKERS.md,A侧 EmbeddingGemma 检索 R@1 R@5 MRR 维度对照,待补 A侧,a-side/reports/A_P0_P1.md,接口可用不等于真实检索指标；独立语料许可与访问需解决；768与128/256/512维、cosine/utility/random、索引构建成本与四路径Oracle路由未完成
+R34,a-side/plans/SPLIT_V2_CHANGES.md 与 REVIEWED_IDS.md,固定split 暴露登记 相关性限制,已完成 并披露限制,a-side/splits/; b-side/reception/all_20261016/label_aware_audit_registry.json,20/150/150/1033；1338题精确图像连通大组，不是实体隔离盲测
+R35,handover/freeze/冻结清单模板.md 与 b-side/RUN.md,代码矩阵配置与环境哈希及完整回执,已完成,provenance/v1.10.1/; b-side/package_hashes.json,历史前置状态保留；以实跑回执为当前状态
+R36,b-side/RUN.md 用户后续批准,runtime v1.10.1 技术失败与正常格式失败分离,已完成,b-side/runtime_change_v1.10.1.json; tests/test_runtime_format_gate.py,提示词64token严格评分BF16未改；正常格式失败不重试
+R37,用户备份完成信息与本次请求,本地备份 整理 清理可上传版,已交付,reports/Delivery.md; provenance/v1.10.1/delivery_manifest.json,完整原始备份不动；公开版不含权重图像新增副本认证环境缓存数据库

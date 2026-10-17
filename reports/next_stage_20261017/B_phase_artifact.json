@@ -1,0 +1,911 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "EdgeCoRAG阶段论文：共享视觉证据下的五模型能力边界",
+    "description": "基于runtime-v1.10.1已保存实验的阶段论文与证据；没有新增推理。",
+    "generatedAt": "2026-10-17T04:54:31.864299+00:00",
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# EdgeCoRAG阶段论文：共享视觉证据下的五模型能力边界"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## 摘要：相同候选证据仍未填平Gemma与Qwen的质量差距\n\n我们在MRAG-Bench的固定题单和证据下比较五个原生视觉模型，冻结测试每条件1033题，严格评分。S0只给查询图，S1加入发布候选top3，S2提供真实GT证据。Gemma E2B/E4B的S1准确率为35.43%/41.34%，Qwen3-VL 4B/8B为57.60%/56.15%。即使在GT条件下，Gemma仍有明显错误。部分生成时延较低，但不能由此认定在同等完整系统预算下实现替代。\n\n全部批准的161任务、21927次运行完成，132次格式失败全部计错；技术完成不构成研究假设成立的证据。记录诊断将Qwen3-VL 4B的检索条件净退步分解为GT哈希未命中组−30题与命中组+4题；未进行正式原图的视觉机制审定。本阶段支持共享证据下的描述性能力边界与负结果，尚未建立非劣效、普遍替代或独立外部验证结论。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "question",
+        "type": "markdown",
+        "body": "## 1 研究问题与相关工作定位\n\n研究问题是：同一视觉证据能在多大程度上缩小模型的质量差距；观测收益或退步与证据哈希重叠、输出格式及生成成本有什么关系？共享证据比较避免只让小模型拿GT、却让大模型无证据作答的不对等对照。\n\n[MRAG-Bench](https://arxiv.org/abs/2410.08182)面向视觉知识增强问答；[Utility-MRAG](https://aclanthology.org/2026.acl-long.1620/)以证据效用而非单纯相似性进行选择。本轮没有复现自主效用选择器，S1是官方发布候选，不是EmbeddingGemma 2自主检索结果。[MMDocRAG](https://arxiv.org/abs/2505.16470)与[VisDoM](https://aclanthology.org/2025.naacl-long.310/)用于规划跨文档、跨域验证，目前均无本项目新推理结果。文献作者的增益不作为本项目成绩；这些方法定位以已核对摘要和项目说明为限，未宣称复现全部原论文表格。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "scope",
+        "type": "markdown",
+        "body": "## 2 数据、分母与评价单位\n\nMRAG-Bench原始test共1353题，本项目固定切分为smoke20、development150、internal_holdout150、frozen_test1033。内部留出与冻结集同源，不能称外部验证。正式quality为17807条，其中五模型S0/S1/S2共17745条、Gemma S3共62条；性能1550条及483次warmup分别记录。5915个主条件问题×模型配对单元不是5915道独立问题。\n\n准确率定义为严格正确题数除以固定题单分母，格式失败和缺失均不得剔除。此次主质量记录没有技术错误或缺失。主要表格以冻结集为主，内部留出单独报告；性能重复观测不进入质量分母。百分点差值以pp表示，时延以ms、显存以GiB表示。执行总体和分母对应C001、C002，全部主要数字在论断证据表中逐项定位。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "design",
+        "type": "markdown",
+        "body": "## 3 实验设计与预算控制\n\n所有模型在同一RTX4090 24GB上使用BF16、无量化、无offload、SDPA、thinking关闭、greedy解码、seed42、max_new_tokens64、TF32关闭。按冒烟、开发、内部留出、冻结测试、性能顺序执行，正常格式失败计错且不自动重试。v1.10.1修复的是格式失败与技术故障的门禁区分并补足依赖，不改变提示词或科学设置。\n\n共享原始图片字节和顺序；Qwen的像素上限与Gemma的soft-token限制、原生视觉预处理不同，因此不声称实际视觉token完全等价。S1与S2图片数不同，特别是Incomplete的3与1，不能将两者差值完全归为证据质量。S3的语义状态来自AI辅助且label-aware审阅，只代表批准的小型补充子集。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "condition_definition",
+        "type": "markdown",
+        "body": "| 条件 | 模型输入 | 证据图数 | 解释范围 |\n| --- | --- | --- | --- |\n| S0 | 查询图＋问题 | 0 | 无外部证据基线 |\n| S1 | 查询图＋发布候选原顺序top3 | 3（含Incomplete） | 共享候选基线，非自主重检索 |\n| S2 | 查询图＋实际GT | 常规5／Incomplete1 | Oracle诊断，非部署性能 |\n| S3 | 查询图＋D1干扰 | 3 | 仅Gemma批准子集 |",
+        "sourceId": "claims"
+      },
+      {
+        "id": "models",
+        "type": "markdown",
+        "body": "### 3.1 模型身份与执行来源\n\n模型全名和权重revision如下。Gemma的E2B/E4B有效参数标签不等于全部权重参数量，跨模型成本以实测表为准。冻结注册表中的旧GPU未验证状态是历史字段；当前执行状态以独立实跑回执为准。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "registry_table_block",
+        "type": "table",
+        "tableId": "registry_table"
+      },
+      {
+        "id": "statistics",
+        "type": "markdown",
+        "body": "### 3.2 配对比较与不确定性\n\n同模型条件比较与同条件跨模型比较均按相同split、qid和版本配对。沿用已保存的场景分层题级配对bootstrap：2000次重采样、seed42；本次写作未重估区间。未进行来源聚类、多重比较校正或预注册非劣效检验，故将区间标为描述性95%区间，不以包含0解释等价。\n\n来源审计显示图片跨题复用并形成大连通组，逐题切分未隔离相关性。后续分组方案不得按模型表现拆组。检索、格式和案例分解是结果后的探索性描述，不能转写成因果效应。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "main",
+        "type": "markdown",
+        "body": "## 4 共享候选条件下，两款Gemma仍保留明显质量差距\n\n下表和图按固定1033题比较S0/S1/S2，格式失败始终留在分母。S1下Gemma E2B/E4B为35.43%/41.34%，均低于Qwen3-VL 4B的57.60%和8B的56.15%；Qwen3.5为54.50%。这批共享证据没有建立普遍替代结论。\n\nS2是GT诊断：Qwen3-VL 4B为69.41%，Gemma E2B/E4B为42.69%/47.73%。五模型的冻结S2均高于S1，但这不是自主检索系统成绩。GT集合、证据数量和问题难度同时限制机制解释。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "quality_chart_block",
+        "type": "chart",
+        "chartId": "quality_chart"
+      },
+      {
+        "id": "frozen_wide_table_block",
+        "type": "table",
+        "tableId": "frozen_wide_table"
+      },
+      {
+        "id": "gap",
+        "type": "markdown",
+        "body": "### 4.1 同S1证据的配对差距\n\n差值为Gemma减Qwen的准确率百分点。四个观察差距介于−22.17与−14.81pp，描述性区间整体为负。来源相关性与多重比较限制仍在，不能据此声称对所有数据域或预算都成立，也没有找到经过预注册验证的可替代子群。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "cross_table_block",
+        "type": "table",
+        "tableId": "cross_table"
+      },
+      {
+        "id": "holdout",
+        "type": "markdown",
+        "body": "### 4.2 内部留出单列，不与冻结集混合\n\n每模型每条件分母150。Qwen3-VL 4B/8B在S1均为59.33%，Gemma E2B/E4B为36.00%/38.00%，Qwen3.5为50.00%。这些结果来自同一基准的内部切分，只作单独检查，不能充当外部验证或通过合并分母提高置信。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "holdout_wide_table_block",
+        "type": "table",
+        "tableId": "holdout_wide_table"
+      },
+      {
+        "id": "cost",
+        "type": "markdown",
+        "body": "## 5 部分生成时延更低，不代表同预算系统替代\n\nS1性能每模型使用20道smoke题各重复5次，共100观测，先warmup。下表P50/P95覆盖预处理和生成，不含编码检索、索引驻留、模型加载或切换。文件中的end_to_end字段只在该runner边界内使用，正文不将其称作完整检索端到端。\n\nGemma E2B/E4B的P95为413.5/501.6ms，Qwen3-VL 4B/8B为694.8/986.4ms；但E2B的S1性能阶段reserved峰值9.77GiB仍高于Qwen3-VL 4B的8.75GiB。不能仅凭参数标签或较短时延推断更省显存。质量来自1033道冻结题，成本来自另一批smoke工作负载，二者不是同负载完整系统前沿。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "latency_chart_block",
+        "type": "chart",
+        "chartId": "latency_chart"
+      },
+      {
+        "id": "cost_table_block",
+        "type": "table",
+        "tableId": "cost_table"
+      },
+      {
+        "id": "diagnosis",
+        "type": "markdown",
+        "body": "## 6 记录诊断定位了现象，尚未审定具体机制\n\nS0→S1的错转对与对转错在同一题单上计数，净变化分别为−26、−3、−9、+30、+10题。Qwen3-VL 4B的−26题来自GT哈希未命中组−30题、命中组+4题；冻结分组为517与516题。哈希未命中不排除语义有用证据，命中也不保证GT充分、位置或干扰内容一致，不能直接贴检索失败或不会利用标签。\n\nGT条件下Gemma E2B/E4B仍错592/540题，全部是有效选项答错。Qwen3.5在S2原正确601题、55次格式失败；假定这55次全部正确而其余回答不变，上限为656/1033=63.50%，仍比Qwen3-VL 4B的717题少61题。这个固定记录极端上限不是重评分或增加预算的效果预测。\n\nQwen3.5由S1到S2净多答对38题，格式互斥组贡献为均有效+56、仅S2失败−25、仅S1失败+7、均失败0。主条件99次格式失败中98次记录预算耗尽；该同时发生关系不证明增大预算必然改善。20条按固定SHA规则事后选出的案例卡已核对记录模式，0条完成视觉机制审定，不代表总体，也不是盲审。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "transitions_table_block",
+        "type": "table",
+        "tableId": "transitions_table"
+      },
+      {
+        "id": "s3",
+        "type": "markdown",
+        "body": "## 7 S3只支持小型选定子集上的描述\n\n冻结S3为29/1033题（2.81%）：同题S1→S3，Gemma E2B从51.72%降到31.03%，E4B均为34.48%。内部留出仅2/150题，不解释其退化的区间或方向；开发S3为5题。主条件全量结果始终保留，不能用子集分数代替总体。\n\nS3接受AI图像辅助、label-aware审阅，预览分辨率有限，服务模型revision不可得；不是全基准代表性或纯干扰普遍语义独立性的证明。本轮新增20例记录诊断与此前S3审核是不同工作，不能将前者标为已看图。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "limits",
+        "type": "markdown",
+        "body": "## 8 局限与结论边界\n\n第一，数据同源且跨split图片相关性未隔离，冻结集有已披露审计暴露；当前分层题级区间未处理来源依赖，也未校正多重比较。第二，S1发布候选的产生过程未完全公开；本轮没有独立检索指标、效用选择器或最佳固定RAG的实跑对照。第三，各模型原生视觉预处理不等价，S1/S2图片数不同，S2属于Oracle。\n\n第四，质量和成本使用不同固定负载，缺少完整检索、切换、整卡峰值、整机能耗与真实边缘设备评测。第五，格式失败严格计错，未尝试事后放宽解析或预算补救；有效选项错误也没有完成视觉语义机制审查。第六，最终processor-rendered chat-template字符串未保存，不能事后伪造；输入上下文、顺序与哈希已保存，但不等同于全部运行内存状态。\n\n最后，文献逐表数值与部分许可仍有缺口，MMDocRAG/VisDoM尚无本项目实测结果。精确实跑源码与绑定保留，旧依赖pin存在两阶段重建限制；本阶段未声称图像全链路重新部署已验证。这些限制允许分享阶段发现，但不支持课题结题或跨域普遍结论。",
+        "sourceId": "claims"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## 9 下一步与待回答问题\n\n当前最有依据的成果是共享视觉证据下的能力边界，而非检索后普遍超越更大模型。下一步先保留原分数并完善论文论证，等待A回传案例图片可获得性、独立语料与来源分组依据；再预先冻结第二数据集和完整系统的独立协议、预算与验收条件。现阶段无需新增GPU推理。\n\n仍需回答：GT未命中的图片是否语义有用？GT命中但答错是否与读取、证据充分性、数量或干扰有关？在真正同硬件、同工作负载和完整系统成本下，是否存在可验证的替代范围？这些问题不能仅凭本轮记录给出机制或因果答案。",
+        "sourceId": "claims"
+      }
+    ],
+    "charts": [
+      {
+        "id": "quality_chart",
+        "title": "五模型三条件严格准确率",
+        "description": "冻结集每模型每条件1033题；格式失败计错；S2为GT诊断。",
+        "showDescription": true,
+        "type": "horizontalBar",
+        "intent": "comparison",
+        "question": "相同证据条件下模型差距是否保留？",
+        "rationale": "Grouped horizontal bars compare three conditions within each model; zero baseline, no causal inference.",
+        "dataset": "frozen_long",
+        "sourceId": "frozen_long",
+        "valueFormat": "percent",
+        "encodings": {
+          "x": {
+            "field": "model"
+          },
+          "y": {
+            "field": "accuracy"
+          },
+          "color": {
+            "field": "condition"
+          }
+        },
+        "options": {
+          "grouping": "grouped"
+        },
+        "legend": {
+          "show": true,
+          "position": "bottom"
+        },
+        "palette": {
+          "kind": "categorical"
+        }
+      },
+      {
+        "id": "latency_chart",
+        "title": "S1预处理与生成P95",
+        "description": "单张4090；每模型20道smoke题×5次；单位ms；不含检索或加载。",
+        "showDescription": true,
+        "type": "horizontalBar",
+        "intent": "comparison",
+        "question": "在已测生成边界内哪些模型时延较低？",
+        "rationale": "One bar per model for an absolute cost; paired quality interpretation remains in adjacent narrative and table.",
+        "dataset": "cost",
+        "sourceId": "cost",
+        "encodings": {
+          "x": {
+            "field": "model"
+          },
+          "y": {
+            "field": "p95_ms"
+          }
+        },
+        "legend": {
+          "show": false
+        },
+        "palette": {
+          "kind": "categorical"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "registry_table",
+        "title": "模型与权重版本",
+        "dataset": "registry",
+        "sourceId": "registry",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "model_id",
+            "label": "模型ID"
+          },
+          {
+            "field": "revision",
+            "label": "权重revision"
+          }
+        ],
+        "density": "spacious"
+      },
+      {
+        "id": "frozen_wide_table",
+        "title": "冻结集严格准确率",
+        "dataset": "frozen_wide",
+        "sourceId": "frozen_wide",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "S0",
+            "label": "S0：正确/n（%）"
+          },
+          {
+            "field": "S1",
+            "label": "S1：正确/n（%）"
+          },
+          {
+            "field": "S2",
+            "label": "S2：正确/n（%）"
+          }
+        ],
+        "density": "spacious"
+      },
+      {
+        "id": "cross_table",
+        "title": "同S1模型差距",
+        "dataset": "cross",
+        "sourceId": "cross",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "baseline",
+            "label": "对照"
+          },
+          {
+            "field": "delta",
+            "label": "差值pp"
+          },
+          {
+            "field": "interval",
+            "label": "描述性95%区间pp"
+          }
+        ],
+        "density": "spacious"
+      },
+      {
+        "id": "holdout_wide_table",
+        "title": "内部留出严格准确率",
+        "dataset": "holdout_wide",
+        "sourceId": "holdout_wide",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "S0",
+            "label": "S0：正确/n（%）"
+          },
+          {
+            "field": "S1",
+            "label": "S1：正确/n（%）"
+          },
+          {
+            "field": "S2",
+            "label": "S2：正确/n（%）"
+          }
+        ],
+        "density": "spacious"
+      },
+      {
+        "id": "cost_table",
+        "title": "S1预处理与生成成本",
+        "dataset": "cost_display",
+        "sourceId": "cost",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "p50",
+            "label": "预处理＋生成P50 ms"
+          },
+          {
+            "field": "p95",
+            "label": "P95 ms"
+          },
+          {
+            "field": "reserved",
+            "label": "性能阶段reserved峰值GiB"
+          }
+        ],
+        "density": "spacious"
+      },
+      {
+        "id": "transitions_table",
+        "title": "S0到S1逐题变化",
+        "dataset": "transitions",
+        "sourceId": "transitions",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "improved",
+            "label": "错转对"
+          },
+          {
+            "field": "regressed",
+            "label": "对转错"
+          },
+          {
+            "field": "net",
+            "label": "净正确变化"
+          }
+        ],
+        "density": "spacious"
+      }
+    ],
+    "sources": [
+      {
+        "id": "claims",
+        "label": "阶段论文论断与原始证据定位",
+        "path": "reports/next_stage_20261017/B_claim_evidence.csv",
+        "query": {
+          "engine": "Python standard library",
+          "language": "python",
+          "description": "Saved-source claim register; includes original file and row filters, denominator, claim type and limitations. No new inference or interval estimation.",
+          "executed_at": "2026-10-17T04:54:31.864299+00:00"
+        }
+      },
+      {
+        "id": "frozen_long",
+        "label": "frozen_long",
+        "path": "reports/v1.10.1/quality.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model_key,model,condition,CAST(n AS INTEGER) AS n,CAST(correct AS INTEGER) AS correct,CAST(accuracy AS REAL) AS accuracy FROM quality WHERE split='frozen_test' AND condition IN ('S0','S1','S2') ORDER BY CASE model_key WHEN 'qwen3vl_4b' THEN 0 WHEN 'qwen3vl_8b' THEN 1 WHEN 'gemma4_e2b' THEN 2 WHEN 'gemma4_e4b' THEN 3 WHEN 'qwen35_4b' THEN 4 END,condition;",
+          "tables_used": [
+            "quality"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      },
+      {
+        "id": "frozen_wide",
+        "label": "frozen_wide",
+        "path": "reports/v1.10.1/quality.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model_key,MAX(model) AS model,MAX(CAST(n AS INTEGER)) AS n,MAX(CASE WHEN condition='S0' THEN printf('%d/1033 (%.2f%%)',CAST(correct AS INTEGER),100*CAST(accuracy AS REAL)) END) AS S0,MAX(CASE WHEN condition='S1' THEN printf('%d/1033 (%.2f%%)',CAST(correct AS INTEGER),100*CAST(accuracy AS REAL)) END) AS S1,MAX(CASE WHEN condition='S2' THEN printf('%d/1033 (%.2f%%)',CAST(correct AS INTEGER),100*CAST(accuracy AS REAL)) END) AS S2 FROM quality WHERE split='frozen_test' AND condition IN ('S0','S1','S2') GROUP BY model_key ORDER BY CASE model_key WHEN 'qwen3vl_4b' THEN 0 WHEN 'qwen3vl_8b' THEN 1 WHEN 'gemma4_e2b' THEN 2 WHEN 'gemma4_e4b' THEN 3 WHEN 'qwen35_4b' THEN 4 END;",
+          "tables_used": [
+            "quality"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      },
+      {
+        "id": "holdout_wide",
+        "label": "holdout_wide",
+        "path": "reports/v1.10.1/quality.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model_key,MAX(model) AS model,MAX(CAST(n AS INTEGER)) AS n,MAX(CASE WHEN condition='S0' THEN printf('%d/150 (%.2f%%)',CAST(correct AS INTEGER),100*CAST(accuracy AS REAL)) END) AS S0,MAX(CASE WHEN condition='S1' THEN printf('%d/150 (%.2f%%)',CAST(correct AS INTEGER),100*CAST(accuracy AS REAL)) END) AS S1,MAX(CASE WHEN condition='S2' THEN printf('%d/150 (%.2f%%)',CAST(correct AS INTEGER),100*CAST(accuracy AS REAL)) END) AS S2 FROM quality WHERE split='internal_holdout' AND condition IN ('S0','S1','S2') GROUP BY model_key ORDER BY CASE model_key WHEN 'qwen3vl_4b' THEN 0 WHEN 'qwen3vl_8b' THEN 1 WHEN 'gemma4_e2b' THEN 2 WHEN 'gemma4_e4b' THEN 3 WHEN 'qwen35_4b' THEN 4 END;",
+          "tables_used": [
+            "quality"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      },
+      {
+        "id": "cross",
+        "label": "cross",
+        "path": "reports/v1.10.1/cross_model_paired.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model,baseline,CAST(n AS INTEGER) AS n,printf('%.2f',CAST(delta_pp AS REAL)) AS delta,printf('[%.2f, %.2f]',CAST(ci_low_pp AS REAL),CAST(ci_high_pp AS REAL)) AS interval FROM comparisons WHERE split='frozen_test' AND condition='S1';",
+          "tables_used": [
+            "comparisons"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      },
+      {
+        "id": "cost",
+        "label": "cost",
+        "path": "reports/v1.10.1/quality_cost.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model_key,model,CAST(quality_n AS INTEGER) AS quality_n,CAST(accuracy AS REAL) AS accuracy,CAST(performance_observations AS INTEGER) AS observations,CAST(offline_p50_ms AS REAL) AS p50_ms,CAST(offline_p95_ms AS REAL) AS p95_ms,CAST(performance_peak_reserved_gib AS REAL) AS reserved_gib FROM cost WHERE condition='S1' ORDER BY CASE model_key WHEN 'qwen3vl_4b' THEN 0 WHEN 'qwen3vl_8b' THEN 1 WHEN 'gemma4_e2b' THEN 2 WHEN 'gemma4_e4b' THEN 3 WHEN 'qwen35_4b' THEN 4 END;",
+          "tables_used": [
+            "cost"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      },
+      {
+        "id": "registry",
+        "label": "registry",
+        "path": "b-side/configs/model_registry.json",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT * FROM registry ORDER BY CASE model_key WHEN 'qwen3vl_4b' THEN 0 WHEN 'qwen3vl_8b' THEN 1 WHEN 'gemma4_e2b' THEN 2 WHEN 'gemma4_e4b' THEN 3 WHEN 'qwen35_4b' THEN 4 END;",
+          "tables_used": [
+            "registry"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      },
+      {
+        "id": "transitions",
+        "label": "transitions",
+        "path": "reports/v1.10.1/answer_transitions.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model_key,CAST(n AS INTEGER) AS n,CAST(wrong_to_right AS INTEGER) AS improved,CAST(right_to_wrong AS INTEGER) AS regressed,CAST(wrong_to_right AS INTEGER)-CAST(right_to_wrong AS INTEGER) AS net FROM transitions WHERE split='frozen_test' AND left='S0' AND right='S1' ORDER BY CASE model_key WHEN 'qwen3vl_4b' THEN 0 WHEN 'qwen3vl_8b' THEN 1 WHEN 'gemma4_e2b' THEN 2 WHEN 'gemma4_e4b' THEN 3 WHEN 'qwen35_4b' THEN 4 END;",
+          "tables_used": [
+            "transitions"
+          ],
+          "executed_at": "2026-10-17T04:54:31.864299+00:00",
+          "description": "Actually executed selection/reshape of existing saved tables; numeric casts and displayed rounding only. Original intervals are reused, not re-estimated."
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-10-17T04:54:31.864299+00:00",
+    "status": "ready",
+    "datasets": {
+      "frozen_long": [
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "condition": "S0",
+          "n": 1033,
+          "correct": 621,
+          "accuracy": 0.601161665053243
+        },
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "condition": "S1",
+          "n": 1033,
+          "correct": 595,
+          "accuracy": 0.5759922555663117
+        },
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 717,
+          "accuracy": 0.6940948693126815
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "condition": "S0",
+          "n": 1033,
+          "correct": 583,
+          "accuracy": 0.5643756050338818
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "condition": "S1",
+          "n": 1033,
+          "correct": 580,
+          "accuracy": 0.5614714424007744
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 690,
+          "accuracy": 0.6679574056147144
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "condition": "S0",
+          "n": 1033,
+          "correct": 375,
+          "accuracy": 0.36302032913843174
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "condition": "S1",
+          "n": 1033,
+          "correct": 366,
+          "accuracy": 0.3543078412391094
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 441,
+          "accuracy": 0.4269119070667957
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "condition": "S0",
+          "n": 1033,
+          "correct": 397,
+          "accuracy": 0.38431752178121975
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "condition": "S1",
+          "n": 1033,
+          "correct": 427,
+          "accuracy": 0.4133591481122943
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 493,
+          "accuracy": 0.47725072604065827
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "condition": "S0",
+          "n": 1033,
+          "correct": 553,
+          "accuracy": 0.5353339787028074
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "condition": "S1",
+          "n": 1033,
+          "correct": 563,
+          "accuracy": 0.5450145208131656
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 601,
+          "accuracy": 0.5818005808325266
+        }
+      ],
+      "frozen_wide": [
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "n": 1033,
+          "S0": "621/1033 (60.12%)",
+          "S1": "595/1033 (57.60%)",
+          "S2": "717/1033 (69.41%)"
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "n": 1033,
+          "S0": "583/1033 (56.44%)",
+          "S1": "580/1033 (56.15%)",
+          "S2": "690/1033 (66.80%)"
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "n": 1033,
+          "S0": "375/1033 (36.30%)",
+          "S1": "366/1033 (35.43%)",
+          "S2": "441/1033 (42.69%)"
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "n": 1033,
+          "S0": "397/1033 (38.43%)",
+          "S1": "427/1033 (41.34%)",
+          "S2": "493/1033 (47.73%)"
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "n": 1033,
+          "S0": "553/1033 (53.53%)",
+          "S1": "563/1033 (54.50%)",
+          "S2": "601/1033 (58.18%)"
+        }
+      ],
+      "holdout_wide": [
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "n": 150,
+          "S0": "98/150 (65.33%)",
+          "S1": "89/150 (59.33%)",
+          "S2": "101/150 (67.33%)"
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "n": 150,
+          "S0": "85/150 (56.67%)",
+          "S1": "89/150 (59.33%)",
+          "S2": "101/150 (67.33%)"
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "n": 150,
+          "S0": "58/150 (38.67%)",
+          "S1": "54/150 (36.00%)",
+          "S2": "56/150 (37.33%)"
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "n": 150,
+          "S0": "48/150 (32.00%)",
+          "S1": "57/150 (38.00%)",
+          "S2": "71/150 (47.33%)"
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "n": 150,
+          "S0": "88/150 (58.67%)",
+          "S1": "75/150 (50.00%)",
+          "S2": "89/150 (59.33%)"
+        }
+      ],
+      "cross": [
+        {
+          "model": "Gemma 4 E2B",
+          "baseline": "Qwen3-VL 4B",
+          "n": 1033,
+          "delta": "-22.17",
+          "interval": "[-25.94, -18.59]"
+        },
+        {
+          "model": "Gemma 4 E2B",
+          "baseline": "Qwen3-VL 8B",
+          "n": 1033,
+          "delta": "-20.72",
+          "interval": "[-24.30, -17.04]"
+        },
+        {
+          "model": "Gemma 4 E4B",
+          "baseline": "Qwen3-VL 4B",
+          "n": 1033,
+          "delta": "-16.26",
+          "interval": "[-19.94, -12.78]"
+        },
+        {
+          "model": "Gemma 4 E4B",
+          "baseline": "Qwen3-VL 8B",
+          "n": 1033,
+          "delta": "-14.81",
+          "interval": "[-18.49, -11.13]"
+        }
+      ],
+      "cost": [
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "quality_n": 1033,
+          "accuracy": 0.5759922555663117,
+          "observations": 100,
+          "p50_ms": 285.52031703293324,
+          "p95_ms": 694.7729848325253,
+          "reserved_gib": 8.748046875
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "quality_n": 1033,
+          "accuracy": 0.5614714424007744,
+          "observations": 100,
+          "p50_ms": 387.3608335852623,
+          "p95_ms": 986.3680142909238,
+          "reserved_gib": 16.953125
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "quality_n": 1033,
+          "accuracy": 0.3543078412391094,
+          "observations": 100,
+          "p50_ms": 203.8427796214819,
+          "p95_ms": 413.5394325479865,
+          "reserved_gib": 9.771484375
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "quality_n": 1033,
+          "accuracy": 0.4133591481122943,
+          "observations": 100,
+          "p50_ms": 264.5832169800997,
+          "p95_ms": 501.6276475042104,
+          "reserved_gib": 15.07421875
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "quality_n": 1033,
+          "accuracy": 0.5450145208131656,
+          "observations": 100,
+          "p50_ms": 476.1450793594122,
+          "p95_ms": 1082.0503477007076,
+          "reserved_gib": 9.03125
+        }
+      ],
+      "registry": [
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+          "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+          "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b"
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma 4 E2B",
+          "model_id": "google/gemma-4-E2B-it",
+          "revision": "3e22461f65e89153144f8adb70e3b8c2cc9845a7"
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma 4 E4B",
+          "model_id": "google/gemma-4-E4B-it",
+          "revision": "ee0ef6023621cff504d758262d4e04895a5af4a2"
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "model_id": "Qwen/Qwen3.5-4B",
+          "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+        }
+      ],
+      "transitions": [
+        {
+          "model_key": "qwen3vl_4b",
+          "n": 1033,
+          "improved": 79,
+          "regressed": 105,
+          "net": -26,
+          "model": "Qwen3-VL 4B"
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "n": 1033,
+          "improved": 76,
+          "regressed": 79,
+          "net": -3,
+          "model": "Qwen3-VL 8B"
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "n": 1033,
+          "improved": 103,
+          "regressed": 112,
+          "net": -9,
+          "model": "Gemma 4 E2B"
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "n": 1033,
+          "improved": 116,
+          "regressed": 86,
+          "net": 30,
+          "model": "Gemma 4 E4B"
+        },
+        {
+          "model_key": "qwen35_4b",
+          "n": 1033,
+          "improved": 110,
+          "regressed": 100,
+          "net": 10,
+          "model": "Qwen3.5 4B"
+        }
+      ],
+      "cost_display": [
+        {
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "quality_n": 1033,
+          "accuracy": 0.5759922555663117,
+          "observations": 100,
+          "p50_ms": 285.52031703293324,
+          "p95_ms": 694.7729848325253,
+          "reserved_gib": 8.748046875,
+          "p50": "285.5",
+          "p95": "694.8",
+          "reserved": "8.75"
+        },
+        {
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "quality_n": 1033,
+          "accuracy": 0.5614714424007744,
+          "observations": 100,
+          "p50_ms": 387.3608335852623,
+          "p95_ms": 986.3680142909238,
+          "reserved_gib": 16.953125,
+          "p50": "387.4",
+          "p95": "986.4",
+          "reserved": "16.95"
+        },
+        {
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "quality_n": 1033,
+          "accuracy": 0.3543078412391094,
+          "observations": 100,
+          "p50_ms": 203.8427796214819,
+          "p95_ms": 413.5394325479865,
+          "reserved_gib": 9.771484375,
+          "p50": "203.8",
+          "p95": "413.5",
+          "reserved": "9.77"
+        },
+        {
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "quality_n": 1033,
+          "accuracy": 0.4133591481122943,
+          "observations": 100,
+          "p50_ms": 264.5832169800997,
+          "p95_ms": 501.6276475042104,
+          "reserved_gib": 15.07421875,
+          "p50": "264.6",
+          "p95": "501.6",
+          "reserved": "15.07"
+        },
+        {
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "quality_n": 1033,
+          "accuracy": 0.5450145208131656,
+          "observations": 100,
+          "p50_ms": 476.1450793594122,
+          "p95_ms": 1082.0503477007076,
+          "reserved_gib": 9.03125,
+          "p50": "476.1",
+          "p95": "1082.1",
+          "reserved": "9.03"
+        }
+      ]
+    }
+  }
+}
