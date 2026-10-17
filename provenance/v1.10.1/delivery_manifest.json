@@ -1,9 +1,9 @@
 {
-  "version": "delivery_v1.10.1_20261017_github_navigation",
+  "version": "delivery_v1.10.1_20261017_b03_primary_table_audit",
   "parent_source_commit": "6c529479b94362c19094088524f8702ca2a9a0de",
   "algorithm": "sha256",
   "scope": "All publication checkout tracked files except this self-referential manifest; includes inherited useful source/audit/sample files. Git internals and full local backup excluded.",
-  "file_count": 402,
+  "file_count": 408,
   "files": [
     {
       "path": ".gitattributes",
@@ -1672,13 +1672,13 @@
     },
     {
       "path": "reports/B_papers.md",
-      "bytes": 3387,
-      "sha256": "d223644ca7d457c8bda98d126b2d286c4859bf5ea4a896a983db9370e526bf49"
+      "bytes": 4100,
+      "sha256": "26b7375a47205531e7542e2ee7a055998423a182ec832f8d8d2e369be3ad7918"
     },
     {
       "path": "reports/Delivery.md",
-      "bytes": 5320,
-      "sha256": "0161a251304ee1f7dce4e9211680e89e95bb854613ee07335f4bf9d28fc65193"
+      "bytes": 5814,
+      "sha256": "4551582b14ceda02b89cd6f259438416f94b31bcadc02f980ec995914f545c39"
     },
     {
       "path": "reports/EdgeCoRAG阶段成果与任务要求整合.docx",
@@ -1687,8 +1687,8 @@
     },
     {
       "path": "reports/Next_steps.md",
-      "bytes": 3919,
-      "sha256": "772a3a8a55d649aff22c16b8e47bc62020e2ffcb26399d58ed614c7215d4845c"
+      "bytes": 4196,
+      "sha256": "34886683aaf77800eef76d9543a002cc184cfe75434c8f1558f075402cc6ea24"
     },
     {
       "path": "reports/Reconstruction.md",
@@ -1697,8 +1697,8 @@
     },
     {
       "path": "reports/Requirements.md",
-      "bytes": 10413,
-      "sha256": "1e06fcf3769255f932cd22a4359369e6c0142166bc828eacb978246505f54916"
+      "bytes": 10606,
+      "sha256": "0b79e2cc2b8f1880c4e2f7f709f9f363f5977179486acdb7cf08aaaaacb84e75"
     },
     {
       "path": "reports/next_stage_20261017/A_TASKS.md",
@@ -1706,9 +1706,14 @@
       "sha256": "bd4877679f49b800faaca24e43be80b244dadf6567670e84eb739fc63ce74866"
     },
     {
+      "path": "reports/next_stage_20261017/B03_validation.json",
+      "bytes": 1035,
+      "sha256": "68d57d9f657aa97a849d083e511f4dad54bf0744eb8be9231d9ec3e083e78370"
+    },
+    {
       "path": "reports/next_stage_20261017/B_TASKS.md",
-      "bytes": 9131,
-      "sha256": "346d343665e5fbb1d298bf14c35c5bce59e8e3862370b3322b77f69abb0cebc4"
+      "bytes": 9487,
+      "sha256": "2040eeb321201a10bf7c4b7091207473455a8618d18a5cc7956bc7ec5b9ac1ba"
     },
     {
       "path": "reports/next_stage_20261017/B_case_review_status.csv",
@@ -1722,13 +1727,33 @@
     },
     {
       "path": "reports/next_stage_20261017/B_external_dataset_feasibility.md",
-      "bytes": 6347,
-      "sha256": "2ce84a57e63b4657671929ba71e627d6943991c160f674bc4a8bb3a11eceb5c9"
+      "bytes": 6940,
+      "sha256": "9c4a90e05aaac7e3e141302e1187aef8878fca89d8009bebbdb98af5eed99273"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_scoring_contract.md",
+      "bytes": 7755,
+      "sha256": "bffbc197c39a2dbd6adad3ae67adf364bba9e40d98451fa4026691d6a9950cfe"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_static_audit.json",
+      "bytes": 5487,
+      "sha256": "da0dc9af16d1416c7cc3dcdd631b8e9758db351042e98886a436de89a4285ece"
     },
     {
       "path": "reports/next_stage_20261017/B_paper_evidence.csv",
-      "bytes": 2140,
-      "sha256": "5f70d8b57eed692dc49b20298ce9cd898aefc6d0bade1199b1349e4b3ad89f3a"
+      "bytes": 2341,
+      "sha256": "60fad9530e7609d7db57ea86b6f4118040956cceaccef71c1fb66391cb0a4275"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_paper_table_audit.md",
+      "bytes": 4168,
+      "sha256": "e2634bfc4d54af34647653aaa4ca5aa052fdd144d700e3c7821952d46665a6f0"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_paper_table_evidence.csv",
+      "bytes": 19382,
+      "sha256": "5df03e02f1ac64c836563ac218153570e1017ea0f61d8c4a0ca5fdfe581fd6fb"
     },
     {
       "path": "reports/next_stage_20261017/B_phase_artifact.json",
@@ -1766,14 +1791,19 @@
       "sha256": "a202565df992219c6ec9cff99e7920309ac29aafa66ff166401f293c10b255fd"
     },
     {
+      "path": "reports/next_stage_20261017/B_primary_paper_checks.json",
+      "bytes": 2668,
+      "sha256": "3733d392ae05045be0df28577113efe792923c300bf3006124dabeea659d53fa"
+    },
+    {
       "path": "reports/next_stage_20261017/B_public_source_checks.json",
       "bytes": 11002,
       "sha256": "9056a149205537cdee3ba087273546c159bb42adf56e218fd93540494e7c8b99"
     },
     {
       "path": "reports/next_stage_20261017/B_return.md",
-      "bytes": 2971,
-      "sha256": "35c6a6e4162aef57ca9e73752dd5fb47db2831ef5704a469f73c15ef5434d766"
+      "bytes": 3852,
+      "sha256": "999177ce88ea58b4569bf9829d097d1a60b4866d46f802dc23bcdade8a956b72"
     },
     {
       "path": "reports/next_stage_20261017/B_statistics_decision.md",
@@ -1782,8 +1812,8 @@
     },
     {
       "path": "reports/next_stage_20261017/next_experiment_decision.md",
-      "bytes": 5330,
-      "sha256": "c070e8fda1baa7749ee971b19074999db13a8fae93c1d56afb1f8c7a67058d90"
+      "bytes": 5539,
+      "sha256": "9ea79ef7d3af81906334ce25d30fd48851f89c582decbfef448f5c951b106121"
     },
     {
       "path": "reports/v1.10.1/analysis_results.json",
@@ -1987,8 +2017,8 @@
     },
     {
       "path": "reports/v1.10.1/requirements_matrix.csv",
-      "bytes": 8007,
-      "sha256": "a0a08591ad3091a108026bd77066dbfbcb4ea2a42c12253b5746166c9ac1c8a0"
+      "bytes": 8200,
+      "sha256": "2f160810ad450de4df537b14a3e087f63582a1328d69bb35b268f53b448edc6f"
     },
     {
       "path": "reports/v1.10.1/s3_subsets.csv",

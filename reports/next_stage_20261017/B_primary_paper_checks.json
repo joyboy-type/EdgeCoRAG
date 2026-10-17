@@ -1,0 +1,78 @@
+{
+  "checked_utc": "2026-10-17T05:29:24.133442+00:00",
+  "scope": "Four public scholarly full papers; selected main-table rows/settings only. No research QA/image corpus/predictions/weights downloaded. Full papers remain local cache and are not redistributed in publication checkout.",
+  "sources": [
+    {
+      "id": "mrag_html",
+      "url": "https://arxiv.org/html/2410.08182v2",
+      "checked_utc": "2026-10-17T05:23:25.422651+00:00",
+      "http_status": 200,
+      "final_url": "https://arxiv.org/html/2410.08182v2",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 479167,
+      "sha256": "1b03bdd478dc4252b7f0de693cd8a73f6459f36d20d7c02852ffa88605e00af8",
+      "ok": true
+    },
+    {
+      "id": "mmdocrag_html",
+      "url": "https://arxiv.org/html/2505.16470",
+      "checked_utc": "2026-10-17T05:23:25.423067+00:00",
+      "http_status": 200,
+      "final_url": "https://arxiv.org/html/2505.16470",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1586530,
+      "sha256": "7c3ca59032192c16133a71d710b222816c49772413699be3e65d087df9b8fd77",
+      "ok": true
+    },
+    {
+      "id": "utility_pdf",
+      "url": "https://aclanthology.org/2026.acl-long.1620.pdf",
+      "checked_utc": "2026-10-17T05:23:25.423131+00:00",
+      "http_status": 200,
+      "final_url": "https://aclanthology.org/2026.acl-long.1620.pdf",
+      "content_type": "application/pdf",
+      "bytes": 6559937,
+      "sha256": "7f26cb98ae83b710d4d262d6ddd43dd6d2a5ed4b24a9431a7f840f4e4ed56784",
+      "ok": true
+    },
+    {
+      "id": "visdom_pdf",
+      "url": "https://aclanthology.org/2025.naacl-long.310.pdf",
+      "checked_utc": "2026-10-17T05:23:25.423177+00:00",
+      "http_status": 200,
+      "final_url": "https://aclanthology.org/2025.naacl-long.310.pdf",
+      "content_type": "application/pdf",
+      "bytes": 6469480,
+      "sha256": "ae5435c5cca4dd566034f0605b529ee97102c8a6bddb8dc7c002b31223c4eb41",
+      "ok": true
+    }
+  ],
+  "selected_evidence_rows": 36,
+  "visual_QA": [
+    {
+      "source_id": "utility_pdf",
+      "pdf_page": 6,
+      "printed_page": 35096,
+      "table": 1,
+      "status": "rendered_and_inspected; selected cells/header/caption verified"
+    },
+    {
+      "source_id": "visdom_pdf",
+      "pdf_page": 7,
+      "printed_page": 6094,
+      "table": 3,
+      "status": "rendered_and_inspected; selected cells/header/caption verified"
+    }
+  ],
+  "html_tables_checked": [
+    "mrag:S2.T3",
+    "mmdocrag:S4.T3",
+    "mmdocrag:S4.T7"
+  ],
+  "not_claimed": [
+    "all appendix tables audited",
+    "author experiments reproduced",
+    "data schema/rights validated",
+    "new external model evaluation"
+  ]
+}

@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | B-01 | 已完成阶段论文初稿 | [正文Markdown](B_phase_report.md)、[离线报告HTML](B_phase_report.html)、[canonical输入](B_phase_artifact.json) | 尚非投稿终稿或全课题结题；后续实证缺口随正文保留 |
 | B-02 | 已完成记录层论断与案例状态对照 | [37条论断证据](B_claim_evidence.csv)、[20条案例状态](B_case_review_status.csv) | 正式原图可获得性待A-01；视觉与机制审定均未做，R21仍部分完成 |
-| B-03 | 部分完成 | [文献证据表](B_paper_evidence.csv)、[第二数据集可行性](B_external_dataset_feasibility.md)、[19次公开来源核验记录](B_public_source_checks.json) | 原论文逐表数值、真实数据schema、运行依赖尚未齐；MMDocRAG许可声明冲突；无外部推理结果 |
+| B-03 | 部分完成 | [文献证据表](B_paper_evidence.csv)、[第二数据集可行性](B_external_dataset_feasibility.md)、[19次公开来源核验记录](B_public_source_checks.json)、[36行选定主表证据](B_paper_table_evidence.csv)、[评分合同草案](B_mmdocrag_scoring_contract.md) | 选定主表与10项静态接口发现已核对；未复现原论文全表；真实schema、许可、适配实现／运行依赖未齐；无外部推理结果 |
 | B-04 | 方法边界已交付，最终分组判断待依赖 | [统计决策](B_statistics_decision.md) | 等A-04的可信来源键；不编造来源聚类区间或概念类别映射 |
 | B-05 | 预案已交付，执行未冻结 | [下一轮预案](next_experiment_decision.md) | 等A-02/A-03与B-03/B-04补齐；题单、正式矩阵、费用与执行范围尚未定稿 |
 
@@ -23,4 +23,10 @@
 
 R05仍部分完成，R06仍待补，R21/R22/R24仍部分完成；阶段正文、任务单或预案存在不代表这些科学要求完成。A本批尚未回传到此工作副本的内容均保留依赖状态，不据此断言A没有在其他位置工作。
 
-下一步先接收A-01／A-02的证据，再解决第二数据集许可与最小schema核验；目前无需新增GPU推理。
+## B-03本次增量
+
+四篇全文的选定主表已形成36行证据，见[核验说明](B_paper_table_audit.md)与[来源哈希](B_primary_paper_checks.json)。Utility与VisDoM相关主表页面已渲染检查；不是原论文所有附录／全部成绩的审阅或复现。原阶段论文MD/HTML保留此前快照，本补充单独说明新证据。
+
+MMDocRAG发现论文与源码Overall F1聚合口径不同；静态审查共10项发现，另列15个未来合成验收规格。尚未实现适配器，未运行作者评分模块或judge；其顶层NLTK下载也没有执行。
+
+下一步可先在本地实现无judge纯指标适配器并只用虚构输入验证，不需要GPU；同时等待A回执与明确许可依据，再安排最小真实schema核验和新协议。本批没有下载研究QA、图库或权重，没有启动推理或付费judge。

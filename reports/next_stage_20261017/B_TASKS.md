@@ -4,7 +4,7 @@
 
 你是EdgeCoRAG协作方B，继续负责多模型公平比较、生成评测、统计与错误分析。本批先用现有结果形成可审阅的阶段论文，并完成后续研究的准备；不需要先租GPU。
 
-**本批进度：** B-01阶段初稿与B-02记录对照已交付；B-03公开核验、B-04方法边界及B-05预案已形成，仍有许可、来源分组和执行冻结缺口。详情见[B_return.md](B_return.md)。原图语义审定和新增实验均未完成。
+**本批进度：** B-01阶段初稿与B-02记录对照已交付；B-03已补齐四篇选定主表的36行证据与评分合同草案，B-04方法边界及B-05预案已形成，仍有许可、来源分组和执行冻结缺口。详情见[B_return.md](B_return.md)。原图语义审定和新增实验均未完成。
 
 ## 先对齐当前基线
 
@@ -51,10 +51,12 @@
 
 ## B-03：补齐文献核验与第二数据集可行性
 
-- [ ] 输出`B_paper_evidence.csv`，针对阶段正文实际引用的MRAG-Bench、Utility-MRAG及候选第二数据集，记录`paper,official_source,table_or_page,metric,reported_value,setting,license_source,our_reproduction_status,checked_at`。
-- [ ] 只引用已核对原文的数字；未查到明确标未核实，不把安装命令、单元测试或作者成绩当成自己的复现。需要小型公开论文／网页核验时保持与模型、图库下载分开。
+- [x] 输出`B_paper_evidence.csv`，针对阶段正文实际引用的MRAG-Bench、Utility-MRAG及候选第二数据集，记录`paper,official_source,table_or_page,metric,reported_value,setting,license_source,our_reproduction_status,checked_at`。
+- [x] 只引用已核对原文的数字；未查到明确标未核实，不把安装命令、单元测试或作者成绩当成自己的复现。需要小型公开论文／网页核验时保持与模型、图库下载分开。
 - [ ] 输出`B_external_dataset_feasibility.md`，优先审MMDocRAG，VisDoM为备选；记录官方版本、可访问性、许可、schema、评分入口、分割与潜在暴露、声明规模及是否独立核实。仓库license为null不等于可再分发。
 - [ ] 给出一个推荐数据集和依据；若证据不足，给出具体阻塞清单。不要为提交方案而下载全量数据或启动新模型。
+
+本批新增：[选定主表核验说明](B_paper_table_audit.md)、[36行原表证据](B_paper_table_evidence.csv)、[评分接口合同草案](B_mmdocrag_scoring_contract.md)。原论文全表复现、许可冲突、真实schema与适配可运行性仍未完成；15项合成验收规格尚未执行。
 
 **验收：** 可据此判断是否进入新协议设计；尚未运行就保持“无第二数据集验证”。不将MRAG内部留出改名外部验证，不承诺复现作者全部模型结果。对应R05/R06仍按实际证据保留缺口。
 

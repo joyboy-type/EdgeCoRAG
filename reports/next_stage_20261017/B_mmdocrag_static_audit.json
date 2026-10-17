@@ -1,0 +1,170 @@
+{
+  "audit_version": "b03-static-source-v1",
+  "checked_utc": "2026-10-17T05:29:24.133442+00:00",
+  "repository_commit": "2fd7505c6a576376b4a92aafaff6d87494765bb7",
+  "method": "Read source and parse Python AST without import/exec of upstream code; no scoring or model calls",
+  "sources": [
+    {
+      "file": "eval_all.py",
+      "url": "https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_all.py",
+      "bytes": 13519,
+      "sha256": "b229d038c4015ec1f6783129d58a8db824ee93c6473e2e87435d5bec35797b11",
+      "ast_syntax_parse": "passed",
+      "functions": [
+        {
+          "name": "calculate_rouge",
+          "start": 104,
+          "end": 107
+        },
+        {
+          "name": "calculate_bleu",
+          "start": 109,
+          "end": 115
+        },
+        {
+          "name": "extract_citations",
+          "start": 117,
+          "end": 134
+        },
+        {
+          "name": "get_scores",
+          "start": 136,
+          "end": 146
+        },
+        {
+          "name": "calculate_all",
+          "start": 148,
+          "end": 245
+        },
+        {
+          "name": "initialize_args",
+          "start": 247,
+          "end": 256
+        },
+        {
+          "name": "get_jsonl_path",
+          "start": 259,
+          "end": 293
+        }
+      ]
+    },
+    {
+      "file": "eval_llm_judge.py",
+      "url": "https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_llm_judge.py",
+      "bytes": 1173,
+      "sha256": "dc39ce4b173e160e1c3a952c3bb0c555a8757797758af13cbf78ada5e25dbe7a",
+      "ast_syntax_parse": "passed",
+      "functions": []
+    },
+    {
+      "file": "data_utils.py",
+      "url": "https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/data_utils.py",
+      "bytes": 1253,
+      "sha256": "a8607d7a4309d7a1947cf70465d626e0d7be381bbd41122dbbe0b9015d9bc52c",
+      "ast_syntax_parse": "passed",
+      "functions": [
+        {
+          "name": "encode_image",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "name": "save_jsonl",
+          "start": 10,
+          "end": 14
+        },
+        {
+          "name": "load_jsonl",
+          "start": 17,
+          "end": 28
+        },
+        {
+          "name": "load_json",
+          "start": 31,
+          "end": 41
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "S01",
+      "file": "eval_all.py",
+      "lines": "3-5",
+      "finding": "Import-time nltk.download(punkt,punkt_tab); original module was not imported.",
+      "category": "offline_side_effect"
+    },
+    {
+      "finding_id": "S02",
+      "file": "eval_all.py",
+      "lines": "117-146",
+      "finding": "Regex exact text/image number markers; duplicate citations deduplicated; set scores; both-empty gives zero.",
+      "category": "metric_semantics"
+    },
+    {
+      "finding_id": "S03",
+      "file": "eval_all.py",
+      "lines": "155-160",
+      "finding": "zip truncates to shorter list; only paired qid equality tested; no whole-list uniqueness/length/set check.",
+      "category": "denominator_risk"
+    },
+    {
+      "finding_id": "S04",
+      "file": "eval_all.py",
+      "lines": "163-169",
+      "finding": "Falsy response becomes single space; exact thinking delimiter split takes index1, not last suffix.",
+      "category": "normalization_semantics"
+    },
+    {
+      "finding_id": "S05",
+      "file": "eval_all.py",
+      "lines": "172-211",
+      "finding": "Overall F1 is mean per-question union F1; text/image F1 uses global qid-prefixed sets. Paper prose says modality F1 averaged: different definitions.",
+      "category": "paper_code_discrepancy"
+    },
+    {
+      "finding_id": "S06",
+      "file": "eval_all.py",
+      "lines": "194-217",
+      "finding": "Tokens appended only if both in_tok and out_tok; absent-all divides by zero; partially present averages subset.",
+      "category": "metadata_denominator_risk"
+    },
+    {
+      "finding_id": "S07",
+      "file": "eval_all.py",
+      "lines": "219-236",
+      "finding": "Judge rows averaged independently, no qid/length alignment; missing dimensions default0; empty judge divides by zero.",
+      "category": "judge_alignment_risk"
+    },
+    {
+      "finding_id": "S08",
+      "file": "eval_all.py",
+      "lines": "259-293",
+      "finding": "CLI model route requires judge file; custom route requires both path and path_judge.",
+      "category": "readme_entrypoint_difference"
+    },
+    {
+      "finding_id": "S09",
+      "file": "eval_llm_judge.py",
+      "lines": "8-16",
+      "finding": "path/setting positional; constructs OpenAI_LLM_Judge; no API executed.",
+      "category": "readme_entrypoint_difference"
+    },
+    {
+      "finding_id": "S10",
+      "file": "eval_all.py",
+      "lines": "104-115,198-208",
+      "finding": "BLEU default sentence_bleu with word_tokenize, no smoothing; ROUGE-L stemmer true; references/predictions retain citation markup.",
+      "category": "lexical_metric_semantics"
+    }
+  ],
+  "upstream_executed": false,
+  "external_QA_downloaded": false,
+  "judge_api_called": false,
+  "acceptance_cases_status": "specified_not_executed",
+  "implementation_status": "no_adapter_implemented",
+  "table_comparison": {
+    "paper_modality_mean_example": "(80.7+52.0)/2 = 66.35; Table3 overall is 70.2",
+    "meaning": "Prose and current source aggregation differ; do not relabel or claim compatibility without future row-level validation"
+  }
+}

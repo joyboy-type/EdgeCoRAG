@@ -12,8 +12,8 @@
 | R02 | 张 §1 §3 §6 | Qwen3.5 9B 与更大模型 | 后置可选 | b-side/configs/model_registry.json | 未运行，不纳入当前五模型计划 |
 | R03 | 张 §1 §6 | 各家最佳固定 RAG 补充 | 待补 | reports/Next_steps.md | 现有共享检索不能替代最佳固定 RAG |
 | R04 | 张 §2 §4 | MRAG 1353 题 schema 与官方接口核验 | 已完成 | handover/contracts/官方评测接口差异.md; b-side/configs/sources_and_integrity.json | strict_choice_v1 为项目主评分；不冒称复现官方排行榜 |
-| R05 | 张 §2 §10 | B_papers 逐论文方法 数值 许可 复现状态 | 部分完成 | reports/B_papers.md; source_manifest.csv; reports/next_stage_20261017/B_paper_evidence.csv | 新增官方摘要与项目说明核验；原论文逐表数值和完整方法复现仍未齐，许可冲突另列 |
-| R06 | 张 §2 §4 §9 | 第二数据集 MMDocRAG 或 VisDoM | 待补 | reports/next_stage_20261017/B_external_dataset_feasibility.md | MMDocRAG官方入口与评分源码已静态核验；HF与README数据许可声明冲突、真实schema和外部推理均未完成 |
+| R05 | 张 §2 §10 | B_papers 逐论文方法 数值 许可 复现状态 | 部分完成 | reports/B_papers.md; source_manifest.csv; reports/next_stage_20261017/B_paper_evidence.csv; reports/next_stage_20261017/B_paper_table_evidence.csv; reports/next_stage_20261017/B_paper_table_audit.md | 四篇选定主表36行数值与设置已核验；非原论文全部表格复现，其他文献、完整方法与许可仍有缺口 |
+| R06 | 张 §2 §4 §9 | 第二数据集 MMDocRAG 或 VisDoM | 待补 | reports/next_stage_20261017/B_external_dataset_feasibility.md; reports/next_stage_20261017/B_mmdocrag_scoring_contract.md | 选定主表与评分合同已补；论文/源码F1聚合不同、许可冲突、真实schema与适配可运行性未解；无外部推理 |
 | R07 | 张 §2 | Utility MRAG 方法对照 | 待补 A侧 | a-side/reports/A_P0_P1.md | 历史23项作者测试不等于完整方法或论文数字复现 |
 | R08 | 张 §2 | VQQP 图像降质鲁棒性 | 后置可选 | source_manifest.csv | 未开展 |
 | R09 | 张 §3 §5 | 模型 revision 与独立环境 | 已完成 限本次硬件 | configs/model_registry.yaml; provenance/v1.10.1/execution_receipt.json | 原始 registry 中 GPU_unverified 是冻结前状态，实测见独立回执 |
