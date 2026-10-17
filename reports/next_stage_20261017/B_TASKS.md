@@ -4,6 +4,8 @@
 
 你是EdgeCoRAG协作方B，继续负责多模型公平比较、生成评测、统计与错误分析。本批先用现有结果形成可审阅的阶段论文，并完成后续研究的准备；不需要先租GPU。
 
+**本批进度：** B-01阶段初稿与B-02记录对照已交付；B-03公开核验、B-04方法边界及B-05预案已形成，仍有许可、来源分组和执行冻结缺口。详情见[B_return.md](B_return.md)。原图语义审定和新增实验均未完成。
+
 ## 先对齐当前基线
 
 - 仓库：https://github.com/joyboy-type/EdgeCoRAG
@@ -28,22 +30,22 @@
 
 ## B-01：完成阶段论文正文（先做，不等A）
 
-- [ ] 输出`B_phase_report.md`，包含摘要、研究问题、相关工作定位、方法、主结果、记录诊断、局限与下一步。
-- [ ] 方法写清模型ID与revision、同一4090硬件、BF16无量化无offload、thinking关闭、greedy、seed42、64token、严格评分、S0/S1/S2的真实输入以及S3小型子集。
-- [ ] 结果保留完整固定分母，内部留出与冻结集分开；同证据跨模型主比较优先，S2明示为Oracle。性能仅为预处理和生成，allocator reserved不是整卡或全系统峰值。
-- [ ] 解释S1并非自主运行EmbeddingGemma得到的检索结果；S1为所有场景top3，S2常规5张／Incomplete1张，数量差异限制对差值的解释。
-- [ ] 将负结果写入摘要与讨论：Gemma同S1下仍有明显差距，尚未建立非劣效或普遍替代子群；不把技术通过写成科学假设成立。
-- [ ] 明示跨题图片相关性、冻结集审计暴露、事后分析、无来源聚类和多重校正、S3的AI辅助label-aware审阅、最终processor-rendered字符串未保存，以及第二数据集／完整系统未做。
+- [x] 输出`B_phase_report.md`，包含摘要、研究问题、相关工作定位、方法、主结果、记录诊断、局限与下一步。
+- [x] 方法写清模型ID与revision、同一4090硬件、BF16无量化无offload、thinking关闭、greedy、seed42、64token、严格评分、S0/S1/S2的真实输入以及S3小型子集。
+- [x] 结果保留完整固定分母，内部留出与冻结集分开；同证据跨模型主比较优先，S2明示为Oracle。性能仅为预处理和生成，allocator reserved不是整卡或全系统峰值。
+- [x] 解释S1并非自主运行EmbeddingGemma得到的检索结果；S1为所有场景top3，S2常规5张／Incomplete1张，数量差异限制对差值的解释。
+- [x] 将负结果写入摘要与讨论：Gemma同S1下仍有明显差距，尚未建立非劣效或普遍替代子群；不把技术通过写成科学假设成立。
+- [x] 明示跨题图片相关性、冻结集审计暴露、事后分析、无来源聚类和多重校正、S3的AI辅助label-aware审阅、最终processor-rendered字符串未保存，以及第二数据集／完整系统未做。
 
 **验收：** 导师不依赖聊天记录即可看懂做了什么、发现什么、哪里不能解释。每个主要数值指向已有CSV、图或回执；作者论文数字与本项目实测分开。不能从本轮数据造出完整端到端或真实边缘部署结论。
 
 ## B-02：建立诊断论断与证据对照（不等原图）
 
-- [ ] 输出`B_claim_evidence.csv`：`claim_id,claim,cohort,denominator,source_file,filter_or_row,claim_type,limitation,review_status`，覆盖阶段正文的主要定量论断。
-- [ ] 保留Qwen3-VL 4B的S1−S0净变化−26题及GT哈希未命中−30／命中+4的观测分解；GT未命中不等于语义检索失败，命中也不等于证据充分。
-- [ ] 保留Gemma S2的592／540题有效选项错误；Qwen3.5的55次S2格式失败即使全假定正确也仅656/1033。该极端固定记录上限不是重评分、恢复准确率或更长预算实验的预测。
-- [ ] 输出`B_case_review_status.csv`，从既有20条案例卡逐条列出`case_id,model_key,qid,record_pattern,record_checked,image_available,visual_review_completed,mechanism_adjudicated,dependency`；记录模式与机制标签分开。
-- [ ] 当前缺图时，后两项保持false／待审；A-01返回可获得性后，只更新依赖状态。实际取图或视觉审查需另行安排，不能把自动标签填成完成。
+- [x] 输出`B_claim_evidence.csv`：`claim_id,claim,cohort,denominator,source_file,filter_or_row,claim_type,limitation,review_status`，覆盖阶段正文的主要定量论断。
+- [x] 保留Qwen3-VL 4B的S1−S0净变化−26题及GT哈希未命中−30／命中+4的观测分解；GT未命中不等于语义检索失败，命中也不等于证据充分。
+- [x] 保留Gemma S2的592／540题有效选项错误；Qwen3.5的55次S2格式失败即使全假定正确也仅656/1033。该极端固定记录上限不是重评分、恢复准确率或更长预算实验的预测。
+- [x] 输出`B_case_review_status.csv`，从既有20条案例卡逐条列出`case_id,model_key,qid,record_pattern,record_checked,image_available,visual_review_completed,mechanism_adjudicated,dependency`；记录模式与机制标签分开。
+- [x] 当前缺图时，后两项保持false／待审；A-01返回可获得性后，只更新依赖状态。实际取图或视觉审查需另行安排，不能把自动标签填成完成。
 
 **验收：** 20条事后案例卡均保留，不声称代表性；不修改原gold、预测或分数。R21仍为部分完成。HTML数据与结构验证已通过，但浏览器图表和来源交互未完成自动核验，该限制继续保留。
 

@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "html": "B_phase_report.html",
+  "stages": {
+    "validation": "passed",
+    "package": "passed",
+    "verification": "structural_only"
+  },
+  "browserWarning": {
+    "code": "browser_unavailable",
+    "message": "No compatible installed Chromium headless-shell; no browser installed or bespoke automation attempted."
+  },
+  "counts": {
+    "blocks": 24,
+    "charts": 2,
+    "html": 0,
+    "metrics": 0,
+    "tables": 6
+  },
+  "sourceDialog": "not_verified",
+  "sourceInteraction": "not_verified",
+  "viewports": [],
+  "receipt_source": "Canonical portable packager successful output; local absolute output path intentionally represented by report-relative filename."
+}

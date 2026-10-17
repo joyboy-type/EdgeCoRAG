@@ -1,0 +1,29 @@
+{
+  "status": "PASS_saved_source_checks",
+  "quality_rows": 34,
+  "formal_main_outputs": 17745,
+  "formal_s3_outputs": 62,
+  "quality_denominators_and_accuracy_checked": true,
+  "cross_model_point_differences_recomputed_from_correct_counts": true,
+  "cost_p95_reconciled_with_performance": true,
+  "sql_queries_executed": 11,
+  "claim_rows": 37,
+  "selected_case_cards_checked": 20,
+  "visual_reviews_completed": 0,
+  "new_model_inference": false,
+  "intervals_reestimated": false,
+  "html_qa": {
+    "contract": "passed",
+    "structural_verification": "passed",
+    "browser_charts_and_interactions": "not_verified",
+    "receipt": "B_phase_packaging_receipt.json"
+  },
+  "readiness": "share with scientific and rendering caveats; phase manuscript, not full-project closeout",
+  "final_document_links_checked": 58,
+  "new_and_changed_files_scanned": 20,
+  "private_local_path_and_credential_scan": "passed",
+  "runtime_inputs_figures_and_saved_results_changed": false,
+  "public_source_metadata_requests": 19,
+  "external_dataset_archives_downloaded": 0,
+  "review_assessment": "Share with caveats: saved numeric claims checked; source dependence, image mechanism and browser QA unresolved."
+}

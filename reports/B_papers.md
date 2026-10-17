@@ -12,3 +12,5 @@
 | RAGRouter NeurIPS2025 | 文本多RAG路由 | OwwO99/RAGRouter；A侧参考文献 | 非原生视觉基线，未做视觉方法复现 | 不与本轮视觉主排行榜混排；原始数值与适配许可待补 |
 
 任务书要求的“每篇原始数值/指标、成功复现与许可”仍是部分完成：已有定位、部分来源哈希和状态，尚缺逐表原始数值提取、未运行方法的实测验证及未明许可。没有用空白或作者结果冒充完成项。A侧历史4060 8GB的4bit探针与本次4090统一BF16是不同硬件/精度条件，不能汇成同一性能表。
+
+2026年10月17日本批继续核验了官方摘要、项目页、仓库README／元数据和少量评分源码，新增[文献证据表](next_stage_20261017/B_paper_evidence.csv)与[逐来源记录](next_stage_20261017/B_public_source_checks.json)。MMDocRAG的4055 QA现已在官方项目／摘要中核对为发布者声明，仍未本地逐行计数；HF卡片声明Apache-2.0，而仓库README另标数据CC-BY-NC、仅研究使用，冲突未解决。API license=null不能概括为README没有任何说明。其评分代码还有judge文件必需、README参数差异和等长校验缺口，详见[第二数据集可行性](next_stage_20261017/B_external_dataset_feasibility.md)。这些核验不等于外部评测或原论文全部表格复现，旧来源表的历史核验范围保留。

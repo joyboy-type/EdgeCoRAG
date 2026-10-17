@@ -7,6 +7,7 @@
 ## 当前交付入口
 
 - 下一阶段分别执行：[A：语料、检索与证据交接任务](reports/next_stage_20261017/A_TASKS.md)／[你与B：阶段论文、诊断与补充协议任务](reports/next_stage_20261017/B_TASKS.md)
+- B侧本批交付：[阶段论文初稿](reports/next_stage_20261017/B_phase_report.md)／[离线报告](reports/next_stage_20261017/B_phase_report.html)／[任务进度与仍缺的证据](reports/next_stage_20261017/B_return.md)
 - [整合说明 Word 文档](reports/EdgeCoRAG阶段成果与任务要求整合.docx)
 - [下一步应该做什么](reports/Next_steps.md)
 - [任务书与全部现有文档要求整合](reports/Requirements.md)
