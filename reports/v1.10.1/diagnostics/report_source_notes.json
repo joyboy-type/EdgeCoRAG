@@ -1,0 +1,27 @@
+{
+  "delivery_mode": "portable_html",
+  "audience": "technical",
+  "reason": "The continuing user-selected local file and GitHub delivery; scientific diagnostic methodology is the report purpose.",
+  "technical_structure": "summary; definitions and findings; paired design; limitations; next steps; further questions",
+  "chart_plan": [
+    {
+      "id": "gt_contributions",
+      "family": "grouped signed bars",
+      "purpose": "exact additive contribution by GT hash group",
+      "scale": "pp over full n=1033"
+    },
+    {
+      "id": "oracle_error_rates",
+      "family": "grouped bars",
+      "purpose": "valid wrong vs format failures, full-denominator shares",
+      "scale": "fractional rates"
+    }
+  ],
+  "same_chart_family_reason": "Both findings compare the same five models under a binary diagnostic grouping; no temporal trend is implied.",
+  "source_file_hashes": {
+    "logs/B_predictions.jsonl.gz": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+    "logs/B_input_contexts.jsonl.gz": "f69c1f0a77a28e56470b1f53a2bb1cde900e36b7940a6ea3053fddb78255215f",
+    "analysis/v1.10.1/diagnose_saved_runs.py": "4bf1fded26ed09a87bdc691d6d7950d48107da9c1f9068f60c03eb18fc1ab6d8"
+  },
+  "visual_adjudication": "not performed; user selected saved-record analysis only"
+}

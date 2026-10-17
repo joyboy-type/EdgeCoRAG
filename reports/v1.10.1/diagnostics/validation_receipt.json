@@ -1,0 +1,30 @@
+{
+  "status": "PASS_records_only",
+  "quality_main_question_runs": 17745,
+  "paired_question_model_units": 5915,
+  "frozen_unique_questions": 1033,
+  "holdout_unique_questions": 150,
+  "models": 5,
+  "condition_groups": 30,
+  "technical_failures_in_main_quality": 0,
+  "main_quality_format_failures": 99,
+  "format_failures_at_token_limit": 98,
+  "sql_reconciled": [
+    "patterns",
+    "format_decomposition",
+    "gt_decomposition",
+    "condition_errors",
+    "record_summary",
+    "selected_cases"
+  ],
+  "original_quality_and_transition_tables_reconciled": true,
+  "selected_case_cards": 20,
+  "visual_mechanism_reviews_completed": 0,
+  "new_inference": false,
+  "network_access": false,
+  "scientific_parameters_changed": false,
+  "post_hoc_analysis": true,
+  "causal_claims_supported": false,
+  "quality_s3_excluded_from_this_diagnostic": 62,
+  "performance_smoke_dev_preflight_excluded": true
+}

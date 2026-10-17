@@ -28,7 +28,7 @@
 | R18 | 张 §6 | 能耗与顺序切换成本 | 未测或不适用本轮 | reports/B_comparison.md | 功耗可选；无offload，不将未测值写成0 |
 | R19 | 张 §7 §10 | 逐题结构化输出 raw answer 与完整矩阵 | 已交付 | logs/B_predictions.jsonl.gz | 含21,927条，解压后为B_predictions.jsonl；性能不能加入质量分母 |
 | R20 | 张 §7 | 处理器完整rendered_prompt与图片清单 | 部分完成 | logs/B_input_contexts.jsonl.gz | 结构化messages与图像路径哈希已存；最终chat-template字符串未存，不伪造 |
-| R21 | 张 §7 §8 | 未检索到 已出现没答对 检索伤害四类机制 | 部分完成 | reports/v1.10.1/answer_transitions.csv; reports/v1.10.1/failure_examples.csv; reports/v1.10.1/gt_overlap_strata.csv | GT精确哈希命中分组和观测转移已算；语义支持与因果机制仍待审定 |
+| R21 | 张 §7 §8 | 未检索到 已出现没答对 检索伤害四类机制 | 部分完成 | reports/v1.10.1/answer_transitions.csv; reports/v1.10.1/gt_overlap_strata.csv; reports/v1.10.1/diagnostics/report.html; reports/v1.10.1/diagnostics/selected_cases.csv | 已完成17745条主条件记录诊断、GT与格式分解、20个事后待审案例和六组SQL对账；未看图，语义支持与因果机制仍待审定 |
 | R22 | 张 §8 | 按题或文档来源聚类95%配对CI | 部分完成 | reports/v1.10.1/paired_comparisons.csv; reports/v1.10.1/cross_model_paired.csv | 现为场景分层题级bootstrap2000 seed42，无来源聚类或多重校正 |
 | R23 | 张 §7 §8 | 同证据跨模型配对差距 | 已交付 描述性 | reports/v1.10.1/cross_model_paired.csv | 无预注册非劣效界值，不以区间包含0宣称等价 |
 | R24 | 张 §8 | 类别分层 OCR 图表 跨图关联等 | 部分完成 | reports/v1.10.1/scenarios.csv | 已按MRAG官方9场景；未构造并验证任务书概念类别映射 |

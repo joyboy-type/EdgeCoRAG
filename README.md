@@ -10,6 +10,7 @@
 - [下一步应该做什么](reports/Next_steps.md)
 - [任务书与全部现有文档要求整合](reports/Requirements.md)
 - [五模型比较报告](reports/B_comparison.md)
+- [已保存结果诊断报告（离线 HTML）](reports/v1.10.1/diagnostics/report.html)：GT 哈希分组、格式影响分解与 20 个待审案例
 - [文献与复现状态](reports/B_papers.md)
 - [交付包与清理说明](reports/Delivery.md)
 - [逐题结果与输入上下文](logs/README.md)
