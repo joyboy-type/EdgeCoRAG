@@ -1,5 +1,5 @@
 {
-  "version": "delivery_v1.10.1_20261017_phase_manuscript",
+  "version": "delivery_v1.10.1_20261017_github_navigation",
   "parent_source_commit": "6c529479b94362c19094088524f8702ca2a9a0de",
   "algorithm": "sha256",
   "scope": "All publication checkout tracked files except this self-referential manifest; includes inherited useful source/audit/sample files. Git internals and full local backup excluded.",
@@ -17,8 +17,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3679,
-      "sha256": "7e049ed81d7d38ded81498720a38af807b607fa2333c39844d181e974006f893"
+      "bytes": 7239,
+      "sha256": "3208923d2c9c76170d7bcd2a5b09f165b986f23febc220967e846ebd0d7e3b39"
     },
     {
       "path": "a-side/data/acceptance_report.json",
@@ -1677,8 +1677,8 @@
     },
     {
       "path": "reports/Delivery.md",
-      "bytes": 4240,
-      "sha256": "76b762b27f4d5a42fa73e46c9a92a18c828234dd39bb2283b00a7c3a282b83f9"
+      "bytes": 5320,
+      "sha256": "0161a251304ee1f7dce4e9211680e89e95bb854613ee07335f4bf9d28fc65193"
     },
     {
       "path": "reports/EdgeCoRAG阶段成果与任务要求整合.docx",
@@ -1687,8 +1687,8 @@
     },
     {
       "path": "reports/Next_steps.md",
-      "bytes": 3712,
-      "sha256": "f37444373af0167996d0909e49de1849048f76ee76bf6db95494b7a4cc053193"
+      "bytes": 3919,
+      "sha256": "772a3a8a55d649aff22c16b8e47bc62020e2ffcb26399d58ed614c7215d4845c"
     },
     {
       "path": "reports/Reconstruction.md",
@@ -1697,8 +1697,8 @@
     },
     {
       "path": "reports/Requirements.md",
-      "bytes": 10033,
-      "sha256": "bfb3df6100dc62a7235bf51c03a9993cec06505cf52cf9d90b2116b0efd0a8d0"
+      "bytes": 10413,
+      "sha256": "1e06fcf3769255f932cd22a4359369e6c0142166bc828eacb978246505f54916"
     },
     {
       "path": "reports/next_stage_20261017/A_TASKS.md",
@@ -1987,8 +1987,8 @@
     },
     {
       "path": "reports/v1.10.1/requirements_matrix.csv",
-      "bytes": 7627,
-      "sha256": "64e9a628d2c716315754ebb257a6bbc5a4e85caf9cf75046f3c8e76f07d10f07"
+      "bytes": 8007,
+      "sha256": "a0a08591ad3091a108026bd77066dbfbcb4ea2a42c12253b5746166c9ac1c8a0"
     },
     {
       "path": "reports/v1.10.1/s3_subsets.csv",
@@ -2016,5 +2016,5 @@
       "sha256": "e889841c83f82a967a79335bbeb43d67cf32533bd52fcdb28033d77c71f47854"
     }
   ],
-  "preceding_publication_commit": "c249fadb757fa64c08a677b77d7489ff7e05fa9a"
+  "preceding_publication_commit": "3c394101501d8929cc5f946fe9104f4094ab5d68"
 }

@@ -34,3 +34,11 @@
 新增[已保存结果诊断](v1.10.1/diagnostics/report.html)、逐题配对台账、20个事后选例、六组SQL及8单元已执行笔记本。诊断只读公开结果，未新增推理或修改科学参数；R21仍有看图语义与机制审定缺口。数据复算与HTML结构核验通过，浏览器图表和交互自动核验未完成。具体范围见`v1.10.1/diagnostics/delivery_validation.json`。
 
 桌面原始完整交付ZIP与8页Word保留原版；新增诊断以补充ZIP单独交付。补充包基于原交付提交`49031cf65538521f76fc9c275c7fdd3be6923c77`，覆盖包内同路径文件后得到本轮更新；它不单独包含原始压缩逐题日志、模型或数据集图像。更新后的完整仓库由`provenance/v1.10.1/delivery_manifest.json`逐文件锁定，旧版manifest仍可从Git历史取得。
+
+## 阶段论文与后续任务
+
+随后交付了[B阶段论文初稿](next_stage_20261017/B_phase_report.md)、离线HTML、37条论断证据、20条记录案例状态、第二数据集可行性、统计方法边界与下一轮预案，完整状态见[B_return.md](next_stage_20261017/B_return.md)。B-01/B-02完成的是阶段写作与记录对照；B-03至B-05仍有许可、真实schema、来源分组与执行冻结缺口，未开展新推理。
+
+A、B任务分别由[任务 #3](https://github.com/joyboy-type/EdgeCoRAG/issues/3)和[任务 #4](https://github.com/joyboy-type/EdgeCoRAG/issues/4)跟踪。默认main首页提供当前进度及交付分支入口；完整源码／结果仍在草稿PR #2审阅，不将首页导航同步当作整份成果已经合并。
+
+桌面B侧阶段成果补充包以`6fc8e2e0e133189a6b6043653c57192b986dc71a`为覆盖基线，包含其后的任务发布和阶段材料，已与完整包及诊断补充包叠加核对。旧Word和旧ZIP不被覆盖；当前GitHub导航与状态文档可继续更新，旧包内快照保持原交付身份。
