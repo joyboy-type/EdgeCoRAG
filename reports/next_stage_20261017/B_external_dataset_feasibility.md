@@ -53,4 +53,13 @@ GitHub API仍为license=null，文件清单未见独立LICENSE；其PaperTab、F
 
 本轮已完成四篇论文选定主表的[36行数值与设置核验](B_paper_table_evidence.csv)，以及[评分合同草案](B_mmdocrag_scoring_contract.md)。MMDocRAG原文声明dev2055/eval2000；15／20设置引用索引会重排，不能混用gold。固定候选池含gold，Table7把70.2/4.14列为perfect，与BGE原query54.4/3.53分开。
 
-评分静态审查另发现Overall F1的论文描述与源码聚合不同、token缺失除零／缩分母、judge未做qid对齐及import时NLTK下载，详见[10项发现](B_mmdocrag_static_audit.json)。合同中的15项合成规格尚未执行，适配器尚未实现。原论文全部表格复现、真实schema、依赖可运行性、磁盘解压需求与外部结果仍未完成。R05保持部分完成，R06保持待补。
+评分静态审查另发现Overall F1的论文描述与源码聚合不同、token缺失除零／缩分母、judge未做qid对齐及import时NLTK下载，详见[10项发现](B_mmdocrag_static_audit.json)。此前15项合成规格仅有草案；当前增量已实现独立适配器，云端T01–T14通过，Mac T01–T14通过，T15依赖未齐，详见下一节。原论文全部表格复现、真实schema、依赖可运行性、磁盘解压需求与外部结果仍未完成。R05保持部分完成，R06保持待补。
+
+## 2026-10-17适配器与A交付增量
+
+以上公开来源与许可结论保留。独立评分身份b_mmdocrag_nojudge_metrics_v1现已实现；云端仅虚构qid／quote／响应通过T01–T14，T15因nltk与rouge-score缺失未完整验证，Mac T01–T14实测通过，T15仍有依赖缺口。不import作者完整eval_all，只提取SHA固定缓存中两个无副作用函数AST对照；未调用顶层下载或judge。具体接口、源码身份和逐项回执见评分合同、static_audit中的adapter_increment及B_mmdocrag_synthetic_validation.cloud.json。
+
+A@4dbeab85a0cef2cab8fc2fae928392bf14bc7994的语料与分组结论已读取：它们解除的是等待回执本身，不解除独立语料许可／版本阻塞；MMDocRAG可能存在文档分组仍是待真实schema核验的假设。真实QA、图片／PDF、研究答案与新模型均未读取／下载／运行；第二数据集验证未完成。
+
+
+Mac实际合成回执：[B_mmdocrag_synthetic_validation.mac.json](B_mmdocrag_synthetic_validation.mac.json)，SHA-256：`c36348ae0c005908b89bf6d21b723f16830a060c67c7cd5f1b2dd332594bef28`。darwin／Python 3.12.14；T01–T14通过，T15因nltk与rouge-score缺失未完整验证；未自动安装或下载资源。

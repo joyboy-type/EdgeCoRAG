@@ -2,7 +2,7 @@
   "audit_version": "b03-static-source-v1",
   "checked_utc": "2026-10-17T05:29:24.133442+00:00",
   "repository_commit": "2fd7505c6a576376b4a92aafaff6d87494765bb7",
-  "method": "Read source and parse Python AST without import/exec of upstream code; no scoring or model calls",
+  "method": "Original static audit retained; new adapter validation executes only selected stateless function AST nodes on synthetic data, not upstream module/top-level",
   "sources": [
     {
       "file": "eval_all.py",
@@ -158,13 +158,56 @@
       "category": "lexical_metric_semantics"
     }
   ],
-  "upstream_executed": false,
+  "upstream_executed": true,
   "external_QA_downloaded": false,
   "judge_api_called": false,
-  "acceptance_cases_status": "specified_not_executed",
-  "implementation_status": "no_adapter_implemented",
+  "acceptance_cases_status": "T01_T14_passed_T15_dependencies_not_verified",
+  "implementation_status": "independent_adapter_cloud_and_Mac_synthetic_checked_T15_gap",
   "table_comparison": {
     "paper_modality_mean_example": "(80.7+52.0)/2 = 66.35; Table3 overall is 70.2",
     "meaning": "Prose and current source aggregation differ; do not relabel or claim compatibility without future row-level validation"
-  }
+  },
+  "adapter_increment": {
+    "scorer_id": "b_mmdocrag_nojudge_metrics_v1",
+    "implementation": "b-side/mmdocrag_nojudge.py",
+    "tests": "b-side/validate_mmdocrag_nojudge.py",
+    "actual_environment": "cloud Linux and actual Mac darwin; synthetic only",
+    "T01_T14": "passed_synthetic_only",
+    "T15": "not_fully_verified_missing_nltk_and_rouge_score",
+    "upstream_module_imported": false,
+    "upstream_top_level_executed": false,
+    "selected_pure_function_AST_executed": true,
+    "source_cache_sha256": "b229d038c4015ec1f6783129d58a8db824ee93c6473e2e87435d5bec35797b11",
+    "runtime_v1_10_1_unchanged": true,
+    "research_QA_read": false,
+    "judge_called": false,
+    "scorer_sha256": "478d11c69dd0aeaf5864f167c81b3290ca0a36c188d454279cd334149296f46e",
+    "validation_sha256": "6c4831120220b467faa4b0fc9fa7d91a6e239981bae0d5181d5d13817a02993a",
+    "mac_validation": {
+      "path": "reports/next_stage_20261017/B_mmdocrag_synthetic_validation.mac.json",
+      "sha256": "c36348ae0c005908b89bf6d21b723f16830a060c67c7cd5f1b2dd332594bef28",
+      "environment": {
+        "platform": "darwin",
+        "python": "3.12.14"
+      },
+      "status": "synthetic_checks_passed_with_explicit_lexical_gaps",
+      "passed_cases": 14,
+      "not_fully_verified_cases": [
+        "T15"
+      ],
+      "dependencies": {
+        "nltk": null,
+        "rouge-score": null
+      }
+    }
+  },
+  "prior_static_audit_execution": {
+    "method": "Read source and parse Python AST without import/exec of upstream code; no scoring or model calls",
+    "upstream_executed": false,
+    "implementation_status": "no_adapter_implemented",
+    "acceptance_cases_status": "specified_not_executed"
+  },
+  "upstream_execution_scope": "extract_citations/get_scores AST only; no upstream module import/top-level, calculate_all or judge",
+  "upstream_module_imported": false,
+  "upstream_top_level_executed": false
 }

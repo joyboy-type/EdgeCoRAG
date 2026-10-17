@@ -1,0 +1,100 @@
+{
+  "scorer_id": "b_mmdocrag_nojudge_metrics_v1",
+  "scorer_sha256": "478d11c69dd0aeaf5864f167c81b3290ca0a36c188d454279cd334149296f46e",
+  "environment": {
+    "platform": "darwin",
+    "python": "3.12.14"
+  },
+  "source_sha256": "b229d038c4015ec1f6783129d58a8db824ee93c6473e2e87435d5bec35797b11",
+  "source_commit": "2fd7505c6a576376b4a92aafaff6d87494765bb7",
+  "synthetic_only": true,
+  "cases": [
+    {
+      "id": "T01",
+      "status": "passed"
+    },
+    {
+      "id": "T02",
+      "status": "passed"
+    },
+    {
+      "id": "T03",
+      "status": "passed"
+    },
+    {
+      "id": "T04",
+      "status": "passed"
+    },
+    {
+      "id": "T05",
+      "status": "passed"
+    },
+    {
+      "id": "T06",
+      "status": "passed"
+    },
+    {
+      "id": "T07",
+      "status": "passed"
+    },
+    {
+      "id": "T08",
+      "status": "passed"
+    },
+    {
+      "id": "T09",
+      "status": "passed"
+    },
+    {
+      "id": "T10",
+      "status": "passed"
+    },
+    {
+      "id": "T11",
+      "status": "passed"
+    },
+    {
+      "id": "T12",
+      "status": "passed"
+    },
+    {
+      "id": "T13",
+      "status": "passed"
+    },
+    {
+      "id": "T14",
+      "status": "passed"
+    },
+    {
+      "id": "T15",
+      "status": "not_fully_verified",
+      "components": [
+        {
+          "metric": "bleu",
+          "status": "not_verified",
+          "reason": "NLTK not installed; not installed automatically"
+        },
+        {
+          "metric": "rougeL",
+          "status": "not_verified",
+          "reason": "rouge-score not installed; not installed automatically"
+        }
+      ]
+    }
+  ],
+  "passed_cases": 14,
+  "not_fully_verified_cases": [
+    "T15"
+  ],
+  "dependencies": {
+    "nltk": null,
+    "rouge-score": null
+  },
+  "upstream_module_imported": false,
+  "selected_pure_function_AST_executed": true,
+  "upstream_top_level_executed": false,
+  "download_or_judge_called": false,
+  "research_QA_read": false,
+  "runtime_v1_10_1_changed_or_rerun": false,
+  "status": "synthetic_checks_passed_with_explicit_lexical_gaps"
+}

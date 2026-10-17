@@ -1,12 +1,12 @@
 # MMDocRAG评分接口：静态核验与执行前合同草案
 
-状态：**仅合同草案与源码审阅；未实现适配器，未运行作者评分代码或judge，未读取真实QA。** 日期：2026-10-17。本合同不修改runtime-v1.10.1。
+状态：**独立无judge适配器已实现并完成云端合成检查；T01–T14通过，T15词面依赖未齐，Mac T01–T14实测通过，T15仍有依赖缺口；未读取真实QA或运行judge。** 日期：2026-10-17。本合同不修改runtime-v1.10.1。
 
-依据：[固定提交的eval_all.py](https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_all.py)、[judge入口](https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_llm_judge.py)、[10项静态发现与哈希](B_mmdocrag_static_audit.json)。源码只做AST语法解析，未import；其顶层会下载NLTK的punkt与punkt_tab。
+依据：[固定提交的eval_all.py](https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_all.py)、[judge入口](https://github.com/MMDocRAG/MMDocRAG/blob/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_llm_judge.py)、[10项静态发现与哈希](B_mmdocrag_static_audit.json)。未import作者完整模块；合成对照仅执行选定无副作用函数AST；其顶层会下载NLTK的punkt与punkt_tab。
 
 ## 1 两条评价路径必须分名
 
-**作者纯指标的兼容投影（建议先准备）**：保留其引用正则、集合计分、答案处理、BLEU与ROUGE-L定义；在外部增加完整性校验。judge列标`not_evaluated`，不能填0，也不能称完整复现作者表格。未来需独立协议号、评分代码哈希、依赖锁和非研究合成输入的逐项等价验证，才可声称纯指标兼容。当前尚无此实现或验证结果。
+**作者纯指标的兼容投影（建议先准备）**：保留其引用正则、集合计分、答案处理、BLEU与ROUGE-L定义；在外部增加完整性校验。judge列标`not_evaluated`，不能填0，也不能称完整复现作者表格。未来需独立协议号、评分代码哈希、依赖锁和非研究合成输入的逐项等价验证，才可声称纯指标兼容。当前引用抽取／集合计分等纯逻辑已有合成验证；BLEU/ROUGE依赖运行兼容性尚未完整验证，不称完整纯指标复现。
 
 **论文描述口径的探索**：论文4.1／A.2写文本与图片F1分别计算后平均；当前代码的Overall F1却是每题两种引用并集F1的宏平均，文本／图片F1另由跨题qid前缀集合计算。Table3 GPT-4.1的图片80.7、文本52.0，算术平均66.35，不是表中Overall70.2。这里已确认口径差异，不能擅自选一个后都称“官方F1”；若需要论文描述口径，另列为新指标，并说明与已发布代码不同。表中70.2是作者报告值，尚未用逐题数据重算。
 
@@ -34,9 +34,9 @@
 - token计数只有两字段同时存在时才进入均值；全无则源码会除零、部分缺失则缩小token分母。新协议要求完整真实计数；若无法获得，应标缺失并单独列分母，不能伪造0或仍声称完全兼容作者输出。
 - 作者入口目前强制judge文件；不能通过空judge文件、全零假分数或临时复制别的题单来绕过。无judge投影须独立入口、独立结果字段，保留未评估状态。
 
-## 4 将来适配器的合成验收规格（尚未执行）
+## 4 合成验收规格与本次状态
 
-以下只用虚构qid与quote，不接触研究题或模型。未来实现时逐项验证并保存逐题输出和代码哈希。
+以下仅用虚构qid、quote、响应；本次T01–T14合成通过，T15未完整验证。逐项回执见B_mmdocrag_synthetic_validation.cloud.json；Mac实际回执另行归档，两者均非真实数据集验证。
 
 | 编号 | 构造输入 | 预期 |
 | --- | --- | --- |
@@ -61,3 +61,18 @@
 MMDocRAG的HF Apache-2.0与仓库数据CC-BY-NC／研究用途声明冲突未解决；真实schema、来源键、15／20设置qid与引用索引关系、split是否按文档隔离尚未核实。论文声明dev2055/eval2000且15／20引用索引会重排，因此不能把两设置当额外独立样本或交叉使用gold。
 
 需要先锁定新任务的答案／引用模板、输出预算、截断与失败策略、样本量及开发／最终评测暴露纪律，再做适配验证和资源预算。MRAG的A/B/C/D严格解析与64token不能直接搬来证明开放文档问答可比。本稿不授权新下载、推理、付费judge或重跑。
+
+## 6 独立适配器接入（本次新增）
+
+入口：`b-side/mmdocrag_nojudge.py`，身份`b_mmdocrag_nojudge_metrics_v1`；验证入口`b-side/validate_mmdocrag_nojudge.py`。不import原eval_all，不触发顶层nltk.download；只为合成对照提取并执行SHA固定源码中的两个无副作用AST函数（extract_citations/get_scores），词面依赖齐全时才对照相应纯函数。缓存原文不修改或入库。本批不安装依赖／下载NLTK资源。
+
+独立manifest冻结qids/qid_type/dataset_revision/split/setting；gold、predictions、候选池旁表都须等长、qid唯一且集合完整，显式记录重排与顺序哈希。输入JSON重复键也拒绝；缺题／多题不输出部分总分。明确生成失败保留原响应但以空响应评分，仍进入固定分母。截断仅保留并标记partial response，除明确失败外不静默清空；真实执行的截断政策仍需另冻结。参考答案只来自独立gold。候选pool非法gold ID报错，预测越界引用保留FP并单列。
+
+结果分名：code_compatible_overall_union_macro_f1（每题并集F1宏平均，附百分数）、code_compatible_modality_global（qid前缀全局集合P/R/F1）、exploratory_mean_of_global_modality_f1（另名探索性模态均值，不能冒称论文表复现）。judge为not_evaluated，各维null，不生成全零假分数。T14只有虚构judge结构校验，不评价judge、不调用服务。
+
+词面指标保持word_tokenize＋默认sentence_bleu无平滑、ROUGE-L use_stemmer=True及原引用文本。任何库／NLTK资源缺失时，不替换tokenizer、不缩小分母，均值为null并说明未评估部分；依赖版本实际记录，不声称已锁定未运行的依赖。token完整真实非负整数对齐全部qid才报均值；缺／坏token保留明细，均值null，绝不除零或以可得子集暗换分母。
+
+Mac实测回执已归档：T01–T14通过，T15未完整验证。许可冲突、真实schema、15/20设置、split来源与A依赖仍未解决，第二数据集验证未完成。已完成的runtime-v1.10.1代码、参数、响应和分数不变。
+
+
+Mac实际合成回执：[B_mmdocrag_synthetic_validation.mac.json](B_mmdocrag_synthetic_validation.mac.json)，SHA-256：`c36348ae0c005908b89bf6d21b723f16830a060c67c7cd5f1b2dd332594bef28`。darwin／Python 3.12.14；T01–T14通过，T15因nltk与rouge-score缺失未完整验证；未自动安装或下载资源。
