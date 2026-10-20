@@ -10,7 +10,7 @@
     {
       "check": "incomplete_corpus_error",
       "pass": true,
-      "detail": "[\"语料目录 C:\\\\Users\\\\zhang'cheng'xuan\\\\AppData\\\\Local\\\\Temp\\\\a15test_dzoy3o65\\\\bad_corpus 不完整，缺少 ['corpus_meta.json', 'corpus_manifest.csv', 'occurrences.csv', 'images']。\"]"
+      "detail": "rc!=0 且提示语含『不完整』（具体临时路径不写进回执，保证可复现）"
     },
     {
       "check": "materialize_with_corpus_flag",

@@ -151,7 +151,7 @@ def main() -> int:
         r = run(["--cohort", "toy", "--dim", "768", "--strategy", "cosine",
                  "--iface", str(iface), "--corpus", str(bad)])
         ok("incomplete_corpus_error", r.returncode != 0 and "不完整" in (r.stderr + r.stdout),
-           (r.stderr + r.stdout).strip().splitlines()[:1])
+           "rc!=0 且提示语含『不完整』（具体临时路径不写进回执，保证可复现）")
 
         # 3a) 显式 --corpus 物化 cosine
         out1 = tmp / "out_cosine"
