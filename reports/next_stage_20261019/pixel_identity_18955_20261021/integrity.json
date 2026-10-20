@@ -1,0 +1,14 @@
+{
+  "a_side_vs_543de53": {
+    "files": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "files_with_crlf": 0,
+  "crlf_paths": [],
+  "double_json_paths": [],
+  "pixel_table_tracked_or_staged": false,
+  "source_parquet_requirement_met": false,
+  "cross_decoder_calibration_done": false,
+  "A_B_intersection_done": false
+}
