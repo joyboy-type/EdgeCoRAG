@@ -30,6 +30,13 @@ from __future__ import annotations
 
 import json
 import sys
+
+try:  # Windows 控制台可能是 cp936，统一成 utf-8 输出，避免中文 detail 触发 UnicodeEncodeError
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except (AttributeError, ValueError):
+    pass
+
 import tempfile
 import time
 from pathlib import Path

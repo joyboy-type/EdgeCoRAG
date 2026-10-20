@@ -22,6 +22,13 @@ import os
 import shutil
 import subprocess
 import sys
+
+try:  # Windows 控制台可能是 cp936，统一成 utf-8 输出，避免中文 detail 触发 UnicodeEncodeError
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except (AttributeError, ValueError):
+    pass
+
 import tempfile
 from pathlib import Path
 
@@ -34,11 +41,16 @@ SCRIPT = HERE / "a15_materialize_packets.py"
 PY = sys.executable
 
 QIDS = ["mragb:1", "mragb:2"]
-_TMP_RE = re.compile(r"[A-Za-z]:[\\/][^\s"',]*a15test_[0-9a-z_]+", re.IGNORECASE)
+# 洗掉临时目录路径，使回执可逐字节复现（不用正则，避免引号/转义在不同平台上出问题）
+_SCRUB_ROOT = {"root": ""}
 
 
 def _scrub(text: str) -> str:
-    return _TMP_RE.sub("<tmp>", str(text))
+    s = str(text)
+    root = _SCRUB_ROOT["root"]
+    if root:
+        s = s.replace(root, "<tmp>").replace(root.replace(chr(92), "/"), "<tmp>")
+    return s
 
 
 def make_corpus(base: Path) -> tuple[Path, dict[str, str], dict[str, dict]]:
@@ -109,7 +121,8 @@ def run(args: list[str], env: dict | None = None) -> subprocess.CompletedProcess
     e.pop("EDGECORAG_IFACE", None)
     if env:
         e.update(env)
-    return subprocess.run([PY, str(SCRIPT), *args], capture_output=True, text=True, env=e)
+    return subprocess.run([PY, str(SCRIPT), *args], capture_output=True, text=True,
+                          encoding="utf-8", errors="replace", env=e)
 
 
 def main() -> int:
@@ -120,6 +133,7 @@ def main() -> int:
         checks.append({"check": name, "pass": bool(cond), "detail": _scrub(detail)})
 
     tmp = Path(tempfile.mkdtemp(prefix="a15test_"))
+    _SCRUB_ROOT["root"] = str(tmp)
     try:
         corpus, sha, meta = make_corpus(tmp / "corpus")
         iface = make_iface(tmp / "iface", sha, meta)

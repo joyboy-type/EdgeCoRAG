@@ -32,6 +32,13 @@ import csv
 import json
 import math
 import sys
+
+try:  # Windows 控制台可能是 cp936，统一成 utf-8 输出，避免中文 detail 触发 UnicodeEncodeError
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except (AttributeError, ValueError):
+    pass
+
 from pathlib import Path
 
 DEFAULT_QIDS = ["mragb:1049", "mragb:1051", "mragb:1062", "mragb:1117", "mragb:10"]

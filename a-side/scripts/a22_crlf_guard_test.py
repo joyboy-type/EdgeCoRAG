@@ -20,6 +20,13 @@ import hashlib
 import json
 import subprocess
 import sys
+
+try:  # Windows 控制台可能是 cp936，统一成 utf-8 输出，避免中文 detail 触发 UnicodeEncodeError
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except (AttributeError, ValueError):
+    pass
+
 import tempfile
 from pathlib import Path
 
@@ -93,7 +100,8 @@ def build_iface(base: Path) -> Path:
 
 
 def run(script: Path, *args: str) -> subprocess.CompletedProcess:
-    return subprocess.run([PY, str(script), *args], capture_output=True, text=True)
+    return subprocess.run([PY, str(script), *args], capture_output=True, text=True,
+                          encoding="utf-8", errors="replace")
 
 
 def to_crlf(p: Path) -> None:

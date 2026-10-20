@@ -5,21 +5,17 @@
     {
       "check": "missing_corpus_clear_error",
       "pass": true,
-      "detail": [
-        "缺少语料目录：请用 --corpus <dir> 指定，或设置环境变量 EDGECORAG_CORPUS=<dir>。"
-      ]
+      "detail": "['缺少语料目录：请用 --corpus <dir> 指定，或设置环境变量 EDGECORAG_CORPUS=<dir>。']"
     },
     {
       "check": "incomplete_corpus_error",
       "pass": true,
-      "detail": [
-        "语料目录 C:\\Users\\zhang'cheng'xuan\\AppData\\Local\\Temp\\a15test_8itttfrm\\bad_corpus 不完整，缺少 ['corpus_meta.json', 'corpus_manifest.csv', 'occurrences.csv', 'images']。"
-      ]
+      "detail": "[\"语料目录 C:\\\\Users\\\\zhang'cheng'xuan\\\\AppData\\\\Local\\\\Temp\\\\a15test_1ej8xkmh\\\\bad_corpus 不完整，缺少 ['corpus_meta.json', 'corpus_manifest.csv', 'occurrences.csv', 'images']。\"]"
     },
     {
       "check": "materialize_with_corpus_flag",
       "pass": true,
-      "detail": "questions\": 2, \"images\": 8, \"content_digest\": \"13197b27b4bbb20d428e3c0c7be02abe9679d842b3f4baa1bae8b03c4a102bb9\"}\nsha 校验 8 文件，不一致 0 -> C:\\Users\\ZHANG'~1\\AppData\\Local\\Temp\\a15test_8itttfrm\\out_cosine\n"
+      "detail": "questions\": 2, \"images\": 8, \"content_digest\": \"13197b27b4bbb20d428e3c0c7be02abe9679d842b3f4baa1bae8b03c4a102bb9\"}\nsha 校验 8 文件，不一致 0 -> <tmp>\\out_cosine\n"
     },
     {
       "check": "verify_zero_mismatch",
@@ -39,7 +35,7 @@
     {
       "check": "materialize_with_env_var",
       "pass": true,
-      "detail": ", \"questions\": 2, \"images\": 8, \"content_digest\": \"64fe7de52a672f16cf06649fb5e5261857afeb3a3464b4cd1855ed506320ba00\"}\nsha 校验 8 文件，不一致 0 -> C:\\Users\\ZHANG'~1\\AppData\\Local\\Temp\\a15test_8itttfrm\\out_env\n"
+      "detail": ", \"questions\": 2, \"images\": 8, \"content_digest\": \"64fe7de52a672f16cf06649fb5e5261857afeb3a3464b4cd1855ed506320ba00\"}\nsha 校验 8 文件，不一致 0 -> <tmp>\\out_env\n"
     },
     {
       "check": "env_var_verify_ok",
@@ -59,7 +55,7 @@
     {
       "check": "utility_materialize_ok",
       "pass": true,
-      "detail": "uestions\": 2, \"images\": 8, \"content_digest\": \"62aba6507e3dffe775e0fa86fe005174a3af40854fefd2531f85e8033c26f3f7\"}\nsha 校验 8 文件，不一致 0 -> C:\\Users\\ZHANG'~1\\AppData\\Local\\Temp\\a15test_8itttfrm\\out_utility\n"
+      "detail": "uestions\": 2, \"images\": 8, \"content_digest\": \"62aba6507e3dffe775e0fa86fe005174a3af40854fefd2531f85e8033c26f3f7\"}\nsha 校验 8 文件，不一致 0 -> <tmp>\\out_utility\n"
     },
     {
       "check": "utility_top3_by_score_desc",
