@@ -11,7 +11,7 @@ spec.loader.exec_module(m)
 class PriorityPartitionTests(unittest.TestCase):
     def test_all_complete_combinations(self):
         for s0,s1,hit in itertools.product((False,True),repeat=3):
-            expected=('检索伤害' if s0 and not s1 else '未检索到' if not hit and not s1 else '检索到但答错' if hit and not s1 else '无关但未伤害')
+            expected=('检索伤害' if s0 and not s1 else '未检索到' if not hit and not s1 else '检索到但答错' if hit and not s1 else '其余（含命中且答对）')
             self.assertEqual(m.classify(True,s0,s1,hit),expected)
     def test_missing_is_separate(self):
         self.assertEqual(m.classify(False,None,None,None),'不可判定')

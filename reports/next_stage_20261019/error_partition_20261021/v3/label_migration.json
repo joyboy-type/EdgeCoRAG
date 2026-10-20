@@ -1,0 +1,23 @@
+{
+  "source_commit": "90be65d49b403f838c307ac8bbbba182a06db192",
+  "old_label": "无关但未伤害",
+  "new_label": "其余（含命中且答对）",
+  "files": {
+    "partition_v3.csv": {
+      "before_sha256": "12303810d148495b39e33441143aa837d29f75965f7ae67c77f3764738964238",
+      "after_sha256": "564860ab6124d30fbaa83c3ec335db63d485545185989a92059b127089c3b890",
+      "change": "label only; counts, assignments and intervals unchanged"
+    },
+    "summary.json": {
+      "before_sha256": "a28b8a9f4464adfca4e33c9003d9e3d0ec076fce91acdd4f5a4566e3c04eb9f5",
+      "after_sha256": "27d72982316e80cf9771dbfbcdc83feaad9b58a2f5d3ccd6202826aeacdbe471",
+      "change": "label only; counts, assignments and intervals unchanged"
+    },
+    "assignments_v3.csv.gz": {
+      "before_sha256": "d862517d581c5c912565d499011b09a70706f40574b76dc273b8faa0e84fc712",
+      "after_sha256": "61c51ecb3bdce2a9933838336583b8c6ff02abfa9ce57daf5cbad31d5c0b3873",
+      "change": "label only; counts, assignments and intervals unchanged"
+    }
+  },
+  "historical_replay": "v3/validation and summary input/implementation hashes describe the original 90be65d run; no interval recomputation this batch; historical receipts unchanged"
+}

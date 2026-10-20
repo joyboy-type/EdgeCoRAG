@@ -1,0 +1,5 @@
+{
+  "partition_v3.csv": true,
+  "summary.json": true,
+  "assignments_v3.csv.gz": true
+}

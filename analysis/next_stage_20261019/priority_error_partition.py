@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 
 REPO=Path(__file__).resolve().parents[2]
-LABELS=('检索伤害','未检索到','检索到但答错','无关但未伤害','不可判定')
+LABELS=('检索伤害','未检索到','检索到但答错','其余（含命中且答对）','不可判定')
 
 def boolean(value):
     if value not in ('True','False'):raise ValueError('Malformed archived boolean')
@@ -24,7 +24,7 @@ def classify(joinable,s0,s1,hit):
     if s0 and not s1:return '检索伤害'
     if not hit and not s1:return '未检索到'
     if hit and not s1:return '检索到但答错'
-    return '无关但未伤害'
+    return '其余（含命中且答对）'
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def write_json(path,value):path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
