@@ -70,7 +70,7 @@
     {
       "check": "e2e_ge_component_sum",
       "pass": true,
-      "detail": "e2e=0.011582 sum=0.011535"
+      "detail": "end_to_end >= component_sum"
     },
     {
       "check": "unmeasured_not_zero",

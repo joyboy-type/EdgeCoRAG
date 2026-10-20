@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import os
 import shutil
 import subprocess
@@ -33,6 +34,11 @@ SCRIPT = HERE / "a15_materialize_packets.py"
 PY = sys.executable
 
 QIDS = ["mragb:1", "mragb:2"]
+_TMP_RE = re.compile(r"[A-Za-z]:[\\/][^\s"',]*a15test_[0-9a-z_]+", re.IGNORECASE)
+
+
+def _scrub(text: str) -> str:
+    return _TMP_RE.sub("<tmp>", str(text))
 
 
 def make_corpus(base: Path) -> tuple[Path, dict[str, str], dict[str, dict]]:
@@ -110,7 +116,8 @@ def main() -> int:
     checks: list[dict] = []
 
     def ok(name: str, cond: bool, detail: str = "") -> None:
-        checks.append({"check": name, "pass": bool(cond), "detail": detail})
+        # 洗掉临时目录绝对路径，使回执可逐字节复现
+        checks.append({"check": name, "pass": bool(cond), "detail": _scrub(detail)})
 
     tmp = Path(tempfile.mkdtemp(prefix="a15test_"))
     try:

@@ -129,8 +129,9 @@ def main() -> int:
     ok("segments_recorded", set(r["segments"]) == {"query_decode_encode_seconds",
                                                    "ranking_no_self_seconds",
                                                    "selection_request_build_seconds"})
+    # 只断言关系，不把随运行变化的秒数写进回执（保证回执可逐字节复现）
     ok("e2e_ge_component_sum", r["end_to_end_seconds"] >= r["component_sum_seconds"] - 1e-6,
-       f"e2e={r['end_to_end_seconds']:.6f} sum={r['component_sum_seconds']:.6f}")
+       "end_to_end >= component_sum")
     ok("unmeasured_not_zero", "utility_scoring_seconds" in r["unmeasured_segments"]
        and "utility_scoring_seconds" not in r["segments"])
     ok("resources_default_null", r["device_memory"] is None and r["system_ram"] is None
