@@ -1,0 +1,61 @@
+{
+  "passed": 11,
+  "total": 11,
+  "checks": [
+    {
+      "check": "provenance_required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "segments_recorded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "e2e_ge_component_sum",
+      "pass": true,
+      "detail": "e2e=0.009823 sum=0.009788"
+    },
+    {
+      "check": "unmeasured_not_zero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "device_memory_null",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "nested_request_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "duplicate_segment_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unknown_segment_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "p95_suppressed_small_n",
+      "pass": true,
+      "detail": "观测数 <20，不报 P95"
+    },
+    {
+      "check": "offline_separate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "component_exceeds_e2e_flagged",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

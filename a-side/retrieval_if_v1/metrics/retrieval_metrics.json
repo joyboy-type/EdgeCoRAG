@@ -1,0 +1,210 @@
+{
+  "protocol": "a-side/retrieval-interface-v1",
+  "identity": "sha256(JPEG q95 bytes)",
+  "metrics_definition": {
+    "any_hit@k": "1[top-k ∩ GT 非空] / 有非空GT的题数",
+    "set_recall@k": "逐题 |top-k ∩ GT| / |GT| 后取题均值",
+    "all_gt_covered@10": "1[GT ⊆ top-10]",
+    "MRR@10": "首个精确命中名次倒数，未命中 0"
+  },
+  "cohorts": {
+    "smoke_20|768": {
+      "questions": 20,
+      "any_hit@1": 0.5,
+      "any_hit@5": 0.7,
+      "any_hit@10": 0.75,
+      "set_recall@5": 0.35,
+      "set_recall@10": 0.5,
+      "all_gt_covered@10": 0.2,
+      "MRR@10": 0.5725,
+      "counts": {
+        "any_hit@1": 10,
+        "any_hit@5": 14,
+        "any_hit@10": 15,
+        "all_gt@10": 4
+      }
+    },
+    "smoke_20|512": {
+      "questions": 20,
+      "any_hit@1": 0.45,
+      "any_hit@5": 0.75,
+      "any_hit@10": 0.8,
+      "set_recall@5": 0.36,
+      "set_recall@10": 0.5,
+      "all_gt_covered@10": 0.2,
+      "MRR@10": 0.5625,
+      "counts": {
+        "any_hit@1": 9,
+        "any_hit@5": 15,
+        "any_hit@10": 16,
+        "all_gt@10": 4
+      }
+    },
+    "smoke_20|256": {
+      "questions": 20,
+      "any_hit@1": 0.45,
+      "any_hit@5": 0.7,
+      "any_hit@10": 0.8,
+      "set_recall@5": 0.34,
+      "set_recall@10": 0.5,
+      "all_gt_covered@10": 0.15,
+      "MRR@10": 0.550556,
+      "counts": {
+        "any_hit@1": 9,
+        "any_hit@5": 14,
+        "any_hit@10": 16,
+        "all_gt@10": 3
+      }
+    },
+    "smoke_20|128": {
+      "questions": 20,
+      "any_hit@1": 0.6,
+      "any_hit@5": 0.75,
+      "any_hit@10": 0.75,
+      "set_recall@5": 0.35,
+      "set_recall@10": 0.49,
+      "all_gt_covered@10": 0.15,
+      "MRR@10": 0.6475,
+      "counts": {
+        "any_hit@1": 12,
+        "any_hit@5": 15,
+        "any_hit@10": 15,
+        "all_gt@10": 3
+      }
+    },
+    "dev_150|768": {
+      "questions": 150,
+      "any_hit@1": 0.38,
+      "any_hit@5": 0.666667,
+      "any_hit@10": 0.74,
+      "set_recall@5": 0.302,
+      "set_recall@10": 0.442,
+      "all_gt_covered@10": 0.133333,
+      "MRR@10": 0.500034,
+      "counts": {
+        "any_hit@1": 57,
+        "any_hit@5": 100,
+        "any_hit@10": 111,
+        "all_gt@10": 20
+      }
+    },
+    "dev_150|512": {
+      "questions": 150,
+      "any_hit@1": 0.38,
+      "any_hit@5": 0.66,
+      "any_hit@10": 0.733333,
+      "set_recall@5": 0.302,
+      "set_recall@10": 0.442,
+      "all_gt_covered@10": 0.133333,
+      "MRR@10": 0.498921,
+      "counts": {
+        "any_hit@1": 57,
+        "any_hit@5": 99,
+        "any_hit@10": 110,
+        "all_gt@10": 20
+      }
+    },
+    "dev_150|256": {
+      "questions": 150,
+      "any_hit@1": 0.36,
+      "any_hit@5": 0.66,
+      "any_hit@10": 0.733333,
+      "set_recall@5": 0.295333,
+      "set_recall@10": 0.434,
+      "all_gt_covered@10": 0.126667,
+      "MRR@10": 0.489656,
+      "counts": {
+        "any_hit@1": 54,
+        "any_hit@5": 99,
+        "any_hit@10": 110,
+        "all_gt@10": 19
+      }
+    },
+    "dev_150|128": {
+      "questions": 150,
+      "any_hit@1": 0.333333,
+      "any_hit@5": 0.62,
+      "any_hit@10": 0.726667,
+      "set_recall@5": 0.286,
+      "set_recall@10": 0.411333,
+      "all_gt_covered@10": 0.126667,
+      "MRR@10": 0.460024,
+      "counts": {
+        "any_hit@1": 50,
+        "any_hit@5": 93,
+        "any_hit@10": 109,
+        "all_gt@10": 19
+      }
+    },
+    "frozen_test|768": {
+      "questions": 1033,
+      "any_hit@1": 0.371733,
+      "any_hit@5": 0.678606,
+      "any_hit@10": 0.773475,
+      "set_recall@5": 0.307115,
+      "set_recall@10": 0.462875,
+      "all_gt_covered@10": 0.164569,
+      "MRR@10": 0.496432,
+      "counts": {
+        "any_hit@1": 384,
+        "any_hit@5": 701,
+        "any_hit@10": 799,
+        "all_gt@10": 170
+      }
+    },
+    "frozen_test|512": {
+      "questions": 1033,
+      "any_hit@1": 0.368829,
+      "any_hit@5": 0.677638,
+      "any_hit@10": 0.775411,
+      "set_recall@5": 0.306341,
+      "set_recall@10": 0.465682,
+      "all_gt_covered@10": 0.171346,
+      "MRR@10": 0.496039,
+      "counts": {
+        "any_hit@1": 381,
+        "any_hit@5": 700,
+        "any_hit@10": 801,
+        "all_gt@10": 177
+      }
+    },
+    "frozen_test|256": {
+      "questions": 1033,
+      "any_hit@1": 0.35818,
+      "any_hit@5": 0.683446,
+      "any_hit@10": 0.779284,
+      "set_recall@5": 0.308277,
+      "set_recall@10": 0.465102,
+      "all_gt_covered@10": 0.170378,
+      "MRR@10": 0.491004,
+      "counts": {
+        "any_hit@1": 370,
+        "any_hit@5": 706,
+        "any_hit@10": 805,
+        "all_gt@10": 176
+      }
+    },
+    "frozen_test|128": {
+      "questions": 1033,
+      "any_hit@1": 0.350436,
+      "any_hit@5": 0.661181,
+      "any_hit@10": 0.755082,
+      "set_recall@5": 0.289787,
+      "set_recall@10": 0.434608,
+      "all_gt_covered@10": 0.132623,
+      "MRR@10": 0.479274,
+      "counts": {
+        "any_hit@1": 362,
+        "any_hit@5": 683,
+        "any_hit@10": 780,
+        "all_gt@10": 137
+      }
+    }
+  },
+  "discipline": [
+    "维度只能由 dev_150 决定；frozen_test 数值仅描述性，禁止反选维度或阈值",
+    "精确哈希命中不等于语义支持；未命中 GT 也不等于检索失败（GT 不穷尽有效证据）",
+    "本表为已观察数据上的复核，不是新盲测"
+  ],
+  "known_gap": "已发布 smoke 报告的索引规模 18,955 与本语料 4,712（唯一内容）不一致，索引口径待 B 提供构建回执"
+}

@@ -1,0 +1,41 @@
+{
+  "corpus_version": "corpus_v1",
+  "dataset": {
+    "repo": "uclanlp/MRAG-Bench",
+    "revision": "43620fde4044bb150e158c67ad7af6b6b11e1da2",
+    "split": "test",
+    "shards": 28
+  },
+  "identity": {
+    "rule": "sha256(JPEG q95 re-encode of the parquet struct<bytes>)",
+    "why": "沿用既有证据包/审计的身份口径；原始字节也在 parquet 中，raw sha256 可作为附加核对",
+    "deterministic": "PIL 12.3.0 下同机多次独立加载结果一致（见 scripts/test_hash_stability.py）"
+  },
+  "row_order_rule": "sha256 升序（与发现顺序、题目顺序、角色无关）",
+  "counts": {
+    "questions": 1353,
+    "image_instances": 14475,
+    "instances_by_role": {
+      "query": 1353,
+      "gt": 6357,
+      "official_retrieved": 6765
+    },
+    "unique_contents": 4712,
+    "duplicate_instances": 9763
+  },
+  "content_digest_sha256": "31ade7b7e2454d0b9fcd58568247dd2a6862e15273fdd65e1d12ed50e373264e",
+  "files": {
+    "occurrences.csv": "每个实例 (qid,role,rank) -> sha256",
+    "corpus_manifest.csv": "索引行序 row -> sha256（本语料就是候选池本体）",
+    "images/": "唯一内容 q95 字节，路径 images/<sha[:2]>/<sha>.jpg"
+  },
+  "verify": {
+    "command": "python scripts/a06_build_corpus.py --verify",
+    "mismatches_in_this_run": 0
+  },
+  "elapsed_seconds": 189.2,
+  "known_gaps": [
+    "已发布 smoke 报告的索引规模 18,955 无法由本数据集的实例数 14,475 或唯一内容数 4,712 复现，需 B 提供索引构建回执",
+    "唯一内容 4,712 由 JPEG q95 口径给出；若改用原始字节口径，集合规模相同（互为双射，见 outputs/census/image_census.json）"
+  ]
+}

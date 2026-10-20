@@ -1,0 +1,342 @@
+{
+  "summary": {
+    "protocol": "a-side/retrieval-interface-v1",
+    "retriever_id": "embeddinggemma-2@914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "pool_id": "eg2_shared_top10",
+    "encoder_dtype": "fp32",
+    "query_batch": 1,
+    "corpus": {
+      "rows": 4712,
+      "identity": "sha256(JPEG q95 bytes)",
+      "row_order": "sha256 asc",
+      "unique_contents": 4712
+    },
+    "top_k": 10,
+    "select_k": 3,
+    "order_rule": "score desc, sha256 asc",
+    "self_match_removal": "drop rows with sha256 == query image sha256 before top-k",
+    "random_seed_rule": "pcg64((qid_num*1000003+20261017) % (2**63-1)), sorted indices",
+    "cohorts": {
+      "smoke_20": {
+        "768": {
+          "questions": 20,
+          "pool_rows": 200,
+          "select_rows": 120
+        },
+        "512": {
+          "questions": 20,
+          "pool_rows": 200,
+          "select_rows": 120
+        },
+        "256": {
+          "questions": 20,
+          "pool_rows": 200,
+          "select_rows": 120
+        },
+        "128": {
+          "questions": 20,
+          "pool_rows": 200,
+          "select_rows": 120
+        }
+      },
+      "dev_150": {
+        "768": {
+          "questions": 150,
+          "pool_rows": 1500,
+          "select_rows": 900
+        },
+        "512": {
+          "questions": 150,
+          "pool_rows": 1500,
+          "select_rows": 900
+        },
+        "256": {
+          "questions": 150,
+          "pool_rows": 1500,
+          "select_rows": 900
+        },
+        "128": {
+          "questions": 150,
+          "pool_rows": 1500,
+          "select_rows": 900
+        }
+      },
+      "frozen_test": {
+        "768": {
+          "questions": 1033,
+          "pool_rows": 10330,
+          "select_rows": 6198
+        },
+        "512": {
+          "questions": 1033,
+          "pool_rows": 10330,
+          "select_rows": 6198
+        },
+        "256": {
+          "questions": 1033,
+          "pool_rows": 10330,
+          "select_rows": 6198
+        },
+        "128": {
+          "questions": 1033,
+          "pool_rows": 10330,
+          "select_rows": 6198
+        }
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "pools/smoke_20__dim768__top10.csv",
+      "sha256": "f011547aa7e5ae8efa071e3c69869e1ead3b08f67a344434a709cf8eabd80bcf",
+      "bytes": 34746,
+      "rows": 200,
+      "note": "smoke_20 / 768 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/smoke_20__dim768__cosine+random.csv",
+      "sha256": "4034cacf25e98db15dae6dd3ef802f029c70eafff6c0710377246c83f3312811",
+      "bytes": 15273,
+      "rows": 120,
+      "note": "smoke_20 / 768 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/smoke_20__dim768__margins.csv",
+      "sha256": "93a8f0bc2fd05d1e5e2d3308fea9c406afd66b63b2d432f344a9c1960d336e03",
+      "bytes": 4437,
+      "rows": 20,
+      "note": "smoke_20 / 768 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/smoke_20__dim512__top10.csv",
+      "sha256": "ea7109b4030d1e37bc3622ec0475c2df8321cf6364b7bc46ed26a6809b68c291",
+      "bytes": 34742,
+      "rows": 200,
+      "note": "smoke_20 / 512 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/smoke_20__dim512__cosine+random.csv",
+      "sha256": "e7e36e05135bb683724bb356938b9e8e23aa22079f2fe43656ad3984809cea05",
+      "bytes": 15272,
+      "rows": 120,
+      "note": "smoke_20 / 512 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/smoke_20__dim512__margins.csv",
+      "sha256": "7333a5beb31d5334bd669f7b4f33f42bfcf586f0f5b0ffcd45d1364d343f716e",
+      "bytes": 4439,
+      "rows": 20,
+      "note": "smoke_20 / 512 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/smoke_20__dim256__top10.csv",
+      "sha256": "e33028c75dbd7697d7c472e714c853038de93263f1396ee715bd886d6dda03b8",
+      "bytes": 34745,
+      "rows": 200,
+      "note": "smoke_20 / 256 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/smoke_20__dim256__cosine+random.csv",
+      "sha256": "473310bae5f5fc292863d1a008b6bf38d2e2e885b3addd1fd565f7a38aa4efaa",
+      "bytes": 15275,
+      "rows": 120,
+      "note": "smoke_20 / 256 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/smoke_20__dim256__margins.csv",
+      "sha256": "3812170db3c9620c77d0b8a09afb8c320af0529ab709d46362ace7be35f2f9b5",
+      "bytes": 4438,
+      "rows": 20,
+      "note": "smoke_20 / 256 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/smoke_20__dim128__top10.csv",
+      "sha256": "c030477e1749d0073cb274274a5aab409c5b537cf0aed35f23cd328e616c1278",
+      "bytes": 34734,
+      "rows": 200,
+      "note": "smoke_20 / 128 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/smoke_20__dim128__cosine+random.csv",
+      "sha256": "5b05fddf6070f2769068ea0a61e687fca0ebfca13a367a782d5dea0e01c4cab5",
+      "bytes": 15269,
+      "rows": 120,
+      "note": "smoke_20 / 128 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/smoke_20__dim128__margins.csv",
+      "sha256": "7dfcf2b7845e7799793eea4fbac028e3c25db1603214715d2dbcb1d808cfe557",
+      "bytes": 4421,
+      "rows": 20,
+      "note": "smoke_20 / 128 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/dev_150__dim768__top10.csv",
+      "sha256": "408c005f6de002bc10a999dc6c3164c65922b43c937b0932a44db4ab32407d8b",
+      "bytes": 259710,
+      "rows": 1500,
+      "note": "dev_150 / 768 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/dev_150__dim768__cosine+random.csv",
+      "sha256": "3291ab75e915e283771dc1083eba6fd12fc3e9fcdcb9b44f1841bb4c3c38dd89",
+      "bytes": 113909,
+      "rows": 900,
+      "note": "dev_150 / 768 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/dev_150__dim768__margins.csv",
+      "sha256": "f9742720b4cb33e93fa07d22b60d3bfbb7a1b0ae0564844483d3ea8da5fbbd19",
+      "bytes": 31929,
+      "rows": 150,
+      "note": "dev_150 / 768 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/dev_150__dim512__top10.csv",
+      "sha256": "3f7670c4b088859ab59f6652b72c0c9b4f1c1d4a52e75cd2582f203648b08e45",
+      "bytes": 259705,
+      "rows": 1500,
+      "note": "dev_150 / 512 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/dev_150__dim512__cosine+random.csv",
+      "sha256": "4b6cc4d848c6b35cc2eea769cb1a4f6671151ec39b8177f7d493b3b5b268ffa8",
+      "bytes": 113920,
+      "rows": 900,
+      "note": "dev_150 / 512 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/dev_150__dim512__margins.csv",
+      "sha256": "1edab1faa7a32806455f5dae087d1d728ea6f2f10f2792c4ea9f0a6b3ed29214",
+      "bytes": 31947,
+      "rows": 150,
+      "note": "dev_150 / 512 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/dev_150__dim256__top10.csv",
+      "sha256": "9841dced425a6345470a3913eb56ab1b9bb7f6a3b414936e20cc2c8a87c3f638",
+      "bytes": 259694,
+      "rows": 1500,
+      "note": "dev_150 / 256 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/dev_150__dim256__cosine+random.csv",
+      "sha256": "0d590520441861ffe217f0f34f7b8301c9a26792f1f62c53a40fca496b2ec250",
+      "bytes": 113906,
+      "rows": 900,
+      "note": "dev_150 / 256 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/dev_150__dim256__margins.csv",
+      "sha256": "64b8d09e03c92c05b238cabd6682a963cb33af5c0cdf5934c178d1b6879a4749",
+      "bytes": 31944,
+      "rows": 150,
+      "note": "dev_150 / 256 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/dev_150__dim128__top10.csv",
+      "sha256": "b179e98d2711880d6b4912d9f65ad85b4e845ee004c5b0b5b51e7c5849ad8226",
+      "bytes": 259708,
+      "rows": 1500,
+      "note": "dev_150 / 128 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/dev_150__dim128__cosine+random.csv",
+      "sha256": "84665f03477a5cde28b78e5b72a49b58eb4e886a75d83c8204390a2d9015d01a",
+      "bytes": 113908,
+      "rows": 900,
+      "note": "dev_150 / 128 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/dev_150__dim128__margins.csv",
+      "sha256": "03380efa88bacd68b504334135e2fbe4e64765eacbace97fd45e75a48aa311be",
+      "bytes": 31909,
+      "rows": 150,
+      "note": "dev_150 / 128 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/frozen_test__dim768__top10.csv",
+      "sha256": "035948b91f6630736fb834a0ee0c9deebadb29327afe9da6f0b319b73ab95b72",
+      "bytes": 1789110,
+      "rows": 10330,
+      "note": "frozen_test / 768 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/frozen_test__dim768__cosine+random.csv",
+      "sha256": "c7739860dfd41a02b2e4a4e3f22fbc336f1fed30ee84039cc5a1efe71b7288b2",
+      "bytes": 784676,
+      "rows": 6198,
+      "note": "frozen_test / 768 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/frozen_test__dim768__margins.csv",
+      "sha256": "ea559d068eecab0adff4c8c38773ee69c43f4b725dafa0e208a8fdbadf3a51b6",
+      "bytes": 218989,
+      "rows": 1033,
+      "note": "frozen_test / 768 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/frozen_test__dim512__top10.csv",
+      "sha256": "a0f2e9c440b05a1ca6bd347a89c89a7253ed4828c663379c71c6f6103a8c9caa",
+      "bytes": 1789053,
+      "rows": 10330,
+      "note": "frozen_test / 512 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/frozen_test__dim512__cosine+random.csv",
+      "sha256": "ed54a71632c3b8d6b41d0a3699bbe28b79a855e1565f4f24da7900ae6f7faae8",
+      "bytes": 784637,
+      "rows": 6198,
+      "note": "frozen_test / 512 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/frozen_test__dim512__margins.csv",
+      "sha256": "18fc2beddb69b8495ea85750d53750a9ad49cb28ab8c68de6a8b44d55a164ced",
+      "bytes": 218865,
+      "rows": 1033,
+      "note": "frozen_test / 512 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/frozen_test__dim256__top10.csv",
+      "sha256": "af30ed5d1c5c2a56213feda4dfd7a1299fcdd8fa5ae9e1c866fe455054e417b1",
+      "bytes": 1789039,
+      "rows": 10330,
+      "note": "frozen_test / 256 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/frozen_test__dim256__cosine+random.csv",
+      "sha256": "be99bda4b7d3d80d07824ba8047d8b15f4348f8f6404ee19c42bbe3d54c76bd2",
+      "bytes": 784621,
+      "rows": 6198,
+      "note": "frozen_test / 256 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/frozen_test__dim256__margins.csv",
+      "sha256": "525c9b9b50ebf2a169f418a367ec695fdbb71d86ba86563e8299fcfb0c26e0cc",
+      "bytes": 218871,
+      "rows": 1033,
+      "note": "frozen_test / 256 维 / 排序稳健性指标（最小相邻分差）"
+    },
+    {
+      "path": "pools/frozen_test__dim128__top10.csv",
+      "sha256": "b80dda01aa4a4b4ff4380c9140d07065323ab42999c54cc0c5dc61edd6bbe6b4",
+      "bytes": 1789054,
+      "rows": 10330,
+      "note": "frozen_test / 128 维 / 无自匹配 top10（含分数与身份）"
+    },
+    {
+      "path": "select3/frozen_test__dim128__cosine+random.csv",
+      "sha256": "9545302c738fb2fe1edaa3848f330774db7925d472a629db12825cee102c9423",
+      "bytes": 784592,
+      "rows": 6198,
+      "note": "frozen_test / 128 维 / cosine 与 random 各 3 张"
+    },
+    {
+      "path": "pool_quality/frozen_test__dim128__margins.csv",
+      "sha256": "6ee1a795de6c4d0144957ff3431cca6e017bc186259c0a4be400a447062c7577",
+      "bytes": 218746,
+      "rows": 1033,
+      "note": "frozen_test / 128 维 / 排序稳健性指标（最小相邻分差）"
+    }
+  ]
+}
