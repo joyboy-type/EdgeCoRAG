@@ -305,7 +305,7 @@ def self_check() -> int:
         print(f"\n{passed}/{len(checks)}")
     out = Path(__file__).resolve().parent.parent / "reports" / "next_stage_20261020" / "index_receipt_validator_selftest.json"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    out.write_bytes((json.dumps(payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
     return 0 if passed == len(checks) else 1
 
 

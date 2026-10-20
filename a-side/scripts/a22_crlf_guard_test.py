@@ -192,7 +192,7 @@ def main() -> int:
     print(json.dumps(payload, indent=2, ensure_ascii=False))
     out = ROOT / "a-side" / "reports" / "next_stage_20261020" / "crlf_guard_test.json"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    out.write_bytes((json.dumps(payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
     print(f"-> {out}")
     return 0 if passed == len(checks) else 1
 
