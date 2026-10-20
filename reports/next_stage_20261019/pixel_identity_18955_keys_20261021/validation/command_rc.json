@@ -1,0 +1,42 @@
+[
+  {
+    "label": "tests",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests"
+    ],
+    "returncode": 0,
+    "raw_output": "tests.txt",
+    "stderr": "...................................................................................................................................................\n----------------------------------------------------------------------\nRan 147 tests in 1.982s\n\nOK\n"
+  },
+  {
+    "label": "analysis_tests",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "analysis/next_stage_20261019",
+      "-p",
+      "test_*.py"
+    ],
+    "returncode": 0,
+    "raw_output": "analysis_tests.txt",
+    "stderr": "......................................................\n----------------------------------------------------------------------\nRan 54 tests in 1.873s\n\nOK\n"
+  },
+  {
+    "label": "audit_bare",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "analysis/next_stage_20261019/audit_requirement_evidence.py"
+    ],
+    "returncode": 1,
+    "raw_output": "audit_bare.txt",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "a_side_vs_543de53": {
+    "files": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "files_with_crlf": 0,
+  "crlf_paths": [],
+  "keys_bytes": 3696251,
+  "keys_under5MiB": true,
+  "keys_rows": 18955,
+  "keys_columns": [
+    "sha256_raw",
+    "sha256_q95",
+    "l1b"
+  ],
+  "local_main_table_tracked": false,
+  "no_images_or_vectors_added": true,
+  "returncode": 0
+}

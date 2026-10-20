@@ -1,0 +1,37 @@
+{
+  "rows": 18955,
+  "bytes": 3696251,
+  "sha256": "7d51cf8e6b18e038cf7eeac0a88bf1cd8114a56af0fe529e8b687079fcdd4208",
+  "columns": [
+    "sha256_raw",
+    "sha256_q95",
+    "l1b"
+  ],
+  "source_sha256": "8039a0c40a2bcbe14ec5e2b18a6b45f14bf47bbdbc03f9e6913618214d35eafc",
+  "source_bytes": 43583388,
+  "under_5MiB": true,
+  "quantization": "round(v/255*11), exact uint8 integer implementation (22*v+255)//510; no ties possible",
+  "packing": "row-major; first quantized pixel high nibble, second low nibble; each q masked0x0f",
+  "packed_bytes_per_image": 512,
+  "raw_q95_copied_unchanged": true,
+  "source_pixels_recomputed": false,
+  "raw_provenance": "ZIP original member bytes; same origin as A parquet bytes: 未验证",
+  "decoder_versions": "B Pillow12.3.0/libjpeg6.2(turbo3.1.4.1); A libjpeg8.0",
+  "decoder_effect": "raw/q95 copied keys are decoder-independent during export; l1b derives from gray32 and may change across decoder versions; no invariance claimed",
+  "l1b_scope": "Coarse candidate matching only; quantization may merge different gray32 arrays and does not guarantee semantic or pixel equivalence",
+  "input_images_or_vectors_read": false,
+  "output_contains_gray32_ahash_pixelsha": false,
+  "local_source_table_path": "/Users/joyboy/Documents/Codex/2026-10-19/edgecorag-context-recovery/outputs/pixel_identity_18955_20261021/pixel_identity_18955.csv",
+  "private_source_not_published": true,
+  "source_same_origin_as_A_parquet": "未验证",
+  "push_status": "not pushed; user review required per final instruction",
+  "quantization_validation": {
+    "all_256_uint8_values_against_literal_round": "passed in unit test",
+    "independent_real_gray32_sample_rows": 20,
+    "all_rows_raw_q95_match_source_order": 18955,
+    "source_main_sha_unchanged": true,
+    "unique_l1b": 18955,
+    "returncode": 0
+  },
+  "key_export_cli_rc": 0
+}
