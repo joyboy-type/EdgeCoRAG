@@ -334,7 +334,7 @@ def schedule(queries):
     return rows
 
 
-def request(q, corpus, strategy, runtime, clock=time.perf_counter,
+def _request(q, corpus, strategy, runtime, clock=time.perf_counter,
             splits=('smoke_20',), strategies=('cosine','utility')):
     no_labels(q)
     if q['split'] not in splits or strategy not in strategies:
@@ -378,6 +378,29 @@ def request(q, corpus, strategy, runtime, clock=time.perf_counter,
                 memory_scope='process CUDA allocator; maximum across both reset segments; not device total')
 
 
+def request(q, corpus, strategy, runtime, clock=time.perf_counter,
+            splits=('smoke_20',), strategies=('cosine','utility')):
+    """Future runs only: device-wide sampled resources; never allocator relabeling."""
+    from recording_policy import ResourceSampler
+    synthetic=runtime.synthetic
+    unreadable=lambda name: (_ for _ in ()).throw(OSError('synthetic runtime'))
+    sampler=ResourceSampler(None if synthetic else getattr(runtime,'device_memory',None),
+                            meminfo=unreadable if synthetic else None).start()
+    record=None
+    try:
+        record=_request(q,corpus,strategy,runtime,clock,splits,strategies)
+    finally:
+        sampler.sample()
+        resources=sampler.finish()
+        generation=record['generation'] if record is not None else {}
+        resources['rendered_prompt']=generation.get('rendered_prompt',
+            dict(status='not_recorded',reason='backend did not return actual processor-rendered string'))
+        resources['timing_scope']='sampler setup/teardown excluded from existing end_to_end_seconds; in-request instrumentation overhead included'
+        runtime.last_recording=resources
+    record['recording']=resources
+    return record
+
+
 def save(path, value):
     tmp=path.with_suffix('.next.json')
     with tmp.open('w') as f:
@@ -397,7 +420,7 @@ def run(queries,corpus,output,runtime):
             for job in jobs:
                 try: record=dict(job,**{k:v for k,v in request(lookup[job['qid']],corpus,job['strategy'],runtime).items() if k not in job})
                 except BaseException as error:
-                    f.write(json.dumps(dict(job,error_type=type(error).__name__,error=str(error)))+'\n')
+                    f.write(json.dumps(dict(job,error_type=type(error).__name__,error=str(error),recording=getattr(runtime,'last_recording',{})))+'\n')
                     f.flush();os.fsync(f.fileno());raise
                 f.write(json.dumps(record,ensure_ascii=False,allow_nan=False)+'\n');f.flush();os.fsync(f.fileno())
                 receipt['completed_requests']+=1
@@ -530,7 +553,7 @@ class NativeRuntime:
 
 
 ENTRY = 'b-side/e2e_smoke.py'
-REQUIRED_SOURCES = (
+REQUIRED_SOURCES = ('b-side/recording_policy.py',
     'b-side/e2e_smoke.py','b-side/e2e_lease.py','b-side/model_adapters.py',
     'b-side/run_candidate.py','b-side/run_smoke.py','b-side/handover_adapter.py',
     'b-side/accept_handover.py','b-side/score_minimal.py',

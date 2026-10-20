@@ -18,10 +18,12 @@ def project_rows(official,source,prompts):
     result=[]
     for index,metadata in enumerate(official):
         qid=metadata['qid'];item=source.get(qid);present=item is not None
+        choices=metadata['choices']
+        if not choices or metadata['answer_choice'] not in choices:raise ValueError('Official choices missing or invalid')
         if present and (item['answer']!=metadata['answer_choice'] or item['scenario']!=metadata['scenario']):
             raise ValueError('Source/official metadata identity mismatch')
         result.append(dict(id=metadata['id'],qs_id=metadata['id'],raw_id=metadata['id'],qid=qid,
-            gt_choice=metadata['answer_choice'],output=item['raw_output'] if present else '',
+            choices=choices,option_count=len(choices),gt_choice=metadata['answer_choice'],output=item['raw_output'] if present else '',
             prompt=prompts.get(qid,''),scenario=metadata['scenario'],official_row_index=index,
             project_split=item['split'] if present else metadata.get('project_split','unknown'),
             parse_status=item['parse_status'] if present else 'missing_prediction',
@@ -45,7 +47,8 @@ def inputs(repo,metadata_dir):
     page_rows.sort(key=lambda row:row['row_idx'])
     if [r['row_idx'] for r in page_rows]!=list(range(1353)):raise ValueError('Official order incomplete')
     official=[dict(qid='mragb:'+str(r['row']['id']),id=str(r['row']['id']),
-                   answer_choice=r['row']['answer_choice'],scenario=r['row']['scenario']) for r in page_rows]
+                   answer_choice=r['row']['answer_choice'],scenario=r['row']['scenario'],
+                   choices={k:r['row'][k] for k in 'ABCD' if isinstance(r['row'].get(k),str) and r['row'][k].strip()}) for r in page_rows]
     if [r['qid'] for r in official]!=reference['official_dataset_order_qids']:raise ValueError('Official row order binding mismatch')
     predictions={}
     for row in jsonl(pred_path):

@@ -1,0 +1,61 @@
+model,category,cohort,denominator,count,percent,status,limit
+qwen3vl_4b,a_not_retrieved,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_4b,b_present_but_wrong,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_4b,c_S0_right_S1_wrong,smoke_20,20,0,0.0,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen3vl_4b,d_ability_replacement,smoke_20,20,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen3vl_4b,a_not_retrieved,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_4b,b_present_but_wrong,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_4b,c_S0_right_S1_wrong,dev,150,18,12.0,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen3vl_4b,d_ability_replacement,dev,150,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen3vl_4b,a_not_retrieved,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_4b,b_present_but_wrong,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_4b,c_S0_right_S1_wrong,frozen_test,1033,105,10.164569215876089,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen3vl_4b,d_ability_replacement,frozen_test,1033,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen3vl_8b,a_not_retrieved,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_8b,b_present_but_wrong,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_8b,c_S0_right_S1_wrong,smoke_20,20,1,5.0,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen3vl_8b,d_ability_replacement,smoke_20,20,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen3vl_8b,a_not_retrieved,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_8b,b_present_but_wrong,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_8b,c_S0_right_S1_wrong,dev,150,8,5.333333333333333,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen3vl_8b,d_ability_replacement,dev,150,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen3vl_8b,a_not_retrieved,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_8b,b_present_but_wrong,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen3vl_8b,c_S0_right_S1_wrong,frozen_test,1033,79,7.647628267182962,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen3vl_8b,d_ability_replacement,frozen_test,1033,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+gemma4_e2b,a_not_retrieved,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e2b,b_present_but_wrong,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e2b,c_S0_right_S1_wrong,smoke_20,20,5,25.0,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+gemma4_e2b,d_ability_replacement,smoke_20,20,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+gemma4_e2b,a_not_retrieved,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e2b,b_present_but_wrong,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e2b,c_S0_right_S1_wrong,dev,150,8,5.333333333333333,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+gemma4_e2b,d_ability_replacement,dev,150,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+gemma4_e2b,a_not_retrieved,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e2b,b_present_but_wrong,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e2b,c_S0_right_S1_wrong,frozen_test,1033,112,10.842207163601161,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+gemma4_e2b,d_ability_replacement,frozen_test,1033,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+gemma4_e4b,a_not_retrieved,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e4b,b_present_but_wrong,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e4b,c_S0_right_S1_wrong,smoke_20,20,2,10.0,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+gemma4_e4b,d_ability_replacement,smoke_20,20,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+gemma4_e4b,a_not_retrieved,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e4b,b_present_but_wrong,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e4b,c_S0_right_S1_wrong,dev,150,13,8.666666666666666,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+gemma4_e4b,d_ability_replacement,dev,150,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+gemma4_e4b,a_not_retrieved,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e4b,b_present_but_wrong,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+gemma4_e4b,c_S0_right_S1_wrong,frozen_test,1033,86,8.325266214908035,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+gemma4_e4b,d_ability_replacement,frozen_test,1033,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen35_4b,a_not_retrieved,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen35_4b,b_present_but_wrong,smoke_20,20,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen35_4b,c_S0_right_S1_wrong,smoke_20,20,0,0.0,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen35_4b,d_ability_replacement,smoke_20,20,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen35_4b,a_not_retrieved,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen35_4b,b_present_but_wrong,dev,150,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen35_4b,c_S0_right_S1_wrong,dev,150,16,10.666666666666666,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen35_4b,d_ability_replacement,dev,150,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class
+qwen35_4b,a_not_retrieved,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen35_4b,b_present_but_wrong,frozen_test,1033,,,blocked,No A pools/ranks + exact GT identity in this public checkout
+qwen35_4b,c_S0_right_S1_wrong,frozen_test,1033,100,9.68054211035818,observed_overlap_possible,"Original S1 published candidates, not D1 no-self path; may overlap a/b"
+qwen35_4b,d_ability_replacement,frozen_test,1033,,,blocked,Cross-zero is not equivalence; missing matched-load lower cost and shared-evidence comparison; group-level claim not question class

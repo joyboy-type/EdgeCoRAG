@@ -1,0 +1,72 @@
+{
+  "status": "feasibility_only_not_executed",
+  "revision": "2d809ac87360d54b0765e9be1cab75808d37642a",
+  "source_checks_sha256": "cf5d73e32620de8e928f9e616e6a1b10ed508b345e5a682da56c060e44aecb1a",
+  "source_checks": [
+    {
+      "name": "readme",
+      "url": "https://raw.githubusercontent.com/MananSuri27/VisDoM/2d809ac87360d54b0765e9be1cab75808d37642a/README.md",
+      "checked_at": "2026-10-20T09:30:40.356768+00:00",
+      "status": 200,
+      "bytes": 5023,
+      "sha256": "b8271b43a91f82be4820453abf638a175355fd04f57d8bd171f3f2f65a6fe2a2"
+    },
+    {
+      "name": "requirements",
+      "url": "https://raw.githubusercontent.com/MananSuri27/VisDoM/2d809ac87360d54b0765e9be1cab75808d37642a/requirements.txt",
+      "checked_at": "2026-10-20T09:30:40.924120+00:00",
+      "status": "unavailable",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "name": "repo",
+      "url": "https://api.github.com/repos/MananSuri27/VisDoM",
+      "checked_at": "2026-10-20T09:30:41.370712+00:00",
+      "status": 200,
+      "bytes": 5055,
+      "sha256": "2c76175d3d2325239d99c13b5b6bb7d4408fac7d0d4064836cd98dbc5a977c2e",
+      "license": null
+    }
+  ],
+  "access": {
+    "readme": 200,
+    "repository": 200,
+    "requirements": "404; not a locked dependency environment"
+  },
+  "license": {
+    "api_license": null,
+    "status": "unidentified and upstream rights unverified",
+    "components": [
+      "PaperTab",
+      "FeTaTab",
+      "SciGraphQA",
+      "SPIQA",
+      "SlideVQA"
+    ]
+  },
+  "declared_scale": {
+    "queries": 2271,
+    "documents": 1277,
+    "locally_counted": false
+  },
+  "dependencies": [
+    "PyTorch",
+    "pandas",
+    "numpy",
+    "pdf2image",
+    "PyPDF2",
+    "pytesseract",
+    "chromadb",
+    "langchain",
+    "optional colpali_engine/transformers/openai/google.generativeai"
+  ],
+  "protocol_difference": "multi-document free-form QA and word-overlap F1; no strict MRAG ABCD accuracy; multi-page text/visual indexes, input and source splits require a new protocol",
+  "gpu_quantity": {
+    "status": "unknown_no_measured_throughput",
+    "formula": "document_pages*encoder_seconds_per_page + queries*retrieval_seconds + queries*generation_seconds",
+    "reason": "No page count verification, chosen backend, context lengths, throughput or approved quote; no numeric GPU estimate justified"
+  },
+  "data_or_weights_downloaded": false,
+  "model_executed": false,
+  "R06_status_change": false
+}

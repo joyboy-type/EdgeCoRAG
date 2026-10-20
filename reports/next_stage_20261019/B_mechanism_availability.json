@@ -1,0 +1,18 @@
+{
+  "status": "blocked_not_a_valid_partition",
+  "public_baseline_rows": 21927,
+  "source_sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+  "D1_sha256": "56d1f12c107f72aca5f8e09bfd5e5a3ae6ac8943ff9f66b790c3c63a03cc956a",
+  "queries_per_model_frozen": 1033,
+  "original_definitions_retained": true,
+  "unknown_counts_are_blank": true,
+  "reason": [
+    "a,b,c can overlap",
+    "d is model-pair/cost property, not per-question complement",
+    "No independent equivalence/noninferiority protocol",
+    "S1 and no-self D1 evidence policies differ",
+    "A pools/ranks + GT identities unavailable"
+  ],
+  "R21": "部分完成",
+  "not_completed": "four mutually exclusive original classes summing to1033 cannot be certified"
+}

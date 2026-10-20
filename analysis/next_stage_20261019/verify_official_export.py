@@ -34,6 +34,18 @@ def verify(repo,metadata_dir,out):
         projected=project_rows(official,source,prompts)
         expected=projected if item['split']=='all' else [row for row in projected if row['project_split']==item['split']]
         if rows!=expected:raise ValueError('Source row/status/output/order mismatch')
+        # Independent source-field checks, not just equality to export's projection helper.
+        metadata={row['qid']:row for row in official}
+        for row in rows:
+            original=source.get(row['qid']);meta=metadata[row['qid']]
+            if row['choices']!=meta['choices'] or row['option_count']!=len(meta['choices']):
+                raise ValueError('True official option count/content mismatch')
+            if row['gt_choice']!=meta['answer_choice'] or row['scenario']!=meta['scenario']:
+                raise ValueError('Official metadata mismatch')
+            if original and (row['output']!=original['raw_output'] or row['parse_status']!=original['parse_status']
+                or row['parsed_choice']!=original.get('parsed_choice') or row['generation_error']!=original.get('generation_error')):
+                raise ValueError('Archived output/failure annotation changed')
+            if row['parser_rerun'] is not False:raise ValueError('Reparsing forbidden')
         if item['split']=='all':all_rows+=len(rows)
     if all_rows!=receipt['full_export_rows'] or all_rows!=20295:raise ValueError('Fixed official slots mismatch')
     return dict(status='verified_official_projection_only',files=len(receipt['files']),full_export_rows=all_rows,

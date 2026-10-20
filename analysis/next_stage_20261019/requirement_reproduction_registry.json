@@ -144,11 +144,16 @@
       "scope": "historical delivery identity; no model generation or scientific rescoring"
     },
     "R06": {
-      "status": "待补",
+      "status": "部分完成",
       "evidence": [
         "reports/next_stage_20261017/B_mmdocrag_evaluation_report.md",
         "reports/next_stage_20261017/B_mmdocrag_evaluation_summary.json",
-        "reports/next_stage_20261019/quality_closure_20261021/mmdocrag_judge_feasibility.json"
+        "reports/next_stage_20261019/quality_closure_20261021/mmdocrag_judge_feasibility.json",
+        "reports/next_stage_20261019/B_judge_protocol.json",
+        "reports/next_stage_20261019/B_judge_cost_scenarios.csv",
+        "reports/next_stage_20261019/B_judge_feasibility.md",
+        "reports/next_stage_20261019/B_visdom_feasibility.json",
+        "reports/next_stage_20261019/B_visdom_feasibility.md"
       ],
       "files": {
         "reports/next_stage_20261017/B_mmdocrag_evaluation_report.md": {
@@ -162,6 +167,26 @@
         "reports/next_stage_20261019/quality_closure_20261021/mmdocrag_judge_feasibility.json": {
           "sha256": "95b889633503d5b39d83f57ecc0d5df924feec898da4caa8bf842351347b2ee9",
           "bytes": 2530
+        },
+        "reports/next_stage_20261019/B_judge_protocol.json": {
+          "sha256": "f7c92d7406d7523fac49dae55e890d5e233610feb72880dd16ee96442be2b43a",
+          "bytes": 3504
+        },
+        "reports/next_stage_20261019/B_judge_cost_scenarios.csv": {
+          "sha256": "61fd68e65047e31381948fa7db5891fa3ea0378fe78988ed4302f903c29b9442",
+          "bytes": 471
+        },
+        "reports/next_stage_20261019/B_judge_feasibility.md": {
+          "sha256": "da9d36e629f2cd3f682b9debdb617d586e911b23f5c13531d0ca0a92a81db0e2",
+          "bytes": 1233
+        },
+        "reports/next_stage_20261019/B_visdom_feasibility.json": {
+          "sha256": "0065ad004a3dbabb4141b0d831b85ba36920a328660a44fdf5d8c213b583cceb",
+          "bytes": 2452
+        },
+        "reports/next_stage_20261019/B_visdom_feasibility.md": {
+          "sha256": "ae8351a44ba075b430c538062e8ed76366ea3c02f9c4dca0b78e2e7a8a5ab136",
+          "bytes": 1079
         }
       },
       "command": [
@@ -963,7 +988,8 @@
         "logs/B_input_contexts.jsonl.gz",
         "reports/next_stage_20261019/quality_closure_20261021/O4_measurement_gap_contract.json",
         "b-side/next_interface_bridge.py",
-        "tests/test_next_interface_bridge.py"
+        "tests/test_next_interface_bridge.py",
+        "reports/next_stage_20261019/B_record_gaps.md"
       ],
       "files": {
         "logs/B_input_contexts.jsonl.gz": {
@@ -981,6 +1007,10 @@
         "tests/test_next_interface_bridge.py": {
           "sha256": "ed7b3e6ccea524c98f62f0d0a2d738e180dd40970aa46c1fd829a1bbd04d4135",
           "bytes": 3933
+        },
+        "reports/next_stage_20261019/B_record_gaps.md": {
+          "sha256": "65825a72e119475de55a488582c4bc86497d229bed26d31258de54229dc30be4",
+          "bytes": 1811
         }
       },
       "command": [
@@ -997,7 +1027,10 @@
         "reports/next_stage_20261019/quality_closure_20261021/D_mechanisms_and_concepts.md",
         "reports/next_stage_20261019/quality_closure_20261021/O2_upgrade_limitations.json",
         "reports/next_stage_20261019/quality_closure_20261021/mechanism_samples.csv",
-        "reports/next_stage_20261019/quality_closure_20261021/O2_partition_and_Holm_references.csv"
+        "reports/next_stage_20261019/quality_closure_20261021/O2_partition_and_Holm_references.csv",
+        "reports/next_stage_20261019/B_mechanism_four_class.csv",
+        "reports/next_stage_20261019/B_mechanism_four_class.md",
+        "reports/next_stage_20261019/B_mechanism_availability.json"
       ],
       "files": {
         "reports/next_stage_20261019/quality_closure_20261021/mechanism_breakdown.csv": {
@@ -1019,6 +1052,18 @@
         "reports/next_stage_20261019/quality_closure_20261021/O2_partition_and_Holm_references.csv": {
           "sha256": "92ba70df6b0a872c02b3c403489a542ca7231b42cd29f8bf72c9d1ee2e50fc84",
           "bytes": 11910
+        },
+        "reports/next_stage_20261019/B_mechanism_four_class.csv": {
+          "sha256": "6395b90d0995f70879417a6d0ac721f0c361a2d1e1a55350107da49d2294fdf7",
+          "bytes": 8657
+        },
+        "reports/next_stage_20261019/B_mechanism_four_class.md": {
+          "sha256": "89e18ea2644fee7fc59048fd59179dddf949ebb172851ebbf71a49598c0fbb42",
+          "bytes": 1357
+        },
+        "reports/next_stage_20261019/B_mechanism_availability.json": {
+          "sha256": "0f27d2e4207a90c4292ffaeca07df3781b4dedff809deb84957717e70369cb0d",
+          "bytes": 753
         }
       },
       "command": [
@@ -1034,7 +1079,9 @@
       "status": "已完成 限既有图像关联分量",
       "evidence": [
         "reports/next_stage_20261019/quality_closure_20261021/source_cluster_ci.csv",
-        "reports/next_stage_20261019/quality_closure_20261021/analysis_receipt.json"
+        "reports/next_stage_20261019/quality_closure_20261021/analysis_receipt.json",
+        "reports/next_stage_20261019/B_source_cluster_ci.csv",
+        "reports/next_stage_20261019/B_holm_summary.json"
       ],
       "files": {
         "reports/next_stage_20261019/quality_closure_20261021/source_cluster_ci.csv": {
@@ -1044,16 +1091,21 @@
         "reports/next_stage_20261019/quality_closure_20261021/analysis_receipt.json": {
           "sha256": "a2a0617424ebc24f36a610d7b344252322f314f507a917c800c778bc7b1c3b5d",
           "bytes": 13389
+        },
+        "reports/next_stage_20261019/B_source_cluster_ci.csv": {
+          "sha256": "23ee43c068ba791b719447f84e7f381b4a9a9aa4503bcc4567a41cbfd949f240",
+          "bytes": 7085
+        },
+        "reports/next_stage_20261019/B_holm_summary.json": {
+          "sha256": "56d1f12c107f72aca5f8e09bfd5e5a3ae6ac8943ff9f66b790c3c63a03cc956a",
+          "bytes": 3373
         }
       },
       "command": [
-        "analysis/next_stage_20261019/verify_quality_closure.py",
-        "--work-dir",
-        "{work_dir}",
-        "--artifact-dir",
-        "reports/next_stage_20261019/quality_closure_20261021"
+        "analysis/next_stage_20261019/b_offline_closure.py",
+        "--verify"
       ],
-      "scope": "recompute new Q3-Q6 derived numeric artifacts from unchanged archives"
+      "scope": "Public-only D1/D2 re-derivation; no generation/reparsing"
     },
     "R23": {
       "status": "已交付 描述性",
@@ -1208,7 +1260,9 @@
       "evidence": [
         "reports/next_stage_20261019/quality_closure_20261021/official_export_receipt.json",
         "reports/next_stage_20261019/quality_closure_20261021/official_export_validation.json",
-        "reports/next_stage_20261019/quality_closure_20261021/official_schema_validation.json"
+        "reports/next_stage_20261019/quality_closure_20261021/official_schema_validation.json",
+        "reports/next_stage_20261019/B_official_export_receipt.json",
+        "reports/next_stage_20261019/B_official_export_validation.json"
       ],
       "files": {
         "reports/next_stage_20261019/quality_closure_20261021/official_export_receipt.json": {
@@ -1221,6 +1275,14 @@
         },
         "reports/next_stage_20261019/quality_closure_20261021/official_schema_validation.json": {
           "sha256": "ef66140fc6e910364898395a1093ed8f32a905646ae78210e74c2fac70af443c",
+          "bytes": 850
+        },
+        "reports/next_stage_20261019/B_official_export_receipt.json": {
+          "sha256": "1f2ddd019a99aa5ea4e8146cf500cc2aaf5c1fa6b96275da2c1f7251fcb247ec",
+          "bytes": 33734
+        },
+        "reports/next_stage_20261019/B_official_export_validation.json": {
+          "sha256": "74317455b88d51f5aeb8b6a198267d957f7cfd06a06a9f84ac933c5f4d186151",
           "bytes": 850
         }
       },
@@ -1390,7 +1452,9 @@
         "tests/test_session_runner.py",
         "reports/next_stage_20261019/A_local_preparation_validation.json",
         "reports/next_stage_20261019/quality_closure_20261021/source_archive_supplement.json",
-        "reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv"
+        "reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv",
+        "reports/next_stage_20261019/B_source_archive_validation.json",
+        "reports/next_stage_20261019/B_pin_reproducibility.csv"
       ],
       "files": {
         "provenance/v1.10.1/batch_identity.json": {
@@ -1440,6 +1504,14 @@
         "reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv": {
           "sha256": "5bc7812eb23a1ebea1b12b3edb546110e204fe137c82528470db5a70fc9d4cdb",
           "bytes": 3909
+        },
+        "reports/next_stage_20261019/B_source_archive_validation.json": {
+          "sha256": "48bb46b901a4bd9d15fe7ec616e0d90b2bf5cfb437fbc5f93e82ba2dd0248368",
+          "bytes": 592
+        },
+        "reports/next_stage_20261019/B_pin_reproducibility.csv": {
+          "sha256": "633f1a51b6c6ae4d0e2fd0f718ff66015b8f06099fdf00bd043719bfdfdfa3ec",
+          "bytes": 3910
         }
       },
       "command": [
@@ -1497,7 +1569,7 @@
     }
   },
   "input_sha256": {
-    "requirements_matrix.csv": "5cf4a71b17dd9f1d730ad341c5f25b71c555f6d548d86ead36f0eab8d9ef64cb"
+    "requirements_matrix.csv": "1743b7bfffd8fc209771e459c1a5139c4d22a769d9d797d22119413b55292ee2"
   },
   "limitations": "Historical delivered rows prove frozen byte identity; new research gates are applied only to new analyses. G2 commands requiring private material must receive local roots; no download or server access."
 }

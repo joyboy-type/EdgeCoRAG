@@ -112,6 +112,7 @@ def request(query, corpus, strategy, runtime, clock=time.perf_counter):
     device_before, rss_before = runtime.device_memory(), smoke.process_rss_bytes()
     record = smoke.request(query, corpus, strategy, runtime, clock,
                            splits=('smoke_20', 'dev'), strategies=STRATEGIES)
+    # New-run recording comes from smoke.request; the legacy boundary samples stay explicit.
     record['resources'] = dict(device_before=device_before, device_after=runtime.device_memory(),
                                rss_before=rss_before, rss_after=smoke.process_rss_bytes(),
                                scope=('device-wide CUDA sample at request boundaries and /proc process '
@@ -182,7 +183,7 @@ def run(queries, corpus, output, runtime, strategies=STRATEGIES, repeats=5):
                                                                    job['strategy'], runtime).items()
                                           if k not in job})
                 except BaseException as error:
-                    stream.write(json.dumps(dict(job, error_type=type(error).__name__, error=str(error))) + '\n')
+                    stream.write(json.dumps(dict(job, error_type=type(error).__name__, error=str(error), recording=getattr(runtime,'last_recording',{}))) + '\n')
                     stream.flush()
                     os.fsync(stream.fileno())
                     raise

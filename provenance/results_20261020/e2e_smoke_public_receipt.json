@@ -64,5 +64,27 @@
   "formal_performance_benchmark": false,
   "all_compute_modes_off_verified": true,
   "compute_total_cny": 0.09,
-  "storage_charge_included": false
+  "storage_charge_included": false,
+  "source_archive": {
+    "sha256": "4e0fdb7ab586d432381e9431deb0f5de8fec4f8556535defe9c7948b85938893",
+    "bytes": 2886293,
+    "original_receipt_sha256": "27109ba0b381e95614f77b659ffbaa8b73468e74529c7bfb002e6648e8b740ad",
+    "members": {
+      "b-side/e2e_smoke.py": "code/b-side/e2e_smoke.py",
+      "b-side/e2e_lease.py": "code/b-side/e2e_lease.py",
+      "b-side/model_adapters.py": "code/b-side/model_adapters.py",
+      "b-side/run_candidate.py": "code/b-side/run_candidate.py",
+      "b-side/run_smoke.py": "code/b-side/run_smoke.py",
+      "b-side/handover_adapter.py": "code/b-side/handover_adapter.py",
+      "b-side/accept_handover.py": "code/b-side/accept_handover.py",
+      "b-side/score_minimal.py": "code/b-side/score_minimal.py",
+      "b-side/configs/model_registry.json": "code/b-side/configs/model_registry.json",
+      "b-side/configs/shared_visual_mcq_v1.json": "code/b-side/configs/shared_visual_mcq_v1.json",
+      "b-side/configs/qwen3_vl_4b_smoke.json": "code/b-side/configs/qwen3_vl_4b_smoke.json",
+      "b-side/configs/a_handover_baseline.json": "code/b-side/configs/a_handover_baseline.json",
+      "a-side/scripts/evidence_selection.py": "code/a-side/scripts/evidence_selection.py",
+      "a-side/scripts/independent_retrieval.py": "code/a-side/scripts/independent_retrieval.py"
+    },
+    "note": "Round-1 source snapshots; historical pins and cpu_thread_warning retain original values"
+  }
 }
