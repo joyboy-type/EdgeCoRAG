@@ -7,7 +7,7 @@
     "gray_source": "pixel_identity_4712.csv:gray32（32x32 灰度，1024 字节）",
     "levels": 12,
     "quantization": "floor(v/255*11 + 0.5)（round-half-up）",
-    "packing": "byte = q[2k] | (q[2k+1] << 4)，低位在前；奇数尾补 0",
+    "packing": "byte = (q[2k] << 4) | q[2k+1]，高位在前；奇数尾补 0",
     "hash": "sha256(512 bytes)"
   },
   "rounding_sensitivity": {
@@ -18,6 +18,6 @@
   "output": {
     "path": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-A\\a-side\\reports\\index_scope_20261021\\pixel_identity_4712_keys.csv",
     "bytes": 918866,
-    "sha256": "dea811c53654b0897a5163349be9ca784721de72d15c8141f67c42b07a22b1db"
+    "sha256": "3b2fdf7ecfc3c7d463e64fdee531207ad01bd6a91eb98aff68e30fd8e1abf3d2"
   }
 }
