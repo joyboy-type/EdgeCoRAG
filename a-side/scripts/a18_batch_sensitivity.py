@@ -9,7 +9,7 @@ B 的服务器与 round-1 是 torch 2.8.0 / torchvision 0.23.0 / Pillow 11.3.0�
   1) 用固定协议把语料编码一遍（batch=BIG）；
   2) 把同一批查询分别按 batch=BIG 与 batch=1 编码；
   3) 在同一份语料向量上排序、剔除查询图自身、取 top-k；
-  4) 输出 {changed_order, changed_set, changed_top3, total}。
+  4) 输出 {changed_order, changed_set, changed_top3, total}，并带 dtype / tf32 / stack。
 
 协议（与 a-side/retrieval-interface-v1 一致，不可改）：
   * 解码 = PIL 打开语料目录里的 q95 字节 → RGB
@@ -260,6 +260,9 @@ def main() -> int:
     receipt = {
         "schema": "a18_batch_sensitivity_receipt/v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        # 顶层 dtype / tf32 为便捷别名，与 params 中的值一致
+        "dtype": args.dtype,
+        "tf32": False,
         "stack": stack_info(),
         "model": {"id": MODEL_ID, "revision": REV, "dtype": args.dtype,
                   "tf32": False, "weights_sha256": args.weights_sha256},

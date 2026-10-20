@@ -1,0 +1,56 @@
+{
+  "passed": 10,
+  "total": 10,
+  "checks": [
+    {
+      "check": "template_ok_pending",
+      "pass": true,
+      "detail": "{\"claimed_entries\": null, \"public_instances\": 14475, \"public_unique\": 4712, \"verdict\": \"pending\", \"verdict_a_side\": \"pending\"}"
+    },
+    {
+      "check": "entries_equals_instances",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "entries_equals_unique",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "entries_18955_flagged",
+      "pass": true,
+      "detail": "{\"claimed_entries\": 18955, \"public_instances\": 14475, \"public_unique\": 4712, \"delta_vs_instances\": 4480, \"delta_vs_unique\": 14243, \"verdict\": \"matches_neither\", \"verdict_a_side\": \"matches_neither\"}"
+    },
+    {
+      "check": "missing_key_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "bad_sha_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "bad_enum_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "dedup_inconsistent_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "claimed_entries_mismatch_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "bool_type_rejected",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

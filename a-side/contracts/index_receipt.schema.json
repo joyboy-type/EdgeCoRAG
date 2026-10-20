@@ -1,0 +1,225 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/joyboy-type/EdgeCoRAG/a-side/contracts/index_receipt.schema.json",
+  "title": "A 侧检索索引构建回执（index_receipt）",
+  "description": "用于把已发布 smoke 报告里的索引（声称 18,955 条）与 A 侧可复现语料（14,475 个图像实例 / 4,712 个唯一内容）对账。字段由 A 定义、由 B 用其真实构建过程填值；A 不改 B 的数值，只按 §reconciliation 判定能否配对。未回传的字段必须是 null 或空数组，不得用猜测值填充。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "generated_at",
+    "builder",
+    "index",
+    "identity",
+    "dedup",
+    "row_order",
+    "dtype",
+    "normalization",
+    "corpus_encode",
+    "query_encode",
+    "sources",
+    "counts",
+    "reconciliation",
+    "notes"
+  ],
+  "properties": {
+    "schema": {
+      "const": "a_side_index_receipt/v1"
+    },
+    "generated_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "UTC ISO8601；未构建则 null"
+    },
+    "builder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo", "commit", "entrypoint", "operator"],
+      "properties": {
+        "repo": { "type": ["string", "null"], "description": "仓库或工作目录标识" },
+        "commit": { "type": ["string", "null"], "description": "构建时代码版本；无法确定写 null" },
+        "entrypoint": { "type": ["string", "null"], "description": "实际执行的脚本/命令" },
+        "operator": { "type": ["string", "null"], "description": "执行人/会话标识" }
+      }
+    },
+    "index": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entries", "artifact_files", "kind"],
+      "properties": {
+        "entries": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "索引条目数（关键字段）。已发布 smoke 报告写的是 18,955"
+        },
+        "kind": {
+          "type": ["string", "null"],
+          "enum": ["flat_bruteforce", "ivf", "hnsw", "other", null],
+          "description": "索引结构类型"
+        },
+        "artifact_files": {
+          "type": "array",
+          "description": "索引与排序缓存的落地文件，用于身份核对",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "bytes", "sha256"],
+            "properties": {
+              "path": { "type": "string" },
+              "bytes": { "type": "integer", "minimum": 0 },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            }
+          }
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule", "hash_algorithm", "notes"],
+      "properties": {
+        "rule": {
+          "type": "string",
+          "enum": ["sha256_raw_bytes", "sha256_jpeg_q95", "other"],
+          "description": "候选身份口径：原始字节 vs JPEG q95 重编码字节 vs 其他"
+        },
+        "hash_algorithm": { "type": "string", "description": "例如 sha256" },
+        "notes": { "type": ["string", "null"], "description": "解码/重编码细节，例如 PIL 版本、quality、是否 convert('RGB')" }
+      }
+    },
+    "dedup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["by_identity", "kept_duplicates", "notes"],
+      "properties": {
+        "by_identity": { "type": "boolean", "description": "是否按 identity 去重（同内容只留一行）" },
+        "kept_duplicates": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "去重后仍保留的重复内容条数；不去重时等于 实例数 - 唯一数"
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "row_order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule", "explicit_tiebreak_key", "notes"],
+      "properties": {
+        "rule": {
+          "type": "string",
+          "enum": ["sha256_asc", "insertion_order", "question_order", "filesystem_order", "other"],
+          "description": "索引行序生成规则（影响并列时的次序）"
+        },
+        "explicit_tiebreak_key": {
+          "type": "boolean",
+          "description": "打分并列时是否有显式二级键（例如 sha 升序）"
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "dtype": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["storage", "compute", "tf32"],
+      "properties": {
+        "storage": { "type": "string", "enum": ["float32", "float16", "bfloat16", "int8", "other"] },
+        "compute": { "type": ["string", "null"], "description": "前向计算精度；与 storage 不同则注明" },
+        "tf32": { "type": ["boolean", "null"], "description": "是否允许 TF32（fp32 计算路径）" }
+      }
+    },
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locus", "applied_to", "vector_norms_observed"],
+      "properties": {
+        "locus": {
+          "type": "string",
+          "enum": ["model_internal", "post_cast_float32", "none", "other"],
+          "description": "L2 归一化发生在哪一层：模型 dtype 内 / cast 到 float32 后 / 不归一化"
+        },
+        "applied_to": { "type": "string", "enum": ["corpus_and_query", "corpus_only", "query_only", "none", "other"] },
+        "vector_norms_observed": {
+          "type": ["string", "null"],
+          "description": "归一化后实测向量范数范围（例如 \"0.999–1.004\"）；未测写 null"
+        }
+      }
+    },
+    "corpus_encode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["images", "batch_size", "device", "seconds", "notes"],
+      "properties": {
+        "images": { "type": ["integer", "null"], "minimum": 0 },
+        "batch_size": { "type": ["integer", "string", "null"], "description": "批大小；动态批写描述" },
+        "device": { "type": ["string", "null"] },
+        "seconds": { "type": ["number", "null"], "minimum": 0 },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "query_encode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["batch_size", "composition", "per_request_batching"],
+      "properties": {
+        "batch_size": { "type": ["integer", "string", "null"] },
+        "composition": {
+          "type": ["string", "null"],
+          "description": "查询批里还有谁：只本题 / 固定 N 题一组 / 与语料混编"
+        },
+        "per_request_batching": {
+          "type": ["boolean", "null"],
+          "description": "在线请求时是否每次只编码 1 张（smoke 报告称现场是 batch=1）"
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "构建输入文件的身份（语料清单、题目清单、排序缓存等）",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "path", "sha256", "bytes"],
+        "properties": {
+          "role": { "type": "string", "enum": ["corpus", "questions", "scores", "candidates", "other"] },
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["questions", "image_instances", "unique_contents"],
+      "description": "A 侧公开可复现的口径基线：questions=1353, image_instances=14475, unique_contents=4712。若 B 的索引另有来源，请在 notes 说明多出来的部分。",
+      "properties": {
+        "questions": { "type": ["integer", "null"], "minimum": 0 },
+        "image_instances": { "type": ["integer", "null"], "minimum": 0 },
+        "unique_contents": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claimed_entries", "public_instances", "public_unique", "delta_vs_instances", "delta_vs_unique", "verdict"],
+      "description": "A 侧对账字段：claimed_entries 应等于 index.entries；public_instances=14475，public_unique=4712；两个 delta 由 A 计算而非 B 填。",
+      "properties": {
+        "claimed_entries": { "type": ["integer", "null"], "minimum": 0 },
+        "public_instances": { "type": ["integer", "null"], "minimum": 0 },
+        "public_unique": { "type": ["integer", "null"], "minimum": 0 },
+        "delta_vs_instances": { "type": ["integer", "null"] },
+        "delta_vs_unique": { "type": ["integer", "null"] },
+        "verdict": {
+          "type": "string",
+          "enum": ["matches_instances", "matches_unique", "matches_neither", "pending", "not_comparable"],
+          "description": "matches_neither 时不得配对两批结果，需 B 在 notes 给出多出来的来源"
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "_instructions": "模板：请把每个 null / 空数组替换为你构建过程的实测值，不要用猜测值。schema 见 index_receipt.schema.json；校验命令 python a-side/scripts/a20_validate_index_receipt.py <该文件>。reconciliation 的 delta 与 verdict 由 A 填，B 只填 claimed_entries（或留 null，A 从 index.entries 取）。",
+  "schema": "a_side_index_receipt/v1",
+  "generated_at": null,
+  "builder": {
+    "repo": null,
+    "commit": null,
+    "entrypoint": null,
+    "operator": null
+  },
+  "index": {
+    "entries": null,
+    "kind": null,
+    "artifact_files": []
+  },
+  "identity": {
+    "rule": "sha256_jpeg_q95",
+    "hash_algorithm": "sha256",
+    "notes": null
+  },
+  "dedup": {
+    "by_identity": null,
+    "kept_duplicates": null,
+    "notes": null
+  },
+  "row_order": {
+    "rule": null,
+    "explicit_tiebreak_key": null,
+    "notes": null
+  },
+  "dtype": {
+    "storage": "float32",
+    "compute": null,
+    "tf32": null
+  },
+  "normalization": {
+    "locus": null,
+    "applied_to": null,
+    "vector_norms_observed": null
+  },
+  "corpus_encode": {
+    "images": null,
+    "batch_size": null,
+    "device": null,
+    "seconds": null,
+    "notes": null
+  },
+  "query_encode": {
+    "batch_size": null,
+    "composition": null,
+    "per_request_batching": null
+  },
+  "sources": [],
+  "counts": {
+    "questions": 1353,
+    "image_instances": 14475,
+    "unique_contents": 4712
+  },
+  "reconciliation": {
+    "claimed_entries": null,
+    "public_instances": 14475,
+    "public_unique": 4712,
+    "delta_vs_instances": null,
+    "delta_vs_unique": null,
+    "verdict": "pending"
+  },
+  "notes": [
+    "本文件是模板，未填字段一律 null/空数组，表示未回传而不是 0。",
+    "A 侧公开可复现口径：1353 题 = 1353 查询实例 + 6357 GT 实例 + 6765 官方候选实例 = 14,475 个实例；按 sha256(JPEG q95 字节) 去重后 4,712 个唯一内容。",
+    "已发布 smoke 报告写的是 18,955 条索引；它与 14,475 / 4,712 都不等，需本回执解释差额来源。"
+  ]
+}

@@ -64,3 +64,57 @@
 - 本准则不改变 `interface_freeze.md` §2–§6 的任何口径；若将来要改 top-k / select-k / 排序键 / 抽样种子，按 `interface_freeze.md` §9 升 **v2** 并重新生成 `artifacts.json` 与 `verify.json`。
 - 本准则也不改变 `routing_protocol_v2.md` §3 的纪律（同一份纪律的细化，不是替代）。
 - 若 B 认为 L1 主指标应换成 `set_recall@10`，需在**跑 dev 生成之前**书面提出并在本文件升版；跑完之后再改指标视为事后选择。
+
+## 7. 最佳固定 RAG：P1–P4 定义与选择规则（对应任务书 R03）
+
+"最佳固定 RAG"= 每个生成模型选**一条固定的证据策略**，选完就锁死，不再逐题变。它与 Oracle 路由的区别是：固定 RAG 不选路径、不选题目，只选一次策略。
+
+### 7.1 四条待比较的固定方案
+
+| 代号 | 含义 | 选择依据 | 在线附加成本 | 可部署 |
+|---|---|---|---|---|
+| **P1** | cosine 固定：候选池前 3 张 | 检索 cosine | 0（复用检索分数） | 是 |
+| **P2** | utility 固定：`ℓ("True")` 前 3 张 | Gemma 4 E2B 效用分 | 每个候选 1 次前向（10 次/题） | 是 |
+| **P3** | **dev 最优固定**：在 dev_150 上从 {P1, P2, random} 里选一条，然后只在 frozen 评一次 | dev 准确率（见 7.2） | 取决于胜出者 | 是（这才是 R03 的"最佳固定 RAG"） |
+| **P4** | Oracle 逐题最优（cosine/utility/random 里每题取最好） | 需要正确答案 | 0（但不可行） | **否**，只作上界，必须标 `post hoc` |
+
+- random 策略作为**下界对照**参与 P3 的候选集，但即使它在 dev 上最高也不得单独当作"最佳固定 RAG"的结论——必须同时报告它与 P1/P2 的差距，并说明它意味着"选择信号无用"。
+- P4 与四路径里的"路径 Oracle"不是一个东西：P4 是在**同一路径内换选择策略**，路径 Oracle 是在**换模型+证据**。两者分别报告，不得相加。
+
+### 7.2 P3 的选择规则（与 §2 的 L2 同一套纪律）
+
+1. **数据**：只用 `dev_150`；`frozen_test` 一次都不用（`internal_holdout` 也不许用）。
+2. **指标**：`strict_choice_v1` 准确率，固定分母 150，格式失败计错。
+3. **等价带**：同模型同题的配对 bootstrap 95% 区间跨 0 → 视为并列，不声称某策略更优。
+4. **并列次序键**（逐级）：
+   1. 在线附加模型前向次数少者（0 次：cosine/random > 10 次：utility）；
+   2. 选择依据更可解释者（cosine > random）；
+   3. 名称字典序（`cosine` < `random` < `utility`），仅为确定性。
+5. **每模型独立选**：五个模型可以选出不同的 P3，这正是"各家最佳固定 RAG"的含义；不得为了表格好看让所有模型用同一条。
+6. 选定后在 `frozen_test` 上**只评估一次**；若之后再改选择，必须在回执登记并把该批结论降级为"已观察数据上的事后分析"。
+
+### 7.3 与四路径矩阵的对应关系
+
+| 四路径 | 证据条件 | 固定策略候选 | 说明 |
+|---|---|---|---|
+| A0（E2B 直接） | 无证据 | — | 无选择问题，作下界 |
+| A1（检索 + E2B） | `eg2_shared_top10` 的 select3 | P1 / P2 / P3(E2B) / P4(E2B) | P3 在此路径上选定 |
+| A2（E4B 直接） | 无证据 | — | 同上 |
+| A3（检索 + E4B） | 同上 | P1 / P2 / P3(E4B) / P4(E4B) | P3 在此路径上选定 |
+
+- 路径 Oracle（§`routing_protocol_v2.md` §7）与这里的 P4 必须**分表**：前者含模型切换，后者只含策略切换。
+- "最佳固定 RAG"最终报告的一行 = 选定路径（A1 或 A3）+ 选定策略（P3）+ frozen 数值，且必须带 `selected_on=dev_150` 与选择日期。
+
+### 7.4 结果表占位（本批不跑生成，只给结构）
+
+文件：`a-side/retrieval_if_v1/metrics/best_fixed_rag_placeholder.csv`（**空表，无数据行**）
+
+```
+model,path,strategy,evidence_pool,embed_dim,cohort,n,correct,accuracy,ci_low,ci_high,selected_on,is_oracle,note
+```
+
+填写纪律：
+- `cohort` 只允许 `dev_150`（用于选择）或 `frozen_test`（用于最终一次评估）；`internal_holdout_150` 禁止。
+- `selected_on` 对 P1/P2 写 `fixed_prior`，对 P3 写 `dev_150`，对 P4 写 `post_hoc`。
+- `is_oracle=true` 只允许出现在 P4 行；P4 行不得与 P3 行加总或取平均。
+- 空表就是空表：未执行前不得出现任何占位数字（0 也不许），否则会被当成实测。

@@ -20,7 +20,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT))
+for _cand in (Path(__file__).resolve().parent,
+              Path(__file__).resolve().parent.parent / "a-side" / "scripts"):
+    if (_cand / "a00_paths.py").exists():
+        sys.path.insert(0, str(_cand))
+        break
 import a00_paths  # noqa: E402
 
 IFACE = a00_paths.iface_root()

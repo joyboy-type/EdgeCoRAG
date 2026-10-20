@@ -49,7 +49,11 @@ import shutil
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+for _cand in (Path(__file__).resolve().parent,
+              Path(__file__).resolve().parent.parent / "a-side" / "scripts"):
+    if (_cand / "a00_paths.py").exists():
+        sys.path.insert(0, str(_cand))
+        break
 import a00_paths  # noqa: E402
 
 DEFAULT_IFACE = a00_paths.side_root() / "retrieval_if_v1"
