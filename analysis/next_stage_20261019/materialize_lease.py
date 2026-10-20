@@ -16,10 +16,10 @@ PATHS = settings(__name__, __doc__, own_parser=True)
 PROJECT = PATHS.project_root
 REPO = PATHS.repo
 WORK = PATHS.work_dir
-RUNS = {'smoke': WORK / 'e2e-smoke-recheck-20261021', 'cost': WORK / 'e2e-cost-proposed'}
+RUNS = {'smoke': WORK / 'smoke-recheck', 'cost': WORK / 'cost'}
 SERVER_ROOT = str(PATHS.server_root) if PATHS.server_root else ''
-OUTPUTS = {'smoke': SERVER_ROOT + '/results/e2e-smoke-recheck-20261021',
-           'cost': SERVER_ROOT + '/results/e2e-cost-20261021-formal'}
+OUTPUTS = {'smoke': SERVER_ROOT + '/results/' + PATHS.run_id + '-smoke',
+           'cost': SERVER_ROOT + '/results/' + PATHS.run_id + '-cost'}
 ESTIMATES = {'smoke': 600, 'cost': 900}
 
 sys.path.insert(0, str(REPO / 'b-side'))
@@ -59,7 +59,7 @@ def main():
         charge_start_epoch=record['charge_start_epoch'], deadline_epoch=None,
         quoted_rate_cny_hour=record['quoted_rate_cny_hour'], max_rate_cny_hour=2.18,
         max_incremental_cny=record['max_incremental_cny'], incurred_cny=0,
-        storage_reserve_cny=record['storage_reserve_cny'], max_wall_seconds=2700,
+        storage_reserve_cny=record['storage_reserve_cny'], max_wall_seconds=3900,
         preservation_reserve_seconds=600, contingency_fraction=.25,
         scope=json.loads(plan.read_text())['provenance'].get('purpose')
               or 'twenty observed smoke_20 questions x cosine/random/utility',
@@ -70,7 +70,7 @@ def main():
         platform_timer_verified=bool(record.get('platform_timer_local')),
         shutdown_evidence=record['shutdown_evidence'],
         timer_verified_before_boot=bool(record.get('platform_timer_local')))
-    deadline = min(record['charge_start_epoch'] + 2700, record['hard_deadline_epoch'])
+    deadline = min(record['charge_start_epoch'] + 3900, record['hard_deadline_epoch'])
     if deadline <= record['charge_start_epoch']:
         raise SystemExit('Hard deadline must fall after the charge start')
     lease['deadline_epoch'] = deadline

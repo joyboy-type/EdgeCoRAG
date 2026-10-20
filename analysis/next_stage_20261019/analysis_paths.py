@@ -16,6 +16,9 @@ def settings(module_name, description, own_parser=False):
     parser.add_argument('--output-dir',type=Path,help='new output directory (never an archive input)')
     parser.add_argument('--archive-root',type=Path,help='verified retrieval backup directory')
     parser.add_argument('--legacy-root',type=Path,help='verified legacy backup for historical scorer')
+    parser.add_argument('--run-id',default='new-session',help='fresh output namespace, never an existing run')
+    parser.add_argument('--dimension-inputs',type=Path,help='explicit new private development input directory')
+    parser.add_argument('--interface-freeze',type=Path,help='explicit new interface freeze JSON')
     parser.add_argument('--server-root',type=Path,help='intended remote data root; preparation only')
     args, remaining=parser.parse_known_args() if module_name=='__main__' else parser.parse_known_args([])
     if module_name=='__main__':

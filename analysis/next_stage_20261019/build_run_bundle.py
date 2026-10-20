@@ -4,6 +4,7 @@ Each bundle is self-contained: pinned sources, the server plan, its local
 validation, an unapproved lease template and a signed-by-hash manifest. The
 operator extracts one bundle per run and lets `b-side/e2e_lease.py` verify it.
 """
+import gzip
 import hashlib
 import io
 import json
@@ -27,13 +28,13 @@ sys.path.insert(0, str(REPO / 'b-side'))
 import e2e_smoke as smoke
 import e2e_cost as cost
 
-EXTRA = ('b-side/boot_watchdog.py',)  # safety machinery, shipped but not part of the plan pins
+EXTRA = ('b-side/boot_watchdog.py','b-side/session_runner.py','b-side/retrieval_comparison.py')  # safety machinery, shipped but not part of the plan pins
 
 RUNS = {
     'smoke': dict(dir=SMOKE, sources=smoke.REQUIRED_SOURCES,
-                  output=SERVER_ROOT + '/results/e2e-smoke-recheck-20261021'),
+                  output=SERVER_ROOT + '/results/' + PATHS.run_id + '-smoke'),
     'cost': dict(dir=COST, sources=cost.COST_SOURCES,
-                 output=SERVER_ROOT + '/results/e2e-cost-20261021-formal'),
+                 output=SERVER_ROOT + '/results/' + PATHS.run_id + '-cost'),
 }
 
 
@@ -45,7 +46,16 @@ def sha(path):
     return digest.hexdigest()
 
 
+def canonical_member(info):
+    info.mtime=0;info.uid=0;info.gid=0;info.uname='';info.gname=''
+    info.mode=0o644;info.pax_headers={}
+    return info
+
+
 def build(name, spec):
+    plan=json.loads((spec['dir']/'plan.private.json').read_text())
+    if set(plan['source_pins'])!=set(spec['sources']) or any(sha(REPO/source)!=digest for source,digest in plan['source_pins'].items()):
+        raise ValueError('Bundle sources disagree with prepared plan pins')
     payload = OUT / name
     if payload.exists():
         raise SystemExit(f'Refusing to overwrite {payload}')
@@ -60,13 +70,19 @@ def build(name, spec):
     template = dict(template, output_path=spec['output'],
                     note_authorization='Template only. A new lease must be written after explicit approval.')
     (payload / 'lease.template.json').write_text(json.dumps(template, ensure_ascii=False, indent=2))
+    if PATHS.interface_freeze:
+        shutil.copy2(PATHS.interface_freeze, payload/'A_retrieval_interface_freeze.json')
+    if name=='cost' and PATHS.dimension_inputs:
+        from build_dimension_inputs import verify_manifest
+        verify_manifest(PATHS.dimension_inputs)
+        shutil.copytree(PATHS.dimension_inputs, payload/'dimension-inputs')
     manifest = {str(path.relative_to(payload)): sha(path)
                 for path in sorted(payload.rglob('*')) if path.is_file()}
     (payload / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
     archive = OUT / f'{name}-20261021.private.tar.gz'
-    with archive.open('xb') as raw, tarfile.open(fileobj=raw, mode='w:gz', compresslevel=1) as tar:
+    with archive.open('xb') as raw, gzip.GzipFile(fileobj=raw,mode='wb',filename='',mtime=0,compresslevel=1) as compressed, tarfile.open(fileobj=compressed,mode='w|') as tar:
         for member in manifest:
-            tar.add(payload / member, arcname=member)
+            tar.add(payload / member, arcname=member, filter=canonical_member)
         data = json.dumps(manifest, ensure_ascii=False, indent=2).encode()
         info = tarfile.TarInfo('manifest.json')
         info.size = len(data)

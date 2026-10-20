@@ -83,7 +83,7 @@ def main():
                                     .relative_to(PROJECT)),
                            sha256=index_entry['sha256']),
                 source_pins={name: smoke.file_sha(REPO / name) for name in cost.COST_SOURCES},
-                provenance=dict(
+                provenance=dict(preparation_id=PATHS.run_id,
                     observed_query_package_sha256=smoke.file_sha(PACKAGE),
                     retrieval_controls_sha256=smoke.file_sha(ARCHIVE / 'controls/retrieval-formal.approved.json'),
                     index_path_note='Local path for validation; the server plan maps only the index path',
@@ -106,7 +106,7 @@ def main():
                  instance_id='678c4cb81e-857c90e4', lease_id=None,
                  plan_sha256=smoke.file_sha(OUT / 'plan.private.json'),
                  data_root=SERVER_ROOT,
-                 output_path=SERVER_ROOT + '/results/e2e-cost-20261021-formal',
+                 output_path=SERVER_ROOT + '/results/' + PATHS.run_id + '-cost',
                  charge_start_epoch=None, deadline_epoch=None,
                  quoted_rate_cny_hour=None, max_rate_cny_hour=RATE_CAP_CNY_HOUR,
                  max_incremental_cny=BUDGET_CAP_CNY, incurred_cny=0,
@@ -133,7 +133,7 @@ def main():
     (recheck_dir / 'plan.private.json').write_text(json.dumps(recheck_server, ensure_ascii=False, indent=2))
     (recheck_dir / 'validation.json').write_text(json.dumps(recheck_validation, ensure_ascii=False, indent=2))
     recheck_lease = dict(lease, plan_sha256=smoke.file_sha(recheck_dir / 'plan.private.json'),
-                         output_path=SERVER_ROOT + '/results/e2e-smoke-recheck-20261021',
+                         output_path=SERVER_ROOT + '/results/' + PATHS.run_id + '-smoke',
                          scope='5 round-1 questions x cosine/utility x 3 repeats; new-version recheck of CPU threads and ranking recording')
     (recheck_dir / 'lease.proposed.json').write_text(json.dumps(recheck_lease, ensure_ascii=False, indent=2))
     # Arithmetic simulation only: the proposal above stays unauthorized.

@@ -1,0 +1,137 @@
+{
+  "schema": "edgecorag_stats_contract_v1",
+  "status": "frozen_before_new_derived_analysis",
+  "historical_predictions_or_scores_modified": false,
+  "denominators": {
+    "smoke_20": 20,
+    "dev": 150,
+    "frozen_test": 1033,
+    "all_no_self_rows": 18045,
+    "paired_frozen_n": 1033,
+    "failure_statuses": [
+      "empty_output",
+      "parse_failure",
+      "generation_error",
+      "missing_prediction"
+    ],
+    "failure_policy": "Copy archived strict_choice_v1 status/correctness; all failures count as incorrect, never drop rows or reparse outputs. Missing exports retain explicit missing_prediction rows."
+  },
+  "selection": {
+    "allowed_splits": [
+      "dev",
+      "smoke_20"
+    ],
+    "P3_selection_split": "dev",
+    "candidates": [
+      "cosine",
+      "random",
+      "utility"
+    ],
+    "objective": "highest dev correct count; tie order cosine,random,utility",
+    "frozen_test": "evaluation only; previously observed, not new blind test",
+    "quality_based_dimension_selection": false
+  },
+  "paths": {
+    "P1": "fixed cosine",
+    "P2": "fixed utility",
+    "P3": "per-model fixed strategy chosen by dev correct count only",
+    "P4": "per-question max archived correctness among cosine/random/utility; post hoc Oracle upper bound, never deployable; keep separately identified"
+  },
+  "bootstrap": {
+    "unit": "existing query-or-shared-GT-image connected components; image association proxy, not verified document source",
+    "frozen_components": 564,
+    "resamples": 10000,
+    "seed": 42,
+    "replacement": true,
+    "estimand": "question-weighted right-minus-left accuracy percentage points; ratio of cluster sums to cluster sizes",
+    "rng": "numpy.default_rng(42), shared draws within each family",
+    "interval": "equal-tailed basic bootstrap, clipped to [-100,100]"
+  },
+  "multiplicity": {
+    "method": "Holm step-down adjusted two-sided centered-bootstrap p-values",
+    "Q3_family": "all six path pairs per model, five models:30; post hoc Oracle pairs flagged separately",
+    "Q4_family": "15 within-model strategy pairs plus five predefined P3 cross-model comparisons:20",
+    "holm_confidence_interval": "Simultaneous rectangle from inversion of the full-family Holm acceptance region; its rectangular projections equal basic-bootstrap Bonferroni intervals at alpha/m. Report this identity explicitly; do not call rank-dependent unadjusted quantiles Holm CIs.",
+    "alpha": 0.05,
+    "monte_carlo_limit": "10000 draws; tail resolution finite; all intervals descriptive, no causal or equivalence claim"
+  },
+  "model_comparisons": [
+    [
+      "qwen3vl_4b",
+      "gemma4_e2b"
+    ],
+    [
+      "qwen3vl_8b",
+      "gemma4_e2b"
+    ],
+    [
+      "qwen3vl_4b",
+      "gemma4_e4b"
+    ],
+    [
+      "qwen3vl_8b",
+      "gemma4_e4b"
+    ],
+    [
+      "gemma4_e2b",
+      "gemma4_e4b"
+    ]
+  ],
+  "mechanism": {
+    "scope": "operational exact-image-identity/outcome classification; no semantic support or causal attribution",
+    "priority": [
+      "retrieval_harm_proxy",
+      "not_retrieved",
+      "present_but_wrong",
+      "other"
+    ],
+    "retrieval_harm_proxy": "archived S0 correct AND selected strategy incorrect; associative contrast only",
+    "not_retrieved": "no exact GT image in the no-self top10 pool, after harm priority",
+    "present_but_wrong": "top10 has exact GT but strategy incorrect, after prior classes",
+    "other": "remaining rows",
+    "extras": "Also emit selected-top3-hit and pool-hit flags in aggregate; fixed split denominator and category partition must reconcile"
+  },
+  "concept_mapping": {
+    "official_scenarios": [
+      "Angle",
+      "Partial",
+      "Temporal",
+      "Others",
+      "Obstruction",
+      "Scope",
+      "Deformation",
+      "Biological",
+      "Incomplete"
+    ],
+    "categories": [
+      "OCR",
+      "图表",
+      "跨图",
+      "其他"
+    ],
+    "tentative_cross_image": [
+      "Temporal",
+      "Incomplete"
+    ],
+    "rest": "其他",
+    "review": "All mappings need independent review. Scenario taxonomy alone cannot identify OCR/chart; leave those empty instead of inventing labels. Compare to all-other conservative mapping.",
+    "claim": "概念映射，未经独立标注审定"
+  },
+  "wording": {
+    "interval_crosses_zero": "不能排除无差异",
+    "oracle": "post hoc upper bound; separate from deployable choices",
+    "forbidden": [
+      "causal attribution",
+      "universal replacement",
+      "new blind evaluation",
+      "semantic accuracy inferred from citation F1",
+      "edge cost inferred from server cost"
+    ]
+  },
+  "future_gates": {
+    "R23": "Historical paired-delivery status retained. New research analyses require 564 components/10000 resamples/seed42 and full-family correction under this contract.",
+    "R25": "Historical offline-generation Pareto delivery retained. A same-load full end-to-end Pareto requires future approved GPU measurements.",
+    "R35": "P1 approval/publication is conversation state, not a deficiency in historical code/environment hash and receipt delivery."
+  },
+  "completion_counting": "status only; 已完成/已交付/已披露/已执行 -> 完成; 部分 -> 部分; 后置 or 未测或不适用本轮 -> 后置; 待/未 -> 待补; qualified delivery retains its status; limit never changes grouping"
+}

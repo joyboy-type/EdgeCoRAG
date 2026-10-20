@@ -1,0 +1,58 @@
+{
+  "status": "verified_local_preparation_only",
+  "execution_authorized": false,
+  "gpu_started": false,
+  "packages": {
+    "smoke": {
+      "sha256": "5d7c1de0e51ff8d7c73cb800dafc6300b2f3644555cf400ea76111a645d2c340",
+      "bytes": 2849584,
+      "plan_sha256": "6e85ea67d93aabe939f72083bc7ad40d4d2da65da6135c30117460e94ea69189",
+      "plan_bytes": 8417236,
+      "members": 21,
+      "execution_authorized": false
+    },
+    "cost": {
+      "sha256": "83eadb43782be93d5461d9e9fd25837d21a6705d350d1959e4fd7f186ef56851",
+      "bytes": 3790153,
+      "plan_sha256": "18b523af4191f087a15ce8d90f9d0d1775d533d5aa16542b80e0076d88177996",
+      "plan_bytes": 8751892,
+      "members": 39,
+      "execution_authorized": false
+    }
+  },
+  "dimension_manifest_sha256": "c0f1388c70d5945dbeddc4ca95a2546760d471035b3329f9eeb8ed0ced62f294",
+  "dimensions": {
+    "128": {
+      "queries": 150,
+      "rank_rows": 150,
+      "cosine_rows": 150,
+      "random_rows": 150,
+      "utility_scores_pending": 1500
+    },
+    "256": {
+      "queries": 150,
+      "rank_rows": 150,
+      "cosine_rows": 150,
+      "random_rows": 150,
+      "utility_scores_pending": 1500
+    },
+    "512": {
+      "queries": 150,
+      "rank_rows": 150,
+      "cosine_rows": 150,
+      "random_rows": 150,
+      "utility_scores_pending": 1500
+    },
+    "768": {
+      "queries": 150,
+      "rank_rows": 150,
+      "cosine_rows": 150,
+      "random_rows": 150,
+      "utility_scores_pending": 1500
+    }
+  },
+  "interface_sha256": "91051848385a38bbe144ac13c89d198f8a94067ad04a90e6666621e546745018",
+  "interface_artifact_sha256": "df977d2a54d5facd33e95451c05df3d51c4178fc9ba3d7493caef3a587297b1c",
+  "source_files": 19,
+  "scope": "Input preparation and CPU contract tests only; no new quality or cost measurement"
+}
