@@ -1,0 +1,22 @@
+{
+  "smoke_package": {
+    "sha256": "ff8e8e29be929213dd0157da597cb5c78b2b0a4e6e42761cd50c3337cdac1363",
+    "bytes": 2838095
+  },
+  "smoke_plan": {
+    "sha256": "f931308216632856f0a5fbda3f4a2acb2b570624a58b4f70c4f9813df7024fd9",
+    "bytes": 8417188
+  },
+  "cost_package": {
+    "sha256": "5ba1062099662ad801a2795b6e40d2d2284ab142a57daa918f5052af2c055679",
+    "bytes": 2940983
+  },
+  "cost_plan": {
+    "sha256": "35dae6ebd4a31a701f799a12163a2b466bd050266808df5e3abf81a5eea2c30d",
+    "bytes": 8751844
+  },
+  "corpus_index": {
+    "sha256": "5ff75f8487d1683c6d84a065509b426964ac13ec36ae28f9601a81479e2c9a58",
+    "bytes": 58229888
+  }
+}

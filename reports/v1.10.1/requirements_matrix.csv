@@ -19,8 +19,8 @@ R17,张 §6 §8,检索 编码 索引驻留与完整端到端时延显存,待补,
 R18,张 §6,能耗与顺序切换成本,未测或不适用本轮,reports/B_comparison.md,功耗可选；无offload，不将未测值写成0
 R19,张 §7 §10,逐题结构化输出 raw answer 与完整矩阵,已交付,logs/B_predictions.jsonl.gz,"含21,927条，解压后为B_predictions.jsonl；性能不能加入质量分母"
 R20,张 §7,处理器完整rendered_prompt与图片清单,部分完成,logs/B_input_contexts.jsonl.gz,结构化messages与图像路径哈希已存；最终chat-template字符串未存，不伪造
-R21,张 §7 §8,未检索到 已出现没答对 检索伤害四类机制,部分完成,reports/v1.10.1/answer_transitions.csv; reports/v1.10.1/gt_overlap_strata.csv; reports/v1.10.1/diagnostics/report.html; reports/next_stage_20261017/B_case_review_status.csv,已完成17745条主条件记录诊断、GT与格式分解、20条案例记录核对；未看图，语义支持与因果机制仍待审定
-R22,张 §8,按题或文档来源聚类95%配对CI,部分完成,reports/v1.10.1/paired_comparisons.csv; reports/v1.10.1/cross_model_paired.csv; reports/next_stage_20261017/B_statistics_decision.md,现为场景分层题级bootstrap2000 seed42；无来源聚类或多重校正，方法边界已交付、可信来源键待A-04
+R21,张 §7 §8,未检索到 已出现没答对 检索伤害四类机制,部分完成,reports/v1.10.1/answer_transitions.csv; reports/v1.10.1/gt_overlap_strata.csv; reports/v1.10.1/diagnostics/report.html; reports/next_stage_20261017/B_case_review_status.csv; reports/next_stage_20261019/证据变化_分层答案变化_20261020.csv,历史17745条记录及20例审阅保留；无自匹配1033已观察题新增证据变化分层与135个逐场景单元，图像身份命中仅为描述性关联，非语义支持或因果机制审定
+R22,张 §8,按题或文档来源聚类95%配对CI,部分完成,reports/v1.10.1/paired_comparisons.csv; reports/v1.10.1/cross_model_paired.csv; reports/next_stage_20261017/B_statistics_decision.md; reports/next_stage_20261019/图像相关性_聚类置信区间_20261020.csv,已完成860查询图像簇、564图像关联分量的30个聚类区间及135个逐场景单元；非可信文档来源聚类，无多重校正，不编造来源键或宣称非劣效
 R23,张 §7 §8,同证据跨模型配对差距,已交付 描述性,reports/v1.10.1/cross_model_paired.csv,无预注册非劣效界值，不以区间包含0宣称等价
 R24,张 §8,类别分层 OCR 图表 跨图关联等,部分完成,reports/v1.10.1/scenarios.csv; reports/next_stage_20261017/B_statistics_decision.md,已按MRAG官方9场景；概念类别映射规范与依据仍待补，不根据模型优劣事后挑类别
 R25,张 §8 §10,质量与P95 显存Pareto图,已交付 限离线生成,figures/v1.10.1/quality_latency_pareto.png; figures/v1.10.1/quality_memory_pareto.png,质量1033冻结题，成本20smoke题x5，非同负载端到端前沿
