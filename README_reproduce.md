@@ -1,6 +1,6 @@
 # EdgeCoRAG §8：离线复算与工程前置
 
-范围：本批未下载、安装、升级、连接服务器或加载模型。以下命令均在本批实际执行；原始rc见 `reports/next_stage_20261019/offline_gate_20261021/command_rc.json`。统计为描述性、未预注册；Oracle是post hoc上界，S2使用GT证据，仅为评估条件，不是可部署路径。本指南不宣称复现GPU质量/成本实验。
+范围：本批未下载、安装、升级、连接服务器或加载模型。 Oracle 为三种 no-self 策略的 post hoc 上界，不是 S2 GT 路径；约8.5pp不能解释为“换GT证据的收益”。以下命令均在本批实际执行；原始rc见 `reports/next_stage_20261019/offline_gate_20261021/command_rc.json`。统计为描述性、未预注册；Oracle是post hoc上界，S2使用GT证据，仅为评估条件，不是可部署路径。本指南不宣称复现GPU质量/成本实验。
 
 ## 环境、权重与数据
 
@@ -64,3 +64,16 @@ $PY b-side/encode_pool.py --corpus-manifest "$FIXTURE/corpus.csv" --queries-mani
 - `a_round_reply_20261021/reconciliation.json`：追加18955 SHA清单交A求交状态。异常低交集先核对raw SHA与alias口径，不能直接断言语料无关。
 
 Gate/分区 `--verify` 重建到临时目录并逐字节比较所有文件；测试检查形状、fp32、TF32、归一化、缺revision/权重SHA拒绝。验收回执manifest含新增文件SHA256/bytes，目录不含权重、向量、原始图片或答案。预检参数/环境不全时必须明确失败。
+
+
+## 20d1505之后的v2联接补充
+
+本次新增核查定位到B_input_contexts中的角色槽位→SHA，S2与独立gold集合全量一致，每模型1033/1033可联。v2原定义含集合重叠/漏项，尚不是互斥分区。见error_partition_20261021/namespace_v2.json与README。
+
+上文20d1505的gate_error_analysis逐字节命令针对当时包含README的历史输出快照；本轮按要求追加该README，旧命令不再可用于证明追加文档的字节一致。数字CSV/JSON旧产物未改。v2实际运行的复算命令如下，输出新目录后与partition_v2.csv、join_v2.csv.gz、namespace_v2.json逐字节比较rc0：
+
+```sh
+$PY analysis/next_stage_20261019/join_error_partition.py --gold-controls "$GOLD_CONTROLS" --out "$NEW_JOIN_OUT" --private-probe "$NEW_PRIVATE_PROBE"
+```
+
+本次141 tests OK（138+新增3）、分析54 OK、裸审计rc1，原始输出在error_partition_20261021/v2_validation/。raw gold probe仅留仓库外；没有重parse、读图像或运行GPU。原文138测试/环境数字属于20d1505批次，未用旧rc代替新验收。

@@ -1,3 +1,33 @@
+# v2命名空间核验与原定义重算（基线20d1505）
+
+能联：通过现成context映射，五模型各1033/1033题可与数据集gold精确联接，总5165/5165（100%）。
+不能联：S1 evidence_ids_order实际是qid#official_retrievedN角色槽位，不能直接与image:* gold别名字符串相等比较，直接同命名空间比例0%。
+只能联一部分：本次不存在部分缺输入，映射后真正不可判定为每模型0/1033；此前“缺映射”是漏查现有B_input_contexts，不是历史数据缺失。
+
+## 联接证据与复验
+
+现成链：prediction.context_key → logs/B_input_contexts.jsonl.gz 的input.evidence[evidence_id].sha256 → image:<sha256> → retrieval-formal.approved.json的gold[qid]。每条核对context的qid/condition/证据列表行序；S2所有GT集合映射后再与独立归档gold核对，5165/5165完全一致。无需图像、解码、模型或新的别名推断。该等价只针对本次原baseline context的SHA与dataset gold身份，不能外推为18955历史索引的image:*后缀等于重编码文件原始字节SHA。
+
+20题已按group表既有顺序取样，原gold/evidence列表打印并另存仓库外私有probe；公开只保存probe哈希/比例，不推送raw gold映射。全量复算不只依赖这20题。namespace_v2.json含源文件SHA、计数和定义冲突。
+
+```sh
+$PY analysis/next_stage_20261019/join_error_partition.py --gold-controls "$GOLD_CONTROLS" --out "$NEW_JOIN_OUT" --private-probe "$NEW_PRIVATE_PROBE" --print-probe
+```
+
+GOLD_CONTROLS必须为合法已有归档，NEW_PRIVATE_PROBE须在仓库外且不存在。join_v2.csv.gz只含源行号、模型/qid、正确标记、GT命中布尔及原定义标记，不复制原题/答案或gold列表。
+
+## 分区定义冲突：保留原条件，不假称互斥
+
+原定义逐字实现：a=gold∩top3为空；b=相交且S1错；c=S0对且S1错；d=S1错且不相交且非c。d是a的子集，c可与a或b重叠；S1对且命中的题不落入任何类。四个原条件无法同时满足“互斥且相加=1033”。不能把完整输入但未覆盖的正确题改写为不可判定。
+
+partition_v2.csv因此明确标记original_requested_overlapping_flag_NOT_partition：保存原条件计数/占比、未校正95%区间与20标记家族校正区间，不改定义，不声称已交付互斥分区。以qwen3vl_4b为例：296题多重归类、336题无类，四类合计993而非1033；五模型详细诊断见namespace_v2.json。当前唯一阻塞是定义矛盾，映射已闭环。
+
+此前产物保留为历史派生，原日志和状态不动；下方旧说明中的“缺GT联接/未知”已由本次纠正，不得继续当作实际数据缺失。
+
+---
+
+## 历史v1说明（保留原文供对账，联接缺口结论已更正）
+
 # 五类互斥操作分区与error_type
 
 复验：`$PY analysis/next_stage_20261019/gate_error_analysis.py --verify --out "$DERIVED_ROOT"`

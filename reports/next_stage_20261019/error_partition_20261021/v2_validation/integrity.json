@@ -1,0 +1,15 @@
+{
+  "a_side_vs_543de53": {
+    "tracked_files": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "text_files_with_crlf": 0,
+  "crlf_paths": [],
+  "double_json_paths": [],
+  "source_logs_unchanged": true,
+  "true_unknown_per_model": "0/1033",
+  "original_definition_partition_valid": false,
+  "returncode": 0,
+  "raw_gold_probe_published": false
+}
