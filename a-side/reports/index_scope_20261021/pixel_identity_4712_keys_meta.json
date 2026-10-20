@@ -1,0 +1,23 @@
+{
+  "schema": "identity_keys/v1",
+  "rows": 4712,
+  "unique_l1b": 4712,
+  "l1b_collisions": {},
+  "l1b_definition": {
+    "gray_source": "pixel_identity_4712.csv:gray32（32x32 灰度，1024 字节）",
+    "levels": 12,
+    "quantization": "floor(v/255*11 + 0.5)（round-half-up）",
+    "packing": "byte = q[2k] | (q[2k+1] << 4)，低位在前；奇数尾补 0",
+    "hash": "sha256(512 bytes)"
+  },
+  "rounding_sensitivity": {
+    "bytes_compared": 4825088,
+    "q_values_changed_if_bankers": 0,
+    "share": 0.0
+  },
+  "output": {
+    "path": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-A\\a-side\\reports\\index_scope_20261021\\pixel_identity_4712_keys.csv",
+    "bytes": 918866,
+    "sha256": "dea811c53654b0897a5163349be9ca784721de72d15c8141f67c42b07a22b1db"
+  }
+}
