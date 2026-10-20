@@ -43,3 +43,10 @@ class EvidenceAuditTests(unittest.TestCase):
         self.assertEqual(bucket('已执行'),'完成')
         self.assertEqual(bucket('未测或不适用本轮'),'后置')
         self.assertEqual(bucket('已交付 部分核验'),'完成')
+
+    def test_completed_evidence_without_reproduction_command_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=self.fixture(tmp,status='已完成',limit='historic scope');(root/'artifact.json').write_text('{}')
+            result=a.audit(root)
+            self.assertEqual(result['status'],'failed')
+            self.assertTrue(any('reproduction' in error.lower() for error in result['errors']))

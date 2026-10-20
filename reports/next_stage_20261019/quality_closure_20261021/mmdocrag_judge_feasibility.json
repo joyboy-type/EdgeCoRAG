@@ -1,0 +1,64 @@
+{
+  "status": "draft_unexecuted",
+  "semantic_accuracy": null,
+  "semantic_accuracy_citable": false,
+  "judge": {
+    "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "dtype": "bfloat16",
+    "weights_required": [
+      "pinned configuration/tokenizer/processor files",
+      "all safetensors shards and index"
+    ],
+    "cache_verified_for_judge": false,
+    "download_performed": false,
+    "self_judge_bias": "judge also appears among generators; human/external adjudication needed"
+  },
+  "scope": {
+    "existing_evaluation_queries": 200,
+    "generators": 5,
+    "possible_ratings": 1000,
+    "repeats": 1
+  },
+  "protocol": {
+    "input": "private question, reference, fixed evidence and unchanged generated answer; hide generator identity",
+    "output": "five bounded ordinal ratings plus evidence-grounded reasons and uncertainty; no binary semantic accuracy until independently calibrated",
+    "dimensions": [
+      "correctness",
+      "completeness",
+      "faithfulness",
+      "relevance",
+      "coherence"
+    ],
+    "dimension_scale": [
+      0,
+      5
+    ],
+    "temperature": 0,
+    "max_new_tokens": 512,
+    "failures": "record missing/parse/generation errors separately; retain fixed 200 denominator per generator; no repair/retry",
+    "comparison": "document/source components for MMDocRAG require separate validated grouping; MRAG564 groups cannot be transplanted"
+  },
+  "cost": {
+    "gpu_minutes_interval": null,
+    "cny_interval": null,
+    "reason": "No measured judge throughput or approved live quote; generation times from a different task cannot bound judge runtime.",
+    "formulas": {
+      "gpu_minutes": "(1000 * measured_seconds_per_rating + measured_setup_seconds)/60",
+      "compute_cny": "gpu_minutes/60 * approved_cny_per_hour"
+    },
+    "fee_not_authorized": true,
+    "Q7_65min_3CNY_does_not_authorize_judge": true
+  },
+  "license_issues": [
+    "repository API license=null; data/upstream rights not audited",
+    "README research/noncommercial versus HF Apache-2.0 conflict remains unresolved",
+    "code license does not confer image/PDF redistribution rights; no raw data/public responses",
+    "model license and derivative judge distribution require separate review"
+  ],
+  "sources": [
+    "https://github.com/MMDocRAG/MMDocRAG",
+    "https://mmdocrag.github.io/MMDocRAG/"
+  ],
+  "limitations": "未执行、不得引用语义准确率；无可辩护的数值费用区间，需获批后先做独立吞吐标定"
+}

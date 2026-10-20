@@ -1,0 +1,39 @@
+{
+  "status": "declared_historic_gaps_and_new_capture_contract",
+  "source_sha256": "d88d152e261a5fa8441ae7bc59ca9b91aedeb2df574777fd80b15a5cfc415693",
+  "historical": [
+    {
+      "field": "rendered_prompt",
+      "availability": "不可回溯",
+      "reason": "Only saved abstract messages exist; processor-rendered string was not captured.",
+      "historical_values_modified": false
+    },
+    {
+      "field": "device_total_peak_bytes",
+      "availability": "不可回溯",
+      "reason": "Allocator peaks are not whole-device peaks; no historic whole-device sampling trace.",
+      "historical_values_modified": false
+    },
+    {
+      "field": "per_strategy_p95",
+      "availability": "不可回溯",
+      "reason": "15 smoke measurements per path are below the declared20-observation P95 rule.",
+      "historical_values_modified": false
+    },
+    {
+      "field": "system_ram_peak_bytes",
+      "availability": "不可回溯",
+      "reason": "No matching whole-system RAM peak trace in round-1 receipt.",
+      "historical_values_modified": false
+    }
+  ],
+  "future_fields": {
+    "processor_rendered_prompt": "actual processor tokenize=False return; private string plus SHA256",
+    "device_used_bytes_max_sampled": "whole-device sample maximum; not labelled an absolute peak",
+    "device_total_peak_bytes": "only if a matching complete whole-device sampling trace supports the declared scope",
+    "system_ram_peak_bytes": "separate measured system RAM trace; process RSS is not system RAM",
+    "p95_seconds": "eligible measured requests only; declared minimum20 per strategy; warmups excluded"
+  },
+  "gate": "availability must be observed with a positive typed value; unavailable records contain no value field and fail require_observed",
+  "native_GPU_collection": "not_executed"
+}

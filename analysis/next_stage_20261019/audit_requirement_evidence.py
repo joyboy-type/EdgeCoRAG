@@ -10,6 +10,9 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import os
+import subprocess
+import sys
 
 REPO=Path(__file__).resolve().parents[2]
 
@@ -19,7 +22,7 @@ def group(status):
     return bucket(status)
 
 
-def audit(repo=REPO):
+def audit(repo=REPO, execute_commands=True):
     repo=Path(repo).resolve();md=repo/'reports/Requirements.md';matrix=repo/'reports/v1.10.1/requirements_matrix.csv'
     parsed={}
     for line in md.read_text().splitlines():
@@ -28,7 +31,16 @@ def audit(repo=REPO):
             if cells[0] in parsed:raise ValueError('Duplicate Markdown requirement')
             parsed[cells[0]]=cells
     with matrix.open(encoding='utf-8-sig',newline='') as stream:table=list(csv.DictReader(stream))
-    errors=[];warnings=[];rows=[];seen=set()
+    errors=[];warnings=[];rows=[];seen=set();commands={}
+    registry_path=repo/'analysis/next_stage_20261019/requirement_reproduction_registry.json'
+    registry=json.loads(registry_path.read_text()) if registry_path.exists() else {'requirements':{}}
+    # Default layout is local-only convenience; portable callers can supply environment roots.
+    project=repo.parents[2] if len(repo.parents)>2 else repo
+    substitutions={'{work_dir}':os.environ.get('EDGECORAG_WORK_DIR',str(project/'work/next-experiment-20261019')),
+        '{metadata_dir}':os.environ.get('EDGECORAG_METADATA_DIR',str(project/'work/pre-experiment-20261018/final-readiness')),
+        '{export_dir}':os.environ.get('EDGECORAG_EXPORT_DIR',str(repo.parent/'quality-closure-20261021/private-official-export')),
+        '{official_source}':os.environ.get('EDGECORAG_OFFICIAL_SOURCE',str(repo.parent/'quality-closure-20261021/official-score-4ae2241.py'))}
+
     counts={name:dict(count=0,ids=[]) for name in ('完成','部分','待补','后置')}
     for record in table:
         cells=[record[key] for key in ('id','source','requirement','status','evidence','limit_or_next_action')]
@@ -45,11 +57,37 @@ def audit(repo=REPO):
         if not cells[4] or not limit.strip():errors.append(qid+': evidence and limit required')
         if category=='完成' and missing:errors.append(qid+': completed item has missing evidence '+','.join(missing))
         elif missing:warnings.append(qid+': partial/deferred evidence missing '+','.join(missing))
+        if category=='完成':
+            proof=registry['requirements'].get(qid,{})
+            if proof:
+                expected=[part.strip().strip('`') for part in cells[4].split(';') if part.strip()]
+                if proof.get('status')!=cells[3] or proof.get('evidence')!=expected:
+                    errors.append(qid+': reproduction registration differs from authoritative row')
+                else:
+                    from verify_requirement_evidence import inventory
+                    if inventory(repo,expected)!=proof.get('files'):
+                        errors.append(qid+': registered evidence content/inventory changed')
+            command=proof.get('command')
+            if not command or not isinstance(command,list):errors.append(qid+': reproduction command missing')
+            elif not str(command[0]).startswith('analysis/next_stage_20261019/') or not str(command[0]).endswith('.py'):
+                errors.append(qid+': reproduction command outside approved analysis scripts')
+            else:
+                expanded=[substitutions.get(value,value) for value in command]
+                identity=json.dumps(expanded)
+                if execute_commands and identity not in commands:
+                    try:
+                        result=subprocess.run([sys.executable,*expanded],cwd=repo,capture_output=True,text=True,timeout=120)
+                        commands[identity]=dict(returncode=result.returncode,command=command)
+                        if result.returncode!=0:errors.append(qid+': reproduction failed: '+result.stderr[-600:])
+                    except (OSError,subprocess.TimeoutExpired) as error:
+                        errors.append(qid+': reproduction unavailable: '+type(error).__name__)
+                elif identity in commands and commands[identity]['returncode']!=0:
+                    errors.append(qid+': shared reproduction command failed')
         counts[category]['count']+=1;counts[category]['ids'].append(qid)
         rows.append(dict(id=qid,status=cells[3],group=category,missing_evidence=missing,evidence=pins,limit=limit))
     if set(parsed)!=seen:errors.append('Markdown/CSV requirement inventory mismatch')
-    return dict(status='failed' if errors else 'passed',scope='structural evidence audit; no metrics recomputed or statuses promoted',
-        requirements=len(rows),completion=counts,counts={key:value['count'] for key,value in counts.items()},errors=errors,warnings=warnings,rows=rows,
+    return dict(status='failed' if errors else 'passed',scope='status-only grouping; evidence identity and registered G2 commands verified; no model generation or score reparsing',
+        requirements=len(rows),reproduction_commands=list(commands.values()),completion=counts,counts={key:value['count'] for key,value in counts.items()},errors=errors,warnings=warnings,rows=rows,
         input_sha256={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in [('Requirements.md',md),('requirements_matrix.csv',matrix)]})
 
 

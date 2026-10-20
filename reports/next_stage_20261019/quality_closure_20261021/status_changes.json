@@ -1,0 +1,26 @@
+[
+  {
+    "id": "R03",
+    "old_status": "待补",
+    "new_status": "已完成 限已归档三策略dev选择",
+    "reason": "仅在dev150选择cosine/random/utility，固定平局规则，frozen1033只评估。不是所有RAG系统的全局最优；P4是post hoc Oracle上界，不可部署。"
+  },
+  {
+    "id": "R22",
+    "old_status": "部分完成",
+    "new_status": "已完成 限既有图像关联分量",
+    "reason": "沿用564图像关联分量、10000次、seed42，对15策略和5预定模型配对报告未校正/保守Holm联合矩形及step-down p；描述性近似。不是文档来源真值，方法限定见docs/holm_interval_construction.md。"
+  },
+  {
+    "id": "R24",
+    "old_status": "部分完成",
+    "new_status": "已完成 限待审概念映射与敏感性",
+    "reason": "概念映射，未经独立标注审定；官方场景不能识别OCR/图表，两类为空不报准确率；提供暂定与全部归其他的敏感性结果。"
+  },
+  {
+    "id": "R30",
+    "old_status": "待补",
+    "new_status": "已完成 限官方格式独立导出",
+    "reason": "15个全顺序文件20295槽位及60个split文件均反查源预测；117条格式失败原样保留，未重解析、未运行官方scorer。含原始答案/输出的导出仅私有，混合四种历史暴露集合，不当作1353新盲测。固定revision官方score.py已只读AST核对字段；未执行会重解析输出的官方scorer，不报告官方新分数。"
+  }
+]
