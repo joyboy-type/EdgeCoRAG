@@ -1,0 +1,20 @@
+{
+  "V_shape": [
+    2,
+    768
+  ],
+  "Q_shape": [
+    1,
+    768
+  ],
+  "dtype": "float32",
+  "tf32_enabled": false,
+  "batch_size": 16,
+  "model_id": "google/embeddinggemma-2",
+  "model_revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "encoder_weights_sha256": "7807e9375d4e292c8b66439cfee0d43f8d3d6f0f087bba24a9980dc8a174aedb",
+  "normalize_locus": "post_cast_float32",
+  "model_loaded": false,
+  "dry_run": true,
+  "weights_binding_verified": true
+}

@@ -1,0 +1,16 @@
+{
+  "passed": 2,
+  "total": 2,
+  "checks": [
+    {
+      "check": "identical_inputs_zero_change",
+      "pass": true,
+      "detail": "{\"changed_order\": 0, \"changed_set\": 0, \"changed_top3\": 0, \"total\": 8, \"flip_rate\": 0.0}"
+    },
+    {
+      "check": "perturbed_inputs_detected",
+      "pass": true,
+      "detail": "{\"changed_order\": 7, \"changed_set\": 2, \"changed_top3\": 3, \"total\": 8, \"flip_rate\": 0.875}"
+    }
+  ]
+}

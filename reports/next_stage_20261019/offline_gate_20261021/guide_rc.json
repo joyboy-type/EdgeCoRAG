@@ -1,0 +1,6 @@
+{
+  "fixture_generation_rc": 0,
+  "encode_dry_run_rc": 0,
+  "environment_lock_generation_rc": 0,
+  "scope": "Only synthetic dry-run and historical JSON version extraction, no installations or model imports"
+}

@@ -1,0 +1,13 @@
+# 来自回执与registry，未重新安装验证；非新环境已验证锁。
+# Python==3.12.3 (round2 runtime)
+# CUDA-runtime==12.8 (torch build/runtime, NOT driver max CUDA)
+# NVIDIA-driver==595.71.05 (recorded nvidia-smi)
+# Driver-max-CUDA==13.2 (capability ceiling, not runtime)
+# sentence-transformers from isolated-retriever import receipt; packages are not all observed in a single co-resident environment.
+# numpy from metadata-only B gemma lock; installed NumPy version in round2 receipt absent. Not verified by execution.
+torch==2.8.0+cu128
+torchvision==0.23.0+cu128
+transformers==5.19.0
+sentence-transformers==6.1.0
+Pillow==11.3.0
+numpy==2.5.4

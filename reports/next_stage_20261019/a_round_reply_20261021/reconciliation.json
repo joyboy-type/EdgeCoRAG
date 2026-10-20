@@ -27,5 +27,13 @@
     "确认dedup.notes是快照唯一性、不证明建库去重决策",
     "确认28份parquet构成与4712唯一内容的可复算依据",
     "交付同池fp32分数旁路与候选身份对齐；排序根因未定"
-  ]
+  ],
+  "index_sha_inventory_delivery": {
+    "commit": "c466d9d81c7add97bdceef61211bf39eae4b5924",
+    "path": "reports/next_stage_20261019/a_round_reply_20261021/index_18955_sha256.csv",
+    "sha256": "67193931a88000926753f338906fe60b75197c726e969c5fe294df22e7746a3d",
+    "rows": 18955,
+    "handoff_status": "已交A求交（据本轮交接，未另行发消息）；A交集回执尚未提供",
+    "if_N_common_zero_or_abnormally_low": "先按sha口径可能混入alias回退核对源corpus[*].sha256与image:*身份后缀，明确两者口径；如确有错则在新文件重导并保留旧表/旧回执。不得直接认定索引与语料无关。"
+  }
 }

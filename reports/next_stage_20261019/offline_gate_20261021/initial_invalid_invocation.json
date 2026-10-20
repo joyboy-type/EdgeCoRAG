@@ -1,0 +1,7 @@
+{
+  "returncode": 1,
+  "scope": "Initial manual dry-run invocation used a mistyped non-64-character SHA; rejected before any model loading. Corrected invocation derives SHA from synthetic file and rc is separately recorded; not an implementation bug or planned experiment retry.",
+  "supplied_sha": "45df718259d7cd4f8478538764f31fe7d6a88e346fdc55b2ebc8a4d46af595181",
+  "actual_synthetic_sha": "7807e9375d4e292c8b66439cfee0d43f8d3d6f0f087bba24a9980dc8a174aedb",
+  "error": "ValueError: Fixed revision and explicit weights SHA256 required"
+}

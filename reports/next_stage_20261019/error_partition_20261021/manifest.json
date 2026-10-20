@@ -1,0 +1,26 @@
+{
+  "README.md": {
+    "sha256": "38e8aa4d188e9d7201072b316046b17f377eab44352f4a99e6696df8e9bc8581",
+    "bytes": 1674
+  },
+  "error_types.csv.gz": {
+    "sha256": "bc8e21566917f1ec3c95de604393272b34b6ecc8df93522ba81620f2dea0c2a9",
+    "bytes": 210178
+  },
+  "old_to_new_mapping.csv": {
+    "sha256": "b1bb672279c785a1cd0e9f73d69b66814c3118dbf66f9a88b28644a2268ad1a3",
+    "bytes": 557
+  },
+  "partition_rows.csv.gz": {
+    "sha256": "970623c5e4d0a5b98145c80ac58a78fcbe25060a045b1940b617fb4982419946",
+    "bytes": 129311
+  },
+  "partition_summary.csv": {
+    "sha256": "f95d0b61106835ccc0d6164c4df69d694b23230cfd6ee6f9cdcad730d890af1b",
+    "bytes": 11682
+  },
+  "summary.json": {
+    "sha256": "b699c751a9c56c58ab16dbdceb54ded5c32d4e7efc95663248591a7a3abc2cd7",
+    "bytes": 1794
+  }
+}
