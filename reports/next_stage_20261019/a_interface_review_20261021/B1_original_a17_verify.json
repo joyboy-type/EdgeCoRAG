@@ -1,0 +1,170 @@
+{
+  "artifacts_checked": 36,
+  "corpus_rows": 4712,
+  "corpus_digest": "31ade7b7e2454d0b9fcd58568247dd2a6862e15273fdd65e1d12ed50e373264e",
+  "pools": {
+    "dev_150|128": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "dev_150|256": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "dev_150|512": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "dev_150|768": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "frozen_test|128": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "frozen_test|256": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "frozen_test|512": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "frozen_test|768": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "smoke_20|128": {
+      "questions": 20,
+      "rows": 200
+    },
+    "smoke_20|256": {
+      "questions": 20,
+      "rows": 200
+    },
+    "smoke_20|512": {
+      "questions": 20,
+      "rows": 200
+    },
+    "smoke_20|768": {
+      "questions": 20,
+      "rows": 200
+    }
+  },
+  "order_fragile": {
+    "dev_150|128": {
+      "questions": 150,
+      "order_fragile": 138,
+      "share": 0.92
+    },
+    "dev_150|256": {
+      "questions": 150,
+      "order_fragile": 128,
+      "share": 0.8533
+    },
+    "dev_150|512": {
+      "questions": 150,
+      "order_fragile": 119,
+      "share": 0.7933
+    },
+    "dev_150|768": {
+      "questions": 150,
+      "order_fragile": 127,
+      "share": 0.8467
+    },
+    "frozen_test|128": {
+      "questions": 1033,
+      "order_fragile": 981,
+      "share": 0.9497
+    },
+    "frozen_test|256": {
+      "questions": 1033,
+      "order_fragile": 866,
+      "share": 0.8383
+    },
+    "frozen_test|512": {
+      "questions": 1033,
+      "order_fragile": 865,
+      "share": 0.8374
+    },
+    "frozen_test|768": {
+      "questions": 1033,
+      "order_fragile": 861,
+      "share": 0.8335
+    },
+    "smoke_20|128": {
+      "questions": 20,
+      "order_fragile": 20,
+      "share": 1.0
+    },
+    "smoke_20|256": {
+      "questions": 20,
+      "order_fragile": 18,
+      "share": 0.9
+    },
+    "smoke_20|512": {
+      "questions": 20,
+      "order_fragile": 17,
+      "share": 0.85
+    },
+    "smoke_20|768": {
+      "questions": 20,
+      "order_fragile": 16,
+      "share": 0.8
+    }
+  },
+  "fails": [
+    "sha mismatch pools/smoke_20__dim768__top10.csv: cf0dc37835db != f011547aa7e5",
+    "size mismatch pools/smoke_20__dim768__top10.csv",
+    "sha mismatch select3/smoke_20__dim768__cosine+random.csv: fd01ade74d96 != 4034cacf25e9",
+    "size mismatch select3/smoke_20__dim768__cosine+random.csv",
+    "sha mismatch pool_quality/smoke_20__dim768__margins.csv: 6b5d1b13b589 != 93a8f0bc2fd0",
+    "size mismatch pool_quality/smoke_20__dim768__margins.csv",
+    "sha mismatch pools/smoke_20__dim512__top10.csv: f03579416e3c != ea7109b4030d",
+    "size mismatch pools/smoke_20__dim512__top10.csv",
+    "sha mismatch select3/smoke_20__dim512__cosine+random.csv: 0d51edcdea8f != e7e36e05135b",
+    "size mismatch select3/smoke_20__dim512__cosine+random.csv",
+    "sha mismatch pool_quality/smoke_20__dim512__margins.csv: 1aecd291ea1c != 7333a5beb31d",
+    "size mismatch pool_quality/smoke_20__dim512__margins.csv",
+    "sha mismatch pools/smoke_20__dim256__top10.csv: 53e7bf0e1832 != e33028c75dbd",
+    "size mismatch pools/smoke_20__dim256__top10.csv",
+    "sha mismatch select3/smoke_20__dim256__cosine+random.csv: 3c315a25cd33 != 473310bae5f5",
+    "size mismatch select3/smoke_20__dim256__cosine+random.csv",
+    "sha mismatch pool_quality/smoke_20__dim256__margins.csv: 75ee9a049572 != 3812170db3c9",
+    "size mismatch pool_quality/smoke_20__dim256__margins.csv",
+    "sha mismatch pools/smoke_20__dim128__top10.csv: 05d65c2c577c != c030477e1749",
+    "size mismatch pools/smoke_20__dim128__top10.csv",
+    "sha mismatch select3/smoke_20__dim128__cosine+random.csv: da1ed3693ca6 != 5b05fddf6070",
+    "size mismatch select3/smoke_20__dim128__cosine+random.csv",
+    "sha mismatch pool_quality/smoke_20__dim128__margins.csv: 9b8c02ef378d != 7dfcf2b7845e",
+    "size mismatch pool_quality/smoke_20__dim128__margins.csv",
+    "sha mismatch pools/dev_150__dim768__top10.csv: ca7829cf6565 != 408c005f6de0",
+    "size mismatch pools/dev_150__dim768__top10.csv",
+    "sha mismatch select3/dev_150__dim768__cosine+random.csv: a480882b9c2e != 3291ab75e915",
+    "size mismatch select3/dev_150__dim768__cosine+random.csv",
+    "sha mismatch pool_quality/dev_150__dim768__margins.csv: b09d1d972c80 != f9742720b4cb",
+    "size mismatch pool_quality/dev_150__dim768__margins.csv",
+    "sha mismatch pools/dev_150__dim512__top10.csv: 86b187b7a375 != 3f7670c4b088",
+    "size mismatch pools/dev_150__dim512__top10.csv",
+    "sha mismatch select3/dev_150__dim512__cosine+random.csv: 9b019771cc8f != 4b6cc4d848c6",
+    "size mismatch select3/dev_150__dim512__cosine+random.csv",
+    "sha mismatch pool_quality/dev_150__dim512__margins.csv: ca27b1fae30f != 1edab1faa7a3",
+    "size mismatch pool_quality/dev_150__dim512__margins.csv",
+    "sha mismatch pools/dev_150__dim256__top10.csv: 8f4ad5a82766 != 9841dced425a",
+    "size mismatch pools/dev_150__dim256__top10.csv",
+    "sha mismatch select3/dev_150__dim256__cosine+random.csv: b3461c27a540 != 0d5905204418",
+    "size mismatch select3/dev_150__dim256__cosine+random.csv",
+    "sha mismatch pool_quality/dev_150__dim256__margins.csv: 6842e1fc330f != 64b8d09e03c9",
+    "size mismatch pool_quality/dev_150__dim256__margins.csv",
+    "sha mismatch pools/dev_150__dim128__top10.csv: b83bf5970a1b != b179e98d2711",
+    "size mismatch pools/dev_150__dim128__top10.csv",
+    "sha mismatch select3/dev_150__dim128__cosine+random.csv: c03415bd14bc != 84665f03477a",
+    "size mismatch select3/dev_150__dim128__cosine+random.csv",
+    "sha mismatch pool_quality/dev_150__dim128__margins.csv: b90660a0c790 != 03380efa88ba",
+    "size mismatch pool_quality/dev_150__dim128__margins.csv",
+    "sha mismatch pools/frozen_test__dim768__top10.csv: 9cc93604a5be != 035948b91f66",
+    "size mismatch pools/frozen_test__dim768__top10.csv"
+  ],
+  "fail_count": 72
+}

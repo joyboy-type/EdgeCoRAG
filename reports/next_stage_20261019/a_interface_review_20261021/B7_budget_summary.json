@@ -1,0 +1,35 @@
+{
+  "status": "conditional_arithmetic_not_an_executable_plan",
+  "nonmeasured_assumptions": true,
+  "total_seconds": 16408.28,
+  "worst_scenario_seconds": 32216.56,
+  "window_minutes": 274,
+  "worst_window_minutes": 537,
+  "current_quote": null,
+  "assumed_rate_cap_cny_hour": 2.18,
+  "conditional_expected_cny": 9.955333333333334,
+  "conditional_worst_cny": 19.511,
+  "rate_scope": "assumption only, no live quote or user approval; no5h/7.4 reused",
+  "hard_stop": "T0 + 32220 seconds including600s preservation; actual UTC unknown until approved boot",
+  "stop_work": "T0 + 31620 seconds; preserve600s; independent platform hard-stop must be confirmed before running",
+  "preservation_seconds": 600,
+  "failures": [
+    "B1 raw manifest verification fails -> do not begin",
+    "Index reconciliation unresolved -> no paired session",
+    "Torch/BLAS effective counts unavailable/mismatch -> abort",
+    "Any source/hash/model/protocol mismatch -> abort",
+    "First task error -> preserve partial, no retry",
+    "Insufficient remaining preservation reserve -> stop work"
+  ],
+  "cannot_apply_for_GPU_now": true,
+  "existing_runner_window_max_seconds": 7200,
+  "proposed_window_within_existing_runner_limit": false,
+  "runner_limit_source_sha256": "b9b289eb1a282811017bfa42cacc9c6109ba960ff7375d26d0b129cdd7229ac1",
+  "limitations": [
+    "All unit times hypothetical, worst is a scenario not a probabilistic bound; hard stop bounds expenditure only after a quote and platform control are verified",
+    "E5 one-generator scope must be confirmed; adding more models needs recomputation",
+    "If transferred A fp32 index accepted, E0 could be omitted by a new preregistered scope; not silently removed here",
+    "No3yuan/5yuan/65minute/100minute authorization inferred from prior sessions",
+    "Conditional scope exceeds existing7200s runner limit; cannot execute this scenario without separate scope/protocol decision"
+  ]
+}

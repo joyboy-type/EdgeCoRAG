@@ -1,0 +1,13 @@
+{
+  "hardware": {
+    "cpu_thread_env": "unfixed"
+  },
+  "thread_evidence": {
+    "preflight_sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+    "preflight_observed": 8,
+    "a12_observed": "unfixed",
+    "torch_intra": "unavailable",
+    "torch_inter": "unavailable",
+    "blas_matches_requested": "unavailable"
+  }
+}

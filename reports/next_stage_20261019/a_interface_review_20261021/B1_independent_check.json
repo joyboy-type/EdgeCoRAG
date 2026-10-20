@@ -1,0 +1,13 @@
+{
+  "status": "失败：清单口径缺陷，待 A 修复",
+  "artifacts": 36,
+  "raw_pass": 0,
+  "normalized_direct_pass": 0,
+  "CRLF_reconstruction_pass": 36,
+  "unexpected_content_mismatch": [],
+  "A_manifest_sha256": "24eb13fe9839cfbde9062b3684e32669da479af21b1a41f2b383f2b176838d08",
+  "method": "In memory only: LF bytes restored to CRLF must match original manifest hash/size, then normalize back to exact disk LF bytes. Direct LF-normalized hash cannot equal a CRLF manifest.",
+  "conclusion": "内容完好，仅清单行尾口径不一致，待 A 修",
+  "use_label": "provisional: manifest 行尾口径待 A 修复",
+  "B1_passed": false
+}

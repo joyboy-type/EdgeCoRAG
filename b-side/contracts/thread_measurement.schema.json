@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "New-run thread provenance only; never retrofits historical receipts",
+  "type": "object",
+  "required": [
+    "hardware",
+    "thread_evidence"
+  ],
+  "properties": {
+    "hardware": {
+      "type": "object",
+      "required": [
+        "cpu_thread_env"
+      ],
+      "properties": {
+        "cpu_thread_env": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "enum": [
+                "unfixed"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "thread_evidence": {
+      "type": "object",
+      "required": [
+        "preflight_sha256",
+        "preflight_observed",
+        "a12_observed"
+      ],
+      "properties": {
+        "preflight_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "preflight_observed": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "a12_observed": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "enum": [
+                "unfixed"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "verified_CPU_only_provisional_A_manifest",
+  "requests": 20,
+  "images_per_request": 4,
+  "source_file_sha256": "cf0dc37835dbaa4f3b707e8761322511ed53910802855c417873e4d7a94002c2",
+  "persisted_order_matches_source": true,
+  "B1_passed": false,
+  "provisional": "provisional: manifest 行尾口径待 A 修复"
+}

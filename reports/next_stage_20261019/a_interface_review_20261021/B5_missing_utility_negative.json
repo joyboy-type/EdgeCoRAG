@@ -1,0 +1,5 @@
+{
+  "returncode": 1,
+  "expected_error": "utility scores missing; B must not invent or select top3",
+  "out_created": false
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "O1",
+    "status": "仍开放",
+    "evidence": "B7_a18_pending.json",
+    "limit": "B栈未跑；A0/1203仅A栈"
+  },
+  {
+    "id": "O2",
+    "status": "已解决（选择流程已交付）",
+    "evidence": "A_reference_pins.csv -> selection_policy.md",
+    "limit": "本批不选维；跨零作为并列决策不证明统计等价，历史合同不回写，未来须登记新选择协议"
+  },
+  {
+    "id": "O3",
+    "status": "已解决（资源API接口）",
+    "evidence": "B5_resource_api_contract.json + B5_a12_dry_records.jsonl",
+    "limit": "CPU合同接受外部方法、拒绝allocator；真实整卡/RAM/能耗均unmeasured"
+  },
+  {
+    "id": "O4",
+    "status": "已解决（职责与参数接口）",
+    "evidence": "A_reference_pins.csv -> a15; b-side/a_interface_runner.py; tests/test_a_interface_runner.py",
+    "limit": "B只交raw logit三列；top3/物化归A；未做真实utility前向或GPU物化验收"
+  }
+]

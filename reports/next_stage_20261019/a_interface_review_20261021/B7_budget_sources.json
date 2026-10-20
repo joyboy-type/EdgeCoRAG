@@ -1,0 +1,7 @@
+{
+  "round1_receipt_sha256": "2002252a6a3b8d0ec47c60cf0a00bf5eab8dfa0b607d8f06ce6776010c3ef97f",
+  "round1_bf16_cosine_full_request_median_seconds": 0.505305727943778,
+  "round1_bf16_utility_full_request_median_seconds": 1.5631033070385456,
+  "round1_utility_selection_build_median_seconds": 1.239396268967539,
+  "limits": "Historical medians are observed on round1 bf16; mixed selection includes utility and is NOT pure utility timing; no transfer as new fp32 benchmark."
+}

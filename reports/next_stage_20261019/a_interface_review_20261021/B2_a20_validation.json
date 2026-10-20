@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "回执写的 verdict='pending'，A 侧重算为 'matches_neither'",
+    "索引 18955 条既不等于实例数 14475 也不等于唯一内容数 4712（与 smoke 报告写的 18955 一致）：在 B 给出差额来源前，两批结果不得配对"
+  ],
+  "computed": {
+    "claimed_entries": 18955,
+    "public_instances": 14475,
+    "public_unique": 4712,
+    "delta_vs_instances": 4480,
+    "delta_vs_unique": 14243,
+    "verdict": "matches_neither",
+    "verdict_a_side": "matches_neither"
+  }
+}

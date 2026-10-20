@@ -1,0 +1,6 @@
+{
+  "status": "待 GPU",
+  "A_result": "0/1203 binds A stack only",
+  "B_result": "not executed; no counters claimed",
+  "schema_file_sha256": "eaa7728c269b69bafa444d3448dbe877f4f2fe1a4c1fb6bfa0505a6f288d3b4b"
+}

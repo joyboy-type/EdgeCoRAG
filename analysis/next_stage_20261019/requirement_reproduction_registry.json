@@ -199,12 +199,42 @@
     "R07": {
       "status": "待补 A侧",
       "evidence": [
-        "reports/next_stage_20261019/EdgeCoRAG_无自匹配协议复核结果_20261019.md"
+        "reports/next_stage_20261019/EdgeCoRAG_无自匹配协议复核结果_20261019.md",
+        "reports/next_stage_20261019/a_interface_review_20261021/B1_independent_check.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B2_index_receipt.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B2_a20_validation.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B3_encoding_parameters.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B5_independent_validation.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json"
       ],
       "files": {
         "reports/next_stage_20261019/EdgeCoRAG_无自匹配协议复核结果_20261019.md": {
           "sha256": "4cbf0eac77a125e300cf04907a9cc4cad75d2e4022f91e3130e4949387ca33f7",
           "bytes": 9462
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B1_independent_check.json": {
+          "sha256": "269b9114837daba0c4a61eb4cdc81d69cacf2235e55b26e983043a290fec2865",
+          "bytes": 651
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B2_index_receipt.json": {
+          "sha256": "d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468",
+          "bytes": 4285
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B2_a20_validation.json": {
+          "sha256": "615da1f3a4725d85f557dd4bd9051de32554595c1ddb632fd1837ead5f96d0fb",
+          "bytes": 553
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B3_encoding_parameters.json": {
+          "sha256": "b3fc29374d55abf330177e1f72de1436520cdd6bc8a59ee4952fd808dc98b1d4",
+          "bytes": 2056
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B5_independent_validation.json": {
+          "sha256": "000bd303e06d81af7fcb6c90f9ebc94d59f898e0fff49fd0736a614d3f493e03",
+          "bytes": 327
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json": {
+          "sha256": "79b1c762190e1014c2ebe78882122efe47c81bb2b80f51b493d143d8ba64a9f5",
+          "bytes": 212
         }
       },
       "command": [
@@ -923,7 +953,9 @@
       "evidence": [
         "reports/next_stage_20261019/EdgeCoRAG_同机端到端smoke实测_20261020.md",
         "b-side/session_runner.py",
-        "tests/test_session_runner.py"
+        "tests/test_session_runner.py",
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_derivation.csv",
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_summary.json"
       ],
       "files": {
         "reports/next_stage_20261019/EdgeCoRAG_同机端到端smoke实测_20261020.md": {
@@ -937,6 +969,14 @@
         "tests/test_session_runner.py": {
           "sha256": "e889d3b7e14cf22a12f9f8963bf8486c0e89c0d5ea563cbe915b248d98ee5fcf",
           "bytes": 8275
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_derivation.csv": {
+          "sha256": "dd5641a80082fb3623aa8804271072ca5691f20667c2981da5e07fc244c194b1",
+          "bytes": 2892
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_summary.json": {
+          "sha256": "ec2d4a6536f8f1c1b6d7387cf7894437b387f0e91c7a9872adc911e8e5f64e79",
+          "bytes": 1930
         }
       },
       "command": [
@@ -989,7 +1029,10 @@
         "reports/next_stage_20261019/quality_closure_20261021/O4_measurement_gap_contract.json",
         "b-side/next_interface_bridge.py",
         "tests/test_next_interface_bridge.py",
-        "reports/next_stage_20261019/B_record_gaps.md"
+        "reports/next_stage_20261019/B_record_gaps.md",
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_preflight.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_provenance.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_schema_validation.json"
       ],
       "files": {
         "logs/B_input_contexts.jsonl.gz": {
@@ -1011,6 +1054,18 @@
         "reports/next_stage_20261019/B_record_gaps.md": {
           "sha256": "65825a72e119475de55a488582c4bc86497d229bed26d31258de54229dc30be4",
           "bytes": 1811
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_preflight.json": {
+          "sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+          "bytes": 11387
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_provenance.json": {
+          "sha256": "acd8c8a222d55db12f0f93fd004c41df82b9e66e9e0275ca2c6dbb142f558f1a",
+          "bytes": 348
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_schema_validation.json": {
+          "sha256": "aebb3fa8c9a017d9848baa957c46e54de0f757a85e4f103de1c44ae47b84749d",
+          "bytes": 120
         }
       },
       "command": [
@@ -1105,7 +1160,7 @@
         "analysis/next_stage_20261019/b_offline_closure.py",
         "--verify"
       ],
-      "scope": "Public-only D1/D2 re-derivation; no generation/reparsing"
+      "scope": "Public-only D1/D2 re-derivation; no raw-answer scoring or generation"
     },
     "R23": {
       "status": "已交付 描述性",
@@ -1262,7 +1317,9 @@
         "reports/next_stage_20261019/quality_closure_20261021/official_export_validation.json",
         "reports/next_stage_20261019/quality_closure_20261021/official_schema_validation.json",
         "reports/next_stage_20261019/B_official_export_receipt.json",
-        "reports/next_stage_20261019/B_official_export_validation.json"
+        "reports/next_stage_20261019/B_official_export_validation.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B6_export_receipt.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B6_official_export_validation.json"
       ],
       "files": {
         "reports/next_stage_20261019/quality_closure_20261021/official_export_receipt.json": {
@@ -1283,6 +1340,14 @@
         },
         "reports/next_stage_20261019/B_official_export_validation.json": {
           "sha256": "74317455b88d51f5aeb8b6a198267d957f7cfd06a06a9f84ac933c5f4d186151",
+          "bytes": 850
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B6_export_receipt.json": {
+          "sha256": "aaefd1e553b7da3a4d96b4b033c8b94bcf4415a8f4c176a051573c11bf01e984",
+          "bytes": 34403
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B6_official_export_validation.json": {
+          "sha256": "50ddd11ec018d066224bf14e44c494f2027d4deda0dbeda106145fedd81d2673",
           "bytes": 850
         }
       },
@@ -1454,7 +1519,9 @@
         "reports/next_stage_20261019/quality_closure_20261021/source_archive_supplement.json",
         "reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv",
         "reports/next_stage_20261019/B_source_archive_validation.json",
-        "reports/next_stage_20261019/B_pin_reproducibility.csv"
+        "reports/next_stage_20261019/B_pin_reproducibility.csv",
+        "reports/next_stage_20261019/a_interface_review_20261021/A_readonly_integrity.json",
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_receipt_append_validation.json"
       ],
       "files": {
         "provenance/v1.10.1/batch_identity.json": {
@@ -1512,6 +1579,14 @@
         "reports/next_stage_20261019/B_pin_reproducibility.csv": {
           "sha256": "633f1a51b6c6ae4d0e2fd0f718ff66015b8f06099fdf00bd043719bfdfdfa3ec",
           "bytes": 3910
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/A_readonly_integrity.json": {
+          "sha256": "fe307820eb854b4cfea31d605140d53b7a5b2599237335a7739652c072d6360a",
+          "bytes": 273
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_receipt_append_validation.json": {
+          "sha256": "8ec790e563eefbf892026a3a7b937f09fc45fcafb578b4c138d1ad4275aeff6c",
+          "bytes": 242
         }
       },
       "command": [
@@ -1569,7 +1644,7 @@
     }
   },
   "input_sha256": {
-    "requirements_matrix.csv": "1743b7bfffd8fc209771e459c1a5139c4d22a769d9d797d22119413b55292ee2"
+    "requirements_matrix.csv": "54868567f2e240f08d4e74b73a0ea82cefafac551b8682e50b943352bff862e4"
   },
   "limitations": "Historical delivered rows prove frozen byte identity; new research gates are applied only to new analyses. G2 commands requiring private material must receive local roots; no download or server access."
 }

@@ -86,5 +86,11 @@
       "a-side/scripts/independent_retrieval.py": "code/a-side/scripts/independent_retrieval.py"
     },
     "note": "Round-1 source snapshots; historical pins and cpu_thread_warning retain original values"
+  },
+  "cpu_thread_warning_note": {
+    "evidence": "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_preflight.json",
+    "evidence_sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+    "round2_thread_configuration_sha256": "11ecf2bdcbf65c81acb9d425d01f96d6aa54508845e0795d0591beeb85911682",
+    "note": "round1 warning true retained; round2 inherited managed variables all null. Local CPU hostile-env override verified; torch/BLAS unavailable. macOS cannot reproduce libgomp, target verification awaits approved GPU session."
   }
 }

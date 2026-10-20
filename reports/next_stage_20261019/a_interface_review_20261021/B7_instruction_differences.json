@@ -1,0 +1,37 @@
+[
+  {
+    "user_item": "B4 CPU线程",
+    "A_original": "③ 固定CPU线程",
+    "decision": "执行新敌意环境测试，历史告警只加note；a12实测库未知时unfixed"
+  },
+  {
+    "user_item": "B5接口",
+    "A_original": "⑤冻结接口",
+    "decision": "以interface_freeze为权威，直接A pool/select3/a12；只做CPU dryrun"
+  },
+  {
+    "user_item": "B6官方导出",
+    "A_original": "⑥是a18跨栈回执，原文无此导出任务",
+    "decision": "不把官方导出替代a18；导出按用户独立授权补齐，a18仍待GPU"
+  },
+  {
+    "user_item": "B7八项回传",
+    "A_original": "⑦表实际9项，最后一项是异议",
+    "decision": "前8项回传；第9项异议O1-O4单列，不漏项"
+  },
+  {
+    "user_item": "补充预算",
+    "A_original": "§4有旧5h/7.4元粗估",
+    "decision": "不沿用，逐阶段假设算术，不作为执行授权"
+  },
+  {
+    "user_item": "A④悬空引用",
+    "A_original": "称两个A脚本在任何分支不存在",
+    "decision": "旧描述过时，P0已有且pin相同，不补源码、不改旧pin"
+  },
+  {
+    "user_item": "A新selection_policy",
+    "A_original": "dev跨零作并列决策，P3并列优先较低在线成本",
+    "decision": "未来native流程遵守，跨零不作等价/可替代论断；不回改旧Q3最高dev计数选择结果，差异明确登记"
+  }
+]

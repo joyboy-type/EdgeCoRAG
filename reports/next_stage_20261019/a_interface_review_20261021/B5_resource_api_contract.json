@@ -1,0 +1,7 @@
+{
+  "status": "passed_constructed_CPU_contract_only",
+  "allocator_method_rejected": true,
+  "external_method_accepted": true,
+  "resource_measured": false,
+  "A_a12_sha256": "8db4c71d24147aeb8b576abc6672d8e7c210bc4507b1d5baf369f7d8aec04a9b"
+}

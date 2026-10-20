@@ -1,0 +1,134 @@
+[
+  {
+    "item": "1",
+    "title": "a17 native CLI",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B1_original_a17_verify.json",
+    "sha256": "c694ac2cd3e0954eeb92d84d0a13997ba28c9dcbb5a536a999b7520cd5dfe8fb",
+    "status": "失败rc1、36文件72项；B1不得记通过",
+    "sources": [
+      {
+        "path": "work/a-iface-20261021/EdgeCoRAG/a-side/scripts/a17_verify_interface.py",
+        "sha256": "8696d4b52652222816f74468400bfd49d05f5fd25ae228618d41bc02ab21f71a"
+      },
+      {
+        "path": "work/a-iface-20261021/EdgeCoRAG/a-side/retrieval_if_v1/artifacts.json",
+        "sha256": "24eb13fe9839cfbde9062b3684e32669da479af21b1a41f2b383f2b176838d08"
+      }
+    ]
+  },
+  {
+    "item": "2",
+    "title": "a06 corpus verification",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B1_original_a17_verify.json",
+    "sha256": "c694ac2cd3e0954eeb92d84d0a13997ba28c9dcbb5a536a999b7520cd5dfe8fb",
+    "status": "a17仅能复算清单4712及digest；项目work未发现parquet，未执行a06，不冒充原parquet重建通过",
+    "sources": [
+      {
+        "path": "work/a-iface-20261021/EdgeCoRAG/a-side/retrieval_if_v1/corpus/corpus_manifest.csv",
+        "sha256": "224f7c5f5e02d8fafb7cd15da5e7129ab2f480342732b8a0113bd23a076ed99a"
+      },
+      {
+        "path": "work/a-iface-20261021/EdgeCoRAG/a-side/retrieval_if_v1/corpus/corpus_meta.json",
+        "sha256": "7304970f225e3f76f1e4b8a02e5a08224711cfa1214c3a8112e1bf126a88ad69"
+      }
+    ]
+  },
+  {
+    "item": "3",
+    "title": "index receipt",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B2_index_receipt.json",
+    "sha256": "d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468",
+    "status": "18955x768 float32存储，bfloat16编码；a20有警告且不能配对；完整schema有2个未知字段阻塞",
+    "sources": [
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json",
+        "sha256": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270"
+      },
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/backup-manifest.json",
+        "sha256": "5ecea723c3d2ece7e9f3c1e89f3a9fa4f6937d4ba5c3212ebd94cf719fa834b5"
+      }
+    ]
+  },
+  {
+    "item": "4",
+    "title": "5q history/live rows",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B3_history_live_top10.csv",
+    "sha256": "baebbdf806d5e7be3dd770b4479d23866c0e15f469a98504d9d5acba2cf3fdc9",
+    "status": "history50条排名无归档分数；live20条真实记录，另30缺失槽位；均历史bf16",
+    "sources": [
+      {
+        "path": "work/next-experiment-20261019/prepared/no-self-smoke_20-ranks.jsonl",
+        "sha256": "c4509bc0f28b96ae6de9744793027dac10993a3977e1f1093e166b0a6626db90"
+      },
+      {
+        "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/results/requests.jsonl",
+        "sha256": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+      }
+    ]
+  },
+  {
+    "item": "5",
+    "title": "fingerprints and encoding params",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B3_vector_fingerprints.json",
+    "sha256": "467b1c3423f6765d46520b67f7f43eae86b3ff00fb975fe2ee112745dc28d8f8",
+    "status": "history5+live2个指纹；缺1051/1062/1117；序列化float32不等于fp32编码",
+    "sources": [
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/query_embeddings.npy",
+        "sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918"
+      },
+      {
+        "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/setup.json",
+        "sha256": "9b16829bbec5822d9791b263e56b22f4c69f897cee8755dfa54fd4b3f0e88ffc"
+      }
+    ]
+  },
+  {
+    "item": "6",
+    "title": "OMP effective evidence",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_preflight.json",
+    "sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+    "status": "环境读回8；torch/BLAS unavailable；a12=unfixed，本机不可复现libgomp",
+    "sources": [
+      {
+        "path": "work/b-offline-20261021/EdgeCoRAG/analysis/next_stage_20261019/thread_preflight.py",
+        "sha256": "d7891746ea1434cf17537fe9c58a8b6bcd7b57dc5e12b063ae159bd9b76a9c68"
+      },
+      {
+        "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/thread-configuration.json",
+        "sha256": "11ecf2bdcbf65c81acb9d425d01f96d6aa54508845e0795d0591beeb85911682"
+      }
+    ]
+  },
+  {
+    "item": "7",
+    "title": "source pins and receipt note",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B4_receipt_append_validation.json",
+    "sha256": "8ec790e563eefbf892026a3a7b937f09fc45fcafb578b4c138d1ad4275aeff6c",
+    "status": "旧source_archive保留，历史14pin可复算事实不改；本次只新增CPU note，warning保持true",
+    "sources": [
+      {
+        "path": "work/b-offline-20261021/EdgeCoRAG/provenance/results_20261020/e2e_smoke_public_receipt.json",
+        "sha256": "2002252a6a3b8d0ec47c60cf0a00bf5eab8dfa0b607d8f06ce6776010c3ef97f"
+      },
+      {
+        "path": "work/b-offline-20261021/EdgeCoRAG/reports/next_stage_20261019/B_pin_reproducibility.csv",
+        "sha256": "633f1a51b6c6ae4d0e2fd0f718ff66015b8f06099fdf00bd043719bfdfdfa3ec"
+      }
+    ]
+  },
+  {
+    "item": "8",
+    "title": "B-stack a18 receipt",
+    "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json",
+    "sha256": "79b1c762190e1014c2ebe78882122efe47c81bb2b80f51b493d143d8ba64a9f5",
+    "status": "未执行，待GPU；只读取schema，A的0/1203不外推到B",
+    "sources": [
+      {
+        "path": "work/a-iface-20261021/EdgeCoRAG/a-side/scripts/a18_batch_sensitivity.py",
+        "sha256": "91d001059be70019dd0c49cc429fbd64a852488064279e219d00c4836d09f906"
+      }
+    ]
+  }
+]

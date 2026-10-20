@@ -1,0 +1,106 @@
+{
+  "rows": [
+    {
+      "qid": "mragb:10",
+      "source": "history",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 little-endian contiguous row; no renormalization",
+      "sha256": "7db456f9477c8d6854020a65ad1b9a76cb7c5957078bfc508d4570952b8bb363",
+      "status": "archived_cache",
+      "source_sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918"
+    },
+    {
+      "qid": "mragb:10",
+      "source": "live",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 bytes of post-cast normalized live vector; archived fingerprint only, vector not retained",
+      "sha256": "e18ab771f62a19735afce4ab6506d8271f23b2506ff16ef3fcda15a1cc880bbb",
+      "status": "archived_bf16_not_fp32",
+      "source_sha256": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+    },
+    {
+      "qid": "mragb:1049",
+      "source": "history",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 little-endian contiguous row; no renormalization",
+      "sha256": "de391b46740e04f6f53e9c0d31d069ed958b2d24dfb4ddd8ec22e06906a8cf50",
+      "status": "archived_cache",
+      "source_sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918"
+    },
+    {
+      "qid": "mragb:1049",
+      "source": "live",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 bytes of post-cast normalized live vector; archived fingerprint only, vector not retained",
+      "sha256": "ee805b8c8b00ba5ee8bbca90aeacbe010e549152e6dae586a6f6ee8818c84930",
+      "status": "archived_bf16_not_fp32",
+      "source_sha256": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+    },
+    {
+      "qid": "mragb:1051",
+      "source": "history",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 little-endian contiguous row; no renormalization",
+      "sha256": "52c61e7cae508fd2b728769b8dc6cd1f93e393d2b7b408779ff06f75f79cce41",
+      "status": "archived_cache",
+      "source_sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918"
+    },
+    {
+      "qid": "mragb:1051",
+      "source": "live",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 bytes of post-cast normalized live vector; archived fingerprint only, vector not retained",
+      "sha256": null,
+      "status": "missing_live_pending_GPU",
+      "source_sha256": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+    },
+    {
+      "qid": "mragb:1062",
+      "source": "history",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 little-endian contiguous row; no renormalization",
+      "sha256": "25a335c62bd5d32a4917e5d07f9ca1a9ce95fe7c3b4065164ec5651820882302",
+      "status": "archived_cache",
+      "source_sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918"
+    },
+    {
+      "qid": "mragb:1062",
+      "source": "live",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 bytes of post-cast normalized live vector; archived fingerprint only, vector not retained",
+      "sha256": null,
+      "status": "missing_live_pending_GPU",
+      "source_sha256": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+    },
+    {
+      "qid": "mragb:1117",
+      "source": "history",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 little-endian contiguous row; no renormalization",
+      "sha256": "46bb2346d397737db5b2be7b38d4c6b44fc4357d418f38141a7a92857b2b771a",
+      "status": "archived_cache",
+      "source_sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918"
+    },
+    {
+      "qid": "mragb:1117",
+      "source": "live",
+      "encoding_dtype": "bfloat16",
+      "serialization": "float32 bytes of post-cast normalized live vector; archived fingerprint only, vector not retained",
+      "sha256": null,
+      "status": "missing_live_pending_GPU",
+      "source_sha256": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+    }
+  ],
+  "history_complete": 5,
+  "live_complete": 2,
+  "missing_live_qids": [
+    "mragb:1051",
+    "mragb:1062",
+    "mragb:1117"
+  ],
+  "history_score_available": false,
+  "no_reencoding": true,
+  "no_new_score_computation": true,
+  "no_rank_recomputation": true,
+  "history_live_same_serialization_does_not_mean_same_encoding": "Both serialize float32 but model encoding bfloat16; history cache raw output vs live post-cast normalization differ"
+}
