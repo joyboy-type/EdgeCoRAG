@@ -1,0 +1,26 @@
+{
+  "scope": "Synthetic vectors only; no real-vector execution",
+  "command": [
+    "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "b-side/similarity_bypass.py",
+    "--vectors",
+    "{synthetic_tmp}/V.npy",
+    "--queries",
+    "{synthetic_tmp}/Q.npy",
+    "--pool",
+    "{synthetic_tmp}/pool.csv",
+    "--qids",
+    "{synthetic_tmp}/qids.txt",
+    "--metadata",
+    "{synthetic_tmp}/meta.json",
+    "--source",
+    "live",
+    "--k",
+    "10",
+    "--out",
+    "{synthetic_tmp}/scores.csv"
+  ],
+  "returncode": 0,
+  "stdout": "{\n  \"command_sha256\": \"5794232fd0687371693618d4fb8c41d0ebc50c23bbd0506143e8c275b2e50e31\",\n  \"fields\": [\n    \"identity\",\n    \"qid\",\n    \"source\",\n    \"rank\",\n    \"sha256\",\n    \"score_fp32\",\n    \"score_fp32_hex\",\n    \"dtype\",\n    \"tf32_enabled\",\n    \"batch_size\",\n    \"pool_id\",\n    \"k\",\n    \"sort_key_rule\",\n    \"self_match_removed\",\n    \"n_pool_scored\",\n    \"normalize_locus\",\n    \"encoder_weights_sha256\",\n    \"model_revision\",\n    \"query_image_sha256\",\n    \"stack_versions\",\n    \"command_sha256\",\n    \"run_id\"\n  ],\n  \"input_sha256\": {\n    \"Q\": \"e86cb1331f0ca1326b986a28121f8e823131ebfba87c36104b416587cdd8ba77\",\n    \"V\": \"fccfd5dea7a1f438911b5a41888cedbe691631abd37b33f0db06b594a39f8cc0\",\n    \"metadata\": \"14acaa477328c3bbcd53362fe0e1d5cb91e291e27b65d39847d323a0b1f8414c\",\n    \"pool\": \"57acfcdbf8855bc9880e38890ef4fafe1c2bc586b41adef2f0058e8bbf929229\",\n    \"qids\": \"bb98a35c4fe1e84fbda8084c371cac222dfc4da33101be299e6d9bcc0f4a6a93\"\n  },\n  \"k\": 10,\n  \"n_pool_scored\": 12,\n  \"output_sha256\": \"d22406fec6bcee1fda6c54f7c596e5bb8aeca7f121186d819ec117a2dd4a00cc\",\n  \"pool_id\": \"sha256:57acfcdbf8855bc9880e38890ef4fafe1c2bc586b41adef2f0058e8bbf929229\",\n  \"rows\": 10,\n  \"run_id\": \"5794232fd068_20261020T123334092503Z\"\n}\n",
+  "stderr": ""
+}

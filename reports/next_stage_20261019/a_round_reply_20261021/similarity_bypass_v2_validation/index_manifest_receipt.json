@@ -1,0 +1,21 @@
+{
+  "source": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/controls/retrieval-formal.approved.json",
+  "source_sha256": "c766f7d381063ca2c935f3982de7ac72f18437a1f5889a8701181d11697fe740",
+  "source_bytes": 7028471,
+  "source_field": "corpus[*].sha256; original source row order, not image:* identity suffix",
+  "output": "index_18955_sha256.csv",
+  "data_rows": 18955,
+  "header_rows": 1,
+  "physical_lines": 18956,
+  "unique_sha256": 18955,
+  "sha256": "67193931a88000926753f338906fe60b75197c726e969c5fe294df22e7746a3d",
+  "bytes": 1232082,
+  "self_check": {
+    "fieldnames": [
+      "sha256"
+    ],
+    "rows_equal_source_field_in_original_order": true,
+    "data_rows_equals_18955": true
+  },
+  "scope": "Archive JSON hash fields only; no images opened or rehashed, no vectors read/copied, no corpus identity relabelling."
+}
