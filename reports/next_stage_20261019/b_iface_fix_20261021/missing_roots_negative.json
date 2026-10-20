@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "counts": {
+    "完成": 26,
+    "部分": 5,
+    "待补": 3,
+    "后置": 3
+  },
+  "errors": [
+    "R03: Explicit --work-dir is required",
+    "R24: Explicit --work-dir is required",
+    "R30: Explicit --official-source is required"
+  ],
+  "warnings": [],
+  "expected_returncode": 1
+}

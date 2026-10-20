@@ -1,17 +1,29 @@
 {
   "status": "conditional_arithmetic_not_an_executable_plan",
   "nonmeasured_assumptions": true,
-  "total_seconds": 16408.28,
-  "worst_scenario_seconds": 32216.56,
-  "window_minutes": 274,
-  "worst_window_minutes": 537,
+  "total_seconds": 3774.59,
+  "worst_scenario_seconds": 6949.18,
+  "window_minutes": 63,
+  "worst_window_minutes": 116,
   "current_quote": null,
   "assumed_rate_cap_cny_hour": 2.18,
-  "conditional_expected_cny": 9.955333333333334,
-  "conditional_worst_cny": 19.511,
+  "conditional_expected_cny": 2.289,
+  "conditional_worst_cny": 4.214666666666667,
   "rate_scope": "assumption only, no live quote or user approval; no5h/7.4 reused",
-  "hard_stop": "T0 + 32220 seconds including600s preservation; actual UTC unknown until approved boot",
-  "stop_work": "T0 + 31620 seconds; preserve600s; independent platform hard-stop must be confirmed before running",
+  "hard_stop": "T0 + 7200 seconds; actual UTC unknown until approved boot",
+  "stop_work": "T0 + 6600 seconds; preserve600s; independent platform hard-stop must be confirmed before running",
+  "hard_window_seconds": 7200,
+  "conditional_hard_window_compute_cny": 4.36,
+  "worst_window_slack_seconds": 240,
+  "prerequisite": "A verified transferable fp32 corpus index; if absent STOP, do not rebuild inside this scope",
+  "deferred": [
+    "E0 corpus4712 rebuild (2356/4712 assumed seconds), not budgeted in this scope",
+    "E3 remaining4 repeats and formal P50/P95 cost conclusions",
+    "E5 dev150x4 selection, frozen1033 selected dimension only, utility selected dimension only"
+  ],
+  "E5_generation_requests": 80,
+  "E5_selection_performed": false,
+  "E5_frozen_requests": 0,
   "preservation_seconds": 600,
   "failures": [
     "B1 raw manifest verification fails -> do not begin",
@@ -23,13 +35,13 @@
   ],
   "cannot_apply_for_GPU_now": true,
   "existing_runner_window_max_seconds": 7200,
-  "proposed_window_within_existing_runner_limit": false,
+  "proposed_window_within_existing_runner_limit": true,
   "runner_limit_source_sha256": "b9b289eb1a282811017bfa42cacc9c6109ba960ff7375d26d0b129cdd7229ac1",
   "limitations": [
     "All unit times hypothetical, worst is a scenario not a probabilistic bound; hard stop bounds expenditure only after a quote and platform control are verified",
-    "E5 one-generator scope must be confirmed; adding more models needs recomputation",
-    "If transferred A fp32 index accepted, E0 could be omitted by a new preregistered scope; not silently removed here",
+    "E5 is smoke-only dimension reporting, not downstream quality completion; dev/frozen/utility require separate approved scope",
+    "E0 explicitly deferred: this candidate cannot start without an already verified transferable fp32 index",
     "No3yuan/5yuan/65minute/100minute authorization inferred from prior sessions",
-    "Conditional scope exceeds existing7200s runner limit; cannot execute this scenario without separate scope/protocol decision"
+    "Conditional reduced scope fits7200s only under assumptions and index prerequisite; this is NOT an application or execution authorization"
   ]
 }

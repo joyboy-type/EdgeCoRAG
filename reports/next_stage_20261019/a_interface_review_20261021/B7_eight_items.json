@@ -38,7 +38,7 @@
     "title": "index receipt",
     "artifact": "reports/next_stage_20261019/a_interface_review_20261021/B2_index_receipt.json",
     "sha256": "d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468",
-    "status": "18955x768 float32存储，bfloat16编码；a20有警告且不能配对；完整schema有2个未知字段阻塞",
+    "status": "18955x768 float32存储，bfloat16编码；a20 matches_neither 只报差值4480/14243，不下结论；identity.rule / dedup.by_identity：A 合同待补",
     "sources": [
       {
         "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json",

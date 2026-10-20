@@ -6,8 +6,8 @@
   "ready_for_GPU_application": false,
   "files": {
     "analysis/next_stage_20261019/a_interface_budget.py": {
-      "sha256": "484cd14352a673eea2a55925ecdf47dd813f7eb3b9581f45755b89314b9cb206",
-      "bytes": 5298
+      "sha256": "3d2f5735554b79a97ff88634a2f9b8d5240dac9b5937270b8e36d1d2c4318068",
+      "bytes": 5819
     },
     "analysis/next_stage_20261019/a_interface_evidence.py": {
       "sha256": "e5fda66a8818a37906b91a5cd008c35920c0d1a8df3a34f6595a6c7be4af2fb5",
@@ -158,20 +158,20 @@
       "bytes": 212
     },
     "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_derivation.csv": {
-      "sha256": "dd5641a80082fb3623aa8804271072ca5691f20667c2981da5e07fc244c194b1",
-      "bytes": 2892
+      "sha256": "7e023ff93c98372f15923dacd6abe649be5344e0b9c9f6e946a5f2b07eee208d",
+      "bytes": 2769
     },
     "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_sources.json": {
       "sha256": "ce11ffce94aa4975156e3a5ba1f73f7083cd1b8833447386abd26cfa74197d9a",
       "bytes": 475
     },
     "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_summary.json": {
-      "sha256": "ec2d4a6536f8f1c1b6d7387cf7894437b387f0e91c7a9872adc911e8e5f64e79",
-      "bytes": 1930
+      "sha256": "c633931b703bd8cac4a5e3809e991f6ce5e53c4e9f2028947481fc1f79302b0d",
+      "bytes": 2532
     },
     "reports/next_stage_20261019/a_interface_review_20261021/B7_eight_items.json": {
-      "sha256": "419761fa8c6722926c0e779c65ce561d2e4d17b376549f25df4914d4cf753f08",
-      "bytes": 6099
+      "sha256": "7a017a017dfbb4a4c2ecd7c89e02b275e87251b45024b8388c8a934397449cac",
+      "bytes": 6142
     },
     "reports/next_stage_20261019/a_interface_review_20261021/B7_instruction_differences.json": {
       "sha256": "502061901d773c7a358d2791b3fae59149b95135a7b9b86f78380b6aa5bf0539",
@@ -182,8 +182,8 @@
       "bytes": 956
     },
     "reports/next_stage_20261019/a_interface_review_20261021/B_interface_review.md": {
-      "sha256": "62572a060b1ca9501b646058b4299b3820b2245897b125161dcbdf1a4cac86d1",
-      "bytes": 20040
+      "sha256": "5a8aa9859ca1044f376f0024442ad770e25f77e770fb7a692ebe4d8479a6c970",
+      "bytes": 20331
     },
     "reports/next_stage_20261019/a_interface_review_20261021/analysis_tests.txt": {
       "sha256": "324614727896ffc9d67b65e103001dfefa176693da9801518372613b6cc310b3",
@@ -221,5 +221,6 @@
       "sha256": "30d8cc2035103eda9c36bd76372e092e484031860469895e0f46a9ad85433749",
       "bytes": 822
     }
-  }
+  },
+  "revision_note": "B fix: portable explicit paths; reduced hypothetical budget; B2 contract gaps reported without inference. Historical source receipts/measurements unchanged."
 }

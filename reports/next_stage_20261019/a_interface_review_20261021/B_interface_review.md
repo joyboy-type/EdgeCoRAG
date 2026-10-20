@@ -36,7 +36,7 @@ python3 -B analysis/next_stage_20261019/a_interface_evidence.py --a-repo "$A" --
 
 直接读归档npy头部为18955×768、存储float32；历史receipt编码dtype=bfloat16。已按backup-manifest复核向量与回执哈希，源controls哈希与round2 plan绑定、索引行序一致。不把存储float32写成fp32编码。没有原始字节/q95身份链、去重决策、构建commit等独立证据的字段留null；语料batch仅在绑定旧源码中为4，实际批回执缺失，字段留null并在B3参数中区分来源。
 
-a20原脚本正常CLI返回0、errors=[]，但有告警：matches_neither，A工具计算delta=4480（对14475实例）、14243（对4712唯一内容）；差额来源仍待A判定，不能配对两批结果。窄口径schema lint覆盖本合同使用的关键词，不冒称通用Draft7引擎；严格合同还有2处拒绝null：identity.rule、dedup.by_identity。不能为通过而猜值，也未改A schema。a20是必要子集校验，通过不等于完整schema通过。
+a20原脚本正常CLI返回0、errors=[]，但有告警：matches_neither，A工具计算delta=4480（对14475实例）、14243（对4712唯一内容）；只报上述差值，不下结论；两字段 identity.rule / dedup.by_identity 为“A 合同待补”。窄口径schema lint覆盖本合同使用的关键词，不冒称通用Draft7引擎；严格合同还有2处拒绝null：identity.rule、dedup.by_identity。不能为通过而猜值，也未改A schema。a20是必要子集校验，通过不等于完整schema通过。
 
 ```sh
 $PY analysis/next_stage_20261019/a_interface_evidence.py --project "$PROJECT" --a-repo "$A" --out "$R" --verify
@@ -118,19 +118,19 @@ $PY analysis/next_stage_20261019/verify_official_schema.py --official-source <�
 
 8项来源与SHA见下表/JSON，异议单列O1–O4。B栈a18未执行，只有schema来源身份，不伪造changed_order/total计数。按A原文保留跨栈任务，不用B6官方导出代替它。B版与A原文编号、旧悬空引用、选择规则和预算差异逐项登记。历史Q3按旧合同的最高dev计数选择结果不回改；未来A-native采用已交selection_policy，跨零仅能作为预先声明的并列决策规则，不能写统计等价、无差异或可替代。
 
-预算逐行列次数、单次时长来源和相乘秒数。E5明确仅一个生成模型，smoke20×4+dev150×4+frozen1033=1713次，utility-all为17130次；E3为20×3×6+3暖机=363次；E0纳入无可转移fp32索引时4712编码。所有新fp32单次时长仍是假设，旧round1 bf16中位数只列来源参考、不移植为新实测。保全600秒是用户门槛。
+本轮修复以缩小工作量控制窗口，所有单次时长沿用原假设，没有把假设改成实测：E1仍2406次编码，E2仍5次；E3从6轮降到2轮（123次含暖机），仅技术pilot，不得出正式P95；E4仍80次生成；E5只做一个模型的smoke20×4维、cosine共80次，不选维，dev150×4、frozen选中维度和utility选中维度后置。E0语料重建移出本范围，必须先有已核验可转移fp32索引，否则停止，不能临时省略或使用bf16冒充。
 
-条件情景合计16408.28秒，上取整274分钟，假设费率上限2.18元/小时对应9.96元；更慢情景32216.56秒，上取整537分钟，19.51元。它们不是实测、当前报价、概率最坏上界或预算申请；仅计算假定线性计算费，不含存储等未报价附加费，实际总费用上界未知。当前报价为null。硬停止仅用T0+32220秒表示，停止工作T0+31620秒留600秒保全；尚未开机，不能造UTC时间。此情景还超过现有7200秒runner上限，不能执行，需缩小范围/另行协议决定和实测校准。没有沿用5h/7.4元，也不继承旧65分钟/3元或100分钟/5元授权。
+假设算术：3774.59秒，较慢情景6949.18秒（含600秒保全），上取整116分钟；硬窗口7200秒，T0+6600停止工作，T0+7200硬停机，至少600秒保全。假设费率2.18元/小时对应63分钟2.289元、116分钟4.214667元；7200秒窗口仅计算费4.36元，不含未报价存储等，当前报价仍未知。这是“假设、非实测、非申请”，B1/A合同/线程门槛仍阻塞，不构成开机授权。详见新 B_fix 报告；旧超限方案留在父提交历史中。
 
 ```sh
 $PY analysis/next_stage_20261019/a_interface_budget.py --verify
 ```
 
-- `reports/next_stage_20261019/a_interface_review_20261021/B7_eight_items.json` — SHA256 `419761fa8c6722926c0e779c65ce561d2e4d17b376549f25df4914d4cf753f08`
+- `reports/next_stage_20261019/a_interface_review_20261021/B7_eight_items.json` — SHA256 `7a017a017dfbb4a4c2ecd7c89e02b275e87251b45024b8388c8a934397449cac`
 - `reports/next_stage_20261019/a_interface_review_20261021/B7_objections.json` — SHA256 `fdd852a37052066546a356e639e87379fb6864588c11d154ce90992ca7143f9c`
 - `reports/next_stage_20261019/a_interface_review_20261021/B7_instruction_differences.json` — SHA256 `502061901d773c7a358d2791b3fae59149b95135a7b9b86f78380b6aa5bf0539`
-- `reports/next_stage_20261019/a_interface_review_20261021/B7_budget_derivation.csv` — SHA256 `dd5641a80082fb3623aa8804271072ca5691f20667c2981da5e07fc244c194b1`
-- `reports/next_stage_20261019/a_interface_review_20261021/B7_budget_summary.json` — SHA256 `ec2d4a6536f8f1c1b6d7387cf7894437b387f0e91c7a9872adc911e8e5f64e79`
+- `reports/next_stage_20261019/a_interface_review_20261021/B7_budget_derivation.csv` — SHA256 `7e023ff93c98372f15923dacd6abe649be5344e0b9c9f6e946a5f2b07eee208d`
+- `reports/next_stage_20261019/a_interface_review_20261021/B7_budget_summary.json` — SHA256 `c633931b703bd8cac4a5e3809e991f6ce5e53c4e9f2028947481fc1f79302b0d`
 - `reports/next_stage_20261019/a_interface_review_20261021/B7_budget_sources.json` — SHA256 `ce11ffce94aa4975156e3a5ba1f73f7083cd1b8833447386abd26cfa74197d9a`
 - `reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json` — SHA256 `79b1c762190e1014c2ebe78882122efe47c81bb2b80f51b493d143d8ba64a9f5`
 
@@ -140,7 +140,7 @@ $PY analysis/next_stage_20261019/a_interface_budget.py --verify
 |---|---|---|---|
 |1|a17 native CLI|失败rc1、36文件72项；B1不得记通过|`c694ac2cd3e0954eeb92d84d0a13997ba28c9dcbb5a536a999b7520cd5dfe8fb`|
 |2|a06 corpus verification|a17仅能复算清单4712及digest；项目work未发现parquet，未执行a06，不冒充原parquet重建通过|`c694ac2cd3e0954eeb92d84d0a13997ba28c9dcbb5a536a999b7520cd5dfe8fb`|
-|3|index receipt|18955x768 float32存储，bfloat16编码；a20有警告且不能配对；完整schema有2个未知字段阻塞|`d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468`|
+|3|index receipt|18955x768 float32存储，bfloat16编码；a20只报4480/14243；identity.rule与dedup.by_identity为A合同待补|`d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468`|
 |4|5q history/live rows|history50条排名无归档分数；live20条真实记录，另30缺失槽位；均历史bf16|`baebbdf806d5e7be3dd770b4479d23866c0e15f469a98504d9d5acba2cf3fdc9`|
 |5|fingerprints and encoding params|history5+live2个指纹；缺1051/1062/1117；序列化float32不等于fp32编码|`467b1c3423f6765d46520b67f7f43eae86b3ff00fb975fe2ee112745dc28d8f8`|
 |6|OMP effective evidence|环境读回8；torch/BLAS unavailable；a12=unfixed，本机不可复现libgomp|`155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7`|
@@ -177,3 +177,5 @@ B1原始a17仍rc1/fail72，B2完整schema仍2项缺失证据类型错误；这�
 所有脚本一行复算入口已列上方；字段导出需私有归档，公开包不含原题/gold/原始响应/图片/向量npy/模型权重/私有归档。A原始172文件前后字节一致、A工作树干净，B侧a-side和logs对e06fdfa无改动；历史回执只有新增note。未重复fetch，不修改A行尾清单，不把它修成0失败。
 
 本批仅本地提交/追加标签b-iface-20261021，不推送。当前不能进入GPU申请：至少需A重发清单、A确认索引来源关系与未知字段合同、完成语料可复算前置，并另行确定可执行的小范围预算；目标栈验证再由获批E阶段完成。
+
+本轮可移植审计复验使用显式四路径参数，见 `docs/portable_requirement_audit.md`；无参数不能把私有归档项目标为复算成功。新结果见 `../b_iface_fix_20261021/`，先前环境依赖的审计日志只是历史记录。

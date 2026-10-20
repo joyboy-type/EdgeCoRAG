@@ -1,0 +1,1074 @@
+{
+  "status": "passed",
+  "scope": "status-only grouping; evidence identity and registered G2 commands verified; no model generation or score reparsing",
+  "requirements": 37,
+  "reproduction_commands": [
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R01"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_quality_closure.py",
+        "--work-dir",
+        "{work_dir}",
+        "--artifact-dir",
+        "reports/next_stage_20261019/quality_closure_20261021"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R04"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R09"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R10"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R11"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R12"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R14"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R15"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R16"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R19"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/b_offline_closure.py",
+        "--verify"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R23"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R25"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R26"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R27"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R28"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R29"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_official_schema.py",
+        "--official-source",
+        "{official_source}",
+        "--metadata-dir",
+        "{metadata_dir}",
+        "--export-dir",
+        "{export_dir}"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R31"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R32"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R34"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R35"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R36"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R37"
+      ]
+    }
+  ],
+  "completion": {
+    "完成": {
+      "count": 26,
+      "ids": [
+        "R01",
+        "R03",
+        "R04",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R19",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R34",
+        "R35",
+        "R36",
+        "R37"
+      ]
+    },
+    "部分": {
+      "count": 5,
+      "ids": [
+        "R05",
+        "R06",
+        "R13",
+        "R20",
+        "R21"
+      ]
+    },
+    "待补": {
+      "count": 3,
+      "ids": [
+        "R07",
+        "R17",
+        "R33"
+      ]
+    },
+    "后置": {
+      "count": 3,
+      "ids": [
+        "R02",
+        "R08",
+        "R18"
+      ]
+    }
+  },
+  "counts": {
+    "完成": 26,
+    "部分": 5,
+    "待补": 3,
+    "后置": 3
+  },
+  "errors": [],
+  "warnings": [],
+  "rows": [
+    {
+      "id": "R01",
+      "status": "已完成 限冻结范围",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/B_comparison.md": {
+          "sha256": "941ced4dc6d3154784af6b841704bae5a604c520b33ce4a7abe7303ac4bbdf15",
+          "bytes": 7664
+        },
+        "reports/v1.10.1/quality.csv": {
+          "sha256": "161b5d1f15abe1e9f1b4db74812b90d2533874336b8d2513a90e01294e3f2a4d",
+          "bytes": 2775
+        }
+      },
+      "limit": "使用发布的官方候选 top3，不是新 EmbeddingGemma 检索"
+    },
+    {
+      "id": "R02",
+      "status": "后置可选",
+      "group": "后置",
+      "missing_evidence": [],
+      "evidence": {
+        "b-side/configs/model_registry.json": {
+          "sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+          "bytes": 13957
+        }
+      },
+      "limit": "未运行，不纳入当前五模型计划"
+    },
+    {
+      "id": "R03",
+      "status": "已完成 限已归档三策略dev选择",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv": {
+          "sha256": "22f73f3ba7d2d4090856ae6753183409f66cc8bfa2b0038cc538e910329f9e37",
+          "bytes": 4486
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/paired_differences.csv": {
+          "sha256": "2eaa6653ad4ccac7df91971bb494d473479a7ef66e68bcdd99dd5da272bd63fa",
+          "bytes": 10165
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/dev_fixed_selection.csv": {
+          "sha256": "1929c23d1cbe91f1c3d1c7002dba6b5ee2d1d3bfc6020d73d0b9b28c5c16377d",
+          "bytes": 437
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/C_fixed_rag_and_paths.md": {
+          "sha256": "31c950980d5e11479c3dadacdfd4e15f8ebd4e97f0b34cf67e790c415be8b7bc",
+          "bytes": 1676
+        }
+      },
+      "limit": "仅在dev150选择cosine/random/utility，固定平局规则，frozen1033只评估。不是所有RAG系统的全局最优；P4是post hoc Oracle上界，不可部署。"
+    },
+    {
+      "id": "R04",
+      "status": "已完成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "handover/contracts/官方评测接口差异.md": {
+          "sha256": "aa154fa86ba71a2d0e686daacce200b838ef8566a148ccc6a17885810db5979c",
+          "bytes": 6215
+        },
+        "b-side/configs/sources_and_integrity.json": {
+          "sha256": "946215423bd3f079861926d06de2bbe0b143ee6160c74aa75f369c531715f028",
+          "bytes": 4871
+        }
+      },
+      "limit": "strict_choice_v1 为项目主评分；不冒称复现官方排行榜"
+    },
+    {
+      "id": "R05",
+      "status": "部分完成",
+      "group": "部分",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/B_papers.md": {
+          "sha256": "26b7375a47205531e7542e2ee7a055998423a182ec832f8d8d2e369be3ad7918",
+          "bytes": 4100
+        },
+        "source_manifest.csv": {
+          "sha256": "4088be8ba1874a40a61be886b20ac32f851bf6531317f793adb0934ffe56820f",
+          "bytes": 4230
+        },
+        "reports/next_stage_20261017/B_paper_evidence.csv": {
+          "sha256": "60fad9530e7609d7db57ea86b6f4118040956cceaccef71c1fb66391cb0a4275",
+          "bytes": 2341
+        },
+        "reports/next_stage_20261017/B_paper_table_evidence.csv": {
+          "sha256": "5df03e02f1ac64c836563ac218153570e1017ea0f61d8c4a0ca5fdfe581fd6fb",
+          "bytes": 19382
+        },
+        "reports/next_stage_20261017/B_paper_table_audit.md": {
+          "sha256": "e2634bfc4d54af34647653aaa4ca5aa052fdd144d700e3c7821952d46665a6f0",
+          "bytes": 4168
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/papers_matrix.csv": {
+          "sha256": "bb8edbc09e3abdbfcee0758dde305b8fbc013dd88ca56ed90cbfc1c9768f9a82",
+          "bytes": 9365
+        }
+      },
+      "limit": "六篇逐论文对照已生成，四篇36个原表单元可核验；RAGRouter/VQQP原文数字、分母与适配许可仍未独立核验，不能称全部逐论文复现闭环。"
+    },
+    {
+      "id": "R06",
+      "status": "部分完成",
+      "group": "部分",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261017/B_mmdocrag_evaluation_report.md": {
+          "sha256": "148731b0dc7dd9a48f133e73b29d31f724e61011677fd45312306442f160460c",
+          "bytes": 13341
+        },
+        "reports/next_stage_20261017/B_mmdocrag_evaluation_summary.json": {
+          "sha256": "8a8ce85accd1f19fb4cca1214c58fb7117131b6ff3347994f789218044794763",
+          "bytes": 5977
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/mmdocrag_judge_feasibility.json": {
+          "sha256": "95b889633503d5b39d83f57ecc0d5df924feec898da4caa8bf842351347b2ee9",
+          "bytes": 2530
+        },
+        "reports/next_stage_20261019/B_judge_protocol.json": {
+          "sha256": "f7c92d7406d7523fac49dae55e890d5e233610feb72880dd16ee96442be2b43a",
+          "bytes": 3504
+        },
+        "reports/next_stage_20261019/B_judge_cost_scenarios.csv": {
+          "sha256": "61fd68e65047e31381948fa7db5891fa3ea0378fe78988ed4302f903c29b9442",
+          "bytes": 471
+        },
+        "reports/next_stage_20261019/B_judge_feasibility.md": {
+          "sha256": "da9d36e629f2cd3f682b9debdb617d586e911b23f5c13531d0ca0a92a81db0e2",
+          "bytes": 1233
+        },
+        "reports/next_stage_20261019/B_visdom_feasibility.json": {
+          "sha256": "0065ad004a3dbabb4141b0d831b85ba36920a328660a44fdf5d8c213b583cceb",
+          "bytes": 2452
+        },
+        "reports/next_stage_20261019/B_visdom_feasibility.md": {
+          "sha256": "ae8351a44ba075b430c538062e8ed76366ea3c02f9c4dca0b78e2e7a8a5ab136",
+          "bytes": 1079
+        }
+      },
+      "limit": "固定200题五模型1000次无judge生成和指标已交付；本批只补judge协议、一致性/人审及非实测条件成本算术。未执行、不得引用语义准确率；README CC BY-NC与HF Apache冲突未澄清。VisDoM仅可行性，依赖/许可/吞吐未验证。"
+    },
+    {
+      "id": "R07",
+      "status": "待补 A侧",
+      "group": "待补",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/EdgeCoRAG_无自匹配协议复核结果_20261019.md": {
+          "sha256": "4cbf0eac77a125e300cf04907a9cc4cad75d2e4022f91e3130e4949387ca33f7",
+          "bytes": 9462
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B1_independent_check.json": {
+          "sha256": "269b9114837daba0c4a61eb4cdc81d69cacf2235e55b26e983043a290fec2865",
+          "bytes": 651
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B2_index_receipt.json": {
+          "sha256": "d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468",
+          "bytes": 4285
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B2_a20_validation.json": {
+          "sha256": "615da1f3a4725d85f557dd4bd9051de32554595c1ddb632fd1837ead5f96d0fb",
+          "bytes": 553
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B3_encoding_parameters.json": {
+          "sha256": "b3fc29374d55abf330177e1f72de1436520cdd6bc8a59ee4952fd808dc98b1d4",
+          "bytes": 2056
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B5_independent_validation.json": {
+          "sha256": "000bd303e06d81af7fcb6c90f9ebc94d59f898e0fff49fd0736a614d3f493e03",
+          "bytes": 327
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json": {
+          "sha256": "79b1c762190e1014c2ebe78882122efe47c81bb2b80f51b493d143d8ba64a9f5",
+          "bytes": 212
+        }
+      },
+      "limit": "A89ddb29已取回，未改A脚本。a17原始校验rc1/fail72；36项仅CRLF/LF差异仍待A清单修复。B索引18955与A14475/4712对账未闭环，a20告警不可配对；CPU原生a12 dry-run20题4图通过且provisional。B栈a18未执行，历史bf16不能标fp32。"
+    },
+    {
+      "id": "R08",
+      "status": "后置可选",
+      "group": "后置",
+      "missing_evidence": [],
+      "evidence": {
+        "source_manifest.csv": {
+          "sha256": "4088be8ba1874a40a61be886b20ac32f851bf6531317f793adb0934ffe56820f",
+          "bytes": 4230
+        }
+      },
+      "limit": "未开展"
+    },
+    {
+      "id": "R09",
+      "status": "已完成 限本次硬件",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "configs/model_registry.yaml": {
+          "sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+          "bytes": 13957
+        },
+        "provenance/v1.10.1/execution_receipt.json": {
+          "sha256": "7d00901cf12f29a239ecd008b84c4f05adbd783ee9f9a472fe3829073c99d543",
+          "bytes": 1257
+        }
+      },
+      "limit": "原始 registry 中 GPU_unverified 是冻结前状态，实测见独立回执"
+    },
+    {
+      "id": "R10",
+      "status": "已完成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "b-side/configs/protocol_main_v1.json": {
+          "sha256": "50d57f136b7797619830be3d1e4f755da6a7029a067a76e7bd0c6914dd559b5e",
+          "bytes": 3947
+        },
+        "logs/B_predictions.jsonl.gz": {
+          "sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+          "bytes": 2680167
+        }
+      },
+      "limit": "BF16 无量化 无offload greedy64 seed42 TF32关闭"
+    },
+    {
+      "id": "R11",
+      "status": "已完成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "logs/B_input_contexts.jsonl.gz": {
+          "sha256": "f69c1f0a77a28e56470b1f53a2bb1cde900e36b7940a6ea3053fddb78255215f",
+          "bytes": 1303855
+        },
+        "b-side/reception/": {
+          "kind": "directory"
+        }
+      },
+      "limit": "S1 3张；S2 常规5张 Incomplete1张；证据数不同影响解释"
+    },
+    {
+      "id": "R12",
+      "status": "已完成 限所记录字段",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "logs/B_predictions.jsonl.gz": {
+          "sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+          "bytes": 2680167
+        },
+        "logs/B_input_contexts.jsonl.gz": {
+          "sha256": "f69c1f0a77a28e56470b1f53a2bb1cde900e36b7940a6ea3053fddb78255215f",
+          "bytes": 1303855
+        }
+      },
+      "limit": "不同原生视觉tokenizer并非严格等token"
+    },
+    {
+      "id": "R13",
+      "status": "部分完成",
+      "group": "部分",
+      "missing_evidence": [],
+      "evidence": {
+        "configs/model_registry.yaml": {
+          "sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+          "bytes": 13957
+        }
+      },
+      "limit": "共享原图；Qwen像素限制与Gemma soft-token限制不同，不能声称同实际视觉token"
+    },
+    {
+      "id": "R14",
+      "status": "已完成 限补充子集",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/v1.10.1/s3_subsets.csv": {
+          "sha256": "e9eb2ff0a2755110767a86f330211f089c3254d9bd9dceccb825dc57c95d5fc8",
+          "bytes": 703
+        }
+      },
+      "limit": "dev5 holdout2 frozen29，AI图像辅助且label-aware，非人工盲审"
+    },
+    {
+      "id": "R15",
+      "status": "已完成 限已批准子集",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "b-side/reception/": {
+          "kind": "directory"
+        },
+        "b-side/configs/final_binding_v1.json": {
+          "sha256": "59dce9b8dcc5378d7a1616fa3f8416efd0032d4bc4fead1162609b6706726dcc",
+          "bytes": 53430
+        }
+      },
+      "limit": "不能推出普遍语义无关；88排序违例114未决按原序保留；4冻结近重复失败组排除"
+    },
+    {
+      "id": "R16",
+      "status": "已完成 限生成边界",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/v1.10.1/performance.csv": {
+          "sha256": "2e447410a52d6f5524d307e1a1fbd760592bc0235e3257a6379e34bb1e8137f3",
+          "bytes": 3206
+        },
+        "provenance/v1.10.1/execution_receipt.json": {
+          "sha256": "7d00901cf12f29a239ecd008b84c4f05adbd783ee9f9a472fe3829073c99d543",
+          "bytes": 1257
+        }
+      },
+      "limit": "483 warmup不评分；主组100观测；S3 25观测不报P95"
+    },
+    {
+      "id": "R17",
+      "status": "待补",
+      "group": "待补",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/EdgeCoRAG_同机端到端smoke实测_20261020.md": {
+          "sha256": "4d169b2bbb669aed4374d133b4b8d0c0c5fafd1dd16d65772f704ba9b40e4b99",
+          "bytes": 4275
+        },
+        "b-side/session_runner.py": {
+          "sha256": "eefd6426e7623206c19003891ff49090e0d308a6f2aef736697743d0f9ce45b9",
+          "bytes": 12335
+        },
+        "tests/test_session_runner.py": {
+          "sha256": "e889d3b7e14cf22a12f9f8963bf8486c0e89c0d5ea563cbe915b248d98ee5fcf",
+          "bytes": 8275
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_derivation.csv": {
+          "sha256": "7e023ff93c98372f15923dacd6abe649be5344e0b9c9f6e946a5f2b07eee208d",
+          "bytes": 2769
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_budget_summary.json": {
+          "sha256": "c633931b703bd8cac4a5e3809e991f6ce5e53c4e9f2028947481fc1f79302b0d",
+          "bytes": 2532
+        }
+      },
+      "limit": "仅预算条件算术，无新成本测量。逐阶段次数与假设单次时长可追源；当前无报价、无执行授权，B1及索引对账未闭环，不能进入GPU申请。旧同机P50/P95/整卡/RAM/能耗缺口未补造。"
+    },
+    {
+      "id": "R18",
+      "status": "未测或不适用本轮",
+      "group": "后置",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/B_comparison.md": {
+          "sha256": "941ced4dc6d3154784af6b841704bae5a604c520b33ce4a7abe7303ac4bbdf15",
+          "bytes": 7664
+        }
+      },
+      "limit": "功耗可选；无offload，不将未测值写成0"
+    },
+    {
+      "id": "R19",
+      "status": "已交付",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "logs/B_predictions.jsonl.gz": {
+          "sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+          "bytes": 2680167
+        }
+      },
+      "limit": "含21,927条，解压后为B_predictions.jsonl；性能不能加入质量分母"
+    },
+    {
+      "id": "R20",
+      "status": "部分完成",
+      "group": "部分",
+      "missing_evidence": [],
+      "evidence": {
+        "logs/B_input_contexts.jsonl.gz": {
+          "sha256": "f69c1f0a77a28e56470b1f53a2bb1cde900e36b7940a6ea3053fddb78255215f",
+          "bytes": 1303855
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/O4_measurement_gap_contract.json": {
+          "sha256": "cda10193649b82305a9afed1b0e198d786a9540ea8d7ce07d0c08cfd96ea4bc6",
+          "bytes": 1809
+        },
+        "b-side/next_interface_bridge.py": {
+          "sha256": "d88d152e261a5fa8441ae7bc59ca9b91aedeb2df574777fd80b15a5cfc415693",
+          "bytes": 6500
+        },
+        "tests/test_next_interface_bridge.py": {
+          "sha256": "ed7b3e6ccea524c98f62f0d0a2d738e180dd40970aa46c1fd829a1bbd04d4135",
+          "bytes": 3933
+        },
+        "reports/next_stage_20261019/B_record_gaps.md": {
+          "sha256": "65825a72e119475de55a488582c4bc86497d229bed26d31258de54229dc30be4",
+          "bytes": 1811
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_preflight.json": {
+          "sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+          "bytes": 11387
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_provenance.json": {
+          "sha256": "acd8c8a222d55db12f0f93fd004c41df82b9e66e9e0275ca2c6dbb142f558f1a",
+          "bytes": 348
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_schema_validation.json": {
+          "sha256": "aebb3fa8c9a017d9848baa957c46e54de0f757a85e4f103de1c44ae47b84749d",
+          "bytes": 120
+        }
+      },
+      "limit": "历史rendered_prompt/整卡/RAM/能耗不可回溯。新记录政策保留；B4七组敌意环境识别覆盖后读回8，torch/threadpoolctl unavailable，a12只标unfixed技术联调。macOS不可复现目标libgomp，现场生效值与告警验证待GPU会话。"
+    },
+    {
+      "id": "R21",
+      "status": "部分完成",
+      "group": "部分",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/quality_closure_20261021/mechanism_breakdown.csv": {
+          "sha256": "3b546f0fecda8064987183f9eac6f78fafe510ababbe802c6f59c232414a0df0",
+          "bytes": 25132
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/D_mechanisms_and_concepts.md": {
+          "sha256": "22eed361ec5c7a79d66a95c11795af4f97dc60ba6863ddf35e34874e18feb73f",
+          "bytes": 521
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/O2_upgrade_limitations.json": {
+          "sha256": "ae8eb71ab8b6455dd7e8d14d69c9ba476d0d5e11df58bd6c4ce50515fa69387f",
+          "bytes": 772
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/mechanism_samples.csv": {
+          "sha256": "086e83ad11a8f6ce0e7674558d49236c1918cf03c5b8651833a3b3d239b376cb",
+          "bytes": 24676
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/O2_partition_and_Holm_references.csv": {
+          "sha256": "92ba70df6b0a872c02b3c403489a542ca7231b42cd29f8bf72c9d1ee2e50fc84",
+          "bytes": 11910
+        },
+        "reports/next_stage_20261019/B_mechanism_four_class.csv": {
+          "sha256": "6395b90d0995f70879417a6d0ac721f0c361a2d1e1a55350107da49d2294fdf7",
+          "bytes": 8657
+        },
+        "reports/next_stage_20261019/B_mechanism_four_class.md": {
+          "sha256": "89e18ea2644fee7fc59048fd59179dddf949ebb172851ebbf71a49598c0fbb42",
+          "bytes": 1357
+        },
+        "reports/next_stage_20261019/B_mechanism_availability.json": {
+          "sha256": "0f27d2e4207a90c4292ffaeca07df3781b4dedff809deb84957717e70369cb0d",
+          "bytes": 753
+        }
+      },
+      "limit": "原a/b/c可重叠，d为模型对质量/成本属性，不能伪造互斥四分区回加1033。公开21927行可算S0/S1伤害；本工作树缺A pools/ranks与公开GT身份联接，a/b和d未知留空。跨零只写不能排除无差异，正式同负载成本待GPU。"
+    },
+    {
+      "id": "R22",
+      "status": "已完成 限既有图像关联分量",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/quality_closure_20261021/source_cluster_ci.csv": {
+          "sha256": "123cf31bf98cbab0d7638bbb7a71d36b6ad3a9b0935d40fa1c39b5ce36004629",
+          "bytes": 7552
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/analysis_receipt.json": {
+          "sha256": "a2a0617424ebc24f36a610d7b344252322f314f507a917c800c778bc7b1c3b5d",
+          "bytes": 13389
+        },
+        "reports/next_stage_20261019/B_source_cluster_ci.csv": {
+          "sha256": "23ee43c068ba791b719447f84e7f381b4a9a9aa4503bcc4567a41cbfd949f240",
+          "bytes": 7085
+        },
+        "reports/next_stage_20261019/B_holm_summary.json": {
+          "sha256": "56d1f12c107f72aca5f8e09bfd5e5a3ae6ac8943ff9f66b790c3c63a03cc956a",
+          "bytes": 3373
+        }
+      },
+      "limit": "D1仅用公开18045行与1033题/564关联分量复算，10000次seed42，描述性、未预注册；15策略均跨零，5预定P3模型比较不跨零。Holm兼容联合矩形数值等同Bonferroni，step-down p另列，不作因果或替代。并非真实文档来源组。"
+    },
+    {
+      "id": "R23",
+      "status": "已交付 描述性",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/v1.10.1/cross_model_paired.csv": {
+          "sha256": "2a3499c2c793839a922a4baddcee3251dc5a3fc49c715e047a738a81d8f59498",
+          "bytes": 6244
+        }
+      },
+      "limit": "历史交付范围与原始证据保留；后续门槛见 stats_contract，不在本行降级。"
+    },
+    {
+      "id": "R24",
+      "status": "已完成 限待审概念映射与敏感性",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/quality_closure_20261021/concept_mapping.csv": {
+          "sha256": "723dd21a3c1a3c44d39c1f86d25142b9d746c866ecde71e97b9c6248da65c37d",
+          "bytes": 1385
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/concept_sensitivity.csv": {
+          "sha256": "06c115ff55f3e98fa37db6d7c181549702a032d6dcefe911a044fa2d43f7a74a",
+          "bytes": 48334
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/D_mechanisms_and_concepts.md": {
+          "sha256": "22eed361ec5c7a79d66a95c11795af4f97dc60ba6863ddf35e34874e18feb73f",
+          "bytes": 521
+        }
+      },
+      "limit": "概念映射，未经独立标注审定；官方场景不能识别OCR/图表，两类为空不报准确率；提供暂定与全部归其他的敏感性结果。"
+    },
+    {
+      "id": "R25",
+      "status": "已交付 限离线生成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "figures/v1.10.1/quality_latency_pareto.png": {
+          "sha256": "f6b5af3b08f5af51af73bfcf18bed6da91396d064ddae2860dde6289f3562f1a",
+          "bytes": 121889
+        },
+        "figures/v1.10.1/quality_memory_pareto.png": {
+          "sha256": "064e02db801b658eb8f96c276485ccc996ec5536fb5ead28fffc3797ab5a6bfa",
+          "bytes": 114823
+        }
+      },
+      "limit": "历史交付范围与原始证据保留；后续门槛见 stats_contract，不在本行降级。"
+    },
+    {
+      "id": "R26",
+      "status": "已执行",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/B_comparison.md": {
+          "sha256": "941ced4dc6d3154784af6b841704bae5a604c520b33ce4a7abe7303ac4bbdf15",
+          "bytes": 7664
+        }
+      },
+      "limit": "同S1下Gemma与Qwen仍有明显观察差距；聚焦边界与负结果"
+    },
+    {
+      "id": "R27",
+      "status": "已交付",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "configs/model_registry.yaml": {
+          "sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+          "bytes": 13957
+        }
+      },
+      "limit": "JSON兼容YAML精确镜像，唯一运行权威仍是b-side/configs/model_registry.json"
+    },
+    {
+      "id": "R28",
+      "status": "已交付 部分核验",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "source_manifest.csv": {
+          "sha256": "4088be8ba1874a40a61be886b20ac32f851bf6531317f793adb0934ffe56820f",
+          "bytes": 4230
+        }
+      },
+      "limit": "既有已核验来源与未独立核验字段分开，许可unknown不等于可再分发"
+    },
+    {
+      "id": "R29",
+      "status": "已完成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "logs/B_predictions.jsonl.gz": {
+          "sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+          "bytes": 2680167
+        },
+        "b-side/score_minimal.py": {
+          "sha256": "93c6164b4d164eb3bdc52227003067c546656f9a7aef2e608b22a60dbe030159",
+          "bytes": 5785
+        }
+      },
+      "limit": "raw_output=prediction_raw，格式失败严格计错"
+    },
+    {
+      "id": "R30",
+      "status": "已完成 限官方格式独立导出",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/quality_closure_20261021/official_export_receipt.json": {
+          "sha256": "d2b2c762a048208940485f02fe24f888f7f3d756a9602e490e91fd2d261baaf6",
+          "bytes": 33734
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/official_export_validation.json": {
+          "sha256": "9e1d787927a9f0deaf65902cbe640b18b634b3c39bd527b5cd3eb9ddf362a558",
+          "bytes": 423
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/official_schema_validation.json": {
+          "sha256": "ef66140fc6e910364898395a1093ed8f32a905646ae78210e74c2fac70af443c",
+          "bytes": 850
+        },
+        "reports/next_stage_20261019/B_official_export_receipt.json": {
+          "sha256": "1f2ddd019a99aa5ea4e8146cf500cc2aaf5c1fa6b96275da2c1f7251fcb247ec",
+          "bytes": 33734
+        },
+        "reports/next_stage_20261019/B_official_export_validation.json": {
+          "sha256": "74317455b88d51f5aeb8b6a198267d957f7cfd06a06a9f84ac933c5f4d186151",
+          "bytes": 850
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B6_export_receipt.json": {
+          "sha256": "aaefd1e553b7da3a4d96b4b033c8b94bcf4415a8f4c176a051573c11bf01e984",
+          "bytes": 34403
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B6_official_export_validation.json": {
+          "sha256": "50ddd11ec018d066224bf14e44c494f2027d4deda0dbeda106145fedd81d2673",
+          "bytes": 850
+        }
+      },
+      "limit": "75份原样重新导出20295全量槽位、117解析失败保留；真实选项数/源字段校验通过，新增字段映射、代码sha和本次原样导出时间。仅固定官方score.py静态字段核验，未执行官方评分器；私有gold/原始输出不入库，非1353新盲测。"
+    },
+    {
+      "id": "R31",
+      "status": "已完成 限本次流程",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "b-side/batch_inputs.py": {
+          "sha256": "42872d8c77e6b2b37b75bd099de4b32bae2fa268b41c62f527f216db29793261",
+          "bytes": 8383
+        },
+        "logs/B_input_contexts.jsonl.gz": {
+          "sha256": "f69c1f0a77a28e56470b1f53a2bb1cde900e36b7940a6ea3053fddb78255215f",
+          "bytes": 1303855
+        }
+      },
+      "limit": "S3 label-aware审核单独披露；不称整体盲测"
+    },
+    {
+      "id": "R32",
+      "status": "已披露",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "handover/docs/official_pool_provenance.md": {
+          "sha256": "45b3d2f0595a86597963d0af194d34a72bff0b7711c5cb73c0adce4b194e3f32",
+          "bytes": 5394
+        },
+        "reports/v1.10.1/gt_overlap_by_scenario.csv": {
+          "sha256": "7b5a8775aaeff8f74f387a3117fe8becaa4ae00722b04db7842ae0f6fa0d66af",
+          "bytes": 1001
+        }
+      },
+      "limit": "本轮top3精确GT哈希命中率已分场景报告，不是独立检索R@k、语义支持或泄漏证明"
+    },
+    {
+      "id": "R33",
+      "status": "待补 A侧",
+      "group": "待补",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/next_stage_20261019/EdgeCoRAG_无自匹配检索维度消融_20261019.md": {
+          "sha256": "0861f8081ade43c3d6ab7af95477cda4be62d8d9bf18ebdca26913f1c1df379c",
+          "bytes": 4939
+        },
+        "reports/next_stage_20261019/A_dimension_inputs_manifest.json": {
+          "sha256": "c0f1388c70d5945dbeddc4ca95a2546760d471035b3329f9eeb8ed0ced62f294",
+          "bytes": 4116
+        },
+        "reports/next_stage_20261019/A_retrieval_interface_freeze.json": {
+          "sha256": "df977d2a54d5facd33e95451c05df3d51c4178fc9ba3d7493caef3a587297b1c",
+          "bytes": 16410
+        },
+        "analysis/next_stage_20261019/build_dimension_inputs.py": {
+          "sha256": "b61029435183202377aba76a99577a8fdbc61dde7c26fc7a9a25c516c5740107",
+          "bytes": 7195
+        }
+      },
+      "limit": "历史1203题×4维排名离线消融已完成，禁止重跑；本轮仅准备dev150×4维no-self输入，utility共6000补分和三策略1800生成待获批GPU；不读gold、不按frozen_test挑维度；部署路由及目标设备仍缺。"
+    },
+    {
+      "id": "R34",
+      "status": "已完成 并披露限制",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "a-side/splits/": {
+          "kind": "directory"
+        },
+        "b-side/reception/all_20261016/label_aware_audit_registry.json": {
+          "sha256": "23df337f63d9f4de7ad501aa4cd9346e7dcaeb0fda5c57cd457bf2427b62aaf1",
+          "bytes": 36742
+        }
+      },
+      "limit": "20/150/150/1033；1338题精确图像连通大组，不是实体隔离盲测"
+    },
+    {
+      "id": "R35",
+      "status": "已完成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "provenance/v1.10.1/": {
+          "kind": "directory"
+        },
+        "b-side/package_hashes.json": {
+          "sha256": "8b6c2182a2e45ee325f2490c206fb32c7878db158f019b992a49cfd41c1194d6",
+          "bytes": 14920
+        },
+        "b-side/session_runner.py": {
+          "sha256": "eefd6426e7623206c19003891ff49090e0d308a6f2aef736697743d0f9ce45b9",
+          "bytes": 12335
+        },
+        "tests/test_session_runner.py": {
+          "sha256": "e889d3b7e14cf22a12f9f8963bf8486c0e89c0d5ea563cbe915b248d98ee5fcf",
+          "bytes": 8275
+        },
+        "reports/next_stage_20261019/A_local_preparation_validation.json": {
+          "sha256": "9ce5989e59b898301fe7395f3fc8bf75d3ec5535e9bea4b5750d630a68074f53",
+          "bytes": 1784
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/source_archive_supplement.json": {
+          "sha256": "31347dd48272cca36170f199f203e075e74c9889df465cd6e1a5f6223e1ded4f",
+          "bytes": 8448
+        },
+        "reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv": {
+          "sha256": "5bc7812eb23a1ebea1b12b3edb546110e204fe137c82528470db5a70fc9d4cdb",
+          "bytes": 3909
+        },
+        "reports/next_stage_20261019/B_source_archive_validation.json": {
+          "sha256": "48bb46b901a4bd9d15fe7ec616e0d90b2bf5cfb437fbc5f93e82ba2dd0248368",
+          "bytes": 592
+        },
+        "reports/next_stage_20261019/B_pin_reproducibility.csv": {
+          "sha256": "633f1a51b6c6ae4d0e2fd0f718ff66015b8f06099fdf00bd043719bfdfdfa3ec",
+          "bytes": 3910
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/A_readonly_integrity.json": {
+          "sha256": "fe307820eb854b4cfea31d605140d53b7a5b2599237335a7739652c072d6360a",
+          "bytes": 273
+        },
+        "reports/next_stage_20261019/a_interface_review_20261021/B4_receipt_append_validation.json": {
+          "sha256": "8ec790e563eefbf892026a3a7b937f09fc45fcafb578b4c138d1ad4275aeff6c",
+          "bytes": 242
+        }
+      },
+      "limit": "历史代码/环境哈希与回执齐全；source_archive定位14个旧源码pins。此次仅追加cpu_thread_warning_note，所有旧字段与cpu_thread_warning=true保持。A89ddb29工作树172个已跟踪文件前后字节完全相同，未改A脚本与CSV。"
+    },
+    {
+      "id": "R36",
+      "status": "已完成",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "b-side/runtime_change_v1.10.1.json": {
+          "sha256": "ef4d9cef2553aa1efbcfa42ab1095b6f483ed4680b263868c6ee03ad7420575b",
+          "bytes": 805
+        },
+        "tests/test_runtime_format_gate.py": {
+          "sha256": "e889841c83f82a967a79335bbeb43d67cf32533bd52fcdb28033d77c71f47854",
+          "bytes": 5358
+        }
+      },
+      "limit": "提示词64token严格评分BF16未改；正常格式失败不重试"
+    },
+    {
+      "id": "R37",
+      "status": "已交付",
+      "group": "完成",
+      "missing_evidence": [],
+      "evidence": {
+        "reports/Delivery.md": {
+          "sha256": "4551582b14ceda02b89cd6f259438416f94b31bcadc02f980ec995914f545c39",
+          "bytes": 5814
+        },
+        "provenance/v1.10.1/delivery_manifest.json": {
+          "sha256": "262269632de00430f702bd84e8b6bf96a99a7f5b37e26bfdf9928a7d44d6e113",
+          "bytes": 72981
+        }
+      },
+      "limit": "完整原始备份不动；公开版不含权重图像新增副本认证环境缓存数据库"
+    }
+  ],
+  "input_sha256": {
+    "Requirements.md": "63b41fcc46347efaff07334b73934c8145864ff6da44d5268f0ef597b2c2b3b0",
+    "requirements_matrix.csv": "54868567f2e240f08d4e74b73a0ea82cefafac551b8682e50b943352bff862e4"
+  }
+}

@@ -1,7 +1,9 @@
 """B7 conditional arithmetic only, not an executable plan or GPU authorization.
 Reproduce: $PY analysis/next_stage_20261019/a_interface_budget.py --verify
-Request counts follow user E1-E5 queue; E5 assumes ONE generator, utility on all
-quality questions as a conservative scenario. Unit times/rate are assumptions.
+Reduced candidate scope: E3 is a 2-repeat technical pilot, NOT formal P95; E5
+only smoke20 x4 cosine dimensions. Dev selection/frozen/utility are deferred.
+A transferable verified fp32 index is a prerequisite; no corpus rebuild fits.
+All unit times/rates are assumptions, nonmeasured and not a budget application.
 """
 import argparse,csv,io,json,math,tempfile
 from pathlib import Path
@@ -12,24 +14,22 @@ def build(repo,out):
  receipt=repo/'provenance/results_20261020/e2e_smoke_public_receipt.json'
  old=json.loads(receipt.read_text());rows=[]
  cases=[
- ('E0','conditional A fp32 corpus encode if no transferable verified index',4712,.5,1.),
  ('E1','1203 queries x batches16/1 sensitivity encodes',1203*2,.5,1.),
  ('E2','5 additional live fingerprint encodes',5,.5,1.),
- ('E3','20x3x6 +3 warmup generations',20*3*6+3,3.,6.),
- ('E3','live query encode per request',363,.5,1.),
- ('E3','ranking per request',363,.03,.06),
- ('E3','utility 20x6x10 +10 warmup forwards',1210,.25,.5),
+ ('E3','technical pilot20x3x2 +3 warmup; NOT formal P95',20*3*2+3,3.,6.),
+ ('E3','live query encode per request',123,.5,1.),
+ ('E3','ranking per request',123,.03,.06),
+ ('E3','utility pilot20x2x10 +10 warmup forwards',410,.25,.5),
  ('E4','smoke20 x4 paths generations',20*4,3.,6.),
  ('E4','shared utility once per20 queries x10',20*10,.25,.5),
- ('E5','one generator: smoke20x4 +dev150x4 +frozen1033x1',20*4+150*4+1033,3.,6.),
- ('E5','utility-all conditional upper workload',1713*10,.25,.5),
- ('E5','materialization/request IO conditional',1713,.03,.06),
+ ('E5','one generator smoke20x4 dimensions cosine only; no selection',20*4,3.,6.),
+ ('E5','materialization/request IO smoke only',80,.03,.06),
  ('setup','one session load/validation allowance',1,900.,1800.),
  ('preservation','mandatory preservation reserve',1,600.,600.)]
  for stage,op,n,unit,worst in cases:
   rows.append(dict(stage=stage,operation=op,requests=n,unit_seconds=unit,unit_seconds_source='假设，非实测；不能由旧bf16移植到新fp32',
    point_seconds=n*unit,worst_unit_seconds=worst,worst_seconds=n*worst,
-   count_source=('A corpus4712 reference; conditional new encoding' if stage=='E0' else 'user E1-E5 scope + explicit one-generator/shared-utility/cache assumptions')))
+   count_source='reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions'))
  for row in rows:
   if row['stage']=='preservation':row['unit_seconds_source']='user mandated600-second preservation, not measured duration'
  table(out/'B7_budget_derivation.csv',rows)
@@ -46,8 +46,15 @@ def build(repo,out):
   current_quote=None,assumed_rate_cap_cny_hour=rate,
   conditional_expected_cny=window/60*rate,conditional_worst_cny=worst_window/60*rate,
   rate_scope='assumption only, no live quote or user approval; no5h/7.4 reused',
-  hard_stop='T0 + '+str(worst_window*60)+' seconds including600s preservation; actual UTC unknown until approved boot',
-  stop_work='T0 + '+str(worst_window*60-600)+' seconds; preserve600s; independent platform hard-stop must be confirmed before running',
+  hard_stop='T0 + 7200 seconds; actual UTC unknown until approved boot',
+  stop_work='T0 + 6600 seconds; preserve600s; independent platform hard-stop must be confirmed before running',
+  hard_window_seconds=7200,conditional_hard_window_compute_cny=7200/3600*rate,
+  worst_window_slack_seconds=7200-worst_window*60,
+  prerequisite='A verified transferable fp32 corpus index; if absent STOP, do not rebuild inside this scope',
+  deferred=['E0 corpus4712 rebuild (2356/4712 assumed seconds), not budgeted in this scope',
+   'E3 remaining4 repeats and formal P50/P95 cost conclusions',
+   'E5 dev150x4 selection, frozen1033 selected dimension only, utility selected dimension only'],
+  E5_generation_requests=80,E5_selection_performed=False,E5_frozen_requests=0,
   preservation_seconds=600,
   failures=['B1 raw manifest verification fails -> do not begin','Index reconciliation unresolved -> no paired session',
    'Torch/BLAS effective counts unavailable/mismatch -> abort','Any source/hash/model/protocol mismatch -> abort',
@@ -56,10 +63,10 @@ def build(repo,out):
   proposed_window_within_existing_runner_limit=worst_window*60<=7200,
   runner_limit_source_sha256=sha(repo/'b-side/e2e_smoke.py'),
   limitations=['All unit times hypothetical, worst is a scenario not a probabilistic bound; hard stop bounds expenditure only after a quote and platform control are verified',
-   'E5 one-generator scope must be confirmed; adding more models needs recomputation',
-   'If transferred A fp32 index accepted, E0 could be omitted by a new preregistered scope; not silently removed here',
+   'E5 is smoke-only dimension reporting, not downstream quality completion; dev/frozen/utility require separate approved scope',
+   'E0 explicitly deferred: this candidate cannot start without an already verified transferable fp32 index',
    'No3yuan/5yuan/65minute/100minute authorization inferred from prior sessions',
-   'Conditional scope exceeds existing7200s runner limit; cannot execute this scenario without separate scope/protocol decision'])
+   'Conditional reduced scope fits7200s only under assumptions and index prerequisite; this is NOT an application or execution authorization'])
  save(out/'B7_budget_summary.json',summary)
  return summary
 def main():

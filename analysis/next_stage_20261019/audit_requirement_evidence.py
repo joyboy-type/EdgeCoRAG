@@ -10,7 +10,6 @@ import hashlib
 import json
 from pathlib import Path
 import re
-import os
 import subprocess
 import sys
 
@@ -22,7 +21,31 @@ def group(status):
     return bucket(status)
 
 
-def audit(repo=REPO, execute_commands=True):
+ROOT_OPTIONS=('work_dir','metadata_dir','export_dir','official_source')
+
+def expand_command(command, roots):
+    """Only explicit CLI roots may resolve private inputs; never guess checkout layout."""
+    result=[]
+    for value in command:
+        if not isinstance(value,str):raise ValueError('Registered command arguments must be strings')
+        if Path(value).is_absolute() or re.match(r'^[A-Za-z]:[\\/]',value) or re.search(r'=/|=~',value) or value.startswith('~'):
+            raise ValueError('Registered command contains an absolute/private path')
+        if '{' in value or '}' in value:
+            key=value[1:-1]
+            if value!='{'+key+'}' or key not in ROOT_OPTIONS:
+                raise ValueError('Unknown or embedded placeholder: '+value)
+            option='--'+key.replace('_','-')
+            if roots.get(key) is None:raise ValueError('Explicit '+option+' is required')
+            path=Path(roots[key]).expanduser().resolve()
+            if not path.exists():raise ValueError(option+' does not exist')
+            if key=='official_source' and not path.is_file():raise ValueError(option+' must be a file')
+            if key!='official_source' and not path.is_dir():raise ValueError(option+' must be a directory')
+            result.append(str(path))
+        else:result.append(value)
+    return result
+
+
+def audit(repo=REPO, execute_commands=True, roots=None):
     repo=Path(repo).resolve();md=repo/'reports/Requirements.md';matrix=repo/'reports/v1.10.1/requirements_matrix.csv'
     parsed={}
     for line in md.read_text().splitlines():
@@ -34,12 +57,7 @@ def audit(repo=REPO, execute_commands=True):
     errors=[];warnings=[];rows=[];seen=set();commands={}
     registry_path=repo/'analysis/next_stage_20261019/requirement_reproduction_registry.json'
     registry=json.loads(registry_path.read_text()) if registry_path.exists() else {'requirements':{}}
-    # Default layout is local-only convenience; portable callers can supply environment roots.
-    project=repo.parents[2] if len(repo.parents)>2 else repo
-    substitutions={'{work_dir}':os.environ.get('EDGECORAG_WORK_DIR',str(project/'work/next-experiment-20261019')),
-        '{metadata_dir}':os.environ.get('EDGECORAG_METADATA_DIR',str(project/'work/pre-experiment-20261018/final-readiness')),
-        '{export_dir}':os.environ.get('EDGECORAG_EXPORT_DIR',str(repo.parent/'quality-closure-20261021/private-official-export')),
-        '{official_source}':os.environ.get('EDGECORAG_OFFICIAL_SOURCE',str(repo.parent/'quality-closure-20261021/official-score-4ae2241.py'))}
+    roots=roots or {}
 
     counts={name:dict(count=0,ids=[]) for name in ('完成','部分','待补','后置')}
     for record in table:
@@ -72,7 +90,13 @@ def audit(repo=REPO, execute_commands=True):
             elif not str(command[0]).startswith('analysis/next_stage_20261019/') or not str(command[0]).endswith('.py'):
                 errors.append(qid+': reproduction command outside approved analysis scripts')
             else:
-                expanded=[substitutions.get(value,value) for value in command]
+                try:expanded=expand_command(command,roots)
+                except ValueError as error:
+                    errors.append(qid+': '+str(error));expanded=None
+                if expanded is None:
+                    counts[category]['count']+=1;counts[category]['ids'].append(qid)
+                    rows.append(dict(id=qid,status=cells[3],group=category,missing_evidence=missing,evidence=pins,limit=limit))
+                    continue
                 identity=json.dumps(expanded)
                 if execute_commands and identity not in commands:
                     try:
@@ -95,7 +119,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo',type=Path,default=REPO)
     parser.add_argument('--out',type=Path)
-    args=parser.parse_args();result=audit(args.repo)
+    for key in ROOT_OPTIONS:parser.add_argument('--'+key.replace('_','-'),type=Path)
+    args=parser.parse_args();result=audit(args.repo,roots={key:getattr(args,key) for key in ROOT_OPTIONS})
     if args.out:
         with args.out.open('x') as stream:json.dump(result,stream,ensure_ascii=False,indent=2);stream.write('\n')
     print(json.dumps({key:value for key,value in result.items() if key!='rows'},ensure_ascii=False,indent=2))
