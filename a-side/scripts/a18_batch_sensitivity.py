@@ -25,6 +25,12 @@ B 的服务器与 round-1 是 torch 2.8.0 / torchvision 0.23.0 / Pillow 11.3.0�
 
     # 快速联调（只取前 200 张语料，结果不可作为回执）
     python a18_batch_sensitivity.py --corpus-limit 200 --out receipt_quick.json
+
+判定阈值（写死，不许事后调整）：
+  * 只有 changed_order == 0 且 changed_set == 0 才能宣称"跨栈一致"（verdict=stack_invariant）；
+  * 否则 verdict=stack_sensitive，报告必须写"A 栈的 0/1203 不能外推"，
+    并列出改序题号与该题 top10 的最大分差，再给出"统一到哪一栈"的建议；
+  * changed_top3 不为 0 时，还要说明选中的 3 张是否改变（这直接影响下游输入）。
 """
 
 from __future__ import annotations
@@ -64,7 +70,9 @@ RECEIPT_SCHEMA = {
                    "normalize": "float32_l2_renorm", "order_rule": "score desc, sha256 asc"},
         "results": {"changed_order": "int", "changed_set": "int", "changed_top3": "int",
                     "total": "int", "flip_rate": "float"},
-        "verdict": "stack_invariant（changed_order==0）| stack_sensitive",
+        "verdict": ("stack_invariant 当且仅当 changed_order==0 且 changed_set==0；"
+                    "否则 stack_sensitive，且必须在报告里注明『A 栈的 0/1203 不能外推』，"
+                    "并列出改序题号与最大分差"),
     },
 }
 

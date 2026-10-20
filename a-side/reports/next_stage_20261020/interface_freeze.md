@@ -107,7 +107,16 @@ python a-side/scripts/a18_batch_sensitivity.py \
 ```
 
 回执核心字段：`results = {changed_order, changed_set, changed_top3, total, flip_rate}`，`verdict = stack_invariant | stack_sensitive`。
+
+**判定阈值（写死，不许事后调整）**
+
+| 条件 | verdict | 报告必须怎么写 |
+|---|---|---|
+| `changed_order == 0` **且** `changed_set == 0` | `stack_invariant` | 可写"该栈上批大小不影响排序"，并注明回执 sha256 与栈信息 |
+| 其它情况 | `stack_sensitive` | 必须写 **"A 栈的 0/1203 不能外推"**，列出**改序题号**与该题 top10 的**最大分差**，并给出"统一到哪一栈"的建议；`changed_top3 != 0` 时还要说明选中的 3 张是否改变（直接影响下游输入） |
+
 `stack_invariant` 表示该栈上批大小不影响排序；`stack_sensitive` 表示必须按"候选池固定顺序"消费，不能重排。
+**不允许**用"基本一致""近似通过"等措辞收口：只有 0/0 才算一致。
 
 ## 4. 候选池构建（无自匹配 + 补足）
 

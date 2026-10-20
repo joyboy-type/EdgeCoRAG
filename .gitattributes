@@ -3,3 +3,8 @@ reports/v1.10.1/*.csv -whitespace
 source_manifest.csv -whitespace
 # Matplotlib emits intentional whitespace inside SVG path attributes.
 figures/v1.10.1/*.svg -whitespace
+
+# A 侧检索接口产物的 sha256 记在 artifacts.json 里，行尾不同就会让清单在任何干净检出上
+# 不可复算。统一按 LF 提交与检出（Windows 工作树也不再转 CRLF）。
+a-side/retrieval_if_v1/** text eol=lf
+

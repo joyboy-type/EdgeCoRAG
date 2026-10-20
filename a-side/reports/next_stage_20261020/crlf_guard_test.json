@@ -1,0 +1,46 @@
+{
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "check": "lf_default_pass",
+      "pass": true,
+      "detail": "rc=0"
+    },
+    {
+      "check": "lf_strict_pass",
+      "pass": true,
+      "detail": "rc=0"
+    },
+    {
+      "check": "crlf_default_pass_normalized",
+      "pass": true,
+      "detail": "rc=0 crlf=1"
+    },
+    {
+      "check": "crlf_strict_rejected",
+      "pass": true,
+      "detail": "rc=1"
+    },
+    {
+      "check": "content_change_rejected",
+      "pass": true,
+      "detail": "rc=1"
+    },
+    {
+      "check": "size_mismatch_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "missing_normalization_marker_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "a23_idempotent_and_a17_passes",
+      "pass": true,
+      "detail": "rc=0/0/0"
+    }
+  ]
+}

@@ -1,18 +1,26 @@
 """检索接口 v1 产物自校验（不依赖模型/GPU，纯文件级）。
 
 校验项：
-  1. artifacts.json 里每个文件的 sha256 与字节数复算一致
+  1. artifacts.json 里每个文件的 sha256 与字节数复算一致（**按 LF 口径**：
+     先做 `\\r\\n -> \\n` 归一化再算，因此 Windows CRLF 工作树与 Linux/macOS 干净检出
+     都能通过；`--strict-lf` 则相反，遇到 CRLF 直接拒绝并给修复提示）
   2. 语料：corpus_manifest 行序 = sha256 升序，且 content_digest 可复算
   3. 候选池：每题 10 行、(score desc, sha asc) 真按次序键排序、不含查询图自身 sha、sha 均在语料内
   4. select3：每题每策略 3 行、全部来自该题候选池、slot 连续
   5. pool_quality：每题一行，min_adjacent_margin 可复算
   6. 报告 order_fragile 比例（min_adjacent_margin < 1e-3）
 
-用法: python scripts/a17_verify_interface.py
+退出码：0 = 全部通过；1 = 有任何 mismatch；2 = 用法/文件缺失。
+
+用法：
+    python a-side/scripts/a17_verify_interface.py                 # 归一化后比对（默认）
+    python a-side/scripts/a17_verify_interface.py --strict-lf     # 拒绝任何 CRLF 输入
+    python a-side/scripts/a17_verify_interface.py --iface <dir>   # 指定接口目录（测试用）
 """
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -26,31 +34,65 @@ for _cand in (Path(__file__).resolve().parent,
         break
 import a00_paths  # noqa: E402
 
-IFACE = a00_paths.iface_root()
-CORPUS = IFACE / "corpus"
-OUT = IFACE / "verify.json"
+
+def lf_bytes(p: Path) -> tuple[bytes, bool]:
+    """返回 (LF 归一化后的字节, 原本是否含 CRLF)。只转换 CRLF，孤立 \\r 不动。"""
+    raw = p.read_bytes()
+    lf = raw.replace(b"\r\n", b"\n")
+    return lf, raw != lf
 
 
-def sha_file(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()
+def sha_lf(p: Path) -> str:
+    return hashlib.sha256(lf_bytes(p)[0]).hexdigest()
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--iface", default=None, help="接口目录（默认按 a00_paths 推导）")
+    ap.add_argument("--strict-lf", action="store_true",
+                    help="要求磁盘字节已是 LF；发现 CRLF 直接失败并给出修复提示")
+    args = ap.parse_args()
+
+    global IFACE, CORPUS, OUT
+    IFACE = a00_paths.iface_root(args.iface)
+    CORPUS = IFACE / "corpus"
+    OUT = IFACE / "verify.json"
+
     fails: list[str] = []
     info: dict = {}
 
     art = json.loads((IFACE / "artifacts.json").read_text(encoding="utf-8"))
+    norm = (art.get("summary") or {}).get("hash_normalization")
+    if norm != "LF":
+        fails.append(f"artifacts.json summary.hash_normalization 应为 \"LF\"，收到 {norm!r}")
+
+    crlf_files: list[str] = []
     for a in art["artifacts"]:
         p = IFACE / a["path"]
         if not p.exists():
             fails.append(f"missing {a['path']}")
             continue
-        h = sha_file(p)
+        lf, had_crlf = lf_bytes(p)
+        if had_crlf:
+            crlf_files.append(a["path"])
+            if args.strict_lf:
+                fails.append(f"CRLF 输入 {a['path']}（--strict-lf 要求 LF）")
+                continue
+        h = hashlib.sha256(lf).hexdigest()
         if h != a["sha256"]:
             fails.append(f"sha mismatch {a['path']}: {h[:12]} != {a['sha256'][:12]}")
-        if p.stat().st_size != a["bytes"]:
-            fails.append(f"size mismatch {a['path']}")
+        if len(lf) != a["bytes"]:
+            fails.append(f"size mismatch {a['path']}: {len(lf)} != {a['bytes']} (LF 字节)")
     info["artifacts_checked"] = len(art["artifacts"])
+    info["hash_normalization"] = norm
+    info["files_with_crlf"] = len(crlf_files)
+    if args.strict_lf and crlf_files:
+        fails.append(
+            "检测到 CRLF 工作树：请用 `git config core.autocrlf false` 重新检出，或 "
+            "`git rm --cached -r . && git reset --hard` 让 .gitattributes 的 eol=lf 生效；"
+            "产物内容不需要修改"
+        )
+
 
     # 2) 语料
     man = list(csv.DictReader((CORPUS / "corpus_manifest.csv").open(encoding="utf-8")))

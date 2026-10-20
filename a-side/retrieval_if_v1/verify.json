@@ -1,5 +1,7 @@
 {
   "artifacts_checked": 36,
+  "hash_normalization": "LF",
+  "files_with_crlf": 36,
   "corpus_rows": 4712,
   "corpus_digest": "31ade7b7e2454d0b9fcd58568247dd2a6862e15273fdd65e1d12ed50e373264e",
   "pools": {

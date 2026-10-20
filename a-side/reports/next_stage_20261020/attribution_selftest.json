@@ -1,0 +1,51 @@
+{
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "check": "no_difference",
+      "pass": true,
+      "detail": "got=no_numeric_difference want=no_numeric_difference"
+    },
+    {
+      "check": "index_composition",
+      "pass": true,
+      "detail": "got=index_composition want=index_composition"
+    },
+    {
+      "check": "model_weight",
+      "pass": true,
+      "detail": "got=model_or_weight want=model_or_weight"
+    },
+    {
+      "check": "exact_tie",
+      "pass": true,
+      "detail": "got=exact_tie_sort want=exact_tie_sort"
+    },
+    {
+      "check": "normalization",
+      "pass": true,
+      "detail": "got=normalization_locus want=normalization_locus"
+    },
+    {
+      "check": "decode_path",
+      "pass": true,
+      "detail": "got=decode_path want=decode_path"
+    },
+    {
+      "check": "dtype",
+      "pass": true,
+      "detail": "got=dtype want=dtype"
+    },
+    {
+      "check": "batch",
+      "pass": true,
+      "detail": "got=batch_composition want=batch_composition"
+    },
+    {
+      "check": "insufficient",
+      "pass": true,
+      "detail": "got=no_numeric_difference want=no_numeric_difference"
+    }
+  ]
+}
