@@ -1,0 +1,19 @@
+{
+  "base_commit": "62c1e654f0b55f2279ae733a0e7d5b985138cb74",
+  "a_side_vs_543de53": {
+    "checked": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "files_with_crlf": 0,
+  "crlf_paths": [],
+  "double_json_paths": [],
+  "bare_audit_errors": [
+    "R03: Explicit --work-dir is required",
+    "R24: Explicit --work-dir is required",
+    "R30: Explicit --official-source is required"
+  ],
+  "bare_audit_warnings": [],
+  "tests_count": "129 = original126 + new3; analysis54",
+  "data_scope": "Only synthetic arrays; no models, images, archived vector scoring or pool rewrites."
+}

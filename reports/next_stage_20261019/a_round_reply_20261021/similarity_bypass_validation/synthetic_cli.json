@@ -1,0 +1,24 @@
+{
+  "scope": "Synthetic CLI invocation only; no historical vectors or GPU",
+  "command": [
+    "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "b-side/similarity_bypass.py",
+    "--vectors",
+    "{synthetic_tmp}/V.npy",
+    "--queries",
+    "{synthetic_tmp}/Q.npy",
+    "--pool",
+    "{synthetic_tmp}/pool.csv",
+    "--qids",
+    "{synthetic_tmp}/qids.txt",
+    "--metadata",
+    "{synthetic_tmp}/meta.json",
+    "--source",
+    "live",
+    "--out",
+    "{synthetic_tmp}/scores.csv"
+  ],
+  "returncode": 0,
+  "stdout": "{\n  \"command_sha256\": \"6c0d23868e1575064b6e172b0e7a0fac847d66352c423097c9acab6c798d87c1\",\n  \"input_sha256\": {\n    \"Q\": \"e86cb1331f0ca1326b986a28121f8e823131ebfba87c36104b416587cdd8ba77\",\n    \"V\": \"fccfd5dea7a1f438911b5a41888cedbe691631abd37b33f0db06b594a39f8cc0\",\n    \"metadata\": \"363176cb3f071dde577c0c461e5d22ac12b2786f15918bafc67c65c8df1f8698\",\n    \"pool\": \"57acfcdbf8855bc9880e38890ef4fafe1c2bc586b41adef2f0058e8bbf929229\",\n    \"qids\": \"bb98a35c4fe1e84fbda8084c371cac222dfc4da33101be299e6d9bcc0f4a6a93\"\n  },\n  \"output_sha256\": \"79784c7cae01b2fe6c8f66a1198325520d78d1cf0b14ca65e3c8bb973f3a28c0\",\n  \"pool_id\": \"sha256:57acfcdbf8855bc9880e38890ef4fafe1c2bc586b41adef2f0058e8bbf929229\",\n  \"rows\": 10\n}\n",
+  "stderr": ""
+}
