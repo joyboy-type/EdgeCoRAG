@@ -33,5 +33,15 @@ A1–A6 工具层修复 + A7–A9（索引回执契约 / 最佳固定 RAG 规则
   明确"按映射表填值时 H1/H2 被**条件性**排除、只剩 H3，但 H3 仍需 `sources[]` 支撑"，**不下结论**。
 - `reports/next_stage_20261020/A4_attribution_dryrun.md`（新）：a21 空表 dry-run（5 题全 `insufficient_data`）+
   "1049 是否落在批大小签名内"的复现结论（**不在**：5 题无一被批大小翻转；24 变体中无任何变体恰好翻转 `{1049,1051,1062}`）。
+
+## `a-iface-20261021-fix5` → 本轮补丁
+
+**为什么还有 fix5**：`fix4` 里 `a17`/`a23` 仍用 `Path.write_text()` 输出 JSON——Windows 上会把 `\n` 写成 CRLF，
+于是在**干净 LF 检出**里跑一次 `a17`，`git status` 仍会变脏（内容相同、行尾不同），不满足 A1 的
+"跑完工作树不变脏"。
+
+**改动**：`a17` 与 `a23` 改为 `write_bytes(... .encode("utf-8"))`，输出**恒为 LF**；
+仓库内 `verify.json` 重新由干净 LF 检出生成（`files_with_crlf=0`、磁盘 0 个 CR 字节）。
+产物与清单内容零变更。
 - `B_handoff_prompt.md`：G1 改为"附本次 rc"；B2/B3 的字段与缺失标记写全（② 的表头、
   ③④ 的 JSON 键与 `null` 标记）。

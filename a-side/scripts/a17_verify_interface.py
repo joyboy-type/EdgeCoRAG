@@ -183,7 +183,8 @@ def main() -> int:
     info["order_fragile"] = fragile
     info["fails"] = fails[:50]
     info["fail_count"] = len(fails)
-    OUT.write_text(json.dumps(info, indent=2, ensure_ascii=False), encoding="utf-8")
+    # 以 LF 字节写出：Windows 上 write_text 会把 \n 转成 CRLF，会让干净检出的 git status 变脏
+    OUT.write_bytes((json.dumps(info, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
 
     print(f"artifacts 校验 {info['artifacts_checked']} 个文件")
     print(f"语料 {info['corpus_rows']} 行  digest={info['corpus_digest'][:16]}…")

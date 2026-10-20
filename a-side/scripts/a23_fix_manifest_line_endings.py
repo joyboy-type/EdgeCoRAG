@@ -101,7 +101,8 @@ def main() -> int:
             # 幂等：口径已是 LF 且没有需要重算的条目时，连计数也不改，保证清单字节稳定
             print("清单已是 LF 口径且无需重算，未写回")
             return 0
-        man_p.write_text(json.dumps(man, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        # 以 LF 字节写出（Windows 的 write_text 会写 CRLF，导致干净检出 status 变脏）
+        man_p.write_bytes((json.dumps(man, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
         print(f"已写回 {man_p}")
     else:
         print("dry-run：未写回（加 --apply 生效）")
