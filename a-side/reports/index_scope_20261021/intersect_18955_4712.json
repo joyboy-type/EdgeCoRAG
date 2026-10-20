@@ -1,0 +1,39 @@
+{
+  "schema": "index_intersect/v1",
+  "inputs": {
+    "b_index": {
+      "commit": "c466d9d",
+      "path": "reports/next_stage_20261019/a_round_reply_20261021/index_18955_sha256.csv",
+      "sha256": "67193931a88000926753f338906fe60b75197c726e969c5fe294df22e7746a3d",
+      "rows": 18955
+    },
+    "a_unique": {
+      "path": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-A\\a-side\\reports\\index_scope_20261021\\unique_4712_sha256.csv",
+      "sha256": "83275ee7b0a0fbeb6297cc3ac6ea7b9cb0a669cd54a74bcb6b7a470bed1748cb",
+      "rows": 4712
+    }
+  },
+  "integrity": {
+    "file_sha256": "67193931a88000926753f338906fe60b75197c726e969c5fe294df22e7746a3d",
+    "file_sha256_matches_expected": true,
+    "data_rows": 18955,
+    "rows_is_18955": true,
+    "unique_shas": 18955,
+    "unique_is_18955": true,
+    "all_hex64_lower": true,
+    "header": "sha256",
+    "bytes": 1232082
+  },
+  "intersection": {
+    "a_common": 0,
+    "b_only_index": 18955,
+    "c_only_corpus": 4712,
+    "share_of_index_in_corpus": 0.0,
+    "share_of_corpus_in_index": 0.0
+  },
+  "red_flag": {
+    "threshold": "N_common == 0 或 < 5% of 4,712 即触发口径怀疑（image:* 别名混入）",
+    "triggered": true
+  },
+  "note": "4,712 与 14,475 的 sha 集合相同（occurrences.csv 已核），故与 14,475 求交结果同 a_common = 0"
+}

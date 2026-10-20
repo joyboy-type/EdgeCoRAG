@@ -1,0 +1,26 @@
+{
+  "raw_bytes_hits": 0,
+  "raw_checked": 12,
+  "variants": {
+    "q95_default": {
+      "tested": 12,
+      "hits": 12
+    },
+    "q95_444": {
+      "tested": 12,
+      "hits": 0
+    },
+    "q95_422": {
+      "tested": 12,
+      "hits": 0
+    },
+    "png": {
+      "tested": 12,
+      "hits": 0
+    }
+  },
+  "verdict": {
+    "manifest_is_raw_or_reencoded": "重编码字节",
+    "meaning": "若为『重编码字节』，则 B 的『原始源字节』清单与本表天生不可直接求交，N_common=0 是口径差异，不是语料无关的证据"
+  }
+}

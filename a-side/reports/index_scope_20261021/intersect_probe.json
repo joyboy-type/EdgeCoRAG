@@ -1,0 +1,25 @@
+{
+  "h0_source_bytes_vs_manifest": {
+    "checked": 66,
+    "matched": 0,
+    "verdict": "存在不命中",
+    "meaning": "corpus_manifest.sha256 = sha256(parquet 里存的 JPEG 字节)"
+  },
+  "h1_image_star_alias": {
+    "verdict": "排除",
+    "why": "B 清单 18,955 行全部为 64 位小写 hex，没有 image: 前缀；若混入别名，行内会出现非 hex 字符或长度不符"
+  },
+  "h2_reencode_variants": {
+    "images": 8,
+    "encodings_tested": 40,
+    "hits": 0,
+    "examples": [],
+    "verdict": "q80/90/95/100 与 PNG 变体均未命中"
+  },
+  "h3_disjoint_conclusion": "在 sha256(文件字节) 口径下，B 的 18,955 与本研究 4,712 交集 = 0；且已排除字面别名与上述重编码变体",
+  "remaining_untestable": [
+    "B 侧归档图像本身不在本机（corpus_v1/images 为空），无法做像素级比对",
+    "无法排除 B 用了其它质量/其它预处理（如 resize、EXIF 剥离、PNG→JPEG 转换）后取 hash",
+    "无法排除 B 的索引来自另一份语料（例如作者自有 gallery）"
+  ]
+}

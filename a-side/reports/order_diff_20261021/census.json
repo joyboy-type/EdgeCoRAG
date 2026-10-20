@@ -1,0 +1,273 @@
+{
+  "task": "index_scope_20261021 / 索引口径普查",
+  "inputs": {
+    "data_dir": "E:\\EdgeCoRAG-A-store\\datasets\\mrag_bench\\43620fde4044bb150e158c67ad7af6b6b11e1da2\\data",
+    "shards": 28,
+    "corpus_manifest": {
+      "path": "E:\\EdgeCoRAG-A-store\\corpus_v1\\corpus_manifest.csv",
+      "sha256": "224f7c5f5e02d8fafb7cd15da5e7129ab2f480342732b8a0113bd23a076ed99a"
+    },
+    "occurrences": {
+      "path": "E:\\EdgeCoRAG-A-store\\corpus_v1\\occurrences.csv",
+      "sha256": "bc4db0d87eda96541887909b6283cb759d2bd02629046a4a92b30fe5a110f689",
+      "rows": 14475
+    },
+    "corpus_meta": {
+      "path": "E:\\EdgeCoRAG-A-store\\corpus_v1\\corpus_meta.json",
+      "sha256": "dcf1b8fe407db29e726f67a1f510a96507fdd449523a196c16c87f1568548dcf",
+      "content_digest_sha256": "31ade7b7e2454d0b9fcd58568247dd2a6862e15273fdd65e1d12ed50e373264e"
+    }
+  },
+  "three_numbers": {
+    "claimed_index_rows": 18955,
+    "image_instances_recomputable": 14475,
+    "unique_contents_recomputable": 4712,
+    "duplicate_instances": 9763,
+    "delta_claimed_minus_instances": 4480,
+    "delta_claimed_minus_unique": 14243
+  },
+  "instance_decomposition": {
+    "query_images": 1353,
+    "gt_images": 6357,
+    "retrieved_images": 6765,
+    "formula": "1353（每题 1 张查询图） + 6357（GT 实例） + 6765（官方候选实例） = 14475"
+  },
+  "per_shard": [
+    {
+      "file": "test-00000-of-000028.parquet",
+      "rows": 50,
+      "gt": 242,
+      "retrieved": 250,
+      "instances": 542
+    },
+    {
+      "file": "test-00001-of-000028.parquet",
+      "rows": 50,
+      "gt": 234,
+      "retrieved": 250,
+      "instances": 534
+    },
+    {
+      "file": "test-000010-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-000011-of-000028.parquet",
+      "rows": 50,
+      "gt": 234,
+      "retrieved": 250,
+      "instances": 534
+    },
+    {
+      "file": "test-000012-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-000013-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-000014-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-000015-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-000016-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-000017-of-000028.parquet",
+      "rows": 50,
+      "gt": 242,
+      "retrieved": 250,
+      "instances": 542
+    },
+    {
+      "file": "test-000018-of-000028.parquet",
+      "rows": 50,
+      "gt": 222,
+      "retrieved": 250,
+      "instances": 522
+    },
+    {
+      "file": "test-000019-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-00002-of-000028.parquet",
+      "rows": 50,
+      "gt": 246,
+      "retrieved": 250,
+      "instances": 546
+    },
+    {
+      "file": "test-000020-of-000028.parquet",
+      "rows": 50,
+      "gt": 234,
+      "retrieved": 250,
+      "instances": 534
+    },
+    {
+      "file": "test-000021-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-000022-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-000023-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-000024-of-000028.parquet",
+      "rows": 50,
+      "gt": 234,
+      "retrieved": 250,
+      "instances": 534
+    },
+    {
+      "file": "test-000025-of-000028.parquet",
+      "rows": 50,
+      "gt": 242,
+      "retrieved": 250,
+      "instances": 542
+    },
+    {
+      "file": "test-000026-of-000028.parquet",
+      "rows": 50,
+      "gt": 238,
+      "retrieved": 250,
+      "instances": 538
+    },
+    {
+      "file": "test-000027-of-000028.parquet",
+      "rows": 3,
+      "gt": 15,
+      "retrieved": 15,
+      "instances": 33
+    },
+    {
+      "file": "test-00003-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-00004-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-00005-of-000028.parquet",
+      "rows": 50,
+      "gt": 246,
+      "retrieved": 250,
+      "instances": 546
+    },
+    {
+      "file": "test-00006-of-000028.parquet",
+      "rows": 50,
+      "gt": 226,
+      "retrieved": 250,
+      "instances": 526
+    },
+    {
+      "file": "test-00007-of-000028.parquet",
+      "rows": 50,
+      "gt": 230,
+      "retrieved": 250,
+      "instances": 530
+    },
+    {
+      "file": "test-00008-of-000028.parquet",
+      "rows": 50,
+      "gt": 242,
+      "retrieved": 250,
+      "instances": 542
+    },
+    {
+      "file": "test-00009-of-000028.parquet",
+      "rows": 50,
+      "gt": 222,
+      "retrieved": 250,
+      "instances": 522
+    }
+  ],
+  "per_question_count_check": {
+    "questions": 1353,
+    "gt_counts": {
+      "1": 102,
+      "5": 1251
+    },
+    "retrieved_counts": {
+      "5": 1353
+    },
+    "total_matches": true
+  },
+  "verdict": {
+    "usable_as_instance_count": 14475,
+    "usable_as_unique_content_count": 4712,
+    "claimed_index_rows_self_evident": false,
+    "why": "18,955 无法用公开数据集复核：按 (qid, role, index) 展开只有 14,475 个实例，按内容去重只有 4,712 个唯一内容；两者都不等于 18,955。B 侧回执称 dedup=true / kept_duplicates=0，即索引里有 18,955 个互不重复的身份，比可复核的唯一内容多 14,243，比实例多 4,480——其构成需要 sources[] 才能确认。",
+    "missing_inputs": [
+      "index_receipt.sources[]（额外语料的 path/sha256/规模）",
+      "index.artifact_files[] 的逐文件 sha256 与行数",
+      "若 identity 为 sha256_raw_bytes：额外内容是否与数据集图像有交集"
+    ]
+  },
+  "gaps": [
+    {
+      "delta": 4480,
+      "meaning": "18,955 − 14,475",
+      "self_evident": false,
+      "note": "不能用算术拆解成'多出的图'——需要 sources[] 证据"
+    },
+    {
+      "delta": 14243,
+      "meaning": "18,955 − 4,712",
+      "self_evident": false,
+      "note": "同上；等于实例重复被计入两次的差额 4,480 + 9,763"
+    }
+  ],
+  "cross_check_duplicates": {
+    "instances_minus_unique": 9763,
+    "note": "9,763 = 同一内容在 1,353 题的不同角色/名下重复出现的次数；corpus_v1 已按 sha256 去重，故 9,763 不出现在索引行数里"
+  }
+}

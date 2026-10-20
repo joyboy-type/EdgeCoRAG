@@ -1,0 +1,26 @@
+{
+  "schema": "pixel_identity/v1",
+  "spec": "pixel_sha = sha256(RGB bytes(row-major) + '|' + '{w}x{h}')",
+  "images": 4712,
+  "cells_scanned": 14475,
+  "unique_pixel_sha": 4712,
+  "versions": {
+    "pillow": "12.3.0",
+    "libjpeg": "8.0"
+  },
+  "outputs": {
+    "pixel_table": {
+      "path": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-A\\a-side\\reports\\index_scope_20261021\\pixel_identity_4712.csv",
+      "rows": 4712,
+      "sha256": "bb060c60725cecb0e8028f68f5a67301fe9e6d2a380f30688f9f98797386b3d0",
+      "bytes": 10831448
+    },
+    "pairs": {
+      "path": "C:\\Users\\zhang'cheng'xuan\\Desktop\\1\\EdgeCoRAG-A\\a-side\\reports\\index_scope_20261021\\raw_to_q95_pairs.csv",
+      "rows": 60,
+      "sha256": "fee1fa666bdca0b75e515d2c546870d9d701c23619a6fa76cba43f837627cb49",
+      "bytes": 8732
+    }
+  },
+  "sampled": false
+}

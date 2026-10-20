@@ -1,0 +1,87 @@
+# pixel_sha 身份规格（定稿 v1，2026-10-21）
+
+**用途**：判定两张图是否"同一内容"，且**对重编码不变**（对解码器敏感，故版本必须登记）。
+**本文件先定稿，再算数**：本侧 4,712 的 pixel 表按此规格生成（`pixel_identity_4712.csv`）。
+
+---
+
+## 1. 三个量（全部写死）
+
+### 1.1 `pixel_sha`（主判据）
+
+```
+rgb = decode(bytes).convert("RGB")            # 不解 EXIF 旋转、不 resize、不裁剪
+w, h = rgb.size
+pixel_sha = sha256( rgb.tobytes()             # 行优先（row-major，C order），RGB 三通道交错
+                    + ("|" + f"{w}x{h}").encode() )
+```
+
+- **必须**从**原始字节**（parquet 里的 `struct<bytes>`）解码；**不得**先落 q95 文件再读（会引入二次压缩，像素改变）。
+- 尺寸参与哈希：`w x h` 保证"同像素不同尺寸"不会误判（正常不可能，但防御）。
+- `tobytes()` 在 Pillow 下恒为行优先；若换库必须显式声明顺序。
+
+### 1.2 `ahash`（8×8 均值哈希，容差判据之一）
+
+```
+small = L(rgb).resize((8,8), LANCZOS)         # L = ITU-R 601-2 luma
+mean  = mean(small.pixels)
+bits  = Σ_{i<64} (small[i] > mean) << i       # i 为行优先下标
+ahash = f"{bits:016x}"                        # 16 位十六进制
+```
+
+### 1.3 `gray32`（32×32 灰度串，容差判据之二）
+
+```
+small = L(rgb).resize((32,32), LANCZOS)
+gray32 = small.tobytes().hex()                # 1024 字节 → 2048 hex；量化 1/255（即原始 0..255 字节）
+```
+
+## 2. 必须登记的元信息
+
+| 项 | 取值（本机实测） | 为什么必须记 |
+|---|---|---|
+| Pillow 版本 | **12.3.0** | resize 实现与 `convert("RGB")` 行为随版本变化 |
+| libjpeg 版本 | **8.0**（`PIL.features.version("jpg")`） | 不同 libjpeg 解码同一 JPEG 可能给出不同像素（IDCT/色度上采样实现差异） |
+| 图像来源 | **parquet 原始字节**（`struct<bytes>`） | 落盘 q95 后再读会二次压缩 |
+| 尺寸来源 | 解码后 `rgb.size` | 不用 EXIF/声明尺寸，避免旋转标记造成的翻转 |
+
+> 换 Pillow/libjpeg 版本 → **pixel_sha 可能整体变化**；跨版本比对前必须先跑一次"同一批图在旧/新版本下的命中率"，未做对照前不得跨版本求交。
+
+## 3. 判定三级（写死，按顺序应用）
+
+| 级别 | 条件 | 结论标签 | 说明 |
+|---|---|---|---|
+| **L1 精确命中** | `pixel_sha` 相同 | **同内容** | 唯一可作"内容级重合"直接计数的判据 |
+| **L2 容差命中** | `pixel_sha` 不同 **且** `hamming(ahash) ≤ 6` **且** `mean_abs_diff(gray32) ≤ 2/255` | **同内容不同解码**（标"容差命中"） | 典型场景：不同 libjpeg 版本、不同色度上采样、轻微重编码 |
+| **L3 不同** | L1/L2 都不满足 | **全新图** | 不得再拆"可能同图"，除非提供像素级证据 |
+
+- **容差阈值来源**：`ahash ≤ 6/64` 位（约 9%）与 `gray32` 平均绝对差 `≤ 2/255`（<0.8%）是**经验阈值，不是统计推断**；论文里必须写成"经验容差"，不得写成"等价"。
+- **L2 不能当 L1 用**：容差命中只用于"解释差集"，**不进入**任何内容级重合的分母。
+
+## 4. 已知敏感面（写进 limitation）
+
+1. **解码器**：libjpeg 8.0 vs 9.x、或 turbo 变体，IDCT 与上采样不同 → 同文件的 pixel_sha 可能不同。
+2. **色彩管理**：`convert("RGB")` 不套 ICC profile；若上游带 ICC，比对前需约定"忽略 ICC"。
+3. **EXIF 方向**：本规格**不应用** EXIF 旋转，方向不同的同一图会被判为不同内容（有意为之：避免"看似同图"）。
+4. **透明度/调色板**：带 alpha 的 PNG 在 `convert("RGB")` 时按官方规则合成；本批有过一次 palette+transparency 警告（不影响结果，但需登记）。
+
+## 5. 本侧产出（按此规格计算）
+
+| 文件 | 行数 | sha256 | 说明 |
+|---|---:|---|---|
+| `pixel_identity_4712.csv` | 4,712 | `bb060c60725cecb0…` | 列：`sha256_q95, sha256_raw, pixel_sha, ahash, gray32, w, h, pillow, libjpeg, source` |
+| `raw_to_q95_pairs.csv` | 60 | `fee1fa666bdca0b7…` | `sha256_raw → sha256_q95` 对照（同图不同字节） |
+| `pixel_identity_meta.json` | — | — | 版本、`unique_pixel_sha`、两个文件的 sha256/字节 |
+
+**关键自检**：`unique_pixel_sha = 4,712` = 行数 → 在本语料内 `pixel_sha` 对内容**单射**（没有两张不同内容撞到同一 pixel_sha）。
+
+## 6. 求交方法（等 B 的 pixel 表到位后执行）
+
+```
+L1 = |{pixel_sha(A)} ∩ {pixel_sha(B)}|                         # 内容级重合 N 张
+L2 = |{x ∈ B : x ∉ L1, ∃y ∈ A, ham(ahash) ≤ 6 ∧ mad(gray32) ≤ 2/255}|   # 容差命中 M 张
+L3 = |B| − L1 − L2                                              # 全新图
+```
+
+- **L2 的匹配必须是"一对一"**：同一张 B 若与多张 A 都满足容差，取 `mad` 最小者；出现并列则记"歧义"，不计入 M。
+- 输出必须同时给 `N`、`M`、`L3`，以及**容差命中的示例对**（各 5 组）供人工核。

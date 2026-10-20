@@ -1,0 +1,38 @@
+{
+  "schema": "unique_sha_list/v1",
+  "corpus": "E:\\EdgeCoRAG-A-store\\corpus_v1",
+  "inputs": {
+    "corpus_manifest": {
+      "path": "E:\\EdgeCoRAG-A-store\\corpus_v1\\corpus_manifest.csv",
+      "sha256": "224f7c5f5e02d8fafb7cd15da5e7129ab2f480342732b8a0113bd23a076ed99a",
+      "rows": 4712
+    },
+    "occurrences": {
+      "path": "E:\\EdgeCoRAG-A-store\\corpus_v1\\occurrences.csv",
+      "sha256": "bc4db0d87eda96541887909b6283cb759d2bd02629046a4a92b30fe5a110f689",
+      "rows": 14475
+    }
+  },
+  "counts": {
+    "unique_contents": 4712,
+    "instances": 14475,
+    "duplicate_instances": 9763,
+    "shas_with_multiple_roles": 1545
+  },
+  "role_distribution": {
+    "gt": 2073,
+    "gt;official_retrieved": 1544,
+    "official_retrieved": 13,
+    "query": 1081,
+    "query;gt;official_retrieved": 1
+  },
+  "output": {
+    "path": "a-side\\reports\\index_scope_20261021\\unique_4712_sha256.csv",
+    "rows": 4712,
+    "sha256": "83275ee7b0a0fbeb6297cc3ac6ea7b9cb0a669cd54a74bcb6b7a470bed1748cb",
+    "bytes": 400731
+  },
+  "usage_for_B": "B 侧把 18,955 的 sha256 与本表做交集：命中数 = 落在 4,712 里的条目；未命中但落在 occurrences.csv 的 sha 集合里 = 落在 14,475 实例里但不在唯一内容里（本表已含全部实例 sha，故该类为 0）；两边都不在 = 18,955 中的新增内容。",
+  "no_gold": true,
+  "no_gpu": true
+}
