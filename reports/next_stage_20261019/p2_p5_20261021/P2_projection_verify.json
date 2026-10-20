@@ -1,0 +1,14 @@
+{
+  "entries": 18955,
+  "unique_contents": 18955,
+  "duplicates": 0,
+  "alias_suffix_mismatches": 18955,
+  "history_rows": 50,
+  "live_rows": 20,
+  "missing_live_slots": 30,
+  "missing_runtime_fields": [
+    "batch_size",
+    "normalization",
+    "tf32"
+  ]
+}

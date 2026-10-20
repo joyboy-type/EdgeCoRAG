@@ -205,7 +205,13 @@
         "reports/next_stage_20261019/a_interface_review_20261021/B2_a20_validation.json",
         "reports/next_stage_20261019/a_interface_review_20261021/B3_encoding_parameters.json",
         "reports/next_stage_20261019/a_interface_review_20261021/B5_independent_validation.json",
-        "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json"
+        "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json",
+        "reports/next_stage_20261019/p2_p5_20261021/P2_G1/G1_release_check.json",
+        "reports/next_stage_20261019/p2_p5_20261021/P2_projection/G2_index_receipt.json",
+        "reports/next_stage_20261019/p2_p5_20261021/P2_projection/G2_measured_evidence.json",
+        "reports/next_stage_20261019/p2_p5_20261021/G2_a20.json",
+        "reports/next_stage_20261019/p2_p5_20261021/P2_projection/five_query_availability.csv",
+        "reports/next_stage_20261019/p2_p5_20261021/P3_dry_verification.json"
       ],
       "files": {
         "reports/next_stage_20261019/EdgeCoRAG_无自匹配协议复核结果_20261019.md": {
@@ -235,6 +241,30 @@
         "reports/next_stage_20261019/a_interface_review_20261021/B7_a18_pending.json": {
           "sha256": "79b1c762190e1014c2ebe78882122efe47c81bb2b80f51b493d143d8ba64a9f5",
           "bytes": 212
+        },
+        "reports/next_stage_20261019/p2_p5_20261021/P2_G1/G1_release_check.json": {
+          "sha256": "b5868ee260c1837d5360c8f37cef72bd6c7a986b733881c567b74e534e9db767",
+          "bytes": 24258
+        },
+        "reports/next_stage_20261019/p2_p5_20261021/P2_projection/G2_index_receipt.json": {
+          "sha256": "8acbb615b3e29ec662e243e29617aab3388b3a958999339667129404a6a45ab2",
+          "bytes": 4771
+        },
+        "reports/next_stage_20261019/p2_p5_20261021/P2_projection/G2_measured_evidence.json": {
+          "sha256": "9b4c89f82f3ff4d2beda1a75151c5f9686af4551ec354d5829202c25151397f1",
+          "bytes": 1041
+        },
+        "reports/next_stage_20261019/p2_p5_20261021/G2_a20.json": {
+          "sha256": "1e4de3124414fde79b55b8cdacd0a41e3c9eec54549326097cfa7db3c58dd1a0",
+          "bytes": 635
+        },
+        "reports/next_stage_20261019/p2_p5_20261021/P2_projection/five_query_availability.csv": {
+          "sha256": "6c55e333767f42eebc13551c66f5e668cf9cf017a72f9a0d11ebda4501ff1c2f",
+          "bytes": 358
+        },
+        "reports/next_stage_20261019/p2_p5_20261021/P3_dry_verification.json": {
+          "sha256": "f14dc05fd843c9758cbc4344abb63a2022ff8fdae8d3f30e13cd8b6d0cfe1ec6",
+          "bytes": 313
         }
       },
       "command": [

@@ -1,0 +1,350 @@
+{
+  "status": "CPU_environment_verified_backend_availability_explicit",
+  "cases": 7,
+  "rows": [
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": "abc",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": true,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": "abc",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {
+          "OMP_NUM_THREADS": "abc"
+        },
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": "abc"
+    },
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": "",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": true,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": "",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {
+          "OMP_NUM_THREADS": ""
+        },
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": ""
+    },
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": "0",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": true,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": "0",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {
+          "OMP_NUM_THREADS": "0"
+        },
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": "0"
+    },
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": "-1",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": true,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": "-1",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {
+          "OMP_NUM_THREADS": "-1"
+        },
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": "-1"
+    },
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": "4.0",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": true,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": "4.0",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {
+          "OMP_NUM_THREADS": "4.0"
+        },
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": "4.0"
+    },
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": " 4",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": true,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": " 4",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {
+          "OMP_NUM_THREADS": " 4"
+        },
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": " 4"
+    },
+    {
+      "env_inherited": {
+        "OMP_NUM_THREADS": "8",
+        "OMP_THREAD_LIMIT": null,
+        "MKL_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "invalid_detected": false,
+      "applied": 8,
+      "observed": 8,
+      "cpu_count": 10,
+      "affinity": 10,
+      "cgroup_quota": null,
+      "torch_intra": "unavailable",
+      "torch_inter": "unavailable",
+      "blas_pools": "unavailable",
+      "blas_matches_requested": "unavailable",
+      "configured": {
+        "requested": 8,
+        "inherited": {
+          "OMP_NUM_THREADS": "8",
+          "OMP_THREAD_LIMIT": null,
+          "MKL_NUM_THREADS": null,
+          "OPENBLAS_NUM_THREADS": null,
+          "NUMEXPR_NUM_THREADS": null,
+          "VECLIB_MAXIMUM_THREADS": null
+        },
+        "invalid_inherited": {},
+        "removed_invalid": {},
+        "applied": {
+          "OMP_NUM_THREADS": "8",
+          "MKL_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "VECLIB_MAXIMUM_THREADS": "8"
+        },
+        "note": "inherited values are recorded verbatim and then overridden before any NumPy/BLAS/PyTorch import; they are not retro-documented as measured"
+      },
+      "unavailable": {
+        "torch": "unavailable",
+        "threadpoolctl": "unavailable"
+      },
+      "scope": "CPU only; macOS cannot reproduce target libgomp warning; no target GPU-machine claim",
+      "hostile_value": "8"
+    }
+  ],
+  "source_sha256": "d7891746ea1434cf17537fe9c58a8b6bcd7b57dc5e12b063ae159bd9b76a9c68",
+  "formal_backend_ready": false,
+  "target_linux_validation": "待 GPU 会话；本机不可复现 libgomp"
+}

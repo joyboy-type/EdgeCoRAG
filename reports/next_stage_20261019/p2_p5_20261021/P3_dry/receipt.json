@@ -1,0 +1,24 @@
+{
+  "status": "CPU_native_a12_dry_run_only_verified_A_manifest",
+  "requests": 20,
+  "images_per_request": 4,
+  "A_pool_file_sha256": "cf0dc37835dbaa4f3b707e8761322511ed53910802855c417873e4d7a94002c2",
+  "A_a12_source_sha256": "8db4c71d24147aeb8b576abc6672d8e7c210bc4507b1d5baf369f7d8aec04a9b",
+  "A_select3_sha256": "fd01ade74d962246e0f14991fee9f495815401822376f1af5cb361c512e32e6c",
+  "thread_evidence": {
+    "preflight_sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+    "preflight_observed": 8,
+    "a12_observed": "unfixed",
+    "torch_intra": "unavailable",
+    "torch_inter": "unavailable",
+    "blas_matches_requested": "unavailable"
+  },
+  "encoder_dtype": "float32",
+  "encoder_executed": false,
+  "no_new_ranking": true,
+  "no_model_loaded": true,
+  "utility": "unmeasured; only raw score export, selection/materialization delegated to A15",
+  "resources": "unmeasured",
+  "B1_passed": true,
+  "provisional": "verified A c77e91c; current native G1 CLI rc=0"
+}

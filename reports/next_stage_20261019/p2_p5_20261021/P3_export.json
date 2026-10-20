@@ -1,0 +1,13 @@
+{
+  "status": "verified_official_projection_only",
+  "files": 75,
+  "full_export_rows": 20295,
+  "source_prediction_sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+  "export_receipt_sha256": "1f2ddd019a99aa5ea4e8146cf500cc2aaf5c1fa6b96275da2c1f7251fcb247ec",
+  "failure_counts": {
+    "ok": 20178,
+    "parse_failure": 117
+  },
+  "old_outputs_reparsed": false,
+  "official_scorer_run": false
+}
