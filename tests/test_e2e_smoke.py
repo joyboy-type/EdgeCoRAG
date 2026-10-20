@@ -345,7 +345,9 @@ class ThreadConfiguration(unittest.TestCase):
     def test_observations_report_measured_values_only(self):
         observed=e.observed_parallel_evidence(requested=4,cpu_count=lambda:8,affinity=lambda:6,
                                               quota=lambda:4,torch_threads=lambda:4,
-                                              torch_interop=lambda:1,blas=None)
+                                              torch_interop=lambda:1,
+                                              blas=lambda:{'available':False,
+                                                           'reason':'threadpoolctl unavailable'})
         self.assertEqual(observed['affinity_count'],6)
         self.assertEqual(observed['torch_intra_op_threads'],4)
         self.assertEqual(observed['torch_matches_requested'],True)
@@ -354,6 +356,14 @@ class ThreadConfiguration(unittest.TestCase):
         self.assertIsNone(observed['blas_matches_requested'])
         self.assertEqual(observed['requested'],4)
         self.assertNotIn('assumed',json.dumps(observed).lower())
+
+        available=e.observed_parallel_evidence(
+            requested=4,cpu_count=lambda:8,affinity=lambda:6,quota=lambda:4,
+            torch_threads=lambda:4,torch_interop=lambda:1,
+            blas=lambda:{'available':True,'pools':[{'num_threads':4}]})
+        self.assertTrue(available['blas_threadpool']['available'])
+        self.assertEqual(available['blas_pool_threads'],[4])
+        self.assertIs(available['blas_matches_requested'],True)
 
 
 if __name__=='__main__': unittest.main()

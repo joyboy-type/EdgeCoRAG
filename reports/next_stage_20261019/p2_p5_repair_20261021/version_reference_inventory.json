@@ -24,5 +24,85 @@
     "reports/Requirements.md",
     "reports/v1.10.1/requirements_matrix.csv",
     "tests/test_a_interface_runner.py"
-  ]
+  ],
+  "blas_test_repair": {
+    "base_commit": "043c0dbf658e057cc492c81022a1109c3e97e93f",
+    "before": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_e2e_smoke.py",
+        "-k",
+        "test_observations_report_measured_values_only"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "F\n======================================================================\nFAIL: test_observations_report_measured_values_only (test_e2e_smoke.ThreadConfiguration)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/b-p2-p5-repair-20261021/EdgeCoRAG/tests/test_e2e_smoke.py\", line 352, in test_observations_report_measured_values_only\n    self.assertEqual(observed['blas_threadpool']['available'],False)\nAssertionError: True != False\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    "after": [
+      {
+        "interpreter": "/usr/bin/python3",
+        "environment": {
+          "executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "threadpoolctl_available": true
+        },
+        "command": [
+          "/usr/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "..............................................................................................................................\n----------------------------------------------------------------------\nRan 126 tests in 4.605s\n\nOK\n"
+      },
+      {
+        "interpreter": "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "environment": {
+          "executable": "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "threadpoolctl_available": false
+        },
+        "command": [
+          "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "..............................................................................................................................\n----------------------------------------------------------------------\nRan 126 tests in 1.721s\n\nOK\n"
+      }
+    ],
+    "delivery_manifest_verification": {
+      "before_count": 13,
+      "after_count": 13,
+      "unchanged_mismatch_paths": [
+        "README.md",
+        "a-side/scripts/audit_before_push.py",
+        "b-side/model_adapters.py",
+        "reports/Next_steps.md",
+        "reports/Requirements.md",
+        "reports/next_stage_20261017/B_case_review_status.csv",
+        "reports/next_stage_20261017/B_external_dataset_feasibility.md",
+        "reports/next_stage_20261017/B_mmdocrag_scoring_contract.md",
+        "reports/next_stage_20261017/B_mmdocrag_static_audit.json",
+        "reports/next_stage_20261017/B_return.md",
+        "reports/next_stage_20261017/B_statistics_decision.md",
+        "reports/next_stage_20261017/next_experiment_decision.md",
+        "reports/v1.10.1/requirements_matrix.csv"
+      ]
+    },
+    "test_count_note": "Both injected branches stay in the same test method; total remains 126.",
+    "scope": "Only tests/test_e2e_smoke.py and this receipt plus its checksum entry changed; implementation and requirements_matrix.csv unchanged."
+  },
+  "requirements_matrix_byte_disclosure": "reports/v1.10.1/requirements_matrix.csv 已由 CRLF 规范为 LF，字节变化；delivery_manifest 中该条为冻结时间点记录（现存 13 条同组不符，本次未增加也未减少）。"
 }
