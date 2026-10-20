@@ -1,0 +1,129 @@
+{
+  "base_commit": "12f7886",
+  "sources": [
+    {
+      "role": "index_input_manifest",
+      "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/controls/retrieval-formal.approved.json",
+      "sha256": "c766f7d381063ca2c935f3982de7ac72f18437a1f5889a8701181d11697fe740",
+      "bytes": 7028471,
+      "scale": {
+        "json_top_level_fields": 15,
+        "collection_entry_counts": {
+          "queries": 1353,
+          "corpus": 18955,
+          "gold": 1353,
+          "models": 2,
+          "dimensions": 2
+        }
+      },
+      "role_in_18955": "corpus列表定义历史索引18955行与原始顺序；queries/gold不是额外索引行。",
+      "verification": "本次只读JSON/清单，重算sha256与bytes；未打开图像、未执行建库。"
+    },
+    {
+      "role": "archive_integrity_manifest",
+      "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/backup-manifest.json",
+      "sha256": "5ecea723c3d2ece7e9f3c1e89f3a9fa4f6937d4ba5c3212ebd94cf719fa834b5",
+      "bytes": 7177,
+      "scale": {
+        "json_top_level_fields": 4,
+        "collection_entry_counts": {
+          "files": 39
+        }
+      },
+      "role_in_18955": "绑定归档成员哈希与bytes，不贡献索引行。",
+      "verification": "本次只读JSON/清单，重算sha256与bytes；未打开图像、未执行建库。"
+    },
+    {
+      "role": "historical_runtime_receipt",
+      "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json",
+      "sha256": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270",
+      "bytes": 914,
+      "scale": {
+        "json_top_level_fields": 20,
+        "collection_entry_counts": {
+          "dimensions": 4
+        }
+      },
+      "role_in_18955": "历史编码耗时/dtype，不贡献索引行。",
+      "verification": "本次只读JSON/清单，重算sha256与bytes；未打开图像、未执行建库。"
+    },
+    {
+      "role": "round2_reference_plan",
+      "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/plan.json",
+      "sha256": "14998fc8e15972ad1507964863fe963d5a6a4aea0f482d3e98027c769c7f5d0f",
+      "bytes": 8751844,
+      "scale": {
+        "json_top_level_fields": 15,
+        "collection_entry_counts": {
+          "queries": 20,
+          "corpus": 18955,
+          "corpus_order": 18955,
+          "strategies": 3,
+          "retriever": 5,
+          "reference_vectors": 20,
+          "index": 2,
+          "source_pins": 15,
+          "provenance": 4
+        }
+      },
+      "role_in_18955": "引用同一18955行缓存及corpus_order，不是新增18955图。",
+      "verification": "本次只读JSON/清单，重算sha256与bytes；未打开图像、未执行建库。"
+    },
+    {
+      "role": "round2_setup_receipt",
+      "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/setup.json",
+      "sha256": "9b16829bbec5822d9791b263e56b22f4c69f897cee8755dfa54fd4b3f0e88ffc",
+      "bytes": 3985,
+      "scale": {
+        "json_top_level_fields": 9,
+        "collection_entry_counts": {
+          "runtime": 19,
+          "cpu_threads": 7,
+          "index_memory": 4,
+          "device_memory_at_setup": 4
+        }
+      },
+      "role_in_18955": "记录缓存驻留与环境，不贡献索引行。",
+      "verification": "本次只读JSON/清单，重算sha256与bytes；未打开图像、未执行建库。"
+    }
+  ],
+  "index": {
+    "entries": 18955,
+    "artifact_files": [
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/corpus_embeddings.npy",
+        "sha256": "5ff75f8487d1683c6d84a065509b426964ac13ec36ae28f9601a81479e2c9a58",
+        "bytes": 58229888,
+        "shape": [
+          18955,
+          768
+        ],
+        "dtype": "float32",
+        "fortran_order": false,
+        "role": "历史语料索引向量",
+        "verification": "本次读NPY头并重算sha256/bytes；未编码、打分、排序。"
+      },
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/query_embeddings.npy",
+        "sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918",
+        "bytes": 4156544,
+        "shape": [
+          1353,
+          768
+        ],
+        "dtype": "float32",
+        "fortran_order": false,
+        "role": "历史查询向量，不计入18955语料行",
+        "verification": "本次读NPY头并重算sha256/bytes；未编码、打分、排序。"
+      }
+    ]
+  },
+  "historical_identity_evidence": {
+    "path": "reports/next_stage_20261019/p2_p5_20261021/P2_projection/G2_measured_evidence.json",
+    "sha256": "9b4c89f82f3ff4d2beda1a75151c5f9686af4551ec354d5829202c25151397f1",
+    "unique_raw_byte_sha256": 18955,
+    "status": "来自归档读数，未二次执行；本批未打开私有图像"
+  },
+  "private_manifest_policy": "只公开结构规模、相对引用与哈希，不复制计划/授权/gold/图像/向量。",
+  "no_partition_claim": "sources是依赖/证据角色，不是18955的互斥构成，不相加。"
+}

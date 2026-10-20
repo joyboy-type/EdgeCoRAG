@@ -1,0 +1,66 @@
+{
+  "native_a18": {
+    "A_commit": "4a60d758a7247d5922b03dd3f05bd8fa641d6b69",
+    "index_reuse_supported": false,
+    "corpus_limit": "仅联调、非正式回执",
+    "requires_full_corpus_encoding": true
+  },
+  "anchor1": {
+    "source": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json",
+    "sha256": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270",
+    "seconds": 1122.371070432011,
+    "images": 18955,
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "seconds_per_image": 0.059212401499974206,
+    "status": "来自归档读数，未二次执行，非本次实测",
+    "timing_scope": "batch image encoding and CPU exact cosine ranking only; not end-to-end"
+  },
+  "anchor2": {
+    "factor": 2,
+    "seconds_per_image": 0.11842480299994841,
+    "rounded_seconds_per_image": 0.12,
+    "status": "假设：fp32且TF32关闭按两倍折算，不是测量或已证实上界"
+  },
+  "prompt_difference": {
+    "prompt_seconds": 1122.377,
+    "archive_seconds": 1122.371070432011,
+    "resolution": "以原始归档1122.371070432011为准，不改旧回执"
+  },
+  "decision_gates": [
+    {
+      "condition": "e <= 0.15",
+      "scope": "E1全量 + E3 + utility"
+    },
+    {
+      "condition": "0.15 < e <= 0.40",
+      "scope": "E1 + E3"
+    },
+    {
+      "condition": "0.40 < e <= 0.55",
+      "scope": "只E1"
+    },
+    {
+      "condition": "e > 0.55",
+      "scope": "停，报单会话不可行"
+    }
+  ],
+  "e_definition": "目标B栈、全协议fp32/TF32关闭下单图编码秒数（含解码），须获批会话实测；本批未测，不选择分支。",
+  "A_comparator": {
+    "images": 4712,
+    "approx_minutes": 26,
+    "seconds_per_image": 0.3310696095076401,
+    "ratio_to_anchor1": 5.5912207767452955,
+    "status": "A提供的待验证对照；可能源于fp32或本机卡，未证明"
+  },
+  "session_limits": {
+    "window_seconds": 7200,
+    "reserve_seconds": 600,
+    "cost_cap_cny": 5,
+    "execution_authorized_this_batch": false,
+    "utility_limit": 6000,
+    "utility_requires_E1_E3_saved_and_hashed": true,
+    "utility_max_remaining_fraction": 0.6
+  },
+  "no_total_claim": "分段门是用户指定缩范围规则，不是全链耗时证明；查询双batch/装载/E3/utility无本批实测，不沿用2506/4413作完整预算，不凭e保证会话可行。"
+}

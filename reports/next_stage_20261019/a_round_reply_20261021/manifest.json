@@ -1,0 +1,74 @@
+{
+  "analysis_tests.txt": {
+    "sha256": "2b85cf85c9f400f438cf017aec387f9bcb54609a3068a03883145ab71a1104c4",
+    "bytes": 153
+  },
+  "audit_bare.json": {
+    "sha256": "87a8a0b084fb18884d35aebf82d6d96e9a54030580942b867ad2e3a1324c5828",
+    "bytes": 5267
+  },
+  "audit_bare.txt": {
+    "sha256": "87a8a0b084fb18884d35aebf82d6d96e9a54030580942b867ad2e3a1324c5828",
+    "bytes": 5267
+  },
+  "audit_explicit.json": {
+    "sha256": "7c969c19ffb61585096ad5dd1f2524fe4dde5facef66de7c87abea17e93e7223",
+    "bytes": 5674
+  },
+  "audit_explicit.txt": {
+    "sha256": "7c969c19ffb61585096ad5dd1f2524fe4dde5facef66de7c87abea17e93e7223",
+    "bytes": 5674
+  },
+  "command_rc.json": {
+    "sha256": "6fd4e69133ae3126277f7fa698d08c557737bf2909f076ad618ec9360f6b6080",
+    "bytes": 1852
+  },
+  "cross_stack_budget.json": {
+    "sha256": "6695e194fc7c817f849f721a6fc6bb2d73be2c68f1f3aa309e00dca45b529444",
+    "bytes": 2397
+  },
+  "cross_stack_budget.md": {
+    "sha256": "67080e140e61a066a7c058a2f14ba5dca364262571ab062bcacfca0caf125ef9",
+    "bytes": 1672
+  },
+  "history_order_without_scores.csv": {
+    "sha256": "789f7edb181e7685035f64f702056bae5df6c7b382e7abe923c798fc65c216df",
+    "bytes": 5458
+  },
+  "integrity_checks.json": {
+    "sha256": "df1bb6d8f3534fe5c51ddada24c231557bc1acc21bfbada6c5e7474e59874f25",
+    "bytes": 418
+  },
+  "publish_audit.txt": {
+    "sha256": "01bca1eac479d5d19f5001825b8d6bc2902520e8031b24b512a4d3e2389dcfcd",
+    "bytes": 1279
+  },
+  "publish_rc.json": {
+    "sha256": "af7ba75b2115321c259e22f145d2b5e77871bf62d30d642151d607d68a10acb4",
+    "bytes": 168
+  },
+  "ranking_evidence.json": {
+    "sha256": "d9175335165d46f09853b0a687f3c4f1c93d186186784e579b9e13d96c9ef222",
+    "bytes": 824
+  },
+  "ranking_reply.md": {
+    "sha256": "43c5742ead0caa2b089d571a3b81dee59f964fa5d3ac5ee6ab84d6db303b1d74",
+    "bytes": 2076
+  },
+  "reconciliation.json": {
+    "sha256": "fb40d27e303903ba24a404f44c55e8e94eecc5b4128af42c5ce402ff2435e1ab",
+    "bytes": 1570
+  },
+  "reply_summary.md": {
+    "sha256": "12872f6585c61c91474303b4d72175e199f0f26a321d91d663469093e3f2a519",
+    "bytes": 2846
+  },
+  "sources_inventory.json": {
+    "sha256": "7133fdc9a387608ad9e15dc6ddc8afe566cfbfdb3cbb13cb0218d7c107b0d747",
+    "bytes": 5221
+  },
+  "tests.txt": {
+    "sha256": "49b24b7e766cedf081f86588d76319f51cdcc9fcae586c6cf38693c1b23de8fb",
+    "bytes": 226
+  }
+}

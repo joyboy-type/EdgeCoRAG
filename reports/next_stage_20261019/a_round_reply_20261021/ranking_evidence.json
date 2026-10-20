@@ -1,0 +1,17 @@
+{
+  "source": "reports/next_stage_20261019/a_interface_review_20261021/B3_history_live_top10.csv",
+  "source_sha256": "baebbdf806d5e7be3dd770b4479d23866c0e15f469a98504d9d5acba2cf3fdc9",
+  "total_rows": 100,
+  "history_rows": 50,
+  "history_score_rows": 0,
+  "history_status": "archived_order_score_not_saved",
+  "live_score_rows": 20,
+  "live_missing_rows": 30,
+  "live_missing_status": "missing_live_pending_GPU",
+  "ordered_export_rows": 50,
+  "ordering": "逐行保留源history顺序，未重排未重算",
+  "sha256_column_semantics": "归档image:*身份后缀，不是原JPEG字节sha256",
+  "encoding_dtype": "bfloat16",
+  "request_status": "A的②不可满足：history/live各10行含分数的材料在本栈不存在，不是拒绝提供。",
+  "root_cause": "根因未定，等a18复跑的同池分数落地"
+}
