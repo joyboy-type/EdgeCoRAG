@@ -1,0 +1,16 @@
+protocol,cohort,model,strategy,n,correct,accuracy_percent
+legacy_self_match_confounded,frozen_test,qwen3vl_4b,cosine,1033,618,59.825750242013555
+legacy_self_match_confounded,frozen_test,qwen3vl_4b,random,1033,606,58.66408518877057
+legacy_self_match_confounded,frozen_test,qwen3vl_4b,utility,1033,621,60.1161665053243
+legacy_self_match_confounded,frozen_test,qwen3vl_8b,cosine,1033,626,60.600193610842204
+legacy_self_match_confounded,frozen_test,qwen3vl_8b,random,1033,617,59.72894482090997
+legacy_self_match_confounded,frozen_test,qwen3vl_8b,utility,1033,613,59.341723136495645
+legacy_self_match_confounded,frozen_test,gemma4_e2b,cosine,1033,390,37.7541142303969
+legacy_self_match_confounded,frozen_test,gemma4_e2b,random,1033,402,38.915779283639885
+legacy_self_match_confounded,frozen_test,gemma4_e2b,utility,1033,405,39.20619554695063
+legacy_self_match_confounded,frozen_test,gemma4_e4b,cosine,1033,451,43.65924491771539
+legacy_self_match_confounded,frozen_test,gemma4_e4b,random,1033,462,44.72410454985479
+legacy_self_match_confounded,frozen_test,gemma4_e4b,utility,1033,474,45.88576960309777
+legacy_self_match_confounded,frozen_test,qwen35_4b,cosine,1033,596,57.69603097773475
+legacy_self_match_confounded,frozen_test,qwen35_4b,random,1033,589,57.01839303000968
+legacy_self_match_confounded,frozen_test,qwen35_4b,utility,1033,571,55.27589545014521

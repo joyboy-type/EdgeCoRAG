@@ -1,0 +1,5 @@
+strategy,n,exact_gt_hit_questions,exact_gt_hit_percent,scope
+pool_top10,1033,560,54.21103581800581,"exact image identity coverage, not semantic relevance or sufficiency; one shared selection across five models"
+cosine,1033,281,27.202323330106488,"exact image identity coverage, not semantic relevance or sufficiency; one shared selection across five models"
+random,1033,253,24.491771539206194,"exact image identity coverage, not semantic relevance or sufficiency; one shared selection across five models"
+utility,1033,293,28.36398838334947,"exact image identity coverage, not semantic relevance or sufficiency; one shared selection across five models"

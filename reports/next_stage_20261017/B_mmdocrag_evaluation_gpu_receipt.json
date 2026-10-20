@@ -1,0 +1,55 @@
+{
+  "status": "all1000_complete_and_Mac_backup_verified",
+  "archive_sha256": "c422e6634661cbae8d7ad271f74d8b7f1d3a54e6876c436f030cd08a4f6a5043",
+  "archive_bytes": 3400678,
+  "models": [
+    {
+      "model": "qwen3vl_4b",
+      "count": 200,
+      "predictions_sha256": "9c412d5dc912307dc1951bbbd59083ef7183c6be8e65aa207c72fba242bf39c7",
+      "status": "completed200_verified",
+      "budget_flags": 66,
+      "empty_responses": 0
+    },
+    {
+      "model": "qwen3vl_8b",
+      "count": 200,
+      "predictions_sha256": "4cb3f5601d3f28174c4ae8dcc2b016aae76d63747518459f9d5488b826ffed65",
+      "status": "completed200_verified",
+      "budget_flags": 59,
+      "empty_responses": 0
+    },
+    {
+      "model": "gemma4_e2b",
+      "count": 200,
+      "predictions_sha256": "368190e6eb7969573e7abd4e692dda4533f742dafa391e33c3391fe2239b2401",
+      "status": "completed200_verified",
+      "budget_flags": 8,
+      "empty_responses": 7
+    },
+    {
+      "model": "gemma4_e4b",
+      "count": 200,
+      "predictions_sha256": "826145b03c4e2aa0689c6f5b339f580fa9f2be3a83350a00eca18398214c4f29",
+      "status": "completed200_verified",
+      "budget_flags": 12,
+      "empty_responses": 0
+    },
+    {
+      "model": "qwen35_4b",
+      "count": 200,
+      "predictions_sha256": "b3f47c180a51f96b51afee8dc38a979f15fcf85e4be0771353f9920253c7edd1",
+      "status": "completed200_verified",
+      "budget_flags": 116,
+      "empty_responses": 0
+    }
+  ],
+  "source_config_control_and_final_logs_verified": true,
+  "platform_shutdown_pending": false,
+  "judge": "not_evaluated",
+  "platform_shutdown_verified_Asia_Shanghai": "2026-10-18 05:02 (approx; observed before05:03 clock check)",
+  "instance_preserved": true,
+  "disk_preserved": true,
+  "gpu_billing_stopped_platform_state": "已关机",
+  "actual_provider_bill_not_yet_reconciled": true
+}

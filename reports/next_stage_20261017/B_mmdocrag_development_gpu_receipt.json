@@ -1,0 +1,81 @@
+{
+  "status": "development_completed_backed_up_scored",
+  "cohort": "development",
+  "models": [
+    {
+      "model": "gemma4_e2b",
+      "status": "completed",
+      "count": 32,
+      "predictions_sha256": "e21c39b36742753aac641f11824165576aac9f3c6d328b53c289bf5fdf2382fe",
+      "mean_generate_seconds": 9.86253939733433,
+      "budget_flags": 1,
+      "empty_responses": 1,
+      "scoring_status": "metrics_evaluated",
+      "fixed_denominator": 32,
+      "judge": "not_evaluated"
+    },
+    {
+      "model": "gemma4_e4b",
+      "status": "completed",
+      "count": 32,
+      "predictions_sha256": "0e28c841a438bfa51e51563a940a6eb8b6a53ce84093e62e99dbf3fe8d7d75bf",
+      "mean_generate_seconds": 17.29281084802642,
+      "budget_flags": 3,
+      "empty_responses": 0,
+      "scoring_status": "metrics_evaluated",
+      "fixed_denominator": 32,
+      "judge": "not_evaluated"
+    },
+    {
+      "model": "qwen35_4b",
+      "status": "completed",
+      "count": 32,
+      "predictions_sha256": "e818c3bcc20e1ecfa057e66fcdb73d823fed1af3446443c25b98d6f78bbea791",
+      "mean_generate_seconds": 20.01564421133662,
+      "budget_flags": 28,
+      "empty_responses": 0,
+      "scoring_status": "metrics_evaluated",
+      "fixed_denominator": 32,
+      "judge": "not_evaluated"
+    },
+    {
+      "model": "qwen3vl_4b",
+      "status": "completed",
+      "count": 32,
+      "predictions_sha256": "52cca62896d1d781f6d502011fc5f10cb0c31ab55883e769da39a0183c4615d5",
+      "mean_generate_seconds": 12.79361466204864,
+      "budget_flags": 15,
+      "empty_responses": 0,
+      "scoring_status": "metrics_evaluated",
+      "fixed_denominator": 32,
+      "judge": "not_evaluated"
+    },
+    {
+      "model": "qwen3vl_8b",
+      "status": "completed",
+      "count": 32,
+      "predictions_sha256": "2452edff79076a00e4e40362b55080be70aa7606ce5096d97e66df2566a78eb3",
+      "mean_generate_seconds": 11.269435408859863,
+      "budget_flags": 9,
+      "empty_responses": 0,
+      "scoring_status": "metrics_evaluated",
+      "fixed_denominator": 32,
+      "judge": "not_evaluated"
+    }
+  ],
+  "total_predictions": 160,
+  "warmups": 0,
+  "evaluation_predictions": 0,
+  "budget_flag_interpretation": "out_tok>=512; does not independently prove semantic truncation",
+  "settings_changed_after_development": false,
+  "review": {
+    "observed_at": "2026-10-18T01:16:03.435293",
+    "generation_estimate_hours": 3.9574469182003265,
+    "planned_hours_with_25pct_and_10min": 5.113475314417075,
+    "formal_started": false
+  },
+  "backup_sha256": "7e1b5719553d714ac09cddbd870039218fcb3f12813d4dbe31420641f0e77ee8",
+  "authorization": "06:00 / cumulative15 CNY remains effective; requested07:00 /17 not yet authorized",
+  "evaluation_decision": "held:25%planning margin plus10min backup exceeds remaining06:00 window",
+  "planning_margin_not_statistical_upper_bound": true
+}
