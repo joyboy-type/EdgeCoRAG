@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests"
+  ],
+  "returncode": 0
+}

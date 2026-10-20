@@ -1,0 +1,36 @@
+仓库: /Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/b-p2-p5-repair-20261021/EdgeCoRAG
+已跟踪文件: 886
+
+=== 1. 凭证扫描 ===
+  ✅ 未发现凭证/密钥特征
+
+=== 2. 禁止入库的路径 ===
+  ✅ 无禁止路径
+
+=== 3. 大文件(阈值 5 MiB)===
+  ✅ 无超限文件
+
+  总计: 54.7 MiB
+  最大的 5 个:
+        3.53 MiB  reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv
+        2.59 MiB  b-side/reception/all_20261016/frozen_test/review_batch_002/review_observations.snapshot.json
+        2.56 MiB  logs/B_predictions.jsonl.gz
+        2.51 MiB  handover/samples/images/2/official_retrieved_2_1.jpg
+        2.51 MiB  handover/samples/images/2/gt_2_0.jpg
+
+=== 4. 顶层结构 ===
+  reports               423 个文件
+  b-side                145 个文件
+  a-side                 90 个文件
+  analysis               82 个文件
+  handover               78 个文件
+  tests                  22 个文件
+  figures                18 个文件
+  provenance              9 个文件
+  logs                    8 个文件
+  (根目录)                   6 个文件
+  docs                    4 个文件
+  configs                 1 个文件
+
+============================================================
+✅ 审查全部通过,可以推送

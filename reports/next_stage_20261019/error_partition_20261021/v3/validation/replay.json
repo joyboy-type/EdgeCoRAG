@@ -1,0 +1,9 @@
+{
+  "returncode": 0,
+  "byte_equal": {
+    "summary.json": true,
+    "assignments_v3.csv.gz": true,
+    "partition_v3.csv": true,
+    "manifest.json": true
+  }
+}
