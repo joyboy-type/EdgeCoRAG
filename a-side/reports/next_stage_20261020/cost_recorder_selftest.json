@@ -1,9 +1,64 @@
 {
-  "passed": 11,
-  "total": 11,
+  "passed": 32,
+  "total": 32,
   "checks": [
     {
       "check": "provenance_required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cpu_thread_env_reject_missing",
+      "pass": true,
+      "detail": "provenance['hardware']['cpu_thread_env'] 必填：给生效线程数（正整数）或 \"unfixed\""
+    },
+    {
+      "check": "cpu_thread_env_reject_auto",
+      "pass": true,
+      "detail": "hardware.cpu_thread_env=\"auto\" 不可接受：必须记录实际生效线程数或显式 \"unfixed\""
+    },
+    {
+      "check": "cpu_thread_env_reject_empty",
+      "pass": true,
+      "detail": "hardware.cpu_thread_env 不能是空字符串"
+    },
+    {
+      "check": "cpu_thread_env_reject_zero",
+      "pass": true,
+      "detail": "hardware.cpu_thread_env 必须是正整数，收到 0"
+    },
+    {
+      "check": "cpu_thread_env_reject_negative",
+      "pass": true,
+      "detail": "hardware.cpu_thread_env 必须是正整数，收到 -4"
+    },
+    {
+      "check": "cpu_thread_env_reject_bool",
+      "pass": true,
+      "detail": "hardware.cpu_thread_env 不能是布尔值；请给生效线程数（正整数）或 \"unfixed\""
+    },
+    {
+      "check": "cpu_thread_env_accept_int8",
+      "pass": true,
+      "detail": "record=8 summary=8"
+    },
+    {
+      "check": "cpu_thread_env_int8_no_trace",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cpu_thread_env_accept_unfixed",
+      "pass": true,
+      "detail": "record='unfixed' summary='unfixed'"
+    },
+    {
+      "check": "cpu_thread_env_unfixed_trace",
+      "pass": true,
+      "detail": "['hardware.cpu_thread_env=unfixed：CPU 线程未固定，该记录只作技术联调，不得进入正式基准或对外报告']"
+    },
+    {
+      "check": "normalize_rejects_auto_direct",
       "pass": true,
       "detail": ""
     },
@@ -15,7 +70,7 @@
     {
       "check": "e2e_ge_component_sum",
       "pass": true,
-      "detail": "e2e=0.009823 sum=0.009788"
+      "detail": "e2e=0.011582 sum=0.011535"
     },
     {
       "check": "unmeasured_not_zero",
@@ -23,7 +78,7 @@
       "detail": ""
     },
     {
-      "check": "device_memory_null",
+      "check": "resources_default_null",
       "pass": true,
       "detail": ""
     },
@@ -54,6 +109,56 @@
     },
     {
       "check": "component_exceeds_e2e_flagged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "resources_injected",
+      "pass": true,
+      "detail": "{\"value\": 7.1, \"unit\": \"GiB\", \"method\": \"nvidia-smi memory.used 10Hz\"}"
+    },
+    {
+      "check": "resources_uninjected_stays_null",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "summary_resources_present_count",
+      "pass": true,
+      "detail": "{\"device_memory\": 1, \"system_ram\": 1, \"energy\": 0}"
+    },
+    {
+      "check": "resources_missing_fields_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "resources_allocator_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "resources_negative_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "resources_empty_call_rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "attach_resources_merge",
+      "pass": true,
+      "detail": "{\"device_memory\": 1, \"system_ram\": 0, \"energy\": 0}"
+    },
+    {
+      "check": "attach_resources_reports_missing",
+      "pass": true,
+      "detail": "[\"q-ok\"]"
+    },
+    {
+      "check": "attach_resources_rejects_allocator",
       "pass": true,
       "detail": ""
     }

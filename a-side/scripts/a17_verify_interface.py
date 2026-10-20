@@ -19,8 +19,11 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-IFACE = ROOT / "a-side" / "retrieval_if_v1"
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+import a00_paths  # noqa: E402
+
+IFACE = a00_paths.iface_root()
 CORPUS = IFACE / "corpus"
 OUT = IFACE / "verify.json"
 

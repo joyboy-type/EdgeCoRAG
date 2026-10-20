@@ -1,12 +1,16 @@
 """把冻结接口的候选池/select3 清单物化成 B 可直接消费的证据包（与既有 packages/* 同 schema）。
 
 输入：
-  a-side/retrieval_if_v1/pools/<cohort>__dim<D>__top10.csv      （候选池与分数）
-  a-side/retrieval_if_v1/select3/<cohort>__dim<D>__cosine+random.csv
-  （utility 策略由 B 回传分数后，用相同的 --scores 参数物化）
-  E:\\EdgeCoRAG-A-store\\corpus_v1                          （唯一内容图像，按 sha 定位）
+  <iface>/pools/<cohort>__dim<D>__top10.csv      （候选池与分数）
+  <iface>/select3/<cohort>__dim<D>__cosine+random.csv
+  （utility 策略由 B 只回传 qid,sha256,score；选 top3、物化、顺序都由本脚本完成）
+  <corpus>/                                   （唯一内容图像，按 sha 定位）
 
-输出（默认 a-side/retrieval_if_v1/packages/<cohort>_dim<D>_<strategy>/）：
+路径解析（不再硬编码）：
+  * 语料：--corpus 参数 > 环境变量 EDGECORAG_CORPUS > 报清晰错误（不猜平台路径）
+  * 接口：--iface 参数 > 环境变量 EDGECORAG_IFACE > 仓库内 a-side/retrieval_if_v1
+
+输出（默认 <iface>/packages/<cohort>_dim<D>_<strategy>/）：
   images/<raw_id>/q_<raw>.jpg                 查询图（JPEG q95 字节，与 sha 同源）
   images/<raw_id>/eg2_sel_<raw>_<slot>.jpg    选中的 3 张证据
   evidence_index.csv                          evidence_id,raw_id,qid,role,rank,path,sha256,w,h
@@ -17,10 +21,21 @@
 边界：
   * 只物化已冻结清单里的内容；不重新排序、不重新选择。
   * gold/答案不进入本包任何字段（gold 仅用于评分与 Oracle）。
-  * 图片按 sha 从 corpus_v1 取，物化时逐文件复算 sha，不一致即失败。
+  * 图片按 sha 从语料目录取，物化时逐文件复算 sha，不一致即失败。
 
-用法:
-    python scripts/a15_materialize_packets.py --cohort dev_150 --dim 768 --strategy cosine
+用法（macOS / Linux / Windows 通用）:
+    export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1
+    python a-side/scripts/a15_materialize_packets.py --cohort dev_150 --dim 768 --strategy cosine
+
+    # 或不设环境变量，显式传入
+    python a-side/scripts/a15_materialize_packets.py --cohort dev_150 --dim 768 \
+        --strategy cosine --corpus $HOME/edgecorag/corpus_v1
+
+    # utility：B 只给分数表，选 top3 与顺序由本脚本完成
+    python a-side/scripts/a15_materialize_packets.py --cohort dev_150 --dim 768 \
+        --strategy utility --scores b_utility_scores.csv \
+        --corpus $HOME/edgecorag/corpus_v1 \
+        --out $HOME/edgecorag/packets/dev_150_dim768_utility
 """
 
 from __future__ import annotations
@@ -29,14 +44,28 @@ import argparse
 import csv
 import hashlib
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-IFACE = ROOT / "a-side" / "retrieval_if_v1"
-CORPUS = Path(r"E:\EdgeCoRAG-A-store\corpus_v1")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import a00_paths  # noqa: E402
+
+DEFAULT_IFACE = a00_paths.side_root() / "retrieval_if_v1"
 PROTOCOL = "a-side/retrieval-interface-v1"
+ENV_CORPUS = "EDGECORAG_CORPUS"
+ENV_IFACE = "EDGECORAG_IFACE"
+
+
+def resolve_corpus(cli_value: str | None) -> Path:
+    """--corpus > EDGECORAG_CORPUS > 清晰报错（不猜平台默认路径）。"""
+    return a00_paths.corpus_root(cli_value)
+
+
+def resolve_iface(cli_value: str | None) -> Path:
+    """--iface > EDGECORAG_IFACE > 按脚本位置推导。"""
+    return a00_paths.iface_root(cli_value)
 
 
 def read_csv(p: Path) -> list[dict]:
@@ -50,11 +79,23 @@ def main() -> int:
     ap.add_argument("--dim", type=int, required=True)
     ap.add_argument("--strategy", required=True, choices=["cosine", "random", "utility"])
     ap.add_argument("--scores", type=Path, default=None,
-                    help="utility 策略用：B 回传的 (qid,sha256,score) CSV")
+                    help="utility 策略用：B 回传的 (qid,sha256,score) CSV；选 top3 由本脚本完成")
+    ap.add_argument("--corpus", default=None,
+                    help=f"语料目录（含 corpus_manifest.csv / images）；也可用 {ENV_CORPUS}")
+    ap.add_argument("--iface", default=None,
+                    help=f"接口目录（含 pools/）；也可用 {ENV_IFACE}")
     ap.add_argument("--out", type=Path, default=None)
     args = ap.parse_args()
 
+    CORPUS = resolve_corpus(args.corpus)
+    IFACE = resolve_iface(args.iface)
+    print(f"语料   {CORPUS}")
+    print(f"接口   {IFACE}")
+
     pool_p = IFACE / "pools" / f"{args.cohort}__dim{args.dim}__top10.csv"
+    if not pool_p.exists():
+        print(f"找不到候选池: {pool_p}", file=sys.stderr)
+        return 1
     pool = read_csv(pool_p)
     if not pool:
         print(f"空候选池: {pool_p}", file=sys.stderr)
@@ -111,11 +152,14 @@ def main() -> int:
     (out / "images").mkdir(parents=True, exist_ok=True)
 
     idx_rows, list_rows, verify_rows = [], [], []
+    qual_p = IFACE / "pool_quality" / f"{args.cohort}__dim{args.dim}__margins.csv"
+    qual_qsha = {r["qid"]: r.get("query_sha256", "") for r in read_csv(qual_p)} if qual_p.exists() else {}
     for q in order:
         raw = q.split(":")[1]
-        qsha = by_q[q][0].get("query_sha256") or ""
+        qsha = by_q[q][0].get("query_sha256") or qual_qsha.get(q, "")
         if not qsha:
-            qsha = next(r["query_sha256"] for r in read_csv(IFACE / "pool_quality" / f"{args.cohort}__dim{args.dim}__margins.csv") if r["qid"] == q)
+            print(f"{q} 找不到查询图 sha（候选池与 pool_quality 都没有），拒绝物化", file=sys.stderr)
+            return 4
         picks = sel.get(q, [])
         if len(picks) != 3:
             print(f"{q} 选中数 != 3，拒绝物化", file=sys.stderr)

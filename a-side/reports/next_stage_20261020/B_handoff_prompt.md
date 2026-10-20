@@ -25,7 +25,7 @@ A **没有**做（这些是你的）：生成与评分、CPU 线程主查、端�
 2. `reports/next_stage_20261020/interface_freeze.md`（冻结口径，唯一权威）
 3. `reports/next_stage_20261020/A_retrieval_consistency.md`（差异定位与"未确认"边界）
 
-## 2. 你要做的 6 件事
+## 2. 你要做的 7 件事
 
 ### ① 独立校验产物（零依赖，今天可完成）
 
@@ -39,7 +39,15 @@ python a-side/scripts/a06_build_corpus.py --store <你的目录>/corpus_v1 --ver
 #        corpus_manifest.csv 4,712 行、按 sha256 升序、mismatches = 0
 ```
 
-`a17` 只读 CSV + hashlib，不需要模型与数据集。`a15_materialize_packets.py` 的语料路径是硬编码的（`E:\EdgeCoRAG-A-store\corpus_v1`），请改成你的路径；需要 `--corpus` 参数就提。
+`a17` 只读 CSV + hashlib，不需要模型与数据集。
+
+`a15_materialize_packets.py` 已去掉硬编码路径：`--corpus` > 环境变量 `EDGECORAG_CORPUS` > 报错，macOS/Linux 可直接跑，**不需要改我的脚本**（改脚本会改哈希）：
+
+```bash
+export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1
+python a-side/scripts/a15_materialize_packets.py --cohort smoke_20 --dim 768 --strategy cosine \
+    --corpus "$EDGECORAG_CORPUS" --out "$HOME/edgecorag/packets/smoke20_768_cosine"
+```
 
 ### ② 回传 A 定位那 3 题所需的 4 份数据（派生小数据，不含原题/gold/图片）
 
@@ -48,9 +56,11 @@ python a-side/scripts/a06_build_corpus.py --store <你的目录>/corpus_v1 --ver
 3. **现场查询向量指纹**：`sha256(float32 序列化后的向量字节)`；有历史缓存指纹一并给。
 4. **编码参数回执**：dtype、`Normalize` 是否启用、现场编码的 batch 组成。
 
+> 数据到手后我按 `A_retrieval_consistency.md` §7.1 的**先验判定表**逐条比对（索引/权重/并列/归一化/dtype/解码/批组成共 7 类，各有可区分特征），不会"看图讲故事"。
+
 ### ③ 固定 CPU 线程
 
-`libgomp: Invalid value for environment variable OMP_NUM_THREADS` 出现 2 次。固定合法值，并把**实际生效值**写进计时回执的 `hardware.cpu_thread_env`（`a12_cost_recorder.py` 已预留，缺项写不进）。保留原日志，不悄悄重跑。
+`libgomp: Invalid value for environment variable OMP_NUM_THREADS` 出现 2 次。固定合法值，并把**实际生效值**写进计时回执的 `hardware.cpu_thread_env`——`a12_cost_recorder.py` 现在**构造时就强制校验**：只能是正整数或 `"unfixed"`，`"auto"`/空串/`0`/负值/缺失都直接抛错（自检 32/32 覆盖）。给 `"unfixed"` 也能跑，但每条记录会被标"只作技术联调、不得进正式基准"。保留原日志，不悄悄重跑。
 
 ### ④ 修回执里的悬空引用
 
@@ -59,12 +69,27 @@ python a-side/scripts/a06_build_corpus.py --store <你的目录>/corpus_v1 --ver
 ### ⑤ 按冻结接口接入，不要另建一套
 
 - **顺序以 A 的产物为准**：沿用 `pools/<cohort>__dim<D>__top10.csv` 的 rank 顺序，**不要重新打分再排**。
-- **维度只用 dev_150 选**；`frozen_test` 的检索数值只作描述。
-- **utility 口径冻结**：`ℓ("True")` 原始 logit；回传 `qid,sha256,score`，并回执 `utility_input_order` 与 `utility_batch_size`。
+- **维度只用 dev_150 选**，准则见 `selection_policy.md`（L1 用 `any-hit@10` + ≤1 题的等价带，L2 用 dev 生成准确率；`order_fragile` 题**分层报告但不剔除**）。`frozen_test` 的检索数值只作描述。
+- **utility 分工**：你只回传 `qid,sha256,score`（每题 10 行、覆盖候选池全部 sha、不许多列）；**选 top3、并列按 sha 升序、slot 顺序、物化都由我的 `a15 --strategy utility --scores ...` 完成**，你不要自己挑 3 张。
 - **gold 只进评分/Oracle**。
-- **计时用方案 A**：`a12_cost_recorder.py` 作外层，生成段包 `rec.segment("generation_decode_seconds")`；utility 单独记 `utility_scoring_seconds`（上一轮合在 `selection_request_build_seconds` 里，无法分离）。整卡显存/系统 RAM/能耗必须由外部实测写入，A 的模块里恒为 `null`。
+- **计时用方案 A**：`a12_cost_recorder.py` 作外层，生成段包 `rec.segment("generation_decode_seconds")`；utility 单独记 `utility_scoring_seconds`（上一轮合在 `selection_request_build_seconds` 里，无法分离）。整卡显存/系统 RAM/能耗用 `rec.resources(...)` 或 `attach_resources(...)` 注入，必须带 `value/unit/method`，分配器口径会被拒。
 
-### ⑥ 回传汇总
+### ⑥ 在自己的栈上补一份批大小回执（a18）
+
+我的 `0/1203` 是**绑在我这套栈**（torch 2.11.0 / torchvision 0.26.0 / Pillow 12.3.0）上的；你的服务器是 torch 2.8.0 / torchvision 0.23.0 / Pillow 11.3.0。请用同一协议在**你的栈**上跑一次：
+
+```bash
+python a-side/scripts/a18_batch_sensitivity.py --schema        # 看回执字段
+python a-side/scripts/a18_batch_sensitivity.py --self-check    # 纯逻辑自检，不需要模型/GPU
+export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1
+python a-side/scripts/a18_batch_sensitivity.py \
+    --qids-file a-side/splits/smoke_20.v2.txt --dtype fp32 --batches 16,1 \
+    --weights-sha256 <model.safetensors 的 sha256> --out receipt_a18_<你的栈>.json
+```
+
+回执给 `{changed_order, changed_set, changed_top3, total}` 与 `verdict=stack_invariant|stack_sensitive`。这一步只做编码与排序，**不涉及生成**。
+
+### ⑦ 回传汇总
 
 | # | 内容 | 格式 |
 |---|---|---|
@@ -75,7 +100,8 @@ python a-side/scripts/a06_build_corpus.py --store <你的目录>/corpus_v1 --ver
 | 5 | 查询向量指纹 + 编码参数 | JSON |
 | 6 | `OMP_NUM_THREADS` 生效值 | 字符串 |
 | 7 | `source_pins` 修正 | commit |
-| 8 | 对接口的异议/缺字段 | 文字（冻结前最后一次改口径机会） |
+| 8 | `a18` 跨栈回执 | JSON（`a18_batch_sensitivity_receipt/v1`） |
+| 9 | 对接口的异议/缺字段 | 文字（冻结前最后一次改口径机会） |
 
 ## 3. 不要做
 
@@ -89,7 +115,7 @@ python a-side/scripts/a06_build_corpus.py --store <你的目录>/corpus_v1 --ver
 
 ## 4. GPU 门槛
 
-第 ①②③⑤ 完成、接口异议关闭后才一起提最小对照范围：`smoke_20` 四路径各 1 次 → `dev_150` 四维度选择 → `frozen_test` 只跑选定维度一次。
+第 ①②③⑤⑥ 完成、接口异议关闭后才一起提最小对照范围：`smoke_20` 四路径各 1 次 → `dev_150` 四维度选择 → `frozen_test` 只跑选定维度一次。
 量级估算（**非实测**）：约 9,464 次生成 + 11,830 次 utility 前向 ≈ 5 h GPU，按 1.48 元/时约 7.4 元；须附费用上限、硬停机时间、保全方案与停止条件。
 
 B-03（MMDocRAG 许可）、B-04（统计边界）、T15 仍归你，与本批并行推进。

@@ -19,9 +19,12 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-IFACE = ROOT / "a-side" / "retrieval_if_v1"
-CORPUS = Path(r"E:\EdgeCoRAG-A-store\corpus_v1")
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+import a00_paths  # noqa: E402
+
+IFACE = a00_paths.iface_root()
+CORPUS = a00_paths.corpus_root()
 OUT = ROOT / "a-side" / "retrieval_if_v1" / "metrics"
 COHORTS = ["smoke_20", "dev_150", "frozen_test"]
 DIMS = [768, 512, 256, 128]

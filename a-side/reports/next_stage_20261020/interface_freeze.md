@@ -72,6 +72,43 @@ python scripts/a06_build_corpus.py --verify
 
 **不需要固定批大小的部分**：语料编码批次不影响结果（fp32 下已证），但为了可复现仍要求写进回执。
 
+### 3.1 栈依赖：`0/1203` 只绑定 A 的栈
+
+上面那句"fp32 下批大小 16→1 排序差异 0/1203"是在 **A 的栈**上测的：
+
+| 组件 | A 栈（测 0/1203 的环境） | B 服务器 / round-1 |
+|---|---|---|
+| torch | `2.11.0+cu128` | `2.8.0+cu128` |
+| torchvision | `0.26.0+cu128` | `0.23.0+cu128` |
+| Pillow | `12.3.0` | `11.3.0` |
+| numpy | `2.5.2` | 未记录 |
+| transformers | `5.19.0` | `5.19.0` |
+
+**结论口径**：`0/1203` 是"A 栈内的性质"，**不是跨栈承诺**。B 必须用自己的环境跑 `a18_batch_sensitivity.py` 产出一份回执，跨栈是否一致以该回执为准；未跑之前，任何跨栈复用都必须标注"栈未验证"。
+
+**为什么可能不同（不夸大，也不隐瞒）**：
+
+- 编码器前向在 fp32 下仍受 cuDNN / cuBLAS / GPU 架构影响，kernel 选择与归约顺序可能带来 ~1e-7 量级的差异；这一步**无法保证逐位一致**，只能保证"是否改变排序"可测。
+- 打分用的是 numpy float32 BLAS（CPU），BLAS 实现（MKL / OpenBLAS / Accelerate）与 numpy 版本不同会改归约顺序，量级同样在 1e-7。
+- Pillow 版本影响解码结果（对 q95 文件重新解码的像素是否逐位相同）；Pillow 11.3 → 12.3 之间的 JPEG 解码路径是否有变化，A **没有证据**，标"未验证"。
+- 由此可预期：与 1e-7 同量级的差异**只可能**在相邻分差 < 1e-6 的题上改序（本语料 1033 题中仅 1 题落在该档，见 `outputs/rank_stability/arith_variants.json` 的分档翻转率）。但这是推理，不是实测；以 `a18` 回执为准。
+
+**`a18` 用法**（B 侧，只跑编码与排序，不涉及生成）：
+
+```bash
+python a-side/scripts/a18_batch_sensitivity.py --schema      # 先看回执字段
+python a-side/scripts/a18_batch_sensitivity.py --self-check  # 纯逻辑自检，不需要模型/GPU
+export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1
+python a-side/scripts/a18_batch_sensitivity.py \
+    --qids-file a-side/splits/smoke_20.v2.txt \
+    --dtype fp32 --batches 16,1 --topk 10 \
+    --weights-sha256 <model.safetensors 的 sha256> \
+    --out receipt_a18_<你的栈>.json
+```
+
+回执核心字段：`results = {changed_order, changed_set, changed_top3, total, flip_rate}`，`verdict = stack_invariant | stack_sensitive`。
+`stack_invariant` 表示该栈上批大小不影响排序；`stack_sensitive` 表示必须按"候选池固定顺序"消费，不能重排。
+
 ## 4. 候选池构建（无自匹配 + 补足）
 
 ```
@@ -98,7 +135,49 @@ python scripts/a06_build_corpus.py --verify
 - 取值为论文式 (6) 的 **`ℓ("True")` 原始 logit**（不是 p(True)、不是 True/False 二分类归一化概率；三者不是等价排序）。
 - 打分模型：Gemma 4 E2B-it，BF16、无量化、thinking 关闭、greedy，固定 revision 与模板（模板由 B 侧 `shared_visual_mcq_v1` 与效用辅助问句共同决定，B 需把模板哈希写进回执）。
 - 输入顺序：**按本接口候选池的 rank 顺序**逐个前向（或按固定批量大小整批）；B 必须回执 `utility_input_order` 与 `utility_batch_size`。
-- 回传格式：`qid,sha256,score` 的 CSV，A 用 `a15_materialize_packets.py --strategy utility --scores ...` 物化。
+
+### 5.1 分工边界：B 只交分数，选 3 张与顺序由 A 的 `a15` 完成
+
+这一条是为了避免"B 自己挑 3 张"导致两边选择逻辑不一致：
+
+| 步骤 | 归属 | 说明 |
+|---|---|---|
+| 10 个候选及其身份 | **A** | `pools/<cohort>__dim<D>__top10.csv`，rank 1..10 |
+| 每个候选的效用分 | **B** | 只回传 `qid,sha256,score` 三列；不筛、不排、不取前 3 |
+| 选 top3 + 并列打破 + 顺序 | **A** | `a15_materialize_packets.py --strategy utility`：分数降序、并列按 `sha256` 升序、slot 1..3 |
+| 物化证据包与 sha 复算 | **A** | 输出 `evidence_index.csv` / `evidence_list.jsonl` / `verify.json` |
+
+**B 回传的分数表格式（严格）**
+
+```csv
+qid,sha256,score
+mragb:10,83307f79a1c0...,0.812
+mragb:10,df5cb3654e22...,0.408
+```
+
+要求：每题 10 行（候选池里那 10 个 sha 必须全覆盖）、`score` 为数值、不许多列、不许改 sha。
+
+**可复制的完整 CLI（A 侧执行）**
+
+```bash
+export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1          # 或 --corpus 显式指定
+
+# 1) cosine / random：直接物化
+python a-side/scripts/a15_materialize_packets.py \
+    --cohort dev_150 --dim 768 --strategy cosine \
+    --corpus "$EDGECORAG_CORPUS" \
+    --out  "$HOME/edgecorag/packets/dev_150_dim768_cosine"
+
+# 2) utility：拿到 B 的分数表后物化（选 top3 由本脚本完成）
+python a-side/scripts/a15_materialize_packets.py \
+    --cohort dev_150 --dim 768 --strategy utility \
+    --scores "$HOME/edgecorag/b_utility_scores_dev_150_dim768.csv" \
+    --corpus "$EDGECORAG_CORPUS" \
+    --out  "$HOME/edgecorag/packets/dev_150_dim768_utility"
+# 分数缺任何候选 → 退出码 3，拒绝物化（不会用不完整分数凑 top3）
+```
+
+路径解析规则：`--corpus` > 环境变量 `EDGECORAG_CORPUS` > 报错（不再硬编码任何平台路径）；接口目录同理，`--iface` > `EDGECORAG_IFACE` > 仓库内 `a-side/retrieval_if_v1`。
 
 ## 6. 残余风险标记（不许假装不存在）
 
@@ -129,10 +208,14 @@ cohort × 维度：`smoke_20 / dev_150 / frozen_test` × `768 / 512 / 256 / 128`
 
 ```bash
 # B 侧已有数据集副本 → 建 corpus_v1（约 190 s）→ 物化任意 cohort/维度/策略
-python scripts/a06_build_corpus.py
-python scripts/a15_materialize_packets.py --cohort dev_150 --dim 768 --strategy cosine
+export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1
+python a-side/scripts/a06_build_corpus.py --store "$EDGECORAG_CORPUS" --verify
+python a-side/scripts/a15_materialize_packets.py --cohort dev_150 --dim 768 --strategy cosine \
+    --corpus "$EDGECORAG_CORPUS" --out "$HOME/edgecorag/packets/dev_150_dim768_cosine"
 # 物化时逐文件复算 sha，verify.json 里 mismatch 必须为 0
 ```
+
+维度/策略的选择准则见 `selection_policy.md`（L1 检索层用 `any-hit@10` + 等价带，L2 用 dev 生成准确率；`order_fragile` 题**分层报告但不剔除**）。
 
 ## 8. gold 的使用边界（写进协议，不只是口头约定）
 

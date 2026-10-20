@@ -52,16 +52,49 @@ warm_state: cold | warm | warmup
 
 缺任一项 `CostRecorder` 拒绝创建（已在自检里断言）。
 
-`cpu_thread_env` 专门用来收口上一轮 `libgomp: Invalid value for environment variable OMP_NUM_THREADS` 的告警：正式基准必须**先固定合法值并记录实际生效值**，否则报错而不是静默继续。B 侧负责该告警的主查；A 侧只负责把生效值写进上面这个字段。
+`cpu_thread_env` 专门用来收口上一轮 `libgomp: Invalid value for environment variable OMP_NUM_THREADS` 的告警：**构造时就强制校验**——必须是**正整数**（记录实际生效线程数）或字符串 **`"unfixed"`**；`"auto"`、空串、`0`、负值、布尔、缺失一律抛 `ProvenanceError`，不是"事后提醒"。给 `"unfixed"` 时每条记录的 `unmeasured_provenance` 里会写明"只作技术联调，不得进入正式基准"，`summary()` 里也保留该值。B 侧负责固定该告警；A 侧负责让"没写生效值"根本无法构造记录。
 
-## 4. 明确不由本模块产出的指标
+## 4. 资源指标：由外部实测注入（A2）
 
-| 指标 | 状态 |
+本模块**从不自己产生**整卡显存 / 系统 RAM / 能耗；但提供**两个明确的注入 API**，让外部实测值能落进同一条 JSONL 记录：
+
+### 4.1 API（二选一）
+
+```python
+# 行内注入：在 request 内调用
+with rec.request("mragb:10", strategy="cosine"):
+    with rec.segment("ranking_no_self_seconds"): ...
+    rec.resources(
+        device_memory={"value": 7.1, "unit": "GiB",
+                       "method": "nvidia-smi --query-gpu=memory.used 10Hz"},
+        system_ram={"value": 12.4, "unit": "GiB",
+                    "method": "/usr/bin/time -v Maximum resident set size"},
+        energy={"value": 1840.0, "unit": "J", "method": "wall meter, 1s sampling"},
+    )
+
+# 后处理合并：把外部采集的测量值按 req_id 合并进已有 JSONL
+from a12_cost_recorder import attach_resources
+summary = attach_resources("cost.jsonl", provider=lambda req_id, row: {...},
+                           out_path="cost.merged.jsonl")
+# summary = {rows, filled:{device_memory:n,...}, still_null:{...}, missing_req_ids:[...]}
+```
+
+### 4.2 语义与强制校验
+
+| 项 | 规则 |
 |---|---|
-| 整卡显存占用峰值 | 必须由实测接口（如 `nvidia-smi` 采样或平台监控）写入 `device_memory`；本模块该字段恒为 `null` |
-| 系统 RAM 峰值 | 同上，`system_ram` 恒为 `null` |
-| 能耗 | 同上，`energy` 恒为 `null`；没有功耗计的机器只能说"未测" |
-| 索引驻留字节 | 允许写**实测** RSS/常驻字节；不允许用 `18955 × dim × 4` 的理论向量大小顶替 |
+| `null` | 表示**未测**；不得写成 `0`，也不得用空对象代替 |
+| 必填字段 | 注入值必须是对象，含 `value`（数值、非负）、`unit`（非空）、`method`（非空） |
+| 分配器口径 | `method` 命中 `allocat / memory_allocated / memory_reserved / reserved_peak / torch.cuda.memory` 时**直接抛错**；分配器峰值不得改名成整卡/系统/能耗 |
+| 全部未测 | `rec.resources()` 不带任何一项时抛错（防止空调用被误当成"测了 0"） |
+| `attach_resources` | 只覆盖非 null 值；未提供的保持 `null` 并计入 `still_null`；提供非法值时抛错 |
+
+| 指标 | 允许来源 | 不允许 |
+|---|---|---|
+| 整卡显存占用峰值 | `nvidia-smi` 采样、平台监控、NVML | `torch.cuda.max_memory_allocated()` 等分配器统计 |
+| 系统 RAM 峰值 | `/usr/bin/time -v`、容器监控、`psutil` 采样 | 估算值 |
+| 能耗 | 外接功率计 / 平台计量 | 用 TDP×时长推算写成实测 |
+| 索引驻留字节 | 实测 RSS / 常驻字节 | `18955 × dim × 4` 的理论向量大小 |
 
 ## 5. 样本量与统计口径
 
@@ -79,19 +112,36 @@ B 的 `e2e_smoke.py` 已是外层计时器。对接方式（二选一，建议 A
 
 两种方案都必须满足：同一请求只有一条 `end_to_end_seconds`，其余是段。
 
-## 7. 自检（已通过）
+## 7. 自检（已通过，32 项）
 
 `python a-side/scripts/a13_cost_selftest.py` → `a-side/reports/next_stage_20261020/cost_recorder_selftest.json`，
-**11/11 通过**，覆盖：
+**32/32 通过**，覆盖：
 
+**A 组（计时与口径）**
 1. 嵌套 `request` 被拒绝（端到端只能一个外层计时器）
 2. 分段之和 > 端到端时被标记
 3. 同请求内同名段重复被拒绝
-4. 未测段写 null 并进入 `unmeasured_segments`，不写 0
+4. 未测段进入 `unmeasured_segments`，不写 0
 5. 离线/在线分开，离线不进入在线汇总
-6. provenance 缺项拒绝创建
+6. provenance 必填项缺失拒绝创建
 7. 观测数 < 20 不报 P95
-8. `device_memory` / `system_ram` / `energy` 恒为 null
+8. 未注入资源时 `device_memory` / `system_ram` / `energy` 为 `null`
+
+**B 组（A1：强制线程字段）**
+9. `hardware.cpu_thread_env` 缺失 → 拒绝
+10. `"auto"` / 空串 / `0` / 负值 / 布尔 → 拒绝（5 个用例）
+11. 正整数 `8` → 通过，落盘字段与 summary 都是 `8`
+12. `"unfixed"` → 通过，且每条记录 `unmeasured_provenance` 留痕、summary 标 `unfixed`
+
+**C 组（A2：资源注入）**
+13. `resources()` 合法注入 → 落到当前请求记录
+14. 缺 `value/unit/method` → 拒绝
+15. `method` 为分配器口径（`torch.cuda.max_memory_allocated()`）→ 拒绝
+16. 负值 → 拒绝；全部未测的空调用 → 拒绝
+17. `attach_resources()` 按 `req_id` 合并，未提供的保持 `null`
+18. `attach_resources()` 遇非法值（分配器口径）→ 拒绝
+
+**段名未改动**：`query_decode_encode_seconds` / `ranking_no_self_seconds` / `selection_request_build_seconds` / `generation_decode_seconds` / `utility_scoring_seconds` 全部保持原样（自检里有段名集合断言）。
 
 ## 8. 仍未确定 / 需要实测
 

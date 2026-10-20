@@ -1,0 +1,80 @@
+{
+  "passed": 14,
+  "total": 14,
+  "checks": [
+    {
+      "check": "missing_corpus_clear_error",
+      "pass": true,
+      "detail": [
+        "缺少语料目录：请用 --corpus <dir> 指定，或设置环境变量 EDGECORAG_CORPUS=<dir>。"
+      ]
+    },
+    {
+      "check": "incomplete_corpus_error",
+      "pass": true,
+      "detail": [
+        "语料目录 C:\\Users\\zhang'cheng'xuan\\AppData\\Local\\Temp\\a15test_8itttfrm\\bad_corpus 不完整，缺少 ['corpus_meta.json', 'corpus_manifest.csv', 'occurrences.csv', 'images']。"
+      ]
+    },
+    {
+      "check": "materialize_with_corpus_flag",
+      "pass": true,
+      "detail": "questions\": 2, \"images\": 8, \"content_digest\": \"13197b27b4bbb20d428e3c0c7be02abe9679d842b3f4baa1bae8b03c4a102bb9\"}\nsha 校验 8 文件，不一致 0 -> C:\\Users\\ZHANG'~1\\AppData\\Local\\Temp\\a15test_8itttfrm\\out_cosine\n"
+    },
+    {
+      "check": "verify_zero_mismatch",
+      "pass": true,
+      "detail": "{\"files\": 8, \"mismatch\": 0, \"details\": []}"
+    },
+    {
+      "check": "evidence_rows_query_plus_3",
+      "pass": true,
+      "detail": "rows=8"
+    },
+    {
+      "check": "slot_contiguous",
+      "pass": true,
+      "detail": "{\"mragb:1\": [\"\", \"1\", \"2\", \"3\"], \"mragb:2\": [\"\", \"1\", \"2\", \"3\"]}"
+    },
+    {
+      "check": "materialize_with_env_var",
+      "pass": true,
+      "detail": ", \"questions\": 2, \"images\": 8, \"content_digest\": \"64fe7de52a672f16cf06649fb5e5261857afeb3a3464b4cd1855ed506320ba00\"}\nsha 校验 8 文件，不一致 0 -> C:\\Users\\ZHANG'~1\\AppData\\Local\\Temp\\a15test_8itttfrm\\out_env\n"
+    },
+    {
+      "check": "env_var_verify_ok",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "random_slots_follow_listing",
+      "pass": true,
+      "detail": "[\"20fdae58\", \"894f4b51\", \"0f342abd\"]"
+    },
+    {
+      "check": "utility_missing_scores_nonzero",
+      "pass": true,
+      "detail": "rc=1"
+    },
+    {
+      "check": "utility_materialize_ok",
+      "pass": true,
+      "detail": "uestions\": 2, \"images\": 8, \"content_digest\": \"62aba6507e3dffe775e0fa86fe005174a3af40854fefd2531f85e8033c26f3f7\"}\nsha 校验 8 文件，不一致 0 -> C:\\Users\\ZHANG'~1\\AppData\\Local\\Temp\\a15test_8itttfrm\\out_utility\n"
+    },
+    {
+      "check": "utility_top3_by_score_desc",
+      "pass": true,
+      "detail": "[\"894f4b51\", \"20fdae58\", \"0f342abd\"]"
+    },
+    {
+      "check": "utility_incomplete_scores_rejected",
+      "pass": true,
+      "detail": "rc=3"
+    },
+    {
+      "check": "default_iface_missing_pool_nonzero",
+      "pass": true,
+      "detail": "rc=1"
+    }
+  ]
+}
