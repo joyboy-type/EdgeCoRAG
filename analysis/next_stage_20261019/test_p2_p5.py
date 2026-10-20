@@ -3,7 +3,7 @@ import hashlib,json,tempfile,unittest
 from pathlib import Path
 from round1_projection import measure_identity
 from p5_budget_options import build
-from p4_reproduce import specs,REPO
+from p4_reproduce import specs,REPO,receipt_filename
 class OfflineBatchTests(unittest.TestCase):
  def test_opaque_alias_does_not_get_relabelled_as_byte_hash(self):
   with tempfile.TemporaryDirectory() as d:
@@ -33,3 +33,5 @@ class OfflineBatchTests(unittest.TestCase):
    self.assertTrue(command[0].endswith('.py'))
    self.assertFalse(any(Path(s).is_absolute() for s in command))
   self.assertEqual(len(names),30);self.assertEqual(len(set(names)),30)
+  for label in ('Q_completion_counts.json','Q_requirement_evidence_audit.json','status_changes.json','quality'):
+   result=receipt_filename(label);self.assertTrue(result.startswith('receipt_'));self.assertFalse(result.endswith('.json.json'))

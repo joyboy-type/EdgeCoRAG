@@ -9,6 +9,10 @@ REPO=Path(__file__).resolve().parents[2]
 ART=Path('reports/next_stage_20261019/quality_closure_20261021')
 PREFIX='analysis/next_stage_20261019/'
 
+def receipt_filename(label):
+    return 'receipt_'+label+('' if label.endswith('.json') else '.json')
+
+
 def specs(repo):
     manifest=json.loads((repo/ART/'manifest.json').read_text());quality=[*manifest['files'],'manifest.json']
     groups=[('quality',quality,['verify_quality_closure.py','--work-dir','{work_dir}','--artifact-dir',str(ART)]),
@@ -44,7 +48,7 @@ def run(args):
             if label=='Q_requirement_evidence_audit.json':reason='Historical audit process is not exactly replayable from fully versioned original inputs; current audit is reported separately.'
         scrub=stderr
         for p in [REPO,*[p for p in roots.values() if p is not None]]:scrub=scrub.replace(str(p),'<EXPLICIT_INPUT>')
-        save(out/(label+'.json'),dict(command=template,returncode=rc,status=status,reason=reason,stdout=stdout,stderr=scrub))
+        save(out/receipt_filename(label),dict(command=template,returncode=rc,status=status,reason=reason,stdout=stdout,stderr=scrub))
         commands.append(dict(group=label,command=template,returncode=rc,status=status,reason=reason))
         for name in names:rows.append(dict(artifact=str(ART/name),sha256=sha(REPO/ART/name),command='$PY '+' '.join(template),returncode=rc,status=status,required_inputs=';'.join(w[1:-1] for w in template if w.startswith('{')),limitation=reason,shared_invocation=label))
     table(out/'artifact_commands.csv',rows)

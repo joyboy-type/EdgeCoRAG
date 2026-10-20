@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "sources 为空：无法核对语料/题目/排序缓存的输入身份"
+  ],
+  "computed": {
+    "claimed_entries": null,
+    "public_instances": 14475,
+    "public_unique": 4712,
+    "verdict": "pending",
+    "verdict_a_side": "pending"
+  }
+}

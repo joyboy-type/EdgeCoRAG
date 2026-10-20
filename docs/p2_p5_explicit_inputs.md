@@ -1,10 +1,10 @@
 # P2–P5：本批命令与输入边界
 
-P1不重做；基线61b41e4，交付分支fast-forward须另等用户确认。只读A c77e91c。所有命令从B仓库根执行，PY是已有NumPy/Pillow运行时；NEW_OUT必须是新目录。需要GPU的命令本批不执行。
+P1不重做；基线61b41e4，交付分支fast-forward须另等用户确认。只读A 4a60d75。所有命令从B仓库根执行，PY是已有NumPy/Pillow运行时；NEW_OUT必须是新目录。需要GPU的命令本批不执行。
 
 |变量|显式所需输入|
 |---|---|
-|A_REPO|c77e91c的只读工作树|
+|A_REPO|4a60d75（a-iface-20261021-fix7）的只读工作树|
 |PROJECT|合法本地项目根，含round-1原始图片/向量归档和round-2部分回传|
 |WORK_DIR|已冻结no-self私有归档根，含prepared/、continuous-complete-backup/、corrected-protocol-scoring/；其同级有instance394-preflight/|
 |METADATA_DIR|冻结官方元数据页与official-full-field-projection-v3/receipt.json|
@@ -19,6 +19,8 @@ git show 61fe155:provenance/results_20261020/e2e_smoke_public_receipt.json > "$F
 ```
 
 ## P2
+
+历史产物在 c77e91c 验证；当前钉住4a60d75，包含a17写verify.json弄脏树的修复。仓库实测两提交累计25文件差异，不能称“仅修a17”；原始diff存于新修复回执。A_commit是当前完整SHA，A_evidence_commit保留历史c77e91c完整SHA，新兼容性检查另记、不重写旧回执。
 
 ```sh
 $PY analysis/next_stage_20261019/verify_a_release.py --a-repo "$A_REPO" --out "$NEW_G1_OUT"
@@ -71,4 +73,6 @@ $PY analysis/next_stage_20261019/audit_requirement_evidence.py --work-dir "$WORK
 $PY analysis/next_stage_20261019/p5_budget_options.py --out "$BUDGET_OUT" --verify
 ```
 
-两个选项都“跳过E0并缩范围”，不在窗口内重建4712语料。未提供可转移fp32索引；c77e91c的a18原生CLI必先编码语料，无索引复用参数，所以完整E1也后置，不在B栈另起批敏感性实验。E2仅五题指纹，不计算live top10；E3仅固定A池的生成pilot，无现场retrieval全链成本/P95/索引驻留。E5仅四维smoke，不选维、不跑frozen。A保持E4；B将E3再降一轮、E4后置。费率和耗时是假设，费用不含未知附加费，不是实测、预算申请或开机授权；实际报价与用户授权未到，不能进入GPU申请。
+两个选项都“跳过E0并缩范围”，不在窗口内重建4712语料。未提供可转移fp32索引；4a60d75的a18原生CLI必先编码语料，无索引复用参数，所以完整E1也后置，不在B栈另起批敏感性实验。E2仅五题指纹，不计算live top10；E3仅固定A池的生成pilot，无现场retrieval全链成本/P95/索引驻留。E5仅四维smoke，不选维、不跑frozen。A保持E4；B将E3再降一轮、E4后置。费率和耗时是假设，费用不含未知附加费，不是实测、预算申请或开机授权；实际报价与用户授权未到，不能进入GPU申请。
+
+既有9537244预算回执原样保留，逐字节复验须配9537244版本脚本；当前脚本只更新A源码能力版本说明，不改预算数字或结论。

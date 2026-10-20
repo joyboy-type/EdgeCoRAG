@@ -1,0 +1,18 @@
+{
+  "command": [
+    "analysis/next_stage_20261019/verify_frozen_export.py",
+    "--snapshot",
+    "61fe155",
+    "--metadata-dir",
+    "{metadata_dir}",
+    "--export-dir",
+    "{legacy_export_dir}",
+    "--official-source",
+    "{official_source}"
+  ],
+  "returncode": 0,
+  "status": "verified_recomputed",
+  "reason": "",
+  "stdout": "{\n  \"status\": \"verified_original_export_with_pinned_original_validators\",\n  \"snapshot\": \"61fe155\",\n  \"source_sha256\": {\n    \"quality_data.py\": \"948220138813bd55ae9abea414eb0d42cc8f13f83adcb3c27ae6b12f44da75b9\",\n    \"export_official.py\": \"cbf8148f0cae6261a61e04f07120427c5212d7d320df8eb8101550e87ace12b1\",\n    \"verify_official_export.py\": \"43427a65bfdcc926491ddcd35c2c8192def0dd32b3f54ca2ff4109f334a82f86\",\n    \"verify_official_schema.py\": \"227ccf19a53b0e62bba56f2d192f06aab286ca59eea2f3c93a2a365d63b332a4\"\n  },\n  \"calls\": [\n    {\n      \"script\": \"verify_official_export.py\",\n      \"returncode\": 0,\n      \"files\": 75,\n      \"rows\": 20295\n    },\n    {\n      \"script\": \"verify_official_schema.py\",\n      \"returncode\": 0,\n      \"files\": 75,\n      \"rows\": 20295\n    }\n  ],\n  \"artifacts\": 3,\n  \"official_scorer_executed\": false,\n  \"limitation\": \"Original format lacks later choices/option_count fields; current format has separate validation, no historical files rewritten\"\n}\n",
+  "stderr": ""
+}

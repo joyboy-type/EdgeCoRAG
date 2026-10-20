@@ -1,0 +1,28 @@
+{
+  "scope": "Full repository text scan excluding this new receipt directory to prevent self-reference; includes unchanged historical reports and a-side. Generated old-version audit outputs are excluded only as receipt self-reference.",
+  "command": [
+    "rg",
+    "-n",
+    "c77e91c",
+    "--glob",
+    "!reports/next_stage_20261019/p2_p5_repair_20261021/**",
+    "."
+  ],
+  "before_matching_lines": 65,
+  "after_matching_lines": 62,
+  "historical_references_retained": [
+    "9537244 P2_G1 commands/checks/source hashes",
+    "prior p2_p5 reports and budget receipts",
+    "A_evidence_commit comparisons and test fixtures",
+    "git diff baseline references"
+  ],
+  "current_pin_changed_files": [
+    "b-side/a_interface_runner.py",
+    "analysis/next_stage_20261019/verify_a_release.py",
+    "docs/p2_p5_explicit_inputs.md",
+    "analysis/next_stage_20261019/p5_budget_options.py",
+    "reports/Requirements.md",
+    "reports/v1.10.1/requirements_matrix.csv",
+    "tests/test_a_interface_runner.py"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "literal_unittest_tests": {
+    "returncode": 5,
+    "tests": 0
+  },
+  "root_discover": {
+    "returncode": 0,
+    "tests": 126
+  },
+  "analysis_discover": {
+    "returncode": 0,
+    "tests": 54
+  },
+  "bare_audit": {
+    "returncode": 1,
+    "reason": "missing private inputs; fail-closed"
+  },
+  "explicit_four_input_audit": {
+    "returncode": 0,
+    "errors": [],
+    "warnings": [],
+    "counts": {
+      "完成": 26,
+      "部分": 5,
+      "待补": 3,
+      "后置": 3
+    }
+  },
+  "verify_a_release": {
+    "returncode": 0
+  },
+  "a_interface_runner": {
+    "returncode": 0
+  },
+  "p4_regeneration": {
+    "returncode": 2,
+    "artifacts": 30,
+    "verified": 29,
+    "blocked": 1,
+    "failed": 0
+  },
+  "p4_filename_check": {
+    "returncode": 0
+  },
+  "publish_audit": {
+    "returncode": 0
+  }
+}

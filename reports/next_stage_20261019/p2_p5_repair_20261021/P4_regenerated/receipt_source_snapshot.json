@@ -1,0 +1,20 @@
+{
+  "command": [
+    "analysis/next_stage_20261019/append_source_provenance.py",
+    "--archive",
+    "{archive}",
+    "--receipt",
+    "{frozen_receipt}",
+    "--source-snapshot",
+    "61fe155",
+    "--verify-json",
+    "reports/next_stage_20261019/quality_closure_20261021/source_archive_supplement.json",
+    "--verify-table",
+    "reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv"
+  ],
+  "returncode": 0,
+  "status": "verified_recomputed",
+  "reason": "",
+  "stdout": "{\n  \"status\": \"historical_pins_reproduced_from_round1_archive\",\n  \"historical_receipt_sha256\": \"27109ba0b381e95614f77b659ffbaa8b73468e74529c7bfb002e6648e8b740ad\",\n  \"historical_receipt_modified\": false,\n  \"pins_verified\": 14,\n  \"current_files_differ\": [\n    \"b-side/e2e_smoke.py\",\n    \"b-side/e2e_lease.py\"\n  ],\n  \"cpu_thread_warning_unchanged\": true,\n  \"limitation\": \"Round-1 source pins identify archived snapshot bytes, not current source; no warning or historical field rewritten\"\n}\n",
+  "stderr": ""
+}

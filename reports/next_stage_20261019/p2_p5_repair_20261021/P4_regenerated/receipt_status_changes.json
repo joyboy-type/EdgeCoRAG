@@ -1,0 +1,14 @@
+{
+  "command": [
+    "analysis/next_stage_20261019/verify_historical_metadata.py",
+    "--snapshot",
+    "61fe155",
+    "--artifact",
+    "status_changes.json"
+  ],
+  "returncode": 0,
+  "status": "verified_recomputed",
+  "reason": "",
+  "stdout": "{\n  \"status\": \"verified_from_frozen_status_inputs\",\n  \"returncode\": 0,\n  \"snapshot\": \"61fe155\",\n  \"artifact\": \"status_changes.json\"\n}\n",
+  "stderr": ""
+}

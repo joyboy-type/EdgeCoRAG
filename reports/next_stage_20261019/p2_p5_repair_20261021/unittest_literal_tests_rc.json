@@ -1,0 +1,11 @@
+{
+  "command": [
+    "$PY",
+    "-m",
+    "unittest",
+    "tests"
+  ],
+  "returncode": 5,
+  "stdout": "",
+  "stderr": "\n----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nNO TESTS RAN\n"
+}

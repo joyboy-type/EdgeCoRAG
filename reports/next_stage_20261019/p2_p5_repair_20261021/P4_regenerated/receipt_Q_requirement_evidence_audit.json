@@ -1,0 +1,14 @@
+{
+  "command": [
+    "analysis/next_stage_20261019/verify_historical_metadata.py",
+    "--snapshot",
+    "61fe155",
+    "--artifact",
+    "Q_requirement_evidence_audit.json"
+  ],
+  "returncode": 2,
+  "status": "blocked",
+  "reason": "Historical audit process is not exactly replayable from fully versioned original inputs; current audit is reported separately.",
+  "stdout": "{\n  \"status\": \"blocked\",\n  \"returncode\": 2,\n  \"reason\": \"Historical audit receipt is immutable; original session registry/environment not fully versioned for exact replay. Current explicit-input audit is reported separately, not retrofitted into old receipt.\"\n}\n",
+  "stderr": ""
+}

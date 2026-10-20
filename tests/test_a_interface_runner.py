@@ -53,6 +53,6 @@ class InterfaceReleaseBinding(unittest.TestCase):
  def test_proof_for_different_manifest_is_rejected(self):
   import json
   with tempfile.TemporaryDirectory() as d:
-   a=Path(d);p=a/'proof.json';p.write_text(json.dumps({'B1_passed':True,'commands':[{'returncode':0}]*4,'A_commit':'c77e91c07a288b719683c51258324c11431c12d5','artifact_manifest_sha256':'0'*64,'checks':{'a17_default':{'artifacts_checked':36,'fail_count':0},'a17_strict':{'artifacts_checked':36,'fail_count':0}}}))
+   a=Path(d);p=a/'proof.json';p.write_text(json.dumps({'B1_passed':True,'commands':[{'returncode':0}]*4,'A_commit':'4a60d758a7247d5922b03dd3f05bd8fa641d6b69','A_evidence_commit':'c77e91c07a288b719683c51258324c11431c12d5','artifact_manifest_sha256':'0'*64,'checks':{'a17_default':{'artifacts_checked':36,'fail_count':0},'a17_strict':{'artifacts_checked':36,'fail_count':0}}}))
    (a/'a-side/retrieval_if_v1').mkdir(parents=True);(a/'a-side/retrieval_if_v1/artifacts.json').write_text('{}')
    with self.assertRaises(ValueError):r.interface_status(a,p)

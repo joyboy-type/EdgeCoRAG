@@ -1,0 +1,7 @@
+{
+  "command": "$PY analysis/next_stage_20261019/p4_reproduce.py (explicit inputs; see specs)",
+  "returncode": 2,
+  "expected_returncode": 2,
+  "stdout": "",
+  "stderr": ""
+}

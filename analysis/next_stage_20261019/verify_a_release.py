@@ -1,10 +1,13 @@
-"""Run unchanged A c77e91c CLIs in a byte-identical disposable sandbox.
+"""Run unchanged A 4a60d75 CLIs in a byte-identical disposable sandbox.
 Reproduce: $PY analysis/next_stage_20261019/verify_a_release.py --a-repo <A_REPO> --out <NEW_OUT>
 A writes reports, so never invoke its output-producing CLIs in its read-only tree.
 """
 import argparse,hashlib,json,os,shutil,subprocess,tempfile
 from pathlib import Path
-A_COMMIT='c77e91c07a288b719683c51258324c11431c12d5'
+A_COMMIT='4a60d758a7247d5922b03dd3f05bd8fa641d6b69'
+A_TAG='a-iface-20261021-fix7'
+# Historical artifact validation belongs to this commit, never relabel it.
+A_EVIDENCE_COMMIT='c77e91c07a288b719683c51258324c11431c12d5'
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def inventory(a):
  names=subprocess.check_output(['git','ls-files','-z','a-side'],cwd=a).decode().split('\0')
@@ -14,7 +17,13 @@ def run(a,out):
  a,out=Path(a).resolve(),Path(out).resolve()
  if out.exists() or out.is_relative_to(a):raise ValueError('New output outside A required')
  commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=a).decode().strip()
- if commit!=A_COMMIT:raise ValueError('Expected pinned A c77e91c')
+ expected=subprocess.check_output(['git','rev-parse','--verify',A_TAG+'^{commit}'],cwd=a).decode().strip()
+ if expected!=A_COMMIT or commit!=expected:raise ValueError('Expected pinned A 4a60d75 full commit')
+ historical=Path(__file__).resolve().parents[2]/'reports/next_stage_20261019/p2_p5_20261021/P2_G1/G1_release_check.json'
+ prior=json.loads(historical.read_text())
+ if prior['A_commit']!=A_EVIDENCE_COMMIT:raise ValueError('Historical G1 evidence commit changed')
+ diff_stat=subprocess.check_output(['git','diff','--stat','c77e91c','4a60d75'],cwd=a).decode()
+ diff_names=subprocess.check_output(['git','diff','--name-only','c77e91c','4a60d75'],cwd=a).decode()
  before=inventory(a);out.mkdir(parents=True);calls=[];checks={}
  with tempfile.TemporaryDirectory(prefix='B-native-A-') as tmp:
   native=Path(tmp);shutil.copytree(a/'a-side',native/'a-side',ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
@@ -35,7 +44,13 @@ def run(a,out):
    elif label=='a20_example':checks[label]=json.loads(r.stdout)
    else:checks[label]=json.JSONDecoder().raw_decode(r.stdout.strip())[0]
   if inventory(a)!=before:raise ValueError('A changed externally; stop and report')
- result=dict(A_commit=commit,commands=calls,checks=checks,
+ result=dict(A_commit=commit,A_evidence_commit=A_EVIDENCE_COMMIT,
+  current_compatibility_validation_commit=commit,
+  historical_G1=dict(A_commit=prior['A_commit'],receipt_sha256=sha(historical),commands=prior['commands'],checks=prior['checks']),
+  A_diff_stat_raw=diff_stat,A_diff_name_only_raw=diff_names,
+  A_diff_is_a17_only=diff_names.splitlines()==['a-side/scripts/a17_verify_interface.py'],
+  provenance_note='历史产物在 c77e91c 验证；4a60d75 包含 a17 写 verify.json 弄脏树的修复，但累计diff不止a17，详见原始diff。本次commands/checks是4a60d75兼容性检查，不覆盖历史测量。',
+  commands=calls,checks=checks,
   artifact_manifest_sha256=sha(a/'a-side/retrieval_if_v1/artifacts.json'),
   A_tracked_files=len(before),A_unchanged=True,source_sha256=before,
   invocation_scope='Unmodified native CLIs on byte-identical B sandbox snapshot; source A remains read-only',

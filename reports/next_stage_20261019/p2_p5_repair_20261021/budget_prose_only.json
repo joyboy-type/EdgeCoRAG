@@ -1,0 +1,22 @@
+{
+  "returncode": 0,
+  "only_version_prose_changed": true,
+  "numeric_and_other_fields_unchanged": true,
+  "changes": [
+    {
+      "path": ".options[0].E1_scope",
+      "before": "Deferred entirely: native c77e91c a18 always encodes corpus and has no precomputed-index argument; do not replace it with a B-stack sensitivity probe",
+      "after": "Deferred entirely: native 4a60d75 a18 always encodes corpus and has no precomputed-index argument; do not replace it with a B-stack sensitivity probe"
+    },
+    {
+      "path": ".options[1].E1_scope",
+      "before": "Deferred entirely: native c77e91c a18 always encodes corpus and has no precomputed-index argument; do not replace it with a B-stack sensitivity probe",
+      "after": "Deferred entirely: native 4a60d75 a18 always encodes corpus and has no precomputed-index argument; do not replace it with a B-stack sensitivity probe"
+    },
+    {
+      "path": ".still_blocked[4]",
+      "before": "Native c77e91c a18 has no index reuse argument and always encodes4712 corpus items; E1 deferred, no B-stack workaround",
+      "after": "Native 4a60d75 a18 has no index reuse argument and always encodes4712 corpus items; E1 deferred, no B-stack workaround"
+    }
+  ]
+}

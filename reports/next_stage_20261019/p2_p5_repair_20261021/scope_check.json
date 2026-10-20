@@ -1,0 +1,21 @@
+{
+  "returncode": 0,
+  "historical_payload_overwrites": [],
+  "legacy_paths_allowed_only_for_required_rename_and_manifest": [
+    "reports/next_stage_20261019/p2_p5_20261021/P4_reproduction/Q_completion_counts.json.json",
+    "reports/next_stage_20261019/p2_p5_20261021/P4_reproduction/Q_requirement_evidence_audit.json.json",
+    "reports/next_stage_20261019/p2_p5_20261021/P4_reproduction/receipt_Q_completion_counts.json",
+    "reports/next_stage_20261019/p2_p5_20261021/P4_reproduction/receipt_Q_requirement_evidence_audit.json",
+    "reports/next_stage_20261019/p2_p5_20261021/P4_reproduction/receipt_status_changes.json",
+    "reports/next_stage_20261019/p2_p5_20261021/P4_reproduction/status_changes.json.json",
+    "reports/next_stage_20261019/p2_p5_20261021/manifest.json"
+  ],
+  "A_diff_empty": true,
+  "delivery_branch_unmoved": true,
+  "exceptions_reported": [
+    "52 staged rather than48",
+    "25 A changed files rather than single a17",
+    "3 duplicate extensions rather than2",
+    "literal unittest tests rc5/0tests; explicit discover126tests rc0"
+  ]
+}

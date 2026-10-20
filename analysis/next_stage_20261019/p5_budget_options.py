@@ -38,7 +38,7 @@ def build(out):
             E0='跳过E0并缩范围；租用窗口内禁止重建4712语料',
             index_prerequisite='No verified transferable fp32 index supplied. No corpus encoding/live ranking/index-residency benchmark in this scope.',
             selection_scope='smoke/dev only; report four smoke dimensions, no dimension selection; frozen quality/dev selection deferred',
-            E1_scope='Deferred entirely: native c77e91c a18 always encodes corpus and has no precomputed-index argument; do not replace it with a B-stack sensitivity probe',
+            E1_scope='Deferred entirely: native 4a60d75 a18 always encodes corpus and has no precomputed-index argument; do not replace it with a B-stack sensitivity probe',
             deferred=['E0 corpus encoding','E1 full a18 sensitivity (requires corpus encoding; not called here)','E2 live top10 scoring','E3 full retrieval cost and formal P95','E5 dev dimension choice/frozen selected dimension/selected-dimension utility']+(['E4 four-path quality matrix'] if name=='B_cut20' else []),
             failed_stop=['Any first task failure: preserve partial, no retry','Missing image/identity/license/required source proof: stop before spending',
                 'Target torch/BLAS mismatch or unavailable: abort formal tasks','Remaining preservation reserve<600s: stop work',
@@ -52,7 +52,7 @@ def build(out):
         source_budget_script_sha256=sha(REPO/'analysis/next_stage_20261019/a_interface_budget.py'),
         source_old_scenario=dict(point_seconds=3774.59,slow_seconds=6949.18),
         no_index_scope_change='Remove full E1 (2406 query encodes) plus123 live encodes and123 ranking calls from old scope:1268.19/2536.38 assumed seconds. B additionally reduces E3 to1 repeat and defers E4; no faster runtime claim.',
-        still_blocked=['A adjudication18955 vs14475/4712','B full cross-stack a18 not run','target CPU/BLAS effective values unmeasured','A corpus byte rebuild/parquet preflight not verified here','Native c77e91c a18 has no index reuse argument and always encodes4712 corpus items; E1 deferred, no B-stack workaround','real quote/whole-device resource instrumentation/user boot authorization absent'])
+        still_blocked=['A adjudication18955 vs14475/4712','B full cross-stack a18 not run','target CPU/BLAS effective values unmeasured','A corpus byte rebuild/parquet preflight not verified here','Native 4a60d75 a18 has no index reuse argument and always encodes4712 corpus items; E1 deferred, no B-stack workaround','real quote/whole-device resource instrumentation/user boot authorization absent'])
     save(out/'budget_options.json',result);return result
 
 def main():

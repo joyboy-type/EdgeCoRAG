@@ -4,7 +4,7 @@ Reproduce: $PY -B b-side/a_interface_runner.py --dry-run --a-repo <A_WORKTREE>
  --thread-evidence <B4_JSON> --out <NEW_B_OUTPUT>
 Without a current pinned G1 proof, A CSVs remain provisional. Never rewrites A files.
 """
-import argparse,csv,hashlib,importlib.util,json,math,sys
+import argparse,csv,hashlib,importlib.util,json,math,sys,subprocess
 from pathlib import Path
 from next_interface_bridge import build_fp32_encoder
 PROVISIONAL='provisional: manifest 行尾口径待 A 修复'
@@ -14,16 +14,19 @@ def interface_status(a_repo,verification):
  a_repo=Path(a_repo).resolve();proof=json.loads(Path(verification).read_text())
  calls=proof.get('commands',[]);checks=proof.get('checks',{})
  if proof.get('B1_passed') is not True or len(calls)!=4 or any(c.get('returncode')!=0 for c in calls):raise ValueError('Incomplete current G1 proof')
- if proof.get('A_commit')!='c77e91c07a288b719683c51258324c11431c12d5':raise ValueError('Unpinned G1 version')
  for name in ('a17_default','a17_strict'):
   if checks.get(name,{}).get('artifacts_checked')!=36 or checks.get(name,{}).get('fail_count')!=0:raise ValueError('G1 native verification did not pass')
  if proof.get('artifact_manifest_sha256')!=sha(a_repo/'a-side/retrieval_if_v1/artifacts.json'):raise ValueError('G1 manifest binding changed')
+ expected=subprocess.check_output(['git','rev-parse','--verify','a-iface-20261021-fix7^{commit}'],cwd=a_repo).decode().strip()
+ actual=subprocess.check_output(['git','rev-parse','HEAD'],cwd=a_repo).decode().strip()
+ if expected!='4a60d758a7247d5922b03dd3f05bd8fa641d6b69' or actual!=expected or proof.get('A_commit')!=expected:raise ValueError('Unpinned G1 version')
+ if proof.get('A_evidence_commit')!='c77e91c07a288b719683c51258324c11431c12d5':raise ValueError('Historical G1 evidence commit missing or changed')
  pins=proof.get('source_sha256',{})
  if len(pins)<36:raise ValueError('G1 source pins absent')
  for name,pin in pins.items():
   path=(a_repo/name).resolve()
   if not path.is_relative_to(a_repo) or sha(path)!=pin:raise ValueError('G1 source changed after verification')
- return True,'verified A c77e91c; current native G1 CLI rc=0'
+ return True,'verified A 4a60d75; historical G1 evidence c77e91c; current compatibility CLI rc=0'
 def read_pool(path):
  result={}
  with Path(path).open(newline='') as f:
@@ -105,7 +108,9 @@ def dry_run(a_repo,evidence_path,out,cohort='smoke_20',dimension=768,strategy='c
  evidence=json.loads(Path(evidence_path).read_text());env_cpu=thread_value(evidence)
  cpu=env_cpu if evidence.get('formal_backend_ready') is True else 'unfixed'
  a12=load_a12(a_repo/'a-side/scripts/a12_cost_recorder.py')
- prov=dict(hardware=dict(cpu_thread_env=cpu),
+ version_proof=json.loads(Path(interface_verification).read_text()) if interface_verification is not None else {}
+ versions={key:version_proof.get(key,'not_supplied') for key in ('A_commit','A_evidence_commit')}
+ prov=dict(**versions,hardware=dict(cpu_thread_env=cpu),
   encoder=dict(encoder_dtype='float32',observed=False,model_loaded=False,note='与 round-1 的 bf16 不可比'),
   corpus=dict(source='A frozen CSV',provisional=source_status),
   protocol='a-side/retrieval-interface-v1',warm_state='CPU_dry_run_not_GPU',
@@ -134,7 +139,7 @@ def dry_run(a_repo,evidence_path,out,cohort='smoke_20',dimension=768,strategy='c
  finally:rec.close()
  with (out/'pool_order_hashes.csv').open('w',newline='') as f:
   w=csv.DictWriter(f,fieldnames=list(hashes[0]));w.writeheader();w.writerows(hashes)
- receipt=dict(status='CPU_native_a12_dry_run_only_'+('verified_A_manifest' if b1_passed else 'provisional_A_manifest'),requests=len(hashes),images_per_request=4,
+ receipt=dict(**versions,status='CPU_native_a12_dry_run_only_'+('verified_A_manifest' if b1_passed else 'provisional_A_manifest'),requests=len(hashes),images_per_request=4,
   A_pool_file_sha256=sha(poolfile),A_a12_source_sha256=sha(a_repo/'a-side/scripts/a12_cost_recorder.py'),
   A_select3_sha256=sha(iface/'select3'/f'{cohort}__dim{dimension}__cosine+random.csv'),
   thread_evidence=prov['thread_evidence'],encoder_dtype='float32',encoder_executed=False,
