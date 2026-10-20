@@ -62,11 +62,13 @@
     "public_unique": 4712,
     "delta_vs_instances": null,
     "delta_vs_unique": null,
-    "verdict": "pending"
+    "verdict": "pending",
+    "notes": "等 A 侧按 14,475 / 4,712 口径对账后改 verdict；B 只需按字段映射表填值"
   },
   "notes": [
     "本文件是模板，未填字段一律 null/空数组，表示未回传而不是 0。",
     "A 侧公开可复现口径：1353 题 = 1353 查询实例 + 6357 GT 实例 + 6765 官方候选实例 = 14,475 个实例；按 sha256(JPEG q95 字节) 去重后 4,712 个唯一内容。",
-    "已发布 smoke 报告写的是 18,955 条索引；它与 14,475 / 4,712 都不等，需本回执解释差额来源。"
+    "已发布 smoke 报告写的是 18,955 条索引；它与 14,475 / 4,712 都不等，需本回执解释差额来源。",
+    "round-1 包可直接填的字段见 contracts/index_receipt_field_mapping.md；verdict=pending 时必须写 reconciliation.notes（a20 强制检查）。"
   ]
 }

@@ -202,8 +202,8 @@
     "reconciliation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["claimed_entries", "public_instances", "public_unique", "delta_vs_instances", "delta_vs_unique", "verdict"],
-      "description": "A 侧对账字段：claimed_entries 应等于 index.entries；public_instances=14475，public_unique=4712；两个 delta 由 A 计算而非 B 填。",
+      "required": ["claimed_entries", "public_instances", "public_unique", "delta_vs_instances", "delta_vs_unique", "verdict", "notes"],
+      "description": "A 侧对账字段：claimed_entries 应等于 index.entries；public_instances=14475，public_unique=4712；两个 delta 由 A 计算而非 B 填。verdict=pending 时必须在 reconciliation.notes 写明在等什么（a20 会强制检查）。",
       "properties": {
         "claimed_entries": { "type": ["integer", "null"], "minimum": 0 },
         "public_instances": { "type": ["integer", "null"], "minimum": 0 },
@@ -213,7 +213,11 @@
         "verdict": {
           "type": "string",
           "enum": ["matches_instances", "matches_unique", "matches_neither", "pending", "not_comparable"],
-          "description": "matches_neither 时不得配对两批结果，需 B 在 notes 给出多出来的来源"
+          "description": "pending 允许使用（表示等 A 裁定），但必须同时写 reconciliation.notes；matches_neither 时不得配对两批结果，需在 notes / 顶层 notes 给出多出来的来源"
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "description": "verdict=pending 时必填（非空字符串），写明在等谁、等什么；其它 verdict 可留 null"
         }
       }
     },

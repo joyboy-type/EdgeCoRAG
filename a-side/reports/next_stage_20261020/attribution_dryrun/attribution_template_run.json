@@ -1,0 +1,61 @@
+{
+  "inputs": {
+    "rows": "outputs\\attribution_dryrun\\threshold_rows.template.csv",
+    "fingerprints": null,
+    "index_receipt": null
+  },
+  "qids": [
+    "mragb:1049",
+    "mragb:1051",
+    "mragb:1062",
+    "mragb:1117",
+    "mragb:10"
+  ],
+  "results": [
+    {
+      "qid": "mragb:1049",
+      "label": "insufficient_data",
+      "rule": "上述特征均不成立或样本不足；不得下归因结论，需补：见 missing_evidence",
+      "missing_evidence": [
+        "该题没有任何行"
+      ],
+      "evidence": {}
+    },
+    {
+      "qid": "mragb:1051",
+      "label": "insufficient_data",
+      "rule": "上述特征均不成立或样本不足；不得下归因结论，需补：见 missing_evidence",
+      "missing_evidence": [
+        "该题没有任何行"
+      ],
+      "evidence": {}
+    },
+    {
+      "qid": "mragb:1062",
+      "label": "insufficient_data",
+      "rule": "上述特征均不成立或样本不足；不得下归因结论，需补：见 missing_evidence",
+      "missing_evidence": [
+        "该题没有任何行"
+      ],
+      "evidence": {}
+    },
+    {
+      "qid": "mragb:1117",
+      "label": "insufficient_data",
+      "rule": "上述特征均不成立或样本不足；不得下归因结论，需补：见 missing_evidence",
+      "missing_evidence": [
+        "该题没有任何行"
+      ],
+      "evidence": {}
+    },
+    {
+      "qid": "mragb:10",
+      "label": "insufficient_data",
+      "rule": "上述特征均不成立或样本不足；不得下归因结论，需补：见 missing_evidence",
+      "missing_evidence": [
+        "该题没有任何行"
+      ],
+      "evidence": {}
+    }
+  ]
+}

@@ -25,6 +25,13 @@ import csv
 import hashlib
 import json
 import sys
+
+try:  # Windows 控制台可能是 cp936，统一成 utf-8 输出，避免中文 detail 触发 UnicodeEncodeError
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except (AttributeError, ValueError):
+    pass
+
 from pathlib import Path
 
 for _cand in (Path(__file__).resolve().parent,
@@ -51,12 +58,14 @@ def main() -> int:
     ap.add_argument("--iface", default=None, help="接口目录（默认按 a00_paths 推导）")
     ap.add_argument("--strict-lf", action="store_true",
                     help="要求磁盘字节已是 LF；发现 CRLF 直接失败并给出修复提示")
+    ap.add_argument("--out", default=None,
+                    help="verify.json 的输出路径（默认写到接口目录；干净检出重跑不会产生 diff）")
     args = ap.parse_args()
 
     global IFACE, CORPUS, OUT
     IFACE = a00_paths.iface_root(args.iface)
     CORPUS = IFACE / "corpus"
-    OUT = IFACE / "verify.json"
+    OUT = Path(args.out).expanduser().resolve() if args.out else (IFACE / "verify.json")
 
     fails: list[str] = []
     info: dict = {}
@@ -86,6 +95,11 @@ def main() -> int:
     info["artifacts_checked"] = len(art["artifacts"])
     info["hash_normalization"] = norm
     info["files_with_crlf"] = len(crlf_files)
+    info["line_ending_note"] = (
+        "files_with_crlf = 本次运行『需要归一化』的文件数"
+        "（Windows CRLF 工作树 36 / 干净 LF 检出 0），"
+        "不是『产物里含 CRLF』，也不参与任何哈希"
+    )
     if args.strict_lf and crlf_files:
         fails.append(
             "检测到 CRLF 工作树：请用 `git config core.autocrlf false` 重新检出，或 "

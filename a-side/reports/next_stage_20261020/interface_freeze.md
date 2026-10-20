@@ -118,6 +118,24 @@ python a-side/scripts/a18_batch_sensitivity.py \
 `stack_invariant` 表示该栈上批大小不影响排序；`stack_sensitive` 表示必须按"候选池固定顺序"消费，不能重排。
 **不允许**用"基本一致""近似通过"等措辞收口：只有 0/0 才算一致。
 
+### 3.2 清单行尾口径与 `verify.json` 的语义（P0 修复后）
+
+**哈希口径 = LF。** `artifacts.json` 里 36 个 `sha256`/`bytes` 全部按 **LF 字节**计算（与 git 提交内容一致），并在 `summary.hash_normalization = "LF"` 标注。`.gitattributes` 里有 `a-side/retrieval_if_v1/** text eol=lf`，Windows 检出也是 LF。
+
+**`verify.json` 的 `files_with_crlf` 是什么意思**：它是"**本次运行需要归一化**的文件数"——Windows CRLF 工作树跑出来是 `36`，干净 LF 检出差出是 `0`。它**不是**"产物里有 CRLF"，也**不参与任何哈希**。字段说明同时写在 `verify.json.line_ending_note` 里。
+
+**三个命令的用途**
+
+| 命令 | 用途 | 期望 |
+|---|---|---|
+| `a17_verify_interface.py` | 默认：先 `\r\n→\n` 归一化再比对，**任何检出都能过** | `rc=0`、`artifacts_checked=36`、`fail_count=0` |
+| `a17_verify_interface.py --strict-lf` | CI/发布前：要求磁盘字节已是 LF，遇 CRLF 直接失败并给修复提示 | 干净检出 `rc=0`；Windows CRLF 树 `rc≠0`（**这是预期行为**） |
+| `a17_verify_interface.py --out <path>` | 把 `verify.json` 写到别处，避免在干净检出里把工作树弄脏 | 仓库内 `verify.json` 保持与提交一致（`files_with_crlf=0`） |
+
+**修复提示**（`--strict-lf` 失败时）：`git config core.autocrlf false` 后重新检出，或 `git rm --cached -r . && git reset --hard` 让 `eol=lf` 生效——**产物内容不需要改**。
+
+**什么时候需要 `a23_fix_manifest_line_endings.py`**：只有在"清单被别处用 CRLF 字节重算过"时才需要（例如把清单拷到 Windows 上用旧脚本重跑）。它幂等：已是 LF 口径且无变化时**不写回**。
+
 ## 4. 候选池构建（无自匹配 + 补足）
 
 ```

@@ -1,0 +1,106 @@
+{
+  "idxbf16.fp32_renorm|qbf16_b1.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxbf16.fp32_renorm|qbf16_b1.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxbf16.fp32_renorm|qbf16_b16.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxbf16.fp32_renorm|qbf16_b16.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxbf16.model_norm|qbf16_b1.fp32_renorm": [],
+  "idxbf16.model_norm|qbf16_b1.model_norm": [],
+  "idxbf16.model_norm|qbf16_b16.fp32_renorm": [],
+  "idxbf16.model_norm|qbf16_b16.model_norm": [],
+  "idxfp32.fp32_renorm|qbf16_b1.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qbf16_b1.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qbf16_b16.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qbf16_b16.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qfp32_b1.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qfp32_b1.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qfp32_b16.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.fp32_renorm|qfp32_b16.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qbf16_b1.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qbf16_b1.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qbf16_b16.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qbf16_b16.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qfp32_b1.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qfp32_b1.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qfp32_b16.fp32_renorm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ],
+  "idxfp32.model_norm|qfp32_b16.model_norm": [
+    "mragb:10",
+    "mragb:1049",
+    "mragb:1117"
+  ]
+}

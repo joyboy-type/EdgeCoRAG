@@ -33,13 +33,17 @@ A 侧交付在独立分支 `a-side/next-stage-20261017`，本轮标签 **`a-ifac
 ### B1 校验接口产物（先做，30 分钟）
 
 ```bash
-git fetch origin a-side/next-stage-20261017 && git checkout FETCH_HEAD   # 或独立 worktree
+git fetch origin a-side/next-stage-20261017
+git checkout c77e91c          # 或更新的 tag；不要用 fc67c40（fix2）
+
 python a-side/scripts/a17_verify_interface.py
-#   期望：artifacts_checked=36、fail_count=0、rc=0
-#   若失败：先看 verify.json 的 files_with_crlf；非 0 说明你的检出是 CRLF，见下方说明
+#   必须附【本次】rc 与 verify.json 的四个原值：artifacts_checked / fail_count /
+#   files_with_crlf / hash_normalization。旧回执不算。
+#   files_with_crlf 的语义 = "本次运行需要归一化的文件数"（CRLF 树 36 / LF 树 0），
+#   不是"产物里含 CRLF"，也不参与哈希。
 
 python a-side/scripts/a17_verify_interface.py --strict-lf
-#   期望（Linux/macOS）：rc=0；若是 Windows 且用了 autocrlf，这里会故意失败并给修复提示
+#   干净 LF 检出错该 rc=0；Windows+autocrlf 会故意失败并给修复提示（预期行为）
 
 export EDGECORAG_CORPUS=$HOME/edgecorag/corpus_v1
 python a-side/scripts/a06_build_corpus.py --store "$EDGECORAG_CORPUS" --verify
@@ -57,26 +61,45 @@ python a-side/scripts/a15_materialize_packets.py --cohort smoke_20 --dim 768 --s
 
 ### B2 索引构建回执（A7，解释 18,955 的唯一入口）
 
-按 `contracts/index_receipt.schema.json` 填 `contracts/index_receipt.example.json` 的副本，
-**未回传字段保持 `null`，不要填 0 或猜值**，然后：
+按 `contracts/index_receipt.schema.json` 填 `contracts/index_receipt.example.json` 的副本。
+**大部分字段不是未知量**：`contracts/index_receipt_field_mapping.md` 给了逐字段映射（身份口径、dedup、dtype、normalization、batch、row_order、counts、sources 都可由 round-1 包直接填）。
+`reconciliation.verdict` 允许填 **`pending`**（表示等 A 裁定），但**必须同时写 `reconciliation.notes`**（非空），否则 `a20` 会报错。
 
 ```bash
 python a-side/scripts/a20_validate_index_receipt.py <你的回执>.json    # 必须 errors=[]
 ```
 
-必填：条目数、身份口径（原始字节 / q95 重编码）、是否内容去重、行序规则、dtype、
-归一化层、语料编码 batch、`sources[]` 每条 sha256。
+必填：条目数、身份口径、是否内容去重、行序规则、dtype、归一化层、语料编码 batch、`sources[]` 每条 sha256。
 参考：A 侧公开口径 `1,353` 题 / `14,475` 个图像实例 / `4,712` 个唯一内容；smoke 报告写 `18,955`。
-三种假设下你应该给出的特征值见 `reports/next_stage_20261020/index_receipt_adjudication.md`（**A 不下结论**）。
+判定矩阵见 `reports/next_stage_20261020/index_receipt_adjudication.md`（**A 不下结论**）。
 
 ### B3 那 5 题的对齐数据（`mragb:10/1049/1051/1062/1117`）
 
-1. 历史与现场**各 10 行**：`qid,source(history|live),rank,sha256,score`
-2. 现场查询向量指纹：`sha256(float32 序列化后的向量字节)`（有历史指纹一并给）
-3. 编码参数：dtype、`Normalize` 是否启用、现场 batch 组成（是否每题单飞）
+① `threshold_rows.csv` —— **表头必须精确为**：
+```csv
+qid,source,rank,sha256,score
+mragb:1049,history,1,<64位小写十六进制>,<数值>
+```
+要求：每题 **history 与 live 各 10 行**；`source∈{history,live}`；`rank` 1..10；`sha256` 64 位小写十六进制；覆盖上面 5 个 qid。
+若某题只有 live（例如其余 3 题待 GPU），**该题的 history 行留空并在回执里注明"缺 history"**——不要用历史分数冒充 live，也不要补齐假行。
+
+② `vector_fingerprints.json` —— 现状/缺失标记：
+```json
+{"mragb:1049": {"live_sha256": "<64hex>", "history_sha256": "<64hex>|null"}}
+```
+对 **float32 序列化字节**取 sha256；历史指纹没有就写 `null`（不要省略键、不要贴向量数值）。
+
+③ `encode_params.json` —— 现状/缺失标记：
+```json
+{"mragb:1049": {"dtype_live": "fp32|bf16", "dtype_history": "...",
+                "normalize_live": "model_internal|post_cast_float32",
+                "normalize_history": "...",
+                "batch_live": "1|16|group_of_N", "batch_history": "..."}}
+```
+缺一项就写 `null`，并在回执里说明哪一项拿不到。
 
 A 收到后用 `scripts/a21_attribute_exclusion.py` 逐题归因（dtype / 归一化位置 / 解码路径 / 批大小 / **数据不足**），
-每类都带"看到什么数值才成立"的条件；**不做事后讲故事**。
+每类都带"看到什么数值才成立"的条件；**不做事后讲故事**。空表输入的 dry-run 结果见 `reports/next_stage_20261020/A4_attribution_dryrun.md`。
 
 ### B4 固定 CPU 线程
 

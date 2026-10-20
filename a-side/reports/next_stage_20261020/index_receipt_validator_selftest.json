@@ -1,6 +1,6 @@
 {
-  "passed": 10,
-  "total": 10,
+  "passed": 12,
+  "total": 12,
   "checks": [
     {
       "check": "template_ok_pending",
@@ -51,6 +51,16 @@
       "check": "bool_type_rejected",
       "pass": true,
       "detail": ""
+    },
+    {
+      "check": "pending_with_notes_ok",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "pending_without_notes_rejected",
+      "pass": true,
+      "detail": "[\"reconciliation.verdict=pending \\u65f6\\u5fc5\\u987b\\u5728 reconciliation.notes \\u5199\\u660e\\u5728\\u7b49\\u4ec0\\u4e48\\uff08\\u4f8b\\u5982\\u300e\\u7b49 A \\u4fa7\\u6309"
     }
   ]
 }

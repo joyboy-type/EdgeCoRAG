@@ -58,7 +58,7 @@ NESTED_REQUIRED = {
     "query_encode": ["batch_size", "composition", "per_request_batching"],
     "counts": ["questions", "image_instances", "unique_contents"],
     "reconciliation": ["claimed_entries", "public_instances", "public_unique",
-                       "delta_vs_instances", "delta_vs_unique", "verdict"],
+                       "delta_vs_instances", "delta_vs_unique", "verdict", "notes"],
 }
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 BOOLEANISH = ("by_identity", "explicit_tiebreak_key", "per_request_batching", "tf32")
@@ -159,6 +159,13 @@ def validate(receipt: dict, *, recompute_reconciliation: bool = True) -> dict:
                 )
 
     rec = receipt.get("reconciliation") or {}
+    if rec.get("verdict") == "pending":
+        note = rec.get("notes")
+        if not (isinstance(note, str) and note.strip()):
+            errors.append(
+                "reconciliation.verdict=pending 时必须在 reconciliation.notes 写明在等什么"
+                "（例如『等 A 侧按 14,475/4,712 口径对账』），不能留空"
+            )
     claimed = rec.get("claimed_entries") if rec.get("claimed_entries") is not None else entries
     computed["claimed_entries"] = claimed
     computed["public_instances"] = PUBLIC_INSTANCES
@@ -215,7 +222,8 @@ def _filled(entries: int, *, by_identity=True, kept=0) -> dict:
         "counts": {"questions": 1353, "image_instances": PUBLIC_INSTANCES, "unique_contents": PUBLIC_UNIQUE},
         "reconciliation": {"claimed_entries": None, "public_instances": PUBLIC_INSTANCES,
                            "public_unique": PUBLIC_UNIQUE, "delta_vs_instances": None,
-                           "delta_vs_unique": None, "verdict": "pending"},
+                           "delta_vs_unique": None, "verdict": "pending",
+                           "notes": "等 A 裁定"},
         "notes": [],
     }
 
@@ -274,6 +282,18 @@ def self_check() -> int:
     bad = _filled(PUBLIC_INSTANCES)
     bad["row_order"]["explicit_tiebreak_key"] = "yes"
     ok("bool_type_rejected", not validate(bad)["ok"])
+
+    # 11) pending + notes → 通过
+    r = validate(_filled(PUBLIC_INSTANCES))
+    ok("pending_with_notes_ok", r["ok"], json.dumps(r["errors"])[:120])
+
+    # 12) pending 缺 notes → 必须报错
+    bad = _filled(PUBLIC_INSTANCES)
+    bad["reconciliation"]["notes"] = None
+    r = validate(bad)
+    ok("pending_without_notes_rejected", (not r["ok"])
+       and any("pending" in e and "notes" in e for e in r["errors"]),
+       json.dumps(r["errors"])[:160])
 
     passed = sum(c["pass"] for c in checks)
     payload = {"passed": passed, "total": len(checks), "checks": checks}

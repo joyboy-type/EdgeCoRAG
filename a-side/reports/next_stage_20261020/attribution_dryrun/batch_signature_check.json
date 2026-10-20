@@ -1,0 +1,98 @@
+{
+  "idxbf16.model_norm|qbf16_b16.model_norm": {
+    "mragb:10": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00105095"
+    },
+    "mragb:1049": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00013214"
+    },
+    "mragb:1051": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00044364"
+    },
+    "mragb:1062": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00219655"
+    },
+    "mragb:1117": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00039339"
+    }
+  },
+  "idxbf16.model_norm|qbf16_b1.model_norm": {
+    "mragb:10": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00114489"
+    },
+    "mragb:1049": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00028968"
+    },
+    "mragb:1051": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00041747"
+    },
+    "mragb:1062": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00215811"
+    },
+    "mragb:1117": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00032157"
+    }
+  },
+  "idxbf16.fp32_renorm|qbf16_b16.fp32_renorm": {
+    "mragb:10": {
+      "order_equal": "False",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00040072"
+    },
+    "mragb:1049": {
+      "order_equal": "False",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "2.009e-05"
+    },
+    "mragb:1051": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.0001744"
+    },
+    "mragb:1062": {
+      "order_equal": "True",
+      "membership_equal": "True",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00292814"
+    },
+    "mragb:1117": {
+      "order_equal": "False",
+      "membership_equal": "False",
+      "top3_equal": "True",
+      "min_adjacent_margin": "0.00123417"
+    }
+  }
+}
