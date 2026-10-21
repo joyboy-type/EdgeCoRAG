@@ -1,0 +1,82 @@
+{
+  "schema": "pareto_cross_source_projection/v1",
+  "numbers_source": "frozen_numbers.json",
+  "axes": [
+    {
+      "x": "latency_P95_ref",
+      "y": "quality_ref",
+      "x_goal": "min",
+      "y_goal": "max"
+    },
+    {
+      "x": "device_peak_ref",
+      "y": "quality_ref",
+      "x_goal": "min",
+      "y_goal": "max"
+    }
+  ],
+  "points": [
+    {
+      "point_id": "gemma4_e2b.fixed_cosine",
+      "model": "gemma4_e2b",
+      "condition": {
+        "quality": "historical cosine18955, frozen1033",
+        "cost": "A fixed cosine4712, smoke20, 2 generated tokens"
+      },
+      "quality_ref": "pareto.gemma4_e2b.quality_pct",
+      "latency_P95_ref": "cost.gemma4_e2b.e2e_ms.P95",
+      "device_peak_ref": "cost.gemma4_e2b.device_peak_bytes",
+      "axis_source_ids": {
+        "quality": "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv",
+        "cost": "session/E3/requests.jsonl"
+      },
+      "is_measured": {
+        "quality": "archival experiment",
+        "cost": true
+      },
+      "matched_protocol": false
+    },
+    {
+      "point_id": "gemma4_e4b.fixed_cosine",
+      "model": "gemma4_e4b",
+      "condition": {
+        "quality": "historical cosine18955, frozen1033",
+        "cost": "A fixed cosine4712, smoke20, 2 generated tokens"
+      },
+      "quality_ref": "pareto.gemma4_e4b.quality_pct",
+      "latency_P95_ref": "cost.gemma4_e4b.e2e_ms.P95",
+      "device_peak_ref": "cost.gemma4_e4b.device_peak_bytes",
+      "axis_source_ids": {
+        "quality": "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv",
+        "cost": "session/E3/requests.jsonl"
+      },
+      "is_measured": {
+        "quality": "archival experiment",
+        "cost": true
+      },
+      "matched_protocol": false
+    },
+    {
+      "point_id": "qwen3vl_4b.fixed_cosine",
+      "model": "qwen3vl_4b",
+      "condition": {
+        "quality": "historical cosine18955, frozen1033",
+        "cost": "A fixed cosine4712, smoke20, 2 generated tokens"
+      },
+      "quality_ref": "pareto.qwen3vl_4b.quality_pct",
+      "latency_P95_ref": "cost.qwen3vl_4b.e2e_ms.P95",
+      "device_peak_ref": "cost.qwen3vl_4b.device_peak_bytes",
+      "axis_source_ids": {
+        "quality": "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv",
+        "cost": "session/E3/requests.jsonl"
+      },
+      "is_measured": {
+        "quality": "archival experiment",
+        "cost": true
+      },
+      "matched_protocol": false
+    }
+  ],
+  "frontier_status": "not_established_due_to_unmatched_protocols",
+  "warning": "Quality from historical frozen1033 cosine18955; costs from E3 smoke20 cosine4712,2 tokens. No matched quality measurement; do not assert dominance or deployment frontier. Assumed cost points excluded."
+}

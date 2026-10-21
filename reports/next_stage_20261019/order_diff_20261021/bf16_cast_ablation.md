@@ -1,67 +1,60 @@
-# bf16-cast 消融：停于 fp32 精确基线门禁
+# bf16-cast 消融
 
-状态：**未完成**。本机离线运行，不用GPU、不读取图像、不加载模型；未修改A树或已有分数表。
+## 预先固定本轮门禁与方法
 
-## 基线一致性核对
+本轮容差为事后设定，依据是两次独立实现的浮点求和顺序差异：身份/排名/sha逐条完全一致；分数绝对差≤1e-6 **或** 相对差≤1e-5（相对分母=abs(live score)，0时仅绝对门禁）视为同一计算。超出即停止，不调阈值。
 
-从本机会话包读取原始字节，V.shape=(4712,768)，Q.shape=(5,768)，均为float32。按现有similarity_bypass.py计算 `scores=V@Q[i]`，`np.lexsort((identity,-scores))`，剔除metadata指定self，取top10。沿用已归一化向量，不额外归一化。
+对保存的float32归一化V/Q逐题计算V@Q[i]，按lexsort(-score,identity)，仅剔除self。V/Q以round-to-nearest-even各转bf16再回float32；不重归一化。此为最终向量量化消融，不等同于重跑bf16编码器。
 
-- 五题、50行：qid/rank/identity/sha256 **50/50一致**，没有候选或顺序差异。
-- score_fp32/score_fp32_hex：**15/50精确一致，35/50不一致**。
-- 最大分数绝对差：**2.384185791015625e-07**。
-- 本机NumPy：2.3.5；原始live表来自远端栈。本次未证明具体哪个内核/归约实现导致差异，不把可能原因写成结论。
-- 精确分数门禁实际返回 **rc=1**。未放宽为容差比较，未替换或修补原分数。
+changed_order=有序top10不同；changed_set=top10集合不同；changed_top3=有序top3不同，另报top3集合变化。换位对=fp32/bf16两者top10并集内相对顺序反转的候选对，报告两个状态下的有符号分差。
 
-| qid | 排序/身份一致行数 | 分数不一致行数 |
-|---|---:|---:|
-| mragb:10 | 10/10 | 5 |
-| mragb:1049 | 10/10 | 6 |
-| mragb:1051 | 10/10 | 6 |
-| mragb:1062 | 10/10 | 9 |
-| mragb:1117 | 10/10 | 9 |
+对history使用键表sha256_raw→sha256_q95映射，缺失/歧义均显式记录，不猜身份。1e-2抬升判据固定为映射后两池共有top10候选的bf16-cast−fp32分数增量≥0.01，同时history有序top10相同；否则回退池差，不声称唯一因果归因。
 
-示例：mragb:10 rank1，本机0.9157231450080872（0x1.d4d9aa0000000p-1），live0.9157232046127319（0x1.d4d9ac0000000p-1）。全部35行原值/期望值与hex见JSON。
+运行状态：本轮CPU计算rc=0，容差门禁通过。
 
-## 消融前后top10差异
+## 本轮结果
 
-**未完成**。用户规定“必须逐行一致，否则先停”，因此未执行bf16转换，不填changed_order/changed_set/changed_top3为0，也未计算换位对分差。
+身份/排名/sha **50/50完全一致**；分数 **50/50在预定容差内**。实际实现噪声最大2.384185791015625e-07，约2.4e-7；A报告的最小相邻间隔8.8e-5，是实际噪声的369.10倍（按2.4e-7为366.67倍）。故这次实现噪声不足以解释该量级换位；这不是对所有池/内核误差的普遍界。
 
-## 与history的比较结论
+| qid | changed_order | changed_set | changed_top3（有序） | 换位对数 | history在4712池内/10 | history与cast完整顺序一致 |
+|---|---|---|---|---:|---:|---|
+| mragb:10 | False | False | False | 0 | 4/10 | False |
+| mragb:1049 | False | False | False | 0 | 8/10 | False |
+| mragb:1051 | False | False | False | 0 | 7/10 | False |
+| mragb:1062 | False | False | False | 0 | 1/10 | False |
+| mragb:1117 | False | False | False | 0 | 3/10 | False |
 
-**未完成**。基线门禁未过，未继续做raw→q95键映射或history对照。不能归因精度，也不能裁定池不同或编码路径不同。已有history/live使用不同池是既有事实，不能据此证明某个gap的原因。
+## 换位对分数差
 
-方法边界：最终向量float32→bf16→float32只模拟最终向量量化，不等价于bf16模型内部编码。即使后续未复现，也不足以单独区分池差异与编码路径差异。
+正负号按fp32领先候选a减候选b；以下均为本次CPU计算。
 
-## 复算精确门禁
+### mragb:10
 
-在具备NumPy的本机Python中运行下列代码；SOURCE为本机会话包，不需要GPU。输出每行差异并在任何差异时rc=1。
+无换位对。
 
-```python
-import tarfile, io, csv, json, numpy as np
-SOURCE = "/Users/joyboy/Documents/Codex/2026-10-19/edgecorag-context-recovery/outputs/autodl_resume_report_20261021/session.tar.gz"
-with tarfile.open(SOURCE) as t:
-    def read(n): return t.extractfile("session/" + n).read()
-    V = np.load(io.BytesIO(read("encoded/V.npy")), allow_pickle=False)
-    Q = np.load(io.BytesIO(read("encoded/Q.npy")), allow_pickle=False)
-    assert V.shape == (4712, 768) and Q.shape == (5, 768)
-    assert V.dtype == Q.dtype == np.float32
-    pool = list(csv.DictReader(io.StringIO(read("encoded/pool.csv").decode())))
-    meta = json.loads(read("encoded/encoding.json"))
-    qids = read("encoded/qids.txt").decode().splitlines()
-    live = list(csv.DictReader(io.StringIO(read("scores_live.csv").decode())))
-ids = np.array([x["identity"] for x in pool]); bad = []
-for i, q in enumerate(qids):
-    scores = V @ Q[i]
-    order = [int(j) for j in np.lexsort((ids, -scores))
-             if ids[j] != meta["query_identities"][q]][:10]
-    for rank, j in enumerate(order, 1):
-        expected = next(x for x in live if x["qid"] == q and int(x["rank"]) == rank)
-        actual = dict(qid=q, rank=str(rank), identity=str(ids[j]), sha256=pool[j]["sha256"],
-                      score_fp32=repr(float(np.float32(scores[j]))),
-                      score_fp32_hex=float(np.float32(scores[j])).hex())
-        diff = {k: {"actual": v, "expected": expected[k]}
-                for k, v in actual.items() if v != expected[k]}
-        if diff: bad.append(dict(qid=q, rank=rank, differences=diff))
-print(json.dumps(dict(rows=50, mismatch_rows=len(bad), mismatches=bad), indent=2))
-raise SystemExit(1 if bad else 0)
-```
+### mragb:1049
+
+无换位对。
+
+### mragb:1051
+
+无换位对。
+
+### mragb:1062
+
+无换位对。
+
+### mragb:1117
+
+无换位对。
+
+
+## history对照与结论
+
+**回退池差。** 50/50 history raw sha均由键表唯一映射到q95；共享成员的cast最大分数抬升为0.0011141300201416016，全池最大绝对变化为0.0016489624977111816，未同时复现1e-2抬升与history完整换位模式。
+
+键表18,955行与live4,712唯一q95的交集为4282；live中430张不在history键表。逐题history候选缺失数和完整两套top10、共有候选的history−fp32与cast−fp32差值见JSON。池不同首先是候选资格不同，不仅是同候选重排。最终向量量化未能解释观测，因此回退池差排查；没有证明池差足以解释所有分数幅度，也没有排除编码路径差异。
+
+数据来源：本机会话包session/encoded/{V,Q}.npy及pool/qids/encoding、scores_live/history；映射键表见JSON路径。输入sha256、NumPy版本、每对完整精度分差均在JSON。旧精确门禁rc1保留于父提交11bbded；本轮按新写死容差更新原文件。
+
+可定位的池差：history top10的50个候选出现中，仅23个在live4,712池，27个不在该池；逐题分别缺6/2/3/9/7个。缺失候选不可能仅靠对当前池向量cast重新进入top10。共有候选的history−fp32最大为0.0157507061958313，而cast−fp32最大仅0.0011141300201416016。
