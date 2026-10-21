@@ -1,0 +1,277 @@
+{
+  "schema": "delta_vs_bf16_ulp/v1",
+  "premise": "live=f32/4712, history=bf16/18955，映射后重合子集上比较分数差",
+  "bf16_ulp_definition": "bf16(8-bit 尾数) 在 v 的 ulp = 2^(floor(log2|v|)-7)；以 live(fp32) 分值为参考点",
+  "per_qid": {
+    "mragb:10": {
+      "common": 3,
+      "order_consistent": false,
+      "swap_pairs": 1,
+      "items": [
+        {
+          "identity_q95": "3ed5e8dcc4f10e53335c17d8cb8fa23ba9b7a45d6262f922face956cb4e7ac40",
+          "live_rank": 3,
+          "live_score_fp32": 0.8887590765953064,
+          "history_rank": 6,
+          "history_score_fp32": 0.9045097827911377,
+          "delta_score": -0.0157507061958313,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -4.0321807861328125
+        },
+        {
+          "identity_q95": "83307f79505fbcb243bf0b581434e84e19ffab062916c42b1632d1615bdc5812",
+          "live_rank": 1,
+          "live_score_fp32": 0.9157232046127319,
+          "history_rank": 2,
+          "history_score_fp32": 0.9164207577705383,
+          "delta_score": -0.0006975531578063965,
+          "rank_delta": -1,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.1785736083984375
+        },
+        {
+          "identity_q95": "df5cb365fc2e9ecbfd57e1a41faf17b02d02897214cec893989b762fe7f8669d",
+          "live_rank": 2,
+          "live_score_fp32": 0.9004236459732056,
+          "history_rank": 7,
+          "history_score_fp32": 0.901906430721283,
+          "delta_score": -0.0014827847480773926,
+          "rank_delta": -5,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.3795928955078125
+        }
+      ],
+      "abs_delta_max": 0.0157507061958313,
+      "abs_delta_median": 0.0014827847480773926,
+      "max_delta_over_bf16_ulp": -0.1785736083984375
+    },
+    "mragb:1049": {
+      "common": 7,
+      "order_consistent": true,
+      "swap_pairs": 0,
+      "items": [
+        {
+          "identity_q95": "18c7efcbed6cf42ee3ce85a8fe744901ec05f3bcb56e2a3bf779e4307d5c1299",
+          "live_rank": 2,
+          "live_score_fp32": 0.8589383363723755,
+          "history_rank": 5,
+          "history_score_fp32": 0.853114128112793,
+          "delta_score": 0.0058242082595825195,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 1.490997314453125
+        },
+        {
+          "identity_q95": "504bbf8982dc40a3f34dac684f17c3a9abe5bbcf272bb805884908edd90d3c67",
+          "live_rank": 3,
+          "live_score_fp32": 0.8540956974029541,
+          "history_rank": 6,
+          "history_score_fp32": 0.8515287637710571,
+          "delta_score": 0.0025669336318969727,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.657135009765625
+        },
+        {
+          "identity_q95": "5e7ad2c3d395fd98541ef6ecfe8d1a1a40cef7aa36d117ee51f23bfee704fb3e",
+          "live_rank": 6,
+          "live_score_fp32": 0.8420681953430176,
+          "history_rank": 9,
+          "history_score_fp32": 0.8397036194801331,
+          "delta_score": 0.0023645758628845215,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.6053314208984375
+        },
+        {
+          "identity_q95": "623919d0fe483489d9f496a4c3eaf1afd906074e4d48a512c51868efc0c04268",
+          "live_rank": 1,
+          "live_score_fp32": 0.8636735081672668,
+          "history_rank": 4,
+          "history_score_fp32": 0.86195969581604,
+          "delta_score": 0.0017138123512268066,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.4387359619140625
+        },
+        {
+          "identity_q95": "6f273836bf377c22eea6c67d2f3ee10edac9dd0e10aa1e699ed14940e2148ffb",
+          "live_rank": 7,
+          "live_score_fp32": 0.8412970304489136,
+          "history_rank": 10,
+          "history_score_fp32": 0.8387221097946167,
+          "delta_score": 0.002574920654296875,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.6591796875
+        },
+        {
+          "identity_q95": "7ee260a94efb1024d222025942cdb37ac443525924b5ca884907c607a722a55c",
+          "live_rank": 5,
+          "live_score_fp32": 0.842357337474823,
+          "history_rank": 8,
+          "history_score_fp32": 0.8399471044540405,
+          "delta_score": 0.0024102330207824707,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.6170196533203125
+        },
+        {
+          "identity_q95": "9ec2e30e5dea1f763ef04676949faa007915ccd72400abafe6b5b564ad199254",
+          "live_rank": 4,
+          "live_score_fp32": 0.8430686593055725,
+          "history_rank": 7,
+          "history_score_fp32": 0.844417929649353,
+          "delta_score": -0.0013492703437805176,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.3454132080078125
+        }
+      ],
+      "abs_delta_max": 0.0058242082595825195,
+      "abs_delta_median": 0.0024102330207824707,
+      "max_delta_over_bf16_ulp": 1.490997314453125
+    },
+    "mragb:1051": {
+      "common": 6,
+      "order_consistent": false,
+      "swap_pairs": 2,
+      "items": [
+        {
+          "identity_q95": "76b592039333cf125f592532e093c43aa5098c4a25daa9808edc2c5747b82f9b",
+          "live_rank": 5,
+          "live_score_fp32": 0.8243393898010254,
+          "history_rank": 10,
+          "history_score_fp32": 0.829302191734314,
+          "delta_score": -0.004962801933288574,
+          "rank_delta": -5,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -1.270477294921875
+        },
+        {
+          "identity_q95": "990220d317fcb80d370a197044f2f7430c1dff3b8bc0b3d8621bc82265e7d7fc",
+          "live_rank": 4,
+          "live_score_fp32": 0.8244275450706482,
+          "history_rank": 9,
+          "history_score_fp32": 0.8307303190231323,
+          "delta_score": -0.006302773952484131,
+          "rank_delta": -5,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -1.6135101318359375
+        },
+        {
+          "identity_q95": "a02adc5ddb6c14d1688cbf3e58e97caf37392be3f57515dbc2b31bb3571f7bcc",
+          "live_rank": 2,
+          "live_score_fp32": 0.9062612056732178,
+          "history_rank": 3,
+          "history_score_fp32": 0.9072816967964172,
+          "delta_score": -0.0010204911231994629,
+          "rank_delta": -1,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.2612457275390625
+        },
+        {
+          "identity_q95": "c79205d9e4460edc73bee95e537aeff8e3a0a3180ca29255a0d38a521049ae9f",
+          "live_rank": 6,
+          "live_score_fp32": 0.8213818073272705,
+          "history_rank": 8,
+          "history_score_fp32": 0.831950306892395,
+          "delta_score": -0.010568499565124512,
+          "rank_delta": -2,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -2.705535888671875
+        },
+        {
+          "identity_q95": "d9b27660f98a78f17ed9190f2ca052690fdb0f0cf84039392032bbf5824e3efd",
+          "live_rank": 1,
+          "live_score_fp32": 0.9251434803009033,
+          "history_rank": 2,
+          "history_score_fp32": 0.9266399145126343,
+          "delta_score": -0.001496434211730957,
+          "rank_delta": -1,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.383087158203125
+        },
+        {
+          "identity_q95": "ec7400c568765cab6f0c87332b2f4d14e82aa026edb3a32c947b956fc32e64a8",
+          "live_rank": 3,
+          "live_score_fp32": 0.835552453994751,
+          "history_rank": 7,
+          "history_score_fp32": 0.8323866724967957,
+          "delta_score": 0.0031657814979553223,
+          "rank_delta": -4,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.8104400634765625
+        }
+      ],
+      "abs_delta_max": 0.010568499565124512,
+      "abs_delta_median": 0.004962801933288574,
+      "max_delta_over_bf16_ulp": 0.8104400634765625
+    },
+    "mragb:1062": {
+      "common": 1,
+      "order_consistent": true,
+      "swap_pairs": 0,
+      "items": [
+        {
+          "identity_q95": "d91dbec2c4ad54c211ff2c6eb4e9f710a8cb87aba6bc04afb074c37fdac3802c",
+          "live_rank": 1,
+          "live_score_fp32": 0.9771935343742371,
+          "history_rank": 3,
+          "history_score_fp32": 0.9777486324310303,
+          "delta_score": -0.0005550980567932129,
+          "rank_delta": -2,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.1421051025390625
+        }
+      ],
+      "abs_delta_max": 0.0005550980567932129,
+      "abs_delta_median": 0.0005550980567932129,
+      "max_delta_over_bf16_ulp": -0.1421051025390625
+    },
+    "mragb:1117": {
+      "common": 3,
+      "order_consistent": true,
+      "swap_pairs": 0,
+      "items": [
+        {
+          "identity_q95": "003f8c212aa731152c61deef5c2052a65a37d38952b066e9fe3ddc48bc72a034",
+          "live_rank": 4,
+          "live_score_fp32": 0.9012499451637268,
+          "history_rank": 7,
+          "history_score_fp32": 0.9018557071685791,
+          "delta_score": -0.0006057620048522949,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.1550750732421875
+        },
+        {
+          "identity_q95": "25b7f44019053ff51aa530681b3c01670f5a79edee00f3a0753f4bd352bc5f5a",
+          "live_rank": 2,
+          "live_score_fp32": 0.9083243608474731,
+          "history_rank": 6,
+          "history_score_fp32": 0.9048125743865967,
+          "delta_score": 0.003511786460876465,
+          "rank_delta": -4,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": 0.899017333984375
+        },
+        {
+          "identity_q95": "711a732cfd2429695f6bf0212c20e64d6f1389250953625dca2b8612e1522e4f",
+          "live_rank": 1,
+          "live_score_fp32": 0.9159186482429504,
+          "history_rank": 4,
+          "history_score_fp32": 0.9182612895965576,
+          "delta_score": -0.0023426413536071777,
+          "rank_delta": -3,
+          "bf16_ulp_at_live": 0.00390625,
+          "delta_over_ulp": -0.5997161865234375
+        }
+      ],
+      "abs_delta_max": 0.003511786460876465,
+      "abs_delta_median": 0.0023426413536071777,
+      "max_delta_over_bf16_ulp": 0.899017333984375
+    }
+  }
+}
