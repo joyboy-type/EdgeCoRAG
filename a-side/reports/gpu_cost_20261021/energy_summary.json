@@ -1,0 +1,44 @@
+{
+  "schema": "energy_summary/v1",
+  "input": {
+    "device_samples_sha256": "88927af9710678f757b66fb8953fbfe7461df40ce119d3b06689d601a3492db6",
+    "index_residency_sha256": "33864e74d475e59b7c147fee37f8edf0739d7e5343eb850bbffcadec6a69e087",
+    "switches_sha256": "c6a2cfba20fbd40812e29e9f30dea533d8cfdc347d8e133742f3b3b47f02a60c",
+    "records_total": 570,
+    "power_W_non_null_parsed": 570,
+    "power_W_null_or_unparsable": 0
+  },
+  "stats": {
+    "mean_power_W": 187.35949122807017,
+    "min_power_W": 31.25,
+    "max_power_W": 312.17,
+    "window_seconds": 83.54125308990479,
+    "window_first_epoch": 1792541352.6439207,
+    "window_last_epoch": 1792541436.1851737,
+    "energy_Wh": 4.347846298744446,
+    "peak_note": "max_power_W 是采样到的最大值（点采样），不是连续积分峰值"
+  },
+  "gpu_identity": "NVIDIA GeForce RTX 3090（24 GB，来自 switches.json runtime，非本轮实测）",
+  "limitations": [
+    "窗口约 83.5 秒，仅 E3 pilot，不代表整轮会话",
+    "是 nvidia-smi 采样的 GPU 功耗估计，不含 CPU/内存/网络，不是整机能耗",
+    "点采样非连续积分：电量 = 均值功率 × 窗口时长 / 3600，是对连续采样的近似"
+  ],
+  "cross_check": {
+    "index_residency": {
+      "device_used_bytes_before": 1048576,
+      "device_used_bytes_after": 1048576,
+      "vram_delta_bytes": 0,
+      "note": "索引驻留为 CPU NumPy 矩阵（无 GPU 索引拷贝），device_used_bytes 前后不变 = 未覆盖 GPU 索引加载（GPU 无索引）"
+    },
+    "switches": "见 switches.json（3 次模型切换，时间戳与 device_samples 是否连续见下方说明）",
+    "continuity_note": "device_samples 的 epoch 范围是否覆盖 switches 的 before/after 区间见 switches 分析；无采样区间只写『无功率数据，未计入』，不插值",
+    "switch_coverage": {
+      "min": 1792541352.6439207,
+      "max": 1792541436.1851737,
+      "switches_min": 1792541371.8004544,
+      "switches_max": 1792541421.276345,
+      "switches_fully_covered": true
+    }
+  }
+}
