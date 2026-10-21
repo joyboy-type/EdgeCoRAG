@@ -1,0 +1,275 @@
+[
+  {
+    "from": "coexist_gemma4_e4b",
+    "to": "gemma4_e2b",
+    "load_switch_seconds": 8.374506260734051,
+    "before": {
+      "epoch": 1792541371.8004544,
+      "device_used_bytes": 2055208960,
+      "power_W": "144.52"
+    },
+    "after": {
+      "epoch": 1792541380.1484118,
+      "device_used_bytes": 12586057728,
+      "power_W": "124.72"
+    },
+    "runtime": {
+      "ready": true,
+      "model": "gemma4_e2b",
+      "load_seconds": 7.076410000212491,
+      "runtime": {
+        "load_seconds": 5.12241786532104,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 3090",
+        "gpu_total_bytes": 25298141184,
+        "processor_config": {
+          "do_convert_rgb": true,
+          "do_normalize": false,
+          "do_rescale": true,
+          "do_resize": true,
+          "image_mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "image_processor_type": "Gemma4ImageProcessor",
+          "image_seq_length": 280,
+          "image_std": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "max_soft_tokens": 280,
+          "patch_size": 16,
+          "pooling_kernel_size": 3,
+          "resample": 3,
+          "rescale_factor": 0.00392156862745098
+        },
+        "quantization": "none",
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-136-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "5.19.0",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          6
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 5104297504
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-03bb2ba8-89a1-5fa8-49fc-4f7a0480b03c, NVIDIA GeForce RTX 3090, 595.71.05, 24576 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "39f1cb5b15c273e97587a32570f23da1b4b220169581065068e411fac0eb7c0f"
+      }
+    },
+    "unload_seconds": 1.16948860604316,
+    "release_before": {
+      "epoch": 1792541390.4011493,
+      "device_used_bytes": 13158580224,
+      "power_W": "287.60"
+    },
+    "release_after": {
+      "epoch": 1792541391.542677,
+      "device_used_bytes": 2329935872,
+      "power_W": "155.43"
+    },
+    "device_reclaimed_bytes": 10828644352
+  },
+  {
+    "from": "gemma4_e2b",
+    "to": "gemma4_e4b",
+    "load_switch_seconds": 10.83071415219456,
+    "before": {
+      "epoch": 1792541391.6261396,
+      "device_used_bytes": 2329935872,
+      "power_W": "155.43"
+    },
+    "after": {
+      "epoch": 1792541402.373806,
+      "device_used_bytes": 18514706432,
+      "power_W": "124.06"
+    },
+    "runtime": {
+      "ready": true,
+      "model": "gemma4_e4b",
+      "load_seconds": 9.487009419128299,
+      "runtime": {
+        "load_seconds": 7.597474278882146,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 3090",
+        "gpu_total_bytes": 25298141184,
+        "processor_config": {
+          "do_convert_rgb": true,
+          "do_normalize": false,
+          "do_rescale": true,
+          "do_resize": true,
+          "image_mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "image_processor_type": "Gemma4ImageProcessor",
+          "image_seq_length": 280,
+          "image_std": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "max_soft_tokens": 280,
+          "patch_size": 16,
+          "pooling_kernel_size": 3,
+          "resample": 3,
+          "rescale_factor": 0.00392156862745098
+        },
+        "quantization": "none",
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-136-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "5.19.0",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          6
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 7941100832
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-03bb2ba8-89a1-5fa8-49fc-4f7a0480b03c, NVIDIA GeForce RTX 3090, 595.71.05, 24576 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "39f1cb5b15c273e97587a32570f23da1b4b220169581065068e411fac0eb7c0f"
+      }
+    },
+    "unload_seconds": 1.2394948112778366,
+    "release_before": {
+      "epoch": 1792541413.8915977,
+      "device_used_bytes": 18852347904,
+      "power_W": "303.61"
+    },
+    "release_after": {
+      "epoch": 1792541415.1061552,
+      "device_used_bytes": 2329935872,
+      "power_W": "157.29"
+    },
+    "device_reclaimed_bytes": 16522412032
+  },
+  {
+    "from": "gemma4_e4b",
+    "to": "qwen3vl_4b",
+    "load_switch_seconds": 6.16864936798811,
+    "before": {
+      "epoch": 1792541415.1274838,
+      "device_used_bytes": 2329935872,
+      "power_W": "157.29"
+    },
+    "after": {
+      "epoch": 1792541421.276345,
+      "device_used_bytes": 11575230464,
+      "power_W": "125.75"
+    },
+    "runtime": {
+      "ready": true,
+      "model": "qwen3vl_4b",
+      "load_seconds": 4.829198862891644,
+      "runtime": {
+        "load_seconds": 2.899026917293668,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 3090",
+        "gpu_total_bytes": 25298141184,
+        "processor_config": {
+          "_processor_class": "Qwen3VLProcessor",
+          "image_processor_type": "Qwen2VLImageProcessor",
+          "min_pixels": 50176,
+          "max_pixels": 262144,
+          "size": {
+            "shortest_edge": 3136,
+            "longest_edge": 1003520
+          },
+          "do_resize": true,
+          "resample": 3,
+          "do_rescale": true,
+          "rescale_factor": 0.00392156862745098,
+          "do_normalize": true,
+          "image_mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "image_std": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "patch_size": 16,
+          "temporal_patch_size": 2,
+          "merge_size": 2,
+          "do_convert_rgb": true
+        },
+        "quantization": "none",
+        "chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-136-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "4.57.3",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          6
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 4437815808
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-03bb2ba8-89a1-5fa8-49fc-4f7a0480b03c, NVIDIA GeForce RTX 3090, 595.71.05, 24576 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "39f1cb5b15c273e97587a32570f23da1b4b220169581065068e411fac0eb7c0f"
+      }
+    },
+    "unload_seconds": 1.1255092858336866,
+    "release_before": {
+      "epoch": 1792541433.948594,
+      "device_used_bytes": 11975786496,
+      "power_W": "278.79"
+    },
+    "release_after": {
+      "epoch": 1792541435.0250802,
+      "device_used_bytes": 2329935872,
+      "power_W": "155.42"
+    },
+    "device_reclaimed_bytes": 9645850624
+  }
+]
