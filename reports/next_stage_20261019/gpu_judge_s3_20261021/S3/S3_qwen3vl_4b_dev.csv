@@ -1,0 +1,6 @@
+raw_id,qid,choice,gold,correct,status
+2,mragb:2,D,C,False,ok
+3,mragb:3,B,A,False,ok
+288,mragb:288,B,B,True,ok
+399,mragb:399,A,C,False,ok
+1100,mragb:1100,A,C,False,ok

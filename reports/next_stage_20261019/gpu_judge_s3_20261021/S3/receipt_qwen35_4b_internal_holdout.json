@@ -1,0 +1,12 @@
+{
+  "model": "qwen35_4b",
+  "split": "internal_holdout",
+  "n": 2,
+  "n_correct": 1,
+  "accuracy": 0.5,
+  "load8bit": false,
+  "review_method": "image_model_assisted",
+  "disclosure": "AI 图像辅助、label-aware、非人工盲审",
+  "csv_sha256": "f09df0938837a1afe28afa319b37125d3ee976de67bb66ff556c8c2a92860c2a",
+  "elapsed_seconds": 9.956423997879028
+}
