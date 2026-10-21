@@ -1,0 +1,41 @@
+[
+  {
+    "label": "thread",
+    "returncode": 0,
+    "expected_returncode": 0
+  },
+  {
+    "label": "dry_run",
+    "returncode": 0,
+    "expected_returncode": 0
+  },
+  {
+    "label": "dry_verify",
+    "returncode": 0,
+    "expected_returncode": 0
+  },
+  {
+    "label": "reordered_request_negative",
+    "returncode": 1,
+    "expected_returncode": 1,
+    "reason": "Persisted candidate order differs from A"
+  },
+  {
+    "label": "P3_export",
+    "returncode": 0,
+    "expected_returncode": 0,
+    "note": "current format with true choices/option_count; no scorer execution"
+  },
+  {
+    "label": "P3_schema",
+    "returncode": 0,
+    "expected_returncode": 0,
+    "note": "current format with true choices/option_count; no scorer execution"
+  },
+  {
+    "label": "P3_utility_missing",
+    "returncode": 1,
+    "expected_returncode": 1,
+    "note": "scores missing: refuse before materialization/recorder"
+  }
+]

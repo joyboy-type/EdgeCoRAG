@@ -1,0 +1,5 @@
+# Raw CSV exports preserve quoted answer text and the writer's CRLF bytes.
+reports/v1.10.1/*.csv -whitespace
+source_manifest.csv -whitespace
+# Matplotlib emits intentional whitespace inside SVG path attributes.
+figures/v1.10.1/*.svg -whitespace

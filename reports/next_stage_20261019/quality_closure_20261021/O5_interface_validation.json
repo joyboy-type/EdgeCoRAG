@@ -1,0 +1,22 @@
+{
+  "status": "cpu_shim_contract_passed_native_integration_pending",
+  "tests": 7,
+  "failures": 0,
+  "errors": 0,
+  "source_sha256": "d88d152e261a5fa8441ae7bc59ca9b91aedeb2df574777fd80b15a5cfc415693",
+  "requested_future_dtype": "fp32",
+  "historical_dtype": "unchanged_bf16",
+  "model_loaded": false,
+  "gpu_inference": false,
+  "native_A_schema_verified": false,
+  "blocker": "a12/a15/a18 native scripts/artifacts are absent from this checkout; no A scripts modified",
+  "properties": [
+    "preserve A pool order",
+    "utility returns raw scores only",
+    "a12 callable owns outer boundary",
+    "utility separately timed",
+    "dimensions reported without selection",
+    "TF32 disabled and model parameter dtype checked",
+    "unavailable measurements cannot pass as0/null"
+  ]
+}

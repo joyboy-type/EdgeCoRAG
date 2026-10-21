@@ -1,0 +1,16 @@
+model,strategy,n,old_protocol_correct,old_protocol_accuracy_percent,no_self_correct,no_self_accuracy_percent,no_self_minus_old_pp,interpretation
+qwen3vl_4b,cosine,1033,618,59.825750242013555,618,59.825750242013555,0.0,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen3vl_4b,random,1033,606,58.66408518877057,615,59.53533397870281,0.8712487899322362,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen3vl_4b,utility,1033,621,60.1161665053243,623,60.30977734753146,0.1936108422071636,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen3vl_8b,cosine,1033,626,60.600193610842204,627,60.696999031945786,0.0968054211035818,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen3vl_8b,random,1033,617,59.72894482090997,620,60.01936108422072,0.2904162633107454,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen3vl_8b,utility,1033,613,59.341723136495645,616,59.63213939980639,0.2904162633107454,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+gemma4_e2b,cosine,1033,390,37.7541142303969,399,38.62536302032914,0.8712487899322362,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+gemma4_e2b,random,1033,402,38.915779283639885,396,38.33494675701839,-0.5808325266214908,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+gemma4_e2b,utility,1033,405,39.20619554695063,396,38.33494675701839,-0.8712487899322362,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+gemma4_e4b,cosine,1033,451,43.65924491771539,443,42.884801548886735,-0.7744433688286544,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+gemma4_e4b,random,1033,462,44.72410454985479,455,44.04646660212972,-0.6776379477250726,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+gemma4_e4b,utility,1033,474,45.88576960309777,471,45.595353339787025,-0.2904162633107454,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen35_4b,cosine,1033,596,57.69603097773475,585,56.631171345595355,-1.0648596321393997,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen35_4b,random,1033,589,57.01839303000968,584,56.53436592449177,-0.484027105517909,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof
+qwen35_4b,utility,1033,571,55.27589545014521,574,55.56631171345595,0.2904162633107454,observed-data protocol replication; old results include query self-match confound; not independent blind test or causal proof

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python3",
+    "a-side/scripts/audit_before_push.py",
+    "--worktree",
+    "{repo}"
+  ],
+  "returncode": 0
+}

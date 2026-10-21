@@ -1,0 +1,7 @@
+{
+  "rc": 0,
+  "byte_equal": {
+    "main_table.csv": true,
+    "receipt.json": true
+  }
+}

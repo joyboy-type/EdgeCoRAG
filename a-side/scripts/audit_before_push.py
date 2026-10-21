@@ -17,12 +17,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-import project_config as cfg  # noqa: E402
-
-DEFAULT_WT = cfg.store_root() / "_repo_work"
-GIT = cfg.ROOT / "tools" / "mingit" / "cmd" / "git.exe"
+DEFAULT_WT = Path(__file__).resolve().parents[2]
+GIT = "git"
 
 # 凭证特征
 SECRET_PATTERNS = [
@@ -47,21 +43,24 @@ FORBIDDEN_PATHS = [
     (r"\.pem$|\.key$", "PEM/KEY 文件"),
     (r"(^|/)\.venv", "虚拟环境"),
     (r"(^|/)__pycache__/", "Python 缓存"),
+    (r"\.npy$|\.private\.tar\.gz$|\.pyc$", "私有归档/嵌入/缓存"),
+    (r"(^|/)(?:local-)?plan(?:\.private)?\.json$|(^|/)lease(?:\.[^/]+)?\.json$", "运行计划/租约"),
 ]
 
-SIZE_LIMIT_MB = 25
+SIZE_LIMIT_MB = 5
 
 
 def git(*args, cwd: Path):
-    r = subprocess.run([str(GIT), "-c", "http.sslVerify=false"] + list(args),
+    r = subprocess.run([str(GIT)] + list(args),
                        cwd=str(cwd), capture_output=True, text=True,
-                       errors="replace")
+                       errors="replace", check=True)
     return r.stdout or ""
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--worktree", type=Path, default=DEFAULT_WT)
+    ap.add_argument("--base", help="Audit only changed/additional files against this immutable commit")
     args = ap.parse_args()
     wt: Path = args.worktree
 
@@ -69,7 +68,9 @@ def main() -> int:
         print(f"✗ 不是 git 仓库: {wt}")
         return 1
 
-    files = [l for l in git("ls-files", cwd=wt).splitlines() if l.strip()]
+    files = [l for l in git("ls-files", "-z", cwd=wt).split("\0") if l.strip()]
+    if args.base:
+        files = [x for x in git("diff", "--name-only", "--diff-filter=ACMR", "-z", args.base, cwd=wt).split("\0") if x]
     print(f"仓库: {wt}")
     print(f"已跟踪文件: {len(files)}\n")
 
@@ -134,7 +135,7 @@ def main() -> int:
         biggest.append((sz, rel))
         if sz > SIZE_LIMIT_MB * 1024 * 1024:
             print(f"  ⚠️ {rel}  {sz / 1024 ** 2:.1f} MiB")
-            warnings.append(f"{rel} 体积 {sz / 1024 ** 2:.1f} MiB")
+            problems.append(f"{rel} 体积 {sz / 1024 ** 2:.1f} MiB (requires explicit review)")
             big += 1
     if big == 0:
         print(f"  ✅ 无超限文件")

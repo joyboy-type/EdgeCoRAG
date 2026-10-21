@@ -1,0 +1,36 @@
+{
+  "status": "archive_only_not_new_fp32_run",
+  "history": {
+    "encoding_dtype": "bfloat16",
+    "stored_dtype": "float32",
+    "normalize_embeddings_API": false,
+    "Normalize_module": "module2_Normalize pinned in archive; not new execution",
+    "batch_from_pinned_source": 4,
+    "actual_batch_receipt": null
+  },
+  "live": {
+    "encoding_dtype": "bfloat16",
+    "batch_size": 1,
+    "composition": "single query",
+    "normalize_embeddings_API": false,
+    "post_cast_float32_normalization": true,
+    "not_fp32_protocol": true
+  },
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "torchvision": "0.23.0+cu128",
+    "transformers": "5.19.0",
+    "Pillow": "11.3.0"
+  },
+  "numpy_version_archived": null,
+  "source_sha256": {
+    "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270",
+    "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/query_embeddings.npy": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918",
+    "work/next-experiment-20261019/partial-fetch-20261020/extracted/setup.json": "9b16829bbec5822d9791b263e56b22f4c69f897cee8755dfa54fd4b3f0e88ffc",
+    "work/next-experiment-20261019/partial-fetch-20261020/extracted/code/b-side/e2e_smoke.py": "e0fdc505d14a5b4532bdcb8b82a58ea9e5a8207741a0530b66d15f13e0b4d18d",
+    "work/next-experiment-20261019/partial-fetch-20261020/extracted/code/a-side/scripts/independent_retrieval.py": "70aa9a910463f9c12352e371f2d999f967b6bbe884f6d8475f5d78234831c2ed",
+    "work/next-experiment-20261019/prepared/no-self-smoke_20-ranks.jsonl": "c4509bc0f28b96ae6de9744793027dac10993a3977e1f1093e166b0a6626db90",
+    "work/next-experiment-20261019/partial-fetch-20261020/extracted/results/requests.jsonl": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559"
+  },
+  "limitation": "numpy absent from archived runtime receipt remains null; no version guessed from local environment"
+}

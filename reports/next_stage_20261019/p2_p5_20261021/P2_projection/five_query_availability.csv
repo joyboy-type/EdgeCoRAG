@@ -1,0 +1,6 @@
+qid,history_rows,history_score_rows,live_rows,live_missing_slots,status,encoding_dtype
+mragb:10,10,0,10,0,archived_bf16_batch1,bfloat16
+mragb:1049,10,0,10,0,archived_bf16_batch1,bfloat16
+mragb:1051,10,0,0,10,missing_live_pending_GPU,bfloat16
+mragb:1062,10,0,0,10,missing_live_pending_GPU,bfloat16
+mragb:1117,10,0,0,10,missing_live_pending_GPU,bfloat16

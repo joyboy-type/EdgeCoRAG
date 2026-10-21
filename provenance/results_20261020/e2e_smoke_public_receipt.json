@@ -1,0 +1,96 @@
+{
+  "status": "completed_native_run_verified",
+  "archive_sha256": "4e0fdb7ab586d432381e9431deb0f5de8fec4f8556535defe9c7948b85938893",
+  "archive_bytes": 2886293,
+  "plan_sha256": "048331e09b62d28ba02e976267813cd513ccd32b8bb9da092bdc6ae20171bbc1",
+  "source_pins": {
+    "b-side/e2e_smoke.py": "f3538fbcaec2b7a7f17b7d280b3f8394b58ca013b1dfe387fb46130312908a03",
+    "b-side/e2e_lease.py": "05bbb616431c4cd46216a107480567f0e41d00149a0cff5c09e082f1009ed418",
+    "b-side/model_adapters.py": "60cfc2d051a68646f2556b04bc134b6f06d7495d90de96ce103dfbc6f53b9c01",
+    "b-side/run_candidate.py": "5e7870adc04fec937807e6ac9f6e5f12ad674d1b3f52ec0ee80290c27c1eabf5",
+    "b-side/run_smoke.py": "667f7c8d7d067a5bc0437753389b297f7751bbbacfec222336ff667d027140f0",
+    "b-side/handover_adapter.py": "5f4ce85ba75f804cd6ab59c2edc512849f668fc843d89a9d00788ab29eec74cb",
+    "b-side/accept_handover.py": "ca025038e97dfd9b0fc6daa355867b97a149122fd90a2e231734489af309bdfe",
+    "b-side/score_minimal.py": "93c6164b4d164eb3bdc52227003067c546656f9a7aef2e608b22a60dbe030159",
+    "b-side/configs/model_registry.json": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+    "b-side/configs/shared_visual_mcq_v1.json": "aae45117018d652a0178336785c7733d0d9df5804cd9cc568863f7943de699c1",
+    "b-side/configs/qwen3_vl_4b_smoke.json": "5d9fbd4ed3b07968cd79650896b90b3fe0867a62040fef1e1d60d85ff17c94e6",
+    "b-side/configs/a_handover_baseline.json": "cf4819400b80f9d9ee994e2cb9cf1cb3ca2cd51eb32e3759d5c7844cbe61234f",
+    "a-side/scripts/evidence_selection.py": "f0b9d3552ca4f038115a35b6adf18511e790c934f2ff7fe2046b8ed51c1c3088",
+    "a-side/scripts/independent_retrieval.py": "70aa9a910463f9c12352e371f2d999f967b6bbe884f6d8475f5d78234831c2ed"
+  },
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "torchvision": "0.23.0+cu128",
+    "transformers": "5.19.0",
+    "Pillow": "11.3.0"
+  },
+  "completed_requests": 32,
+  "measured_requests": 30,
+  "inference_errors": 0,
+  "empty_outputs": 0,
+  "stats": {
+    "cosine": {
+      "n": 15,
+      "median_seconds": 0.505305727943778,
+      "min_seconds": 0.42113425582647324,
+      "max_seconds": 0.5797483688220382,
+      "process_allocator_peak_allocated_gib": 10.493218898773193,
+      "process_allocator_peak_reserved_gib": 10.591796875,
+      "component_medians": {
+        "query_decode_encode_seconds": 0.09103452088311315,
+        "ranking_no_self_seconds": 0.01544003002345562,
+        "selection_request_build_seconds": 0.00012869108468294144,
+        "generation_decode_seconds": 0.38900401815772057
+      }
+    },
+    "utility": {
+      "n": 15,
+      "median_seconds": 1.5631033070385456,
+      "min_seconds": 1.4554932420141995,
+      "max_seconds": 1.841233367100358,
+      "process_allocator_peak_allocated_gib": 10.49321699142456,
+      "process_allocator_peak_reserved_gib": 10.591796875,
+      "component_medians": {
+        "query_decode_encode_seconds": 0.08833495620638132,
+        "ranking_no_self_seconds": 0.0125839002430439,
+        "selection_request_build_seconds": 1.239396268967539,
+        "generation_decode_seconds": 0.23390682879835367
+      }
+    }
+  },
+  "cpu_thread_warning": true,
+  "formal_performance_benchmark": false,
+  "all_compute_modes_off_verified": true,
+  "compute_total_cny": 0.09,
+  "storage_charge_included": false,
+  "source_archive": {
+    "sha256": "4e0fdb7ab586d432381e9431deb0f5de8fec4f8556535defe9c7948b85938893",
+    "bytes": 2886293,
+    "original_receipt_sha256": "27109ba0b381e95614f77b659ffbaa8b73468e74529c7bfb002e6648e8b740ad",
+    "members": {
+      "b-side/e2e_smoke.py": "code/b-side/e2e_smoke.py",
+      "b-side/e2e_lease.py": "code/b-side/e2e_lease.py",
+      "b-side/model_adapters.py": "code/b-side/model_adapters.py",
+      "b-side/run_candidate.py": "code/b-side/run_candidate.py",
+      "b-side/run_smoke.py": "code/b-side/run_smoke.py",
+      "b-side/handover_adapter.py": "code/b-side/handover_adapter.py",
+      "b-side/accept_handover.py": "code/b-side/accept_handover.py",
+      "b-side/score_minimal.py": "code/b-side/score_minimal.py",
+      "b-side/configs/model_registry.json": "code/b-side/configs/model_registry.json",
+      "b-side/configs/shared_visual_mcq_v1.json": "code/b-side/configs/shared_visual_mcq_v1.json",
+      "b-side/configs/qwen3_vl_4b_smoke.json": "code/b-side/configs/qwen3_vl_4b_smoke.json",
+      "b-side/configs/a_handover_baseline.json": "code/b-side/configs/a_handover_baseline.json",
+      "a-side/scripts/evidence_selection.py": "code/a-side/scripts/evidence_selection.py",
+      "a-side/scripts/independent_retrieval.py": "code/a-side/scripts/independent_retrieval.py"
+    },
+    "note": "Round-1 source snapshots; historical pins and cpu_thread_warning retain original values"
+  },
+  "cpu_thread_warning_note": {
+    "evidence": "reports/next_stage_20261019/a_interface_review_20261021/B4_thread_preflight.json",
+    "evidence_sha256": "155c07341d7ea260aa4d0c5fe022986d3d5a3666d90ce7f8b81b7d22c1c375f7",
+    "round2_thread_configuration_sha256": "11ecf2bdcbf65c81acb9d425d01f96d6aa54508845e0795d0591beeb85911682",
+    "note": "round1 warning true retained; round2 inherited managed variables all null. Local CPU hostile-env override verified; torch/BLAS unavailable. macOS cannot reproduce libgomp, target verification awaits approved GPU session."
+  }
+}

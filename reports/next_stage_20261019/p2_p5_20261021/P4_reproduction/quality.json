@@ -1,0 +1,14 @@
+{
+  "command": [
+    "analysis/next_stage_20261019/verify_quality_closure.py",
+    "--work-dir",
+    "{work_dir}",
+    "--artifact-dir",
+    "reports/next_stage_20261019/quality_closure_20261021"
+  ],
+  "returncode": 0,
+  "status": "verified_recomputed",
+  "reason": "",
+  "stdout": "{\n  \"status\": \"verified\",\n  \"manifest_sha256\": \"19b6f6977d6a92db178cb3a20287aaca22a4a83e360477f458efcca63ef8edb6\",\n  \"fixed_matrix_rows\": 60,\n  \"path_pairs\": 30,\n  \"source_cluster_pairs\": 20,\n  \"mechanism_cells\": 180,\n  \"recomputed\": true,\n  \"old_scores_reparsed\": false,\n  \"gpu_started\": false\n}\n",
+  "stderr": ""
+}

@@ -1,0 +1,16 @@
+{
+  "filename_validation_returncode": 0,
+  "generation_returncode": 2,
+  "generation_rc_scope": "Expected partial result; historical audit still blocked",
+  "summary": {
+    "artifacts": 30,
+    "verified": 29,
+    "blocked": 1,
+    "failed": 0
+  },
+  "renamed_legacy_receipts": 3,
+  "double_suffix_files": [],
+  "legacy_summary_bytes_unchanged": true,
+  "manifest_other_entries_unchanged": true,
+  "new_receipt_text_normalization": "LF; private raw CLI output retained separately"
+}

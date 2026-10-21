@@ -1,0 +1,43 @@
+{
+  "status": "completed_descriptors",
+  "expected_rows": 18955,
+  "completed_rows": 18955,
+  "source": "zip_original_bytes",
+  "Pillow": "12.3.0",
+  "libjpeg": "6.2",
+  "libjpeg_turbo": "3.1.4.1",
+  "decode_policy": "first frame; RGB; no EXIF transpose, ICC or resize before pixel_sha",
+  "provenance": {
+    "controls_sha256": "c766f7d381063ca2c935f3982de7ac72f18437a1f5889a8701181d11697fe740",
+    "image_index_sha256": "73f91e518a69322bb1f566a11481e654c64722e947158f64404f6f9f456ef5da",
+    "archive_sha256": "b70411cab618bd29206d7dd02b63b83b1635d051fde2618e1647a4d1e01dbe3d",
+    "archive_bytes": 3991011333,
+    "spec_commit": "f59765069e4f069e8b84974adb33e2fb5188efb3",
+    "spec_sha256": "1010b2a1a0d34456bc35c6099fc3812fa941dc5d52cd06a05f21b291b62d0ee0",
+    "code_sha256": "b892b2a6330fe0b77d26b656378c1c321e35fde17aed5f60f90a39c1dd3d2ec9",
+    "q95_column": "historical frozen alias suffix, verified against archived jpeg95_rgb_sha256; not newly reencoded",
+    "raw_column": "new SHA256 over original ZIP member bytes, checked against archive source index"
+  },
+  "source_matches_A_parquet_requirement": false,
+  "A_B_intersection_computed": false,
+  "limits": [
+    "B source is ZIP original bytes, not parquet; source deviation explicit, needs A acknowledgement.",
+    "B libjpeg differs from A8.0; no cross-version calibration, no cross-version intersection permitted.",
+    "JPEG lossy reencoding is not guaranteed pixel-hash invariant."
+  ],
+  "elapsed_seconds": 85.32194370799698,
+  "unique_pixel_sha": 18955,
+  "warnings": {
+    "UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images": 5
+  },
+  "error": "none",
+  "output": {
+    "path": "pixel_identity_18955.csv",
+    "rows": 18955,
+    "sha256": "8039a0c40a2bcbe14ec5e2b18a6b45f14bf47bbdbc03f9e6913618214d35eafc",
+    "bytes": 43583388
+  },
+  "output_source_bytes_verified": 18955,
+  "full_RGB_files_written": 0,
+  "disk_free_bytes": 5609369600
+}

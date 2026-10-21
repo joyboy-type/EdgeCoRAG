@@ -1,0 +1,109 @@
+[
+  {
+    "label": "tests",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests"
+    ],
+    "returncode": 0,
+    "raw_output": "tests.txt",
+    "stderr": "..........................................................................................................................................\n----------------------------------------------------------------------\nRan 138 tests in 2.014s\n\nOK\n"
+  },
+  {
+    "label": "analysis_tests",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "analysis/next_stage_20261019",
+      "-p",
+      "test_*.py"
+    ],
+    "returncode": 0,
+    "raw_output": "analysis_tests.txt",
+    "stderr": "......................................................\n----------------------------------------------------------------------\nRan 54 tests in 1.893s\n\nOK\n"
+  },
+  {
+    "label": "audit_bare",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "analysis/next_stage_20261019/audit_requirement_evidence.py"
+    ],
+    "returncode": 1,
+    "raw_output": "audit_bare.txt",
+    "stderr": ""
+  },
+  {
+    "label": "audit_explicit",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "analysis/next_stage_20261019/audit_requirement_evidence.py",
+      "--work-dir",
+      "{work_dir}",
+      "--metadata-dir",
+      "{metadata_dir}",
+      "--export-dir",
+      "{export_dir}",
+      "--official-source",
+      "{official_source}"
+    ],
+    "returncode": 0,
+    "raw_output": "audit_explicit.txt",
+    "stderr": ""
+  },
+  {
+    "label": "derived_verify",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "analysis/next_stage_20261019/gate_error_analysis.py",
+      "--verify",
+      "--out",
+      "reports/next_stage_20261019"
+    ],
+    "returncode": 0,
+    "raw_output": "derived_verify.txt",
+    "stderr": ""
+  },
+  {
+    "label": "encode_dry_run",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "b-side/encode_pool.py",
+      "--corpus-manifest",
+      "{synthetic_fixture}/corpus.csv",
+      "--queries-manifest",
+      "{synthetic_fixture}/queries.csv",
+      "--encoder-dir",
+      "{synthetic_fixture}/snapshot",
+      "--weights-file",
+      "{synthetic_fixture}/snapshot/model.safetensors",
+      "--weights-sha256",
+      "7807e9375d4e292c8b66439cfee0d43f8d3d6f0f087bba24a9980dc8a174aedb",
+      "--revision",
+      "914f7f89142e33e77833254d9c9b90c3cef7303b",
+      "--out",
+      "{synthetic_fixture}/never-created",
+      "--dry-run"
+    ],
+    "returncode": 0,
+    "raw_output": "encode_dry_run.txt",
+    "stderr": ""
+  },
+  {
+    "label": "A_a18_self_check",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "{A_REPO}/a-side/scripts/a18_batch_sensitivity.py",
+      "--self-check"
+    ],
+    "returncode": 0,
+    "raw_output": "A_a18_self_check.txt",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,263 @@
+{
+  "date_Asia_Shanghai": "2026-10-17",
+  "scope": "Read-only public papers/abstracts, project pages, README, repository metadata, selected scorer code, and HF file metadata. No external QA records, model responses, image archives, PDFs corpus, weights, inference or judge calls fetched/executed.",
+  "sources": [
+    {
+      "id": "mmdocrag_repo",
+      "url": "https://api.github.com/repos/MMDocRAG/MMDocRAG",
+      "checked_utc": "2026-10-17T04:49:12.144559+00:00",
+      "status": 200,
+      "final_url": "https://api.github.com/repos/MMDocRAG/MMDocRAG",
+      "bytes": 6208,
+      "sha256": "d921826154b36b772a74d1df6c5f2422b8a7cb9a348af213be34fedd3272d846",
+      "ok": true,
+      "license": null,
+      "default_branch": "main"
+    },
+    {
+      "id": "visdom_repo",
+      "url": "https://api.github.com/repos/MananSuri27/VisDoM",
+      "checked_utc": "2026-10-17T04:49:12.145052+00:00",
+      "status": 200,
+      "final_url": "https://api.github.com/repos/MananSuri27/VisDoM",
+      "bytes": 5055,
+      "sha256": "2c76175d3d2325239d99c13b5b6bb7d4408fac7d0d4064836cd98dbc5a977c2e",
+      "ok": true,
+      "license": null,
+      "default_branch": "main",
+      "finding": "GitHub API license=null，树清单未见独立LICENSE；仍须核对上游来源权利。"
+    },
+    {
+      "id": "mmdocrag_project",
+      "url": "https://mmdocrag.github.io/MMDocRAG/",
+      "checked_utc": "2026-10-17T04:49:12.145129+00:00",
+      "status": 200,
+      "final_url": "https://mmdocrag.github.io/MMDocRAG/",
+      "bytes": 18337,
+      "sha256": "28afd6a623d229f226629bbdd3924106024f1b99e56a7c509bf42fd2d5d5561b",
+      "ok": true,
+      "finding": "项目页声明4055 QA、222文档；为发布者声明，未下载数据逐行核验。"
+    },
+    {
+      "id": "visdom_paper",
+      "url": "https://aclanthology.org/2025.naacl-long.310/",
+      "checked_utc": "2026-10-17T04:49:12.145173+00:00",
+      "status": 200,
+      "final_url": "https://aclanthology.org/2025.naacl-long.310/",
+      "bytes": 46165,
+      "sha256": "faee31db071c03bd68135db58cdff5f75a632ed94c7857e7afb5f08b98bdc015",
+      "ok": true
+    },
+    {
+      "id": "mrag_paper",
+      "url": "https://arxiv.org/abs/2410.08182",
+      "checked_utc": "2026-10-17T04:49:12.145211+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2410.08182",
+      "bytes": 43349,
+      "sha256": "f991fb81a3f744423440def81fd0d4cdf20d4a97e256f85dbe685cc66d14b585",
+      "ok": true
+    },
+    {
+      "id": "utility_paper",
+      "url": "https://aclanthology.org/2026.acl-long.1620/",
+      "checked_utc": "2026-10-17T04:49:12.145246+00:00",
+      "status": 200,
+      "final_url": "https://aclanthology.org/2026.acl-long.1620/",
+      "bytes": 44945,
+      "sha256": "e433442d4c320790a99e2f959d20f177dc9afe04081900d44f95e6e7871845da",
+      "ok": true
+    },
+    {
+      "id": "mmdocrag_readme",
+      "url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/main/README.md",
+      "checked_utc": "2026-10-17T04:49:54.285202+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/main/README.md",
+      "bytes": 10129,
+      "sha256": "edf3a3c81be8325a984977c8ca4fe985cb0993ef37e5f9347f5e8a1773bdf24b",
+      "ok": true,
+      "finding": "README License段：Code License Apache_2.0；Data License CC By NC 4.0；Usage and License Notices: data and code intended and licensed for research use only。"
+    },
+    {
+      "id": "visdom_readme",
+      "url": "https://raw.githubusercontent.com/MananSuri27/VisDoM/main/README.md",
+      "checked_utc": "2026-10-17T04:49:54.285485+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/MananSuri27/VisDoM/main/README.md",
+      "bytes": 5023,
+      "sha256": "b8271b43a91f82be4820453abf638a175355fd04f57d8bd171f3f2f65a6fe2a2",
+      "ok": true,
+      "finding": "README Dataset Summary声明2271 queries、1277 docs、5个组成数据集；未逐行核验数据。"
+    },
+    {
+      "id": "mmdocrag_tree",
+      "url": "https://api.github.com/repos/MMDocRAG/MMDocRAG/git/trees/main?recursive=1",
+      "checked_utc": "2026-10-17T04:49:54.285563+00:00",
+      "status": 200,
+      "final_url": "https://api.github.com/repos/MMDocRAG/MMDocRAG/git/trees/main?recursive=1",
+      "bytes": 112640,
+      "sha256": "98a884952ecfd2062a1ba35303fefa1969cfbb1ca31bc25ee3f84486c545b50f",
+      "ok": true,
+      "tree_listing_read_only": true,
+      "file_content_not_downloaded": true
+    },
+    {
+      "id": "visdom_tree",
+      "url": "https://api.github.com/repos/MananSuri27/VisDoM/git/trees/main?recursive=1",
+      "checked_utc": "2026-10-17T04:49:54.285612+00:00",
+      "status": 200,
+      "final_url": "https://api.github.com/repos/MananSuri27/VisDoM/git/trees/main?recursive=1",
+      "bytes": 361927,
+      "sha256": "2bf89ece1765eaf8797078f57daebb7fd07b98f4296dda88f0287d0f379220df",
+      "ok": true,
+      "tree_listing_read_only": true,
+      "file_content_not_downloaded": true
+    },
+    {
+      "id": "mmdocrag_hf",
+      "url": "https://huggingface.co/api/datasets/MMDocIR/MMDocRAG",
+      "checked_utc": "2026-10-17T04:49:54.285652+00:00",
+      "status": 200,
+      "final_url": "https://huggingface.co/api/datasets/MMDocIR/MMDocRAG",
+      "bytes": 1345,
+      "sha256": "a2ce348d40b17f85056b7c7fc27265e6c337210ed120641e624d251b9b95f02d",
+      "ok": true,
+      "dataset_sha": "04b58dbc5c6c4955291124eed411b09114728061",
+      "gated": false,
+      "card_license": "apache-2.0",
+      "finding": "HF cardData.license=apache-2.0，gated=false；与仓库数据许可声明冲突；元数据不代表上游PDF/图像权利已核验。"
+    },
+    {
+      "id": "mmdocrag_paper",
+      "url": "https://arxiv.org/abs/2505.16470",
+      "checked_utc": "2026-10-17T04:49:54.285690+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2505.16470",
+      "bytes": 43601,
+      "sha256": "2ec804026d9933886335fdd33e9032fd2052ce18cd09f1e99d0cd6d0e1ca1893",
+      "ok": true
+    },
+    {
+      "id": "mmdocrag_data_utils",
+      "url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/2fd7505c6a576376b4a92aafaff6d87494765bb7/data_utils.py",
+      "checked_utc": "2026-10-17T04:50:43.338939+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/2fd7505c6a576376b4a92aafaff6d87494765bb7/data_utils.py",
+      "bytes": 1253,
+      "sha256": "a8607d7a4309d7a1947cf70465d626e0d7be381bbd41122dbbe0b9015d9bc52c",
+      "ok": true
+    },
+    {
+      "id": "mmdocrag_eval",
+      "url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_all.py",
+      "checked_utc": "2026-10-17T04:50:43.339455+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_all.py",
+      "bytes": 13519,
+      "sha256": "b229d038c4015ec1f6783129d58a8db824ee93c6473e2e87435d5bec35797b11",
+      "ok": true,
+      "finding": "静态检查eval_all.py：q_id/gold_quotes/answer_interleaved与response；引文F1、BLEU、ROUGE-L。get_jsonl_path要求judge文件；zip(gold_data,eval_data)前没有等长校验。未运行此代码。"
+    },
+    {
+      "id": "mmdocrag_judge",
+      "url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_llm_judge.py",
+      "checked_utc": "2026-10-17T04:50:43.339532+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/MMDocRAG/MMDocRAG/2fd7505c6a576376b4a92aafaff6d87494765bb7/eval_llm_judge.py",
+      "bytes": 1173,
+      "sha256": "dc39ce4b173e160e1c3a952c3bb0c555a8757797758af13cbf78ada5e25dbe7a",
+      "ok": true,
+      "finding": "静态检查eval_llm_judge.py：setting为位置参数，而README示例写--setting；调用OpenAI_LLM_Judge。未调用API。"
+    },
+    {
+      "id": "mmdocrag_hf_tree",
+      "url": "https://huggingface.co/api/datasets/MMDocIR/MMDocRAG/tree/04b58dbc5c6c4955291124eed411b09114728061",
+      "checked_utc": "2026-10-17T04:50:43.339578+00:00",
+      "status": 200,
+      "final_url": "https://huggingface.co/api/datasets/MMDocIR/MMDocRAG/tree/04b58dbc5c6c4955291124eed411b09114728061",
+      "bytes": 2282,
+      "sha256": "78f1c9964e3c7b1439b2c9f485cf2f68a46f7397d6ed244fd8c665e9352e6f69",
+      "ok": true,
+      "tree_listing_read_only": true,
+      "file_content_not_downloaded": true
+    },
+    {
+      "id": "mmdocrag_hf_readme",
+      "url": "https://huggingface.co/datasets/MMDocIR/MMDocRAG/raw/04b58dbc5c6c4955291124eed411b09114728061/README.md",
+      "checked_utc": "2026-10-17T04:50:43.339621+00:00",
+      "status": 200,
+      "final_url": "https://huggingface.co/datasets/MMDocIR/MMDocRAG/raw/04b58dbc5c6c4955291124eed411b09114728061/README.md",
+      "bytes": 6988,
+      "sha256": "2ad0a1cfaddff26b84751a9018ee27c848ccf88c80c54691219f0302da524f6c",
+      "ok": true
+    },
+    {
+      "id": "mmdocrag_head",
+      "url": "https://api.github.com/repos/MMDocRAG/MMDocRAG/commits/main",
+      "checked_utc": "2026-10-17T04:54:59.749227+00:00",
+      "status": 200,
+      "final_url": "https://api.github.com/repos/MMDocRAG/MMDocRAG/commits/main",
+      "bytes": 5818,
+      "sha256": "2cd7c706e473733811be18a3ad3ad9e00c0e7a278b315cd6562a8ab2e47af73b",
+      "ok": true,
+      "commit_sha": "2fd7505c6a576376b4a92aafaff6d87494765bb7",
+      "tree_sha": "c5dc2da9bcab92fc87ba26a98d960cf72a55393b"
+    },
+    {
+      "id": "visdom_head",
+      "url": "https://api.github.com/repos/MananSuri27/VisDoM/commits/main",
+      "checked_utc": "2026-10-17T04:54:59.749501+00:00",
+      "status": 200,
+      "final_url": "https://api.github.com/repos/MananSuri27/VisDoM/commits/main",
+      "bytes": 9273,
+      "sha256": "0db2156488cc8555e8020dcc334af14500083c995a8dc9d9d78b0d3bd8ee3119",
+      "ok": true,
+      "commit_sha": "2d809ac87360d54b0765e9be1cab75808d37642a",
+      "tree_sha": "fe21b1535be50b92c67c883ffd234698c70f81bf"
+    }
+  ],
+  "mmdocrag_file_sizes": [
+    {
+      "path": ".gitattributes",
+      "declared_bytes": 2719
+    },
+    {
+      "path": "README.md",
+      "declared_bytes": 6988
+    },
+    {
+      "path": "dev_15.jsonl",
+      "declared_bytes": 26033382
+    },
+    {
+      "path": "dev_20.jsonl",
+      "declared_bytes": 34719581
+    },
+    {
+      "path": "doc_pdfs.zip",
+      "declared_bytes": 1051966358
+    },
+    {
+      "path": "evaluation_15.jsonl",
+      "declared_bytes": 23933992
+    },
+    {
+      "path": "evaluation_20.jsonl",
+      "declared_bytes": 31610492
+    },
+    {
+      "path": "images.zip",
+      "declared_bytes": 2232606409
+    },
+    {
+      "path": "train.jsonl",
+      "declared_bytes": 59894191
+    }
+  ],
+  "license_conflict_unresolved": true,
+  "source_code_execution": false,
+  "external_dataset_inference": false,
+  "source_checks_are_not_full_method_reproduction": true,
+  "unavailable_search_connector": "initial connector request returned isError; direct official HTTP sources used instead"
+}

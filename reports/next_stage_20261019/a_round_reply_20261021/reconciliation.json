@@ -1,0 +1,39 @@
+{
+  "verdict": "两套口径，不可互换",
+  "confirmation_status": "待A确认；B不自行裁定最终口径",
+  "A_accounting": {
+    "image_instances": 14475,
+    "components": {
+      "query": 1353,
+      "GT": 6357,
+      "candidate": 6765
+    },
+    "unique_content_sha256": 4712,
+    "provenance": "A提供：28个parquet逐行可复算、corpus_manifest.csv有4712行；本批未打开parquet或图像、未二次执行。"
+  },
+  "B_accounting": {
+    "historical_published_index_rows": 18955,
+    "unique_source_byte_sha256": 18955,
+    "provenance": "G2_measured_evidence.json历史读数，未二次执行；image:*别名不等于原始字节SHA。"
+  },
+  "publication_policy": {
+    "paper_corpus_size_and_retrieval_quantitative_claims": "只用14475 / 4712，分别注明实例/唯一内容口径及待确认来源。",
+    "historical_index": "18955仅作“历史发布索引行数”出现，不参与任何定量陈述。"
+  },
+  "dedup_notes_original": "Snapshot has18955 unique IDs and18955 unique verified raw-byte SHA256, no retained duplicate content. This describes snapshot uniqueness, not an observed builder dedup decision.",
+  "dedup_reading": "原文声明快照唯一性，不是观察到的建库去重决策；请A确认该读法。",
+  "pending_A": [
+    "确认双口径适用范围及论文引用政策",
+    "确认dedup.notes是快照唯一性、不证明建库去重决策",
+    "确认28份parquet构成与4712唯一内容的可复算依据",
+    "交付同池fp32分数旁路与候选身份对齐；排序根因未定"
+  ],
+  "index_sha_inventory_delivery": {
+    "commit": "c466d9d81c7add97bdceef61211bf39eae4b5924",
+    "path": "reports/next_stage_20261019/a_round_reply_20261021/index_18955_sha256.csv",
+    "sha256": "67193931a88000926753f338906fe60b75197c726e969c5fe294df22e7746a3d",
+    "rows": 18955,
+    "handoff_status": "已交A求交（据本轮交接，未另行发消息）；A交集回执尚未提供",
+    "if_N_common_zero_or_abnormally_low": "先按sha口径可能混入alias回退核对源corpus[*].sha256与image:*身份后缀，明确两者口径；如确有错则在新文件重导并保留旧表/旧回执。不得直接认定索引与语料无关。"
+  }
+}

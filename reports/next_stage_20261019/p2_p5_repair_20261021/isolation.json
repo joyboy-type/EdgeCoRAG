@@ -1,0 +1,8 @@
+{
+  "stash": "4f68a1714ee8d84d85a4b1f0d9b69a34af11509c",
+  "actual_unrelated_files": 52,
+  "reported_unrelated_files": 48,
+  "delivery_worktree_clean_after_stash": true,
+  "delivery_head": "34a7e6ad0f1970ca7cee41f58795592c238e1bda",
+  "repair_base": "95372441978201c8da6da6714c74a8c6f7274ebd"
+}

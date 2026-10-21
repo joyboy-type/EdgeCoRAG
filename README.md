@@ -1,5 +1,13 @@
 # EdgeCoRAG
 
+已完成实验数据集中在 **[实验结果总入口](reports/EXPERIMENT_RESULTS.md)**：原五模型基线、MMDocRAG固定200题、无自匹配三策略复核、检索维度离线消融、图像相关性分析及真实同机端到端技术smoke。
+
+新增[可分发逐题派生结果](logs/results_20261020/README.md)与[文件哈希清单](provenance/results_20261020/public_manifest.json)。原题、gold、私有MMDocRAG原始响应、图库、权重及完整私有归档不包含在这次发布中。完整成果仍在交付分支与草稿PR #2审阅。
+
+<details>
+<summary>2026-10-17早期交付导航与历史状态</summary>
+
+
 研究小型多模态模型在共享视觉证据下的能力边界，以及质量、生成时延和显存的关系。
 
 截至2026年10月17日，runtime-v1.10.1批准的161任务、21927次问答已全部完成并本地备份核验。五模型技术通过，132次正常格式失败全部计错。任务书整体仍有第二数据集、完整检索成本、机制审定及来源聚类统计等缺口，不能由技术通过宣称论文结论成立。
@@ -60,3 +68,5 @@ Gemma在同S1下仍低于Qwen，不能写为普遍替代。S2只用于oracle诊�
 旧A侧状态文档、冻结注册表和前租用回执描述当时状态，保留其原始内容以便追溯；当前完成状态以[执行回执](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/provenance/v1.10.1/execution_receipt.json)为准。历史“尚未GPU验证”字段没有被悄悄改写。完整原始attempts、旧失败记录、备份archive在本地保留。
 
 本轮新增材料不含模型权重、数据集原始图片、环境、缓存、认证信息或服务器运维工具。仓库已有的6题接口图片是可复现实例，继续保留；不能因为文件较大就删掉仍被验证器引用的有效样例。数据与许可见[source_manifest.csv](https://github.com/joyboy-type/EdgeCoRAG/blob/results/runtime-v1.10.1-delivery/source_manifest.csv)。
+
+</details>

@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "tasks": 161,
+  "question_runs": 21927,
+  "rescored_tasks": 76,
+  "question_runs_by_stage": {
+    "preflight_single": 5,
+    "preflight_multi": 5,
+    "smoke": 300,
+    "development": 2260,
+    "quality": 17807,
+    "performance": 1550
+  },
+  "format_failures_by_stage": {
+    "preflight_single": 0,
+    "preflight_multi": 0,
+    "smoke": 3,
+    "development": 15,
+    "quality": 99,
+    "performance": 15
+  },
+  "warmups_excluded": 483,
+  "matrix_sha256": "630eee8d4032fa0aede73eef89612801ff521785e045bdfc0f14ffaea094c555",
+  "backup_archive_sha256": "98bf99c45ecdd1a44029747885e9c3e49f860b95ae95079ea0c5c123b33ffc85",
+  "no_inference_or_server_access": true,
+  "analysis_assessment": "Share with caveats",
+  "notebook_executed": true,
+  "notebook_code_cells": 8,
+  "independent_sql_reconciliation": true,
+  "artifact_payload_validated": true,
+  "report_body_tables_and_native_charts_observed_in_mcp_app": true,
+  "research_figures_visually_inspected": 3,
+  "scientific_caveats": [
+    "Audited internal benchmark, not new blinded external validation.",
+    "Paired scenario-stratified bootstrap, no source clustering or multiplicity correction.",
+    "S3 tiny selected AI-assisted-reviewed subsets; n=2 holdout intervals not interpreted.",
+    "Single RTX4090 offline generation; no retrieval/full-system/real-edge/energy claim."
+  ],
+  "remaining_inference_or_server_work": false
+}

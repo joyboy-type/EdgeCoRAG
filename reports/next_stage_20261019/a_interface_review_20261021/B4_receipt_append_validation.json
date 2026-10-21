@@ -1,0 +1,7 @@
+{
+  "old_keys_unchanged": true,
+  "old_cpu_thread_warning": true,
+  "new_cpu_thread_warning": true,
+  "only_added_key": "cpu_thread_warning_note",
+  "source_round2_sha256": "11ecf2bdcbf65c81acb9d425d01f96d6aa54508845e0795d0591beeb85911682"
+}

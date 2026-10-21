@@ -1,0 +1,18 @@
+{
+  "git_fetch_origin_tags_rc": 0,
+  "spec_commit": "f59765069e4f069e8b84974adb33e2fb5188efb3",
+  "pixel_cli_rc": 0,
+  "CSV_validation_rc": 0,
+  "command": [
+    "$PY",
+    "b-side/pixel_identity.py",
+    "--project",
+    "{project}",
+    "--spec",
+    "{A_spec_from_git_show_f597650}",
+    "--spec-commit",
+    "f59765069e4f069e8b84974adb33e2fb5188efb3",
+    "--out",
+    "{new_private_output}"
+  ]
+}

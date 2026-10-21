@@ -1,0 +1,41 @@
+{
+  "status": "reconciled_different_scopes",
+  "sources": [
+    {
+      "file": "logs/B_predictions.jsonl.gz",
+      "sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+      "denominator": 20295,
+      "parser": "strict_choice_v1 archived status copied; parser NOT rerun",
+      "split_counts": {
+        "dev": 2250,
+        "frozen_test": 15495,
+        "internal_holdout": 2250,
+        "smoke_20": 300
+      },
+      "failure_counts": {
+        "ok": 20178,
+        "parse_failure": 117
+      },
+      "parse_failure": 117
+    },
+    {
+      "file": "logs/results_20261020/no_self_scored_outcomes.jsonl.gz",
+      "sha256": "2c275a1d3cc3222022c0610686f860b19d857511abcfec9fadce4a02033e6063",
+      "denominator": 18045,
+      "parser": "strict_choice_v1 archived status copied; parser NOT rerun",
+      "split_counts": {
+        "dev": 2250,
+        "frozen_test": 15495,
+        "smoke_20": 300
+      },
+      "failure_counts": {
+        "ok": 17966,
+        "parse_failure": 79
+      },
+      "parse_failure": 79
+    }
+  ],
+  "conclusion": "117: B_predictions strict_choice_v1，S0/S1/S2主stage、含internal_holdout的四split，20295槽位；79: no_self_scored_outcomes 同解析器、三策略三split无holdout，18045行。文件/条件/split/分母不同，不能直接比较。",
+  "model_loaded": false,
+  "outputs_reparsed": false
+}

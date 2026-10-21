@@ -1,0 +1,6 @@
+old,new,rule
+a_not_retrieved,未检索到,Exact GT absent from top10 AND S1 wrong after harm priority; unknown without GT join
+b_present_but_wrong,检索到但答错,GT hit AND S1 wrong after harm priority
+c_S0_right_S1_wrong,检索伤害,S0 right AND S1 wrong; priority first; associative only
+d_ability_replacement,model-level attribute only,Not a per-query partition; unavailable without cost/noninferiority
+other/unknown,无关但未伤害 / 不可判定,No exact GT AND S1 right = no-harm proxy; otherwise missing GT or outside error labels -> unknown

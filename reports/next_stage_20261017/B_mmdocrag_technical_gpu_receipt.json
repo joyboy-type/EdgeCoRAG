@@ -1,0 +1,142 @@
+{
+  "date_Asia_Shanghai": "2026-10-18",
+  "status": "technical_dev_complete_not_evaluation",
+  "gpu": "RTX4090 24GB x1",
+  "model_weights_and_payload_sha256_verified": true,
+  "provider_deadline_Asia_Shanghai": "2026-10-18 04:00:00",
+  "budget_max_additional_CNY": 12,
+  "budget_max_hours": 4,
+  "models": [
+    {
+      "model": "gemma4_e2b",
+      "status": "completed",
+      "questions": 8,
+      "warmups": 3,
+      "budget_512_flags": 1,
+      "empty_decoded_responses": 1,
+      "preprocess_and_transfer_seconds": 1.013855343684554,
+      "generation_seconds": 58.98336893692613,
+      "receipt_sha256": "62c2f91ab85aa442a30179e1c34fcc6650e21de78b3ca3880ffccaff1f725612",
+      "predictions_sha256": "cfe194609ef95420249ddf0163b0222d7cc1a82ad31b5f72cb7e17ad47bf30ce",
+      "load_seconds": 5.756359009072185,
+      "scorer_status": "metrics_evaluated",
+      "scorer_receipt_sha256": "0a2dc1a4a2dbc150ba1b50c1baeb31031bccf66d83819019472b06f8d32881d4",
+      "identity": {
+        "model_revision": "3e22461f65e89153144f8adb70e3b8c2cc9845a7",
+        "registry_sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+        "runner_sha256": "eb74ebf5c984fc56c717d9e2d60089a86fbfa5ef82e78b98f226cf0d94e06c9c",
+        "prompt_sha256": "fb0fdb691886ac0d30ea6c3e832da4247c3a4617abde9183b769ebf2276fdf08",
+        "model_adapters_sha256": "60cfc2d051a68646f2556b04bc134b6f06d7495d90de96ce103dfbc6f53b9c01"
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "status": "completed",
+      "questions": 8,
+      "warmups": 3,
+      "budget_512_flags": 0,
+      "empty_decoded_responses": 0,
+      "preprocess_and_transfer_seconds": 0.9981796015053988,
+      "generation_seconds": 94.193530397024,
+      "receipt_sha256": "bdacff5444a6b8f677c6e87fdb6f9e4e1fa2afc888d7526bc8f26a71cf79a9a0",
+      "predictions_sha256": "d999c661c36c714217fa14565ab6d2ebdf966d7407019dc23468d6eaf64d7ed6",
+      "load_seconds": 7.629763057921082,
+      "scorer_status": "metrics_evaluated",
+      "scorer_receipt_sha256": "894f8d700058f88aee32755ec6f7ea0b964d3b7b378fe70aac67575a8133ab54",
+      "identity": {
+        "model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "registry_sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+        "runner_sha256": "eb74ebf5c984fc56c717d9e2d60089a86fbfa5ef82e78b98f226cf0d94e06c9c",
+        "prompt_sha256": "fb0fdb691886ac0d30ea6c3e832da4247c3a4617abde9183b769ebf2276fdf08",
+        "model_adapters_sha256": "60cfc2d051a68646f2556b04bc134b6f06d7495d90de96ce103dfbc6f53b9c01"
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "status": "completed",
+      "questions": 8,
+      "warmups": 3,
+      "budget_512_flags": 3,
+      "empty_decoded_responses": 0,
+      "preprocess_and_transfer_seconds": 1.8100400608964264,
+      "generation_seconds": 121.82145714992657,
+      "receipt_sha256": "c7ad1fc4824f6c29726298e0a55b46c921a2b4f6ba6d1eb5951b13ba9013aa54",
+      "predictions_sha256": "942093eedd85ca1899e510f4ba2cc57e32d3189f4830094b9e15fe36111706ce",
+      "load_seconds": 3.3965810798108578,
+      "scorer_status": "metrics_evaluated",
+      "scorer_receipt_sha256": "34ef3dbefbe23d7688535c02a723be1f4b275336f657be4c8a0c48925c79056c",
+      "identity": {
+        "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+        "registry_sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+        "runner_sha256": "eb74ebf5c984fc56c717d9e2d60089a86fbfa5ef82e78b98f226cf0d94e06c9c",
+        "prompt_sha256": "fb0fdb691886ac0d30ea6c3e832da4247c3a4617abde9183b769ebf2276fdf08",
+        "model_adapters_sha256": "60cfc2d051a68646f2556b04bc134b6f06d7495d90de96ce103dfbc6f53b9c01"
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "status": "completed",
+      "questions": 8,
+      "warmups": 3,
+      "budget_512_flags": 1,
+      "empty_decoded_responses": 0,
+      "preprocess_and_transfer_seconds": 1.8026042943820357,
+      "generation_seconds": 70.50741047412157,
+      "receipt_sha256": "2064b3703465089145e852d3d2f5fc64ba4ca8089b56097e3b0f06c43efbf403",
+      "predictions_sha256": "c7773762bb1173aaf33e69422970fdf650562763a09aca3fe987d0189508fe67",
+      "load_seconds": 3.251378966961056,
+      "scorer_status": "metrics_evaluated",
+      "scorer_receipt_sha256": "ba90d27cabd2272f8d4c969208d0a89cd1d1f84a9459a8352f3b752c18eaf34a",
+      "identity": {
+        "model_revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "registry_sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+        "runner_sha256": "eb74ebf5c984fc56c717d9e2d60089a86fbfa5ef82e78b98f226cf0d94e06c9c",
+        "prompt_sha256": "fb0fdb691886ac0d30ea6c3e832da4247c3a4617abde9183b769ebf2276fdf08",
+        "model_adapters_sha256": "60cfc2d051a68646f2556b04bc134b6f06d7495d90de96ce103dfbc6f53b9c01"
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "status": "completed",
+      "questions": 8,
+      "warmups": 3,
+      "budget_512_flags": 0,
+      "empty_decoded_responses": 0,
+      "preprocess_and_transfer_seconds": 1.8987347669899464,
+      "generation_seconds": 65.48322131717578,
+      "receipt_sha256": "039db9be1c601254b2861f04d7dc3feb77ddd6aec90cd8cc6cd31fffd6ab93e9",
+      "predictions_sha256": "56009cdaa0bce937f635055745f5679d1dbeca2e34db6ba7fdac6f1a0baecb69",
+      "load_seconds": 5.164419788401574,
+      "scorer_status": "metrics_evaluated",
+      "scorer_receipt_sha256": "b6c97a77500bb186c8a3a57d1796461e03d12c5bf2f758463cb35466f4d2784d",
+      "identity": {
+        "model_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "registry_sha256": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+        "runner_sha256": "eb74ebf5c984fc56c717d9e2d60089a86fbfa5ef82e78b98f226cf0d94e06c9c",
+        "prompt_sha256": "fb0fdb691886ac0d30ea6c3e832da4247c3a4617abde9183b769ebf2276fdf08",
+        "model_adapters_sha256": "60cfc2d051a68646f2556b04bc134b6f06d7495d90de96ce103dfbc6f53b9c01"
+      }
+    }
+  ],
+  "predictions": 40,
+  "unscored_warmups": 15,
+  "budget_flags": 5,
+  "empty_responses": 1,
+  "first_attempt": {
+    "status": "technical_failure_before_model_load",
+    "cause": "three static JSON import dependencies missing from transfer package",
+    "predictions": 0,
+    "warmups": 0,
+    "preserved": true,
+    "repair": "added three SHA-verified unchanged configs from original server package; isolated local import and server import passed before deliberate recovery"
+  },
+  "downloaded_backup_sha256": "d26538388be23e001947d577fc185c749ce8fd70759a971aa82b732e9852b49a",
+  "raw_qa_or_model_outputs_committed": false,
+  "judge_called": false,
+  "evaluation_generated": false,
+  "notes": [
+    "Budget flag uses out_tok >=512; it is a conservative budget flag, not independently established semantic incompleteness.",
+    "Empty Gemma E2B qid702 produced one EOS token, preserved as empty output.",
+    "Technical8 is development data; no general accuracy claim from these scores."
+  ]
+}

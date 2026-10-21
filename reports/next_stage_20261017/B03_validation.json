@@ -1,0 +1,31 @@
+{
+  "checked_utc": "2026-10-17T05:39:40.210665+00:00",
+  "status": "passed_for_documentation_scope",
+  "evidence_rows": 36,
+  "primary_source_hashes_verified": 4,
+  "selected_primary_cells_reconciled": true,
+  "pdf_main_table_pages_visually_inspected": [
+    {
+      "paper": "Utility",
+      "pdf_page": 6
+    },
+    {
+      "paper": "VisDoM",
+      "pdf_page": 7
+    }
+  ],
+  "static_findings": 10,
+  "adapter_acceptance_cases_specified": 15,
+  "adapter_acceptance_cases_executed": 0,
+  "requirement_statuses_unchanged": 37,
+  "changed_scope": "B03 documentation and requirement evidence only; old phase report/HTML and runtime/scientific files unchanged",
+  "relative_links_and_private_path_scan": "passed_for_changed_documents",
+  "no_full_experiment_or_model_tests_rerun": true,
+  "limitations": [
+    "Not full paper/table reproduction",
+    "No external QA/schema/rights validation",
+    "No adapter implementation or upstream scorer execution",
+    "No judge or inference",
+    "No new browser QA of existing phase HTML"
+  ]
+}

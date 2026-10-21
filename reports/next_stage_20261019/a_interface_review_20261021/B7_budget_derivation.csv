@@ -1,0 +1,13 @@
+stage,operation,requests,unit_seconds,unit_seconds_source,point_seconds,worst_unit_seconds,worst_seconds,count_source
+E1,1203 queries x batches16/1 sensitivity encodes,2406,0.5,假设，非实测；不能由旧bf16移植到新fp32,1203.0,1.0,2406.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E2,5 additional live fingerprint encodes,5,0.5,假设，非实测；不能由旧bf16移植到新fp32,2.5,1.0,5.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E3,technical pilot20x3x2 +3 warmup; NOT formal P95,123,3.0,假设，非实测；不能由旧bf16移植到新fp32,369.0,6.0,738.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E3,live query encode per request,123,0.5,假设，非实测；不能由旧bf16移植到新fp32,61.5,1.0,123.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E3,ranking per request,123,0.03,假设，非实测；不能由旧bf16移植到新fp32,3.69,0.06,7.38,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E3,utility pilot20x2x10 +10 warmup forwards,410,0.25,假设，非实测；不能由旧bf16移植到新fp32,102.5,0.5,205.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E4,smoke20 x4 paths generations,80,3.0,假设，非实测；不能由旧bf16移植到新fp32,240.0,6.0,480.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E4,shared utility once per20 queries x10,200,0.25,假设，非实测；不能由旧bf16移植到新fp32,50.0,0.5,100.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E5,one generator smoke20x4 dimensions cosine only; no selection,80,3.0,假设，非实测；不能由旧bf16移植到新fp32,240.0,6.0,480.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+E5,materialization/request IO smoke only,80,0.03,假设，非实测；不能由旧bf16移植到新fp32,2.4,0.06,4.8,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+setup,one session load/validation allowance,1,900.0,假设，非实测；不能由旧bf16移植到新fp32,900.0,1800.0,1800.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions
+preservation,mandatory preservation reserve,1,600.0,"user mandated600-second preservation, not measured duration",600.0,600.0,600.0,reduced candidate scope: E3 repeats2; E5 smoke20x4; one-generator/shared-utility/cache assumptions

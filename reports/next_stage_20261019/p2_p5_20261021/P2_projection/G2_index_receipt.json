@@ -1,0 +1,117 @@
+{
+  "schema": "a_side_index_receipt/v1",
+  "generated_at": null,
+  "builder": {
+    "repo": "joyboy-type/EdgeCoRAG",
+    "commit": null,
+    "entrypoint": "a-side/scripts/independent_retrieval.py",
+    "operator": null
+  },
+  "index": {
+    "entries": 18955,
+    "kind": "flat_bruteforce",
+    "artifact_files": [
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/corpus_embeddings.npy",
+        "sha256": "5ff75f8487d1683c6d84a065509b426964ac13ec36ae28f9601a81479e2c9a58",
+        "bytes": 58229888
+      },
+      {
+        "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/query_embeddings.npy",
+        "sha256": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918",
+        "bytes": 4156544
+      }
+    ]
+  },
+  "identity": {
+    "rule": "sha256_raw_bytes",
+    "hash_algorithm": "sha256",
+    "notes": "18955 source byte SHA256 verified; image:* IDs are distinct opaque aliases, ALL suffixes differ from source byte SHA256; preserve original bijection, no relabelling as q95."
+  },
+  "dedup": {
+    "by_identity": true,
+    "kept_duplicates": 0,
+    "notes": "Snapshot has18955 unique IDs and18955 unique verified raw-byte SHA256, no retained duplicate content. This describes snapshot uniqueness, not an observed builder dedup decision."
+  },
+  "row_order": {
+    "rule": "insertion_order",
+    "explicit_tiebreak_key": true,
+    "notes": "Original payload corpus order equals round2 index corpus_order exactly; no index/rank rebuilt."
+  },
+  "dtype": {
+    "storage": "float32",
+    "compute": "bfloat16",
+    "tf32": null
+  },
+  "normalization": {
+    "locus": "other",
+    "applied_to": "corpus_and_query",
+    "vector_norms_observed": "0.995809913..1.004714370"
+  },
+  "corpus_encode": {
+    "images": 18955,
+    "batch_size": null,
+    "device": "cuda",
+    "seconds": 1122.371070432011,
+    "notes": "Runtime receipt does not record batch. SHA-pinned archived source specifies4; not a fresh runtime observation."
+  },
+  "query_encode": {
+    "batch_size": 1,
+    "composition": "round2 live single query only; historical cache source uses chunks<=4",
+    "per_request_batching": true
+  },
+  "sources": [
+    {
+      "role": "other",
+      "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/controls/retrieval-formal.approved.json",
+      "sha256": "c766f7d381063ca2c935f3982de7ac72f18437a1f5889a8701181d11697fe740",
+      "bytes": 7028471
+    },
+    {
+      "role": "other",
+      "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/backup-manifest.json",
+      "sha256": "5ecea723c3d2ece7e9f3c1e89f3a9fa4f6937d4ba5c3212ebd94cf719fa834b5",
+      "bytes": 7177
+    },
+    {
+      "role": "other",
+      "path": "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json",
+      "sha256": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270",
+      "bytes": 914
+    },
+    {
+      "role": "other",
+      "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/plan.json",
+      "sha256": "14998fc8e15972ad1507964863fe963d5a6a4aea0f482d3e98027c769c7f5d0f",
+      "bytes": 8751844
+    },
+    {
+      "role": "other",
+      "path": "work/next-experiment-20261019/partial-fetch-20261020/extracted/setup.json",
+      "sha256": "9b16829bbec5822d9791b263e56b22f4c69f897cee8755dfa54fd4b3f0e88ffc",
+      "bytes": 3985
+    }
+  ],
+  "counts": {
+    "questions": 1353,
+    "image_instances": null,
+    "unique_contents": 18955
+  },
+  "reconciliation": {
+    "claimed_entries": 18955,
+    "public_instances": 14475,
+    "public_unique": 4712,
+    "delta_vs_instances": null,
+    "delta_vs_unique": null,
+    "verdict": "pending"
+  },
+  "notes": [
+    "Archived-only projection; generated_at/build commit/operator not independently recorded, remain null.",
+    "A14,475 instances /4,712 unique and B18,955 index entries are different accounting scopes; A a20 reconciliation output is separate.",
+    "No A CSV consumed; all references to A interface remain provisional: manifest 行尾口径待 A 修复.",
+    "Nulls denote missing archive evidence; a20 necessary-subset validation does not establish complete JSON-schema compliance.",
+    "Measured current source byte hashes match18955 archived source digests; image:* suffix is NOT the raw byte SHA.",
+    "reconciliation remains pending; deltas4480/14243 are arithmetic only, adjudication left to A.",
+    "Runtime batch_size/tf32/normalization fields absent. SHA-pinned code specifies batch4/TF32false and float32 renormalization during ranking AFTER cache save; missing runtime evidence remains blocked."
+  ]
+}

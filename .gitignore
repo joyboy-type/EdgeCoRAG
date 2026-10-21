@@ -35,3 +35,10 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local reproduction outputs and duplicate decompressed logs
+logs/B_predictions.jsonl
+analysis/v1.10.1/local-output/
+*.sqlite
+*.sqlite-journal
+.ipynb_checkpoints/

@@ -1,0 +1,9 @@
+{
+  "verify_a_release_returncode": 0,
+  "a_interface_runner_returncode": 0,
+  "A_commit": "4a60d758a7247d5922b03dd3f05bd8fa641d6b69",
+  "A_evidence_commit": "c77e91c07a288b719683c51258324c11431c12d5",
+  "A_diff_single_file": false,
+  "actual_A_changed_files": 25,
+  "new_checks_scope": "4a60d75 compatibility check; archived c77e91c evidence remains unchanged"
+}

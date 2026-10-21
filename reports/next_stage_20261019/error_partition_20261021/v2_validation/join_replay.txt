@@ -1,0 +1,90 @@
+{
+  "source_rows": 21927,
+  "models": 5,
+  "queries_per_model": 1033,
+  "direct_comparison_same_namespace": false,
+  "linkage": "prediction.context_key -> B_input_contexts.input.evidence[evidence_id].sha256 -> image:<sha256> -> dataset gold; S2 content sets independently checked against archived gold",
+  "joined_model_query_pairs": 5165,
+  "total_model_query_pairs": 5165,
+  "join_fraction": 1.0,
+  "diagnostics": [
+    {
+      "model": "qwen3vl_4b",
+      "queries": 1033,
+      "joinable": 1033,
+      "unknown_missing_input": 0,
+      "unknown_fraction": 0.0,
+      "gold_S2_content_match": 1033,
+      "multiple_membership": 296,
+      "no_class_but_inputs_complete": 336,
+      "sum_of_four_counts": 993,
+      "partition_valid": false
+    },
+    {
+      "model": "qwen3vl_8b",
+      "queries": 1033,
+      "joinable": 1033,
+      "unknown_missing_input": 0,
+      "unknown_fraction": 0.0,
+      "gold_S2_content_match": 1033,
+      "multiple_membership": 302,
+      "no_class_but_inputs_complete": 343,
+      "sum_of_four_counts": 992,
+      "partition_valid": false
+    },
+    {
+      "model": "gemma4_e2b",
+      "queries": 1033,
+      "joinable": 1033,
+      "unknown_missing_input": 0,
+      "unknown_fraction": 0.0,
+      "gold_S2_content_match": 1033,
+      "multiple_membership": 422,
+      "no_class_but_inputs_complete": 219,
+      "sum_of_four_counts": 1236,
+      "partition_valid": false
+    },
+    {
+      "model": "gemma4_e4b",
+      "queries": 1033,
+      "joinable": 1033,
+      "unknown_missing_input": 0,
+      "unknown_fraction": 0.0,
+      "gold_S2_content_match": 1033,
+      "multiple_membership": 363,
+      "no_class_but_inputs_complete": 236,
+      "sum_of_four_counts": 1160,
+      "partition_valid": false
+    },
+    {
+      "model": "qwen35_4b",
+      "queries": 1033,
+      "joinable": 1033,
+      "unknown_missing_input": 0,
+      "unknown_fraction": 0.0,
+      "gold_S2_content_match": 1033,
+      "multiple_membership": 315,
+      "no_class_but_inputs_complete": 324,
+      "sum_of_four_counts": 1024,
+      "partition_valid": false
+    }
+  ],
+  "definition_conflict": [
+    "无关但未伤害 is subset of 未检索到",
+    "检索伤害 overlaps both retrieval/error groups",
+    "S1 correct with GT hit is uncovered; cannot call missing-input unknown"
+  ],
+  "result_status": "identity_join_complete; original four-rule partition impossible, pending explicit definition clarification",
+  "source_sha256": {
+    "logs/B_predictions.jsonl.gz": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+    "logs/B_input_contexts.jsonl.gz": "f69c1f0a77a28e56470b1f53a2bb1cde900e36b7940a6ea3053fddb78255215f",
+    "private_archived_gold_controls": "c766f7d381063ca2c935f3982de7ac72f18437a1f5889a8701181d11697fe740"
+  },
+  "private_probe": {
+    "questions": 20,
+    "sha256": "ab3333e7a6ed2b05c748a42c757c0c05a8bbb7e53679a4c7ab015055f9f1c504",
+    "raw_ids_published": false
+  },
+  "statistics": "qid paired S0/S1;564 image components;10000 resamples seed42;20 flag family; descriptive basic CIs and Holm-compatible conservative rectangle=Bonferroni, not inference",
+  "previous_limitation_correction": "20d1505 checked role slot strings but omitted available B_input_contexts slot-to-SHA table. Real join available; previous unknowns reflected incomplete inspection, not missing historical data."
+}

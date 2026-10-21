@@ -1,0 +1,35 @@
+{
+  "verdict": "insufficient_evidence",
+  "oracle_minus_fixed": [
+    {
+      "model": "qwen3vl_4b",
+      "delta_pp": 8.518877057115198,
+      "ci_low_pp": 6.805085757567772,
+      "ci_high_pp": 10.184278246863862
+    },
+    {
+      "model": "qwen3vl_8b",
+      "delta_pp": 6.873184898354308,
+      "ci_low_pp": 5.281802867574758,
+      "ci_high_pp": 8.377361156108662
+    },
+    {
+      "model": "gemma4_e2b",
+      "delta_pp": 10.551790900290415,
+      "ci_low_pp": 8.640666508635215,
+      "ci_high_pp": 12.474140176215348
+    },
+    {
+      "model": "gemma4_e4b",
+      "delta_pp": 9.293320425943854,
+      "ci_low_pp": 6.905485775948463,
+      "ci_high_pp": 11.509717774964631
+    },
+    {
+      "model": "qwen35_4b",
+      "delta_pp": 8.518877057115198,
+      "ci_low_pp": 6.766421647427894,
+      "ci_high_pp": 10.249519008138002
+    }
+  ]
+}

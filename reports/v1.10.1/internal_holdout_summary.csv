@@ -1,0 +1,6 @@
+﻿model,n_per_condition,S0_accuracy_percent,S1_accuracy_percent,S2_accuracy_percent
+Qwen3-VL 4B,150,65.333333,59.333333,67.333333
+Qwen3-VL 8B,150,56.666667,59.333333,67.333333
+Gemma4 E2B,150,38.666667,36.0,37.333333
+Gemma4 E4B,150,32.0,38.0,47.333333
+Qwen3.5 4B,150,58.666667,50.0,59.333333

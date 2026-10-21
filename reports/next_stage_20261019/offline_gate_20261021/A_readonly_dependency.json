@@ -1,0 +1,21 @@
+{
+  "command": [
+    "git",
+    "-C",
+    "{A_REPO}",
+    "rev-parse",
+    "HEAD"
+  ],
+  "returncode": 0,
+  "stdout": "4a60d758a7247d5922b03dd3f05bd8fa641d6b69\n",
+  "stderr": "",
+  "pinned_commit": "4a60d758a7247d5922b03dd3f05bd8fa641d6b69",
+  "a18_source_sha256": "3d82eb501fd114ce8e1bc51934aa4031c9dfe59c08afda24f4e3cb9c99249587",
+  "B_encoder_matches": {
+    "dtype": "fp32",
+    "TF32": false,
+    "batch": 16,
+    "model_revision": "914f7f89142e33e77833254d9c9b90c3cef7303b"
+  },
+  "difference": "B saves batch16 V/Q bundles; not a native a18 batch16-vs1 receipt."
+}

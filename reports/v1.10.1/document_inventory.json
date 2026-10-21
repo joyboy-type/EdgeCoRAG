@@ -1,0 +1,534 @@
+{
+  "review_date": "2026-10-17",
+  "scope": "User supplied task brief and all Markdown documents in repository at parent commit; synced sources directory is empty.",
+  "parent_commit": "6c529479b94362c19094088524f8702ca2a9a0de",
+  "documents": [
+    {
+      "source": "张.docx",
+      "sha256_at_review": "11a5af605a1231550214eb614f3a91cdae8da7940ed20f0692c18e528ecb301b",
+      "paragraph_count": 214,
+      "authority": "user-supplied task brief; later explicitly frozen execution scope recorded separately"
+    },
+    {
+      "source": "README.md",
+      "sha256_at_review": "0a0e3f05b24ff2303c85314707a38193139bc9aeea66dd9c104b8e03161a9f7f",
+      "headings": [
+        "EdgeCoRAG",
+        "协作分工",
+        "实验条件",
+        "仓库结构",
+        "给协作者 B 的确认事项",
+        "未完成事项（**不要当作已完成**）",
+        "证据与数据规则（双方共同遵守）",
+        "数据版本（已锁定）",
+        "当前进展",
+        "安装"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/DECISIONS_NEEDED.md",
+      "sha256_at_review": "85d2877768e6abc7d9af383d1573e2aedac3ef5fca69ba9a3759c7962123754c",
+      "headings": [
+        "检索侧决策清单（需总部一次性确认）",
+        "决策 1：S1 主实验用官方候选还是独立重检索？",
+        "已核实的现状",
+        "⛔ 语料可取得性：已给出明确结论（不是\"未尝试\"）",
+        "✅ 一条重要的官方溯源发现（支持路线 A）",
+        "官方候选的溯源状态（详见 `handover/docs/official_pool_provenance.md`）",
+        "推荐方案",
+        "明确选项",
+        "决策 2：主实验 top-k 与 Incomplete 规则",
+        "问题",
+        "关键约束（实测）",
+        "推荐方案",
+        "明确选项",
+        "决策 3：S3 首版用 D1/D2，匹配哪个 S1 协议？",
+        "一个必须先讲清的实测发现",
+        "推荐方案",
+        "明确选项",
+        "决策 4：哪些工作可在现有设备完成，哪些必须进租卡前置任务？",
+        "现有设备（RTX 4060 Laptop 8 GB）可完成",
+        "必须进租卡前置任务",
+        "租卡前必须齐备的材料（否则租卡后要返工）",
+        "决策汇总表（请逐项勾选）",
+        "等待确认期间 A 侧已完成的事（不依赖决策）",
+        "仍在进行（不依赖决策）",
+        "需决策后才能做"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/NEXT_STEPS_AND_BLOCKERS.md",
+      "sha256_at_review": "5b2134e68df5d1ed4b4d80103c0811a6ec4d662c2d436ad6d4d7ccb056221a65",
+      "headings": [
+        "未完成事项与阻塞清单（交接给下一个接手者）",
+        "0. 一句话现状",
+        "1. ✅ 已完成（有实测证据，可直接复用，不要重做）",
+        "2. ⏳ 部分完成（有基础但不够用）",
+        "3. ❌ 未开始",
+        "4. ⛔ 阻塞（必须先解决才能继续）",
+        "阻塞 1：独立检索语料未验证（**最高优先级**）",
+        "阻塞 2：E4B 在 8 GB 显存不可行（影响实验设计）",
+        "阻塞 3：与 B 的 8 项确认未回",
+        "5. 🔧 接手时的环境准备（避免重复踩坑）",
+        "6. 🚫 已知的表述陷阱（接手者必须避免）",
+        "7. 建议的接手顺序",
+        "8. 数据与代码版本锚点"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/REVIEWED_IDS.md",
+      "sha256_at_review": "b31cad785fed83951dd7ca94a310160ef6f4f2285646d589191a16b7fe0bfb3f",
+      "headings": [
+        "已调试题（reviewed）清单",
+        "A. 已具名的题（逐题确认接触过）",
+        "B. 已声明范围但**未逐题具名**（`raw_id` 级不可用）",
+        "C. 仍需补充（**不得假设已穷尽**）"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/S3_REVIEW_GUIDE.md",
+      "sha256_at_review": "099d57b3e7cb353e1b34301fc0187b6c76793c25be1282ba8b94107abb8e2e99",
+      "headings": [
+        "S3 语义审核指南（人工审核，必须由人完成）",
+        "0. 现状（诚实的阶段划分）",
+        "1. 需要审核什么",
+        "2. 审核步骤（审核者）",
+        "3. 产出（审核后）",
+        "4. 工具与局限（审核时须知）",
+        "5. 需要的参与",
+        "附：审核量级（供排期）"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/SPLIT_V2_CHANGES.md",
+      "sha256_at_review": "f0ca1a2614567361ba19625fc681b7e6723d6a2d73476821e4f25450eaab0af9",
+      "headings": [
+        "切分 v2 变更说明",
+        "1. 修正的缺陷",
+        "缺陷 1 ⛔ 已调试题漏进冻结集（实测复现）",
+        "缺陷 2 ⛔ 文档声称的规则与代码行为不符",
+        "缺陷 3 `--dry-run` 仍写文件",
+        "2. 「同源隔离」的处理：从虚称改为如实结论",
+        "2.1 用户指出的问题",
+        "2.2 我方实测：实体级隔离在本数据集上**不可行**",
+        "2.3 v2 的处置",
+        "分配前先探测巨型连通组",
+        "2.4 为什么\"用图片反推实体\"是合理的代理",
+        "3. `raw_id` 保持字符串",
+        "4. 已调试题清单（v2 使用）",
+        "5. v2 产物",
+        "6. 验证结果",
+        "6.1 不变量测试（`verify_split.py --version v2`）",
+        "6.2 可重现性",
+        "6.3 dry-run 语义",
+        "7. 已知限制（未解决）"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/STATUS.md",
+      "sha256_at_review": "b44e58bdc5defb98a52adefdf8b5e7d7c0bdb6f07a7b4e2b2558fe3608a0a09d",
+      "headings": [
+        "A 侧成果索引（已完成什么、在哪、怎么用）",
+        "0. 三分钟上手（B 侧）",
+        "1) 读接口约定与证据规则",
+        "handover/contracts/接口对齐_A侧确认.md",
+        "handover/docs/03_证据规则.md",
+        "2) 用 6 题接口样例打通程序（含图片，无需额外下载）",
+        "3) 校验你拿到的包是否完整（应输出 29/29 通过）",
+        "1. 给 B 的交接包 `handover/`",
+        "2. A 侧可复现资产 `a-side/`",
+        "2.1 决策与状态（`a-side/plans/`）",
+        "2.2 题单与切分（`a-side/splits/`）",
+        "2.3 关键脚本（`a-side/scripts/`，38 个）",
+        "2.4 实测数据（`a-side/data/`，14 个）",
+        "3. 已完成 vs 未完成（**不合并表述**）",
+        "4. 三个必须知道的实测结论",
+        "5. 需要动作的事项"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/VERIFICATION_SUMMARY.md",
+      "sha256_at_review": "ebb6b32dbb4b0c20f5734eede9e175113cad39a9eedb5d142f88aeb6be24a2e4",
+      "headings": [
+        "验证摘要",
+        "1. 切分 v2 不变量（18 项）",
+        "2. 可重现性（相同输入 → 相同字节）",
+        "3. `--dry-run` 语义",
+        "4. 实体连通性量化",
+        "5. 语料可取得性",
+        "6. smoke_20 证据包（37 项）",
+        "7. 6 题接口样例（回归）",
+        "8. 已知限制（**必须随结论一起报告**）",
+        "9. 未做的验证（明确列出）"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/plans/VERIFICATION_SUMMARY_ROUND3.md",
+      "sha256_at_review": "f12ee9cc57f6132708acdd94705370d3b8bc1ba69cab5e7d9df39d8b76550b96",
+      "headings": [
+        "本轮验收摘要（S1/S2/S3 正式口径）",
+        "0. 口径确认（已按用户指定固化）",
+        "1. S1 / S2 证据包（8 个包，覆盖 4 个 split）",
+        "2. 一处必须报告的口径不一致（Incomplete 的 S1 vs S2）",
+        "3. S3 纯干扰集（D1）",
+        "⛔ 语义审核：A 侧无法完成，正式 S3 子集为空（诚实声明）",
+        "候选覆盖率（满 3 张，**未审核**，仅自动构造范围）",
+        "4. 规范化匹配的修正",
+        "5. 本轮修的三个实现问题",
+        "6. 已知限制（随结论报告）"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/reports/A_P0_P1.md",
+      "sha256_at_review": "e3d7a1aefb36d0aa75cecfb6194d38db326d24a74cadcf8cc58e4a1f2ef17b03",
+      "headings": [
+        "reports/A_P0_P1.md — 复现进展与原论文差异",
+        "1. 环境基线（已实测）",
+        "2. A-P0-1：作者代码测试（✅ 完成）",
+        "3. A-P0-2：EmbeddingGemma 2 图文检索（进行中）",
+        "3.1 已完成：模型可用性与维度截断验证",
+        "3.2 待完成",
+        "4. ⭐ 核心移植风险已解除：Gemma 4 的 True/False logit 打分",
+        "4.1 阶段 1：分词兼容性（✅ 无问题）",
+        "4.2 阶段 2：真实前向取 logit（✅ 打通）",
+        "4.3 ⚠️ 发现的关键问题：BF16 下 `device_map=\"auto\"` 会静默退化",
+        "4.4 显存实测与理论值的偏差（需在报告中原样记录）",
+        "4.5 ⛔ E4B 在本机 8 GB 显存上**不可行**（已实测确认）",
+        "5. 与原论文的差异汇总（**必须持续更新**）",
+        "5.1 需改动的文件清单（任务书第 3 节硬性要求）",
+        "6. 尚未验证的边界（**不得对外宣称**）",
+        "6.1 磁盘与缓存现状（重资源已移出工作区）",
+        "7. 下一步"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/reports/audit_env.md",
+      "sha256_at_review": "e15f2a820a69d1642fc1c6ab5d34e0cd5f1c5e59042b144bf4d55254cbd279fb",
+      "headings": [
+        "audit_env.md — 环境审计（第二版 · 实测后更新）",
+        "1. 硬件实测",
+        "2. 软件环境（已完成部分）",
+        "2.1 遇到的依赖冲突（已修正）",
+        "3. 网络约束（本机最重要的一组事实）",
+        "3.1 镜像实测速度（`scripts/probe_mirrors.py`）",
+        "4. 模型的精确体积与显存可行性（**决定性数据**）",
+        "4.1 结论：8 GB 显存下的硬约束",
+        "5. 磁盘布局（重资源已移出工作区）",
+        "6. 环境配置现状与后续步骤",
+        "已完成",
+        "待执行",
+        "模型下载必须带镜像变量",
+        "期望: 2.11.0+cu128 True True",
+        "7. 阻断项与已解决项",
+        "8. 待办清单"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/setup/MACHINE_SPECIFIC_PROXY.md",
+      "sha256_at_review": "8bfd340e62fa3ae5952df13c156644aa9c3d90b145ffc2f41f96471964abb989",
+      "headings": [
+        "本机特有的代理与 TLS 问题（**不是项目标准做法**）",
+        "0. 为什么单独放一个文件",
+        "1. 现象",
+        "2. 临时绕行（仅在本机）",
+        "只在确认存在本地中间人代理、且暂时无法修证书链时使用",
+        "3. 如何判断 GitHub API 的 404 是否可信",
+        "4. 连接间歇性失败",
+        "5. 其它网络问题（同属本机环境，非项目标准）",
+        "6. 给协作者的提示"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "a-side/setup/STANDARD_INSTALL.md",
+      "sha256_at_review": "d51983e09d37162a2401854afd7cdfc51ad614d79a03b961b905f9eff9c61a7b",
+      "headings": [
+        "标准安装步骤（与机器无关）",
+        "1. 前置条件",
+        "2. 获取代码（标准做法）",
+        "3. 环境配置",
+        "Linux / macOS",
+        "Windows PowerShell",
+        ".venv-main",
+        ".venv-mrag",
+        "4. 为什么必须两个环境",
+        "5. 硬件边界（实测，与机器相关但结论通用）",
+        "6. 数据获取",
+        "7. 模型权重",
+        "8. 验证安装（标准冒烟）",
+        "CUDA 与 BF16",
+        "期望: 2.x.x+cu1xx True True",
+        "检索接口",
+        "作者单元测试（不需要权重）",
+        "期望: 23 passed",
+        "9. 交接包自检"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "b-side/RUN.md",
+      "sha256_at_review": "7034e7214bad6fddb574f42a442e3da1c641b11aa9948a87adc6d892f1e7b108",
+      "headings": [
+        "EdgeCoRAG runtime v1.10.1 — technical gate and tokenizer dependency repair",
+        "EdgeCoRAG B v1.10.0 — final binding and bounded runtime closeout",
+        "Current HQ closeout decision and Windows handoff",
+        "Final external reconstruction, after HQ reviews/merges this exact delta",
+        "Only when original packages are absent: export the fixed asset manifest.",
+        "Supply the existing12 ZIPs in $external/archives. Download only genuinely absent",
+        "assets after HQ transfer approval; --download is explicit on this receiver.",
+        "If packages already exist, skip the receiver and use their existing root here.",
+        "Linux launch, disconnect, resume and retrieval",
+        "First authorized GPU session: whole-fleet smoke then development, in tmux.",
+        "Explicitly stop before formal evaluation until all development tasks pass.",
+        "Inspect every model/phase/task state and saved development scores/errors.",
+        "Then SAME code/config/run root continues formal phases and performance:",
+        "Same command resumes successful attempts without generation. For diagnosed",
+        "failures only, append --retry-failures; OOM never auto-shrinks budget/precision.",
+        "Retrieve immutable result archive after the tmux process has ended:",
+        "A status and frozen main contract",
+        "Separate condition-package integration (no acquisition)",
+        "Reuse all-split assets and filled review snapshots (v1.9.0)",
+        "Actual dev receipt, reproducible without rebuilding",
+        "Models, budgets, independent environments",
+        "Legacy single-source path and batch binding",
+        "Same-card execution, restore and scoring",
+        "To stop intentionally after development, invoke run_batch.py directly with",
+        "the same --matrix/--data-root/--run-root/--env-map --backend hf --execute",
+        "plus --through-phase development, under tmux.",
+        "Measurement and post-rental analysis",
+        "Windows receiver:scp -P PORT USER@HOST:REMOTE_ARCHIVE D:/EdgeCoRAG-B/incoming/"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/README.md",
+      "sha256_at_review": "988c24a36b83ce554a34166786ee954b6757a059375a06fae880f050bac66742",
+      "headings": [
+        "EdgeCoRAG-B 交接包",
+        "⚠️ 先读：三条方法学更正（本版核心）",
+        "怎么读",
+        "关键事实速览（已实测）",
+        "怎么用 `samples/` 立刻打通你的程序",
+        "需要你确认的 8 件事",
+        "本包明确**不**包含的内容"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/contracts/包接口交接.md",
+      "sha256_at_review": "908ef0d0643f2b4aea4011468e657344d99900533346512fdcb26eee734e65d4",
+      "headings": [
+        "与 B 的接口交接：分条件证据包",
+        "1. 包标识与版本",
+        "2. qid / 证据 ID / rank / 排序",
+        "3. 媒体根目录与路径",
+        "4. 题目、选项、评分字段与审核记录的对应",
+        "5. S3 审核记录（CSV，可追溯）",
+        "6. 版本与哈希核验",
+        "1) 数据与题单",
+        "2) 证据包（按条件）",
+        "3) 内容摘要核对",
+        "与 a-side/plans/EXTERNAL_ARTIFACTS.json 中对应包条目比对"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/contracts/官方评测接口差异.md",
+      "sha256_at_review": "aa154fa86ba71a2d0e686daacce200b838ef8566a148ccc6a17885810db5979c",
+      "headings": [
+        "⚠️ 官方评测代码接口差异与缺陷（实测，会影响评分）",
+        "缺陷 1 ⛔ `parse_multi_choice_response` 第 3 参数类型错误（会崩溃）",
+        "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 传进去的是 int",
+        "触发条件（两种，都不是罕见情况）",
+        "为什么这很重要",
+        "建议处理方式（**请你确认**）",
+        "缺陷 2 ⛔ 字段名不一致：`qs_id` vs `id`",
+        "缺陷 3 ⚠️ 提示模板的图片占位符数量写死",
+        "常规: 6 个占位符 = 查询图 + 5 张证据",
+        "附带发现：README 与默认参数的差异",
+        "附：评测输入/输出的正确契约",
+        "官方 `score.py` 期望的输入行字段",
+        "官方 `score.py` 的输出",
+        "实测场景名（请以此为准，共 9 种）"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/contracts/接口对齐_A侧确认.md",
+      "sha256_at_review": "d36a8cf6eeaf94adc0827e291b77168e4907b3574b05fc598769d9bdaace940e",
+      "headings": [
+        "与 B 侧的接口对齐（A 侧确认版）",
+        "1. 结论：A 侧接受 B 的全部约定",
+        "2. ID 与命名（已冻结）",
+        "3. 结果行的字段对齐",
+        "4. 条件名称（统一表）",
+        "5. 可追溯性（每条结果必须能回答\"这是哪一次跑出来的\"）",
+        "6. 官方评分格式：作为**单独导出**，不作主格式",
+        "7. 失败处理",
+        "8. 跨字段检查（已全部实现并输出）",
+        "9. 仍需 B 确认"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/docs/01_检索侧分工与进度.md",
+      "sha256_at_review": "c2249a48919f2f6c62f59363fe328171eed4dd37fa624b4ef2d3648298b83e98",
+      "headings": [
+        "一、检索侧分工与进度（修订版）",
+        "1. 是否继续负责检索器和证据选择？进展到哪一步？",
+        "已完成",
+        "未完成（明确不承诺时间）",
+        "2. 数据版本与 split",
+        "2.1 体积口径差异已核清（要求一之5）",
+        "2.2 题 ID 约定",
+        "2.3 split 纪律（需与 B 共同确认）",
+        "⚠️ 命名警示：内部留出集**不能叫「外部验证」**",
+        "3. 官方候选 vs 独立语料重检索（修订）",
+        "3.1 官方候选路线的**准确描述**",
+        "3.2 反向警示：**自研重检索不能默认干净**",
+        "3.3 两条路线的记录方式",
+        "4. 检索器、选择策略、top-k、图片尺寸（修订）",
+        "已定",
+        "待定",
+        "⚠️ 图片尺寸与 top-k 的硬约束",
+        "5. 样例与可联调证据",
+        "6. `Incomplete` 规则的意见（修订）",
+        "官方实际行为",
+        "eval/utils/dataloader.py",
+        "A 侧意见（**已按你要求的四点修正**）",
+        "需 B 确认",
+        "7. 端到端性能测量（边界不变）",
+        "8. 本轮需 B 确认的事项汇总"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/docs/03_证据规则.md",
+      "sha256_at_review": "9b8bb2cbe78c9b6870f9a87a3c018ea2b4a69b6daf11673cbb543a36bf312da1",
+      "headings": [
+        "三、证据规则（查询图 / GT 证据 / 检索候选的区分）",
+        "1. 三个图片集合的严格定义",
+        "2. ⚠️ 术语更正：命中率 ≠ 答案泄漏",
+        "2.1 先前表述的问题",
+        "2.2 现在的准确表述",
+        "2.3 哈希口径的说明（重要，先前有错）",
+        "2.4 分场景命中率（差异达 12 倍）",
+        "2.5 这个数字**能**支持什么、**不能**支持什么",
+        "3. 官方候选的溯源：已核实 / 未确认",
+        "4. 近重复检查（S3 的必要补充）",
+        "4.1 方法",
+        "4.2 已完成的检查",
+        "4.3 ⚠️ 方法的局限（必须随结论一起报告）",
+        "4.4 无法确定时的标记规则",
+        "5. 使用纪律（任务书硬性要求）",
+        "6. ID—文件—内容哈希 对应关系",
+        "命名规范",
+        "`evidence_index.csv` 字段",
+        "7. 顺序语义",
+        "8. 失败与缺失的处理"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/docs/04_S3干扰证据规范.md",
+      "sha256_at_review": "50b6abc5b0dfadff94d7438b836413103fc74b18d8a666a225353da86cd02af9",
+      "headings": [
+        "五、S3 干扰证据实验：承担 + 构造规范（修订版）",
+        "0. 结论：**方便承担，我接。**",
+        "1. 实验条件",
+        "2. ⚠️ 实测事实与其**有限的**用途",
+        "3. 干扰类型设计",
+        "⚠️ 关键警示：D1/D2 **不自动等于\"无支持信息\"**",
+        "4. 校验要求（三层，缺一不可）",
+        "L3 三态标记（**不得默认通过**）",
+        "L2 的已知漏检",
+        "5. 硬约束",
+        "6. 记录规范（每题每条）",
+        "7. 需单独设条件的情况",
+        "8. 交付物",
+        "9. 需要你确认"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/docs/05_给B的确认与续作提示词.md",
+      "sha256_at_review": "e12306dfcf5697243daeed7b011c40c83f17173eea3cf9d5d8e44bb64d8e0134",
+      "headings": [
+        "给同学 B 的确认与续作提示词",
+        "一、请确认以下 8 项（按优先级）",
+        "二、B 确认后才能继续的工作（A 侧负责，按依赖顺序）",
+        "三、你现在就可以做的事（不必等 A）",
+        "四、A 侧明确尚未完成的事（**不要当作已完成**）",
+        "五、一个必须避免的误读",
+        "附：A 侧请求你回传的内容"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/docs/official_pool_provenance.md",
+      "sha256_at_review": "45b3d2f0595a86597963d0af194d34a72bff0b7711c5cb73c0adce4b194e3f32",
+      "headings": [
+        "官方候选池溯源：已核实 vs 未确认",
+        "1. 已核实（有直接证据）",
+        "2. 未确认（**没有依据判定，不得写成结论**）",
+        "3. 重叠率的**两种可能解释**（均未被证实）",
+        "解释 A：正常检索命中",
+        "解释 B：候选生成使用了 GT / 答案标注",
+        "4. 反向警示：自研重检索**也不能默认干净**",
+        "5. 复现与核对入口"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/freeze/冻结清单模板.md",
+      "sha256_at_review": "a3930ee8accb547adc5eb4bdf15203089676f9612b4b3c279cd8227f31430a7d",
+      "headings": [
+        "冻结清单模板（正式实验前填写）",
+        "A. 题目清单",
+        "A.1 切分规则（已预先声明）",
+        "A.2 实际切分结果",
+        "⚠️ 命名纪律：`internal_holdout` **不是外部验证**",
+        "B. 有序证据列表",
+        "C. 检索语料来源、版本与许可",
+        "D. 检索器、索引、选择策略、配置及版本",
+        "E. top-k、场景特殊规则、图片预处理、校验值",
+        "F. 失败记录（不得删除）",
+        "G. 单独保存的 GT 映射、命中信息与 Oracle 资料",
+        "H. 冻结确认"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    },
+    {
+      "source": "handover/samples/验收说明.md",
+      "sha256_at_review": "0fed4f966408b75ec3d1153ae4445e5fbfba3b3dc3876f994f9252a11654b8f9",
+      "headings": [
+        "5 题接口样例 · 验收说明",
+        "1. 版本与提交",
+        "2. 题单",
+        "3. 实际图片与相对路径",
+        "4. ⚠️ 图片是否经过重新编码：**是，全部是重编码产物**",
+        "5. GT 图片的可解析映射（S2 可跑）",
+        "6. 验证脚本与实际输出",
+        "6.1 综合验收脚本",
+        "6.2 契约校验脚本",
+        "6.3 支撑性验证（样例所依赖方法本身的验证）",
+        "6.4 脚本/产物的证据等级",
+        "7. 本样例**不是**什么（明确边界）",
+        "8. 需要 B 确认"
+      ],
+      "authority": "historical_reference; current execution uses pinned B runtime and receipts"
+    }
+  ],
+  "unseen_documents_reviewed": false
+}

@@ -1,0 +1,54 @@
+{
+  "source_rows": 21927,
+  "error_type_counts": {
+    "none": 11478,
+    "incorrect_choice": 10317,
+    "parse_failure": 132
+  },
+  "all_row_assigned_counts": {
+    "不可判定": 21374,
+    "检索伤害": 553
+  },
+  "primary_frozen_per_model": {
+    "qwen3vl_4b": {
+      "不可判定": 928,
+      "检索伤害": 105
+    },
+    "qwen3vl_8b": {
+      "不可判定": 954,
+      "检索伤害": 79
+    },
+    "gemma4_e2b": {
+      "检索伤害": 112,
+      "不可判定": 921
+    },
+    "gemma4_e4b": {
+      "检索伤害": 86,
+      "不可判定": 947
+    },
+    "qwen35_4b": {
+      "不可判定": 933,
+      "检索伤害": 100
+    }
+  },
+  "per_model_denominator": 1033,
+  "components": 564,
+  "resamples": 10000,
+  "seed": 42,
+  "source_sha256": {
+    "logs/B_predictions.jsonl.gz": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+    "logs/results_20261020/frozen1033_image_groups_and_transitions.csv": "b542b72a0a474aad14258ddd7a27ef9205b1cbb3761c2fb41af3b3abcdf42547"
+  },
+  "error_type_priority": [
+    "input_error truthy",
+    "generation_error truthy",
+    "parse_status in empty_output/parse_failure/missing_prediction/generation_error",
+    "parse_status != ok -> other_parse_status",
+    "correct false -> incorrect_choice",
+    "else none"
+  ],
+  "original_fields_unchanged": true,
+  "original_logs_unchanged": true,
+  "CI_scope": "paired S0/S1 qids, marginal assigned-category fractions via zero-reference paired component bootstrap; not model-accuracy differences. Full21927 repeated/holdout rows have no defensible shared564-component CI, so no pooled CI fabricated.",
+  "missing": "No public exact GT/top10 identity join for original S1; assigned0 means not identified, not proven absent. Unknown contains those and non-S1/out-of-scope rows."
+}

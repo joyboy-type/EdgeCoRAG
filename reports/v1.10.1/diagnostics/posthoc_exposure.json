@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-17",
+  "type": "post_hoc_saved_record_audit",
+  "runtime_version": "v1.10.1",
+  "base_publication_commit": "49031cf65538521f76fc9c275c7fdd3be6923c77",
+  "mechanical_processing": {
+    "question_runs": 17745,
+    "question_model_triples": 5915,
+    "splits": [
+      "internal_holdout",
+      "frozen_test"
+    ],
+    "conditions": [
+      "S0",
+      "S1",
+      "S2"
+    ],
+    "fields": "strict answers, gold labels, image hashes, metadata; no image pixels"
+  },
+  "selected_text_case_cards": [
+    {
+      "model_key": "qwen3vl_4b",
+      "qid": "mragb:129",
+      "category": "no_hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "qwen3vl_4b",
+      "qid": "mragb:396",
+      "category": "hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "qwen3vl_4b",
+      "qid": "mragb:568",
+      "category": "s0_right_s1_wrong"
+    },
+    {
+      "model_key": "qwen3vl_4b",
+      "qid": "mragb:802",
+      "category": "s2_valid_choice_wrong"
+    },
+    {
+      "model_key": "qwen3vl_8b",
+      "qid": "mragb:296",
+      "category": "no_hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "qwen3vl_8b",
+      "qid": "mragb:1329",
+      "category": "hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "qwen3vl_8b",
+      "qid": "mragb:222",
+      "category": "s0_right_s1_wrong"
+    },
+    {
+      "model_key": "qwen3vl_8b",
+      "qid": "mragb:579",
+      "category": "s2_valid_choice_wrong"
+    },
+    {
+      "model_key": "gemma4_e2b",
+      "qid": "mragb:1336",
+      "category": "no_hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "gemma4_e2b",
+      "qid": "mragb:232",
+      "category": "hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "gemma4_e2b",
+      "qid": "mragb:732",
+      "category": "s0_right_s1_wrong"
+    },
+    {
+      "model_key": "gemma4_e2b",
+      "qid": "mragb:497",
+      "category": "s2_valid_choice_wrong"
+    },
+    {
+      "model_key": "gemma4_e4b",
+      "qid": "mragb:857",
+      "category": "no_hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "gemma4_e4b",
+      "qid": "mragb:674",
+      "category": "hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "gemma4_e4b",
+      "qid": "mragb:217",
+      "category": "s0_right_s1_wrong"
+    },
+    {
+      "model_key": "gemma4_e4b",
+      "qid": "mragb:830",
+      "category": "s2_valid_choice_wrong"
+    },
+    {
+      "model_key": "qwen35_4b",
+      "qid": "mragb:462",
+      "category": "no_hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "qwen35_4b",
+      "qid": "mragb:562",
+      "category": "hash_hit_s1_wrong_s2_correct"
+    },
+    {
+      "model_key": "qwen35_4b",
+      "qid": "mragb:840",
+      "category": "s0_right_s1_wrong"
+    },
+    {
+      "model_key": "qwen35_4b",
+      "qid": "mragb:72",
+      "category": "s2_valid_choice_wrong"
+    }
+  ],
+  "selection": "post hoc minimum SHA256(42|model|category|qid), distinct qid within each model; non-representative",
+  "scope_note": "Case-card text and outputs are exposed for post hoc diagnosis; no blind or independent validation claim. This adds to prior exposure disclosures and does not revise frozen original registry.",
+  "visual_review_completed": false,
+  "human_mechanism_adjudication_completed": false,
+  "new_inference": false,
+  "prompt_parser_budget_or_parameters_changed": false,
+  "new_blinded_test_split_created": false
+}

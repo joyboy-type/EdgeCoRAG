@@ -1,0 +1,15 @@
+{
+  "returncode": 0,
+  "rows": 18955,
+  "unique_pixel_sha": 18955,
+  "all_rows_match_frozen_raw_sha_and_q95_alias_in_order": true,
+  "all_gray32_hex_lengths": 2048,
+  "all_ahash_hex_lengths": 16,
+  "gray32_byte_range": [
+    0,
+    255
+  ],
+  "table_sha256": "8039a0c40a2bcbe14ec5e2b18a6b45f14bf47bbdbc03f9e6913618214d35eafc",
+  "table_bytes": 43583388,
+  "decode_again_for_validation": false
+}

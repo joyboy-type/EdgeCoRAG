@@ -101,6 +101,9 @@ class HFBackend:
             with Image.open(path) as im:im.load();return im.convert('RGB')
         messages=build_messages(row,root,image)
         kwargs=chat_kwargs(cfg)
+        from recording_policy import redacted_prompt
+        rendered=self.processor.apply_chat_template(messages,tokenize=False,add_generation_prompt=True,**kwargs)
+        prompt_record=redacted_prompt(rendered,messages)
         inputs=self.processor.apply_chat_template(messages,tokenize=True,add_generation_prompt=True,
                     return_dict=True,return_tensors='pt',**kwargs)
         # No attention-mask/token-id floating cast. Floating vision tensors alone follow model dtype.
@@ -119,7 +122,7 @@ class HFBackend:
         tail=output[:,tokens:]
         decoded=self.processor.batch_decode(tail,skip_special_tokens=True,clean_up_tokenization_spaces=False)[0]
         special=self.processor.batch_decode(tail,skip_special_tokens=False,clean_up_tokenization_spaces=False)[0]
-        result={'raw_output':decoded,'prediction_raw':decoded,'raw_output_with_special_tokens':special,
+        result={'rendered_prompt':prompt_record,'raw_output':decoded,'prediction_raw':decoded,'raw_output_with_special_tokens':special,
                 'final_output':'','finalizer_version':FINALIZER_VERSION,'final_extraction_error':None,
                 'synthetic':False,'input_tokens':tokens,'generated_tokens':int(tail.shape[-1]),
                 'budget_exhausted':int(tail.shape[-1])>=cfg['max_new_tokens'],

@@ -1,0 +1,71 @@
+[
+  {
+    "label": "tests",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 2.079810625058599,
+    "raw_output": "tests.txt",
+    "stderr": ".............................................................................................................................................\n----------------------------------------------------------------------\nRan 141 tests in 1.852s\n\nOK\n"
+  },
+  {
+    "label": "analysis_tests",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "analysis/next_stage_20261019",
+      "-p",
+      "test_*.py"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 1.9879410410067067,
+    "raw_output": "analysis_tests.txt",
+    "stderr": "......................................................\n----------------------------------------------------------------------\nRan 54 tests in 1.791s\n\nOK\n"
+  },
+  {
+    "label": "audit_bare",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "analysis/next_stage_20261019/audit_requirement_evidence.py"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 1.9157889999914914,
+    "raw_output": "audit_bare.txt",
+    "stderr": ""
+  },
+  {
+    "label": "join_replay",
+    "command": [
+      "/Users/joyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "analysis/next_stage_20261019/join_error_partition.py",
+      "--gold-controls",
+      "{gold_controls}",
+      "--out",
+      "{private_work}/replay",
+      "--private-probe",
+      "{private_work}/probe20-replay.private.json"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 1.0201479999814183,
+    "raw_output": "join_replay.txt",
+    "stderr": ""
+  },
+  {
+    "label": "join_byte_comparison",
+    "returncode": 0,
+    "files": [
+      "partition_v2.csv",
+      "join_v2.csv.gz",
+      "namespace_v2.json"
+    ]
+  }
+]

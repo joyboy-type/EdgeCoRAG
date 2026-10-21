@@ -1,0 +1,69 @@
+{
+  "files": {
+    "C_fixed_rag_and_paths.md": {
+      "sha256": "31c950980d5e11479c3dadacdfd4e15f8ebd4e97f0b34cf67e790c415be8b7bc",
+      "bytes": 1676
+    },
+    "D_mechanisms_and_concepts.md": {
+      "sha256": "22eed361ec5c7a79d66a95c11795af4f97dc60ba6863ddf35e34874e18feb73f",
+      "bytes": 521
+    },
+    "E_papers.md": {
+      "sha256": "96a90bbb2414c93e05a9cf015be557e8147320823783ecd88ba48b7ad1b53f09",
+      "bytes": 399
+    },
+    "F_judge_feasibility.md": {
+      "sha256": "a1db89e57710d47e114a7abf00c5de047b9bfcac03f3e15c7203a0309a6b1306",
+      "bytes": 415
+    },
+    "analysis_receipt.json": {
+      "sha256": "a2a0617424ebc24f36a610d7b344252322f314f507a917c800c778bc7b1c3b5d",
+      "bytes": 13389
+    },
+    "concept_mapping.csv": {
+      "sha256": "723dd21a3c1a3c44d39c1f86d25142b9d746c866ecde71e97b9c6248da65c37d",
+      "bytes": 1385
+    },
+    "concept_sensitivity.csv": {
+      "sha256": "06c115ff55f3e98fa37db6d7c181549702a032d6dcefe911a044fa2d43f7a74a",
+      "bytes": 48334
+    },
+    "dev_fixed_selection.csv": {
+      "sha256": "1929c23d1cbe91f1c3d1c7002dba6b5ee2d1d3bfc6020d73d0b9b28c5c16377d",
+      "bytes": 437
+    },
+    "fixed_rag_matrix.csv": {
+      "sha256": "22f73f3ba7d2d4090856ae6753183409f66cc8bfa2b0038cc538e910329f9e37",
+      "bytes": 4486
+    },
+    "mechanism_breakdown.csv": {
+      "sha256": "3b546f0fecda8064987183f9eac6f78fafe510ababbe802c6f59c232414a0df0",
+      "bytes": 25132
+    },
+    "mmdocrag_judge_feasibility.json": {
+      "sha256": "95b889633503d5b39d83f57ecc0d5df924feec898da4caa8bf842351347b2ee9",
+      "bytes": 2530
+    },
+    "oracle_paired_differences.csv": {
+      "sha256": "bcbff260965e580f8fc2739b110858316cbf5aa350221fbb24a1ebea432a9350",
+      "bytes": 5832
+    },
+    "paired_differences.csv": {
+      "sha256": "2eaa6653ad4ccac7df91971bb494d473479a7ef66e68bcdd99dd5da272bd63fa",
+      "bytes": 10165
+    },
+    "papers_matrix.csv": {
+      "sha256": "bb8edbc09e3abdbfcee0758dde305b8fbc013dd88ca56ed90cbfc1c9768f9a82",
+      "bytes": 9365
+    },
+    "papers_numeric_evidence.csv": {
+      "sha256": "072dbd3835d0cc0a69853b2827c059e8fb0165709fcfb7f2cb4a0abf0f29ed02",
+      "bytes": 19416
+    },
+    "source_cluster_ci.csv": {
+      "sha256": "123cf31bf98cbab0d7638bbb7a71d36b6ad3a9b0935d40fa1c39b5ce36004629",
+      "bytes": 7552
+    }
+  },
+  "contract_sha256": "41b92eaff552af2565cd0277393bb522fa7513ea58aa4e3c333e0fb49253cc61"
+}

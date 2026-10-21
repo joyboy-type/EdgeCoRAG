@@ -1,0 +1,99 @@
+{
+  "title": "A 侧三件 GPU 任务最终收货单（judge / S3 / 9B）",
+  "date": "2026-10-21",
+  "instance": "AutoDL RTX 3090 24GB；qwen35 env torch 2.8.0+cu128 + transformers 5.19.0（含 Qwen3_VL 与 Qwen3_5 两 class）；qwen3vl env transformers 4.57.3",
+  "results_tar": {
+    "name": "results_20261021.tar",
+    "bytes": 440320,
+    "sha256": "ddb16a2eb48f7c372ff26f24295c69c54cc9638a97babfdcdb1694036655009d"
+  },
+  "item1_judge": {
+    "status": "COMPLETE",
+    "model": "Qwen/Qwen3-VL-8B-Instruct @ 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "dtype": "bfloat16",
+    "dimensions": [
+      "Fluency",
+      "Citation Quality",
+      "Text-Image Coherence",
+      "Reasoning Logic",
+      "Factuality"
+    ],
+    "total_rated": 1000,
+    "parse_fail": 0,
+    "self_consistency_agree_rate": 1.0,
+    "self_consistency_citable": true,
+    "self_judge_bias_disclosed": "judge(Qwen3-VL-8B) 也是被评五模型之一(qwen3vl_8b)",
+    "outputs": {
+      "scores.csv": "c905914883c333e8fc42ed34d63322a67088df2d3c678c998bdd156ade59bb63",
+      "raw_outputs.jsonl.gz": "af25c028cafaf05a7d9dc2aeb0fab307a0d4cc03fc75aff5d3aaa2a0a357b6d1",
+      "consistency.json": "99f03931c1c9eee2521ec8be9c9b3518f2cd2d5c2a515a3f5fa268c1661dbc44",
+      "README.md": "3f3847a9994b3c67d748248f97860cba23ea93462f871d308f6c4484c36b7c26"
+    }
+  },
+  "item2_s3": {
+    "status": "PARTIAL (2/3 Qwen 模型完成，8B 显存不足)",
+    "subset": {
+      "dev": 5,
+      "internal_holdout": 2,
+      "frozen_test": 29
+    },
+    "review_method": "image_model_assisted",
+    "disclosure": "AI 图像辅助、label-aware、非人工盲审",
+    "accuracy": {
+      "qwen3vl_4b": {
+        "dev": 0.2,
+        "internal_holdout": 0.5,
+        "frozen_test": 0.27586206896551724
+      },
+      "qwen35_4b": {
+        "dev": 0.4,
+        "internal_holdout": 0.5,
+        "frozen_test": 0.2413793103448276
+      }
+    },
+    "csv_sha256": {
+      "S3_qwen3vl_4b_dev.csv": "c27808a1781890e9b0e7846eeb2d5281ae3135e7a3457fa30f4f23e89ad0bf8b",
+      "S3_qwen3vl_4b_holdout.csv": "3a0eccf3e962338643e94beef8eb58396d6ec7955c17c35a81acccd2bab8f563",
+      "S3_qwen3vl_4b_frozen.csv": "5320b14c8ce77fbd28e3558663f3cdf364fad271065c936cae8c69fb0e447601",
+      "S3_qwen35_4b_dev.csv": "9b4ca864bb264f526aa664188fc25e87d5fbe86f09a4e37199d574043d9c1cf3",
+      "S3_qwen35_4b_holdout.csv": "3a0eccf3e962338643e94beef8eb58396d6ec7955c17c35a81acccd2bab8f563",
+      "S3_qwen35_4b_frozen.csv": "7c626372fec4a5178c3ed2339d1e872cdd35eb8ba79da2a496e2d1a3652c275d"
+    },
+    "receipt_sha256": {
+      "qwen3vl_4b_dev": "6bf7b1631a9db197488d480a4239089e0b0a9eb54924d9d3d8e0b86ddf6f701a",
+      "qwen3vl_4b_internal_holdout": "62833883a7126d0fa7fcc03b628f1c2f25105a2f4896d21eb645a51d754560ac",
+      "qwen3vl_4b_frozen_test": "7df445f8c3096fb7e50812fa89d762ff3aaf6ec38b025a0276e22208ea36eafb",
+      "qwen35_4b_dev": "ef73335446887a528e446988ff74b706cae729b4943edd87a4e4f67852726325",
+      "qwen35_4b_internal_holdout": "efc4160b7f0a38623c01d80e6bd32ba59a6c209acb44ffc562d25d0d79bea742",
+      "qwen35_4b_frozen_test": "b6db39c2a0e48453146aacc84037d79f2a2f51799018c981599fa4ec312509b6"
+    }
+  },
+  "item3_9b": {
+    "status": "BLOCKED",
+    "reason": [
+      "缺 flash-linear-attention + causal_conv1d CUDA kernel（线性注意力回退 CPU 参考实现）",
+      "无 nvcc 编译器，无法现场编译上述 kernel",
+      "单题推理 >10 分钟，3099 题全量不可行",
+      "100 题 4bit 量化一致性另缺 bitsandbytes/accelerate"
+    ],
+    "progress": {
+      "weights_download": "DONE（4 safetensors shard，经 hf-mirror；服务器直连 huggingface.co 不通）",
+      "bf16_load": "OK（9.41B 参数，18.3GB 显存）",
+      "smoke": "S2 3 题 2 对（enable_thinking=False + chat_template 补丁后解析正常）",
+      "full_run": "已启动后实测单题 >10 分钟，已 kill 释放 GPU",
+      "outputs": "无（未产出 S012 结果 CSV）"
+    }
+  },
+  "item2_s3_8b": {
+    "status": "BLOCKED",
+    "reason": "bf16 + 图像推理 OOM（需 23.4GB > 23.5GB 显存）；改 8bit 又需 accelerate（未装）",
+    "outputs": "无"
+  },
+  "conclusions": {
+    "judge": "完成：1000 条评分 parse_fail=0，一致率 1.0，五维按作者冻结 prompt 原文",
+    "s3": "qwen3vl_4b + qwen35_4b 两模型 × 三 split 完成；qwen3vl_8b 显存不足",
+    "9b": "阻塞：权重就绪、bf16 可加载、冒烟可出分，但缺线性注意力 kernel + nvcc + 量化库，全量 3099 题不可行"
+  },
+  "hash_canonicalization": "sha256 一律按入库的 LF 规范化字节计算。原始导出为 CRLF；转换为 LF 仅改行尾、不改内容。校验示例：scores.csv 若按 CRLF 计为 3f49b13b…（26,310 B），按 LF 计为 c9059148…（25,309 B），两者内容逐字相同。",
+  "files_sha256_recomputed_at": "2026-10-21 交付分支 299fe1f 入库字节"
+}

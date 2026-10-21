@@ -1,0 +1,4 @@
+label,calls,assumed_seconds_per_call,assumed_cny_hour,gpu_minutes_excluding_setup,compute_cny_excluding_setup,price_is_current_quote,setup_seconds,authorized
+非实测条件情景，不是预测,1100,1,2.18,18.333333333333332,0.6661111111111112,False,unknown,False
+非实测条件情景，不是预测,1100,10,2.18,183.33333333333334,6.661111111111111,False,unknown,False
+非实测条件情景，不是预测,1100,60,2.18,1100.0,39.96666666666667,False,unknown,False

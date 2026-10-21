@@ -1,0 +1,980 @@
+{
+  "n": 50,
+  "agree": 50,
+  "per_dim": {
+    "Fluency": [
+      50,
+      50
+    ],
+    "Citation Quality": [
+      50,
+      50
+    ],
+    "Text-Image Coherence": [
+      50,
+      50
+    ],
+    "Reasoning Logic": [
+      50,
+      50
+    ],
+    "Factuality": [
+      50,
+      50
+    ]
+  },
+  "details": [
+    {
+      "model": "gemma4_e2b",
+      "q_id": 7,
+      "same": true,
+      "first": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 2
+      },
+      "second": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 2
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 200,
+      "same": true,
+      "first": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      },
+      "second": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 369,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 524,
+      "same": true,
+      "first": {
+        "Fluency": 2,
+        "Citation Quality": 1,
+        "Text-Image Coherence": 1,
+        "Reasoning Logic": 1,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 2,
+        "Citation Quality": 1,
+        "Text-Image Coherence": 1,
+        "Reasoning Logic": 1,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 788,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 935,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 1181,
+      "same": true,
+      "first": {
+        "Fluency": 2,
+        "Citation Quality": 1,
+        "Text-Image Coherence": 1,
+        "Reasoning Logic": 1,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 2,
+        "Citation Quality": 1,
+        "Text-Image Coherence": 1,
+        "Reasoning Logic": 1,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 1364,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 1544,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 3,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 3,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "gemma4_e2b",
+      "q_id": 1765,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 3,
+        "Factuality": 4
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 3,
+        "Factuality": 4
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 7,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 200,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 4,
+        "Factuality": 4
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 4,
+        "Factuality": 4
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 369,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 524,
+      "same": true,
+      "first": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 788,
+      "same": true,
+      "first": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 935,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 1181,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 1364,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 1544,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "gemma4_e4b",
+      "q_id": 1765,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 7,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 200,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 4
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 4
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 369,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 4
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 4
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 524,
+      "same": true,
+      "first": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 788,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 5,
+        "Factuality": 4
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 5,
+        "Factuality": 4
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 935,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 4,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 4,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 1181,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 1364,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 1544,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen35_4b",
+      "q_id": 1765,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 7,
+      "same": true,
+      "first": {
+        "Fluency": 2,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 2,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 200,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 369,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 524,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 788,
+      "same": true,
+      "first": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 3,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 935,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 1181,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 1364,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 1544,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen3vl_4b",
+      "q_id": 1765,
+      "same": true,
+      "first": {
+        "Fluency": 2,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 1,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 2,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 1,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 7,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 200,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 369,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 4,
+        "Factuality": 3
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 524,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 2,
+        "Reasoning Logic": 3,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 788,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 2,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 2,
+        "Factuality": 1
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 935,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 1181,
+      "same": true,
+      "first": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      },
+      "second": {
+        "Fluency": 4,
+        "Citation Quality": 3,
+        "Text-Image Coherence": 3,
+        "Reasoning Logic": 3,
+        "Factuality": 2
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 1364,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 5,
+        "Text-Image Coherence": 5,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 1544,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    },
+    {
+      "model": "qwen3vl_8b",
+      "q_id": 1765,
+      "same": true,
+      "first": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      },
+      "second": {
+        "Fluency": 5,
+        "Citation Quality": 4,
+        "Text-Image Coherence": 4,
+        "Reasoning Logic": 5,
+        "Factuality": 5
+      }
+    }
+  ],
+  "agree_rate": 1.0,
+  "citable": true
+}

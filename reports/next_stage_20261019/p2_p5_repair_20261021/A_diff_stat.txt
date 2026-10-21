@@ -1,0 +1,26 @@
+ a-side/contracts/index_receipt.example.json        |   6 +-
+ a-side/contracts/index_receipt.schema.json         |  10 +-
+ a-side/contracts/index_receipt_field_mapping.md    |  75 ++++++++++++++
+ a-side/reports/TAG_NOTES.md                        |  47 +++++++++
+ .../next_stage_20261020/A4_attribution_dryrun.md   |  68 +++++++++++++
+ .../next_stage_20261020/B_handoff_prompt.md        |  49 ++++++---
+ .../next_stage_20261020/a15_portability_test.json  |   4 +-
+ .../attribution_template_run.json                  |  61 +++++++++++
+ .../attribution_dryrun/batch_signature_check.json  |  98 ++++++++++++++++++
+ .../attribution_dryrun/threshold_rows.template.csv |   1 +
+ .../attribution_dryrun/variant_flip_matrix.json    | 106 ++++++++++++++++++++
+ .../next_stage_20261020/attribution_selftest.json  |   2 +-
+ .../cost_recorder_selftest.json                    |   2 +-
+ .../next_stage_20261020/crlf_guard_test.json       |   2 +-
+ .../index_receipt_adjudication.md                  | 111 +++++++++------------
+ .../index_receipt_validator_selftest.json          |  16 ++-
+ .../next_stage_20261020/interface_freeze.md        |  18 ++++
+ a-side/retrieval_if_v1/verify.json                 |   5 +-
+ a-side/scripts/a13_cost_selftest.py                |   2 +-
+ a-side/scripts/a17_verify_interface.py             |  19 +++-
+ a-side/scripts/a19_materialize_portability_test.py |   4 +-
+ a-side/scripts/a20_validate_index_receipt.py       |  26 ++++-
+ a-side/scripts/a21_attribute_exclusion.py          |   2 +-
+ a-side/scripts/a22_crlf_guard_test.py              |   2 +-
+ a-side/scripts/a23_fix_manifest_line_endings.py    |   3 +-
+ 25 files changed, 638 insertions(+), 101 deletions(-)

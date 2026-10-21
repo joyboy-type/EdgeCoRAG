@@ -1,0 +1,24 @@
+{
+  "scope": "Non-model synthetic bytes, no image files",
+  "weights_sha256": "7807e9375d4e292c8b66439cfee0d43f8d3d6f0f087bba24a9980dc8a174aedb",
+  "corpus": [
+    {
+      "identity": "image:a",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "path": "a.jpg"
+    },
+    {
+      "identity": "image:b",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "path": "b.jpg"
+    }
+  ],
+  "queries": [
+    {
+      "qid": "q",
+      "identity": "image:a",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "path": "a.jpg"
+    }
+  ]
+}

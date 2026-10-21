@@ -1,0 +1,17 @@
+{
+  "a_side_vs_543de53": {
+    "files": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "text_files_with_crlf": 0,
+  "crlf_paths": [],
+  "binary_gzip_excluded_from_line_ending_check": true,
+  "double_json_paths": [],
+  "derived_error_rows_checked": 21927,
+  "original_fields_unchanged": true,
+  "all_source_sha256_unchanged": true,
+  "per_model_partition_denominator": 1033,
+  "all_row_partition_total": 21927,
+  "returncode": 0
+}

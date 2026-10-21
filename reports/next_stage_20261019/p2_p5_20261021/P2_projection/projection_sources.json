@@ -1,0 +1,10 @@
+{
+  "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/controls/retrieval-formal.approved.json": "c766f7d381063ca2c935f3982de7ac72f18437a1f5889a8701181d11697fe740",
+  "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/receipt.json": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270",
+  "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/corpus_embeddings.npy": "5ff75f8487d1683c6d84a065509b426964ac13ec36ae28f9601a81479e2c9a58",
+  "work/instance394-preflight/formal-retrieval-embeddinggemma2-backup/results/formal-retrieval-embeddinggemma2/query_embeddings.npy": "9e0eae2c7b894606b48db0a3a534d5ed0c8454a025544b06e054b8c91f855918",
+  "work/next-experiment-20261019/partial-fetch-20261020/extracted/plan.json": "14998fc8e15972ad1507964863fe963d5a6a4aea0f482d3e98027c769c7f5d0f",
+  "work/next-experiment-20261019/partial-fetch-20261020/extracted/results/requests.jsonl": "b08d0b4182bcffe115ec7d3831584fcdab5e63abb611dc99c3ee9ffd36766559",
+  "work/next-experiment-20261019/prepared/no-self-smoke_20-ranks.jsonl": "c4509bc0f28b96ae6de9744793027dac10993a3977e1f1093e166b0a6626db90",
+  "work/instance394-preflight/formal-frozen-test-backup/outputs/EdgeCoRAG-delivery-20261017/a-side/scripts/independent_retrieval.py": "70aa9a910463f9c12352e371f2d999f967b6bbe884f6d8475f5d78234831c2ed"
+}

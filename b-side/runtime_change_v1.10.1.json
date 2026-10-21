@@ -1,0 +1,15 @@
+{
+  "version": "runtime_v1.10.1",
+  "parent_source_commit": "6c529479b94362c19094088524f8702ca2a9a0de",
+  "parent_manifest_sha256": "75c912472ea678b1892eec96b1ef0c80fa098b49924425eb2770e6b7fc63e5bd",
+  "user_authorization": "2026-10-17: preserve strict scoring; count normal format failures incorrect; technical failures alone gate advancement",
+  "execution_failure_policy": "technical_only_format_wrong_v1",
+  "scientific_parameters_changed": false,
+  "original_binding_matrix_sha256": "630eee8d4032fa0aede73eef89612801ff521785e045bdfc0f14ffaea094c555",
+  "environment_additions": {
+    "protobuf": "6.33.0",
+    "merges.txt_sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+  },
+  "runtime_results_must_use_new_root": true,
+  "formal_launch_authorized_by_this_patch": false
+}

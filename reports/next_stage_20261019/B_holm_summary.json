@@ -1,0 +1,96 @@
+{
+  "status": "recomputed_public_only",
+  "description": "描述性、未预注册",
+  "public_rows": 18045,
+  "queries": 1033,
+  "components": 564,
+  "resamples": 10000,
+  "seed": 42,
+  "paired_comparisons": 20,
+  "family_size": 20,
+  "selected_on_dev": {
+    "qwen3vl_4b": "utility",
+    "qwen3vl_8b": "cosine",
+    "gemma4_e2b": "utility",
+    "gemma4_e4b": "random",
+    "qwen35_4b": "cosine"
+  },
+  "parse_status_counts": {
+    "ok": 17966,
+    "parse_failure": 79
+  },
+  "generation_error_present": 0,
+  "true_correct_overridden_by_failure": 0,
+  "estimand": "ratio of resampled cluster difference sums to resampled question counts; percentage points",
+  "holm_p": "step-down centered-bootstrap p values",
+  "holm_intervals": "conservative full-family joint-acceptance rectangle projections = Bonferroni basic intervals; descriptive approximation",
+  "holm_nonzero": [
+    {
+      "kind": "model_P3_dev_selected",
+      "left_model": "qwen3vl_4b",
+      "right_model": "gemma4_e2b",
+      "left_strategy": "utility",
+      "right_strategy": "utility",
+      "delta_pp": -21.97483059051307,
+      "ci_low_pp": -25.928963324571416,
+      "ci_high_pp": -17.910057220630097,
+      "holm_ci_low_pp": -27.736190111172093,
+      "holm_ci_high_pp": -16.003906248618392
+    },
+    {
+      "kind": "model_P3_dev_selected",
+      "left_model": "qwen3vl_8b",
+      "right_model": "gemma4_e2b",
+      "left_strategy": "cosine",
+      "right_strategy": "utility",
+      "delta_pp": -22.362052274927397,
+      "ci_low_pp": -26.498558725310616,
+      "ci_high_pp": -18.063815463249806,
+      "holm_ci_low_pp": -28.623723142514798,
+      "holm_ci_high_pp": -15.883784276850452
+    },
+    {
+      "kind": "model_P3_dev_selected",
+      "left_model": "qwen3vl_4b",
+      "right_model": "gemma4_e4b",
+      "left_strategy": "utility",
+      "right_strategy": "random",
+      "delta_pp": -16.263310745401743,
+      "ci_low_pp": -20.32914068513721,
+      "ci_high_pp": -12.167727165016686,
+      "holm_ci_low_pp": -22.590574644579,
+      "holm_ci_high_pp": -9.929186605527736
+    },
+    {
+      "kind": "model_P3_dev_selected",
+      "left_model": "qwen3vl_8b",
+      "right_model": "gemma4_e4b",
+      "left_strategy": "cosine",
+      "right_strategy": "random",
+      "delta_pp": -16.65053242981607,
+      "ci_low_pp": -20.823398620355995,
+      "ci_high_pp": -12.471394736397997,
+      "holm_ci_low_pp": -23.217474883786814,
+      "holm_ci_high_pp": -10.264081011387205
+    },
+    {
+      "kind": "model_P3_dev_selected",
+      "left_model": "gemma4_e2b",
+      "right_model": "gemma4_e4b",
+      "left_strategy": "utility",
+      "right_strategy": "random",
+      "delta_pp": 5.711519845111327,
+      "ci_low_pp": 2.0507470272705817,
+      "ci_high_pp": 9.26922803102983,
+      "holm_ci_low_pp": 0.08625647343932386,
+      "holm_ci_high_pp": 11.123463938297222
+    }
+  ],
+  "strategy_holm_nonzero": 0,
+  "cross_zero_wording": "不能排除无差异",
+  "source_sha256": {
+    "logs/results_20261020/no_self_scored_outcomes.jsonl.gz": "2c275a1d3cc3222022c0610686f860b19d857511abcfec9fadce4a02033e6063",
+    "logs/results_20261020/frozen1033_image_groups_and_transitions.csv": "b542b72a0a474aad14258ddd7a27ef9205b1cbb3761c2fb41af3b3abcdf42547"
+  },
+  "cross_model_limit": "P3 may select different strategies; not guaranteed shared selected evidence. Not a replacement or causal test."
+}

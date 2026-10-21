@@ -1,0 +1,283 @@
+{
+  "status": "passed",
+  "scope": "status-only grouping; evidence identity and registered G2 commands verified; no model generation or score reparsing",
+  "requirements": 37,
+  "reproduction_commands": [
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R01"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_quality_closure.py",
+        "--work-dir",
+        "{work_dir}",
+        "--artifact-dir",
+        "reports/next_stage_20261019/quality_closure_20261021"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R04"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R09"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R10"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R11"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R12"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R14"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R15"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R16"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R19"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/b_offline_closure.py",
+        "--verify"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R23"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R25"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R26"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R27"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R28"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R29"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_official_schema.py",
+        "--official-source",
+        "{official_source}",
+        "--metadata-dir",
+        "{metadata_dir}",
+        "--export-dir",
+        "{export_dir}"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R31"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R32"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R34"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R35"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R36"
+      ]
+    },
+    {
+      "returncode": 0,
+      "command": [
+        "analysis/next_stage_20261019/verify_requirement_evidence.py",
+        "--id",
+        "R37"
+      ]
+    }
+  ],
+  "completion": {
+    "完成": {
+      "count": 26,
+      "ids": [
+        "R01",
+        "R03",
+        "R04",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R19",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R26",
+        "R27",
+        "R28",
+        "R29",
+        "R30",
+        "R31",
+        "R32",
+        "R34",
+        "R35",
+        "R36",
+        "R37"
+      ]
+    },
+    "部分": {
+      "count": 5,
+      "ids": [
+        "R05",
+        "R06",
+        "R13",
+        "R20",
+        "R21"
+      ]
+    },
+    "待补": {
+      "count": 3,
+      "ids": [
+        "R07",
+        "R17",
+        "R33"
+      ]
+    },
+    "后置": {
+      "count": 3,
+      "ids": [
+        "R02",
+        "R08",
+        "R18"
+      ]
+    }
+  },
+  "counts": {
+    "完成": 26,
+    "部分": 5,
+    "待补": 3,
+    "后置": 3
+  },
+  "errors": [],
+  "warnings": [],
+  "input_sha256": {
+    "Requirements.md": "63b41fcc46347efaff07334b73934c8145864ff6da44d5268f0ef597b2c2b3b0",
+    "requirements_matrix.csv": "54868567f2e240f08d4e74b73a0ea82cefafac551b8682e50b943352bff862e4"
+  }
+}

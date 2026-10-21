@@ -1,0 +1,19 @@
+{
+  "index_load_seconds": 0.006835871376097202,
+  "storage": "resident CPU NumPy matrix; no GPU index copy",
+  "rss_delta_bytes": 14385152,
+  "vram_delta_bytes": 0,
+  "rss_before_bytes": 48189440,
+  "rss_after_bytes": 62574592,
+  "device_before": {
+    "epoch": 1792541352.661724,
+    "device_used_bytes": 1048576,
+    "power_W": "135.90"
+  },
+  "device_after": {
+    "epoch": 1792541352.7301598,
+    "device_used_bytes": 1048576,
+    "power_W": "135.90"
+  },
+  "offline_encode_timing_source": "../encode_timing.json; excluded from online latency"
+}

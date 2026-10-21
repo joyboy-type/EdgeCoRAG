@@ -1,0 +1,14 @@
+{
+  "status": "failed",
+  "errors": [
+    {
+      "path": "$.identity.rule",
+      "reason": "type ['string']"
+    },
+    {
+      "path": "$.dedup.by_identity",
+      "reason": "type ['boolean']"
+    }
+  ],
+  "scope": "used contract keywords only; no third-party jsonschema installed"
+}

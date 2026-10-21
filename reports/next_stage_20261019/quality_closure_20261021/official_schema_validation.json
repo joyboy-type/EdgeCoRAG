@@ -1,0 +1,23 @@
+{
+  "status": "verified_official_projection_only",
+  "files": 75,
+  "full_export_rows": 20295,
+  "source_prediction_sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+  "export_receipt_sha256": "d2b2c762a048208940485f02fe24f888f7f3d756a9602e490e91fd2d261baaf6",
+  "failure_counts": {
+    "ok": 20178,
+    "parse_failure": 117
+  },
+  "old_outputs_reparsed": false,
+  "official_scorer_run": false,
+  "official_schema_check": "pinned AST read-only field inspection",
+  "official_source_sha256": "06cf633e01af2504e791926eb86ddf6ff10c7050279ad184ed7c9889e96eb905",
+  "official_source_url": "https://raw.githubusercontent.com/mragbench/MRAG-Bench/4ae2241fdc5a9505f63dbae230e50a3097296af0/eval/score.py",
+  "required_fields": [
+    "gt_choice",
+    "output",
+    "prompt",
+    "scenario"
+  ],
+  "official_scorer_executed": false
+}

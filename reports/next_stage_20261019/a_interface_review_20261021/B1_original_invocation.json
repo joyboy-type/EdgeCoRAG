@@ -1,0 +1,7 @@
+{
+  "returncode": 1,
+  "script_sha256": "8696d4b52652222816f74468400bfd49d05f5fd25ae228618d41bc02ab21f71a",
+  "IFACE_environment_points_to": "byte-identical B-owned copy; A source and files untouched",
+  "original_stdout_sha256": "61ef401c2aabc49dd76651d7132d8a427d92e77331e349867c8e0c0d0d56a8f7",
+  "published_stdout_redaction": "PROJECT path only"
+}

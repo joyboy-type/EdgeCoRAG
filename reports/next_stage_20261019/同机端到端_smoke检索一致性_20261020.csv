@@ -1,0 +1,6 @@
+qid,live_pool_stable,exact_top10_order_matches_history,top10_membership_matches_history,cosine_top3_matches_history
+mragb:10,True,True,True,True
+mragb:1049,True,False,True,True
+mragb:1051,True,False,True,True
+mragb:1062,True,False,True,True
+mragb:1117,True,True,True,True

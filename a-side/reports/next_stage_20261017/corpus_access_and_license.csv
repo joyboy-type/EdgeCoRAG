@@ -1,0 +1,6 @@
+﻿artifact,official_url,publisher,revision,declared_size,access_status,license_status,license_source,checked_at,allowed_use_or_unknown,blocker
+MRAG-Bench 数据集（HF 内联候选，含查询图/GT/已发布候选）,https://huggingface.co/datasets/uclanlp/MRAG-Bench,uclanlp（UCLA NLP；Wenbo Hu 等）,43620fde4044bb150e158c67ad7af6b6b11e1da2,"本地 parquet 实测约 4.0 GiB；HF usedStorage 声明 8,576,331,248 B（口径不同）",accessible（已下载并锁定 revision）,cc-by-4.0,HF cardData.license=cc-by-4.0,2026-10-17,可研究使用，需署名，允许共享与改编（CC-BY-4.0）；但该许可仅覆盖数据集本体,无（数据集本体）；其许可不覆盖独立语料包与上游图片
+MRAG-Bench 独立检索语料包（image corpus，单独发布）,https://drive.google.com/file/d/1atwkNXH3aEtCLuqimZoB1Mifj5CwL3CL/view,MRAG-Bench 团队（官方 README 2024-11-05 发布）,未声明,未声明（未取得文件，不写实测规模）,network_unreachable（本机 drive.google.com 超时；不代表资源不存在）,未声明（README 无许可说明）,无,2026-10-17,unknown,① 本机网络不可达 Google 系域名；② 许可未声明（数据集 CC-BY-4.0 不覆盖该压缩包）
+MRAG-Bench 评测代码仓库,https://github.com/mragbench/MRAG-Bench,mragbench,（历史本地核验 4ae2241fdc5a；默认分支 main）,约 13 KB（仓库不含图片）,accessible（已克隆）,未识别（GitHub API license=null）,GitHub API license 字段,2026-10-17,unknown,代码许可未声明（license=null）
+上游图片来源（数据集 source 字段）,（无单一入口）,Imagenet / Stanford Cars / Flowers102 / Web 等,未逐项核验,未逐项核验,n/a,未逐项核验,无,2026-10-17,unknown,各上游数据集各自许可，需逐项核对后再判断再分发
+官方候选产生所用检索模型/配置,（官方文档未说明）,未说明,未说明,未说明,n/a,未说明,无,2026-10-17,unknown,官方未公开候选池由哪个检索器/语料/query 产生（见 official_pool_provenance.md）

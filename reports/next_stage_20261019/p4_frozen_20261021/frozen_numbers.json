@@ -1,0 +1,1943 @@
+{
+  "schema": "paper_frozen_numbers/v1",
+  "base_commit": "11bbded81187c149a5cec6ef75583f1b4346d267",
+  "status": "offline_frozen_with_scope_caveats",
+  "entry_count": 172,
+  "source_catalog": {
+    "logs/B_predictions.jsonl.gz": {
+      "kind": "repository_file",
+      "path": "logs/B_predictions.jsonl.gz",
+      "sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38"
+    },
+    "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv": {
+      "kind": "repository_file",
+      "path": "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv",
+      "sha256": "23af97c5f97147498d10b1e7a144c19826eb5c4166e180f520a7ce72c65a9cf3"
+    },
+    "reports/next_stage_20261019/gate_a1_20261021/numbers.json": {
+      "kind": "repository_file",
+      "path": "reports/next_stage_20261019/gate_a1_20261021/numbers.json",
+      "sha256": "0b1fd98dd838356e35580083b28f4bcfb022ed5e1dcd06fdc12710b746bc747a"
+    },
+    "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv": {
+      "kind": "repository_file",
+      "path": "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv",
+      "sha256": "7d51cf8e6b18e038cf7eeac0a88bf1cd8114a56af0fe529e8b687079fcdd4208"
+    },
+    "session/encoded/pool.csv": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/encoded/pool.csv",
+      "member_sha256": "12f1e2fee88b142868282cc9a9d8217b2615c6ce16d22f4cad155e758eca025d",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "readonly_A/corpus_manifest.csv": {
+      "kind": "read_only_A_dependency",
+      "path": "work/a-iface-20261021/EdgeCoRAG/a-side/retrieval_if_v1/corpus/corpus_manifest.csv",
+      "sha256": "224f7c5f5e02d8fafb7cd15da5e7129ab2f480342732b8a0113bd23a076ed99a",
+      "read_status": "本轮只读本机A语料清单，不读图像"
+    },
+    "readonly_A/occurrences.csv": {
+      "kind": "read_only_A_dependency",
+      "path": "work/a-iface-20261021/EdgeCoRAG/a-side/retrieval_if_v1/corpus/occurrences.csv",
+      "sha256": "bc4db0d87eda96541887909b6283cb759d2bd02629046a4a92b30fe5a110f689",
+      "read_status": "本轮只读本机A语料清单，不读图像"
+    },
+    "session/receipt_a18_B_cross_stack.json": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/receipt_a18_B_cross_stack.json",
+      "member_sha256": "b4eeabba661010847ac0f65810acf54f1fc1ed0282d30aa478b5e6ce36a14f6a",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "session/E3/requests.jsonl": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/E3/requests.jsonl",
+      "member_sha256": "81a4d644922d96040b62de5f8944d3f2ae3577885f591e0b0c956a456bf77b28",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "session/E3/switches.json": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/E3/switches.json",
+      "member_sha256": "c6a2cfba20fbd40812e29e9f30dea533d8cfdc347d8e133742f3b3b47f02a60c",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "session/encode_timing.json": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/encode_timing.json",
+      "member_sha256": "f396d4a0afbdebc21e13bce62e2d524b5998100fcfe76e770d0fb3c961d3fdba",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "session/E3/index_residency.json": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/E3/index_residency.json",
+      "member_sha256": "33864e74d475e59b7c147fee37f8edf0739d7e5343eb850bbffcadec6a69e087",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "session/utility/receipt.json": {
+      "kind": "local_session_archive_member",
+      "tar_sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710",
+      "member": "session/utility/receipt.json",
+      "member_sha256": "f9a2dc62ae60df597d65dc95077ac0a3bf2f8003f004ea51fc184b77d5818412",
+      "read_status": "来自归档读数；本轮离线重算统计，未二次执行GPU实验"
+    },
+    "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv": {
+      "kind": "repository_file",
+      "path": "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv",
+      "sha256": "22f73f3ba7d2d4090856ae6753183409f66cc8bfa2b0038cc538e910329f9e37"
+    }
+  },
+  "numbers": [
+    {
+      "id": "T1.qwen3vl_4b.S0.correct",
+      "value": 621,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen3vl_4b AND condition=S0; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S0.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen3vl_4b, condition=S0, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S0.accuracy_pct",
+      "value": 60.1161665053243,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen3vl_4b.S0.correct and .n"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S1.correct",
+      "value": 595,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen3vl_4b AND condition=S1; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S1.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen3vl_4b, condition=S1, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S1.accuracy_pct",
+      "value": 57.59922555663117,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen3vl_4b.S1.correct and .n"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S2.correct",
+      "value": 717,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen3vl_4b AND condition=S2; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S2.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen3vl_4b, condition=S2, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen3vl_4b.S2.accuracy_pct",
+      "value": 69.40948693126815,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen3vl_4b.S2.correct and .n"
+    },
+    {
+      "id": "T2.qwen3vl_4b.S1_minus_S0_pp",
+      "value": -2.5169409486931267,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S1 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T2.qwen3vl_4b.S2_minus_S0_pp",
+      "value": 9.293320425943852,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S2 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S0.correct",
+      "value": 583,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen3vl_8b AND condition=S0; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S0.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen3vl_8b, condition=S0, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S0.accuracy_pct",
+      "value": 56.43756050338819,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen3vl_8b.S0.correct and .n"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S1.correct",
+      "value": 580,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen3vl_8b AND condition=S1; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S1.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen3vl_8b, condition=S1, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S1.accuracy_pct",
+      "value": 56.147144240077445,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen3vl_8b.S1.correct and .n"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S2.correct",
+      "value": 690,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen3vl_8b AND condition=S2; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S2.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen3vl_8b, condition=S2, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen3vl_8b.S2.accuracy_pct",
+      "value": 66.79574056147145,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen3vl_8b.S2.correct and .n"
+    },
+    {
+      "id": "T2.qwen3vl_8b.S1_minus_S0_pp",
+      "value": -0.2904162633107454,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S1 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T2.qwen3vl_8b.S2_minus_S0_pp",
+      "value": 10.358180058083253,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S2 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T1.gemma4_e2b.S0.correct",
+      "value": 375,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=gemma4_e2b AND condition=S0; failures retained as incorrect"
+    },
+    {
+      "id": "T1.gemma4_e2b.S0.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=gemma4_e2b, condition=S0, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.gemma4_e2b.S0.accuracy_pct",
+      "value": 36.30203291384318,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.gemma4_e2b.S0.correct and .n"
+    },
+    {
+      "id": "T1.gemma4_e2b.S1.correct",
+      "value": 366,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=gemma4_e2b AND condition=S1; failures retained as incorrect"
+    },
+    {
+      "id": "T1.gemma4_e2b.S1.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=gemma4_e2b, condition=S1, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.gemma4_e2b.S1.accuracy_pct",
+      "value": 35.43078412391094,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.gemma4_e2b.S1.correct and .n"
+    },
+    {
+      "id": "T1.gemma4_e2b.S2.correct",
+      "value": 441,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=gemma4_e2b AND condition=S2; failures retained as incorrect"
+    },
+    {
+      "id": "T1.gemma4_e2b.S2.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=gemma4_e2b, condition=S2, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.gemma4_e2b.S2.accuracy_pct",
+      "value": 42.69119070667957,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.gemma4_e2b.S2.correct and .n"
+    },
+    {
+      "id": "T2.gemma4_e2b.S1_minus_S0_pp",
+      "value": -0.8712487899322362,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S1 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T2.gemma4_e2b.S2_minus_S0_pp",
+      "value": 6.389157792836399,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S2 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T1.gemma4_e4b.S0.correct",
+      "value": 397,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=gemma4_e4b AND condition=S0; failures retained as incorrect"
+    },
+    {
+      "id": "T1.gemma4_e4b.S0.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=gemma4_e4b, condition=S0, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.gemma4_e4b.S0.accuracy_pct",
+      "value": 38.431752178121975,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.gemma4_e4b.S0.correct and .n"
+    },
+    {
+      "id": "T1.gemma4_e4b.S1.correct",
+      "value": 427,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=gemma4_e4b AND condition=S1; failures retained as incorrect"
+    },
+    {
+      "id": "T1.gemma4_e4b.S1.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=gemma4_e4b, condition=S1, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.gemma4_e4b.S1.accuracy_pct",
+      "value": 41.33591481122943,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.gemma4_e4b.S1.correct and .n"
+    },
+    {
+      "id": "T1.gemma4_e4b.S2.correct",
+      "value": 493,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=gemma4_e4b AND condition=S2; failures retained as incorrect"
+    },
+    {
+      "id": "T1.gemma4_e4b.S2.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=gemma4_e4b, condition=S2, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.gemma4_e4b.S2.accuracy_pct",
+      "value": 47.72507260406583,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.gemma4_e4b.S2.correct and .n"
+    },
+    {
+      "id": "T2.gemma4_e4b.S1_minus_S0_pp",
+      "value": 2.904162633107454,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S1 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T2.gemma4_e4b.S2_minus_S0_pp",
+      "value": 9.293320425943852,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S2 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T1.qwen35_4b.S0.correct",
+      "value": 553,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen35_4b AND condition=S0; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen35_4b.S0.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen35_4b, condition=S0, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen35_4b.S0.accuracy_pct",
+      "value": 53.53339787028074,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen35_4b.S0.correct and .n"
+    },
+    {
+      "id": "T1.qwen35_4b.S1.correct",
+      "value": 563,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen35_4b AND condition=S1; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen35_4b.S1.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen35_4b, condition=S1, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen35_4b.S1.accuracy_pct",
+      "value": 54.50145208131655,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen35_4b.S1.correct and .n"
+    },
+    {
+      "id": "T1.qwen35_4b.S2.correct",
+      "value": 601,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "stage=quality AND split=frozen_test AND model_key=qwen35_4b AND condition=S2; failures retained as incorrect"
+    },
+    {
+      "id": "T1.qwen35_4b.S2.n",
+      "value": 1033,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "model_key=qwen35_4b, condition=S2, stage=quality, split=frozen_test"
+    },
+    {
+      "id": "T1.qwen35_4b.S2.accuracy_pct",
+      "value": 58.18005808325266,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "100*correct/n using T1.qwen35_4b.S2.correct and .n"
+    },
+    {
+      "id": "T2.qwen35_4b.S1_minus_S0_pp",
+      "value": 0.968054211035818,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S1 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T2.qwen35_4b.S2_minus_S0_pp",
+      "value": 4.646660212971926,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "logs/B_predictions.jsonl.gz"
+      ],
+      "selection": "paired identical 1033 qids; S2 accuracy minus S0; no new scoring"
+    },
+    {
+      "id": "T3.qwen3vl_4b.未命中但答对",
+      "value": 259,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b, column=未命中但答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_4b.未命中且答错",
+      "value": 258,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b, column=未命中且答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_4b.命中但答错",
+      "value": 180,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b, column=命中但答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_4b.命中且答对",
+      "value": 336,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b, column=命中且答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_4b.命中数",
+      "value": 516,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b, column=命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_4b.未命中数",
+      "value": 517,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b, column=未命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "harm.qwen3vl_4b.count",
+      "value": 105,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b; S0 correct AND S1 incorrect; overlaps 2x2, never sum"
+    },
+    {
+      "id": "harm.qwen3vl_4b.pct",
+      "value": 10.164569215876089,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_4b; 100*harm/1033"
+    },
+    {
+      "id": "T3.qwen3vl_8b.未命中但答对",
+      "value": 237,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b, column=未命中但答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_8b.未命中且答错",
+      "value": 280,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b, column=未命中且答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_8b.命中但答错",
+      "value": 173,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b, column=命中但答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_8b.命中且答对",
+      "value": 343,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b, column=命中且答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_8b.命中数",
+      "value": 516,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b, column=命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen3vl_8b.未命中数",
+      "value": 517,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b, column=未命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "harm.qwen3vl_8b.count",
+      "value": 79,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b; S0 correct AND S1 incorrect; overlaps 2x2, never sum"
+    },
+    {
+      "id": "harm.qwen3vl_8b.pct",
+      "value": 7.647628267182962,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen3vl_8b; 100*harm/1033"
+    },
+    {
+      "id": "T3.gemma4_e2b.未命中但答对",
+      "value": 147,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b, column=未命中但答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e2b.未命中且答错",
+      "value": 370,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b, column=未命中且答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e2b.命中但答错",
+      "value": 297,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b, column=命中但答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e2b.命中且答对",
+      "value": 219,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b, column=命中且答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e2b.命中数",
+      "value": 516,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b, column=命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e2b.未命中数",
+      "value": 517,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b, column=未命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "harm.gemma4_e2b.count",
+      "value": 112,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b; S0 correct AND S1 incorrect; overlaps 2x2, never sum"
+    },
+    {
+      "id": "harm.gemma4_e2b.pct",
+      "value": 10.842207163601161,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e2b; 100*harm/1033"
+    },
+    {
+      "id": "T3.gemma4_e4b.未命中但答对",
+      "value": 191,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b, column=未命中但答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e4b.未命中且答错",
+      "value": 326,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b, column=未命中且答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e4b.命中但答错",
+      "value": 280,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b, column=命中但答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e4b.命中且答对",
+      "value": 236,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b, column=命中且答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e4b.命中数",
+      "value": 516,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b, column=命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.gemma4_e4b.未命中数",
+      "value": 517,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b, column=未命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "harm.gemma4_e4b.count",
+      "value": 86,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b; S0 correct AND S1 incorrect; overlaps 2x2, never sum"
+    },
+    {
+      "id": "harm.gemma4_e4b.pct",
+      "value": 8.325266214908035,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=gemma4_e4b; 100*harm/1033"
+    },
+    {
+      "id": "T3.qwen35_4b.未命中但答对",
+      "value": 239,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b, column=未命中但答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen35_4b.未命中且答错",
+      "value": 278,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b, column=未命中且答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen35_4b.命中但答错",
+      "value": 192,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b, column=命中但答错; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen35_4b.命中且答对",
+      "value": 324,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b, column=命中且答对; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen35_4b.命中数",
+      "value": 516,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b, column=命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "T3.qwen35_4b.未命中数",
+      "value": 517,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b, column=未命中数; shared top3 GT content match; S1 correct flag"
+    },
+    {
+      "id": "harm.qwen35_4b.count",
+      "value": 100,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b; S0 correct AND S1 incorrect; overlaps 2x2, never sum"
+    },
+    {
+      "id": "harm.qwen35_4b.pct",
+      "value": 9.68054211035818,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "model=qwen35_4b; 100*harm/1033"
+    },
+    {
+      "id": "retrieval.top3_hit",
+      "value": 516,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "shared retrieval; 命中数=516 for all five models"
+    },
+    {
+      "id": "retrieval.top3_miss",
+      "value": 517,
+      "unit": "questions",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "shared retrieval; 未命中数=517 for all five models",
+      "note": "用户称检索天花板517/1033；该数实际为未命中数，不能称命中率或可达准确率上限"
+    },
+    {
+      "id": "retrieval.top3_miss_fraction",
+      "value": 0.5004840271055179,
+      "unit": "fraction",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/error_partition_20261021/main_2x2/main_table.csv"
+      ],
+      "selection": "517/1033; top3 miss fraction, not general accuracy ceiling"
+    },
+    {
+      "id": "gate.qwen3vl_4b.delta_pp",
+      "value": 8.518877057115198,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_4b].delta_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_4b.ci_low_pp",
+      "value": 6.805085757567772,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_4b].ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_4b.ci_high_pp",
+      "value": 10.184278246863862,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_4b].ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_4b.holm_ci_low_pp",
+      "value": 5.8255838192233025,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_4b].holm_ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_4b.holm_ci_high_pp",
+      "value": 11.078263297011466,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_4b].holm_ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_8b.delta_pp",
+      "value": 6.873184898354308,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_8b].delta_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_8b.ci_low_pp",
+      "value": 5.281802867574758,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_8b].ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_8b.ci_high_pp",
+      "value": 8.377361156108662,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_8b].ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_8b.holm_ci_low_pp",
+      "value": 4.2602037888034765,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_8b].holm_ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen3vl_8b.holm_ci_high_pp",
+      "value": 9.336343563147373,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen3vl_8b].holm_ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e2b.delta_pp",
+      "value": 10.551790900290415,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e2b].delta_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e2b.ci_low_pp",
+      "value": 8.640666508635215,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e2b].ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e2b.ci_high_pp",
+      "value": 12.474140176215348,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e2b].ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e2b.holm_ci_low_pp",
+      "value": 7.5031864700348265,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e2b].holm_ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e2b.holm_ci_high_pp",
+      "value": 13.615776039978716,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e2b].holm_ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e4b.delta_pp",
+      "value": 9.293320425943854,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e4b].delta_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e4b.ci_low_pp",
+      "value": 6.905485775948463,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e4b].ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e4b.ci_high_pp",
+      "value": 11.509717774964631,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e4b].ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e4b.holm_ci_low_pp",
+      "value": 5.453355178664106,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e4b].holm_ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.gemma4_e4b.holm_ci_high_pp",
+      "value": 12.521918370159094,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=gemma4_e4b].holm_ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen35_4b.delta_pp",
+      "value": 8.518877057115198,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen35_4b].delta_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen35_4b.ci_low_pp",
+      "value": 6.766421647427894,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen35_4b].ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen35_4b.ci_high_pp",
+      "value": 10.249519008138002,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen35_4b].ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen35_4b.holm_ci_low_pp",
+      "value": 5.450529964262486,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen35_4b].holm_ci_low_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.qwen35_4b.holm_ci_high_pp",
+      "value": 11.178836989688271,
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "oracle_minus_dev_selected_fixed[model=qwen35_4b].holm_ci_high_pp; P4 post hoc 3 no-self strategies vs dev150-selected P3; frozen only evaluated",
+      "interval_note": "描述性、未预注册；配对单位qid，整组重采样564个query/GT图像关联分量，按题加权；basic区间，Holm兼容联合矩形=Bonferroni；非独立题bootstrap。"
+    },
+    {
+      "id": "gate.all_five_range_pp",
+      "value": [
+        6.873184898354308,
+        10.551790900290415
+      ],
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "min/max oracle_minus_dev_selected_fixed over ALL five models",
+      "note": "6.873..10.552pp; 8.5–10.6 excludes qwen3vl_8b"
+    },
+    {
+      "id": "gate.four_non8b_range_pp",
+      "value": [
+        8.518877057115198,
+        10.551790900290415
+      ],
+      "unit": "percentage_points",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "exclude qwen3vl_8b explicitly; requested rounded 8.5–10.6pp"
+    },
+    {
+      "id": "gate.qwen3vl_4b.rescue_union_pct",
+      "value": 23.23330106485963,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "complementarity[model=qwen3vl_4b,metric=rescue_union]; a=!S0&S1,b=!S1&S2, union a|b; 23.2% is qwen3vl_4b only"
+    },
+    {
+      "id": "gate.qwen3vl_8b.rescue_union_pct",
+      "value": 21.200387221684412,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "complementarity[model=qwen3vl_8b,metric=rescue_union]; a=!S0&S1,b=!S1&S2, union a|b; 23.2% is qwen3vl_4b only"
+    },
+    {
+      "id": "gate.gemma4_e2b.rescue_union_pct",
+      "value": 23.62052274927396,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "complementarity[model=gemma4_e2b,metric=rescue_union]; a=!S0&S1,b=!S1&S2, union a|b; 23.2% is qwen3vl_4b only"
+    },
+    {
+      "id": "gate.gemma4_e4b.rescue_union_pct",
+      "value": 23.62052274927396,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "complementarity[model=gemma4_e4b,metric=rescue_union]; a=!S0&S1,b=!S1&S2, union a|b; 23.2% is qwen3vl_4b only"
+    },
+    {
+      "id": "gate.qwen35_4b.rescue_union_pct",
+      "value": 22.65246853823814,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "complementarity[model=qwen35_4b,metric=rescue_union]; a=!S0&S1,b=!S1&S2, union a|b; 23.2% is qwen3vl_4b only"
+    },
+    {
+      "id": "gate.cost_assumption.routing_seconds",
+      "value": 30.99,
+      "unit": "seconds",
+      "status": "假设",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "cost_scenarios[assumed_skip_fraction=0.25].routing_seconds; 1033 queries, assumed generation3s, IO proxy routing0.03s",
+      "note": "非实测路由器；E3短生成pilot不替代路由成本评估"
+    },
+    {
+      "id": "gate.cost_assumption.net_saved_seconds",
+      "value": 743.76,
+      "unit": "seconds",
+      "status": "假设",
+      "source_ids": [
+        "reports/next_stage_20261019/gate_a1_20261021/numbers.json"
+      ],
+      "selection": "cost_scenarios[assumed_skip_fraction=0.25].net_saved_seconds; 1033 queries, assumed generation3s, IO proxy routing0.03s",
+      "note": "非实测路由器；E3短生成pilot不替代路由成本评估"
+    },
+    {
+      "id": "index.history_published_rows",
+      "value": 18955,
+      "unit": "images",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv"
+      ],
+      "selection": "len(keys); historical published index rows, not instance count"
+    },
+    {
+      "id": "index.live_corpus_unique",
+      "value": 4712,
+      "unit": "images",
+      "status": "归档读数",
+      "source_ids": [
+        "session/encoded/pool.csv"
+      ],
+      "selection": "unique q95 SHA in live pool"
+    },
+    {
+      "id": "index.intersection_q95",
+      "value": 4282,
+      "unit": "images",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv",
+        "session/encoded/pool.csv"
+      ],
+      "selection": "set(keys.sha256_q95) & set(live_pool.sha256)"
+    },
+    {
+      "id": "index.live_absent",
+      "value": 430,
+      "unit": "images",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv",
+        "session/encoded/pool.csv"
+      ],
+      "selection": "live_pool q95 set minus history q95 set"
+    },
+    {
+      "id": "index.absent_query_only",
+      "value": 415,
+      "unit": "images",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv",
+        "session/encoded/pool.csv",
+        "readonly_A/occurrences.csv"
+      ],
+      "selection": "missing unique SHA whose occurrence role set == {query}"
+    },
+    {
+      "id": "index.absent_GT",
+      "value": 15,
+      "unit": "images",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/pixel_identity_18955_keys_20261021/pixel_identity_18955_keys.csv",
+        "session/encoded/pool.csv",
+        "readonly_A/occurrences.csv"
+      ],
+      "selection": "missing unique SHA with gt occurrence:9 GT-only +6 GT/official_retrieved"
+    },
+    {
+      "id": "a18.corpus_rows",
+      "value": 4712,
+      "unit": "images",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "corpus.rows; limit_applied=null => no limit",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "a18.query_count",
+      "value": 1203,
+      "unit": "queries",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "queries.n",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "a18.changed_order",
+      "value": 0,
+      "unit": "queries",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "results.changed_order",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "a18.changed_set",
+      "value": 0,
+      "unit": "queries",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "results.changed_set",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "a18.changed_top3",
+      "value": 0,
+      "unit": "queries",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "results.changed_top3",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "a18.verdict",
+      "value": "stack_invariant",
+      "unit": "label",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "verdict",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "a18.batch_pair",
+      "value": [
+        16,
+        1
+      ],
+      "unit": "batch_size",
+      "status": "实测",
+      "source_ids": [
+        "session/receipt_a18_B_cross_stack.json"
+      ],
+      "selection": "params.batch_pair",
+      "provenance": "本轮读取归档的实测回执，未重跑"
+    },
+    {
+      "id": "cost.gemma4_e2b.generation_ms.P50",
+      "value": 195.9260159637779,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e2b AND warmup=false (n=20); generation_ms; P50 median",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e2b.generation_ms.P95",
+      "value": 211.37281088158488,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e2b AND warmup=false (n=20); generation_ms; P95 nearest-rank rank19",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e2b.e2e_ms.P50",
+      "value": 394.22665257006884,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e2b AND warmup=false (n=20); e2e_ms; P50 median",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e2b.e2e_ms.P95",
+      "value": 461.3552112132311,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e2b AND warmup=false (n=20); e2e_ms; P95 nearest-rank rank19",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e2b.device_peak_bytes",
+      "value": 13158580224,
+      "unit": "bytes",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e2b; max sampled device-wide peak across warmup AND hot requests",
+      "note": "nvidia-smi sampled maximum; allocator separate; possible sub-sampling spikes not captured"
+    },
+    {
+      "id": "cost.gemma4_e4b.generation_ms.P50",
+      "value": 273.3697146177292,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e4b AND warmup=false (n=20); generation_ms; P50 median",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e4b.generation_ms.P95",
+      "value": 281.1238500289619,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e4b AND warmup=false (n=20); generation_ms; P95 nearest-rank rank19",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e4b.e2e_ms.P50",
+      "value": 463.53015094064176,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e4b AND warmup=false (n=20); e2e_ms; P50 median",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e4b.e2e_ms.P95",
+      "value": 535.4145327582955,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e4b AND warmup=false (n=20); e2e_ms; P95 nearest-rank rank19",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.gemma4_e4b.device_peak_bytes",
+      "value": 18852347904,
+      "unit": "bytes",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=gemma4_e4b; max sampled device-wide peak across warmup AND hot requests",
+      "note": "nvidia-smi sampled maximum; allocator separate; possible sub-sampling spikes not captured"
+    },
+    {
+      "id": "cost.qwen3vl_4b.generation_ms.P50",
+      "value": 272.5803363136947,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=qwen3vl_4b AND warmup=false (n=20); generation_ms; P50 median",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.qwen3vl_4b.generation_ms.P95",
+      "value": 298.53673884645104,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=qwen3vl_4b AND warmup=false (n=20); generation_ms; P95 nearest-rank rank19",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.qwen3vl_4b.e2e_ms.P50",
+      "value": 530.5801858194172,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=qwen3vl_4b AND warmup=false (n=20); e2e_ms; P50 median",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.qwen3vl_4b.e2e_ms.P95",
+      "value": 653.9670499041677,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=qwen3vl_4b AND warmup=false (n=20); e2e_ms; P95 nearest-rank rank19",
+      "scope": "fixed cosine, smoke20,2 output tokens; not frozen full-answer performance"
+    },
+    {
+      "id": "cost.qwen3vl_4b.device_peak_bytes",
+      "value": 11975786496,
+      "unit": "bytes",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "model=qwen3vl_4b; max sampled device-wide peak across warmup AND hot requests",
+      "note": "nvidia-smi sampled maximum; allocator separate; possible sub-sampling spikes not captured"
+    },
+    {
+      "id": "cost.cold_first.encoder_ms",
+      "value": 493.8607579097152,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "row1 model=gemma4_e2b,qid=mragb:10,warmup=true,process_cold=true; encoder_ms",
+      "note": "494ms/179ms是首个冷请求，不是热请求中位数"
+    },
+    {
+      "id": "cost.cold_first.preprocess_ms",
+      "value": 179.19305572286248,
+      "unit": "milliseconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "row1 model=gemma4_e2b,qid=mragb:10,warmup=true,process_cold=true; preprocess_ms",
+      "note": "494ms/179ms是首个冷请求，不是热请求中位数"
+    },
+    {
+      "id": "cost.global_device_peak_GB",
+      "value": 18.852347904,
+      "unit": "GB_decimal",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/requests.jsonl"
+      ],
+      "selection": "max device_peak_bytes_sampled / 1e9 over69 rows; sampled, not allocator"
+    },
+    {
+      "id": "cost.switch_first_seconds",
+      "value": 8.374506260734051,
+      "unit": "seconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/switches.json"
+      ],
+      "selection": "[0] from coexist_gemma4_e4b to gemma4_e2b; load_switch_seconds",
+      "note": "8.37s是特定一次切换，非所有切换平均"
+    },
+    {
+      "id": "cost.index_encode_seconds",
+      "value": 588.1564689860679,
+      "unit": "seconds",
+      "status": "实测",
+      "source_ids": [
+        "session/encode_timing.json"
+      ],
+      "selection": "passes[0] rows=4712; wall_clock_seconds; excludes5 query encoding"
+    },
+    {
+      "id": "cost.index_load_seconds",
+      "value": 0.006835871376097202,
+      "unit": "seconds",
+      "status": "实测",
+      "source_ids": [
+        "session/E3/index_residency.json"
+      ],
+      "selection": "index_load_seconds; CPU NumPy load"
+    },
+    {
+      "id": "cost.index_build_encode_plus_load_seconds",
+      "value": 588.163304857444,
+      "unit": "seconds",
+      "status": "实测",
+      "source_ids": [
+        "session/encode_timing.json",
+        "session/E3/index_residency.json"
+      ],
+      "selection": "passes[0].wall_clock_seconds + index_load_seconds",
+      "derivation": "实测分项相加的计算值；按本轮定义的构建=编码+加载，不是连续单段计时，不含模型加载/ANN训练；本索引为精确CPU矩阵，不另有ANN构建",
+      "computed": true
+    },
+    {
+      "id": "utility.completed",
+      "value": 6000,
+      "unit": "scores",
+      "status": "实测",
+      "source_ids": [
+        "session/utility/receipt.json"
+      ],
+      "selection": "completed; expected6000; dev150 x4dims x10; raw True logits; no generation"
+    },
+    {
+      "id": "utility.expected",
+      "value": 6000,
+      "unit": "scores",
+      "status": "归档读数",
+      "source_ids": [
+        "session/utility/receipt.json"
+      ],
+      "selection": "expected; no dimension selection"
+    },
+    {
+      "id": "pareto.gemma4_e2b.quality_pct",
+      "value": 38.62536302032914,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv"
+      ],
+      "selection": "model=gemma4_e2b, path=P1, split=frozen_test, selected_strategy=cosine; n1033; historical18955 pool",
+      "note": "质量非E3本次评分；与E3 A4712池不匹配"
+    },
+    {
+      "id": "pareto.gemma4_e4b.quality_pct",
+      "value": 42.884801548886735,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv"
+      ],
+      "selection": "model=gemma4_e4b, path=P1, split=frozen_test, selected_strategy=cosine; n1033; historical18955 pool",
+      "note": "质量非E3本次评分；与E3 A4712池不匹配"
+    },
+    {
+      "id": "pareto.qwen3vl_4b.quality_pct",
+      "value": 59.825750242013555,
+      "unit": "percent",
+      "status": "归档读数",
+      "source_ids": [
+        "reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv"
+      ],
+      "selection": "model=qwen3vl_4b, path=P1, split=frozen_test, selected_strategy=cosine; n1033; historical18955 pool",
+      "note": "质量非E3本次评分；与E3 A4712池不匹配"
+    }
+  ],
+  "notes": [
+    "数字只在numbers按id定义；其他新产物用id引用。",
+    "实测指原GPU会话直接计时/观测，本轮从会话归档读取，不是本轮新GPU测量。归档读数包括历史实验输出及本轮离线派生计数，绝不表示重跑模型。",
+    "全五模型Gate范围6.87–10.55pp；8.5–10.6pp是排除8B后的四模型。23.2%是Qwen3VL4B的rescue_union。Oracle是no-self三策略post hoc上界，非S2 GT，非可部署收益。",
+    "517是miss，不可当命中率或模型可达收益上限；hit516。",
+    "成本encoder494ms/preprocess179ms来自同一个首冷warmup，不是热P50。18.85GB为十进制设备采样峰值，不是allocator。",
+    "索引构建本轮定义=语料编码+索引加载，是计算值，不是独立计时段。未重写历史回执。",
+    "历史18955与当前4712为不同池。Pareto为跨来源投影，质量与成本不匹配；不能作为已验证Pareto前沿。"
+  ],
+  "validation_this_run": {
+    "tests": {
+      "command": "python -m unittest discover -s tests",
+      "rc": 0,
+      "tests": 153,
+      "summary": "OK",
+      "output_sha256": "7ca8c885ad5158f724a9912db4dd92060f67507662012f19304ed0d3b46d4b40"
+    },
+    "analysis_tests": {
+      "command": "python -m unittest discover -s analysis/next_stage_20261019 -p test_*.py",
+      "rc": 0,
+      "tests": 54,
+      "summary": "OK",
+      "output_sha256": "606c940228084c16171de66712722bf8c6150398ae13419bd0d816a79d657db5"
+    },
+    "bare_requirement_audit": {
+      "command": "python analysis/next_stage_20261019/audit_requirement_evidence.py",
+      "rc": 1,
+      "errors": [
+        "R03: Explicit --work-dir is required",
+        "R24: Explicit --work-dir is required",
+        "R30: Explicit --official-source is required"
+      ],
+      "reason": "fail-closed:缺显式私有输入，本轮未运行四输入审计"
+    },
+    "a_side_diff": {
+      "base": "543de53",
+      "rc": 0,
+      "diff": "empty"
+    },
+    "changed_files_crlf": {
+      "files_with_crlf": 0,
+      "rc": 0
+    },
+    "publish_audit": {
+      "command": "python3 a-side/scripts/audit_before_push.py --worktree .",
+      "scope": "all tracked files",
+      "rc": 0,
+      "output_sha256": "bb7ef453f873d1d3a4e76f734ad19efa2774c64ec3ae3ab6e02f317a774f83a0"
+    },
+    "ablation_rc": 0,
+    "frozen_structural_check_rc": 0
+  }
+}

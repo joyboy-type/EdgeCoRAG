@@ -1,0 +1,11 @@
+﻿split,model_key,model,n,all_three_wrong,s1_wrong_s2_correct,s1_valid_wrong_s2_correct,s1_wrong_s2_correct_no_gt_hash_hit,s1_wrong_s2_correct_with_gt_hash_hit,s2_wrong,s0_right_s1_wrong
+frozen_test,gemma4_e2b,Gemma4 E2B,1033,469,141,141,83,58,592,112
+frozen_test,gemma4_e4b,Gemma4 E4B,1033,437,128,128,75,53,540,86
+frozen_test,qwen35_4b,Qwen3.5 4B,1033,286,124,117,87,37,432,100
+frozen_test,qwen3vl_4b,Qwen3-VL 4B,1033,238,161,161,114,47,316,105
+frozen_test,qwen3vl_8b,Qwen3-VL 8B,1033,277,143,140,99,44,343,79
+internal_holdout,gemma4_e2b,Gemma4 E2B,150,70,14,14,9,5,94,17
+internal_holdout,gemma4_e4b,Gemma4 E4B,150,69,22,22,12,10,79,10
+internal_holdout,qwen35_4b,Qwen3.5 4B,150,38,21,21,17,4,61,24
+internal_holdout,qwen3vl_4b,Qwen3-VL 4B,150,38,16,16,13,3,49,17
+internal_holdout,qwen3vl_8b,Qwen3-VL 8B,150,37,20,19,12,8,49,12

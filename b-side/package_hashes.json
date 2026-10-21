@@ -1,10 +1,10 @@
 {
-  "version": "B_code_v1.10.0",
+  "version": "B_code_v1.10.1",
   "algorithm": "sha256",
   "files": {
     ".gitattributes": "7c4d92b021357c33c308980936c75c389caf11a9f02bf5f6cc075d4968f62cfe",
     ".gitignore": "4ce1d15f733a15186f267eca8f9b8681766d58f92c6417756de7ebaeb791fc78",
-    "RUN.md": "dd7fbf898bd8eecba6baca0e17b8237e37e78746cdb0ee3f3b95409c17ab1e1b",
+    "RUN.md": "7034e7214bad6fddb574f42a442e3da1c641b11aa9948a87adc6d892f1e7b108",
     "accept_handover.py": "ca025038e97dfd9b0fc6daa355867b97a149122fd90a2e231734489af309bdfe",
     "analyze_batch.py": "a290a2342f99eb2ee054dbbf93cd81f8446f11e76f42fee850d26f3c8c0be1ea",
     "batch_inputs.py": "42872d8c77e6b2b37b75bd099de4b32bae2fa268b41c62f527f216db29793261",
@@ -103,9 +103,9 @@
     "reception/dev_20261016/source_receipts.json": "568855e25976dcb43247accb942b22b737de0b5d545cef9c978d07a72c47e2b2",
     "requirements-audit.txt": "219cd3432f1e7e458eaa6a73649084164e84a017dfa2a0a09b8dd74f1c788802",
     "requirements-gemma4.lock.txt": "05f8629b44bab6e968378247e924c18ee0fa2631bf42ee50165f48ebd0c33025",
-    "requirements-qwen.lock.txt": "9d7f8a51b18432f7e857fc4cbb0231fd6e7f261fa1c4aa3c35ddcc7eb72ab070",
+    "requirements-qwen.lock.txt": "f03ed04ecfd75bb5a926178fd57708fdbe96cf36aa91d764cb832db0c4a67fb5",
     "requirements-qwen35.lock.txt": "05f8629b44bab6e968378247e924c18ee0fa2631bf42ee50165f48ebd0c33025",
-    "run_batch.py": "29fd588470aebc680cc3c6d6c7f405268b510950c9c4122d8653fbd0e451072d",
+    "run_batch.py": "4fa9875c45cfcd3a3093d3234b24c91c194a7e8cfb4713fa4c92da07a38d543f",
     "run_candidate.py": "5e7870adc04fec937807e6ac9f6e5f12ad674d1b3f52ec0ee80290c27c1eabf5",
     "run_smoke.py": "667f7c8d7d067a5bc0437753389b297f7751bbbacfec222336ff667d027140f0",
     "score_minimal.py": "93c6164b4d164eb3bdc52227003067c546656f9a7aef2e608b22a60dbe030159",
@@ -124,7 +124,8 @@
     "validate_received_inputs.py": "982460ec3df38b51cb6d43b6ff0ca945e390016edfe3de39ab7828ac9e64b044",
     "validate_release_receipt.py": "e6812ccb8e3c759e6205cfa63413db713cc19ae25ce4c67dc194c36c1a8653ed",
     "verify_external_package.py": "3386310f5242fa33b10fe5aa24c037b10fdde7330d6924a58e0a0eb3717bc03d",
-    "verify_inputs.py": "0fa2d2113fa6e2a546489595cb206f4cce045e2a482c711f690dfd5d3a7d99d6"
+    "verify_inputs.py": "0fa2d2113fa6e2a546489595cb206f4cce045e2a482c711f690dfd5d3a7d99d6",
+    "runtime_change_v1.10.1.json": "ef4d9cef2553aa1efbcfa42ab1095b6f483ed4680b263868c6ee03ad7420575b"
   },
   "current_receipt": "reception/all_20261016/summary.json",
   "parent_source_commit": "9e81c89e8e3526d11a5d615d9fada3ba3b5bf8e8",

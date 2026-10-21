@@ -1,0 +1,58 @@
+{
+  "delivery_mode": "portable_html_with_markdown_manuscript_source",
+  "audience": "technical",
+  "source_commit": "c249fadb757fa64c08a677b77d7489ff7e05fa9a",
+  "structure_mapping": {
+    "summary": "摘要",
+    "definitions": "数据与分母、实验设计",
+    "visual_findings": "共享证据结果、成本",
+    "methodology": "模型身份、配对统计",
+    "limitations": "局限",
+    "next_steps_and_questions": "最后一节"
+  },
+  "chart_contracts": [
+    {
+      "id": "quality_chart",
+      "family": "grouped horizontal bars",
+      "grain": "15 model x condition rows",
+      "zero_baseline": true,
+      "denominator": 1033,
+      "claim": "shared-condition quality gap remains"
+    },
+    {
+      "id": "latency_chart",
+      "family": "horizontal bars",
+      "grain": "5 model rows",
+      "zero_baseline": true,
+      "unit": "ms",
+      "claim": "generation-boundary cost only"
+    }
+  ],
+  "repeated_chart_family_reason": "Two absolute category comparisons with different units; separate rows and labels avoid suggesting a temporal trend or unsupported correlation.",
+  "source_hashes": {
+    "a-side/data/entity_connectivity.json": "c516c1319bcaceae6162ce5b0de97ce76111b12ba08ff6f2d13907be2aac850a",
+    "a-side/splits/dev.v2.txt": "8d5346df2690579e32d5bc90cf58b3978bff2a532c1ff33a343950a5a6df1bac",
+    "a-side/splits/frozen_test.v2.txt": "c9f950652442bad9bf71f53775c83f1f6b1f8cd2d7c7228967050b22fa957ed4",
+    "a-side/splits/internal_holdout.v2.txt": "3181bc8ebad7a776100c3ecd08b4401ae24f5417ff4adf2eaca02b312cb6526a",
+    "a-side/splits/smoke_20.v2.txt": "363f69180d74a80340ae500c72717bc544973874874c033f477090f4412544f9",
+    "analysis/v1.10.1/build_phase_report.py": "963f8ab5e8a2a36785408a95ec96024f4a37d9a8fd4cd486d0c32cc78854eaf5",
+    "b-side/configs/model_registry.json": "fe03588609f5e6c9d2f1bd12793349a410f83c36d40d664065e729cdba497fe5",
+    "b-side/configs/protocol_main_v1.json": "50d57f136b7797619830be3d1e4f755da6a7029a067a76e7bd0c6914dd559b5e",
+    "provenance/v1.10.1/execution_receipt.json": "7d00901cf12f29a239ecd008b84c4f05adbd783ee9f9a472fe3829073c99d543",
+    "reports/v1.10.1/answer_transitions.csv": "3c66a100fc847663949b3919a47adccddfc806b39269da0fcd5426f42f33040a",
+    "reports/v1.10.1/cross_model_paired.csv": "2a3499c2c793839a922a4baddcee3251dc5a3fc49c715e047a738a81d8f59498",
+    "reports/v1.10.1/diagnostics/case_ledger.csv.gz": "00a35d9ba27653ae5fb3e8ae486e630e4f067497ad304a68cceede206fdf260d",
+    "reports/v1.10.1/diagnostics/condition_errors.csv": "61fe7e12046ec17416498f98bd6c00bc059a620f6b7d580ac42ea5df0e033521",
+    "reports/v1.10.1/diagnostics/format_decomposition.csv": "11c8acad53f93480a09db40237192f8dfe92385aa27881e786eb6abfdec7e5da",
+    "reports/v1.10.1/diagnostics/gt_decomposition.csv": "2e2bb856c0bad5236340f96b509610d88457d1812cb7384853bcfb1bec2ed77a",
+    "reports/v1.10.1/diagnostics/selected_cases.csv": "f69b7fe8c9a66ee8c29b93853ed72843c1c22b8603725e6f008edede53f7e214",
+    "reports/v1.10.1/diagnostics/validation_receipt.json": "bb4195c3461e8875304467baeec216f08b4778dc672d4113566ae8a5251ebe24",
+    "reports/v1.10.1/performance.csv": "2e447410a52d6f5524d307e1a1fbd760592bc0235e3257a6379e34bb1e8137f3",
+    "reports/v1.10.1/quality.csv": "161b5d1f15abe1e9f1b4db74812b90d2533874336b8d2513a90e01294e3f2a4d",
+    "reports/v1.10.1/quality_cost.csv": "fa99909e575c9f2aceaf50d619d3c26b0492c1a7776e48157410bdce50ed8fe3",
+    "reports/v1.10.1/s3_subsets.csv": "e9eb2ff0a2755110767a86f330211f089c3254d9bd9dceccb825dc57c95d5fc8"
+  },
+  "no_new_inference": true,
+  "no_interval_reestimation": true,
+  "public_source_web_checks_handled_separately_in_B03": true
+}

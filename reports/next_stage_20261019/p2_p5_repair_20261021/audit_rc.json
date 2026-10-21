@@ -1,0 +1,45 @@
+[
+  {
+    "label": "audit_bare",
+    "returncode": 1,
+    "expected": 1,
+    "counts": {
+      "完成": 26,
+      "部分": 5,
+      "待补": 3,
+      "后置": 3
+    },
+    "errors": [
+      "R03: Explicit --work-dir is required",
+      "R24: Explicit --work-dir is required",
+      "R30: Explicit --official-source is required"
+    ],
+    "warnings": []
+  },
+  {
+    "label": "audit_explicit",
+    "returncode": 0,
+    "expected": 0,
+    "counts": {
+      "完成": 26,
+      "部分": 5,
+      "待补": 3,
+      "后置": 3
+    },
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "label": "counts",
+    "returncode": 0,
+    "expected": 0,
+    "counts": {
+      "完成": 26,
+      "部分": 5,
+      "待补": 3,
+      "后置": 3
+    },
+    "errors": null,
+    "warnings": null
+  }
+]

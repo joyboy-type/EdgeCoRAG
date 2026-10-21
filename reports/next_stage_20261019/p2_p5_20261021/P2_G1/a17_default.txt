@@ -1,0 +1,16 @@
+artifacts 校验 36 个文件
+语料 4712 行  digest=31ade7b7e2454d0b…
+  dev_150|128              题数   150  order_fragile   138 (92.00%)
+  dev_150|256              题数   150  order_fragile   128 (85.33%)
+  dev_150|512              题数   150  order_fragile   119 (79.33%)
+  dev_150|768              题数   150  order_fragile   127 (84.67%)
+  frozen_test|128          题数  1033  order_fragile   981 (94.97%)
+  frozen_test|256          题数  1033  order_fragile   866 (83.83%)
+  frozen_test|512          题数  1033  order_fragile   865 (83.74%)
+  frozen_test|768          题数  1033  order_fragile   861 (83.35%)
+  smoke_20|128             题数    20  order_fragile    20 (100.00%)
+  smoke_20|256             题数    20  order_fragile    18 (90.00%)
+  smoke_20|512             题数    20  order_fragile    17 (85.00%)
+  smoke_20|768             题数    20  order_fragile    16 (80.00%)
+失败项 0
+-> /private<NATIVE_A>/a-side/retrieval_if_v1/verify.json

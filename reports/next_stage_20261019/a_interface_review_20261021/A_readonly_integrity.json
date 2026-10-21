@@ -1,0 +1,8 @@
+{
+  "A_head_commit": "89ddb29e61313b0875e33d45b9d55b654d3777ab",
+  "tracked_files": 172,
+  "before_after_equal": true,
+  "byte_inventory_sha256": "27eb78a6daca9610983c69a6fe152c6d32368dcda47ec3ab628c9cce3dc6c73f",
+  "git_status_clean": true,
+  "no_fetch_performed": true
+}

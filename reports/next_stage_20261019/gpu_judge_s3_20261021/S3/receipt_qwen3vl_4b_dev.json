@@ -1,0 +1,18 @@
+{
+  "model": "qwen3vl_4b",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "revision": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "split": "dev",
+  "n": 5,
+  "n_correct": 1,
+  "accuracy": 0.2,
+  "dtype": "bfloat16",
+  "do_sample": false,
+  "max_new_tokens": 16,
+  "review_method": "image_model_assisted",
+  "disclosure": "AI 图像辅助、label-aware、非人工盲审",
+  "gold_sha256": "93443ea7d569ad81538a0d3ae48e535479a0d5d274f9d001cd7c51a4c6ed8558",
+  "input_sha256": "de4507725a071295e539a9808628478aff44b05d4fc50bc3db6871570c7171c2",
+  "csv_sha256": "f24c593132cd2b7a88485593fa5edde95b23a546e3611c9b49c1a53bed9d8f3a",
+  "elapsed_seconds": 48.51030611991882
+}

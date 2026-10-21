@@ -1,0 +1,14 @@
+{
+  "complementarity.csv": {
+    "sha256": "c0c9f204ca1fb669177dd357496bf34a6d5dc84f7292496fd144a58986148420",
+    "bytes": 7383
+  },
+  "numbers.json": {
+    "sha256": "0b1fd98dd838356e35580083b28f4bcfb022ed5e1dcd06fdc12710b746bc747a",
+    "bytes": 26734
+  },
+  "verdict.md": {
+    "sha256": "98b55c7a2d741114ae3d1bb0f98645a0dd7340aeefc7260dfdf75682c252a18c",
+    "bytes": 2199
+  }
+}

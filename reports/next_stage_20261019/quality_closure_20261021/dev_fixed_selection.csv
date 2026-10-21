@@ -1,0 +1,6 @@
+model,selection_split,n,selected,cosine_correct,random_correct,utility_correct,tie_rule,frozen_test_used
+qwen3vl_4b,dev,150,utility,82,84,91,"cosine,random,utility",False
+qwen3vl_8b,dev,150,cosine,85,85,83,"cosine,random,utility",False
+gemma4_e2b,dev,150,utility,47,53,55,"cosine,random,utility",False
+gemma4_e4b,dev,150,random,65,66,61,"cosine,random,utility",False
+qwen35_4b,dev,150,cosine,81,76,76,"cosine,random,utility",False

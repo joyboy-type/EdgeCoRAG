@@ -1,0 +1,38 @@
+{
+  "schema": "gpu_cost_source_manifest/v1",
+  "source_tar": {
+    "path": "/Users/joyboy/Documents/Codex/2026-10-19/edgecorag-context-recovery/outputs/autodl_resume_report_20261021/session.tar.gz",
+    "sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710"
+  },
+  "extraction": "Exact original member bytes; no reformatting or metric recomputation",
+  "line_count_definition": "Physical lines, including braces/indentation in pretty-printed JSON; JSONL line_count equals observations",
+  "files": [
+    {
+      "path": "reports/next_stage_20261019/gpu_cost_20261021/device_samples.jsonl",
+      "source_tar_member": "session/E3/device_samples.jsonl",
+      "sha256": "88927af9710678f757b66fb8953fbfe7461df40ce119d3b06689d601a3492db6",
+      "bytes": 47828,
+      "line_count": 570,
+      "record_count": 570,
+      "record_count_definition": "JSONL objects"
+    },
+    {
+      "path": "reports/next_stage_20261019/gpu_cost_20261021/index_residency.json",
+      "source_tar_member": "session/E3/index_residency.json",
+      "sha256": "33864e74d475e59b7c147fee37f8edf0739d7e5343eb850bbffcadec6a69e087",
+      "bytes": 550,
+      "line_count": 19,
+      "record_count": 1,
+      "record_count_definition": "single JSON object"
+    },
+    {
+      "path": "reports/next_stage_20261019/gpu_cost_20261021/switches.json",
+      "source_tar_member": "session/E3/switches.json",
+      "sha256": "c6a2cfba20fbd40812e29e9f30dea533d8cfdc347d8e133742f3b3b47f02a60c",
+      "bytes": 8172,
+      "line_count": 275,
+      "record_count": 3,
+      "record_count_definition": "top-level JSON array elements"
+    }
+  ]
+}

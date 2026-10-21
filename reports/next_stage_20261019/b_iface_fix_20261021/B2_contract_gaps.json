@@ -1,0 +1,13 @@
+{
+  "status": "A 合同待补",
+  "unchanged_index_receipt_sha256": "d98695efd4a3f6ba92083d45546c615fe0a4212a4ea3da597a566d398e5ba468",
+  "missing": {
+    "identity.rule": "A 合同待补；不猜值",
+    "dedup.by_identity": "A 合同待补；不猜值"
+  },
+  "a20_matches_neither_reported_deltas": {
+    "vs_14475_instances": 4480,
+    "vs_4712_unique": 14243
+  },
+  "interpretation": "只报算术差值，不推断身份、去重、内容缺失或可配对性。"
+}

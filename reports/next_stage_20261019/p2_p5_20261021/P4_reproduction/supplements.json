@@ -1,0 +1,15 @@
+{
+  "command": [
+    "analysis/next_stage_20261019/offline_interface_supplements.py",
+    "--work-dir",
+    "{work_dir}",
+    "--artifact-dir",
+    "reports/next_stage_20261019/quality_closure_20261021",
+    "--verify"
+  ],
+  "returncode": 0,
+  "status": "verified_recomputed",
+  "reason": "",
+  "stdout": "{\n  \"status\": \"verified\",\n  \"samples\": 120,\n  \"CPU_bridge_tests\": 7,\n  \"O2_upgrade\": \"blocked\",\n  \"O5_native\": \"pending_A\",\n  \"GPU_executed\": false\n}\n",
+  "stderr": ""
+}

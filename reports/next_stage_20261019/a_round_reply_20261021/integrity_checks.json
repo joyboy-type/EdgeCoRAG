@@ -1,0 +1,22 @@
+{
+  "a_side_vs_543de53": {
+    "files_checked": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "new_or_modified_crlf": {
+    "files_with_crlf": 0,
+    "paths": [],
+    "returncode": 0
+  },
+  "double_json_suffix": {
+    "paths": [],
+    "returncode": 0
+  },
+  "scope": {
+    "implementation_changed": false,
+    "historical_results_changed": false,
+    "requirements_status_changed": false,
+    "GPU_used": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "rows": 18955,
+  "unique_ids": 18955,
+  "unique_raw_byte_sha256": 18955,
+  "duplicate_content_rows": 0,
+  "id_suffix_not_raw_byte_sha256": 18955,
+  "verified_source_bytes": 3847169427,
+  "all_source_bytes_match_declared_sha256": true,
+  "row_order_id_digest": "34494735e9049d72318714d7b068434a533b6e49eeeeb8e79f965c1975d55003",
+  "storage_dtype": "float32",
+  "encoding_dtype": "bfloat16",
+  "stored_norm_min": 0.9958099126815796,
+  "stored_norm_max": 1.0047143697738647,
+  "runtime_receipt_sha256": "cc89b8cf082226908048fd9d19be29e7a8da8414786c1a3dab3db9acf9d14270",
+  "pinned_archive_source_sha256": "70aa9a910463f9c12352e371f2d999f967b6bbe884f6d8475f5d78234831c2ed",
+  "receipt_fields_absent": [
+    "batch_size",
+    "normalization",
+    "tf32"
+  ],
+  "source_code_only": {
+    "batch_size": 4,
+    "tf32": false,
+    "ranking_normalization": "post_cast_float32; saved cache precedes this step"
+  },
+  "limitation": "Code values are not runtime observations. Cache is bf16 encoder output serialized float32, not an fp32 encoding."
+}

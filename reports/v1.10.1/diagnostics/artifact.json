@@ -1,0 +1,1214 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "EdgeCoRAG 已保存结果诊断",
+    "description": "固定运行结果的事后诊断；仅记录核验，无新增推理或视觉机制结论。",
+    "generatedAt": "2026-10-17T04:27:47.702103+00:00",
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# EdgeCoRAG 已保存结果诊断"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## 检索变化与格式失败只能解释部分差距\n\n本轮对齐了 **5.9k 个“问题×模型”单元、17.7k 条主条件回答**；内部留出与冻结测试分开，不把模型、条件或重复运行当独立问题。S0仅查询图，S1是发布候选top3，S2是actual GT条件。\n\n冻结集每模型固定 **1033题**。Qwen3-VL 4B 的S1相对S0净少答对26题，来自无GT哈希命中组的−30题与命中组的+4题。Gemma E2B/E4B在S2仍错592/540题，且该条件格式失败为0。**这支持继续研究证据使用与模型能力边界；不能直接判定具体视觉或推理原因。**",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "body": "## 这里的命中和错误分别指什么\n\nGT哈希命中只表示实际送入的top3中，至少有一张图片与GT图片的JPEG95字节SHA完全相同。冻结集命中组516题，未命中组517题；没有语义支持性判定，不能把未命中直接称为检索失败。\n\n严格正确率以完整题单为分母，格式失败始终计错。下面的贡献百分点都除以完整1033题，两个GT分组可以相加回总体变化；并非剔除失败后的成功子集分数。全部为结果后的描述性分析，没有新增推理或调整参数。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "gt_finding",
+        "type": "markdown",
+        "body": "## 四个模型在无GT哈希命中组出现净退步\n\nQwen3-VL 4B、8B、Gemma E2B和Qwen3.5在未命中组的S1−S0分别为−30、−23、−14、−14题；Gemma E4B是例外，为+6题。五模型的命中组均有正向净变化，但这不构成“命中导致提升”的因果证明。\n\nGT组是离线按标注分的组，题目难度和场景构成可能不同；并且图片哈希未命中不排除语义相关证据。下一步应据此安排看图审查，而不是直接给每题贴检索失败标签。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "gt_contributions_block",
+        "type": "chart",
+        "chartId": "gt_contributions"
+      },
+      {
+        "id": "gt_values_block",
+        "type": "table",
+        "tableId": "gt_values"
+      },
+      {
+        "id": "oracle_finding",
+        "type": "markdown",
+        "body": "## Gemma的GT条件错误主要是有效选项答错\n\nGemma E2B在S2答错592/1033题（57.31%），E4B答错540/1033题（52.27%），这些输出都能按原规则抽出有效选项。两模型在三个条件均错的题分别有469和437道；现有记录因此不能把主要质量差距归因于格式问题。\n\nS2包含GT证据，但不保证每题可解或标注无歧义；也可能涉及视觉读取、知识、证据利用、上下文数量等因素。没有原图核验时，这些仍是待检验解释。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "oracle_error_rates_block",
+        "type": "chart",
+        "chartId": "oracle_error_rates"
+      },
+      {
+        "id": "pattern_summary_block",
+        "type": "table",
+        "tableId": "pattern_summary"
+      },
+      {
+        "id": "format_finding",
+        "type": "markdown",
+        "body": "## Qwen3.5的格式失败压低收益，但不能填平全部差距\n\n冻结集Qwen3.5的S2比S1净多答对38题。按两条件格式状态互斥拆分：均有效组贡献+56题，仅S2失败组−25题，仅S1失败组+7题，两边均失败组0题。四组仍使用完整1033题为分母。\n\n正式主条件99次格式失败中，98次记录了64token预算耗尽。这是同时发生的记录特征，不能证明增加预算必定改善，也不允许事后改评分或只报告较好版本。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "format_bridge_values_block",
+        "type": "table",
+        "tableId": "format_bridge_values"
+      },
+      {
+        "id": "bound_finding",
+        "type": "markdown",
+        "body": "## 即便把Qwen3.5的S2格式错误全算对也只有63.50%\n\n这个极端上限是假定55次格式失败全部正确、其他回答不变，得到656/1033；仍低于Qwen3-VL 4B原始S2的717/1033（69.41%），相差61题。它仅约束“只补回格式错误最多能改多少分”，**不是恢复后的准确率，不是重评分，也不是新预算实验的预测。**\n\n所有原始准确率保持原样。不能从格式有效子集的较高分数反推整体质量已改善。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "error_bound_values_block",
+        "type": "table",
+        "tableId": "error_bound_values"
+      },
+      {
+        "id": "case_finding",
+        "type": "markdown",
+        "body": "## 哈希命中仍可能伴随S1错误和S2正确\n\n冻结集这种情况在五模型分别有47、44、58、53、37题。哈希命中只保证至少一张GT图片相同，不保证GT集合完整、证据位置相同或其他干扰内容一致；因此不能仅据此判定“看到了但不会用”。\n\n下表每模型展示一个按固定SHA排序选出的事后案例；完整20例涵盖四类记录模式，另附问题文本、选项和原始回答。它们没有接受看图机制审定，也不代表总体发生率。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "record_cases_block",
+        "type": "table",
+        "tableId": "record_cases"
+      },
+      {
+        "id": "method",
+        "type": "markdown",
+        "body": "## 配对设计与复算核对\n\n只取quality阶段S0/S1/S2，内部留出每模型150题，冻结每模型1033题。S3的62条正式回答及全部开发、smoke、性能与warmup不进入本诊断。逐题校验模型revision、答案与场景一致、查询图一致及五模型证据顺序一致。\n\n原解析器重算每条输出；八种S0/S1/S2正确性模式互斥穷尽。GT分组和格式状态分别进行精确可加的净答对数拆解，并用独立SQLite查询从逐题事实表对账，最后与原quality表和转移表逐项核对。伴随笔记本可从公开压缩记录重新执行。没有新置信区间或显著性检验。",
+        "sourceId": "diagnostic"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## 原因判断仍停在待审层面\n\n本报告按你的选择只做现有记录诊断，未核验正式题目的原图；自动记录标签不等于人工或视觉语义审定。所有机制字段保持未审定。\n\n数据同源且跨split存在图片相关性，冻结集有已披露审计暴露；事后分组、选例和分解都属探索性描述。S1与S2证据数量不同，不能把两者差值全部归为证据质量。GT未命中不等于无用，GT命中不等于语义支持充分，GT条件答错不等于纯推理不足。"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## 下一步先审定记录指向的案例\n\n1. 已有结果足以补写阶段报告中的诊断与局限，无需重新租卡。\n2. 若继续判定机制，先取得固定版本原图并对选定案例制定审阅规则，逐项核对图像读取、GT充分性、干扰和问题歧义；不调整本轮prompt、64token或解析器。\n3. 来源分组和第二数据集仍是独立待办。只有事先冻结新的补充实验范围后，再安排GPU。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 还有哪些问题不能由记录回答\n\n- GT哈希未命中的图片是否仍提供语义上有用的证据？\n- 命中GT但S1答错的题，差异来自其他证据、图像数量、顺序还是识别能力？\n- 更长预算是否改善格式与质量？这需要单独版本的预先设定实验，不能从耗尽标记直接推出。"
+      }
+    ],
+    "charts": [
+      {
+        "id": "gt_contributions",
+        "title": "GT哈希分组对S1相对S0变化的贡献",
+        "description": "冻结集每模型1033题；单位百分点；命中516题、未命中517题；两组可相加回总体差值。",
+        "showDescription": true,
+        "type": "horizontalBar",
+        "intent": "comparison",
+        "question": "GT哈希分组对S1相对S0变化的贡献",
+        "rationale": "Grouped bars compare five models with two meaningful outcome groups; signed contribution preserves zero baseline.",
+        "dataset": "gt",
+        "sourceId": "gt_source",
+        "encodings": {
+          "x": {
+            "field": "model"
+          },
+          "y": {
+            "field": "contribution_pp_full_denominator"
+          },
+          "color": {
+            "field": "group"
+          }
+        },
+        "options": {
+          "grouping": "grouped"
+        },
+        "legend": {
+          "show": true,
+          "position": "bottom"
+        },
+        "palette": {
+          "kind": "categorical"
+        }
+      },
+      {
+        "id": "oracle_error_rates",
+        "title": "S2条件下的错误类别",
+        "description": "冻结集错误数除以固定1033题；有效选项答错与格式失败分别展示。",
+        "showDescription": true,
+        "type": "horizontalBar",
+        "intent": "comparison",
+        "question": "S2条件下的错误类别",
+        "rationale": "Grouped bars compare five models with two meaningful outcome groups; signed contribution preserves zero baseline.",
+        "dataset": "oracle_errors",
+        "sourceId": "errors_source",
+        "encodings": {
+          "x": {
+            "field": "model"
+          },
+          "y": {
+            "field": "rate"
+          },
+          "color": {
+            "field": "error_type"
+          }
+        },
+        "options": {
+          "grouping": "grouped"
+        },
+        "legend": {
+          "show": true,
+          "position": "bottom"
+        },
+        "palette": {
+          "kind": "categorical"
+        },
+        "valueFormat": "percent"
+      }
+    ],
+    "tables": [
+      {
+        "id": "gt_values",
+        "title": "GT分组净变化核对",
+        "description": "所有组保留固定题目；这不是独立检索R@k或语义支持率。",
+        "showDescription": true,
+        "dataset": "gt",
+        "sourceId": "gt_source",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "group",
+            "label": "分组"
+          },
+          {
+            "field": "n",
+            "label": "题数"
+          },
+          {
+            "field": "improvements",
+            "label": "错转对"
+          },
+          {
+            "field": "regressions",
+            "label": "对转错"
+          },
+          {
+            "field": "net_correct_change",
+            "label": "净答对变化"
+          }
+        ],
+        "defaultSort": {
+          "field": "model",
+          "direction": "asc"
+        },
+        "density": "spacious"
+      },
+      {
+        "id": "pattern_summary",
+        "title": "记录模式与GT条件错误",
+        "description": "每模型分母1033；列之间有重叠，不能相加为互斥错误类别。八种互斥模式另附CSV。",
+        "showDescription": true,
+        "dataset": "summary",
+        "sourceId": "summary_source",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "all_three_wrong",
+            "label": "三条件均错"
+          },
+          {
+            "field": "s1_wrong_s2_correct",
+            "label": "S1错S2对"
+          },
+          {
+            "field": "s1_wrong_s2_correct_with_gt_hash_hit",
+            "label": "其中命中GT哈希"
+          },
+          {
+            "field": "s2_wrong",
+            "label": "S2仍错"
+          }
+        ],
+        "defaultSort": {
+          "field": "model",
+          "direction": "asc"
+        },
+        "density": "spacious"
+      },
+      {
+        "id": "format_bridge_values",
+        "title": "Qwen3.5从S1到S2的格式状态分解",
+        "description": "四组覆盖全部1033题，净变化相加为+38题。",
+        "showDescription": true,
+        "dataset": "format_bridge",
+        "sourceId": "format_source",
+        "columns": [
+          {
+            "field": "group_label",
+            "label": "互斥组"
+          },
+          {
+            "field": "n",
+            "label": "题数"
+          },
+          {
+            "field": "improvements",
+            "label": "错转对"
+          },
+          {
+            "field": "regressions",
+            "label": "对转错"
+          },
+          {
+            "field": "net_correct_change",
+            "label": "净答对变化"
+          }
+        ],
+        "defaultSort": {
+          "field": "group_label",
+          "direction": "asc"
+        },
+        "density": "spacious"
+      },
+      {
+        "id": "error_bound_values",
+        "title": "原分数与极端格式上限",
+        "description": "假想上限只用于界定格式错误可能影响的最大分数，不是新测量或可达到的质量。",
+        "showDescription": true,
+        "dataset": "error_bounds",
+        "sourceId": "errors_source",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "correct",
+            "label": "原正确题数"
+          },
+          {
+            "field": "format_failures",
+            "label": "格式失败"
+          },
+          {
+            "field": "strict_text",
+            "label": "严格准确率"
+          },
+          {
+            "field": "ceiling_text",
+            "label": "全补对假想上限"
+          }
+        ],
+        "defaultSort": {
+          "field": "model",
+          "direction": "asc"
+        },
+        "density": "spacious"
+      },
+      {
+        "id": "record_cases",
+        "title": "哈希命中但S1错误的记录案例",
+        "description": "全部为事后规则选例；原始题干、选项与回答在配套CSV，未进行看图审定。",
+        "showDescription": true,
+        "dataset": "cases",
+        "sourceId": "cases_source",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "qid",
+            "label": "题目ID"
+          },
+          {
+            "field": "gold",
+            "label": "正确项"
+          },
+          {
+            "field": "S0",
+            "label": "S0输出"
+          },
+          {
+            "field": "S1",
+            "label": "S1输出"
+          },
+          {
+            "field": "S2",
+            "label": "S2输出"
+          }
+        ],
+        "defaultSort": {
+          "field": "model",
+          "direction": "asc"
+        },
+        "density": "spacious"
+      }
+    ],
+    "sources": [
+      {
+        "id": "diagnostic",
+        "label": "已保存输出的事后记录诊断",
+        "path": "reports/v1.10.1/diagnostics/diagnostic_results.json",
+        "query": {
+          "engine": "Python 3 standard library + in-memory SQLite",
+          "language": "python",
+          "executed_at": "2026-10-17T04:27:47.702103+00:00",
+          "description": "analysis/v1.10.1/diagnose_saved_runs.py compute(): strict parser validation, exact paired pattern and contribution decomposition; SQL reconciled from row facts.",
+          "filters": [
+            "stage=quality",
+            "condition in S0/S1/S2",
+            "split kept separate",
+            "no new inference; no image adjudication"
+          ],
+          "metric_definitions": {
+            "unit": "one split/model/qid with three paired outputs; 5915 units are not 5915 independent questions",
+            "accuracy": "strict correct / full fixed split denominator",
+            "format_ceiling": "(correct + format_failures) / n, hypothetical fixed-record bound only"
+          }
+        }
+      },
+      {
+        "id": "gt_source",
+        "label": "GT哈希分组对总体变化的贡献",
+        "path": "reports/v1.10.1/diagnostics/gt_decomposition.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT split,model_key,gt_hash_hit,COUNT(*) AS n,\n SUM(s1-s0) AS net_correct_change,SUM(s0=0 AND s1=1) AS improvements,\n SUM(s0=1 AND s1=0) AS regressions,\n SUM(s1=0 AND s2=1) AS s1_wrong_s2_correct,\n SUM(s1=0 AND s2=1 AND s1_format=0) AS s1_valid_wrong_s2_correct\n FROM triples GROUP BY split,model_key,gt_hash_hit ORDER BY split,model_key,gt_hash_hit;",
+          "tables_used": [
+            "triples"
+          ],
+          "executed_at": "2026-10-17T04:27:47.702103+00:00",
+          "description": "Queries actually executed against row-grain facts; contribution pp = net_correct_change / full split n * 100 in Python.",
+          "filters": [
+            "quality main conditions only",
+            "frozen_test for visible chart/table"
+          ],
+          "metric_definitions": {
+            "n": "paired questions in the mutually exclusive group",
+            "contribution_pp_full_denominator": "100 * net_correct_change / 1033"
+          }
+        }
+      },
+      {
+        "id": "format_source",
+        "label": "格式状态的互斥分解",
+        "path": "reports/v1.10.1/diagnostics/format_decomposition.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT split,model_key,left_condition,right_condition,\n CASE WHEN left_format=1 AND right_format=1 THEN 'both_format_failure'\n      WHEN left_format=1 THEN 'left_only_format_failure'\n      WHEN right_format=1 THEN 'right_only_format_failure'\n      ELSE 'both_parse_ok' END AS format_group,\n COUNT(*) AS n,SUM(right_correct-left_correct) AS net_correct_change,\n SUM(left_correct=0 AND right_correct=1) AS improvements,\n SUM(left_correct=1 AND right_correct=0) AS regressions\n FROM contrasts GROUP BY split,model_key,left_condition,right_condition,format_group\n ORDER BY split,model_key,left_condition,right_condition,format_group;",
+          "tables_used": [
+            "contrasts"
+          ],
+          "executed_at": "2026-10-17T04:27:47.702103+00:00",
+          "description": "Queries actually executed against row-grain facts; contribution pp = net_correct_change / full split n * 100 in Python.",
+          "filters": [
+            "quality main conditions only",
+            "frozen_test for visible chart/table"
+          ],
+          "metric_definitions": {
+            "n": "paired questions in the mutually exclusive group",
+            "contribution_pp_full_denominator": "100 * net_correct_change / 1033"
+          }
+        }
+      },
+      {
+        "id": "errors_source",
+        "label": "严格错误类别与极端格式上限",
+        "path": "reports/v1.10.1/diagnostics/condition_errors.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT split,model_key,condition,COUNT(*) AS n,SUM(correct) AS correct,\n SUM(correct=0 AND format_failure=0) AS valid_choice_wrong,SUM(format_failure) AS format_failures,\n SUM(format_failure=1 AND budget_exhausted=1) AS format_failures_budget_exhausted\n FROM condition_runs GROUP BY split,model_key,condition ORDER BY split,model_key,condition;",
+          "tables_used": [
+            "condition_runs"
+          ],
+          "executed_at": "2026-10-17T04:27:47.702103+00:00",
+          "description": "Saved outputs validated with strict_choice_v1; valid wrong = n - correct - format_failures. No relaxed extraction or rescoring.",
+          "filters": [
+            "frozen_test",
+            "condition=S2"
+          ],
+          "metric_definitions": {
+            "rate": "count / full denominator 1033",
+            "ceiling": "hypothetical (correct+format_failures)/1033, not recovered accuracy"
+          }
+        }
+      },
+      {
+        "id": "cases_source",
+        "label": "事后固定规则选出的记录案例",
+        "path": "reports/v1.10.1/diagnostics/selected_cases.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT model_key,category,qid FROM review_candidates\n WHERE model_key=:model_key AND category=:category\n AND qid NOT IN (SELECT value FROM json_each(:excluded_qids))\n ORDER BY selection_hash LIMIT 1;",
+          "tables_used": [
+            "review_candidates"
+          ],
+          "executed_at": "2026-10-17T04:27:47.702103+00:00",
+          "description": "Per model/category choose minimum SHA256(42|model|category|qid), avoiding duplicate qids within each model. Main table shows hash-hit S1-wrong S2-correct category only.",
+          "filters": [
+            "frozen_test",
+            "one case per model/category",
+            "visual_review_completed=false"
+          ],
+          "metric_definitions": {
+            "pattern": "S0,S1,S2 strict correctness bits; not a causal diagnosis"
+          }
+        }
+      },
+      {
+        "id": "summary_source",
+        "label": "三条件逐题模式汇总",
+        "path": "reports/v1.10.1/diagnostics/summary.csv",
+        "query": {
+          "engine": "SQLite in memory",
+          "language": "sql",
+          "sql": "SELECT split,model_key,COUNT(*) AS n,SUM(pattern='000') AS all_three_wrong,\n SUM(s1=0 AND s2=1) AS s1_wrong_s2_correct,\n SUM(s1=0 AND s2=1 AND s1_format=0) AS s1_valid_wrong_s2_correct,\n SUM(s1=0 AND s2=1 AND gt_hash_hit=0) AS s1_wrong_s2_correct_no_gt_hash_hit,\n SUM(s1=0 AND s2=1 AND gt_hash_hit=1) AS s1_wrong_s2_correct_with_gt_hash_hit,\n SUM(s2=0) AS s2_wrong,SUM(s0=1 AND s1=0) AS s0_right_s1_wrong\n FROM triples GROUP BY split,model_key ORDER BY split,model_key;",
+          "tables_used": [
+            "triples"
+          ],
+          "executed_at": "2026-10-17T04:27:47.702103+00:00",
+          "description": "Independent aggregation from all split/model/qid triples, reconciled with Python; main report filters frozen_test.",
+          "filters": [
+            "stage=quality",
+            "main S0/S1/S2 paired units",
+            "frozen_test in visible table"
+          ],
+          "metric_definitions": {
+            "all_three_wrong": "count of strict correctness pattern 000",
+            "s1_wrong_s2_correct": "sum(s1=0 AND s2=1)"
+          }
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-10-17T04:27:47.702103+00:00",
+    "status": "ready",
+    "datasets": {
+      "gt": [
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "gt_hash_hit": false,
+          "group": "无GT哈希命中",
+          "n": 517,
+          "full_denominator": 1033,
+          "improvements": 37,
+          "regressions": 67,
+          "net_correct_change": -30,
+          "contribution_pp_full_denominator": -2.904162633107454,
+          "within_group_delta_pp": -5.802707930367505,
+          "s1_wrong_s2_correct": 114,
+          "s1_valid_wrong_s2_correct": 114
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "gt_hash_hit": true,
+          "group": "至少一个GT哈希命中",
+          "n": 516,
+          "full_denominator": 1033,
+          "improvements": 42,
+          "regressions": 38,
+          "net_correct_change": 4,
+          "contribution_pp_full_denominator": 0.3872216844143272,
+          "within_group_delta_pp": 0.7751937984496124,
+          "s1_wrong_s2_correct": 47,
+          "s1_valid_wrong_s2_correct": 47
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "gt_hash_hit": false,
+          "group": "无GT哈希命中",
+          "n": 517,
+          "full_denominator": 1033,
+          "improvements": 34,
+          "regressions": 57,
+          "net_correct_change": -23,
+          "contribution_pp_full_denominator": -2.2265246853823815,
+          "within_group_delta_pp": -4.448742746615087,
+          "s1_wrong_s2_correct": 99,
+          "s1_valid_wrong_s2_correct": 96
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "gt_hash_hit": true,
+          "group": "至少一个GT哈希命中",
+          "n": 516,
+          "full_denominator": 1033,
+          "improvements": 42,
+          "regressions": 22,
+          "net_correct_change": 20,
+          "contribution_pp_full_denominator": 1.936108422071636,
+          "within_group_delta_pp": 3.875968992248062,
+          "s1_wrong_s2_correct": 44,
+          "s1_valid_wrong_s2_correct": 44
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "gt_hash_hit": false,
+          "group": "无GT哈希命中",
+          "n": 517,
+          "full_denominator": 1033,
+          "improvements": 46,
+          "regressions": 60,
+          "net_correct_change": -14,
+          "contribution_pp_full_denominator": -1.3552758954501452,
+          "within_group_delta_pp": -2.7079303675048356,
+          "s1_wrong_s2_correct": 83,
+          "s1_valid_wrong_s2_correct": 83
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "gt_hash_hit": true,
+          "group": "至少一个GT哈希命中",
+          "n": 516,
+          "full_denominator": 1033,
+          "improvements": 57,
+          "regressions": 52,
+          "net_correct_change": 5,
+          "contribution_pp_full_denominator": 0.484027105517909,
+          "within_group_delta_pp": 0.9689922480620154,
+          "s1_wrong_s2_correct": 58,
+          "s1_valid_wrong_s2_correct": 58
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "gt_hash_hit": false,
+          "group": "无GT哈希命中",
+          "n": 517,
+          "full_denominator": 1033,
+          "improvements": 55,
+          "regressions": 49,
+          "net_correct_change": 6,
+          "contribution_pp_full_denominator": 0.5808325266214908,
+          "within_group_delta_pp": 1.1605415860735009,
+          "s1_wrong_s2_correct": 75,
+          "s1_valid_wrong_s2_correct": 75
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "gt_hash_hit": true,
+          "group": "至少一个GT哈希命中",
+          "n": 516,
+          "full_denominator": 1033,
+          "improvements": 61,
+          "regressions": 37,
+          "net_correct_change": 24,
+          "contribution_pp_full_denominator": 2.323330106485963,
+          "within_group_delta_pp": 4.651162790697675,
+          "s1_wrong_s2_correct": 53,
+          "s1_valid_wrong_s2_correct": 53
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "gt_hash_hit": false,
+          "group": "无GT哈希命中",
+          "n": 517,
+          "full_denominator": 1033,
+          "improvements": 49,
+          "regressions": 63,
+          "net_correct_change": -14,
+          "contribution_pp_full_denominator": -1.3552758954501452,
+          "within_group_delta_pp": -2.7079303675048356,
+          "s1_wrong_s2_correct": 87,
+          "s1_valid_wrong_s2_correct": 80
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "gt_hash_hit": true,
+          "group": "至少一个GT哈希命中",
+          "n": 516,
+          "full_denominator": 1033,
+          "improvements": 61,
+          "regressions": 37,
+          "net_correct_change": 24,
+          "contribution_pp_full_denominator": 2.323330106485963,
+          "within_group_delta_pp": 4.651162790697675,
+          "s1_wrong_s2_correct": 37,
+          "s1_valid_wrong_s2_correct": 37
+        }
+      ],
+      "oracle_errors": [
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 717,
+          "strict_accuracy": 0.6940948693126815,
+          "valid_choice_wrong": 316,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.3059051306873185,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.6940948693126815,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "有效选项但答错",
+          "count": 316,
+          "rate": 0.3059051306873185
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 717,
+          "strict_accuracy": 0.6940948693126815,
+          "valid_choice_wrong": 316,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.3059051306873185,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.6940948693126815,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "格式失败",
+          "count": 0,
+          "rate": 0.0
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 690,
+          "strict_accuracy": 0.6679574056147144,
+          "valid_choice_wrong": 343,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.33204259438528555,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.6679574056147144,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "有效选项但答错",
+          "count": 343,
+          "rate": 0.33204259438528555
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 690,
+          "strict_accuracy": 0.6679574056147144,
+          "valid_choice_wrong": 343,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.33204259438528555,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.6679574056147144,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "格式失败",
+          "count": 0,
+          "rate": 0.0
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 441,
+          "strict_accuracy": 0.4269119070667957,
+          "valid_choice_wrong": 592,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.5730880929332043,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.4269119070667957,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "有效选项但答错",
+          "count": 592,
+          "rate": 0.5730880929332043
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 441,
+          "strict_accuracy": 0.4269119070667957,
+          "valid_choice_wrong": 592,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.5730880929332043,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.4269119070667957,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "格式失败",
+          "count": 0,
+          "rate": 0.0
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 493,
+          "strict_accuracy": 0.47725072604065827,
+          "valid_choice_wrong": 540,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.5227492739593417,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.47725072604065827,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "有效选项但答错",
+          "count": 540,
+          "rate": 0.5227492739593417
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 493,
+          "strict_accuracy": 0.47725072604065827,
+          "valid_choice_wrong": 540,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.5227492739593417,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.47725072604065827,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "error_type": "格式失败",
+          "count": 0,
+          "rate": 0.0
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 601,
+          "strict_accuracy": 0.5818005808325266,
+          "valid_choice_wrong": 377,
+          "format_failures": 55,
+          "valid_choice_wrong_rate": 0.3649564375605034,
+          "format_failure_rate": 0.05324298160696999,
+          "all_format_failures_assumed_correct_ceiling": 0.6350435624394967,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 55,
+          "error_type": "有效选项但答错",
+          "count": 377,
+          "rate": 0.3649564375605034
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 601,
+          "strict_accuracy": 0.5818005808325266,
+          "valid_choice_wrong": 377,
+          "format_failures": 55,
+          "valid_choice_wrong_rate": 0.3649564375605034,
+          "format_failure_rate": 0.05324298160696999,
+          "all_format_failures_assumed_correct_ceiling": 0.6350435624394967,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 55,
+          "error_type": "格式失败",
+          "count": 55,
+          "rate": 0.05324298160696999
+        }
+      ],
+      "error_bounds": [
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 717,
+          "strict_accuracy": 0.6940948693126815,
+          "valid_choice_wrong": 316,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.3059051306873185,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.6940948693126815,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "strict_text": "69.41%",
+          "ceiling_text": "69.41%"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 690,
+          "strict_accuracy": 0.6679574056147144,
+          "valid_choice_wrong": 343,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.33204259438528555,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.6679574056147144,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "strict_text": "66.80%",
+          "ceiling_text": "66.80%"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 441,
+          "strict_accuracy": 0.4269119070667957,
+          "valid_choice_wrong": 592,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.5730880929332043,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.4269119070667957,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "strict_text": "42.69%",
+          "ceiling_text": "42.69%"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 493,
+          "strict_accuracy": 0.47725072604065827,
+          "valid_choice_wrong": 540,
+          "format_failures": 0,
+          "valid_choice_wrong_rate": 0.5227492739593417,
+          "format_failure_rate": 0.0,
+          "all_format_failures_assumed_correct_ceiling": 0.47725072604065827,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 0,
+          "strict_text": "47.73%",
+          "ceiling_text": "47.73%"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "condition": "S2",
+          "n": 1033,
+          "correct": 601,
+          "strict_accuracy": 0.5818005808325266,
+          "valid_choice_wrong": 377,
+          "format_failures": 55,
+          "valid_choice_wrong_rate": 0.3649564375605034,
+          "format_failure_rate": 0.05324298160696999,
+          "all_format_failures_assumed_correct_ceiling": 0.6350435624394967,
+          "ceiling_is_not_recovered_or_expected_accuracy": true,
+          "format_failures_budget_exhausted": 55,
+          "strict_text": "58.18%",
+          "ceiling_text": "63.50%"
+        }
+      ],
+      "summary": [
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "n": 1033,
+          "all_three_wrong": 238,
+          "s1_wrong_s2_correct": 161,
+          "s1_valid_wrong_s2_correct": 161,
+          "s1_wrong_s2_correct_no_gt_hash_hit": 114,
+          "s1_wrong_s2_correct_with_gt_hash_hit": 47,
+          "s2_wrong": 316,
+          "s0_right_s1_wrong": 105,
+          "all_three_wrong_rate": 0.23039690222652467
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "n": 1033,
+          "all_three_wrong": 277,
+          "s1_wrong_s2_correct": 143,
+          "s1_valid_wrong_s2_correct": 140,
+          "s1_wrong_s2_correct_no_gt_hash_hit": 99,
+          "s1_wrong_s2_correct_with_gt_hash_hit": 44,
+          "s2_wrong": 343,
+          "s0_right_s1_wrong": 79,
+          "all_three_wrong_rate": 0.2681510164569216
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "n": 1033,
+          "all_three_wrong": 469,
+          "s1_wrong_s2_correct": 141,
+          "s1_valid_wrong_s2_correct": 141,
+          "s1_wrong_s2_correct_no_gt_hash_hit": 83,
+          "s1_wrong_s2_correct_with_gt_hash_hit": 58,
+          "s2_wrong": 592,
+          "s0_right_s1_wrong": 112,
+          "all_three_wrong_rate": 0.45401742497579867
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "n": 1033,
+          "all_three_wrong": 437,
+          "s1_wrong_s2_correct": 128,
+          "s1_valid_wrong_s2_correct": 128,
+          "s1_wrong_s2_correct_no_gt_hash_hit": 75,
+          "s1_wrong_s2_correct_with_gt_hash_hit": 53,
+          "s2_wrong": 540,
+          "s0_right_s1_wrong": 86,
+          "all_three_wrong_rate": 0.4230396902226525
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "n": 1033,
+          "all_three_wrong": 286,
+          "s1_wrong_s2_correct": 124,
+          "s1_valid_wrong_s2_correct": 117,
+          "s1_wrong_s2_correct_no_gt_hash_hit": 87,
+          "s1_wrong_s2_correct_with_gt_hash_hit": 37,
+          "s2_wrong": 432,
+          "s0_right_s1_wrong": 100,
+          "all_three_wrong_rate": 0.27686350435624396
+        }
+      ],
+      "format_bridge": [
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "left": "S1",
+          "right": "S2",
+          "format_group": "both_parse_ok",
+          "n": 964,
+          "full_denominator": 1033,
+          "improvements": 117,
+          "regressions": 61,
+          "net_correct_change": 56,
+          "contribution_pp_full_denominator": 5.421103581800581,
+          "group_label": "两条件格式均有效"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "left": "S1",
+          "right": "S2",
+          "format_group": "right_only_format_failure",
+          "n": 48,
+          "full_denominator": 1033,
+          "improvements": 0,
+          "regressions": 25,
+          "net_correct_change": -25,
+          "contribution_pp_full_denominator": -2.420135527589545,
+          "group_label": "仅S2格式失败"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "left": "S1",
+          "right": "S2",
+          "format_group": "left_only_format_failure",
+          "n": 14,
+          "full_denominator": 1033,
+          "improvements": 7,
+          "regressions": 0,
+          "net_correct_change": 7,
+          "contribution_pp_full_denominator": 0.6776379477250726,
+          "group_label": "仅S1格式失败"
+        },
+        {
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "left": "S1",
+          "right": "S2",
+          "format_group": "both_format_failure",
+          "n": 7,
+          "full_denominator": 1033,
+          "improvements": 0,
+          "regressions": 0,
+          "net_correct_change": 0,
+          "contribution_pp_full_denominator": 0.0,
+          "group_label": "两条件格式均失败"
+        }
+      ],
+      "cases": [
+        {
+          "case_id": "qwen3vl_4b:hash_hit_s1_wrong_s2_correct:mragb:396",
+          "category": "hash_hit_s1_wrong_s2_correct",
+          "split": "frozen_test",
+          "model_key": "qwen3vl_4b",
+          "model": "Qwen3-VL 4B",
+          "qid": "mragb:396",
+          "scenario": "Obstruction",
+          "question": "Can you identify what type of animal this is?",
+          "choices": "{\"A\": \"domestic_bison\", \"B\": \"cape_buffalo\", \"C\": \"water_buffalo\", \"D\": \"yak\"}",
+          "gold": "C",
+          "pattern": "101",
+          "top3_any_gt_exact_hash_hit": true,
+          "S0_raw": "C",
+          "S1_raw": "B",
+          "S2_raw": "C",
+          "visual_review_completed": false,
+          "mechanism_adjudicated": false,
+          "selection_rule": "post hoc: minimum SHA256(42|model|category|qid), one unique qid per model/category",
+          "S0": "C",
+          "S1": "B",
+          "S2": "C",
+          "review_status": "仅记录核验，未看图审定"
+        },
+        {
+          "case_id": "qwen3vl_8b:hash_hit_s1_wrong_s2_correct:mragb:1329",
+          "category": "hash_hit_s1_wrong_s2_correct",
+          "split": "frozen_test",
+          "model_key": "qwen3vl_8b",
+          "model": "Qwen3-VL 8B",
+          "qid": "mragb:1329",
+          "scenario": "Others",
+          "question": "From which region is this object sourced?",
+          "choices": "{\"A\": \"WestAsia\", \"B\": \"Europe\", \"C\": \"EastAsia\", \"D\": \"Africa\"}",
+          "gold": "C",
+          "pattern": "001",
+          "top3_any_gt_exact_hash_hit": true,
+          "S0_raw": "B",
+          "S1_raw": "B",
+          "S2_raw": "C",
+          "visual_review_completed": false,
+          "mechanism_adjudicated": false,
+          "selection_rule": "post hoc: minimum SHA256(42|model|category|qid), one unique qid per model/category",
+          "S0": "B",
+          "S1": "B",
+          "S2": "C",
+          "review_status": "仅记录核验，未看图审定"
+        },
+        {
+          "case_id": "gemma4_e2b:hash_hit_s1_wrong_s2_correct:mragb:232",
+          "category": "hash_hit_s1_wrong_s2_correct",
+          "split": "frozen_test",
+          "model_key": "gemma4_e2b",
+          "model": "Gemma4 E2B",
+          "qid": "mragb:232",
+          "scenario": "Partial",
+          "question": "Which animal is this?",
+          "choices": "{\"A\": \"grey_whale\", \"B\": \"humpback_whale\", \"C\": \"blue_whale\", \"D\": \"fin_whale\"}",
+          "gold": "A",
+          "pattern": "001",
+          "top3_any_gt_exact_hash_hit": true,
+          "S0_raw": "B",
+          "S1_raw": "B",
+          "S2_raw": "A",
+          "visual_review_completed": false,
+          "mechanism_adjudicated": false,
+          "selection_rule": "post hoc: minimum SHA256(42|model|category|qid), one unique qid per model/category",
+          "S0": "B",
+          "S1": "B",
+          "S2": "A",
+          "review_status": "仅记录核验，未看图审定"
+        },
+        {
+          "case_id": "gemma4_e4b:hash_hit_s1_wrong_s2_correct:mragb:674",
+          "category": "hash_hit_s1_wrong_s2_correct",
+          "split": "frozen_test",
+          "model_key": "gemma4_e4b",
+          "model": "Gemma4 E4B",
+          "qid": "mragb:674",
+          "scenario": "Biological",
+          "question": "Among the following characteristics, which is improbable for this fruit after it undergoes oxidation?",
+          "choices": "{\"A\": \"Its flesh turns beige\", \"B\": \"It becomes sticky and slimy\", \"C\": \"Its skin becomes wrinkled\", \"D\": \"Blue-gray mold develops on it\"}",
+          "gold": "D",
+          "pattern": "001",
+          "top3_any_gt_exact_hash_hit": true,
+          "S0_raw": "B",
+          "S1_raw": "A",
+          "S2_raw": "D",
+          "visual_review_completed": false,
+          "mechanism_adjudicated": false,
+          "selection_rule": "post hoc: minimum SHA256(42|model|category|qid), one unique qid per model/category",
+          "S0": "B",
+          "S1": "A",
+          "S2": "D",
+          "review_status": "仅记录核验，未看图审定"
+        },
+        {
+          "case_id": "qwen35_4b:hash_hit_s1_wrong_s2_correct:mragb:562",
+          "category": "hash_hit_s1_wrong_s2_correct",
+          "split": "frozen_test",
+          "model_key": "qwen35_4b",
+          "model": "Qwen3.5 4B",
+          "qid": "mragb:562",
+          "scenario": "Angle",
+          "question": "Which particular model of car is this?",
+          "choices": "{\"A\": \"Hyundai Elantra Touring Hatchback 2012\", \"B\": \"Hyundai Genesis Sedan 2012\", \"C\": \"Hyundai Azera Sedan 2012\", \"D\": \"Hyundai Sonata Sedan 2012\"}",
+          "gold": "C",
+          "pattern": "101",
+          "top3_any_gt_exact_hash_hit": true,
+          "S0_raw": "C\n",
+          "S1_raw": "B\n",
+          "S2_raw": "C\n",
+          "visual_review_completed": false,
+          "mechanism_adjudicated": false,
+          "selection_rule": "post hoc: minimum SHA256(42|model|category|qid), one unique qid per model/category",
+          "S0": "C",
+          "S1": "B",
+          "S2": "C",
+          "review_status": "仅记录核验，未看图审定"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "artifacts_checked": 36,
+  "hash_normalization": "LF",
+  "files_with_crlf": 0,
+  "corpus_rows": 4712,
+  "corpus_digest": "31ade7b7e2454d0b9fcd58568247dd2a6862e15273fdd65e1d12ed50e373264e",
+  "pools": {
+    "dev_150|128": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "dev_150|256": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "dev_150|512": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "dev_150|768": {
+      "questions": 150,
+      "rows": 1500
+    },
+    "frozen_test|128": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "frozen_test|256": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "frozen_test|512": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "frozen_test|768": {
+      "questions": 1033,
+      "rows": 10330
+    },
+    "smoke_20|128": {
+      "questions": 20,
+      "rows": 200
+    },
+    "smoke_20|256": {
+      "questions": 20,
+      "rows": 200
+    },
+    "smoke_20|512": {
+      "questions": 20,
+      "rows": 200
+    },
+    "smoke_20|768": {
+      "questions": 20,
+      "rows": 200
+    }
+  },
+  "order_fragile": {
+    "dev_150|128": {
+      "questions": 150,
+      "order_fragile": 138,
+      "share": 0.92
+    },
+    "dev_150|256": {
+      "questions": 150,
+      "order_fragile": 128,
+      "share": 0.8533
+    },
+    "dev_150|512": {
+      "questions": 150,
+      "order_fragile": 119,
+      "share": 0.7933
+    },
+    "dev_150|768": {
+      "questions": 150,
+      "order_fragile": 127,
+      "share": 0.8467
+    },
+    "frozen_test|128": {
+      "questions": 1033,
+      "order_fragile": 981,
+      "share": 0.9497
+    },
+    "frozen_test|256": {
+      "questions": 1033,
+      "order_fragile": 866,
+      "share": 0.8383
+    },
+    "frozen_test|512": {
+      "questions": 1033,
+      "order_fragile": 865,
+      "share": 0.8374
+    },
+    "frozen_test|768": {
+      "questions": 1033,
+      "order_fragile": 861,
+      "share": 0.8335
+    },
+    "smoke_20|128": {
+      "questions": 20,
+      "order_fragile": 20,
+      "share": 1.0
+    },
+    "smoke_20|256": {
+      "questions": 20,
+      "order_fragile": 18,
+      "share": 0.9
+    },
+    "smoke_20|512": {
+      "questions": 20,
+      "order_fragile": 17,
+      "share": 0.85
+    },
+    "smoke_20|768": {
+      "questions": 20,
+      "order_fragile": 16,
+      "share": 0.8
+    }
+  },
+  "fails": [],
+  "fail_count": 0
+}

@@ -1,0 +1,16 @@
+{
+  "a_side_vs_543de53": {
+    "files_checked": 90,
+    "diff": [],
+    "returncode": 0
+  },
+  "files_with_crlf": 0,
+  "crlf_paths": [],
+  "double_suffix_paths": [],
+  "bare_audit_errors": [
+    "R03: Explicit --work-dir is required",
+    "R24: Explicit --work-dir is required",
+    "R30: Explicit --official-source is required"
+  ],
+  "scope": "No images, real vectors, model inference, A edits or historical-result changes."
+}

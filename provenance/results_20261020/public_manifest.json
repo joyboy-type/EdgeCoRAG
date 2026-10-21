@@ -1,0 +1,196 @@
+{
+  "status": "validated_result_only_snapshot",
+  "base_commit": "16a0e6ccacfcaca84f40d164c9aabe8f33176e1e",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7890,
+      "sha256": "4d8dc4ee394b8fc8a55dc3189b9af8de5a8853db0f4c3166e839116e570f64a2"
+    },
+    {
+      "path": "logs/results_20261020/README.md",
+      "bytes": 1860,
+      "sha256": "1f8f3282ce21316d93797998b038cdd7580495173f22cebc3c05dd16449ab862"
+    },
+    {
+      "path": "logs/results_20261020/frozen1033_image_groups_and_transitions.csv",
+      "bytes": 178287,
+      "sha256": "b542b72a0a474aad14258ddd7a27ef9205b1cbb3761c2fb41af3b3abcdf42547"
+    },
+    {
+      "path": "logs/results_20261020/legacy_self_match_scored_outcomes.jsonl.gz",
+      "bytes": 70507,
+      "sha256": "2b8ce4570b55288ef791226b4a5de7e187dff73df17a90e115594937e03368ba"
+    },
+    {
+      "path": "logs/results_20261020/mmdocrag_evaluation_numeric_metrics.csv",
+      "bytes": 150455,
+      "sha256": "09ec6a82b84a17d26c569cf3cc5368edcc33bb7b7a5346ad35c9a3eb3076f0be"
+    },
+    {
+      "path": "logs/results_20261020/no_self_scored_outcomes.jsonl.gz",
+      "bytes": 83823,
+      "sha256": "2c275a1d3cc3222022c0610686f860b19d857511abcfec9fadce4a02033e6063"
+    },
+    {
+      "path": "provenance/results_20261020/completed_experiments.json",
+      "bytes": 27428,
+      "sha256": "0e9486a8158b6e931e4bba3f0ffeccd29d619e7bd53fd4325f85fe8ba0073e20"
+    },
+    {
+      "path": "provenance/results_20261020/e2e_smoke_public_receipt.json",
+      "bytes": 3334,
+      "sha256": "27109ba0b381e95614f77b659ffbaa8b73468e74529c7bfb002e6648e8b740ad"
+    },
+    {
+      "path": "reports/EXPERIMENT_RESULTS.md",
+      "bytes": 4085,
+      "sha256": "c4b92f8c695aa39d9fa3649e4daf1050867350fd7057116768d06c40570999c2"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_development_gpu_receipt.json",
+      "bytes": 2858,
+      "sha256": "ee0435abe8a69d74b1fd48573ed452a21f935809d0e557ede9a32be7a4118034"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_evaluation.png",
+      "bytes": 107149,
+      "sha256": "e9448178fb86dbc2d86f1cc11f27edf6db8e836267dbc189b52207ae063d714e"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_evaluation_gpu_receipt.json",
+      "bytes": 1844,
+      "sha256": "f8e71e730aa21938a4adec77e623c446c3596cb92969305e604ef6c9b89755df"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_evaluation_report.md",
+      "bytes": 13341,
+      "sha256": "148731b0dc7dd9a48f133e73b29d31f724e61011677fd45312306442f160460c"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_evaluation_summary.json",
+      "bytes": 5977,
+      "sha256": "8a8ce85accd1f19fb4cca1214c58fb7117131b6ff3347994f789218044794763"
+    },
+    {
+      "path": "reports/next_stage_20261017/B_mmdocrag_technical_gpu_receipt.json",
+      "bytes": 6989,
+      "sha256": "51786e86a83e30c04fc3a12a529893e1040b80a64cadac666d149f39fa203378"
+    },
+    {
+      "path": "reports/next_stage_20261017/MMDocRAG引用F1配对比较.csv",
+      "bytes": 660,
+      "sha256": "048032293a08078f0166f210b56f4c24d8217d23ff763fe28ed5b3442dcb6dbf"
+    },
+    {
+      "path": "reports/next_stage_20261017/MMDocRAG正式评测汇总.csv",
+      "bytes": 1239,
+      "sha256": "c7e65d9e79a3d6e8a8da34c8a24155652bb334e3c3b6ea91a0450936cf3398c1"
+    },
+    {
+      "path": "reports/next_stage_20261019/EdgeCoRAG_同机端到端smoke实测_20261020.md",
+      "bytes": 4275,
+      "sha256": "4d169b2bbb669aed4374d133b4b8d0c0c5fafd1dd16d65772f704ba9b40e4b99"
+    },
+    {
+      "path": "reports/next_stage_20261019/EdgeCoRAG_图像相关性与证据变化分析_20261020.md",
+      "bytes": 4313,
+      "sha256": "b2501e277ad3c9614ce6187be5c86ab28d8ab41be503225b24ec2a89f6e1e8c6"
+    },
+    {
+      "path": "reports/next_stage_20261019/EdgeCoRAG_无自匹配协议复核结果_20261019.md",
+      "bytes": 9462,
+      "sha256": "4cbf0eac77a125e300cf04907a9cc4cad75d2e4022f91e3130e4949387ca33f7"
+    },
+    {
+      "path": "reports/next_stage_20261019/EdgeCoRAG_无自匹配检索维度消融_20261019.md",
+      "bytes": 4939,
+      "sha256": "0861f8081ade43c3d6ab7af95477cda4be62d8d9bf18ebdca26913f1c1df379c"
+    },
+    {
+      "path": "reports/next_stage_20261019/同机端到端_smoke检索一致性_20261020.csv",
+      "bytes": 278,
+      "sha256": "ad9f169db868b712a875eab082ec9128a1511b021ee68a00268621b6d77d6aab"
+    },
+    {
+      "path": "reports/next_stage_20261019/同机端到端_smoke汇总_20261020.csv",
+      "bytes": 796,
+      "sha256": "236ac495a99f02f1b168c260c5bbb2a61698ef13aef6452b07e4fc8506ff8a43"
+    },
+    {
+      "path": "reports/next_stage_20261019/同机端到端_smoke逐次测量_20261020.csv",
+      "bytes": 5366,
+      "sha256": "48192a6a59504b711227815f904ac5da984bc6079b1f3925a30d36ef0f4c0e21"
+    },
+    {
+      "path": "reports/next_stage_20261019/图像相关性_聚类置信区间_20261020.csv",
+      "bytes": 7827,
+      "sha256": "ec757cd695269bc6ec8ccac5eecfb8c2b16ab9d52f36fe8d47f4fa9ddf09976b"
+    },
+    {
+      "path": "reports/next_stage_20261019/图像相关性_逐场景剔除_20261020.csv",
+      "bytes": 10878,
+      "sha256": "82fb8edacfd904593315828be4c21745aa19ae5736bfeab03ccd88dbd7515d30"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配协议_1033题成对比较.csv",
+      "bytes": 2242,
+      "sha256": "8ae15018c2c5044a716f50c6b15080b7e27e608f3a8d1268778ab68b13a945a3"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配协议_与旧协议对照.csv",
+      "bytes": 3341,
+      "sha256": "4ef4d4c2dc3fecb7e00c1a3bb8f533cd08cba46feefd3dbc6330f532ca043419"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配协议_准确率汇总.csv",
+      "bytes": 2925,
+      "sha256": "00eb90eaa7f55f8c7d706725ef9fd98386f78f524ccd1ca6b44e7eba44c65943"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配协议_场景汇总.csv",
+      "bytes": 22398,
+      "sha256": "6db59c4313ea0573093c52e4bb401f9effb2c9d167292129cbc5811a1f1b8b2e"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配协议_时延与显存.csv",
+      "bytes": 10527,
+      "sha256": "7e01fad6c3a99aac66632d14c4a6a40653b0ef1399ebac0fd6fd70de1e926fca"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配协议_精确证据覆盖.csv",
+      "bytes": 657,
+      "sha256": "115e18e7601e4756ed880609b428c85cda649688a705ed75be0fcfb2846d6811"
+    },
+    {
+      "path": "reports/next_stage_20261019/无自匹配检索_维度消融.csv",
+      "bytes": 2120,
+      "sha256": "6585620fe1069aa7a9022d6308931a2d9e6e53d016b8112c2a198aab5234674f"
+    },
+    {
+      "path": "reports/next_stage_20261019/证据变化_分层答案变化_20261020.csv",
+      "bytes": 1356,
+      "sha256": "b45e5939e14e2a3e1cd74fcf527a746e5d8fb08c39cc86cf1606ce7e2b13e29e"
+    },
+    {
+      "path": "reports/next_stage_20261019/证据变化_相同输入核对_20261020.csv",
+      "bytes": 168,
+      "sha256": "b4b48531bbc0686395f24d977a09952d1ef80664836dd04edb34352050302ad0"
+    },
+    {
+      "path": "reports/results_20261020/legacy_self_match_quality.csv",
+      "bytes": 1368,
+      "sha256": "7d995dc98753d767e27d9f21dd09101bb4e67ad1e4bca272dc0ee3cc05a4fb32"
+    }
+  ],
+  "manifest_self_excluded": true,
+  "counts": {
+    "new_no_self_outcomes": 18045,
+    "legacy_self_match_outcomes": 15495,
+    "mmdocrag_numeric_rows": 1000,
+    "image_group_rows": 1033,
+    "e2e_measured_requests": 30
+  },
+  "private_raw_data_included": false,
+  "unexecuted_proposals_included": false
+}

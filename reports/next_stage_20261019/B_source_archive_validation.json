@@ -1,0 +1,17 @@
+{
+  "status": "verified_append_only",
+  "archive_sha256": "4e0fdb7ab586d432381e9431deb0f5de8fec4f8556535defe9c7948b85938893",
+  "pins_verified": 14,
+  "a_side_pin_count": 2,
+  "requested_a_side_pin_count": 4,
+  "discrepancy": "Receipt contains 2 A script pins, not4; additional2 not invented",
+  "b_side_four": [
+    "b-side/e2e_smoke.py",
+    "b-side/e2e_lease.py",
+    "b-side/model_adapters.py",
+    "b-side/run_candidate.py"
+  ],
+  "old_keys_unchanged": true,
+  "cpu_thread_warning": true,
+  "original_receipt_sha256": "27109ba0b381e95614f77b659ffbaa8b73468e74529c7bfb002e6648e8b740ad"
+}
