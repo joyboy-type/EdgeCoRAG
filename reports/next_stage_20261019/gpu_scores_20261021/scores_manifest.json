@@ -1,0 +1,120 @@
+{
+  "schema": "gpu_scores_manifest/v1",
+  "base_commit": "ff1fee10d3dec62e0852e7e2d96e3ec0931f65d1",
+  "source_tar": {
+    "path": "/Users/joyboy/Documents/Codex/2026-10-19/edgecorag-context-recovery/outputs/autodl_resume_report_20261021/session.tar.gz",
+    "sha256": "842d76d478ea74e6646e707bd8066d44365282d8382a5653985fd5703a986710"
+  },
+  "fields": [
+    "identity",
+    "qid",
+    "source",
+    "rank",
+    "sha256",
+    "score_fp32",
+    "score_fp32_hex",
+    "dtype",
+    "tf32_enabled",
+    "batch_size",
+    "pool_id",
+    "k",
+    "sort_key_rule",
+    "self_match_removed",
+    "n_pool_scored",
+    "normalize_locus",
+    "encoder_weights_sha256",
+    "model_revision",
+    "query_image_sha256",
+    "stack_versions",
+    "command_sha256",
+    "run_id"
+  ],
+  "files": [
+    {
+      "path": "reports/next_stage_20261019/gpu_scores_20261021/scores_live.csv",
+      "source_tar_member": "session/scores_live.csv",
+      "data_rows": 50,
+      "columns": 22,
+      "bytes": 48333,
+      "sha256": "75a502aa8e3c622b02e08e1ce4d8cfddc6acdcecb107d109fd321d0b148b7190",
+      "generation_command": [
+        "/root/autodl-tmp/EdgeCoRAG/envs/gemma4/bin/python",
+        "-B",
+        "/root/autodl-tmp/session/code/b-side/similarity_bypass.py",
+        "--vectors",
+        "/root/autodl-tmp/session/encoded/V.npy",
+        "--queries",
+        "/root/autodl-tmp/session/encoded/Q.npy",
+        "--pool",
+        "/root/autodl-tmp/session/encoded/pool.csv",
+        "--qids",
+        "/root/autodl-tmp/session/encoded/qids.txt",
+        "--metadata",
+        "/root/autodl-tmp/session/encoded/encoding.json",
+        "--source",
+        "live",
+        "--out",
+        "/root/autodl-tmp/session/scores_live.csv"
+      ],
+      "generation_command_shell": "/root/autodl-tmp/EdgeCoRAG/envs/gemma4/bin/python -B /root/autodl-tmp/session/code/b-side/similarity_bypass.py --vectors /root/autodl-tmp/session/encoded/V.npy --queries /root/autodl-tmp/session/encoded/Q.npy --pool /root/autodl-tmp/session/encoded/pool.csv --qids /root/autodl-tmp/session/encoded/qids.txt --metadata /root/autodl-tmp/session/encoded/encoding.json --source live --out /root/autodl-tmp/session/scores_live.csv",
+      "generation_rc": 0,
+      "command_sha256": [
+        "526d38560aa83fc50a1d4ae332e9642804539f56c42669ae05c65d2e0cfdd26a"
+      ],
+      "pool_id": "sha256:12f1e2fee88b142868282cc9a9d8217b2615c6ce16d22f4cad155e758eca025d",
+      "pool_tar_member": "session/encoded/pool.csv",
+      "pool_rows": 4712,
+      "dtype": "float32",
+      "dtype_note": "upstream encoder dtype; score_fp32 is NumPy float32 dot product",
+      "self_match_removed_counts": {
+        "image:31979efd82d057ae2d4183f77fa66503a59c9d3d63233edcc5495263bc6c899d": 10,
+        "image:78e31aba94a5a0c63ea64eecb687b580e228a01af534bb1fc85658fefe192917": 10,
+        "image:cf41c282d1d2b158b34d2957f4695b596c5f6a6ac029d24ed7b2c968bbb4d54f": 10,
+        "image:17944f3c597fde36f241a4dd1ac56174f576bbe801e11b77fdabc2a33639ee08": 10,
+        "image:7cca6efb3b8ee191c26dba7680858164273158783c6e1543b29e00e373d50dce": 10
+      }
+    },
+    {
+      "path": "reports/next_stage_20261019/gpu_scores_20261021/scores_history.csv",
+      "source_tar_member": "session/scores_history.csv",
+      "data_rows": 50,
+      "columns": 22,
+      "bytes": 39730,
+      "sha256": "71c32ed34e3a64f1a8b3a81da5f99381d8c20b6afdbaf0cbae804e60c71e7268",
+      "generation_command": [
+        "/root/autodl-tmp/EdgeCoRAG/envs/gemma4/bin/python",
+        "-B",
+        "/root/autodl-tmp/session/code/b-side/similarity_bypass.py",
+        "--vectors",
+        "/root/autodl-tmp/session/history_inputs/V.npy",
+        "--queries",
+        "/root/autodl-tmp/session/history_inputs/Q.npy",
+        "--pool",
+        "/root/autodl-tmp/session/history_inputs/pool.csv",
+        "--qids",
+        "/root/autodl-tmp/session/history_inputs/qids.txt",
+        "--metadata",
+        "/root/autodl-tmp/session/history_inputs/encoding.json",
+        "--source",
+        "history",
+        "--out",
+        "/root/autodl-tmp/session/scores_history.csv"
+      ],
+      "generation_command_shell": "/root/autodl-tmp/EdgeCoRAG/envs/gemma4/bin/python -B /root/autodl-tmp/session/code/b-side/similarity_bypass.py --vectors /root/autodl-tmp/session/history_inputs/V.npy --queries /root/autodl-tmp/session/history_inputs/Q.npy --pool /root/autodl-tmp/session/history_inputs/pool.csv --qids /root/autodl-tmp/session/history_inputs/qids.txt --metadata /root/autodl-tmp/session/history_inputs/encoding.json --source history --out /root/autodl-tmp/session/scores_history.csv",
+      "generation_rc": 0,
+      "command_sha256": [
+        "6a63631fe19cb336973a6cf85ec0a6d47c026740f514a16151ff0ddd2c7ad28c"
+      ],
+      "pool_id": "sha256:94c691850fb48821c217491f3a3c6d9ee83d553f16d290c6269fae720cca6b67",
+      "pool_tar_member": "session/history_inputs/pool.csv",
+      "pool_rows": 18955,
+      "dtype": "bfloat16",
+      "dtype_note": "upstream encoder dtype; score_fp32 is NumPy float32 dot product",
+      "self_match_removed_counts": {
+        "not_in_pool_18955": 50
+      }
+    }
+  ],
+  "comparison_warning": "history archived bfloat16 vectors in 18955-source-byte identity pool vs live float32 vectors in 4712-q95 pool; not a same-pool comparison. History scores are NumPy float32 dot products of archived vectors, not new fp32 encoding.",
+  "history_compatibility": "Session exporter accepts absent self only for history plus explicit not_in_pool_18955 metadata; live behavior unchanged. No scores regenerated for publication."
+}
