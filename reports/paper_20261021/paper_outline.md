@@ -1,3 +1,5 @@
+> **状态：部分过时。** 本文件写于 judge / S3 / 两项分解之前，表图清单与贡献条目以 `WRITING_PLAN_V2.md` 与 `PAPER_EVIDENCE_REVIEW.md` 为准。
+
 # 论文大纲（仅结构与证据索引）
 
 ## 写作约束与数字入口

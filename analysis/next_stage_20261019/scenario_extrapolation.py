@@ -8,6 +8,8 @@ import argparse, csv, gzip, json, hashlib
 from pathlib import Path
 import numpy as np
 
+SEED = 42
+B = 4000
 REPO = Path(__file__).resolve().parents[2]
 JOIN = REPO / 'reports/next_stage_20261019/error_partition_20261021/join_v2.csv.gz'
 PRED = REPO / 'logs/B_predictions.jsonl.gz'
@@ -41,7 +43,7 @@ def main():
            'input_join_sha256': hashlib.sha256(JOIN.read_bytes()).hexdigest(),
            'input_predictions': str(PRED.relative_to(REPO)),
            'input_predictions_sha256': hashlib.sha256(PRED.read_bytes()).hexdigest(),
-           'interval': 'point estimates only; descriptive',
+           'interval': 'per-scenario percentile bootstrap of u_s, 4000 resamples, seed 42; descriptive',
            'models': {}}
     for m, rs in sorted(by.items()):
         arr = np.array([[h, c] for _, h, c in rs])
@@ -54,7 +56,14 @@ def main():
             if len(sub) < 10:
                 continue
             r_s = hs.mean()
-            scen[s] = {'n': int(len(sub)), 'r': float(r_s),
+            rng = np.random.default_rng(SEED)
+            ub = []
+            for _ in range(B):
+                idx = rng.integers(0, len(sub), len(sub))
+                h2, o2 = hs[idx], os_[idx]
+                if h2.any(): ub.append(o2[h2].mean())
+            ci = [float(np.percentile(ub, 2.5)), float(np.percentile(ub, 97.5))] if ub else None
+            scen[s] = {'n': int(len(sub)), 'r': float(r_s), 'u_s_ci': ci,
                        'acc': float(os_.mean()),
                        'pred': float(r_s * u + (1 - r_s) * p),
                        'u_s': float(os_[hs].mean()) if hs.any() else None,

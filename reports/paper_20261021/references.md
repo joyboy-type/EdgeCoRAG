@@ -64,3 +64,15 @@
 - DOI：
 - 未核：会议论文集页码与会议DOI。
 - 来源：[项目官方README与citation](https://github.com/MMDocRAG/MMDocRAG/blob/main/README.md)、[arXiv论文页](https://arxiv.org/abs/2505.16470)。本次核对作者citation；arXiv Comments写明“Paper accepted to NeurIPS 2025 DB”。MMDocRAG为项目简称，正式题名按作者BibTeX登记；未将README的arXiv条目伪装成已取得的会议BibTeX。
+
+## 7. Retrieval Utilisation Across Model Scale（预印本）
+
+- 标题：Can Small Language Models Use What They Retrieve? An Empirical Study of Retrieval Utilization Across Model Scale
+- 作者：Sanchit Pandey
+- 类型：**Preprint**（非同行评审）
+- 机构：Birla Institute of Technology and Science, Hyderabad Campus
+- 年份：2026（Zenodo v1，2026-03-05）
+- DOI：10.5281/zenodo.18870116
+- 来源：[Zenodo 记录页](https://zenodo.org/records/18870116)，本次核对标题、作者、发布日期与 DOI。
+- 与本文关系：**同一方向的对立/先行工作**。该文在文本 RAG 上以参数知识切分区分"检索质量失败"与"利用失败"，结论为瓶颈在利用率。本文不主张首先提出该结论，而是在共享检索的多模态设置下给出残差为零的恒等分解，并补充证据充分性分层。
+- 引用注意：因是预印本，正文引用须标 "preprint"，不引其具体数值作比较基准。
