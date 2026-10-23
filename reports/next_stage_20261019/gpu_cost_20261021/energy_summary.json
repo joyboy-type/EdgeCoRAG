@@ -1,0 +1,170 @@
+{
+  "schema": "edgecorag.e3_gpu_energy_summary.v1",
+  "audit_date": "2026-10-23",
+  "source": {
+    "path": "reports/next_stage_20261019/gpu_cost_20261021/device_samples.jsonl",
+    "sha256": "88927af9710678f757b66fb8953fbfe7461df40ce119d3b06689d601a3492db6",
+    "field_names": [
+      "epoch",
+      "power_W"
+    ],
+    "selection": "power_W is neither null nor an empty/whitespace-only string; nonempty invalid values fail rather than being silently discarded"
+  },
+  "scope": {
+    "experiment": "E3 cost pilot only",
+    "device": "GPU board power sampled with nvidia-smi",
+    "whole_system": false,
+    "new_experiment": false,
+    "includes": "the recorded continuous pilot window, including warmup, hot requests and intervening activity; no allocation to individual models or requests",
+    "excludes": "outside-window energy; CPU/RAM/host power; full experiment or edge-device energy"
+  },
+  "samples": {
+    "input_count": 570,
+    "valid_power_count": 570,
+    "excluded_null_or_empty_power_count": 0,
+    "nonempty_invalid_count": 0,
+    "duplicate_epoch_count": 0,
+    "strictly_increasing_epochs": true
+  },
+  "power_W": {
+    "arithmetic_mean": 187.35949122807017,
+    "minimum": 31.25,
+    "sampled_maximum": 312.17,
+    "maximum_label": "采样到的最大值，非连续峰值",
+    "time_weighted_mean_trapezoidal": 187.77392997775624
+  },
+  "window": {
+    "start_epoch": 1792541352.6439207,
+    "end_epoch": 1792541436.1851737,
+    "start_utc": "2026-10-21T00:09:12.643921+00:00",
+    "end_utc": "2026-10-21T00:10:36.185174+00:00",
+    "duration_seconds": 83.54125308990479,
+    "duration_seconds_display": 83.5,
+    "interval_count": 569,
+    "interval_seconds_minimum": 0.1233816146850586,
+    "interval_seconds_median": 0.14583539962768555,
+    "interval_seconds_maximum": 0.37312912940979004
+  },
+  "integration": {
+    "method": "trapezoidal integration on actual epoch gaps",
+    "formula": "sum((t[i+1]-t[i])*(P[i]+P[i+1])/2)/3600",
+    "assumption": "linear interpolation only between consecutive retained power samples; no extrapolation outside their first and last epochs",
+    "energy_wh": 4.35746372443272,
+    "energy_wh_2dp": 4.36,
+    "independent_algebraic_check_wh": 4.35746372443272
+  },
+  "legacy_4_35_reconciliation": {
+    "reference_reported_wh": 4.35,
+    "reference_provenance": "branch a-side/next-stage-20261017, commit 4312359cdfdb8e39352415b182893f613a07ebda, a-side/reports/gpu_cost_20261021/energy_summary.json",
+    "reference_receipt_verified": true,
+    "sample_mean_times_window_wh": 4.347846298744446,
+    "sample_mean_times_window_wh_2dp": 4.35,
+    "formula": "arithmetic mean of retained power_W samples * retained epoch window / 3600",
+    "trapezoid_minus_sample_mean_approximation_wh": 0.009617425688274395,
+    "matches_reference_at_2dp": true,
+    "trapezoid_matches_reference_at_2dp": false,
+    "status": "两处独立复算一致（同源样本、样本均值×窗口时长/3600近似口径）；非两次独立测量，非梯形积分对账",
+    "allowed_citation": "4.35 Wh must explicitly mean the sample-mean-times-window approximation; actual-gap trapezoidal estimate is 4.36 Wh",
+    "two_independent_recomputations_agree_claim_allowed": true,
+    "reference_commit": "4312359cdfdb8e39352415b182893f613a07ebda",
+    "reference_branch": "a-side/next-stage-20261017",
+    "reference_json_path": "a-side/reports/gpu_cost_20261021/energy_summary.json",
+    "reference_json_sha256": "3ffcd8f2272b8846077d64ba74fff0bd003ae14df82ceb43e06a5d16e3a64c15",
+    "reference_json_url": "https://github.com/joyboy-type/EdgeCoRAG/blob/4312359cdfdb8e39352415b182893f613a07ebda/a-side/reports/gpu_cost_20261021/energy_summary.json",
+    "reference_markdown_path": "a-side/reports/gpu_cost_20261021/energy_summary.md",
+    "reference_markdown_sha256": "f58fc7a21c61f93c9d09da72a6cb2ab3dabf5dab677c7eb925f3fcd5b5b44112",
+    "reference_markdown_url": "https://github.com/joyboy-type/EdgeCoRAG/blob/4312359cdfdb8e39352415b182893f613a07ebda/a-side/reports/gpu_cost_20261021/energy_summary.md",
+    "reference_energy_wh_unrounded": 4.347846298744446,
+    "unrounded_difference_wh": 0.0,
+    "claim_scope": "Only the independently performed arithmetic recomputations of the same source samples under the sample-mean-times-window approximation agree. This does not claim independent measurement replication or equality with actual-gap trapezoidal integration.",
+    "field_checks": [
+      {
+        "a_field": "input.device_samples_sha256",
+        "a_value": "88927af9710678f757b66fb8953fbfe7461df40ce119d3b06689d601a3492db6",
+        "b_field": "source.sha256",
+        "b_value": "88927af9710678f757b66fb8953fbfe7461df40ce119d3b06689d601a3492db6",
+        "equal": true
+      },
+      {
+        "a_field": "input.records_total",
+        "a_value": 570,
+        "b_field": "samples.input_count",
+        "b_value": 570,
+        "equal": true
+      },
+      {
+        "a_field": "input.power_W_non_null_parsed",
+        "a_value": 570,
+        "b_field": "samples.valid_power_count",
+        "b_value": 570,
+        "equal": true
+      },
+      {
+        "a_field": "input.power_W_null_or_unparsable",
+        "a_value": 0,
+        "b_field": "samples.excluded_null_or_empty_power_count",
+        "b_value": 0,
+        "equal": true
+      },
+      {
+        "a_field": "stats.mean_power_W",
+        "a_value": 187.35949122807017,
+        "b_field": "power_W.arithmetic_mean",
+        "b_value": 187.35949122807017,
+        "equal": true
+      },
+      {
+        "a_field": "stats.min_power_W",
+        "a_value": 31.25,
+        "b_field": "power_W.minimum",
+        "b_value": 31.25,
+        "equal": true
+      },
+      {
+        "a_field": "stats.max_power_W",
+        "a_value": 312.17,
+        "b_field": "power_W.sampled_maximum",
+        "b_value": 312.17,
+        "equal": true
+      },
+      {
+        "a_field": "stats.window_first_epoch",
+        "a_value": 1792541352.6439207,
+        "b_field": "window.start_epoch",
+        "b_value": 1792541352.6439207,
+        "equal": true
+      },
+      {
+        "a_field": "stats.window_last_epoch",
+        "a_value": 1792541436.1851737,
+        "b_field": "window.end_epoch",
+        "b_value": 1792541436.1851737,
+        "equal": true
+      },
+      {
+        "a_field": "stats.window_seconds",
+        "a_value": 83.54125308990479,
+        "b_field": "window.duration_seconds",
+        "b_value": 83.54125308990479,
+        "equal": true
+      },
+      {
+        "a_field": "stats.energy_Wh",
+        "a_value": 4.347846298744446,
+        "b_field": "legacy_4_35_reconciliation.sample_mean_times_window_wh",
+        "b_value": 4.347846298744446,
+        "equal": true
+      }
+    ],
+    "filter_policy_note": "A counts null or unparsable power as excluded; B excludes null/empty and fails on nonempty invalid power. All 570 source records are valid, so retained sets coincide exactly; equivalence is asserted for these observed samples, not all hypothetical malformed inputs.",
+    "window_definition_check": "A stats endpoints equal B first/last retained epochs; endpoint subtraction exactly matches duration. All observed rows are retained, so full-file and retained-set endpoints coincide.",
+    "formula_verified": "A Markdown explicitly states mean(power_W) * window_seconds / 3600; A unrounded JSON value exactly matches B approximation."
+  },
+  "artifact_links": {
+    "json": "reports/next_stage_20261019/gpu_cost_20261021/energy_summary.json",
+    "markdown": "reports/next_stage_20261019/gpu_cost_20261021/energy_summary.md",
+    "a_reference_json": "https://github.com/joyboy-type/EdgeCoRAG/blob/4312359cdfdb8e39352415b182893f613a07ebda/a-side/reports/gpu_cost_20261021/energy_summary.json",
+    "a_reference_markdown": "https://github.com/joyboy-type/EdgeCoRAG/blob/4312359cdfdb8e39352415b182893f613a07ebda/a-side/reports/gpu_cost_20261021/energy_summary.md",
+    "source_provenance": "A input.device_samples_sha256 and B source.sha256 identify the same immutable sample bytes; this B JSON and its Markdown cross-link each other and link the immutable A receipt. A-side historical files are unchanged."
+  }
+}
