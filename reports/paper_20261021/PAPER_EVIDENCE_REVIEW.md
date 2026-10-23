@@ -32,9 +32,9 @@ r = P(金标进 top-3) = 0.4995，五模型逐位相同（残差为 0 的恒等�
 证据：`reports/paper_20261021/DECOMPOSITION.md`、`decomposition_20261021.json`、`analysis/next_stage_20261019/decompose_accuracy.py`
 强度：**中高**。风险：分解在文本 RAG 已有先例（见 §三），必须引。
 
-**C2 证据充分性分层：命中 ≠ 可用**
+**C2 命中指标不足以概括回答表现（已按 2026-10-23 审核修正）**
 
-同一命中率下，场景间利用率跨 4.5 倍：`Incomplete 0.160` / `Biological 0.358` / `Deformation 0.420` / `Temporal 0.717`。
+同一检索接口下，**命中后的条件正确率**在场景间异质：`Incomplete` 命中 5/77、条件正确率 0.00–0.40；`Temporal` 命中 41/113、0.54–0.82。**注意：命中率本身也不同（0.065 vs 0.363），且 Incomplete 仅 5 个命中题，只能描述性报告。**
 证据：`DECOMPOSITION.md` §七、`scenario_extrapolation_20261021.json`
 强度：**高**（本文最独特的一条）。风险：`Incomplete` 是基准设计意图，需说明我们是在"用数据确认设计"而非"发现新现象"。
 
