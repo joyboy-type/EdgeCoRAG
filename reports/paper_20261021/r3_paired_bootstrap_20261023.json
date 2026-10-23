@@ -1,0 +1,6519 @@
+{
+  "registration": {
+    "path": "reports/paper_20261021/ADVISOR_BRIEF.md",
+    "sha256": "395ada36687581d829dc99153c7e00f95dd7f62468d62417e96e99ce1d0d0720",
+    "commit": "95632092312b09b068ef5ccbfad33f51be54759c",
+    "section": "R3 配对区间分析登记（计算前固定，2026-10-23）"
+  },
+  "method": {
+    "unit": "qid paired",
+    "replicates": 10000,
+    "seed": 42,
+    "rng": "NumPy Generator(PCG64(42))",
+    "qid_order": "lexicographic",
+    "ci": "two-sided 95% percentile, linear quantile interpolation",
+    "multiple_comparison_adjustment": false,
+    "same_draw_for_both_contrasts": true,
+    "units": "percentage points",
+    "python": "3.12.14",
+    "numpy": "2.5.4"
+  },
+  "provenance": {
+    "raw_path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/frozen_test/results/generate-qwen3vl_4b/predictions.jsonl",
+    "raw_sha256": "8685543d2224a22e53109a99b79999c309d88f44ee6df854a90c97736ee7e9aa",
+    "raw_field": "qid/selection_strategy/selected_ids/final_output",
+    "manifest_path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/closeout-manifest.json",
+    "manifest_sha256": "69dde5de2fac78569d36036fa8db0c8914485952d702390c37539a8d1e0cc58b",
+    "gold_answers_path": "/Users/joyboy/.codex/edgecorag-monitor.T0anAK/backups/20261017T032723420411Z/verified/edgecorag-v1101-backup/bound-v1.10.0/integrated/frozen_test/main/scoring/answers.json",
+    "gold_answers_sha256": "8df74f3301151cad7b33896b6f888d9789c472f473fe7c842210471566af159d",
+    "bundle_path": "/Users/joyboy/.codex/edgecorag-monitor.T0anAK/backups/20261017T032723420411Z/verified/edgecorag-v1101-backup/bound-v1.10.0/integrated/frozen_test/main/bundle.json",
+    "bundle_sha256": "fca1f5b976d113c86248754a4f7815e73cd4ea6ae95d571e3fc0cecacf794c21",
+    "correct_flags": "Existing strict_choice_v1 per_question.correct; no reparsing or re-inference",
+    "scoring_inputs": [
+      {
+        "strategy": "utility",
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/corrected-protocol-scoring/frozen_test__qwen3vl_4b__utility.private.json",
+        "sha256": "f853f6f6af83204349d0f7cfc1d2f54f3cfdd8183ae68e18a8b618cc5a3bb6bd",
+        "field": "per_question[].correct",
+        "correct": 623,
+        "n": 1033
+      },
+      {
+        "strategy": "cosine",
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/corrected-protocol-scoring/frozen_test__qwen3vl_4b__cosine.private.json",
+        "sha256": "a056afc1cbe910d63097d9f4e5adab841b8efa4768ae3063f6df9b2bfd7cf00e",
+        "field": "per_question[].correct",
+        "correct": 618,
+        "n": 1033
+      },
+      {
+        "strategy": "random",
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/corrected-protocol-scoring/frozen_test__qwen3vl_4b__random.private.json",
+        "sha256": "1452646e02f90fec3c6c29bab393d587518f21dfd92bf5e441d916d3c9b621a6",
+        "field": "per_question[].correct",
+        "correct": 615,
+        "n": 1033
+      }
+    ],
+    "qid_list_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+    "qid_hash_encoding": "UTF-8 sorted qid + newline, including final newline"
+  },
+  "archive_coverage": {
+    "rows": 18045,
+    "files": [
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/smoke_20/results/generate-qwen3vl_4b/predictions.jsonl",
+        "sha256": "f01fdc33b294e4beeab6ce5ce8e2c37ed723347ffbe7b3b9fa0c73b6d23dced4",
+        "rows": 60,
+        "split": "smoke_20",
+        "model": "qwen3vl_4b",
+        "strategy_counts": {
+          "cosine": 20,
+          "random": 20,
+          "utility": 20
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/smoke_20/results/generate-qwen3vl_8b/predictions.jsonl",
+        "sha256": "8186d6fbc737012598edcfa232ae25298b4e86949b222ccdd2a936bce2dac5d1",
+        "rows": 60,
+        "split": "smoke_20",
+        "model": "qwen3vl_8b",
+        "strategy_counts": {
+          "cosine": 20,
+          "random": 20,
+          "utility": 20
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/smoke_20/results/generate-gemma4_e2b/predictions.jsonl",
+        "sha256": "de1f6beb3130d52c5eba09e87376bc0851537a58ec5faaeac2945d6d0057360f",
+        "rows": 60,
+        "split": "smoke_20",
+        "model": "gemma4_e2b",
+        "strategy_counts": {
+          "cosine": 20,
+          "random": 20,
+          "utility": 20
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/smoke_20/results/generate-gemma4_e4b/predictions.jsonl",
+        "sha256": "f5226f99824811203db9033268219b5997e24181ea0b9826e3c69126b4bc6ffd",
+        "rows": 60,
+        "split": "smoke_20",
+        "model": "gemma4_e4b",
+        "strategy_counts": {
+          "cosine": 20,
+          "random": 20,
+          "utility": 20
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/smoke_20/results/generate-qwen35_4b/predictions.jsonl",
+        "sha256": "9575e1968b97c5806995c284c04c751874e904a60c477df31b0f59085e39feaf",
+        "rows": 60,
+        "split": "smoke_20",
+        "model": "qwen35_4b",
+        "strategy_counts": {
+          "cosine": 20,
+          "random": 20,
+          "utility": 20
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/dev/results/generate-qwen3vl_4b/predictions.jsonl",
+        "sha256": "5663333b41d842d744eda3dd52d0948f9d868b09187bed8ad5a76ee4f64c2c7c",
+        "rows": 450,
+        "split": "dev",
+        "model": "qwen3vl_4b",
+        "strategy_counts": {
+          "cosine": 150,
+          "random": 150,
+          "utility": 150
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/dev/results/generate-qwen3vl_8b/predictions.jsonl",
+        "sha256": "2db0795ecd9189f54a4f17f852b3ae4145ea1d0ffaedbcaabd4710ed09bcaca9",
+        "rows": 450,
+        "split": "dev",
+        "model": "qwen3vl_8b",
+        "strategy_counts": {
+          "cosine": 150,
+          "random": 150,
+          "utility": 150
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/dev/results/generate-gemma4_e2b/predictions.jsonl",
+        "sha256": "436d696d8df7936a4b7266274f382c20d5de8b346608519aaa94d297c2511d71",
+        "rows": 450,
+        "split": "dev",
+        "model": "gemma4_e2b",
+        "strategy_counts": {
+          "cosine": 150,
+          "random": 150,
+          "utility": 150
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/dev/results/generate-gemma4_e4b/predictions.jsonl",
+        "sha256": "5395bf87b00499b6ec335b7dc79c9cee44a40118afd711257bd7708d289ead46",
+        "rows": 450,
+        "split": "dev",
+        "model": "gemma4_e4b",
+        "strategy_counts": {
+          "cosine": 150,
+          "random": 150,
+          "utility": 150
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/dev/results/generate-qwen35_4b/predictions.jsonl",
+        "sha256": "a533db5897ac49802c1db040aea379f3e40f4a26917a79d992e2810db2514872",
+        "rows": 450,
+        "split": "dev",
+        "model": "qwen35_4b",
+        "strategy_counts": {
+          "cosine": 150,
+          "random": 150,
+          "utility": 150
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/frozen_test/results/generate-qwen3vl_4b/predictions.jsonl",
+        "sha256": "8685543d2224a22e53109a99b79999c309d88f44ee6df854a90c97736ee7e9aa",
+        "rows": 3099,
+        "split": "frozen_test",
+        "model": "qwen3vl_4b",
+        "strategy_counts": {
+          "cosine": 1033,
+          "random": 1033,
+          "utility": 1033
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/frozen_test/results/generate-qwen3vl_8b/predictions.jsonl",
+        "sha256": "c0a3319e7cedd701f25b79c1c4af4f366025ab255469e1c15eebddbb227b9f49",
+        "rows": 3099,
+        "split": "frozen_test",
+        "model": "qwen3vl_8b",
+        "strategy_counts": {
+          "cosine": 1033,
+          "random": 1033,
+          "utility": 1033
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/frozen_test/results/generate-gemma4_e2b/predictions.jsonl",
+        "sha256": "120d53fa2960cc9cd42c9e80492e3f710f23ae584299ea470c1d076bf795288d",
+        "rows": 3099,
+        "split": "frozen_test",
+        "model": "gemma4_e2b",
+        "strategy_counts": {
+          "cosine": 1033,
+          "random": 1033,
+          "utility": 1033
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/frozen_test/results/generate-gemma4_e4b/predictions.jsonl",
+        "sha256": "9a5bd112059d060d17e8910ae4897f145f3a9f28bae0590f032024163d845fe3",
+        "rows": 3099,
+        "split": "frozen_test",
+        "model": "gemma4_e4b",
+        "strategy_counts": {
+          "cosine": 1033,
+          "random": 1033,
+          "utility": 1033
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      },
+      {
+        "path": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/next-experiment-20261019/continuous-complete-backup/frozen_test/results/generate-qwen35_4b/predictions.jsonl",
+        "sha256": "61c36301049e769c7753d5dfbe5118cc6ea9b3cabf733f98ae26774cb1709bc9",
+        "rows": 3099,
+        "split": "frozen_test",
+        "model": "qwen35_4b",
+        "strategy_counts": {
+          "cosine": 1033,
+          "random": 1033,
+          "utility": 1033
+        },
+        "duplicate_keys": 0,
+        "missing_rows": 0
+      }
+    ],
+    "duplicates": 0,
+    "missing_rows": 0,
+    "splits_disjoint": true
+  },
+  "results": [
+    {
+      "contrast": "utility_minus_cosine",
+      "n": 1033,
+      "utility_correct": 623,
+      "comparator_correct": 618,
+      "improvements": 56,
+      "regressions": 51,
+      "both_correct": 567,
+      "both_incorrect": 359,
+      "unchanged": 926,
+      "delta_correct": 5,
+      "delta_pp": 0.48402710551790895,
+      "ci95_pp": [
+        -1.452081316553727,
+        2.420135527589545
+      ],
+      "includes_zero": true,
+      "conclusion": "无法与无差异区分"
+    },
+    {
+      "contrast": "utility_minus_random",
+      "n": 1033,
+      "utility_correct": 623,
+      "comparator_correct": 615,
+      "improvements": 65,
+      "regressions": 57,
+      "both_correct": 558,
+      "both_incorrect": 353,
+      "unchanged": 911,
+      "delta_correct": 8,
+      "delta_pp": 0.7744433688286544,
+      "ci95_pp": [
+        -1.2584704743465636,
+        2.904162633107454
+      ],
+      "includes_zero": true,
+      "conclusion": "无法与无差异区分"
+    }
+  ],
+  "paired_correctness": [
+    {
+      "qid": "mragb:100",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1000",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1002",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1003",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1004",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1005",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1006",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1007",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1008",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:101",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1010",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1011",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1012",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1014",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1015",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1016",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1017",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1018",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1019",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1020",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1021",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1022",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1023",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1024",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1025",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1026",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1027",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1028",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1029",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:103",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1030",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1031",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1032",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1033",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1034",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1036",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1038",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1039",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:104",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1040",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1042",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1045",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1046",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1047",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1048",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:105",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1050",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1053",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1054",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1055",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1057",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1058",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1059",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:106",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1060",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1063",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1064",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1066",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1067",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1068",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1069",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:107",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1070",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1072",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1074",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1075",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1076",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1077",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1078",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:108",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1080",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1081",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1082",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1083",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1084",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1085",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1086",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1087",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1089",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:109",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1090",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1091",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1093",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1094",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1095",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1096",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1098",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1099",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:11",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1101",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1102",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1103",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1105",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1107",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1108",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1110",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1111",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1112",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1113",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1114",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1115",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1116",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1118",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1119",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:112",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1121",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1122",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1123",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1124",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1125",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1126",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1127",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1128",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1129",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:113",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1130",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1131",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1132",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1133",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1134",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1135",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1136",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1138",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1139",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:114",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1140",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1141",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1142",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1143",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1144",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1145",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1146",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1147",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1148",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1149",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:115",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1150",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1152",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1153",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1154",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1157",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1158",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1162",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1163",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1164",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1165",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1166",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1168",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1169",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1170",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1171",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1172",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1173",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1174",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1175",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1176",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1177",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1178",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1180",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1181",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1182",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1183",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1185",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1186",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1187",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1189",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:119",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1190",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1191",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1192",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1193",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1194",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1195",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1196",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1197",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1198",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1199",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:12",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:120",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1201",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1202",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1203",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1204",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1206",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1207",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1208",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1209",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1210",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1212",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1213",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1214",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1216",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:122",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1222",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1223",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1225",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1227",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1228",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1229",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1230",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1231",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1232",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1233",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1234",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1235",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1236",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1237",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1239",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:124",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1240",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1241",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1242",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1243",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1244",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1245",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1247",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1248",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:125",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1250",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1251",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1252",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1254",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1255",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1256",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1257",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1258",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1259",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:126",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1260",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1262",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1263",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1264",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1265",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1267",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1269",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:127",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1270",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1271",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1272",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1273",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1274",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1275",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1276",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1277",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1278",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1279",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:128",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1280",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1282",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1283",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1284",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1285",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1286",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1288",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:129",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1290",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1291",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1292",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1294",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1295",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1297",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1298",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1299",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:13",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:130",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1300",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1301",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1302",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1303",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1304",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1305",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1306",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1307",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1308",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1309",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:131",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1311",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1313",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1314",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1315",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1316",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1317",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1318",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1319",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:132",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1320",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1322",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1325",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1328",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1329",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:133",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1330",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1331",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1332",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1333",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1335",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1336",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1337",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1338",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:134",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1340",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1341",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1342",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1344",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1345",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1346",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:1348",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1349",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:135",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1350",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:1351",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:136",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:137",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:138",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:139",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:14",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:141",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:142",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:143",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:144",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:145",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:146",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:147",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:149",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:15",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:150",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:151",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:153",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:154",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:156",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:158",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:16",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:160",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:161",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:162",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:163",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:166",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:168",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:169",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:17",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:170",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:171",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:172",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:173",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:175",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:176",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:177",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:178",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:179",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:18",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:181",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:183",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:185",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:186",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:187",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:188",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:189",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:19",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:191",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:192",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:193",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:194",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:195",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:196",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:198",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:20",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:201",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:202",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:205",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:206",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:207",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:209",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:21",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:210",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:212",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:213",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:214",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:215",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:216",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:217",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:218",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:219",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:22",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:220",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:222",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:223",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:225",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:228",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:229",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:23",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:230",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:231",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:232",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:233",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:235",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:237",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:238",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:239",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:241",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:242",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:243",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:246",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:248",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:249",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:25",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:252",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:253",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:254",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:255",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:256",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:257",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:258",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:259",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:26",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:260",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:261",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:262",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:263",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:264",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:265",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:266",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:267",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:268",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:27",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:270",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:272",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:273",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:275",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:278",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:279",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:28",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:280",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:282",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:283",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:284",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:285",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:286",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:289",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:29",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:290",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:291",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:292",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:294",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:295",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:296",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:297",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:299",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:30",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:300",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:301",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:302",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:305",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:306",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:307",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:308",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:31",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:311",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:312",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:313",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:315",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:316",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:317",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:318",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:319",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:32",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:320",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:322",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:323",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:324",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:327",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:328",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:329",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:33",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:330",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:331",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:334",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:335",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:337",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:338",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:339",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:34",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:340",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:341",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:342",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:345",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:346",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:347",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:348",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:349",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:35",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:350",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:351",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:352",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:353",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:358",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:359",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:36",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:360",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:361",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:362",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:363",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:364",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:365",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:366",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:367",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:368",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:369",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:37",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:370",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:372",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:373",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:374",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:376",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:38",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:380",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:381",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:382",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:383",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:384",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:385",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:386",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:388",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:389",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:39",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:390",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:392",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:393",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:394",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:395",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:396",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:397",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:398",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:40",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:400",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:401",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:404",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:406",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:408",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:409",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:41",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:410",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:411",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:412",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:413",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:414",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:417",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:418",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:419",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:42",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:420",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:421",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:423",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:424",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:426",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:428",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:429",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:430",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:432",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:433",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:434",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:435",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:436",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:437",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:439",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:44",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:440",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:441",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:442",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:443",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:444",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:446",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:447",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:448",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:45",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:450",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:452",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:453",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:454",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:455",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:456",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:457",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:458",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:459",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:46",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:461",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:462",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:465",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:466",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:467",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:468",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:469",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:470",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:472",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:474",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:475",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:476",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:477",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:478",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:479",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:48",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:480",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:481",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:482",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:483",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:484",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:485",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:486",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:487",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:488",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:489",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:49",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:491",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:493",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:494",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:495",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:496",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:497",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:498",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:499",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:50",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:500",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:501",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:502",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:503",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:504",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:505",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:506",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:508",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:509",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:51",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:510",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:511",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:513",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:515",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:516",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:518",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:519",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:52",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:520",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:521",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:523",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:525",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:526",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:527",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:528",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:529",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:53",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:530",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:531",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:532",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:533",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:534",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:535",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:537",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:538",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:54",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:541",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:542",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:545",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:546",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:547",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:548",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:549",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:55",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:550",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:551",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:552",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:554",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:559",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:56",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:560",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:561",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:562",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:563",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:566",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:567",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:568",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:569",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:57",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:570",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:571",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:573",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:575",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:576",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:577",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:578",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:579",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:58",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:581",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:582",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:583",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:584",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:586",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:588",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:589",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:59",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:590",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:591",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:592",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:594",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:597",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:599",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:6",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:600",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:601",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:602",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:603",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:605",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:607",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:61",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:611",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:612",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:613",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:614",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:615",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:617",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:618",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:620",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:621",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:622",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:624",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:625",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:626",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:627",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:628",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:629",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:63",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:631",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:633",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:635",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:637",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:638",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:639",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:64",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:641",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:643",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:645",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:646",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:647",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:648",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:649",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:65",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:650",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:651",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:654",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:655",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:657",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:658",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:66",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:660",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:661",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:662",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:663",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:664",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:665",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:666",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:667",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:668",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:669",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:67",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:670",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:672",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:674",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:675",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:677",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:678",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:68",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:682",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:683",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:684",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:685",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:687",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:688",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:689",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:69",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:690",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:691",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:692",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:693",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:694",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:695",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:696",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:697",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:698",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:699",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:70",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:700",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:701",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:702",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:703",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:704",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:708",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:711",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:713",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:715",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:716",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:717",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:718",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:719",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:72",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:720",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:722",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:723",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:724",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:725",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:726",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:728",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:729",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:730",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:731",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:732",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:733",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:735",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:736",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:737",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:738",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:739",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:74",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:740",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:741",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:743",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:744",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:745",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:747",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:748",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:749",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:75",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:750",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:751",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:752",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:753",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:754",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:755",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:756",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:757",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:758",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:759",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:76",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:760",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:761",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:762",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:763",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:766",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:77",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:773",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:775",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:776",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:78",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:780",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:781",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:782",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:785",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:787",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:788",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:789",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:79",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:790",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:791",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:792",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:793",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:794",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:795",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:796",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:797",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:798",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:799",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:801",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:802",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:803",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:804",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:805",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:806",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:807",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:808",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:809",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:810",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:812",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:813",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:814",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:817",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:819",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:82",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:820",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:821",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:823",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:825",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:826",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:827",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:828",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:829",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:830",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:831",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:832",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:833",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:835",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:836",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:837",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:84",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:840",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:841",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:842",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:843",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:844",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:845",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:846",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:847",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:848",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:849",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:85",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:850",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:852",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:853",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:854",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:855",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:857",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:858",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:860",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:861",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:862",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:863",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:865",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:866",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:867",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:868",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:869",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:87",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:870",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:871",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:872",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:874",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:875",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:876",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:877",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:878",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:879",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:88",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:880",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:883",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:884",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:885",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:886",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:887",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:889",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:89",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:890",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:891",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:893",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:896",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:898",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:899",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:90",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:900",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:903",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:904",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:905",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:906",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:908",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:91",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:911",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:912",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:914",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:915",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:917",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:919",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:920",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:921",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:924",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:925",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:926",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:928",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:929",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:93",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:931",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:932",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:933",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:935",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:936",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:938",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:94",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:940",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:941",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:942",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:943",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:944",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:945",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:946",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:947",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:948",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:949",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:95",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:950",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:951",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:952",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:953",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:955",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:957",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:958",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:959",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:96",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:961",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:963",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:965",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:967",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:968",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:97",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:970",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:971",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:972",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:973",
+      "utility_correct": false,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:974",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:975",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:977",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:978",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:979",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:981",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:982",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:983",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:984",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:985",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:986",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:987",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:988",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:989",
+      "utility_correct": false,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:99",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:990",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:991",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:992",
+      "utility_correct": true,
+      "cosine_correct": false,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:993",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:994",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:995",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:997",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    },
+    {
+      "qid": "mragb:998",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": false
+    },
+    {
+      "qid": "mragb:999",
+      "utility_correct": true,
+      "cosine_correct": true,
+      "random_correct": true
+    }
+  ]
+}
