@@ -1,0 +1,237 @@
+{
+  "registration_commit": "f5a3f12",
+  "registration_sha256": "8046e99b4c2c82064e3e9263043929c570f1af95dd49e393dfff363f41f39391",
+  "inputs": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/cost/inputs.json",
+  "inputs_sha256": "e6c72663c29bc1fb61c64b43e99802b7d61f83add007108221487267ad665712",
+  "models": {
+    "qwen3vl_4b": {
+      "source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/cost/qwen3vl_4b_requests.jsonl",
+      "sha256": "4fed74fae1d144040c49f52df2e9111d0f4eaa95af1c6e916e89878659e2b68c",
+      "caps": {
+        "2": {
+          "n": 20,
+          "warmups": 3,
+          "mean_generated_tokens": 2,
+          "budget_exhausted": 20,
+          "end_before_budget_count": 0,
+          "sampled_device_peak_bytes": 12388925440,
+          "allocator_peak_allocated_bytes": 9224179712,
+          "energy_trapezoidal_Wh": 0.5306469160195854,
+          "energy_mean_power_times_duration_Wh": 0.5374540563570128,
+          "summed_sample_window_s": 11.83421277999878,
+          "raw_output_examples": [
+            "B<|im_end|>",
+            "C<|im_end|>",
+            "C<|im_end|>"
+          ],
+          "e2e_ms": {
+            "mean": 529.3106861412525,
+            "p50": 507.5278505682945,
+            "p95": 642.8819519467652
+          },
+          "encoder_ms": {
+            "mean": 72.06179210916162,
+            "p50": 71.83039002120495,
+            "p95": 73.39487560093403
+          },
+          "generation_ms": {
+            "mean": 130.4031622596085,
+            "p50": 138.96523416042328,
+            "p95": 146.04164827615023
+          }
+        },
+        "256": {
+          "n": 20,
+          "warmups": 3,
+          "mean_generated_tokens": 2,
+          "budget_exhausted": 0,
+          "end_before_budget_count": 20,
+          "sampled_device_peak_bytes": 12388925440,
+          "allocator_peak_allocated_bytes": 9224179712,
+          "energy_trapezoidal_Wh": 0.5186967968410916,
+          "energy_mean_power_times_duration_Wh": 0.528333498768387,
+          "summed_sample_window_s": 11.942485570907593,
+          "raw_output_examples": [
+            "B<|im_end|>",
+            "C<|im_end|>",
+            "C<|im_end|>"
+          ],
+          "e2e_ms": {
+            "mean": 533.7824848480523,
+            "p50": 543.3162674307823,
+            "p95": 640.2054256759584
+          },
+          "encoder_ms": {
+            "mean": 72.12282065302134,
+            "p50": 71.99607882648706,
+            "p95": 73.14904863014817
+          },
+          "generation_ms": {
+            "mean": 131.17890004068613,
+            "p50": 138.77446483820677,
+            "p95": 151.2052628211677
+          }
+        }
+      },
+      "length_status": "length_not_effective",
+      "generation_ms_per_extra100_tokens": null,
+      "e2e_ms_per_extra100_tokens": null,
+      "marginal_result_use": "appendix_arithmetic_only_not_long_answer_cost"
+    },
+    "gemma4_e2b": {
+      "source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/cost/gemma4_e2b_requests.jsonl",
+      "sha256": "342f5e8bb8ab2ddf05bd038bcc74bf102c25b26d8cd4895ca6a9e4b5b2112968",
+      "caps": {
+        "2": {
+          "n": 20,
+          "warmups": 3,
+          "mean_generated_tokens": 2,
+          "budget_exhausted": 20,
+          "end_before_budget_count": 0,
+          "sampled_device_peak_bytes": 13473153024,
+          "allocator_peak_allocated_bytes": 10374462464,
+          "energy_trapezoidal_Wh": 0.3698364886025588,
+          "energy_mean_power_times_duration_Wh": 0.37435902623014317,
+          "summed_sample_window_s": 10.728245258331299,
+          "raw_output_examples": [
+            "A<turn|>",
+            "C<turn|>",
+            "A<turn|>"
+          ],
+          "e2e_ms": {
+            "mean": 475.1321545802057,
+            "p50": 495.19734643399715,
+            "p95": 534.2759534716606
+          },
+          "encoder_ms": {
+            "mean": 76.37654561549425,
+            "p50": 73.71361181139946,
+            "p95": 95.04543589428067
+          },
+          "generation_ms": {
+            "mean": 136.13488618284464,
+            "p50": 129.46818303316832,
+            "p95": 154.84579382464295
+          }
+        },
+        "256": {
+          "n": 20,
+          "warmups": 3,
+          "mean_generated_tokens": 2,
+          "budget_exhausted": 0,
+          "end_before_budget_count": 20,
+          "sampled_device_peak_bytes": 13473153024,
+          "allocator_peak_allocated_bytes": 10374462464,
+          "energy_trapezoidal_Wh": 0.35923339493241574,
+          "energy_mean_power_times_duration_Wh": 0.3637659514341641,
+          "summed_sample_window_s": 10.523443937301636,
+          "raw_output_examples": [
+            "A<turn|>",
+            "C<turn|>",
+            "A<turn|>"
+          ],
+          "e2e_ms": {
+            "mean": 475.2379729412496,
+            "p50": 479.38047721982,
+            "p95": 522.5373246707022
+          },
+          "encoder_ms": {
+            "mean": 76.72834116965532,
+            "p50": 73.53044301271439,
+            "p95": 94.75277494639158
+          },
+          "generation_ms": {
+            "mean": 142.7764625288546,
+            "p50": 132.7345184981823,
+            "p95": 209.27550643682483
+          }
+        }
+      },
+      "length_status": "length_not_effective",
+      "generation_ms_per_extra100_tokens": null,
+      "e2e_ms_per_extra100_tokens": null,
+      "marginal_result_use": "appendix_arithmetic_only_not_long_answer_cost"
+    },
+    "gemma4_e4b": {
+      "source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/cost/gemma4_e4b_requests.jsonl",
+      "sha256": "031b95da7eef9e5c00caca8fc25b816751c4ad1dd46c119ff6384576efe261c3",
+      "caps": {
+        "2": {
+          "n": 20,
+          "warmups": 3,
+          "mean_generated_tokens": 2,
+          "budget_exhausted": 20,
+          "end_before_budget_count": 0,
+          "sampled_device_peak_bytes": 19166920704,
+          "allocator_peak_allocated_bytes": 16047679488,
+          "energy_trapezoidal_Wh": 0.484964652575718,
+          "energy_mean_power_times_duration_Wh": 0.4880992859825602,
+          "summed_sample_window_s": 10.9249267578125,
+          "raw_output_examples": [
+            "D<turn|>",
+            "C<turn|>",
+            "A<turn|>"
+          ],
+          "e2e_ms": {
+            "mean": 500.03972882404923,
+            "p50": 493.84357314556837,
+            "p95": 563.9937581494451
+          },
+          "encoder_ms": {
+            "mean": 73.724858276546,
+            "p50": 71.83261588215828,
+            "p95": 80.59460436925292
+          },
+          "generation_ms": {
+            "mean": 157.65919145196676,
+            "p50": 153.5892616957426,
+            "p95": 187.51928880810738
+          }
+        },
+        "256": {
+          "n": 20,
+          "warmups": 3,
+          "mean_generated_tokens": 2,
+          "budget_exhausted": 0,
+          "end_before_budget_count": 20,
+          "sampled_device_peak_bytes": 19166920704,
+          "allocator_peak_allocated_bytes": 16047679488,
+          "energy_trapezoidal_Wh": 0.4874935399648216,
+          "energy_mean_power_times_duration_Wh": 0.49004615369198495,
+          "summed_sample_window_s": 11.071423292160034,
+          "raw_output_examples": [
+            "D<turn|>",
+            "C<turn|>",
+            "A<turn|>"
+          ],
+          "e2e_ms": {
+            "mean": 498.6763272434473,
+            "p50": 496.5194873511791,
+            "p95": 576.8253873102367
+          },
+          "encoder_ms": {
+            "mean": 72.51995978876948,
+            "p50": 71.75477035343647,
+            "p95": 78.47179872915149
+          },
+          "generation_ms": {
+            "mean": 171.89325653016567,
+            "p50": 154.66443821787834,
+            "p95": 244.39826821908363
+          }
+        }
+      },
+      "length_status": "length_not_effective",
+      "generation_ms_per_extra100_tokens": null,
+      "e2e_ms_per_extra100_tokens": null,
+      "marginal_result_use": "appendix_arithmetic_only_not_long_answer_cost"
+    }
+  },
+  "limitations": [
+    "fixed_cosine E3 pipeline differs from official S1",
+    "20 hot requests per model/cap; descriptive P95",
+    "energy includes power-sampling boundary overhead; e2e excludes that boundary overhead",
+    "GPU energy only; sampled device maximum is not true continuous peak",
+    "old pilot archived only; no cross-card comparison"
+  ]
+}

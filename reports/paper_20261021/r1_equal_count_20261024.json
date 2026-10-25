@@ -1,0 +1,1296 @@
+{
+  "registration_commit": "f5a3f12",
+  "registration_sha256": "8046e99b4c2c82064e3e9263043929c570f1af95dd49e393dfff363f41f39391",
+  "source": {
+    "existing_predictions": "logs/B_predictions.jsonl.gz",
+    "existing_sha256": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+    "new_raw_archive": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024",
+    "archive_manifest_sha256": "9fa23947f07c8b869766e457cc8258246855ee0339574b6d3e3318e8165ca4ea"
+  },
+  "ci_method": {
+    "unit": "question-level scenario-stratified paired bootstrap",
+    "replicates": 2000,
+    "seed": 42,
+    "rng": "random.Random, reset per model and analysis set",
+    "percentile": "95%, linear interpolation",
+    "descriptive": true,
+    "not_frozen_564_cluster_bootstrap": true
+  },
+  "models": {
+    "qwen3vl_4b": {
+      "new_predictions_source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/qwen3vl_4b/predictions.jsonl",
+      "new_sha256": "819bc3e89547cc789ae119782a55ca320e93df619a3a7c5df2ed9530868a6acf",
+      "runtime": {
+        "load_seconds": 3.102464171126485,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 4090",
+        "gpu_total_bytes": 25252724736,
+        "processor_config": {
+          "_processor_class": "Qwen3VLProcessor",
+          "image_processor_type": "Qwen2VLImageProcessor",
+          "min_pixels": 50176,
+          "max_pixels": 262144,
+          "size": {
+            "shortest_edge": 3136,
+            "longest_edge": 1003520
+          },
+          "do_resize": true,
+          "resample": 3,
+          "do_rescale": true,
+          "rescale_factor": 0.00392156862745098,
+          "do_normalize": true,
+          "image_mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "image_std": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "patch_size": 16,
+          "temporal_patch_size": 2,
+          "merge_size": 2,
+          "do_convert_rgb": true
+        },
+        "quantization": "none",
+        "chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "4.57.3",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          9
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 4437815808
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-983256d6-cfbd-ecf8-5d35-a38f3ec0bb1a, NVIDIA GeForce RTX 4090, 595.71.05, 24564 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "3b5d6ad59f1ab7e74373bf1b89f2f25bcb9e288fd30d244ca46789a5f6297d4c"
+      },
+      "groups": {
+        "primary956": {
+          "n": 956,
+          "qid_sha256": "560efaecb4c10a5ddc14803e0f674ceb9f8241832c5c96e14efa6ee589403843",
+          "S1_correct": 567,
+          "S2_at3_correct": 665,
+          "S1_accuracy": 0.5930962343096234,
+          "S2_at3_accuracy": 0.6956066945606695,
+          "counts": {
+            "rescue": 139,
+            "harm": 41,
+            "same_correct": 526,
+            "same_wrong": 250,
+            "unchanged": 776,
+            "n": 956,
+            "net": 98
+          },
+          "proportions": {
+            "rescue": 0.14539748953974896,
+            "harm": 0.04288702928870293,
+            "unchanged": 0.8117154811715481,
+            "same_correct": 0.5502092050209205,
+            "same_wrong": 0.2615062761506276
+          },
+          "delta": 0.10251046025104603,
+          "ci95": {
+            "delta": [
+              0.07531380753138076,
+              0.12866108786610878
+            ],
+            "rescue": [
+              0.12238493723849372,
+              0.16736401673640167
+            ],
+            "harm": [
+              0.030334728033472803,
+              0.05543933054393305
+            ],
+            "unchanged": [
+              0.7866108786610879,
+              0.8368200836820083
+            ],
+            "same_correct": [
+              0.5188284518828452,
+              0.5826359832635983
+            ],
+            "same_wrong": [
+              0.23326359832635984,
+              0.2897489539748954
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.1202928870292887,
+          "retained_ratio": 0.8521739130434783,
+          "lower_bound_reference_ratio": 0.6260869565217392,
+          "criterion": "does_not_meet_retention",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "secondary1033": {
+          "n": 1033,
+          "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+          "S1_correct": 595,
+          "S2_at3_correct": 700,
+          "S1_accuracy": 0.5759922555663117,
+          "S2_at3_accuracy": 0.6776379477250726,
+          "counts": {
+            "rescue": 150,
+            "harm": 45,
+            "same_correct": 550,
+            "same_wrong": 288,
+            "unchanged": 838,
+            "n": 1033,
+            "net": 105
+          },
+          "proportions": {
+            "rescue": 0.1452081316553727,
+            "harm": 0.04356243949661181,
+            "unchanged": 0.8112294288480155,
+            "same_correct": 0.5324298160696999,
+            "same_wrong": 0.2787996127783156
+          },
+          "delta": 0.10164569215876089,
+          "ci95": {
+            "delta": [
+              0.07647628267182963,
+              0.12681510164569215
+            ],
+            "rescue": [
+              0.12391093901258471,
+              0.1665053242981607
+            ],
+            "harm": [
+              0.031945788964181994,
+              0.057115198451113264
+            ],
+            "unchanged": [
+              0.7879961277831559,
+              0.8344627299128751
+            ],
+            "same_correct": [
+              0.5033881897386253,
+              0.5634317521781219
+            ],
+            "same_wrong": [
+              0.25072604065827686,
+              0.30493707647628265
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.1181026137463698,
+          "retained_ratio": 0.860655737704918,
+          "lower_bound_reference_ratio": 0.6475409836065574,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Incomplete": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "single77": {
+          "n": 77,
+          "qid_sha256": "8077f19768fe798a4254c6ca536e1f301b177a5acecbbaa3ddca82cf47b9f388",
+          "S1_correct": 28,
+          "S2_at3_correct": 35,
+          "S1_accuracy": 0.36363636363636365,
+          "S2_at3_accuracy": 0.45454545454545453,
+          "counts": {
+            "rescue": 11,
+            "harm": 4,
+            "same_correct": 24,
+            "same_wrong": 38,
+            "unchanged": 62,
+            "n": 77,
+            "net": 7
+          },
+          "proportions": {
+            "rescue": 0.14285714285714285,
+            "harm": 0.05194805194805195,
+            "unchanged": 0.8051948051948052,
+            "same_correct": 0.3116883116883117,
+            "same_wrong": 0.4935064935064935
+          },
+          "delta": 0.09090909090909091,
+          "ci95": {
+            "delta": [
+              0.0,
+              0.19480519480519481
+            ],
+            "rescue": [
+              0.06493506493506493,
+              0.22077922077922077
+            ],
+            "harm": [
+              0.012987012987012988,
+              0.1038961038961039
+            ],
+            "unchanged": [
+              0.7142857142857143,
+              0.8961038961038961
+            ],
+            "same_correct": [
+              0.2077922077922078,
+              0.4155844155844156
+            ],
+            "same_wrong": [
+              0.38961038961038963,
+              0.5974025974025974
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.09090909090909091,
+          "retained_ratio": 1.0,
+          "lower_bound_reference_ratio": 0.0,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Incomplete": 77
+          }
+        }
+      }
+    },
+    "gemma4_e2b": {
+      "new_predictions_source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/gemma4_e2b/predictions.jsonl",
+      "new_sha256": "8a38effdca78000ed2f0acfc8f231b0516527107af34c274952f16d7e8c4495b",
+      "runtime": {
+        "load_seconds": 4.96741016022861,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 4090",
+        "gpu_total_bytes": 25252724736,
+        "processor_config": {
+          "do_convert_rgb": true,
+          "do_normalize": false,
+          "do_rescale": true,
+          "do_resize": true,
+          "image_mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "image_processor_type": "Gemma4ImageProcessor",
+          "image_seq_length": 280,
+          "image_std": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "max_soft_tokens": 280,
+          "patch_size": 16,
+          "pooling_kernel_size": 3,
+          "resample": 3,
+          "rescale_factor": 0.00392156862745098
+        },
+        "quantization": "none",
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "5.19.0",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          9
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 5104297504
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-983256d6-cfbd-ecf8-5d35-a38f3ec0bb1a, NVIDIA GeForce RTX 4090, 595.71.05, 24564 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "3b5d6ad59f1ab7e74373bf1b89f2f25bcb9e288fd30d244ca46789a5f6297d4c"
+      },
+      "groups": {
+        "primary956": {
+          "n": 956,
+          "qid_sha256": "560efaecb4c10a5ddc14803e0f674ceb9f8241832c5c96e14efa6ee589403843",
+          "S1_correct": 351,
+          "S2_at3_correct": 408,
+          "S1_accuracy": 0.36715481171548114,
+          "S2_at3_accuracy": 0.42677824267782427,
+          "counts": {
+            "rescue": 118,
+            "harm": 61,
+            "same_correct": 290,
+            "same_wrong": 487,
+            "unchanged": 777,
+            "n": 956,
+            "net": 57
+          },
+          "proportions": {
+            "rescue": 0.12343096234309624,
+            "harm": 0.06380753138075314,
+            "unchanged": 0.8127615062761506,
+            "same_correct": 0.303347280334728,
+            "same_wrong": 0.5094142259414226
+          },
+          "delta": 0.0596234309623431,
+          "ci95": {
+            "delta": [
+              0.032426778242677826,
+              0.08580020920502078
+            ],
+            "rescue": [
+              0.10355648535564854,
+              0.14435146443514643
+            ],
+            "harm": [
+              0.049163179916317995,
+              0.0794979079497908
+            ],
+            "unchanged": [
+              0.7887029288702929,
+              0.8358002092050207
+            ],
+            "same_correct": [
+              0.27615062761506276,
+              0.3305439330543933
+            ],
+            "same_wrong": [
+              0.4801255230125523,
+              0.5407949790794979
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.07845188284518828,
+          "retained_ratio": 0.7600000000000001,
+          "lower_bound_reference_ratio": 0.4133333333333334,
+          "criterion": "does_not_meet_retention",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "secondary1033": {
+          "n": 1033,
+          "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+          "S1_correct": 366,
+          "S2_at3_correct": 423,
+          "S1_accuracy": 0.3543078412391094,
+          "S2_at3_accuracy": 0.409486931268151,
+          "counts": {
+            "rescue": 121,
+            "harm": 64,
+            "same_correct": 302,
+            "same_wrong": 546,
+            "unchanged": 848,
+            "n": 1033,
+            "net": 57
+          },
+          "proportions": {
+            "rescue": 0.11713455953533398,
+            "harm": 0.061955469506292354,
+            "unchanged": 0.8209099709583737,
+            "same_correct": 0.29235237173281703,
+            "same_wrong": 0.5285575992255567
+          },
+          "delta": 0.05517909002904162,
+          "ci95": {
+            "delta": [
+              0.030009680542110357,
+              0.0803484995159729
+            ],
+            "rescue": [
+              0.09874152952565343,
+              0.13649564375605033
+            ],
+            "harm": [
+              0.04743465634075508,
+              0.07647628267182963
+            ],
+            "unchanged": [
+              0.797676669893514,
+              0.8431752178121975
+            ],
+            "same_correct": [
+              0.26427879961277834,
+              0.3204259438528558
+            ],
+            "same_wrong": [
+              0.5004840271055179,
+              0.5595353339787028
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.07260406582768635,
+          "retained_ratio": 0.76,
+          "lower_bound_reference_ratio": 0.41333333333333333,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Incomplete": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "single77": {
+          "n": 77,
+          "qid_sha256": "8077f19768fe798a4254c6ca536e1f301b177a5acecbbaa3ddca82cf47b9f388",
+          "S1_correct": 15,
+          "S2_at3_correct": 15,
+          "S1_accuracy": 0.19480519480519481,
+          "S2_at3_accuracy": 0.19480519480519481,
+          "counts": {
+            "rescue": 3,
+            "harm": 3,
+            "same_correct": 12,
+            "same_wrong": 59,
+            "unchanged": 71,
+            "n": 77,
+            "net": 0
+          },
+          "proportions": {
+            "rescue": 0.03896103896103896,
+            "harm": 0.03896103896103896,
+            "unchanged": 0.922077922077922,
+            "same_correct": 0.15584415584415584,
+            "same_wrong": 0.7662337662337663
+          },
+          "delta": 0.0,
+          "ci95": {
+            "delta": [
+              -0.06493506493506493,
+              0.06493506493506493
+            ],
+            "rescue": [
+              0.0,
+              0.09090909090909091
+            ],
+            "harm": [
+              0.0,
+              0.09090909090909091
+            ],
+            "unchanged": [
+              0.8571428571428571,
+              0.974025974025974
+            ],
+            "same_correct": [
+              0.07792207792207792,
+              0.24675324675324675
+            ],
+            "same_wrong": [
+              0.6623376623376623,
+              0.8571428571428571
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.0,
+          "retained_ratio": null,
+          "lower_bound_reference_ratio": null,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Incomplete": 77
+          }
+        }
+      }
+    },
+    "gemma4_e4b": {
+      "new_predictions_source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/gemma4_e4b/predictions.jsonl",
+      "new_sha256": "de3e83054332994b1eee6f055ee78f9b42593128e483d9f445c3628511dca8cb",
+      "runtime": {
+        "load_seconds": 7.011940719559789,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 4090",
+        "gpu_total_bytes": 25252724736,
+        "processor_config": {
+          "do_convert_rgb": true,
+          "do_normalize": false,
+          "do_rescale": true,
+          "do_resize": true,
+          "image_mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "image_processor_type": "Gemma4ImageProcessor",
+          "image_seq_length": 280,
+          "image_std": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "max_soft_tokens": 280,
+          "patch_size": 16,
+          "pooling_kernel_size": 3,
+          "resample": 3,
+          "rescale_factor": 0.00392156862745098
+        },
+        "quantization": "none",
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "5.19.0",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          9
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 7941100832
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-983256d6-cfbd-ecf8-5d35-a38f3ec0bb1a, NVIDIA GeForce RTX 4090, 595.71.05, 24564 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "3b5d6ad59f1ab7e74373bf1b89f2f25bcb9e288fd30d244ca46789a5f6297d4c"
+      },
+      "groups": {
+        "primary956": {
+          "n": 956,
+          "qid_sha256": "560efaecb4c10a5ddc14803e0f674ceb9f8241832c5c96e14efa6ee589403843",
+          "S1_correct": 403,
+          "S2_at3_correct": 462,
+          "S1_accuracy": 0.4215481171548117,
+          "S2_at3_accuracy": 0.48326359832635984,
+          "counts": {
+            "rescue": 115,
+            "harm": 56,
+            "same_correct": 347,
+            "same_wrong": 438,
+            "unchanged": 785,
+            "n": 956,
+            "net": 59
+          },
+          "proportions": {
+            "rescue": 0.1202928870292887,
+            "harm": 0.058577405857740586,
+            "unchanged": 0.8211297071129707,
+            "same_correct": 0.36297071129707115,
+            "same_wrong": 0.4581589958158996
+          },
+          "delta": 0.06171548117154812,
+          "ci95": {
+            "delta": [
+              0.034518828451882845,
+              0.08682008368200837
+            ],
+            "rescue": [
+              0.09937238493723849,
+              0.1401673640167364
+            ],
+            "harm": [
+              0.04497907949790795,
+              0.07426778242677824
+            ],
+            "unchanged": [
+              0.797071129707113,
+              0.8441684100418408
+            ],
+            "same_correct": [
+              0.33263598326359833,
+              0.3922594142259414
+            ],
+            "same_wrong": [
+              0.4288441422594142,
+              0.4884937238493724
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.07112970711297072,
+          "retained_ratio": 0.8676470588235293,
+          "lower_bound_reference_ratio": 0.48529411764705876,
+          "criterion": "does_not_meet_retention",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "secondary1033": {
+          "n": 1033,
+          "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+          "S1_correct": 427,
+          "S2_at3_correct": 484,
+          "S1_accuracy": 0.4133591481122943,
+          "S2_at3_accuracy": 0.46853823814133594,
+          "counts": {
+            "rescue": 122,
+            "harm": 65,
+            "same_correct": 362,
+            "same_wrong": 484,
+            "unchanged": 846,
+            "n": 1033,
+            "net": 57
+          },
+          "proportions": {
+            "rescue": 0.1181026137463698,
+            "harm": 0.06292352371732816,
+            "unchanged": 0.818973862536302,
+            "same_correct": 0.3504356243949661,
+            "same_wrong": 0.46853823814133594
+          },
+          "delta": 0.05517909002904162,
+          "ci95": {
+            "delta": [
+              0.02904162633107454,
+              0.08037270087124866
+            ],
+            "rescue": [
+              0.09874152952565343,
+              0.13746369796708616
+            ],
+            "harm": [
+              0.0484027105517909,
+              0.07841239109390126
+            ],
+            "unchanged": [
+              0.7947483059051307,
+              0.8422071636011617
+            ],
+            "same_correct": [
+              0.32236205227492737,
+              0.37850919651500486
+            ],
+            "same_wrong": [
+              0.4394966118102614,
+              0.4975798644724105
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.06389157792836399,
+          "retained_ratio": 0.8636363636363636,
+          "lower_bound_reference_ratio": 0.45454545454545453,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Incomplete": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "single77": {
+          "n": 77,
+          "qid_sha256": "8077f19768fe798a4254c6ca536e1f301b177a5acecbbaa3ddca82cf47b9f388",
+          "S1_correct": 24,
+          "S2_at3_correct": 22,
+          "S1_accuracy": 0.3116883116883117,
+          "S2_at3_accuracy": 0.2857142857142857,
+          "counts": {
+            "rescue": 7,
+            "harm": 9,
+            "same_correct": 15,
+            "same_wrong": 46,
+            "unchanged": 61,
+            "n": 77,
+            "net": -2
+          },
+          "proportions": {
+            "rescue": 0.09090909090909091,
+            "harm": 0.11688311688311688,
+            "unchanged": 0.7922077922077922,
+            "same_correct": 0.19480519480519481,
+            "same_wrong": 0.5974025974025974
+          },
+          "delta": -0.025974025974025976,
+          "ci95": {
+            "delta": [
+              -0.12987012987012986,
+              0.07792207792207792
+            ],
+            "rescue": [
+              0.025974025974025976,
+              0.16883116883116883
+            ],
+            "harm": [
+              0.05194805194805195,
+              0.19480519480519481
+            ],
+            "unchanged": [
+              0.7012987012987013,
+              0.8831168831168831
+            ],
+            "same_correct": [
+              0.1038961038961039,
+              0.2857142857142857
+            ],
+            "same_wrong": [
+              0.4935064935064935,
+              0.7012987012987013
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": -0.025974025974025976,
+          "retained_ratio": null,
+          "lower_bound_reference_ratio": null,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Incomplete": 77
+          }
+        }
+      }
+    },
+    "qwen3vl_8b": {
+      "new_predictions_source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/qwen3vl_8b/predictions.jsonl",
+      "new_sha256": "eb064ef08f08f35b5b3771a25e207f5409cc335fcc173108b7b404fae3db68d5",
+      "runtime": {
+        "load_seconds": 4.744903959333897,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 4090",
+        "gpu_total_bytes": 25252724736,
+        "processor_config": {
+          "_processor_class": "Qwen3VLProcessor",
+          "image_processor_type": "Qwen2VLImageProcessor",
+          "min_pixels": 50176,
+          "max_pixels": 262144,
+          "size": {
+            "shortest_edge": 3136,
+            "longest_edge": 1003520
+          },
+          "do_resize": true,
+          "resample": 3,
+          "do_rescale": true,
+          "rescale_factor": 0.00392156862745098,
+          "do_normalize": true,
+          "image_mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "image_std": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "patch_size": 16,
+          "temporal_patch_size": 2,
+          "merge_size": 2,
+          "do_convert_rgb": true
+        },
+        "quantization": "none",
+        "chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "4.57.3",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          9
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 8767123696
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-983256d6-cfbd-ecf8-5d35-a38f3ec0bb1a, NVIDIA GeForce RTX 4090, 595.71.05, 24564 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "3b5d6ad59f1ab7e74373bf1b89f2f25bcb9e288fd30d244ca46789a5f6297d4c"
+      },
+      "groups": {
+        "primary956": {
+          "n": 956,
+          "qid_sha256": "560efaecb4c10a5ddc14803e0f674ceb9f8241832c5c96e14efa6ee589403843",
+          "S1_correct": 560,
+          "S2_at3_correct": 659,
+          "S1_accuracy": 0.5857740585774058,
+          "S2_at3_accuracy": 0.6893305439330544,
+          "counts": {
+            "rescue": 128,
+            "harm": 29,
+            "same_correct": 531,
+            "same_wrong": 268,
+            "unchanged": 799,
+            "n": 956,
+            "net": 99
+          },
+          "proportions": {
+            "rescue": 0.13389121338912133,
+            "harm": 0.030334728033472803,
+            "unchanged": 0.8357740585774058,
+            "same_correct": 0.555439330543933,
+            "same_wrong": 0.2803347280334728
+          },
+          "delta": 0.10355648535564854,
+          "ci95": {
+            "delta": [
+              0.0794979079497908,
+              0.12659518828451868
+            ],
+            "rescue": [
+              0.11401673640167365,
+              0.15481171548117154
+            ],
+            "harm": [
+              0.0198744769874477,
+              0.04184100418410042
+            ],
+            "unchanged": [
+              0.8127615062761506,
+              0.858786610878661
+            ],
+            "same_correct": [
+              0.5230125523012552,
+              0.5857740585774058
+            ],
+            "same_wrong": [
+              0.25313807531380755,
+              0.30962343096234307
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.1087866108786611,
+          "retained_ratio": 0.951923076923077,
+          "lower_bound_reference_ratio": 0.7307692307692307,
+          "criterion": "meets_retention",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "secondary1033": {
+          "n": 1033,
+          "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+          "S1_correct": 580,
+          "S2_at3_correct": 685,
+          "S1_accuracy": 0.5614714424007744,
+          "S2_at3_accuracy": 0.6631171345595354,
+          "counts": {
+            "rescue": 139,
+            "harm": 34,
+            "same_correct": 546,
+            "same_wrong": 314,
+            "unchanged": 860,
+            "n": 1033,
+            "net": 105
+          },
+          "proportions": {
+            "rescue": 0.1345595353339787,
+            "harm": 0.03291384317521781,
+            "unchanged": 0.8325266214908035,
+            "same_correct": 0.5285575992255567,
+            "same_wrong": 0.30396902226524686
+          },
+          "delta": 0.10164569215876089,
+          "ci95": {
+            "delta": [
+              0.07744433688286544,
+              0.12681510164569215
+            ],
+            "rescue": [
+              0.11519845111326234,
+              0.15682478218780252
+            ],
+            "harm": [
+              0.02320909970958374,
+              0.04356243949661181
+            ],
+            "unchanged": [
+              0.8092933204259438,
+              0.8538238141335914
+            ],
+            "same_correct": [
+              0.49852371732817036,
+              0.558567279767667
+            ],
+            "same_wrong": [
+              0.27686350435624396,
+              0.33204259438528555
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.10648596321393998,
+          "retained_ratio": 0.9545454545454546,
+          "lower_bound_reference_ratio": 0.7272727272727272,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Incomplete": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "single77": {
+          "n": 77,
+          "qid_sha256": "8077f19768fe798a4254c6ca536e1f301b177a5acecbbaa3ddca82cf47b9f388",
+          "S1_correct": 20,
+          "S2_at3_correct": 26,
+          "S1_accuracy": 0.2597402597402597,
+          "S2_at3_accuracy": 0.33766233766233766,
+          "counts": {
+            "rescue": 11,
+            "harm": 5,
+            "same_correct": 15,
+            "same_wrong": 46,
+            "unchanged": 61,
+            "n": 77,
+            "net": 6
+          },
+          "proportions": {
+            "rescue": 0.14285714285714285,
+            "harm": 0.06493506493506493,
+            "unchanged": 0.7922077922077922,
+            "same_correct": 0.19480519480519481,
+            "same_wrong": 0.5974025974025974
+          },
+          "delta": 0.07792207792207792,
+          "ci95": {
+            "delta": [
+              -0.025974025974025976,
+              0.18181818181818182
+            ],
+            "rescue": [
+              0.06493506493506493,
+              0.22077922077922077
+            ],
+            "harm": [
+              0.012987012987012988,
+              0.12987012987012986
+            ],
+            "unchanged": [
+              0.7012987012987013,
+              0.8831168831168831
+            ],
+            "same_correct": [
+              0.11688311688311688,
+              0.2857142857142857
+            ],
+            "same_wrong": [
+              0.4805194805194805,
+              0.7012987012987013
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.07792207792207792,
+          "retained_ratio": 1.0,
+          "lower_bound_reference_ratio": -0.33333333333333337,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Incomplete": 77
+          }
+        }
+      }
+    },
+    "qwen35_4b": {
+      "new_predictions_source": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024/qwen35_4b/predictions.jsonl",
+      "new_sha256": "e6d1d3c8a1cfa41beec685166ee2333790d415dd3d57b21c480577832d26202e",
+      "runtime": {
+        "load_seconds": 2.9598064608871937,
+        "actual_dtype": "torch.bfloat16",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 4090",
+        "gpu_total_bytes": 25252724736,
+        "processor_config": {
+          "size": {
+            "longest_edge": 262144,
+            "shortest_edge": 50176
+          },
+          "patch_size": 16,
+          "temporal_patch_size": 2,
+          "merge_size": 2,
+          "image_mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "image_std": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "image_processor_type": "Qwen2VLImageProcessor",
+          "do_convert_rgb": true,
+          "do_resize": true,
+          "resample": 3,
+          "do_rescale": true,
+          "rescale_factor": 0.00392156862745098,
+          "do_normalize": true
+        },
+        "quantization": "none",
+        "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+        "python": "3.12.3",
+        "system": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+        "packages": {
+          "torch": "2.8.0+cu128",
+          "torchvision": "0.23.0+cu128",
+          "transformers": "5.19.0",
+          "Pillow": "11.3.0"
+        },
+        "gpu_compute_capability": [
+          8,
+          9
+        ],
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "deterministic_algorithms": false,
+        "bitwise_reproducibility_claim": false,
+        "parameter_dtype_numel": {
+          "torch.bfloat16": 4539265536
+        },
+        "nvidia_smi": {
+          "exit_code": 0,
+          "stdout": "GPU-983256d6-cfbd-ecf8-5d35-a38f3ec0bb1a, NVIDIA GeForce RTX 4090, 595.71.05, 24564 MiB\n",
+          "stderr": ""
+        },
+        "timing_hardware_id": "3b5d6ad59f1ab7e74373bf1b89f2f25bcb9e288fd30d244ca46789a5f6297d4c"
+      },
+      "groups": {
+        "primary956": {
+          "n": 956,
+          "qid_sha256": "560efaecb4c10a5ddc14803e0f674ceb9f8241832c5c96e14efa6ee589403843",
+          "S1_correct": 540,
+          "S2_at3_correct": 605,
+          "S1_accuracy": 0.5648535564853556,
+          "S2_at3_accuracy": 0.6328451882845189,
+          "counts": {
+            "rescue": 123,
+            "harm": 58,
+            "same_correct": 482,
+            "same_wrong": 293,
+            "unchanged": 775,
+            "n": 956,
+            "net": 65
+          },
+          "proportions": {
+            "rescue": 0.12866108786610878,
+            "harm": 0.060669456066945605,
+            "unchanged": 0.8106694560669456,
+            "same_correct": 0.50418410041841,
+            "same_wrong": 0.3064853556485356
+          },
+          "delta": 0.06799163179916318,
+          "ci95": {
+            "delta": [
+              0.04181485355648536,
+              0.09518828451882845
+            ],
+            "rescue": [
+              0.10774058577405858,
+              0.1496077405857739
+            ],
+            "harm": [
+              0.04707112970711297,
+              0.07531380753138076
+            ],
+            "unchanged": [
+              0.7855648535564853,
+              0.8347280334728033
+            ],
+            "same_correct": [
+              0.47384937238493724,
+              0.5355648535564853
+            ],
+            "same_wrong": [
+              0.27719665271966526,
+              0.3368200836820084
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.03556485355648536,
+          "retained_ratio": 1.9117647058823528,
+          "lower_bound_reference_ratio": 1.175735294117647,
+          "criterion": "meets_retention",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "secondary1033": {
+          "n": 1033,
+          "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+          "S1_correct": 563,
+          "S2_at3_correct": 632,
+          "S1_accuracy": 0.5450145208131656,
+          "S2_at3_accuracy": 0.611810261374637,
+          "counts": {
+            "rescue": 134,
+            "harm": 65,
+            "same_correct": 498,
+            "same_wrong": 336,
+            "unchanged": 834,
+            "n": 1033,
+            "net": 69
+          },
+          "proportions": {
+            "rescue": 0.12971926427879962,
+            "harm": 0.06292352371732816,
+            "unchanged": 0.8073572120038722,
+            "same_correct": 0.48209099709583736,
+            "same_wrong": 0.32526621490803487
+          },
+          "delta": 0.06679574056147145,
+          "ci95": {
+            "delta": [
+              0.04065827686350436,
+              0.09293320425943853
+            ],
+            "rescue": [
+              0.10939012584704744,
+              0.1510164569215876
+            ],
+            "harm": [
+              0.0484027105517909,
+              0.07744433688286544
+            ],
+            "unchanged": [
+              0.7841239109390126,
+              0.8315585672797676
+            ],
+            "same_correct": [
+              0.4530493707647628,
+              0.5130687318489835
+            ],
+            "same_wrong": [
+              0.2962245885769603,
+              0.35333978702807356
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.036786060019361085,
+          "retained_ratio": 1.8157894736842106,
+          "lower_bound_reference_ratio": 1.105263157894737,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Angle": 248,
+            "Biological": 78,
+            "Deformation": 77,
+            "Incomplete": 77,
+            "Obstruction": 82,
+            "Others": 92,
+            "Partial": 189,
+            "Scope": 77,
+            "Temporal": 113
+          }
+        },
+        "single77": {
+          "n": 77,
+          "qid_sha256": "8077f19768fe798a4254c6ca536e1f301b177a5acecbbaa3ddca82cf47b9f388",
+          "S1_correct": 23,
+          "S2_at3_correct": 27,
+          "S1_accuracy": 0.2987012987012987,
+          "S2_at3_accuracy": 0.35064935064935066,
+          "counts": {
+            "rescue": 11,
+            "harm": 7,
+            "same_correct": 16,
+            "same_wrong": 43,
+            "unchanged": 59,
+            "n": 77,
+            "net": 4
+          },
+          "proportions": {
+            "rescue": 0.14285714285714285,
+            "harm": 0.09090909090909091,
+            "unchanged": 0.7662337662337663,
+            "same_correct": 0.2077922077922078,
+            "same_wrong": 0.5584415584415584
+          },
+          "delta": 0.05194805194805195,
+          "ci95": {
+            "delta": [
+              -0.05194805194805195,
+              0.15584415584415584
+            ],
+            "rescue": [
+              0.06493506493506493,
+              0.22077922077922077
+            ],
+            "harm": [
+              0.025974025974025976,
+              0.15584415584415584
+            ],
+            "unchanged": [
+              0.6623376623376623,
+              0.8571428571428571
+            ],
+            "same_correct": [
+              0.11688311688311688,
+              0.3116883116883117
+            ],
+            "same_wrong": [
+              0.45454545454545453,
+              0.6753246753246753
+            ]
+          },
+          "reference_S2_at5_minus_S1_same_set": 0.05194805194805195,
+          "retained_ratio": 1.0,
+          "lower_bound_reference_ratio": -1.0,
+          "criterion": "not_primary_no_pass_label",
+          "scenario_n": {
+            "Incomplete": 77
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "sources": {
+    "V": "/root/autodl-tmp/session/encoded/V.npy",
+    "V_sha256": "31a3e122be53f528d59b5ece290b0814461027d7792a0dd1ff6c2841bab827ce",
+    "Q": "/root/autodl-tmp/registered-20261024/Q_1203.npy",
+    "Q_sha256": "8ffd53a8eb357c7bb50088ba5d035b1de79bf62c30d7895553a1c4757925615f",
+    "pool_sha256": "12f1e2fee88b142868282cc9a9d8217b2615c6ce16d22f4cad155e758eca025d",
+    "gold": "/root/autodl-tmp/corpus_v1/occurrences.csv",
+    "gold_sha256": "bc4db0d87eda96541887909b6283cb759d2bd02629046a4a92b30fe5a110f689",
+    "registration_commit": "f5a3f12",
+    "script_sha256": "e13390eff7ec5f8143981fac5506c1793cdd5bd62b1b1532bad58bdd10687df5"
+  },
+  "numpy": "2.5.4",
+  "dimensions": {
+    "128": {
+      "groups": {
+        "all": {
+          "n": 1203,
+          "hit_at_1": 0.35245220282626766,
+          "hit_at_5": 0.657522859517872,
+          "hit_at_10": 0.7514546965918537,
+          "recall_at_5": 0.2903158769742311,
+          "mrr": 0.48913568684602404,
+          "any_hit_counts": {
+            "hit_at_1": 424,
+            "hit_at_5": 791,
+            "hit_at_10": 904
+          }
+        },
+        "smoke_20": {
+          "n": 20,
+          "hit_at_1": 0.6,
+          "hit_at_5": 0.75,
+          "hit_at_10": 0.75,
+          "recall_at_5": 0.35000000000000003,
+          "mrr": 0.6602446497164807,
+          "any_hit_counts": {
+            "hit_at_1": 12,
+            "hit_at_5": 15,
+            "hit_at_10": 15
+          }
+        },
+        "dev": {
+          "n": 150,
+          "hit_at_1": 0.3333333333333333,
+          "hit_at_5": 0.62,
+          "hit_at_10": 0.7266666666666667,
+          "recall_at_5": 0.2859999999999999,
+          "mrr": 0.4711049845067757,
+          "any_hit_counts": {
+            "hit_at_1": 50,
+            "hit_at_5": 93,
+            "hit_at_10": 109
+          }
+        },
+        "frozen_test": {
+          "n": 1033,
+          "hit_at_1": 0.3504356243949661,
+          "hit_at_5": 0.6611810261374637,
+          "hit_at_10": 0.755082284607938,
+          "recall_at_5": 0.28978702807357215,
+          "mrr": 0.4884410364040862,
+          "any_hit_counts": {
+            "hit_at_1": 362,
+            "hit_at_5": 683,
+            "hit_at_10": 780
+          }
+        }
+      },
+      "V_payload_bytes": 2412544,
+      "Q_payload_bytes": 615936,
+      "payload_ratio": 0.16666666666666666,
+      "elapsed_s": 1.8353312015533447,
+      "delta_vs_768": {
+        "hit_at_1": -0.022443890274314204,
+        "hit_at_5": -0.01995012468827928,
+        "hit_at_10": -0.017456359102244412,
+        "recall_at_5": -0.016874480465502828,
+        "mrr": -0.018781679257019457
+      },
+      "classification": "within_tolerance"
+    },
+    "256": {
+      "groups": {
+        "all": {
+          "n": 1203,
+          "hit_at_1": 0.35993349958437243,
+          "hit_at_5": 0.6807980049875312,
+          "hit_at_10": 0.7738985868661679,
+          "recall_at_5": 0.307190357439734,
+          "mrr": 0.5012499134789224,
+          "any_hit_counts": {
+            "hit_at_1": 433,
+            "hit_at_5": 819,
+            "hit_at_10": 931
+          }
+        },
+        "smoke_20": {
+          "n": 20,
+          "hit_at_1": 0.45,
+          "hit_at_5": 0.7,
+          "hit_at_10": 0.8,
+          "recall_at_5": 0.34,
+          "mrr": 0.557233145069622,
+          "any_hit_counts": {
+            "hit_at_1": 9,
+            "hit_at_5": 14,
+            "hit_at_10": 16
+          }
+        },
+        "dev": {
+          "n": 150,
+          "hit_at_1": 0.36,
+          "hit_at_5": 0.66,
+          "hit_at_10": 0.7333333333333333,
+          "recall_at_5": 0.29533333333333334,
+          "mrr": 0.5007846179764325,
+          "any_hit_counts": {
+            "hit_at_1": 54,
+            "hit_at_5": 99,
+            "hit_at_10": 110
+          }
+        },
+        "frozen_test": {
+          "n": 1033,
+          "hit_at_1": 0.35818005808325265,
+          "hit_at_5": 0.6834462729912875,
+          "hit_at_10": 0.7792836398838335,
+          "recall_at_5": 0.3082768635043563,
+          "mrr": 0.5002335821077313,
+          "any_hit_counts": {
+            "hit_at_1": 370,
+            "hit_at_5": 706,
+            "hit_at_10": 805
+          }
+        }
+      },
+      "V_payload_bytes": 4825088,
+      "Q_payload_bytes": 1231872,
+      "payload_ratio": 0.3333333333333333,
+      "elapsed_s": 1.9226219654083252,
+      "delta_vs_768": {
+        "hit_at_1": -0.014962593516209433,
+        "hit_at_5": 0.0033250207813798616,
+        "hit_at_10": 0.004987531172069737,
+        "recall_at_5": 5.551115123125783e-17,
+        "mrr": -0.006667452624121051
+      },
+      "classification": "within_tolerance"
+    },
+    "512": {
+      "groups": {
+        "all": {
+          "n": 1203,
+          "hit_at_1": 0.371571072319202,
+          "hit_at_5": 0.6766417290108063,
+          "hit_at_10": 0.770573566084788,
+          "recall_at_5": 0.30669160432252707,
+          "mrr": 0.5071495760045521,
+          "any_hit_counts": {
+            "hit_at_1": 447,
+            "hit_at_5": 814,
+            "hit_at_10": 927
+          }
+        },
+        "smoke_20": {
+          "n": 20,
+          "hit_at_1": 0.45,
+          "hit_at_5": 0.75,
+          "hit_at_10": 0.8,
+          "recall_at_5": 0.36,
+          "mrr": 0.5688705289415334,
+          "any_hit_counts": {
+            "hit_at_1": 9,
+            "hit_at_5": 15,
+            "hit_at_10": 16
+          }
+        },
+        "dev": {
+          "n": 150,
+          "hit_at_1": 0.38,
+          "hit_at_5": 0.66,
+          "hit_at_10": 0.7333333333333333,
+          "recall_at_5": 0.302,
+          "mrr": 0.5099049128857098,
+          "any_hit_counts": {
+            "hit_at_1": 57,
+            "hit_at_5": 99,
+            "hit_at_10": 110
+          }
+        },
+        "frozen_test": {
+          "n": 1033,
+          "hit_at_1": 0.3688286544046467,
+          "hit_at_5": 0.6776379477250726,
+          "hit_at_10": 0.7754114230396902,
+          "recall_at_5": 0.30634075508228464,
+          "mrr": 0.5055544941159622,
+          "any_hit_counts": {
+            "hit_at_1": 381,
+            "hit_at_5": 700,
+            "hit_at_10": 801
+          }
+        }
+      },
+      "V_payload_bytes": 9650176,
+      "Q_payload_bytes": 2463744,
+      "payload_ratio": 0.6666666666666666,
+      "elapsed_s": 2.1105501651763916,
+      "delta_vs_768": {
+        "hit_at_1": -0.0033250207813798616,
+        "hit_at_5": -0.0008312551953449931,
+        "hit_at_10": 0.0016625103906898753,
+        "recall_at_5": -0.0004987531172068738,
+        "mrr": -0.0007677900984913721
+      },
+      "classification": "within_tolerance"
+    },
+    "768": {
+      "groups": {
+        "all": {
+          "n": 1203,
+          "hit_at_1": 0.37489609310058186,
+          "hit_at_5": 0.6774729842061513,
+          "hit_at_10": 0.7689110556940981,
+          "recall_at_5": 0.30719035743973394,
+          "mrr": 0.5079173661030435,
+          "any_hit_counts": {
+            "hit_at_1": 451,
+            "hit_at_5": 815,
+            "hit_at_10": 925
+          }
+        },
+        "smoke_20": {
+          "n": 20,
+          "hit_at_1": 0.5,
+          "hit_at_5": 0.7,
+          "hit_at_10": 0.75,
+          "recall_at_5": 0.35,
+          "mrr": 0.5836201492006445,
+          "any_hit_counts": {
+            "hit_at_1": 10,
+            "hit_at_5": 14,
+            "hit_at_10": 15
+          }
+        },
+        "dev": {
+          "n": 150,
+          "hit_at_1": 0.38,
+          "hit_at_5": 0.6666666666666666,
+          "hit_at_10": 0.74,
+          "recall_at_5": 0.302,
+          "mrr": 0.5103504648526891,
+          "any_hit_counts": {
+            "hit_at_1": 57,
+            "hit_at_5": 100,
+            "hit_at_10": 111
+          }
+        },
+        "frozen_test": {
+          "n": 1033,
+          "hit_at_1": 0.3717328170377541,
+          "hit_at_5": 0.6786060019361084,
+          "hit_at_10": 0.7734753146176185,
+          "recall_at_5": 0.30711519845111324,
+          "mrr": 0.5060983724201791,
+          "any_hit_counts": {
+            "hit_at_1": 384,
+            "hit_at_5": 701,
+            "hit_at_10": 799
+          }
+        }
+      },
+      "V_payload_bytes": 14475264,
+      "Q_payload_bytes": 3695616,
+      "payload_ratio": 1.0,
+      "elapsed_s": 2.3169751167297363,
+      "delta_vs_768": {
+        "hit_at_1": 0.0,
+        "hit_at_5": 0.0,
+        "hit_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "mrr": 0.0
+      },
+      "classification": "within_tolerance"
+    }
+  },
+  "notes": [
+    "V reused; all Q newly encoded FP32, separate generation batch",
+    "exact query identity excluded; score desc then identity asc",
+    "macro Recall@5 denominator includes out-of-pool gold; full MRR"
+  ],
+  "local_raw_archive": "/Users/joyboy/.codex/.chatgpt-projects/g-p-6acf980f24fc8191aa5a917d5c41b108/work/private_archives/registered-20261024/registered-20261024",
+  "registration_sha256": "8046e99b4c2c82064e3e9263043929c570f1af95dd49e393dfff363f41f39391"
+}
