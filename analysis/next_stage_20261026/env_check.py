@@ -13,6 +13,7 @@
 """
 import argparse
 import importlib.util
+import re
 import json
 import platform
 import shutil
@@ -70,11 +71,7 @@ def find_weights(repo, revision):
         n = len(list(base.glob("*.safetensors")))
         if n:
             return str(base), n
-        # 任意 snapshot
-        for s in (base / "snapshots").glob("*") if (base / "snapshots").is_dir() else []:
-            n = len(list(s.glob("*.safetensors")))
-            if n:
-                return str(s), n
+        # Do not accept a different snapshot revision.
     return None, 0
 
 
@@ -123,10 +120,8 @@ def main():
         r = run([nvcc_path, "--version"])
         nvcc_info["version_raw"] = r["out"]
         # 解析 "release 12.8"
-        for tok in r["out"].replace(",", " ").split():
-            if tok.count(".") == 1 and tok[0].isdigit():
-                nvcc_info["version"] = tok
-                break
+        match = re.search(r"release (\d+\.\d+)", r["out"])
+        if match: nvcc_info["version"] = match.group(1)
     receipt["cuda"]["nvcc"] = nvcc_info
 
     # --- 其余包 ---
@@ -162,9 +157,17 @@ def main():
         }
 
     # --- 判定 ---
-    torch_ok = receipt["packages"]["torch"].get("cuda_available", False)
+    torch_ok = (torch_info.get("cuda_available", False) and torch_info.get("version") == "2.8.0+cu128" and torch_info.get("cuda_runtime") == "12.8" and torch_info.get("gpu_total_bytes",0) >= 32*1024**3)
+    transformers_ok = str(receipt["packages"]["transformers"].get("version","")).startswith("5.19.") and "import_error" not in receipt["packages"]["transformers"]
+    fla_ok = receipt["packages"]["flash_linear_attention"]["present"] and "import_error" not in receipt["packages"]["flash_linear_attention"]
+    causal_ok = receipt["packages"]["causal_conv1d"]["present"] and "import_error" not in receipt["packages"]["causal_conv1d"]
+    try:
+        from transformers import Qwen3VLForConditionalGeneration
+        vl_ok=True
+    except Exception:
+        vl_ok=False
     cap = receipt["packages"]["torch"].get("compute_capability") or [0, 0]
-    bf16_ok = cap[0] >= 8
+    bf16_ok = cap[0] >= 8 and torch_info.get("bf16_supported", False)
     cuda_ver = receipt["packages"]["torch"].get("cuda_runtime") or ""
     nvcc_ver = nvcc_info.get("version") or ""
     nvcc_ok = bool(nvcc_ver) and nvcc_ver == cuda_ver
@@ -174,13 +177,13 @@ def main():
         "native_bf16": bf16_ok,
         "nvcc_present": bool(nvcc_path),
         "nvcc_matches_torch_cuda": nvcc_ok,
-        "fla_present": receipt["packages"]["flash_linear_attention"]["present"],
-        "causal_conv1d_present": receipt["packages"]["causal_conv1d"]["present"],
+        "fla_present": fla_ok,
+        "causal_conv1d_present": causal_ok,
         "qwen3_5_class_present": qwen35_class["present"],
-        "s3_8b_ready": receipt["weights"]["qwen3vl_8b"]["ok"] and torch_ok and bf16_ok,
+        "s3_8b_ready": receipt["weights"]["qwen3vl_8b"]["ok"] and torch_ok and bf16_ok and transformers_ok and vl_ok,
         "nine_b_ready": (receipt["weights"]["qwen35_9b"]["ok"] and torch_ok and bf16_ok
                          and nvcc_ok and qwen35_class["present"]
-                         and receipt["packages"]["flash_linear_attention"]["present"]),
+                         and fla_ok and causal_ok and transformers_ok),
     }
 
     # --- 打印 ---
