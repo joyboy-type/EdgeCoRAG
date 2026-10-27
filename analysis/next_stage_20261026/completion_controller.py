@@ -51,6 +51,10 @@ def stop_instance(evidence):
  receipt.update(status='stopping_current_platform_supervisor',supervisor_pid=found[0]);write(p,receipt);os.kill(found[0],signal.SIGTERM)
 
 def preserve_and_stop(state):
+ lock=(BASE/'finalize.lock').open('w')
+ try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+ except BlockingIOError:return
+ if (BASE/'platform_deadline.json').exists():state['platform_deadline']=json.loads((BASE/'platform_deadline.json').read_text())
  if state.get('active_pgid'):kill_group(state['active_pgid'])
  state.update(finished_epoch=time.time(),active_pgid=None)
  write(BASE/'final_receipt_20261028.json',state)
@@ -68,7 +72,8 @@ def watchdog():
   time.sleep(10)
   try:os.kill(pid,0);alive=True
   except ProcessLookupError:alive=False
-  if not alive or time.time()>deadline-300:
+  deadline=json.loads((BASE/'controller_armed.json').read_text())['hard_deadline_epoch']
+  if not alive or time.time()>deadline-600:
    state=json.loads((BASE/'controller_state.json').read_text()) if (BASE/'controller_state.json').exists() else {}
    state['watchdog_reason']='controller_disappeared' if not alive else 'hard_deadline_preservation'
    if alive:
