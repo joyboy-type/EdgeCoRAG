@@ -9,7 +9,8 @@
 | 类别 | 路径 | 规模 |
 |---|---|---|
 | 逐题预测与评分 | `logs/B_predictions.jsonl.gz` | 21,927 行 |
-| 冻结数字（论文唯一数字入口） | `reports/next_stage_20261019/p4_frozen_20261021/frozen_numbers.json` | 172 条 |
+| 2026-10-28 两项补跑（新数字另表） | `reports/paper_20261026/` | S3-8B 36 题；9B 3×1,033；冷启动与 warmed 分开保留 |
+| 原五模型冻结数字 | `reports/next_stage_20261019/p4_frozen_20261021/frozen_numbers.json` | 172 条 |
 | 配对比较区间 | `reports/paper_20261021/T2_paired_intervals.md` | 15 行 |
 | 2×2 分格与伤害 overlay | `reports/next_stage_20261019/error_partition_20261021/` | 四类相加 = 1,033 |
 | Gate A1 裁决 | `reports/next_stage_20261019/gate_a1_20261021/` | 含数字与反例 |
@@ -19,7 +20,9 @@
 | GPU judge 与 S3 | `reports/next_stage_20261019/gpu_judge_s3_20261021/` | 1,000 条判分 + 6 份 csv |
 | 能耗与成本 | `reports/next_stage_20261019/gpu_cost_20261021/`、`p4_frozen_20261021/` | 4.35 Wh / 三模型 pilot |
 | 论文物料 | `reports/paper_20261021/` | 大纲、F4 图与脚本、T2 表、参考文献 |
-| 代码与测试 | `b-side/`、`analysis/`、`tests/` | 153 + 54 测试 |
+| 代码与测试 | `b-side/`、`analysis/`、`tests/` | 本批验证 157 + 64 + 14 + 22，见 `../paper_20261026/validation_20261028.json` |
+
+补跑数字以 `reports/paper_20261026/completion_numbers_20261028.json` 为入口，不合入原 172 条冻结表；原始生成 JSONL 和完整私有归档仍不公开。
 
 ## 二、不在仓库里（按原因分类）
 
@@ -48,12 +51,12 @@
 |---|---|
 | 论文初稿（中/英） | 待定稿后入库；当前放在 `reports/paper_20261021/draft/` |
 
-## 三、被明确放弃的部分（不是遗漏）
+## 三、原阻塞项与范围外项目（补跑状态更新）
 
 | 对象 | 状态 | 原因 |
 |---|---|---|
-| S3 的 Qwen3-VL-8B | 未执行 | bf16 + 多图需 23.4 GB，超出 24 GB 单卡；8bit 需 `accelerate` 未安装 |
-| Qwen3.5-9B | 阻塞 | 线性注意力需 `flash-linear-attention` + `causal_conv1d`；评估环境无 `nvcc` 无法编译，参考实现下单题 >10 分钟 |
+| S3 的 Qwen3-VL-8B | 2026-10-28 已补齐 | 原 24 GB 显存阻塞保留为历史；48 GB 卡按原 bf16/图像协议完成 dev5/holdout2/frozen29，见 `../paper_20261026/COMPLETION_RESULTS_20261028.md` |
+| Qwen3.5-9B | 2026-10-28 已补齐 | 原编译链阻塞及本轮冷启动超时均保留；固定依赖和预热修订后完成 S0/S1/S2 各 1,033，见 `../paper_20261026/COMPLETION_RESULTS_20261028.md` |
 | 五模型完整成本矩阵 | 部分执行 | 成本 pilot 覆盖三个模型、20 题、每请求 2 token |
 | MMDocRAG 语义 judge 之外的开放问答人审 | 未执行 | 无人审预算 |
 | 能耗整机测量 | 未执行 | 仅有 GPU 功耗点采样（4.35 Wh / 83.5 s 窗口） |

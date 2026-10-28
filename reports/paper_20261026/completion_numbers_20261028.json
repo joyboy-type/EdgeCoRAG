@@ -1,0 +1,152 @@
+{
+  "schema": "completion_point_results_20261028/v1",
+  "source_file_sha256": {
+    "reports/paper_20261026/PREREGISTRATION_registered_46c8fd5.md": "2b6262f1e3a658d3aeec5e22ad5eccdcb7f491ec4f4231fbbe5e1f5fe6629d96",
+    "reports/paper_20261026/receipt_s3_qwen3vl_8b.json": "c6bd8922585a7143a1219db5b772f0dafcefd8c444284456ff414fda46c77c92",
+    "reports/paper_20261026/receipt_qwen35_9b.json": "eb63edeaebb31aebc26d960fb7401b691d55d6817d3d2954f88868c42f34d534",
+    "reports/paper_20261026/receipt_feasibility_cold.json": "13cec93c95a8652c29fa6417c43fa46bbdef522a29d3aa5c2188514dfa2b9272",
+    "reports/paper_20261026/receipt_warmed_feasibility.json": "47080fe76e62f5557b876fa5121d65746aae6d4773eb15c4db45e41390f422a5",
+    "logs/B_predictions.jsonl.gz": "df22ac5f70ce127629dbc807fd389af32282613c3d95815a68fe20760bf63c38",
+    "reports/next_stage_20261019/error_partition_20261021/join_v2.csv.gz": "9c31fa7ee5d745085af7fe541d2bd4955566ea0abbf7c71ef559944097931712",
+    "reports/paper_20261021/PREREGISTRATION_20261026_completion.md": "ea38f3dd092549d02ed6a1f361a740a62b0513bcbd5b738c9499e60e97e6da8c",
+    "reports/paper_20261026/s0s1s2_qwen35_9b_S0.csv": "7a490f4a9d7de1958e7f72f7ef0a2e958d523fe45ca2e16988f8dbdb9d2d86bd",
+    "reports/paper_20261026/s0s1s2_qwen35_9b_S1.csv": "6c88e0da5cd1a8e6f870448bd8d4a83109410fecf0cfbad3951492510675465f",
+    "reports/paper_20261026/s0s1s2_qwen35_9b_S2.csv": "e228099973e743f30343db110a28aad626e4f03541cb1da9963d6e9db7cb82f2",
+    "reports/paper_20261026/s3_qwen3vl_8b_dev.csv": "708caec23500095e1fe9a2bae75b86fb5c9355b41c77593f61f1b6d4aad5531d",
+    "reports/paper_20261026/s3_qwen3vl_8b_holdout.csv": "f09df0938837a1afe28afa319b37125d3ee976de67bb66ff556c8c2a92860c2a",
+    "reports/paper_20261026/s3_qwen3vl_8b_frozen.csv": "f9a60e3e2289817393caff0032d51b59895b75b95f3080a5524756aa1aa81296"
+  },
+  "S3_8B": [
+    {
+      "split": "dev",
+      "n": 5,
+      "correct": 1,
+      "accuracy": 0.2,
+      "source": "reports/paper_20261026/s3_qwen3vl_8b_dev.csv"
+    },
+    {
+      "split": "internal_holdout",
+      "n": 2,
+      "correct": 1,
+      "accuracy": 0.5,
+      "source": "reports/paper_20261026/s3_qwen3vl_8b_holdout.csv"
+    },
+    {
+      "split": "frozen_test",
+      "n": 29,
+      "correct": 11,
+      "accuracy": 0.3793103448275862,
+      "source": "reports/paper_20261026/s3_qwen3vl_8b_frozen.csv"
+    }
+  ],
+  "S3_vs_existing_S1": [
+    {
+      "split": "dev",
+      "n": 5,
+      "S1_source_stage": "development",
+      "S1_source_split": "dev",
+      "S1_correct": 4,
+      "S3_correct": 1,
+      "both_correct": 1,
+      "S1_only_correct": 3,
+      "S3_only_correct": 0,
+      "both_wrong": 1,
+      "qid_sha256": "2a46e14e59c27a1bfe31966fbe28a708c83c3da18ff2f6111cb85388d4373ba6"
+    },
+    {
+      "split": "internal_holdout",
+      "n": 2,
+      "S1_source_stage": "quality",
+      "S1_source_split": "internal_holdout",
+      "S1_correct": 2,
+      "S3_correct": 1,
+      "both_correct": 1,
+      "S1_only_correct": 1,
+      "S3_only_correct": 0,
+      "both_wrong": 0,
+      "qid_sha256": "6d44512e57d1e76458f5a311876f97080bca33678cad5282a68f4a8b0be30688"
+    },
+    {
+      "split": "frozen_test",
+      "n": 29,
+      "S1_source_stage": "quality",
+      "S1_source_split": "frozen_test",
+      "S1_correct": 15,
+      "S3_correct": 11,
+      "both_correct": 7,
+      "S1_only_correct": 8,
+      "S3_only_correct": 4,
+      "both_wrong": 10,
+      "qid_sha256": "680d8f4aaac80ea6f82c12cee1ee4e681658ab0e98332c930d59bfd9368e926f"
+    }
+  ],
+  "Qwen35_9B": [
+    {
+      "condition": "S0",
+      "n": 1033,
+      "correct": 606,
+      "accuracy": 0.5866408518877058,
+      "source": "reports/paper_20261026/s0s1s2_qwen35_9b_S0.csv",
+      "receipt_pointer": "receipt_qwen35_9b.json#/condition_receipts/0"
+    },
+    {
+      "condition": "S1",
+      "n": 1033,
+      "correct": 618,
+      "accuracy": 0.5982575024201355,
+      "source": "reports/paper_20261026/s0s1s2_qwen35_9b_S1.csv",
+      "receipt_pointer": "receipt_qwen35_9b.json#/condition_receipts/1"
+    },
+    {
+      "condition": "S2",
+      "n": 1033,
+      "correct": 720,
+      "accuracy": 0.6969990319457889,
+      "source": "reports/paper_20261026/s0s1s2_qwen35_9b_S2.csv",
+      "receipt_pointer": "receipt_qwen35_9b.json#/condition_receipts/2"
+    }
+  ],
+  "Qwen35_9B_conditioned_S1": {
+    "model": "qwen35_9b",
+    "n": 1033,
+    "hit_n": 516,
+    "miss_n": 517,
+    "hit_correct": 357,
+    "miss_correct": 261,
+    "r": 0.4995159728944821,
+    "u": 0.6918604651162791,
+    "p": 0.504835589941973,
+    "hit_qid_sha256": "4e72796bc8968cbbd1ff455aa7047a75159e3da84ba296cbd02b518d841039df",
+    "source": "join_v2.csv.gz: all five model/qid/top3_gt_hit maps validated identical; new S1 CSV: correct",
+    "intervals": "none; no additional bootstrap registered"
+  },
+  "feasibility": {
+    "cold_passed": false,
+    "cold_seconds": [
+      30.051801569759846
+    ],
+    "cold_rc": 5,
+    "warmup_seconds": [
+      39.25021056458354,
+      0.33505621552467346,
+      0.30947696417570114
+    ],
+    "warmed_timed_seconds": [
+      0.3445344418287277,
+      0.31748734787106514,
+      0.3069864548742771
+    ],
+    "warmed_passed": true,
+    "full_rc": 0
+  },
+  "technical_failures": {
+    "S3_8B": 0,
+    "Qwen35_9B": 0
+  },
+  "limits": [
+    "Point estimates only; no new confidence intervals or causal/equivalence claims.",
+    "S3 label-aware and AI-assisted; narrow 5/2/29 subsets.",
+    "9B is Qwen3.5 family and has no S2@3; no pure scale or matched-count A conclusion.",
+    "Cold and warmed feasibility are distinct; old failure is retained."
+  ]
+}

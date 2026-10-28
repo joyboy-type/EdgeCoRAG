@@ -1,0 +1,33 @@
+{
+  "schema": "completion_delivery_validation_20261028/v1",
+  "tests": [
+    {
+      "directory": "tests",
+      "count": 157,
+      "rc": 0
+    },
+    {
+      "directory": "analysis/next_stage_20261019",
+      "count": 64,
+      "rc": 0
+    },
+    {
+      "directory": "analysis/next_stage_20261024",
+      "count": 14,
+      "rc": 0
+    },
+    {
+      "directory": "analysis/next_stage_20261026",
+      "count": 22,
+      "rc": 0
+    }
+  ],
+  "total_tests": 257,
+  "offline_recomputation_rc": 0,
+  "git_diff_check_rc": 0,
+  "protected_tree_base": "de6f979",
+  "frozen_numbers_unchanged": true,
+  "a_side_unchanged": true,
+  "paper_drafts_unchanged": true,
+  "raw_archives_or_model_weights_published": false
+}

@@ -1,0 +1,2 @@
+model,n,hit_n,miss_n,hit_correct,miss_correct,r,u,p,hit_qid_sha256,source,intervals
+qwen35_9b,1033,516,517,357,261,0.4995159728944821,0.6918604651162791,0.504835589941973,4e72796bc8968cbbd1ff455aa7047a75159e3da84ba296cbd02b518d841039df,join_v2.csv.gz: all five model/qid/top3_gt_hit maps validated identical; new S1 CSV: correct,none; no additional bootstrap registered
