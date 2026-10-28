@@ -1,0 +1,116 @@
+{
+  "schema": "s3_qwen3vl_8b_20261026/v2",
+  "runtime": {
+    "model": "Qwen/Qwen3-VL-8B-Instruct",
+    "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "attn_implementation": "sdpa",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "seed": 42,
+    "enable_thinking": "not_applicable",
+    "load_seconds": 5.203190803527832,
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_total_gib": 47.37115478515625,
+    "compute_capability": [
+      8,
+      9
+    ],
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "nvcc_version_raw": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+    "chat_template_sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+    "packages": {
+      "transformers": "5.19.0",
+      "Pillow": "11.3.0",
+      "triton": "3.4.0"
+    },
+    "image_processor_config": {
+      "size": {
+        "longest_edge": 262144,
+        "shortest_edge": 50176
+      },
+      "patch_size": 16,
+      "temporal_patch_size": 2,
+      "merge_size": 2,
+      "image_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_processor_type": "Qwen2VLImageProcessor",
+      "do_convert_rgb": true,
+      "do_resize": true,
+      "resample": 3,
+      "do_rescale": true,
+      "rescale_factor": 0.00392156862745098,
+      "do_normalize": true
+    },
+    "image_preprocessing": "unchanged protocol_main_v1.json image_processing.qwen: min_pixels=50176,max_pixels=262144,use_fast=False; no fit-to-memory changes",
+    "hardware_limitations": "new hardware/stack; no bitwise equivalence or pure scale claim"
+  },
+  "split_receipts": [
+    {
+      "split": "dev",
+      "split_out": "dev",
+      "n_expected": 5,
+      "n_rows": 5,
+      "n_correct": 1,
+      "complete": true,
+      "accuracy": 0.2,
+      "accuracy_observed": 0.2,
+      "input_sha256": "de4507725a071295e539a9808628478aff44b05d4fc50bc3db6871570c7171c2",
+      "gold_sha256": "9fadf5d8b35c39723dc1645dd93f826d278bd7233b3af6de989ee2aca3b9384c",
+      "qid_sha256": "2a46e14e59c27a1bfe31966fbe28a708c83c3da18ff2f6111cb85388d4373ba6",
+      "csv_sha256": "708caec23500095e1fe9a2bae75b86fb5c9355b41c77593f61f1b6d4aad5531d",
+      "disclosure": "AI图像辅助、label-aware、非人工盲审；仅子集描述"
+    },
+    {
+      "split": "internal_holdout",
+      "split_out": "holdout",
+      "n_expected": 2,
+      "n_rows": 2,
+      "n_correct": 1,
+      "complete": true,
+      "accuracy": 0.5,
+      "accuracy_observed": 0.5,
+      "input_sha256": "e875a9ae22ae2fd496beaeeb4d4700ab5fbef221b4b5f1797760c25df75956ea",
+      "gold_sha256": "d372979b497da1e292e5bc54b6a278443c8624401d2c5f9f1361fee6e81102dc",
+      "qid_sha256": "6d44512e57d1e76458f5a311876f97080bca33678cad5282a68f4a8b0be30688",
+      "csv_sha256": "f09df0938837a1afe28afa319b37125d3ee976de67bb66ff556c8c2a92860c2a",
+      "disclosure": "AI图像辅助、label-aware、非人工盲审；仅子集描述"
+    },
+    {
+      "split": "frozen_test",
+      "split_out": "frozen",
+      "n_expected": 29,
+      "n_rows": 29,
+      "n_correct": 11,
+      "complete": true,
+      "accuracy": 0.3793103448275862,
+      "accuracy_observed": 0.3793103448275862,
+      "input_sha256": "59abaaae42a89a6dd554bbbc396fedcb980e33792fdb70f267c1b9030bd85183",
+      "gold_sha256": "01b7698ca49e6f6bd9c28d293831163ed94637c74cf98e874c1e63ce3ae042f5",
+      "qid_sha256": "680d8f4aaac80ea6f82c12cee1ee4e681658ab0e98332c930d59bfd9368e926f",
+      "csv_sha256": "f9a60e3e2289817393caff0032d51b59895b75b95f3080a5524756aa1aa81296",
+      "disclosure": "AI图像辅助、label-aware、非人工盲审；仅子集描述"
+    }
+  ],
+  "complete": true,
+  "attempted": 36,
+  "failed": 0,
+  "stopped_reason": null,
+  "error": null,
+  "return_code": 0,
+  "preregistration": "PREREGISTRATION_20261026_completion.md §2",
+  "started_epoch": 1793120403.8688025,
+  "finished_epoch": 1793120429.2716753
+}

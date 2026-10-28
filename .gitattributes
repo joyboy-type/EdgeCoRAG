@@ -3,3 +3,6 @@ reports/v1.10.1/*.csv -whitespace
 source_manifest.csv -whitespace
 # Matplotlib emits intentional whitespace inside SVG path attributes.
 figures/v1.10.1/*.svg -whitespace
+
+# Preserve exact scored CSV bytes and their recorded hashes.
+reports/paper_20261026/*.csv -text -whitespace
