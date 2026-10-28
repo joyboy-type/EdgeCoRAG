@@ -1,0 +1,60 @@
+{
+  "schema": "cpu_environment_repair_20261028/v1",
+  "static_and_import_checks_passed": true,
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "torchvision": "0.23.0+cu128",
+    "triton": "3.4.0",
+    "transformers": "5.19.0",
+    "flash-linear-attention": "0.4.2",
+    "fla-core": "0.4.2",
+    "causal-conv1d": "1.7.0"
+  },
+  "torch_cuda_runtime": "12.8",
+  "gpu_available": false,
+  "gpu_inference_performed": false,
+  "unsupported_gluon_extra_imports": [],
+  "transformers_kernel_bindings": {
+    "torch_chunk_gated_delta_rule": {
+      "module": "fla.ops.gated_delta_rule.chunk",
+      "name": "chunk_gated_delta_rule",
+      "optimized_package_bound": true
+    },
+    "torch_recurrent_gated_delta_rule": {
+      "module": "fla.ops.gated_delta_rule.fused_recurrent",
+      "name": "fused_recurrent_gated_delta_rule",
+      "optimized_package_bound": true
+    },
+    "causal_conv1d_fn": {
+      "module": "causal_conv1d.causal_conv1d_interface",
+      "name": "causal_conv1d_fn",
+      "optimized_package_bound": true
+    },
+    "causal_conv1d_update": {
+      "module": "causal_conv1d.causal_conv1d_interface",
+      "name": "causal_conv1d_update",
+      "optimized_package_bound": true
+    }
+  },
+  "pip_check": "No broken requirements found.",
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0",
+  "original_gpu_failure": "FLA 0.6.0 imported gluon.language.extra missing from torch-pinned Triton 3.4.0",
+  "repair": "Pin official flash-linear-attention/fla-core wheels to 0.4.2; no package-source monkey patches; torch,CUDA,precision and protocol unchanged",
+  "pending": [
+    "GPU Triton JIT/kernel execution",
+    "registered three-item end-to-end feasibility <=30 seconds each",
+    "9B full S0/S1/S2 only if feasibility passes"
+  ],
+  "finished_epoch": 1793145162.200071,
+  "dependency_changes": {
+    "fla-core": {
+      "before": "0.6.0",
+      "after": "0.4.2"
+    },
+    "flash-linear-attention": {
+      "before": "0.6.0",
+      "after": "0.4.2"
+    }
+  },
+  "comparison_note": "pip freeze excludes pip; compare all previously frozen distributions using pip list versions (local wheel installs use direct-URL freeze syntax)."
+}

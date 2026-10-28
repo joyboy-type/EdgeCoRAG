@@ -1,0 +1,208 @@
+{
+  "runtime": {
+    "model": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "attn_implementation": "sdpa",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "seed": 42,
+    "enable_thinking": false,
+    "load_seconds": 3.857882171869278,
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_total_gib": 47.37115478515625,
+    "compute_capability": [
+      8,
+      9
+    ],
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "nvcc_version_raw": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+    "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "packages": {
+      "transformers": "5.19.0",
+      "Pillow": "11.3.0",
+      "triton": "3.4.0"
+    },
+    "image_processor_config": {
+      "size": {
+        "longest_edge": 262144,
+        "shortest_edge": 50176
+      },
+      "patch_size": 16,
+      "temporal_patch_size": 2,
+      "merge_size": 2,
+      "image_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_processor_type": "Qwen2VLImageProcessor",
+      "do_convert_rgb": true,
+      "do_resize": true,
+      "resample": 3,
+      "do_rescale": true,
+      "rescale_factor": 0.00392156862745098,
+      "do_normalize": true
+    },
+    "image_preprocessing": "unchanged protocol_main_v1.json image_processing.qwen: min_pixels=50176,max_pixels=262144,use_fast=False; no fit-to-memory changes",
+    "hardware_limitations": "new hardware/stack; no bitwise equivalence or pure scale claim",
+    "packages_extra": {
+      "flash-linear-attention": "0.4.2",
+      "fla-core": "0.4.2",
+      "causal-conv1d": "1.7.0"
+    }
+  },
+  "cold_result": {
+    "path": "/root/autodl-tmp/completion-9b-20261028b/9b/receipt_feasibility.json",
+    "sha256": "13cec93c95a8652c29fa6417c43fa46bbdef522a29d3aa5c2188514dfa2b9272",
+    "passed": false
+  },
+  "preregistration": "PREREGISTRATION_20261026_completion.md §9",
+  "preregistration_sha256": "2b6262f1e3a658d3aeec5e22ad5eccdcb7f491ec4f4231fbbe5e1f5fe6629d96",
+  "passed": true,
+  "warmup_results": [
+    {
+      "raw_id": "6",
+      "qid": "mragb:6",
+      "gold": "B",
+      "choice": "C",
+      "correct": false,
+      "status": "ok",
+      "started_epoch": 1793146778.8266563,
+      "response": "C",
+      "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+      "generated_tokens": 4,
+      "end_to_end_seconds": 39.25021056458354,
+      "generation_seconds": 39.15439011156559,
+      "input_image_count": 1,
+      "image_identities": [
+        "16774153931ab3c56c05d2f0f05324879d6cf5f1e7a8cfdea98b4d04e9e7b796"
+      ],
+      "rendered_prompt_sha256": "17cf84e757eaec8bc9b7d26cda6a32b839b2ba680c5a54731bd4ca2997ffd987",
+      "finished_epoch": 1793146818.0773504
+    },
+    {
+      "raw_id": "11",
+      "qid": "mragb:11",
+      "gold": "A",
+      "choice": "D",
+      "correct": false,
+      "status": "ok",
+      "started_epoch": 1793146818.0793731,
+      "response": "D",
+      "raw_output_with_special_tokens": "D<|im_end|>\n<|endoftext|>",
+      "generated_tokens": 4,
+      "end_to_end_seconds": 0.33505621552467346,
+      "generation_seconds": 0.3062819689512253,
+      "input_image_count": 1,
+      "image_identities": [
+        "9b3b6f2b15989f2ada1d0768ad98fc8079c7d8e18515404702ab6cac4321aad4"
+      ],
+      "rendered_prompt_sha256": "20750c5197851b206bf31dad64fd93c05a105bc4374a0c066bedb8b893a29095",
+      "finished_epoch": 1793146818.414659
+    },
+    {
+      "raw_id": "12",
+      "qid": "mragb:12",
+      "gold": "D",
+      "choice": "C",
+      "correct": false,
+      "status": "ok",
+      "started_epoch": 1793146818.4156525,
+      "response": "C",
+      "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+      "generated_tokens": 4,
+      "end_to_end_seconds": 0.30947696417570114,
+      "generation_seconds": 0.29920197650790215,
+      "input_image_count": 1,
+      "image_identities": [
+        "cec679a53aea498c74f80d14ac59c060f585e4121e6029cdce0c1384737c09f3"
+      ],
+      "rendered_prompt_sha256": "506bdc98137e59db8cc78df1a03b8bdbe0c8206b278ee9cde296be75b5e39d65",
+      "finished_epoch": 1793146818.7253885
+    }
+  ],
+  "results": [
+    {
+      "raw_id": "6",
+      "qid": "mragb:6",
+      "gold": "B",
+      "choice": "C",
+      "correct": false,
+      "status": "ok",
+      "started_epoch": 1793146818.7262905,
+      "response": "C",
+      "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+      "generated_tokens": 4,
+      "end_to_end_seconds": 0.3445344418287277,
+      "generation_seconds": 0.2987706772983074,
+      "input_image_count": 1,
+      "image_identities": [
+        "16774153931ab3c56c05d2f0f05324879d6cf5f1e7a8cfdea98b4d04e9e7b796"
+      ],
+      "rendered_prompt_sha256": "17cf84e757eaec8bc9b7d26cda6a32b839b2ba680c5a54731bd4ca2997ffd987",
+      "finished_epoch": 1793146819.0710382
+    },
+    {
+      "raw_id": "11",
+      "qid": "mragb:11",
+      "gold": "A",
+      "choice": "D",
+      "correct": false,
+      "status": "ok",
+      "started_epoch": 1793146819.072135,
+      "response": "D",
+      "raw_output_with_special_tokens": "D<|im_end|>\n<|endoftext|>",
+      "generated_tokens": 4,
+      "end_to_end_seconds": 0.31748734787106514,
+      "generation_seconds": 0.29801638796925545,
+      "input_image_count": 1,
+      "image_identities": [
+        "9b3b6f2b15989f2ada1d0768ad98fc8079c7d8e18515404702ab6cac4321aad4"
+      ],
+      "rendered_prompt_sha256": "20750c5197851b206bf31dad64fd93c05a105bc4374a0c066bedb8b893a29095",
+      "finished_epoch": 1793146819.3897889
+    },
+    {
+      "raw_id": "12",
+      "qid": "mragb:12",
+      "gold": "D",
+      "choice": "C",
+      "correct": false,
+      "status": "ok",
+      "started_epoch": 1793146819.3906662,
+      "response": "C",
+      "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+      "generated_tokens": 4,
+      "end_to_end_seconds": 0.3069864548742771,
+      "generation_seconds": 0.2983887903392315,
+      "input_image_count": 1,
+      "image_identities": [
+        "cec679a53aea498c74f80d14ac59c060f585e4121e6029cdce0c1384737c09f3"
+      ],
+      "rendered_prompt_sha256": "506bdc98137e59db8cc78df1a03b8bdbe0c8206b278ee9cde296be75b5e39d65",
+      "finished_epoch": 1793146819.6979308
+    }
+  ],
+  "warmup_state": {
+    "attempted": 3,
+    "failed": 0,
+    "stopped_reason": null
+  },
+  "timed_state": {
+    "attempted": 3,
+    "failed": 0,
+    "stopped_reason": null
+  },
+  "threshold_seconds": 30,
+  "warmup_limit_seconds": 600
+}

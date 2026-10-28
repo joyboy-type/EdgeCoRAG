@@ -1,0 +1,91 @@
+{
+  "schema": "nine_b_feasibility_20261026/v2",
+  "runtime": {
+    "model": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "attn_implementation": "sdpa",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "seed": 42,
+    "enable_thinking": false,
+    "load_seconds": 4.8661213256418705,
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_total_gib": 47.37115478515625,
+    "compute_capability": [
+      8,
+      9
+    ],
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "nvcc_version_raw": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+    "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "packages": {
+      "transformers": "5.19.0",
+      "Pillow": "11.3.0",
+      "triton": "3.4.0"
+    },
+    "image_processor_config": {
+      "size": {
+        "longest_edge": 262144,
+        "shortest_edge": 50176
+      },
+      "patch_size": 16,
+      "temporal_patch_size": 2,
+      "merge_size": 2,
+      "image_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_processor_type": "Qwen2VLImageProcessor",
+      "do_convert_rgb": true,
+      "do_resize": true,
+      "resample": 3,
+      "do_rescale": true,
+      "rescale_factor": 0.00392156862745098,
+      "do_normalize": true
+    },
+    "image_preprocessing": "unchanged protocol_main_v1.json image_processing.qwen: min_pixels=50176,max_pixels=262144,use_fast=False; no fit-to-memory changes",
+    "hardware_limitations": "new hardware/stack; no bitwise equivalence or pure scale claim",
+    "flash_linear_attention": "0.4.2",
+    "causal_conv1d": "1.7.0"
+  },
+  "n": 1,
+  "seconds_each": [
+    30.051801569759846
+  ],
+  "threshold_seconds": 30,
+  "passed": false,
+  "results": [
+    {
+      "raw_id": "6",
+      "qid": "mragb:6",
+      "gold": "B",
+      "choice": null,
+      "correct": false,
+      "status": "error:TimeoutError",
+      "started_epoch": 1793146010.851552,
+      "error": "Preregistered per-item end-to-end latency exceeded 30 seconds",
+      "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/completion-9b-20261028b/code/completion_rules.py\", line 20, in run_items\n    result=infer(it);row.update(result);row['status']=result.get('status','ok');m=re.search(r'\\b([ABCD])\\b',result.get('response',''));row['choice']=m.group(1) if m else None;row['correct']=row['choice']==row['gold']\n           ^^^^^^^^^\n  File \"/root/autodl-tmp/completion-9b-20261028b/code/nine_b.py\", line 23, in <lambda>\n    results=run_items(inputs['S0'][:3],gold,lambda it:backend.infer(it,root/'media',limit_seconds=30),state,emit)\n                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/completion-9b-20261028b/code/completion_inference.py\", line 30, in infer\n    with torch.no_grad():ids=self.model.generate(**inputs,max_new_tokens=64,do_sample=False)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/utils/_contextlib.py\", line 120, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/generation/utils.py\", line 2982, in generate\n    result = decoding_method(\n             ^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/generation/utils.py\", line 3182, in _sample\n    outputs = self._prefill(\n              ^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/generation/utils.py\", line 4293, in _prefill\n    return self(**model_inputs, return_dict=True)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1773, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1784, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/utils/generic.py\", line 943, in wrapper\n    output = func(self, *args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\", line 1851, in forward\n    outputs = self.model(\n              ^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1773, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1784, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/utils/generic.py\", line 943, in wrapper\n    output = func(self, *args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\", line 1645, in forward\n    outputs = self.language_model(\n              ^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1773, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1784, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/utils/generic.py\", line 1081, in wrapper\n    output = func(self, *args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/utils/output_capturing.py\", line 287, in wrapper\n    outputs = func(self, *args, **kwargs)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\", line 1282, in forward\n    hidden_states = decoder_layer(\n                    ^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/modeling_layers.py\", line 110, in __call__\n    return super().__call__(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1773, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1784, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\", line 879, in forward\n    hidden_states = self.linear_attn(\n                    ^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1773, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1784, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/integrations/accelerate.py\", line 1010, in wrapped\n    output = forward_func(self, *args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\", line 629, in forward\n    core_attn_out, last_recurrent_state = torch_chunk_gated_delta_rule(\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/transformers/integrations/hub_kernels.py\", line 1040, in wrapped\n    return implementation(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py\", line 929, in _fn\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/fla/ops/gated_delta_rule/chunk.py\", line 405, in chunk_gated_delta_rule\n    o, final_state = ChunkGatedDeltaRuleFunction.apply(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/autograd/function.py\", line 576, in apply\n    return super().apply(*args, **kwargs)  # type: ignore[misc]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/fla/utils.py\", line 222, in wrapper\n    return fn(*processed_args, **processed_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/amp/autocast_mode.py\", line 517, in decorate_fwd\n    return fwd(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/fla/ops/gated_delta_rule/chunk.py\", line 247, in forward\n    g, o, A, final_state, initial_state = chunk_gated_delta_rule_fwd(\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/fla/ops/gated_delta_rule/chunk.py\", line 40, in chunk_gated_delta_rule_fwd\n    A = chunk_scaled_dot_kkt_fwd(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/fla/ops/common/chunk_scaled_dot_kkt.py\", line 114, in chunk_scaled_dot_kkt_fwd\n    chunk_scaled_dot_kkt_fwd_kernel[(NT, B * H)](\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/runtime/jit.py\", line 390, in <lambda>\n    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/runtime/autotuner.py\", line 453, in run\n    return self.fn.run(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/runtime/autotuner.py\", line 237, in run\n    used_cached_result = self.check_disk_cache(key, pruned_configs, benchmark)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/runtime/autotuner.py\", line 201, in check_disk_cache\n    bench_fn()\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/runtime/autotuner.py\", line 228, in benchmark\n    timings = {config: self._bench(*args, config=config, **kwargs) for config in pruned_configs}\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/runtime/autotuner.py\", line 160, in _bench\n    return self.do_bench(kernel_call, quantiles=(0.5, 0.2, 0.8))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/triton/testing.py\", line 188, in do_bench\n    di.synchronize()\n  File \"/root/autodl-tmp/envs/completion/lib/python3.12/site-packages/torch/cuda/__init__.py\", line 1085, in synchronize\n    return torch._C._cuda_synchronize()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/completion-9b-20261028b/code/completion_inference.py\", line 22, in timeout\n    def timeout(_signal,_frame):raise TimeoutError('Preregistered per-item end-to-end latency exceeded 30 seconds')\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: Preregistered per-item end-to-end latency exceeded 30 seconds\n",
+      "end_to_end_seconds": 30.051801569759846,
+      "finished_epoch": 1793146040.912123
+    }
+  ],
+  "attempted": 1,
+  "failed": 1,
+  "stopped_reason": "failure_rate 1/1 > 0.05",
+  "preregistration": "PREREGISTRATION_20261026_completion.md §3",
+  "started_epoch": 1793145997.7184286,
+  "finished_epoch": 1793146040.9168484,
+  "error": null,
+  "return_code": 5
+}

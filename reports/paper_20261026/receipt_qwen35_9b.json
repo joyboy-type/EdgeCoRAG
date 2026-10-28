@@ -1,0 +1,275 @@
+{
+  "schema": "nine_b_fixed_warmup_20261028/v1",
+  "host": "autodl-container-hrkfgz7sgx-92b91c61",
+  "pid": 1619,
+  "started_epoch": 1793146767.5160148,
+  "hard_deadline_epoch": 1793161167.5160148,
+  "shutdown_policy": "KEEP_RUNNING: no shutdown on any outcome",
+  "phase": "finished",
+  "full_state": {
+    "attempted": 3099,
+    "failed": 0,
+    "stopped_reason": null
+  },
+  "condition_receipts": [
+    {
+      "condition": "S0",
+      "n_expected": 1033,
+      "n_rows": 1033,
+      "n_correct": 606,
+      "complete": true,
+      "accuracy": 0.5866408518877058,
+      "accuracy_observed": 0.5866408518877058,
+      "input_path": "/root/autodl-tmp/EdgeCoRAG/bound-v1.10.0/integrated/frozen_test/main/inputs/S0.json",
+      "input_sha256": "01e8d9e8f4734e3396d1bff1cb5d5f39c4740ff95708cd1972f65f8fbb3fc34e",
+      "gold_path": "/root/autodl-tmp/EdgeCoRAG/bound-v1.10.0/integrated/frozen_test/main/scoring/answers.json",
+      "gold_sha256": "8df74f3301151cad7b33896b6f888d9789c472f473fe7c842210471566af159d",
+      "csv_sha256": "7a490f4a9d7de1958e7f72f7ef0a2e958d523fe45ca2e16988f8dbdb9d2d86bd",
+      "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+      "query_plus_evidence_images": "1+0"
+    },
+    {
+      "condition": "S1",
+      "n_expected": 1033,
+      "n_rows": 1033,
+      "n_correct": 618,
+      "complete": true,
+      "accuracy": 0.5982575024201355,
+      "accuracy_observed": 0.5982575024201355,
+      "input_path": "/root/autodl-tmp/EdgeCoRAG/bound-v1.10.0/integrated/frozen_test/main/inputs/S1.json",
+      "input_sha256": "dcf88be0974c1af9bbae262465f78a93b4c39fc8da4e9a462d8829ca9efbf02e",
+      "gold_path": "/root/autodl-tmp/EdgeCoRAG/bound-v1.10.0/integrated/frozen_test/main/scoring/answers.json",
+      "gold_sha256": "8df74f3301151cad7b33896b6f888d9789c472f473fe7c842210471566af159d",
+      "csv_sha256": "6c88e0da5cd1a8e6f870448bd8d4a83109410fecf0cfbad3951492510675465f",
+      "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+      "query_plus_evidence_images": "1+3"
+    },
+    {
+      "condition": "S2",
+      "n_expected": 1033,
+      "n_rows": 1033,
+      "n_correct": 720,
+      "complete": true,
+      "accuracy": 0.6969990319457889,
+      "accuracy_observed": 0.6969990319457889,
+      "input_path": "/root/autodl-tmp/EdgeCoRAG/bound-v1.10.0/integrated/frozen_test/main/inputs/S2.json",
+      "input_sha256": "7398318a5d2e2e7e8fe391ca839d45840682e96c25ed7d7b6ecf3419e1a9245f",
+      "gold_path": "/root/autodl-tmp/EdgeCoRAG/bound-v1.10.0/integrated/frozen_test/main/scoring/answers.json",
+      "gold_sha256": "8df74f3301151cad7b33896b6f888d9789c472f473fe7c842210471566af159d",
+      "csv_sha256": "e228099973e743f30343db110a28aad626e4f03541cb1da9963d6e9db7cb82f2",
+      "qid_sha256": "2a102ea80297f371dbe793125ac98c084880168929cf8a0781aac315c485d9bc",
+      "query_plus_evidence_images": "1+5 (956); 1+1 (77)"
+    }
+  ],
+  "complete": true,
+  "return_code": 0,
+  "preregistration": "PREREGISTRATION_20261026_completion.md §9",
+  "preregistration_sha256": "2b6262f1e3a658d3aeec5e22ad5eccdcb7f491ec4f4231fbbe5e1f5fe6629d96",
+  "cold_result": {
+    "path": "/root/autodl-tmp/completion-9b-20261028b/9b/receipt_feasibility.json",
+    "sha256": "13cec93c95a8652c29fa6417c43fa46bbdef522a29d3aa5c2188514dfa2b9272",
+    "passed": false
+  },
+  "runtime": {
+    "model": "Qwen/Qwen3.5-9B",
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "dtype": "bfloat16",
+    "quantization": "none",
+    "attn_implementation": "sdpa",
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "seed": 42,
+    "enable_thinking": false,
+    "load_seconds": 3.857882171869278,
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_total_gib": 47.37115478515625,
+    "compute_capability": [
+      8,
+      9
+    ],
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "nvcc_version_raw": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0\n",
+    "chat_template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "packages": {
+      "transformers": "5.19.0",
+      "Pillow": "11.3.0",
+      "triton": "3.4.0"
+    },
+    "image_processor_config": {
+      "size": {
+        "longest_edge": 262144,
+        "shortest_edge": 50176
+      },
+      "patch_size": 16,
+      "temporal_patch_size": 2,
+      "merge_size": 2,
+      "image_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "image_processor_type": "Qwen2VLImageProcessor",
+      "do_convert_rgb": true,
+      "do_resize": true,
+      "resample": 3,
+      "do_rescale": true,
+      "rescale_factor": 0.00392156862745098,
+      "do_normalize": true
+    },
+    "image_preprocessing": "unchanged protocol_main_v1.json image_processing.qwen: min_pixels=50176,max_pixels=262144,use_fast=False; no fit-to-memory changes",
+    "hardware_limitations": "new hardware/stack; no bitwise equivalence or pure scale claim",
+    "packages_extra": {
+      "flash-linear-attention": "0.4.2",
+      "fla-core": "0.4.2",
+      "causal-conv1d": "1.7.0"
+    }
+  },
+  "warmed_gate": {
+    "passed": true,
+    "warmup_results": [
+      {
+        "raw_id": "6",
+        "qid": "mragb:6",
+        "gold": "B",
+        "choice": "C",
+        "correct": false,
+        "status": "ok",
+        "started_epoch": 1793146778.8266563,
+        "response": "C",
+        "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+        "generated_tokens": 4,
+        "end_to_end_seconds": 39.25021056458354,
+        "generation_seconds": 39.15439011156559,
+        "input_image_count": 1,
+        "image_identities": [
+          "16774153931ab3c56c05d2f0f05324879d6cf5f1e7a8cfdea98b4d04e9e7b796"
+        ],
+        "rendered_prompt_sha256": "17cf84e757eaec8bc9b7d26cda6a32b839b2ba680c5a54731bd4ca2997ffd987",
+        "finished_epoch": 1793146818.0773504
+      },
+      {
+        "raw_id": "11",
+        "qid": "mragb:11",
+        "gold": "A",
+        "choice": "D",
+        "correct": false,
+        "status": "ok",
+        "started_epoch": 1793146818.0793731,
+        "response": "D",
+        "raw_output_with_special_tokens": "D<|im_end|>\n<|endoftext|>",
+        "generated_tokens": 4,
+        "end_to_end_seconds": 0.33505621552467346,
+        "generation_seconds": 0.3062819689512253,
+        "input_image_count": 1,
+        "image_identities": [
+          "9b3b6f2b15989f2ada1d0768ad98fc8079c7d8e18515404702ab6cac4321aad4"
+        ],
+        "rendered_prompt_sha256": "20750c5197851b206bf31dad64fd93c05a105bc4374a0c066bedb8b893a29095",
+        "finished_epoch": 1793146818.414659
+      },
+      {
+        "raw_id": "12",
+        "qid": "mragb:12",
+        "gold": "D",
+        "choice": "C",
+        "correct": false,
+        "status": "ok",
+        "started_epoch": 1793146818.4156525,
+        "response": "C",
+        "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+        "generated_tokens": 4,
+        "end_to_end_seconds": 0.30947696417570114,
+        "generation_seconds": 0.29920197650790215,
+        "input_image_count": 1,
+        "image_identities": [
+          "cec679a53aea498c74f80d14ac59c060f585e4121e6029cdce0c1384737c09f3"
+        ],
+        "rendered_prompt_sha256": "506bdc98137e59db8cc78df1a03b8bdbe0c8206b278ee9cde296be75b5e39d65",
+        "finished_epoch": 1793146818.7253885
+      }
+    ],
+    "results": [
+      {
+        "raw_id": "6",
+        "qid": "mragb:6",
+        "gold": "B",
+        "choice": "C",
+        "correct": false,
+        "status": "ok",
+        "started_epoch": 1793146818.7262905,
+        "response": "C",
+        "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+        "generated_tokens": 4,
+        "end_to_end_seconds": 0.3445344418287277,
+        "generation_seconds": 0.2987706772983074,
+        "input_image_count": 1,
+        "image_identities": [
+          "16774153931ab3c56c05d2f0f05324879d6cf5f1e7a8cfdea98b4d04e9e7b796"
+        ],
+        "rendered_prompt_sha256": "17cf84e757eaec8bc9b7d26cda6a32b839b2ba680c5a54731bd4ca2997ffd987",
+        "finished_epoch": 1793146819.0710382
+      },
+      {
+        "raw_id": "11",
+        "qid": "mragb:11",
+        "gold": "A",
+        "choice": "D",
+        "correct": false,
+        "status": "ok",
+        "started_epoch": 1793146819.072135,
+        "response": "D",
+        "raw_output_with_special_tokens": "D<|im_end|>\n<|endoftext|>",
+        "generated_tokens": 4,
+        "end_to_end_seconds": 0.31748734787106514,
+        "generation_seconds": 0.29801638796925545,
+        "input_image_count": 1,
+        "image_identities": [
+          "9b3b6f2b15989f2ada1d0768ad98fc8079c7d8e18515404702ab6cac4321aad4"
+        ],
+        "rendered_prompt_sha256": "20750c5197851b206bf31dad64fd93c05a105bc4374a0c066bedb8b893a29095",
+        "finished_epoch": 1793146819.3897889
+      },
+      {
+        "raw_id": "12",
+        "qid": "mragb:12",
+        "gold": "D",
+        "choice": "C",
+        "correct": false,
+        "status": "ok",
+        "started_epoch": 1793146819.3906662,
+        "response": "C",
+        "raw_output_with_special_tokens": "C<|im_end|>\n<|endoftext|>",
+        "generated_tokens": 4,
+        "end_to_end_seconds": 0.3069864548742771,
+        "generation_seconds": 0.2983887903392315,
+        "input_image_count": 1,
+        "image_identities": [
+          "cec679a53aea498c74f80d14ac59c060f585e4121e6029cdce0c1384737c09f3"
+        ],
+        "rendered_prompt_sha256": "506bdc98137e59db8cc78df1a03b8bdbe0c8206b278ee9cde296be75b5e39d65",
+        "finished_epoch": 1793146819.6979308
+      }
+    ],
+    "warmup_state": {
+      "attempted": 3,
+      "failed": 0,
+      "stopped_reason": null
+    },
+    "timed_state": {
+      "attempted": 3,
+      "failed": 0,
+      "stopped_reason": null
+    },
+    "threshold_seconds": 30,
+    "warmup_limit_seconds": 600
+  },
+  "finished_epoch": 1793148001.30582
+}

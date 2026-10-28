@@ -1,0 +1,7 @@
+torch==2.8.0+cu128
+torchvision==0.23.0+cu128
+triton==3.4.0
+transformers==5.19.0
+flash-linear-attention==0.4.2
+fla-core==0.4.2
+causal-conv1d==1.7.0
