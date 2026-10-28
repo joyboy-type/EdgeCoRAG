@@ -25,3 +25,11 @@ def run_items(items,gold,infer,state,emit):
   if row['status']=='OOM':state['stopped_reason']='OOM at '+it['qid']
   elif state['failed']/state['attempted']>.05:state['stopped_reason']=f"failure_rate {state['failed']}/{state['attempted']} > 0.05"
  return rows
+
+def run_warmed_gate(items,gold,infer,emit_warm,emit_timed):
+ """Fixed three warmups then the unchanged individual 30-second gate; no retries."""
+ assert len(items)==3 and len({it['qid'] for it in items})==3
+ warm_state={};warm=run_items(items,gold,lambda it:infer(it,600),warm_state,emit_warm)
+ ready=len(warm)==3 and all(r['status']=='ok' for r in warm) and not warm_state.get('stopped_reason')
+ timed_state={};results=run_items(items,gold,lambda it:infer(it,30),timed_state,emit_timed) if ready else []
+ return {'passed':ready and feasibility_passed(results),'warmup_results':warm,'results':results,'warmup_state':warm_state,'timed_state':timed_state,'threshold_seconds':30,'warmup_limit_seconds':600}
