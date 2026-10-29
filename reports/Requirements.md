@@ -1,17 +1,17 @@
 # 任务书与仓库文档要求整合
 
-截至 2026年10月21日（本轮更新 R06/R07/R17/R21/R33）。对照用户提供的《张.docx》和父提交上的25份仓库Markdown文档，共26份来源。完整清单及核对时的文件哈希见 [document_inventory.json](v1.10.1/document_inventory.json)。未提供的其他文档不在核对范围内。
+截至 2026年10月29日（2026-10-21 更新 R06/R07/R17/R21/R33；2026-10-29 更新 R02 状态并追加补跑清单）。对照用户提供的《张.docx》和父提交上的25份仓库Markdown文档，共26份来源。完整清单及核对时的文件哈希见 [document_inventory.json](v1.10.1/document_inventory.json)。未提供的其他文档不在核对范围内。
 
 任务书是研究目标，仓库中的旧提示词、命令和待批准说明是历史参考；它们不会授权本轮启动额外实验。当前实际执行范围由冻结矩阵、用户后续批准与完成回执确定。本轮161任务执行完成，不等于任务书全部研究要求完成。
 
-文档冲突按以下方式处理：旧首页的“尚未完成正式实验”由当前结果入口替代；冻结模型注册表及接收回执保留原始字节和当时状态；原计划“来源隔离、人审S3、端到端性能”等没有因技术通过而自动达成。Qwen3.5 9B及其他可选项目不被改写为必做。
+文档冲突按以下方式处理：旧首页的“尚未完成正式实验”由当前结果入口替代；冻结模型注册表及接收回执保留原始字节和当时状态；原计划“来源隔离、人审S3、端到端性能”等没有因技术通过而自动达成。Qwen3.5 9B及其他可选项目不被改写为必做；9B 已于 2026-10-28 作为补充实验完成，见本文末「补充实验清单」。
 
-状态计数（脚本 `analysis/next_stage_20261019/report_completion_counts.py` 由 `reports/v1.10.1/requirements_matrix.csv` 生成）：**完成 27 / 部分 7 / 待补 0 / 后置 3**，共 37 项。
+状态计数（脚本 `analysis/next_stage_20261019/report_completion_counts.py` 由 `reports/v1.10.1/requirements_matrix.csv` 生成）：**完成 28 / 部分 7 / 待补 0 / 后置 2**，共 37 项。
 
 | 编号 | 来源 | 要求 | 状态 | 证据 | 限制或下一步 |
 | --- | --- | --- | --- | --- | --- |
 | R01 | 张 §1 §6 | 五模型 S0 S1 S2 公平主实验 | 已完成 限冻结范围 | reports/B_comparison.md; reports/v1.10.1/quality.csv | 使用发布的官方候选 top3，不是新 EmbeddingGemma 检索 |
-| R02 | 张 §1 §3 §6 | Qwen3.5 9B 与更大模型 | 后置可选 | b-side/configs/model_registry.json | 未运行，不纳入当前五模型计划 |
+| R02 | 张 §1 §3 §6 | Qwen3.5 9B 与更大模型 | 已完成 限六模型 | reports/paper_20261026/s0s1s2_qwen35_9b_S0.csv; reports/paper_20261026/s0s1s2_qwen35_9b_S1.csv; reports/paper_20261026/s0s1s2_qwen35_9b_S2.csv; reports/paper_20261026/receipt_qwen35_9b.json; reports/paper_20261026/COMPLETION_RESULTS_20261028.md | S0/S1/S2 各 1033 题完成（606/618/720）；9B 属 Qwen3.5，与 Qwen3-VL 不同家族，不作纯规模趋势；未跑 S2@3，不进入 956 题同张数结论 A |
 | R03 | 张 §1 §6 | 各家最佳固定 RAG 补充 | 已完成 限已归档三策略dev选择 | reports/next_stage_20261019/quality_closure_20261021/fixed_rag_matrix.csv; reports/next_stage_20261019/quality_closure_20261021/paired_differences.csv; reports/next_stage_20261019/quality_closure_20261021/dev_fixed_selection.csv; reports/next_stage_20261019/quality_closure_20261021/C_fixed_rag_and_paths.md | 仅在dev150选择cosine/random/utility，固定平局规则，frozen1033只评估。不是所有RAG系统的全局最优；P4是post hoc Oracle上界，不可部署。 |
 | R04 | 张 §2 §4 | MRAG 1353 题 schema 与官方接口核验 | 已完成 | handover/contracts/官方评测接口差异.md; b-side/configs/sources_and_integrity.json | strict_choice_v1 为项目主评分；不冒称复现官方排行榜 |
 | R05 | 张 §2 §10 | B_papers 逐论文方法 数值 许可 复现状态 | 部分完成 | reports/B_papers.md; source_manifest.csv; reports/next_stage_20261017/B_paper_evidence.csv; reports/next_stage_20261017/B_paper_table_evidence.csv; reports/next_stage_20261017/B_paper_table_audit.md; reports/next_stage_20261019/quality_closure_20261021/papers_matrix.csv | 六篇逐论文对照已生成，四篇36个原表单元可核验；RAGRouter/VQQP原文数字、分母与适配许可仍未独立核验，不能称全部逐论文复现闭环。 |
@@ -47,6 +47,34 @@
 | R35 | handover/freeze/冻结清单模板.md 与 b-side/RUN.md | 代码矩阵配置与环境哈希及完整回执 | 已完成 | provenance/v1.10.1/; b-side/package_hashes.json; b-side/session_runner.py; tests/test_session_runner.py; reports/next_stage_20261019/A_local_preparation_validation.json; reports/next_stage_20261019/quality_closure_20261021/source_archive_supplement.json; reports/next_stage_20261019/quality_closure_20261021/source_pin_reproducibility.csv; reports/next_stage_20261019/B_source_archive_validation.json; reports/next_stage_20261019/B_pin_reproducibility.csv; reports/next_stage_20261019/a_interface_review_20261021/A_readonly_integrity.json; reports/next_stage_20261019/a_interface_review_20261021/B4_receipt_append_validation.json | 历史代码/环境哈希与回执齐全；source_archive定位14个旧源码pins。此次仅追加cpu_thread_warning_note，所有旧字段与cpu_thread_warning=true保持。A89ddb29工作树172个已跟踪文件前后字节完全相同，未改A脚本与CSV。 |
 | R36 | b-side/RUN.md 用户后续批准 | runtime v1.10.1 技术失败与正常格式失败分离 | 已完成 | b-side/runtime_change_v1.10.1.json; tests/test_runtime_format_gate.py | 提示词64token严格评分BF16未改；正常格式失败不重试 |
 | R37 | 用户备份完成信息与本次请求 | 本地备份 整理 清理可上传版 | 已交付 | reports/Delivery.md; provenance/v1.10.1/delivery_manifest.json | 完整原始备份不动；公开版不含权重图像新增副本认证环境缓存数据库 |
+
+## 补充实验清单（2026-10-24 / 10-26 / 10-28，不在原 37 项矩阵内）
+
+以下实验在执行前另行预注册（`reports/paper_20261021/PREREGISTRATION_20261024.md`、
+`reports/paper_20261021/PREREGISTRATION_20261026_completion.md`），结果独立存放：
+不写入 `reports/v1.10.1/requirements_matrix.csv` 的 37 项，也不修改
+`reports/next_stage_20261019/p4_frozen_20261021/frozen_numbers.json`。
+
+| 编号 | 实验 | 状态 | 证据 | 边界 |
+| --- | --- | --- | --- | --- |
+| S1 | 同张数正确证据对照（956 题，S1 三张 vs S2@3 三张） | 已完成 | `reports/paper_20261021/r1_equal_count_20261024.json` | 五模型净增益区间全 >0；严格 70% 保留判据 2/5 满足；只描述条件差异，不作因果，不称数量无关 |
+| S2 | 当前 4,712 池维度压缩（1,203 题 × 4 维） | 已完成 | `reports/paper_20261021/r2_dimension_compress_20261024.json` | 五项指标损失均 <3 pp 容差；不称统计等价，不外推到其他池 |
+| S3 | 两档输出成本（cap 2/256，3 模型 × 20 题） | 已完成，结果为 null | `reports/paper_20261021/r3_normal_output_cost_20261024.json` | 两档均 2.00 token，判为长度未生效；边际量 null 不填 0，按用户决定不重跑 |
+| S4 | Qwen3.5-9B S0/S1/S2（3 × 1,033） | 已完成 rc=0 | `reports/paper_20261026/` | 见 R02；冷启动首题 30.0518 s 超 30 s 门槛记 rc=5 并保留，独立预热门通过后执行全量 |
+| S5 | S3 + Qwen3-VL-8B（dev5/holdout2/frozen29） | 已完成 rc=0 | `reports/paper_20261026/` | 见 `reports/paper_20261026/S3_IMAGE_BUDGET_20261029.md`：五模型 S3 图像预算不同源，只支持同模型同题 S1→S3 转换，不作跨模型 S3 比较 |
+| S6 | 同池策略配对区间（utility vs cosine/random） | 已完成，两项均跨零 | `reports/paper_20261021/r3_paired_bootstrap_20261023.json` | 无法与无差异区分；不称策略优势或等价 |
+| S7 | 场景外推检验 | 已完成 | `reports/paper_20261021/scenario_extrapolation_20261021.json` | `Incomplete` 仅 5 个命中题，只描述，不据此提机制 |
+
+## 仍未开展的项
+
+| 项 | 原因 | 出处 |
+| --- | --- | --- |
+| 第二数据集自主检索（MMDocRAG 自主召回 / VisDoM） | 仅完成固定候选 judge；自主召回语料与逐题召回日志未建 | R06 |
+| 整机能耗 | 只有 GPU 功耗点采样（4.35 Wh / 83.5 s 窗口），非整机 | R18 |
+| 开放问答人审 | 无人审预算 | `reports/paper_20261021/DATA_INVENTORY.md` §三 |
+| VQQP 图像降质鲁棒性 | 后置可选 | R08 |
+| 五模型完整成本矩阵 | 仅三模型 × 20 题 × 2 token pilot | R17 |
+| bf16 vs 4bit 一致性 | 不需要：六模型 bf16 均可容纳，无 4bit 情形 | 本轮范围说明 |
 
 机器可读版本见 [requirements_matrix.csv](v1.10.1/requirements_matrix.csv)。
 
